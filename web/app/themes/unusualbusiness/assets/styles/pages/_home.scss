@@ -1,0 +1,65 @@
+@import "../common/variables";
+
+.home {
+
+  .main {
+    float: none;
+    width: 250px;
+    padding-top: 20px;
+    padding-left: 49px;
+  }
+
+  .page-header {
+    display: none;
+  }
+
+  h1 {
+    display: none;
+  }
+
+  .contact-info {
+    margin: 0 auto;
+    width: 250px;
+    text-align: center;
+
+    p {
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .email-wrapper {
+    padding-bottom: 3px;
+  }
+
+  .email {
+    text-decoration: none;
+  }
+
+  .fa-envelope-o {
+    font-size: 13px;
+    margin-right: 7px;
+  }
+
+
+  .tel {
+    letter-spacing: .005em;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  .fa-mobile {
+    font-size: 19px;
+    margin-right: 8px;
+    margin-left: 2px;
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 768px) {
+  @import "home_768";
+}
+
+@media (min-width:1025px) {
+  @import "home_1025";
+}

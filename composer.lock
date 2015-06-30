@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56494e199d61e1d9fb7692f2466a9764",
+    "hash": "16513a2fcad9f4310df054f90d24ad85",
     "packages": [
         {
             "name": "composer/installers",
@@ -315,16 +315,36 @@
             "homepage": "https://wordpress.org/plugins/disable-comments/"
         },
         {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "2.1.1",
+            "name": "wpackagist-plugin/html-editor-syntax-highlighter",
+            "version": "1.6.7",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/2.1.1"
+                "url": "http://plugins.svn.wordpress.org/html-editor-syntax-highlighter/",
+                "reference": "tags/1.6.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.2.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/html-editor-syntax-highlighter.1.6.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/html-editor-syntax-highlighter/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "2.2.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.2.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
