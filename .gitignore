@@ -33,3 +33,10 @@ node_modules
 # Vagrant
 bin
 .vagrant
+
+# Sage
+dist
+bower_components
+npm-debug.log
+
+# Custom Plugins
