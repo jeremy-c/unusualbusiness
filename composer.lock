@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "23be65c1bd82aa757c97feaaad6af273",
+    "hash": "56494e199d61e1d9fb7692f2466a9764",
     "packages": [
         {
             "name": "composer/installers",
@@ -100,36 +100,6 @@
                 "zikula"
             ],
             "time": "2015-02-18 17:17:01"
-        },
-        {
-            "name": "jeremy-cs/advanced-custom-fields-pro",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@bitbucket.org:jeremy-cs/advanced-custom-fields-pro.git",
-                "reference": "2cfc591506da5dcbd37b1f8bdef73e24260c7dc8"
-            },
-            "type": "wordpress-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2.5"
-                }
-            },
-            "license": [
-                "GPLv2 or later"
-            ],
-            "authors": [
-                {
-                    "name": "elliotcondon"
-                }
-            ],
-            "description": "Private repository of ACF",
-            "homepage": "https://bitbucket.org/jeremy-cs/advanced-custom-fields-pro",
-            "keywords": [
-                "ACF",
-                "advanced custom fields"
-            ],
-            "time": "2015-05-26 21:24:22"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -388,9 +358,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "jeremy-cs/advanced-custom-fields-pro": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
