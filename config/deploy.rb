@@ -8,7 +8,7 @@ set :theme_name, 'unusualbusiness'
 
 # Hardcodes branch to always be master
 # This could be overridden in a stage config file
-set :branch, :master
+set :branch, :gh
 
 # Use :debug for more verbose output when troubleshooting
 set :log_level, :info
