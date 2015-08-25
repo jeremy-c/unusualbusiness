@@ -18,13 +18,22 @@
         <nav class="collapse navbar-collapse" role="navigation">
             <?php
             if (has_nav_menu('primary_navigation')) :
-                wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav']);
+                wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav primary-navigation']);
             endif;
             ?>
             <?php
             if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(['theme_location' => 'secondary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right dutch-menu']);
-                wp_nav_menu(['theme_location' => 'alt_language_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right english-menu']);
+                wp_nav_menu(['theme_location' => 'secondary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right primary-navigation']);
+            endif;
+            ?>
+            <?php
+            if (has_nav_menu('primary_english_navigation')) :
+                wp_nav_menu(['theme_location' => 'primary_english_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav primary-english-navigation']);
+            endif;
+            ?>
+            <?php
+            if (has_nav_menu('secondary_english_navigation')) :
+                wp_nav_menu(['theme_location' => 'secondary_english_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right secondary-english-navigation']);
             endif;
             ?>
         </nav>

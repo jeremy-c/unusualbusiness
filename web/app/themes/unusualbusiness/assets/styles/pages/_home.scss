@@ -1,13 +1,15 @@
 @import "../common/variables";
 
 .home {
-  .menu-right-top-english-container {
+  .primary-english-navigation,
+  .secondary-english-navigation {
     display: none;
   }
 }
 
 .template-english {
-  .menu-right-top-container {
+  .primary-navigation,
+  .secondary-navigation {
     display: none;
   }
 }
@@ -60,7 +62,7 @@
       color: $blue;
     }
 
-    &.downloads > a {
+    &.journal > a {
       color: $black;
     }
 
@@ -154,7 +156,7 @@
   }
 }
 
-.downloads {
+.journal {
   color: $black;
 
   .download-text {

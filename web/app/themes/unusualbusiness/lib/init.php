@@ -21,7 +21,8 @@ function setup() {
   register_nav_menus([
     'primary_navigation' => __('Primary Navigation', 'sage'),
     'secondary_navigation' => __('Secondary Navigation', 'sage'),
-    'alt_language_navigation' => __('Alt Language Navigation', 'sage')
+      'primary_english_navigation' => __('Primary English Navigation', 'sage'),
+    'secondary_english_navigation' => __('Secondary English Navigation', 'sage')
   ]);
 
   // Add post thumbnails

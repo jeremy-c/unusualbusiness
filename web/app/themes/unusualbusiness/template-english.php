@@ -102,12 +102,12 @@
         <a href="#" class="download-button">Download the Open Call flyer</a>
         <p>
           Stay up to date about upcoming events
-          and reading materials via our <a href="#" >facebook</a> page
+          and reading materials via our <a href="https://www.facebook.com/pages/Unusual-Business/832062353633929" target="_blank" >facebook</a> page
         </p>
       </div>
     </div>
 
-    <div class="downloads col-sm-12 col-md-6" id="downloads">
+    <div class="journal col-sm-12 col-md-6" id="journal">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
             <g>
@@ -155,7 +155,7 @@
               </g>
             </g>
           </svg>
-    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about-us">
+    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about">
       <h2>About (Un)usual Business</h2>
       <p>
           (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.

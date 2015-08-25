@@ -86,28 +86,24 @@
         <h2>Doe mee!</h2>
         <p>
           <strong>
-            Are you looking for <br>
-            (Un)usual Business? <br>
-            (Un)usual Business research <br>
-            collective is looking for you!
+              Ben je op zoek naar <br>
+              (Un)usual Business?<br>
+              (Un)usual Business onderzoeks <br>
+              collectief is op zoek naar jou!
           </strong>
         </p>
         <p>
-          To move forward, we are in need for
-          knowledge, experience, support and
-          energy! We hope to find new members
-          who are specifically interested in doing
-          research. We hope it’s you!
+            Om ons project verder te ontwikkelen hebben we meer kennis, ervaring, ondersteuning en energie nodig! We zijn op zoek naar nieuwe leden die in het bijzonder geinteresseerd zijn om onderzoek te doen. Wie weet ben jij dat!
         </p>
-        <a href="#" class="download-button">Download the Open Call flyer</a>
+        <a href="#" class="download-button">Download de Open Call flyer</a>
         <p>
-          Stay up to date about upcoming events
-          and reading materials via our <a href="#" >facebook</a> page
+          S
+            Blijf op de hoogte van toekomstige events en leesmateriaal via onze <a href="https://www.facebook.com/pages/Unusual-Business/832062353633929" target="_blank" >facebook</a>  pagina
         </p>
       </div>
     </div>
 
-    <div class="downloads col-sm-12 col-md-6" id="downloads">
+    <div class="journal col-sm-12 col-md-6" id="journal">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
         <g>
@@ -127,7 +123,7 @@
       <div class="inner-row col-xs-12 col-sm-10 text-center">
         <h2>Journal #1</h2>
         <p class="download-text">
-          Download our publication <br>
+            Download onze publicatie <br>
           <em>‘Utrecht Meent Het’</em>
         </p>
         <p>
@@ -161,13 +157,12 @@
     <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about-us">
       <h2>About (Un)usual Business</h2>
       <p>
-        (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.
+          (Un)usual Business is een enthousiaste groep commoners, opgericht door Casco – Office for Art, Design and Theory in samenwerking met Kritische Studenten Utrecht.
       </p>
       <p>
-        We are organized as a collective, which means we function non-hierarchically and make decisions consensually. We rely on the social relations we build with people dedicated to similar ideas, some of whom support us as researchers. Through functioning as a common, knowledge being our resource, our practice is at the same time a form of self-education.
-      </p>
+          Wij zijn georganiseerd als collectief. Dat betekent dat we functioneren zonder hiërarchie en beslissingen nemen op basis van consensus. We doen onderzoek naar de commons, in nauwe samenwerking met mensen die onze waarden delen en groepen die deze in de praktijk brengen. Door ook zelf als commons te functioneren, met kennis als ons hulpmiddel, is onze praktijk tegelijk een vorm van zelf-educatie.</p>
       <p>
-        In addition to our work on a visual experiment to map existing commoning practices, we organize events and publish our collective research both online and in print to strengthen our community and encourage dialogue.
+          Een belangrijk onderdeel van onze activiteiten is een visueel experiment, in de vorm van een website, om bestaande praktijken van commoning in kaart te brengen. Daarnaast organiseren we evenementen en publiceren we ons collectieve onderzoek zowel online als op papier, om onze gemeenschap te versterken en dialoog aan te moedigen.
       </p>
       <p class="how-to-circle">
         <picture>
@@ -176,15 +171,15 @@
         </picture>
       </p>
       <div class="vision" id="vision">
-        <h2>Vision</h2>
+        <h2>Visie</h2>
         <p>
-          We aim to take democratic control over the common means of our lives and change the way we relate to each other. We envision a world in which economic and social relations are based on self-organization, care, solidarity and sustainability.
+            We streven ernaar om democratische controle te nemen over de gemeenschappelijke middelen om ons in onze dagelijkse behoeftes te voorzien en te veranderen hoe we ons tot elkaar verhouden. We zetten ons in voor een wereld waarin economische en sociale relaties zijn gebaseerd op zelforganisatie, zorgzaamheid, solidariteit en duurzaamheid.
         </p>
       </div>
       <div class="mission" id="mission">
-        <h2>Mission</h2>
+        <h2>Missie</h2>
         <p>
-          Starting from a firm belief in the potential of local alternative economic practices, we wish to learn from our fellow commoners and inspire social change. Through facilitating physical and virtual spaces, we aim to produce, collect and share knowledge about how to support each other and build communities based on the commons.
+            We werken vanuit de overtuiging dat lokale, alternatieve economische praktijken mogelijkheden bieden om sociale verandering teweeg te brengen. Door fysieke en virtuele ontmoetings-ruimtes te faciliteren, hopen wij te leren van onze mede-commoners. Zo produceren, verzamelen en delen we kennis kennis over hoe we elkaar kunnen ondersteunen en gemeenschappen kunnen opbouwen gebaseerd op de commons.
         </p>
       </div>
     </div>
@@ -265,27 +260,15 @@
             </g>
           </svg>
     <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" id="what-are-commons">
-      <h2>What are commons</h2>
+      <h2>Wat zijn de commons?</h2>
       <p>
-        The economy is often understood as made up of two domains: the
-        private and the public, also known as the Market and the State. Indeed,
-        most of the ways in which we sustain our lives are based within these
-        two spheres. But there is a third domain; the commons, those things we
-        share collectively.
+          Tegenwoordig worden we overal ter wereld geconfronteerd met sociale, economische en ecologische crises. Dit leidt velen van ons ertoe om kritisch te kijken naar hoe onze economie eigenlijk werkt. Onze samenleving wordt vaak begrepen als een tweedeling: het private en het publieke domein, ook wel de Markt en de Staat. Weliswaar bevinden de meeste manieren waarop we onszelf in ons dagelijks leven voorzien zich in deze twee sferen, maar er bestaat ook een derde domein: de commons, of de meent in het oud-Nederlands, de dingen die we delen en gezamenlijk beheren. Deze dingen, gemeenschappelijke hulpbronnen, kunnen allerlei vormen aannemen: natuurlijke hulpbronnen zoals lucht, water en bossen, maar ook culturele hulpbronnen zoals taal, kennis of cultuur.
       </p>
       <p>
-        We are facing social, economic and ecological crises and the withdrawal
-        of the welfare state as a provider of our basic needs. In this context,
-        thinking about the commons, especially here in the Netherlands, is
-        becoming more pressing. And it’s not a new idea. For decades the
-        commons have played a very important role in our world, but also now
-        we are surrounded by and highly dependant on them: the Internet is
-        only one of many examples.
+          De commons staan centraal in (Un)usual Business en ook de bijbehorende gemeenschapseconomieen (de groepen mensen die hun gedeelde hulpbronnen op een collectieve manier beheren), hun kennis en hun commoning praktijken. De commons zijn niet een nieuw idee. Eeuwenlang hebben ze een belangrijke rol gespeeld in ons leven en in het milieu. Commons staan al lang onder hoge druk van staten en marktinstituten, maar we zijn er nog steeds erg afhankelijk van; denk aan (de vrije delen van) het Internet, open source software, veel Europese bossen, visgronden of oeroude en nog steeds werkende irrigatie systemen.
       </p>
       <p>
-        We see the commons as a way of acting, thinking and organising that
-        offer us tools to change the current social, economic and ecological
-        relationships.
+          Voor ons zijn de commons een belangrijk praktijk die ons vele handvatten biedt om actief onze huidige sociale, economische en ecologische verhoudingen te veranderen, zowel in het hier en nu als in onze dromen van een betere samenleving. We onderzoeken het potentieel van bestaande commoning praktijken in onze eigen lokale omgeving. Tegelijkertijd experimenteren we met het commonen van onze eigen hulpbron, kennis.
       </p>
     </div>
   </div>
