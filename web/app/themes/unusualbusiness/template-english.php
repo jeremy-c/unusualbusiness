@@ -130,10 +130,12 @@
           <em>‘Utrecht Meent Het’</em>
         </p>
         <p>
-          <picture>
-            <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/utrecht-meent-het-commons-unusual-business-casco.jpg, <?= get_bloginfo('template_directory');?>/dist/images/utrecht-meent-het-commons-unusual-business-casco-2x.jpg 2x"
-                 alt="Utrecht Meent het - (Un)usual Business" />
-          </picture>
+            <a href="/app/uploads/UB-journal1-lo-res.pdf" target="_blank">
+              <picture>
+                <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/utrecht-meent-het-commons-unusual-business-casco.jpg, <?= get_bloginfo('template_directory');?>/dist/images/utrecht-meent-het-commons-unusual-business-casco-2x.jpg 2x"
+                     alt="Utrecht Meent het - (Un)usual Business" />
+              </picture>
+            </a>
         </p>
       </div>
     </div>
