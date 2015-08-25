@@ -158,13 +158,13 @@
     <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about-us">
       <h2>About (Un)usual Business</h2>
       <p>
-        (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.
+          (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.
       </p>
       <p>
-        We are organized as a collective, which means we function non-hierarchically and make decisions consensually. We rely on the social relations we build with people dedicated to similar ideas, some of whom support us as researchers. Through functioning as a common, knowledge being our resource, our practice is at the same time a form of self-education.
+          We are organized as a collective, which means we function non-hierarchically and make decisions consensually. We rely on the social relations we build with people dedicated to similar ideas, some of whom support us as researchers. Through functioning as a common, knowledge being our resource, our practice is at the same time a form of self-education.
       </p>
       <p>
-        In addition to our work on a visual experiment to map existing commoning practices, we organize events and publish our collective research both online and in print to strengthen our community and encourage dialogue.
+          In addition to our work on a visual experiment to map existing commoning practices, we organize events and publish our collective research both online and in print to strengthen our community and encourage dialogue.
       </p>
       <p class="how-to-circle">
         <picture>
@@ -175,13 +175,13 @@
       <div class="vision" id="vision">
         <h2>Vision</h2>
         <p>
-          We aim to take democratic control over the common means of our lives and change the way we relate to each other. We envision a world in which economic and social relations are based on self-organization, care, solidarity and sustainability.
+            We aim to take democratic control over the common means of our lives and change the way we relate to each other. We envision a world in which economic and social relations are based on self-organization, care, solidarity and sustainability.
         </p>
       </div>
       <div class="mission" id="mission">
         <h2>Mission</h2>
         <p>
-          Starting from a firm belief in the potential of local alternative economic practices, we wish to learn from our fellow commoners and inspire social change. Through facilitating physical and virtual spaces, we aim to produce, collect and share knowledge about how to support each other and build communities based on the commons.
+            Starting from a firm belief in the potential of local alternative economic practices, we wish to learn from our fellow commoners and inspire social change. Through facilitating physical and virtual spaces, we aim to produce, collect and share knowledge about how to support each other and build communities based on the commons.
         </p>
       </div>
     </div>
@@ -264,25 +264,13 @@
     <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" id="what-are-commons">
       <h2>What are commons</h2>
       <p>
-        The economy is often understood as made up of two domains: the
-        private and the public, also known as the Market and the State. Indeed,
-        most of the ways in which we sustain our lives are based within these
-        two spheres. But there is a third domain; the commons, those things we
-        share collectively.
+          We currently face social, economic and ecological crises all around the world. As a result, many of us are looking critically at the workings of our economy. Society is often understood as made up of two domains: the private and the public, also known as the Market and the State. Indeed, most of the ways in which we sustain our lives are based within these two spheres, but there is a third domain; the commons, those things we share and manage collectively. These things, common resources, can be many things, ranging from natural resources like air, water and forests to cultural resources like language, knowledge or culture.
       </p>
       <p>
-        We are facing social, economic and ecological crises and the withdrawal
-        of the welfare state as a provider of our basic needs. In this context,
-        thinking about the commons, especially here in the Netherlands, is
-        becoming more pressing. And it’s not a new idea. For decades the
-        commons have played a very important role in our world, but also now
-        we are surrounded by and highly dependant on them: the Internet is
-        only one of many examples.
+          Core to (Un)usual Business are the commons, community economies (the groups of people managing their shared resources in a collective manner), their knowhow, and their commoning practices. The commons are not a new idea. For centuries they have played a very important role in our lives and in the fate of the environment. Although commons have been under pressure of states and market institutions, we are still highly dependent on them; think of the (free parts of the) Internet, open source software, many European forests, fisheries around the world, ancient and still working irrigation systems.
       </p>
       <p>
-        We see the commons as a way of acting, thinking and organising that
-        offer us tools to change the current social, economic and ecological
-        relationships.
+          To us, the commons are an exciting practice that offers us tools to actively change our current social, economic and ecological relationships, both in the here and now as well as in our dreams of a better society. We are researching the potential of existing commoning practices in our own local surroundings whilst at the same time experimenting with commoning our own resource, that is, knowledge.
       </p>
     </div>
   </div>
