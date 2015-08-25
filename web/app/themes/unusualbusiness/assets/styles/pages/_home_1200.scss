@@ -1,0 +1,23 @@
+
+  .banner {
+    max-width: $screen-lg -30px;
+  }
+
+  .container {
+    max-width: $screen-lg;
+  }
+
+  .navbar-default {
+
+     .navbar-nav > li {
+
+       > a {
+         padding: 30px 30px 30px 6px;
+         letter-spacing: inherit;
+       }
+     }
+
+    .navbar-right {
+      margin-right: -15px;
+    }
+   }

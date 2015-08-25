@@ -1,70 +1,234 @@
 @import "../common/variables";
 
 .home {
-
-  .container {
-    width: auto;
-  }
-
-  .main {
-    float: none;
-    width: 250px;
-    padding-top: 20px;
-    padding-left: 49px;
-  }
-
-  .page-header {
+  .menu-right-top-english-container {
     display: none;
   }
+}
+
+.template-english {
+  .menu-right-top-container {
+    display: none;
+  }
+}
+
+.navbar-default {
+  background-color: $white;
+  border: none;
+
+  .navbar-brand {
+    display: none;
+  }
+
+  .navbar-collapse {
+    border: none;
+  }
+
+  .navbar-nav > li {
+    @extend .text-center;
+
+    > a {
+      padding: 8px;
+      color: $black;
+      font-size: 20px;
+      font-weight: bold;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+        background-color: transparent;
+        color: $black;
+      }
+    }
+
+    &.active > a,
+    &.active > a:focus {
+       background-color: transparent;
+       color: $black;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+        background-color: transparent;
+        color: $black;
+      }
+    }
+
+    &.get-involved > a {
+      color: $blue;
+    }
+
+    &.downloads > a {
+      color: $black;
+    }
+
+    &.about  > a {
+      color: $orange;
+    }
+
+    &.what-are-commons > a {
+      color: $green;
+    }
+
+    .contact  > a {
+
+    }
+  }
+
+}
+
+.container {
+  width: auto;
+}
+
+.brand {
+  float: none;
+  margin: 83px auto 20px;
+  @extend .row;
+  @extend .text-center;
+}
+
+.main {
+  float: none;
+  margin: 0 auto;
+  padding-top: 20px;
 
   h1 {
     display: none;
   }
 
-  .contact-info {
-    margin: 0 auto;
-    width: 250px;
-    text-align: center;
+  h2 {
+    margin-top: 23px;
+    margin-bottom: 41px;
+    font-size: 38px;
+    font-weight: bold;
+  }
 
-    p {
-      margin: 0;
-      text-align: left;
+  p {
+    font-size: 23px;
+    line-height: 29px;
+    margin-bottom: 31px;
+
+    strong {
+      font-size: 25px;
+      line-height: 30px;
     }
   }
 
-  .email-wrapper {
-    padding-bottom: 3px;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 23px;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.page-header {
+  display: none;
+}
+
+.inner-row {
+  float: none;
+  margin: 0 auto 40px;
+}
+
+.get-involved {
+  color: $blue;
+  a {
+    color: $blue;
   }
 
+  .download-button {
+    display: block;
+    margin: 60px 0 47px;
+    border: solid 2px $blue;
+    padding: 20px 20px 25px 20px;
+    width: 100%;
+  }
+}
+
+.downloads {
+  color: $black;
+
+  .download-text {
+    margin-bottom: 50px;
+  }
+}
+
+.about-us {
+  h2 {
+    margin-top: 33px;
+    margin-bottom: 30px;
+    color: $orange;
+  }
+
+  .how-to-circle {
+    margin: 65px 0 48px;
+  }
+
+  .mission {
+    h2 {
+      margin-top: 65px;
+    }
+  }
+}
+
+
+.what-are-commons {
+  color: $green;
+
+  h2 {
+    margin-top: 33px;
+    margin-bottom: 34px;
+  }
+}
+
+.contact {
+
   .email {
-    text-decoration: none;
+    font-weight: normal;
   }
 
   .fa-envelope-o {
-    font-size: 13px;
+    font-size: 19px;
     margin-right: 7px;
     padding-left: 1px;
   }
 
-
-  .tel {
-    letter-spacing: .005em;
-    font-size: 14px;
-    vertical-align: top;
-  }
-
-  .fa-mobile {
-    font-size: 19px;
-    margin-right: 8px;
-    margin-left: 2px;
-    vertical-align: bottom;
+  .logo-bottom {
+    margin-top: 38px;
+    margin-bottom: 70px;
   }
 }
 
-@media (min-width: 768px) {
+.mission,
+.what-are-commons,
+.about-us,
+.contact {
+  @extend .text-center;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
   @import "home_768";
 }
 
-@media (min-width:1025px) {
-  @import "home_1025";
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+  @import "home_1200";
 }

@@ -28,3 +28,6 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+// Register Custom Navigation Walker
+require_once('wp_bootstrap_navwalker.php');

@@ -7,8 +7,9 @@ html, body {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: ClearSans, sans-serif;
   color: $black;
+  font-size: 23px;
 }
 
 a {
@@ -25,5 +26,4 @@ img {
 
 .wrapper {
   margin: 0 20px;
-  width: 259px;
 }

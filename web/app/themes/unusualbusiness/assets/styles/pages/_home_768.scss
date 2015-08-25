@@ -1,0 +1,24 @@
+
+
+.brand {
+  float: none;
+  margin: 129px auto 40px;
+  @extend .row;
+  @extend .text-center;
+}
+
+.navbar-default {
+
+  .navbar-nav > li {
+    @extend .text-left;
+
+    > a {
+      padding: 30px 6px;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  .navbar-right {
+    margin-right: 0;
+  }
+}
