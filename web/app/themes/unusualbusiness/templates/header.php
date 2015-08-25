@@ -23,7 +23,7 @@
             ?>
             <?php
             if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(['theme_location' => 'secondary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right primary-navigation']);
+                wp_nav_menu(['theme_location' => 'secondary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav navbar-right secondary-navigation']);
             endif;
             ?>
             <?php
