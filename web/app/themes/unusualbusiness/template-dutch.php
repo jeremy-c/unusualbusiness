@@ -156,7 +156,7 @@
         </g>
       </svg>
     <div class="about-us inner-row col-xs-12 col-sm-8 text-center" >
-      <h2>About (Un)usual Business</h2>
+      <h2>Over (Un)usual Business</h2>
       <p>
           (Un)usual Business is een enthousiaste groep commoners,
           opgericht door <a href="http://www.cascoprojects.org" target="_blank">Casco – Office for Art, Design and Theory</a>
