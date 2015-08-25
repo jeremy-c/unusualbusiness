@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="about">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
             <g>
@@ -155,7 +155,7 @@
               </g>
             </g>
           </svg>
-    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about">
+    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" >
       <h2>About (Un)usual Business</h2>
       <p>
           (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.
@@ -187,7 +187,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row"  id="what-are-commons">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 557.7 9.4" enable-background="new 0 0 557.7 9.4" xml:space="preserve">
             <g>
@@ -261,7 +261,7 @@
               </g>
             </g>
           </svg>
-    <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" id="what-are-commons">
+    <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" >
       <h2>What are commons</h2>
       <p>
           We currently face social, economic and ecological crises all around the world. As a result, many of us are looking critically at the workings of our economy. Society is often understood as made up of two domains: the private and the public, also known as the Market and the State. Indeed, most of the ways in which we sustain our lives are based within these two spheres, but there is a third domain; the commons, those things we share and manage collectively. These things, common resources, can be many things, ranging from natural resources like air, water and forests to cultural resources like language, knowledge or culture.
@@ -275,7 +275,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="contact">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
             <g>
@@ -291,7 +291,7 @@
               </g>
             </g>
           </svg>
-    <div class="contact inner-row col-xs-12 col-sm-10 text-center" id="contact">
+    <div class="contact inner-row col-xs-12 col-sm-10 text-center" >
       <h2>Contact</h2>
       <p><i class="fa fa-envelope-o"></i><a class="email" href="mailto:info@unusualbusiness.nl">info@unusualbusiness.nl</a></p>
 

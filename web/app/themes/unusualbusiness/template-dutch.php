@@ -138,7 +138,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="about">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
         <g>
@@ -154,7 +154,7 @@
           </g>
         </g>
       </svg>
-    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" id="about">
+    <div class="about-us inner-row col-xs-12 col-sm-8 text-center" >
       <h2>About (Un)usual Business</h2>
       <p>
           (Un)usual Business is een enthousiaste groep commoners, opgericht door Casco – Office for Art, Design and Theory in samenwerking met Kritische Studenten Utrecht.
@@ -185,7 +185,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="what-are-commons">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 557.7 9.4" enable-background="new 0 0 557.7 9.4" xml:space="preserve">
             <g>
@@ -259,7 +259,7 @@
               </g>
             </g>
           </svg>
-    <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" id="what-are-commons">
+    <div class="what-are-commons inner-row col-xs-12 col-sm-8 text-center" >
       <h2>Wat zijn de commons?</h2>
       <p>
           Tegenwoordig worden we overal ter wereld geconfronteerd met sociale, economische en ecologische crises. Dit leidt velen van ons ertoe om kritisch te kijken naar hoe onze economie eigenlijk werkt. Onze samenleving wordt vaak begrepen als een tweedeling: het private en het publieke domein, ook wel de Markt en de Staat. Weliswaar bevinden de meeste manieren waarop we onszelf in ons dagelijks leven voorzien zich in deze twee sferen, maar er bestaat ook een derde domein: de commons, of de meent in het oud-Nederlands, de dingen die we delen en gezamenlijk beheren. Deze dingen, gemeenschappelijke hulpbronnen, kunnen allerlei vormen aannemen: natuurlijke hulpbronnen zoals lucht, water en bossen, maar ook culturele hulpbronnen zoals taal, kennis of cultuur.
@@ -273,7 +273,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row"  id="contact">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 595.28 3.889" enable-background="new 0 0 595.28 3.889" xml:space="preserve">
             <g>
@@ -289,7 +289,7 @@
               </g>
             </g>
           </svg>
-    <div class="contact inner-row col-xs-12 col-sm-10 text-center" id="contact">
+    <div class="contact inner-row col-xs-12 col-sm-10 text-center">
       <h2>Contact</h2>
       <p><i class="fa fa-envelope-o"></i><a class="email" href="mailto:info@unusualbusiness.nl">info@unusualbusiness.nl</a></p>
 
