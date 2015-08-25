@@ -88,16 +88,17 @@
           <strong>
               Ben je op zoek naar <br>
               (Un)usual Business?<br>
-              (Un)usual Business onderzoeks <br>
+              (Un)usual Business onderzoeks- <br>
               collectief is op zoek naar jou!
           </strong>
         </p>
         <p>
-            Om ons project verder te ontwikkelen hebben we meer kennis, ervaring, ondersteuning en energie nodig! We zijn op zoek naar nieuwe leden die in het bijzonder geinteresseerd zijn om onderzoek te doen. Wie weet ben jij dat!
+            Om ons project verder te ontwikkelen hebben we meer kennis, ervaring, ondersteuning en energie nodig!
+            We zijn op zoek naar nieuwe leden die in het bijzonder geïnteresseerd zijn om onderzoek te doen.
+            Wie weet ben jij dat!
         </p>
         <a href="#" class="download-button">Download de Open Call flyer</a>
         <p>
-          S
             Blijf op de hoogte van toekomstige events en leesmateriaal via onze <a href="https://www.facebook.com/pages/Unusual-Business/832062353633929" target="_blank" >facebook</a>  pagina
         </p>
       </div>
@@ -157,10 +158,12 @@
     <div class="about-us inner-row col-xs-12 col-sm-8 text-center" >
       <h2>About (Un)usual Business</h2>
       <p>
-          (Un)usual Business is een enthousiaste groep commoners, opgericht door Casco – Office for Art, Design and Theory in samenwerking met Kritische Studenten Utrecht.
+          (Un)usual Business is een enthousiaste groep commoners,
+          opgericht door <a href="http://www.cascoprojects.org" target="_blank">Casco – Office for Art, Design and Theory</a>
+          in samenwerking met <a href="http://www.kritischestudenten.nl" target="_blank">Kritische Studenten Utrecht</a>.
       </p>
       <p>
-          Wij zijn georganiseerd als collectief. Dat betekent dat we functioneren zonder hiërarchie en beslissingen nemen op basis van consensus. We doen onderzoek naar de commons, in nauwe samenwerking met mensen die onze waarden delen en groepen die deze in de praktijk brengen. Door ook zelf als commons te functioneren, met kennis als ons hulpmiddel, is onze praktijk tegelijk een vorm van zelf-educatie.</p>
+          Wij zijn georganiseerd als een collectief. Dat betekent dat we functioneren zonder hiërarchie en beslissingen nemen op basis van consensus. We doen onderzoek naar de commons, in nauwe samenwerking met mensen die onze waarden delen en groepen die deze in de praktijk brengen. Door ook zelf als een commons te functioneren, met kennis als ons hulpmiddel, is onze praktijk tegelijk een vorm van zelf-educatie.</p>
       <p>
           Een belangrijk onderdeel van onze activiteiten is een visueel experiment, in de vorm van een website, om bestaande praktijken van commoning in kaart te brengen. Daarnaast organiseren we evenementen en publiceren we ons collectieve onderzoek zowel online als op papier, om onze gemeenschap te versterken en dialoog aan te moedigen.
       </p>
@@ -265,7 +268,7 @@
           Tegenwoordig worden we overal ter wereld geconfronteerd met sociale, economische en ecologische crises. Dit leidt velen van ons ertoe om kritisch te kijken naar hoe onze economie eigenlijk werkt. Onze samenleving wordt vaak begrepen als een tweedeling: het private en het publieke domein, ook wel de Markt en de Staat. Weliswaar bevinden de meeste manieren waarop we onszelf in ons dagelijks leven voorzien zich in deze twee sferen, maar er bestaat ook een derde domein: de commons, of de meent in het oud-Nederlands, de dingen die we delen en gezamenlijk beheren. Deze dingen, gemeenschappelijke hulpbronnen, kunnen allerlei vormen aannemen: natuurlijke hulpbronnen zoals lucht, water en bossen, maar ook culturele hulpbronnen zoals taal, kennis of cultuur.
       </p>
       <p>
-          De commons staan centraal in (Un)usual Business en ook de bijbehorende gemeenschapseconomieen (de groepen mensen die hun gedeelde hulpbronnen op een collectieve manier beheren), hun kennis en hun commoning praktijken. De commons zijn niet een nieuw idee. Eeuwenlang hebben ze een belangrijke rol gespeeld in ons leven en in het milieu. Commons staan al lang onder hoge druk van staten en marktinstituten, maar we zijn er nog steeds erg afhankelijk van; denk aan (de vrije delen van) het Internet, open source software, veel Europese bossen, visgronden of oeroude en nog steeds werkende irrigatie systemen.
+          De commons staan centraal in (Un)usual Business en ook de bijbehorende gemeenschapseconomieën (de groepen mensen die hun gedeelde hulpbronnen op een collectieve manier beheren), hun kennis en hun commoning praktijken. De commons zijn niet een nieuw idee. Eeuwenlang hebben ze een belangrijke rol gespeeld in ons leven en in het milieu. Commons staan al lang onder hoge druk van staten en marktinstituten, maar we zijn er nog steeds erg afhankelijk van; denk aan (de vrije delen van) het Internet, open source software, veel Europese bossen, visgronden of oeroude en nog steeds werkende irrigatie systemen.
       </p>
       <p>
           Voor ons zijn de commons een belangrijk praktijk die ons vele handvatten biedt om actief onze huidige sociale, economische en ecologische verhoudingen te veranderen, zowel in het hier en nu als in onze dromen van een betere samenleving. We onderzoeken het potentieel van bestaande commoning praktijken in onze eigen lokale omgeving. Tegelijkertijd experimenteren we met het commonen van onze eigen hulpbron, kennis.

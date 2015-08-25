@@ -158,7 +158,9 @@
     <div class="about-us inner-row col-xs-12 col-sm-8 text-center" >
       <h2>About (Un)usual Business</h2>
       <p>
-          (Un)usual Business is an enthusiastic group of commoners, initiated by Casco – Office for Art, Design and Theory in collaboration with Kritische Studenten Utrecht.
+          (Un)usual Business is an enthusiastic group of commoners,
+          initiated by <a href="http://www.cascoprojects.org" target="_blank">Casco – Office for Art, Design and Theory</a>
+          in collaboration with <a href="http://www.kritischestudenten.nl" target="_blank">Kritische Studenten Utrecht</a>.
       </p>
       <p>
           We are organized as a collective, which means we function non-hierarchically and make decisions consensually. We rely on the social relations we build with people dedicated to similar ideas, some of whom support us as researchers. Through functioning as a common, knowledge being our resource, our practice is at the same time a form of self-education.
