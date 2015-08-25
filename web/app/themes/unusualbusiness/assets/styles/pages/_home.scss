@@ -143,6 +143,7 @@
 
 .get-involved {
   color: $blue;
+
   a {
     color: $blue;
   }
@@ -153,6 +154,8 @@
     border: solid 2px $blue;
     padding: 20px 20px 25px 20px;
     width: 100%;
+
+    display: none;
   }
 }
 
