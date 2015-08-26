@@ -296,13 +296,28 @@
             </g>
           </svg>
     <div class="contact inner-row col-xs-12 col-sm-10 text-center" >
-      <h2>Contact</h2>
-      <p><i class="fa fa-envelope-o"></i><a class="email" href="mailto:info@unusualbusiness.nl">info@unusualbusiness.nl</a></p>
+        <h2>Contact</h2>
+        <p><i class="fa fa-envelope-o"></i><a class="email" href="mailto:info@unusualbusiness.nl">info@unusualbusiness.nl</a></p>
 
-      <picture>
-        <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/unusualbusiness-logo-small.png, <?= get_bloginfo('template_directory');?>/dist/images/unusualbusiness-logo-small-2x.png 2x"
-             alt="(Un)usual Business" class="logo-bottom" />
-      </picture>
-    </div>
+        <div class="col-xs-12 text-center ub-logo-bottom" >
+          <picture>
+            <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/unusualbusiness-logo-small.png, <?= get_bloginfo('template_directory');?>/dist/images/unusualbusiness-logo-small-2x.png 2x"
+                 alt="(Un)usual Business" />
+          </picture>
+        </div>
+        <div class="col-xs-12 text-center casco-ksu-logos-bottom" >
+            <a href="http://www.cascoprojects.org" target="_blank">
+                <picture>
+                    <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/casco-logo.png, <?= get_bloginfo('template_directory');?>/dist/images/casco-logo-2x.png 2x"
+                         alt="(Un)usual Business" class="logo-bottom" />
+                </picture>
+            </a>
+            <a href="http://www.kritischestudenten.nl" target="_blank">
+                <picture>
+                    <img srcset="<?= get_bloginfo('template_directory');?>/dist/images/ksu-logo.png, <?= get_bloginfo('template_directory');?>/dist/images/ksu-logo-2x.png 2x"
+                         alt="(Un)usual Business" class="logo-bottom" />
+                </picture>
+            </a>
+        </div>
   </div>
 <?php endwhile; ?>

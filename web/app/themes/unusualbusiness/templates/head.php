@@ -1,7 +1,8 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="<?= get_bloginfo('template_directory');?>/dist/images/favicon.ico" rel="icon" type="image/x-icon" />
     <script type="text/javascript">
         WebFontConfig = {
             google: { families: [ 'Open+Sans:400italic,400,700,300:latin' ] }
