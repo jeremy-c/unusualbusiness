@@ -99,7 +99,7 @@
           who are specifically interested in doing
           research. We hope it’s you!
         </p>
-        <a href="/app/uploads/UB-open-call.pdf" class="download-button">Download the Open Call flyer</a>
+        <a href="/app/uploads/UB-open-call.pdf" class="download-button" target="_blank">Download the Open Call flyer</a>
         <p>
           Stay up to date about upcoming events
           and reading materials via our <a href="https://www.facebook.com/pages/Unusual-Business/832062353633929" target="_blank" >facebook</a> page
