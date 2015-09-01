@@ -97,7 +97,7 @@
             We zijn op zoek naar nieuwe leden die in het bijzonder geïnteresseerd zijn om onderzoek te doen.
             Wie weet ben jij dat!
         </p>
-        <a href="#" class="download-button">Download de Open Call flyer</a>
+        <a href="/app/uploads/UB-oproep.pdf" class="download-button">Download de Open Call flyer</a>
         <p>
             Blijf op de hoogte van toekomstige events en leesmateriaal via onze <a href="https://www.facebook.com/pages/Unusual-Business/832062353633929" target="_blank" >facebook</a>  pagina
         </p>
