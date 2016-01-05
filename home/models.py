@@ -16,8 +16,6 @@ from wagtail.wagtailcore import blocks
 
 class HomePage(TranslationMixin, Page):
 
-    # Database fields
-
     body = RichTextField()
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(

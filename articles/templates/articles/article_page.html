@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block body_class %}template-article-page{% endblock %}
+
+{% block content %}
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <div class="image">
+        {% image page.featured_image width-400 %}
+    </div>
+
+    <div class="body">
+        {{ page.body|richtext }}
+    </div>
+
+{% endblock %}

@@ -108,3 +108,5 @@ crashlytics-build.properties
 
 # SqlLite
 *.sqlite3
+
+/media/

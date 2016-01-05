@@ -17,8 +17,6 @@ from wagtail.wagtailcore import blocks
 
 class ArticlePage(TranslationMixin, Page):
 
-    # Database fields
-
     subtitle = models.CharField(
         verbose_name=_('subtitle'),
         max_length=255,
@@ -69,6 +67,21 @@ class ArticlePage(TranslationMixin, Page):
         index.SearchField('body'),
     )
 
+    # Editor panels configuration
+
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+        FieldPanel('author'),
+        ImageChooserPanel('featured_image'),
+        FieldPanel('summary'),
+        FieldPanel('publication_date'),
+        FieldPanel('body'),
+    ]
+
     # Parent page / subpage type rules]
-    parent_page_types = ['articles.ArticlePage']
+    parent_page_types = [
+        'home.HomePage',
+        'organizations.OrganizationPage',
+        'articles.ArticlePage',
+    ]
     subpage_types = ['articles.ArticlePage']
