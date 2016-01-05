@@ -166,6 +166,10 @@ LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, '../locale'),
 )
 
+FIXTURE_DIRS = (
+   os.path.join(BASE_DIR, 'ub/fixtures'),
+)
+
 
 # Wagtail settings
 
