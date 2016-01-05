@@ -1,42 +1,68 @@
 [
-  {
-    "fields": {
-      "url_path_en": "/home/",
-      "search_description_nl": "",
-      "slug_en": "home",
-      "seo_title_nl": "",
-      "stream": "[]",
-      "title_nl": "Thuis",
-      "title_en": "Home",
-      "body_nl": null,
-      "body_en": null,
-      "search_description_en": "",
-      "url_path_nl": "/thuis/",
-      "seo_title_en": "",
-      "date": "2015-12-22",
-      "body": "",
-      "stream_nl": "[]",
-      "slug_nl": "thuis",
-      "stream_en": "[]",
-      "feed_image": null
-    },
-    "model": "home.homepage",
-    "pk": 3
+{
+  "fields": {
+    "url_path_en": "/home/",
+    "search_description_nl": "",
+    "slug_en": "home",
+    "seo_title_nl": "",
+    "stream": "[]",
+    "title_nl": "Thuis",
+    "title_en": "Home",
+    "body_nl": null,
+    "body_en": null,
+    "search_description_en": "",
+    "url_path_nl": "/thuis/",
+    "seo_title_en": "",
+    "date": "2015-12-22",
+    "body": "",
+    "stream_nl": "[]",
+    "slug_nl": "thuis",
+    "stream_en": "[]",
+    "feed_image": null
   },
-  {
-    "fields": {
-      "url_path_en": "/home/organizations/",
-      "search_description_nl": "",
-      "slug_en": "organizations",
-      "seo_title_nl": "",
-      "title_nl": "Organisaties",
-      "title_en": "Organizations",
-      "search_description_en": "",
-      "url_path_nl": "/thuis/organisaties/",
-      "seo_title_en": "",
-      "slug_nl": "organisaties"
-    },
-    "model": "organizations.organizationindexpage",
-    "pk": 4
-  }
+  "model": "home.homepage",
+  "pk": 3
+},
+{
+  "fields": {
+    "url_path_en": "/home/organizations/unusual-business/",
+    "search_description_nl": "",
+    "slug_en": "unusual-business",
+    "seo_title_nl": "",
+    "location": "Utrecht",
+    "title_nl": "(Un)usual Business",
+    "title_en": "(Un)usual Business",
+    "date_founded": "2013-07-01",
+    "description_en": "<p>(Un)usual Business rocks</p>",
+    "email": "info@unusualbusiness.nl",
+    "website": "http://www.unusualbusiness.nl",
+    "description_nl": "<p>(Un)usual Business is heel cool</p>",
+    "search_description_en": "",
+    "url_path_nl": "/thuis/organisaties/unusual-business/",
+    "facebook": "",
+    "amount_of_members": null,
+    "seo_title_en": "",
+    "slug_nl": "unusual-business",
+    "featured_image": null,
+    "description": "<p>(Un)usual Business rocks</p>"
+  },
+  "model": "organizations.organizationpage",
+  "pk": 6
+},
+{
+  "fields": {
+    "url_path_en": "/home/organizations/",
+    "search_description_nl": "",
+    "slug_en": "organizations",
+    "seo_title_nl": "",
+    "title_nl": "Organisaties",
+    "title_en": "Organizations",
+    "search_description_en": "",
+    "url_path_nl": "/thuis/organisaties/",
+    "seo_title_en": "",
+    "slug_nl": "organisaties"
+  },
+  "model": "organizations.organizationindexpage",
+  "pk": 4
+}
 ]
