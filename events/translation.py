@@ -1,4 +1,4 @@
-from .models import OrganizationPage, OrganizationIndexPage
+from .models import EventPage, EventIndexPage
 from wagtail_modeltranslation.translator import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
