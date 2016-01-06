@@ -25,7 +25,8 @@ class OrganizationPage(TranslationMixin, Page):
     )
     date_founded = models.DateField(
         verbose_name = _("Founded date"),
-        null=True
+        null=True,
+        blank=True
     )
     amount_of_members = models.PositiveIntegerField(
         verbose_name = _("Amount of members"),
