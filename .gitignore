@@ -110,3 +110,4 @@ crashlytics-build.properties
 *.sqlite3
 
 /media/
+/ub/settings/dev.py
