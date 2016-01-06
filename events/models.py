@@ -17,19 +17,12 @@ from wagtail.wagtailcore import blocks
 
 class EventPage(TranslationMixin, Page):
 
-    start_date = models.DateField(
+    start_date = models.DateTimeField(
         verbose_name = _("Starting date"),
-        null=True
     )
-    start_time = models.TimeField(
-        verbose_name = _("Starting time")
-    )
-    end_date = models.DateField(
+    end_date = models.DateTimeField(
         verbose_name = _("End date"),
         null=True
-    )
-    end_time = models.TimeField(
-        verbose_name = _("End time")
     )
     # This should probably be a specific geolocation field:
     location = models.CharField(
@@ -63,8 +56,54 @@ class EventPage(TranslationMixin, Page):
         blank=True
     )
 
+    # Search index configuration
+
+    search_fields = Page.search_fields + (
+        index.SearchField('title_en'),
+        index.SearchField('title_nl'),
+        index.SearchField('description_en'),
+        index.SearchField('description_nl'),
+        index.FilterField('start_date'),
+    )
+
+    # Editor panels configuration
+
+    content_panels = Page.content_panels + [
+        FieldPanel('start_date'),
+        FieldPanel('end_date'),
+        FieldPanel('location'),
+        FieldPanel('description_en', classname="full"),
+        FieldPanel('description_nl', classname="full"),
+        ImageChooserPanel('featured_image'),
+        FieldPanel('poster_link'),
+        FieldPanel('flyer_link'),
+        FieldPanel('facebook_event')
+    ]
+    #
+    # dutch_content_panels = [
+    #     FieldPanel('title_nl', classname="full"),
+    #     FieldPanel('description_nl', classname="full"),
+    # ]
+    #
+    # promote_panels = [
+    #     MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+    #     ImageChooserPanel('feed_image'),
+    # ]
+    #
+    # edit_handler = TabbedInterface([
+    #     ObjectList(content_panels, heading='English'),
+    #     ObjectList(dutch_content_panels, heading='Nederlands'),
+    #     ObjectList(Page.promote_panels, heading='Promote'),
+    #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    # ])
+
+    # Parent page / subpage type rules]
+    parent_page_types = ['events.EventIndexPage']
+
+
 class EventIndexPage(TranslationMixin, Page):
 
+    # parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage']
 
     def get_context(self, request):
