@@ -8,21 +8,46 @@
 
     <h1>{{ page.title }}</h1>
 
+    <div class="image">
+        {% image page.featured_image width-400 %}
+    </div>
+
     <div class="publication-date">
         <label>{% trans "Founded:" %}</label>
         <span>{{ page.date_founded }}</span>
     </div>
 
-    <div class="image">
-        {% image page.feed_image width-400 %}
+    <div class="amount-of-members">
+        <label>{% trans "Amount of members:" %}</label>
+        <span>{{ page.amount_of_members }}</span>
+    </div>
+
+    <div class="location">
+        <label>{% trans "Location:" %}</label>
+        <span>{{ page.location }}</span>
+    </div>
+
+    <div class="email">
+        <label>{% trans "Email:" %}</label>
+        <span>{{ page.email }}</span>
+    </div>
+
+    <div class="website">
+        <label>{% trans "Website:" %}</label>
+        <span>{{ page.website }}</span>
+    </div>
+
+    <div class="facebook">
+        <label>{% trans "Facebook:" %}</label>
+        <span>{{ page.facebook }}</span>
     </div>
 
     <div class="body">
         {{ page.description|richtext }}
     </div>
 
-    <div class="body">
-        {{ page.articles }}
-    </div>
+    <!--<div class="body">-->
+        <!--{{ page.articles }}-->
+    <!--</div>-->
 
 {% endblock %}
