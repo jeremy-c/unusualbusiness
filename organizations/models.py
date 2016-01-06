@@ -100,7 +100,7 @@ class OrganizationPage(TranslationMixin, Page):
 
     # Parent page / subpage type rules]
     parent_page_types = ['organizations.OrganizationIndexPage']
-    subpage_types = ['articles.ArticlePage']
+    subpage_types = []
 
 
 class OrganizationIndexPage(TranslationMixin, Page):

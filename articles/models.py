@@ -81,7 +81,8 @@ class ArticlePage(TranslationMixin, Page):
     # Parent page / subpage type rules]
     parent_page_types = [
         'home.HomePage',
-        'organizations.OrganizationPage',
-        'articles.ArticlePage',
     ]
-    subpage_types = ['articles.ArticlePage']
+
+    subpage_types = [
+        'articles.ArticlePage'
+    ]
