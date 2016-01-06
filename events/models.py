@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext as _
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel
+    StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 
 from wagtail.wagtailcore.models import Page
@@ -55,7 +55,13 @@ class EventPage(TranslationMixin, Page):
         verbose_name = _("Facebook event"),
         blank=True
     )
-
+    report_page = models.ForeignKey(
+        'articles.ReportArticlePage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     # Search index configuration
 
     search_fields = Page.search_fields + (
@@ -77,8 +83,10 @@ class EventPage(TranslationMixin, Page):
         ImageChooserPanel('featured_image'),
         FieldPanel('poster_link'),
         FieldPanel('flyer_link'),
-        FieldPanel('facebook_event')
+        FieldPanel('facebook_event'),
+        PageChooserPanel('report_page'),
     ]
+
     #
     # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),
@@ -99,6 +107,7 @@ class EventPage(TranslationMixin, Page):
 
     # Parent page / subpage type rules]
     parent_page_types = ['events.EventIndexPage']
+    subpage_types = ['articles.ReportArticlePage']
 
 
 class EventIndexPage(TranslationMixin, Page):
