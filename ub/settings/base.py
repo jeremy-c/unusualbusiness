@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'home',
     'organizations',
     'articles',
+    'events',
     'search',
 ]
 

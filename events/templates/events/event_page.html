@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block body_class %}template-event-page{% endblock %}
+
+{% block content %}
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="image">
+        {% image page.featured_image width-400 %}
+    </div>
+
+    <div class="start-date">
+        <label>{% trans "Starting date:" %}</label>
+        <span>{{ page.start_date }}</span>
+    </div>
+
+    <div class="start-time">
+        <label>{% trans "Starting time:" %}</label>
+        <span>{{ page.start_time }}</span>
+    </div>
+
+    <div class="end-date">
+        <label>{% trans "End date:" %}</label>
+        <span>{{ page.end_date }}</span>
+    </div>
+
+    <div class="end-time">
+        <label>{% trans "End time:" %}</label>
+        <span>{{ page.end_time }}</span>
+    </div>
+
+    <div class="location">
+        <label>{% trans "Location:" %}</label>
+        <span>{{ page.location }}</span>
+    </div>
+
+    <div class="poster-link">
+        <label>{% trans "Poster:" %}</label>
+        <span>{{ page.poster_link }}</span>
+    </div>
+
+    <div class="flyer-link">
+        <label>{% trans "Flyer:" %}</label>
+        <span>{{ page.flyer_link }}</span>
+    </div>
+
+    <div class="facebook">
+        <label>{% trans "Facebook:" %}</label>
+        <span>{{ page.facebook_event }}</span>
+    </div>
+
+    <div class="body">
+        {{ page.description|richtext }}
+    </div>
+
+{% endblock %}
