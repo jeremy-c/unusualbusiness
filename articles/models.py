@@ -2,7 +2,10 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext as _
 
 from django.db import models
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
+from taggit.managers import TaggableManager
+from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailcore.blocks import PageChooserBlock
@@ -18,6 +21,31 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
 from events.models import EventPage
+from tags.models import TaggedPage
+
+
+class TheoryArticleIndexPage(TranslationMixin, Page):
+
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['articles.TheoryArticlePage']
+
+    def get_context(self, request):
+        context = super(TheoryArticleIndexPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['theories'] = TheoryArticleIndexPage.objects.child_of(self).live()
+        return context
+
+
+class StoryArticleIndexPage(TranslationMixin, Page):
+
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['articles.StoryArticlePage']
+
+    def get_context(self, request):
+        context = super(StoryArticleIndexPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['stories'] = StoryArticleIndexPage.objects.child_of(self).live()
+        return context
 
 
 class AbstractArticle(models.Model):
@@ -63,9 +91,10 @@ class AbstractArticle(models.Model):
 
 
 class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
-
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
+
+    tags = TaggableManager(through=TaggedPage, blank=True)
 
     class Meta:
         verbose_name = _("Story")
@@ -78,6 +107,7 @@ StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('summary'),
         FieldPanel('publication_date'),
         FieldPanel('body'),
+        FieldPanel('tags'),
         InlinePanel('organizations', label=_("Organizations"))
     ]
 
@@ -100,11 +130,14 @@ class StoryArticlePageOrganization(Orderable, models.Model):
 
 
 class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
-    parent_page_types = []
+    parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
+
+    tags = TaggableManager(through=TaggedPage, blank=True)
 
     class Meta:
         verbose_name = _("Theory")
+        verbose_name_plural = _("Theories")
 
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -113,6 +146,7 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('summary'),
         FieldPanel('publication_date'),
         FieldPanel('body'),
+        FieldPanel('tags'),
     ]
 
 TheoryArticlePage.promote_panels = Page.promote_panels
@@ -121,6 +155,8 @@ TheoryArticlePage.promote_panels = Page.promote_panels
 class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
     parent_page_types = ['events.EventPage']
     subpage_types = []
+
+    tags = TaggableManager(through=TaggedPage, blank=True)
 
     class Meta:
         verbose_name = _("Event report")
@@ -132,8 +168,7 @@ ReportArticlePage.content_panels = Page.content_panels + [
         FieldPanel('summary'),
         FieldPanel('publication_date'),
         FieldPanel('body'),
+        FieldPanel('tags'),
     ]
 
 ReportArticlePage.promote_panels = Page.promote_panels
-
-

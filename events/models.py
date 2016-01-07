@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from taggit.managers import TaggableManager
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -13,6 +14,8 @@ from wagtail.wagtailsnippets.models import register_snippet
 from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
+
+from tags.models import TaggedPage
 
 
 class EventPage(TranslationMixin, Page):
@@ -63,6 +66,7 @@ class EventPage(TranslationMixin, Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    tags = TaggableManager(through=TaggedPage, blank=True)
     # Search index configuration
 
     search_fields = Page.search_fields + (
@@ -85,6 +89,7 @@ class EventPage(TranslationMixin, Page):
         FieldPanel('poster_link'),
         FieldPanel('flyer_link'),
         FieldPanel('facebook_event'),
+        FieldPanel('tags'),
         PageChooserPanel('report_page'),
     ]
 

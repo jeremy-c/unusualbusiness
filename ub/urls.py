@@ -6,6 +6,7 @@ from django.contrib import admin
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.wagtailsearch import urls as wagtailsearch_urls
 
 
 urlpatterns = [
@@ -14,11 +15,9 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 ]
 
-
 urlpatterns += i18n_patterns(
-
-    url(r'^search/$', 'search.views.search', name='search'),
-
+    url(r'^search/', include(wagtailsearch_urls)),
+    #url(r'', include('myapp.urls')), # Optional URL for including your own vanilla Django urls/views
     url(r'', include(wagtail_urls)),
 )
 

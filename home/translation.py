@@ -6,6 +6,6 @@ from wagtail_modeltranslation.decorators import register
 @register(HomePage)
 class HomePageTR(TranslationOptions):
     fields = (
-        'body',
-        'stream'
+        'title',
+        'slug',
     )

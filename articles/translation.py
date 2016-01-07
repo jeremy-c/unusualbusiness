@@ -1,5 +1,6 @@
 # translation.py
-from .models import StoryArticlePage, TheoryArticlePage, ReportArticlePage
+from .models import StoryArticlePage, TheoryArticlePage, ReportArticlePage, StoryArticleIndexPage, \
+    TheoryArticleIndexPage
 from wagtail_modeltranslation.translation import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
@@ -33,3 +34,14 @@ class ReportArticlePageTR(TranslationOptions):
     'body',
  )
 
+
+@register(StoryArticleIndexPage)
+class StoryArticleIndexPageTR(TranslationOptions):
+ fields = (
+ )
+
+
+@register(TheoryArticleIndexPage)
+class TheoryArticleIndexPageTR(TranslationOptions):
+ fields = (
+ )

@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'wagtail_modeltranslation',
 
     'wagtailplus.wagtaillinks',
-    'wagtailplus.wagtailrelations',
+    # 'wagtailplus.wagtailrelations',
     # 'wagtailplus.wagtailrollbacks',
 
 
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'articles',
     'events',
     'definitions',
+    'tags',
     'search',
 ]
 

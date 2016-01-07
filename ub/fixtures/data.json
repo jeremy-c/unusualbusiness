@@ -1,68 +1,519 @@
 [
 {
-  "fields": {
-    "url_path_en": "/home/",
-    "search_description_nl": "",
-    "slug_en": "home",
-    "seo_title_nl": "",
-    "stream": "[]",
-    "title_nl": "Thuis",
-    "title_en": "Home",
-    "body_nl": null,
-    "body_en": null,
-    "search_description_en": "",
-    "url_path_nl": "/thuis/",
-    "seo_title_en": "",
-    "date": "2015-12-22",
-    "body": "",
-    "stream_nl": "[]",
-    "slug_nl": "thuis",
-    "stream_en": "[]",
-    "feed_image": null
-  },
-  "model": "home.homepage",
-  "pk": 3
+    "fields": {
+        "root_page": 3,
+        "hostname": "localhost",
+        "site_name": "(Un)usual Business",
+        "port": 80,
+        "is_default_site": true
+    },
+    "model": "wagtailcore.site",
+    "pk": 1
 },
 {
-  "fields": {
-    "url_path_en": "/home/organizations/unusual-business/",
-    "search_description_nl": "",
-    "slug_en": "unusual-business",
-    "seo_title_nl": "",
-    "location": "Utrecht",
-    "title_nl": "(Un)usual Business",
-    "title_en": "(Un)usual Business",
-    "date_founded": "2013-07-01",
-    "description_en": "<p>(Un)usual Business rocks</p>",
-    "email": "info@unusualbusiness.nl",
-    "website": "http://www.unusualbusiness.nl",
-    "description_nl": "<p>(Un)usual Business is heel cool</p>",
-    "search_description_en": "",
-    "url_path_nl": "/thuis/organisaties/unusual-business/",
-    "facebook": "",
-    "amount_of_members": null,
-    "seo_title_en": "",
-    "slug_nl": "unusual-business",
-    "featured_image": null,
-    "description": "<p>(Un)usual Business rocks</p>"
-  },
-  "model": "organizations.organizationpage",
-  "pk": 6
+    "fields": {
+        "name": "Moderators",
+        "permissions": [
+            [
+                "access_admin",
+                "wagtailadmin",
+                "admin"
+            ],
+            [
+                "add_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "change_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "delete_image",
+                "wagtailimages",
+                "image"
+            ]
+        ]
+    },
+    "model": "auth.group",
+    "pk": 1
 },
 {
-  "fields": {
-    "url_path_en": "/home/organizations/",
-    "search_description_nl": "",
-    "slug_en": "organizations",
-    "seo_title_nl": "",
-    "title_nl": "Organisaties",
-    "title_en": "Organizations",
-    "search_description_en": "",
-    "url_path_nl": "/thuis/organisaties/",
-    "seo_title_en": "",
-    "slug_nl": "organisaties"
-  },
-  "model": "organizations.organizationindexpage",
-  "pk": 4
+    "fields": {
+        "name": "Editors",
+        "permissions": [
+            [
+                "access_admin",
+                "wagtailadmin",
+                "admin"
+            ],
+            [
+                "add_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_link",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "change_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "delete_image",
+                "wagtailimages",
+                "image"
+            ]
+        ]
+    },
+    "model": "auth.group",
+    "pk": 2
+},
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2016-01-07T19:31:05.483Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$0MSHw1K1xkGF$t98imFCnAGW38igwhxgt6V8mu4rdTpZLSqfjkwI/2is=",
+        "email": "asdf@adf.com",
+        "date_joined": "2016-01-07T19:31:00.416Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "url_path_en": "/home/",
+        "search_description_nl": "",
+        "slug_en": "home",
+        "seo_title_nl": "",
+        "title_nl": "Thuis",
+        "title_en": "Home",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/",
+        "seo_title_en": "",
+        "slug_nl": "thuis"
+    },
+    "model": "home.homepage",
+    "pk": 3
+},
+{
+    "fields": {
+        "url_path_en": "/home/organizations/",
+        "search_description_nl": "",
+        "slug_en": "organizations",
+        "seo_title_nl": "",
+        "title_nl": "Organisaties",
+        "title_en": "Organizations",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/organisaties/",
+        "seo_title_en": "",
+        "slug_nl": "organisaties"
+    },
+    "model": "organizations.organizationindexpage",
+    "pk": 6
+},
+{
+    "fields": {
+        "url_path_en": "/home/theory/",
+        "search_description_nl": "",
+        "slug_en": "theory",
+        "seo_title_nl": "",
+        "title_nl": "Theorie",
+        "title_en": "Theory",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/theorie/",
+        "seo_title_en": "",
+        "slug_nl": "theorie"
+    },
+    "model": "articles.theoryarticleindexpage",
+    "pk": 8
+},
+{
+    "fields": {
+        "url_path_en": "/home/stories/",
+        "search_description_nl": "",
+        "slug_en": "stories",
+        "seo_title_nl": "",
+        "title_nl": "Verhalen",
+        "title_en": "Stories",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/verhalen/",
+        "seo_title_en": "",
+        "slug_nl": "verhalen"
+    },
+    "model": "articles.storyarticleindexpage",
+    "pk": 7
+},
+{
+    "fields": {
+        "url_path_en": "/home/events/",
+        "search_description_nl": "",
+        "slug_en": "events",
+        "seo_title_nl": "",
+        "title_nl": "Events",
+        "title_en": "Events",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/events/",
+        "seo_title_en": "",
+        "slug_nl": "events"
+    },
+    "model": "events.eventindexpage",
+    "pk": 5
+},
+{
+    "fields": {
+        "url_path_en": "/home/definitions/",
+        "search_description_nl": "",
+        "slug_en": "definitions",
+        "seo_title_nl": "",
+        "title_nl": "Definities",
+        "title_en": "Definitions",
+        "search_description_en": "",
+        "url_path_nl": "/thuis/definities/",
+        "seo_title_en": "",
+        "slug_nl": "definities"
+    },
+    "model": "definitions.definitionindexpage",
+    "pk": 4
+},
+{
+    "fields": {
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "add"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 1
+},
+{
+    "fields": {
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "edit"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 2
+},
+{
+    "fields": {
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "publish"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 3
+},
+{
+    "fields": {
+        "group": [
+            "Editors"
+        ],
+        "page": 1,
+        "permission_type": "add"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 4
+},
+{
+    "fields": {
+        "group": [
+            "Editors"
+        ],
+        "page": 1,
+        "permission_type": "edit"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 5
+},
+{
+    "fields": {
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "lock"
+    },
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 6
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Root",
+        "numchild": 1,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": null,
+        "depth": 1,
+        "first_published_at": null,
+        "search_description": "",
+        "content_type": [
+            "wagtailcore",
+            "page"
+        ],
+        "has_unpublished_changes": false,
+        "owner": null,
+        "path": "0001",
+        "url_path": "/",
+        "expired": false,
+        "slug": "root",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 1
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Home",
+        "numchild": 5,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:31:26.193Z",
+        "depth": 2,
+        "first_published_at": "2016-01-07T19:31:26.204Z",
+        "search_description": "",
+        "content_type": [
+            "home",
+            "homepage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "00010002",
+        "url_path": "/home/",
+        "expired": false,
+        "slug": "home",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 3
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Definitions",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:34:37.988Z",
+        "depth": 3,
+        "first_published_at": "2016-01-07T19:34:38.001Z",
+        "search_description": "",
+        "content_type": [
+            "definitions",
+            "definitionindexpage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "000100020001",
+        "url_path": "/home/definitions/",
+        "expired": false,
+        "slug": "definitions",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 4
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Events",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:34:48.767Z",
+        "depth": 3,
+        "first_published_at": "2016-01-07T19:34:48.778Z",
+        "search_description": "",
+        "content_type": [
+            "events",
+            "eventindexpage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "000100020002",
+        "url_path": "/home/events/",
+        "expired": false,
+        "slug": "events",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 5
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Organizations",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:35:02.124Z",
+        "depth": 3,
+        "first_published_at": "2016-01-07T19:35:02.136Z",
+        "search_description": "",
+        "content_type": [
+            "organizations",
+            "organizationindexpage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "000100020003",
+        "url_path": "/home/organizations/",
+        "expired": false,
+        "slug": "organizations",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 6
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Stories",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:35:13.528Z",
+        "depth": 3,
+        "first_published_at": "2016-01-07T19:35:13.540Z",
+        "search_description": "",
+        "content_type": [
+            "articles",
+            "storyarticleindexpage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "000100020004",
+        "url_path": "/home/stories/",
+        "expired": false,
+        "slug": "stories",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 7
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "Theory",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-07T19:35:30.847Z",
+        "depth": 3,
+        "first_published_at": "2016-01-07T19:35:30.860Z",
+        "search_description": "",
+        "content_type": [
+            "articles",
+            "theoryarticleindexpage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "000100020005",
+        "url_path": "/home/theory/",
+        "expired": false,
+        "slug": "theory",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 8
 }
 ]

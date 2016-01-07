@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.utils.translation import ugettext as _
 from django.db import models
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel
@@ -15,46 +16,15 @@ from wagtail.wagtailcore import blocks
 
 
 class HomePage(TranslationMixin, Page):
-
-    body = RichTextField()
-    date = models.DateField("Post date")
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    stream = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('person', blocks.StructBlock([
-        ('first_name', blocks.CharBlock(required=True)),
-            ('surname', blocks.CharBlock(required=True)),
-            ('photo', ImageChooserBlock()),
-            ('biography', blocks.RichTextBlock()),
-            ], icon='user')),
-        ('ingredients_list', blocks.ListBlock(blocks.CharBlock(label="Ingredient")))
-    ])
-
-    # Search index configuraiton
-
-    search_fields = Page.search_fields + (
-        index.SearchField('title'),
-        index.SearchField('body'),
-        index.FilterField('date'),
-    )
+    subpage_types = [
+        'articles.StoryArticleIndexPage',
+        'articles.TheoryArticleIndexPage',
+        'events.EventIndexPage',
+        'definitions.DefinitionIndexPage',
+        'organizations.OrganizationIndexPage',
+    ]
 
 
-    # Editor panels configuration
-
-    # content_panels = Page.content_panels + [
-    #     FieldPanel('body_en', classname="full"),
-    #     StreamFieldPanel('stream_en'),
-    # ]
-    #
     # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),
     #     FieldPanel('body_nl', classname="full"),
