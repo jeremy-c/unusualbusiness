@@ -38,7 +38,7 @@ class ReportArticlePageModelAdmin(ModelAdmin):
 class DefinitionPageModelAdmin(ModelAdmin):
     model = DefinitionPage
     menu_label = 'Definitions' # ditch this to use verbose_name_plural from model
-    menu_icon = 'doc-full-inverse definition' # change as required
+    menu_icon = 'snippet definition' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )
@@ -52,11 +52,10 @@ class ArticlePageTypesAdminGroup(ModelAdminGroup):
     items = (
         TheoryArticlePageModelAdmin,
         StoryArticlePageModelAdmin,
-        ReportArticlePageModelAdmin,
-        DefinitionPageModelAdmin
+        ReportArticlePageModelAdmin
     )
 
 # Now you just need to register your customised ModelAdmin class with Wagtail
 wagtailmodeladmin_register(ArticlePageTypesAdminGroup)
 
-
+wagtailmodeladmin_register(DefinitionPageModelAdmin)
