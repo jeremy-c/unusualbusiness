@@ -8,7 +8,7 @@ from .models import DefinitionPage, TheoryArticlePage, StoryArticlePage, ReportA
 class TheoryArticlePageModelAdmin(ModelAdmin):
     model = TheoryArticlePage
     menu_label = 'Theories' # ditch this to use verbose_name_plural from model
-    menu_icon = 'theories' # change as required
+    menu_icon = 'doc-full-inverse theories' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )
@@ -18,7 +18,7 @@ class TheoryArticlePageModelAdmin(ModelAdmin):
 class StoryArticlePageModelAdmin(ModelAdmin):
     model = StoryArticlePage
     menu_label = 'Stories' # ditch this to use verbose_name_plural from model
-    menu_icon = 'story' # change as required
+    menu_icon = 'doc-full-inverse story' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )
@@ -28,7 +28,7 @@ class StoryArticlePageModelAdmin(ModelAdmin):
 class ReportArticlePageModelAdmin(ModelAdmin):
     model = ReportArticlePage
     menu_label = _('Event reports') # ditch this to use verbose_name_plural from model
-    menu_icon = 'event-report' # change as required
+    menu_icon = 'doc-full-inverse event-report' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )
@@ -38,7 +38,7 @@ class ReportArticlePageModelAdmin(ModelAdmin):
 class DefinitionPageModelAdmin(ModelAdmin):
     model = DefinitionPage
     menu_label = 'Definitions' # ditch this to use verbose_name_plural from model
-    menu_icon = 'definition' # change as required
+    menu_icon = 'doc-full-inverse definition' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )
@@ -47,7 +47,7 @@ class DefinitionPageModelAdmin(ModelAdmin):
 
 class ArticlePageTypesAdminGroup(ModelAdminGroup):
     menu_label = 'Articles'
-    menu_icon = 'folder-open-inverse' # change as required
+    menu_icon = 'doc-full-inverse' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     items = (
         TheoryArticlePageModelAdmin,
