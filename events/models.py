@@ -22,7 +22,8 @@ class EventPage(TranslationMixin, Page):
     )
     end_date = models.DateTimeField(
         verbose_name = _("End date"),
-        null=True
+        null=True,
+        blank=True
     )
     # This should probably be a specific geolocation field:
     location = models.CharField(
