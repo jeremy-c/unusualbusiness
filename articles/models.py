@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel
+    StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailcore.blocks import PageChooserBlock
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 
@@ -81,9 +81,25 @@ StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('summary'),
         FieldPanel('publication_date'),
         FieldPanel('body'),
+        InlinePanel('organizations', label=_("Organizations"))
     ]
 
 StoryArticlePage.promote_panels = Page.promote_panels
+
+
+class StoryArticlePageOrganization(Orderable, models.Model):
+    organization_page =  models.ForeignKey(
+        'organizations.OrganizationPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    page = ParentalKey('articles.StoryArticlePage', related_name='organizations')
+
+    panels = [
+          PageChooserPanel('organization_page'),
+    ]
 
 
 class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
