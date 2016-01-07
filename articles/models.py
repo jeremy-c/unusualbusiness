@@ -124,28 +124,3 @@ ReportArticlePage.content_panels = Page.content_panels + [
 ReportArticlePage.promote_panels = Page.promote_panels
 
 
-class DefinitionPage(TranslationMixin, Page):
-    #TODO: add bold and italic to Wysiwyg
-    definition = models.TextField(null=True, blank=True)
-
-    parent_page_types = ['articles.DefinitionIndexPage']
-
-    def __str__(self):              # __unicode__ on Python 2
-        return self.title
-
-DefinitionPage.content_panels = Page.content_panels + [
-        FieldPanel('definition'),
-    ]
-DefinitionPage.promote_panels = Page.promote_panels
-
-
-class DefinitionIndexPage(TranslationMixin, Page):
-
-    parent_page_types = ['home.HomePage']
-    subpage_types = ['articles.DefinitionPage']
-
-    def get_context(self, request):
-        context = super(DefinitionIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['definitions'] = DefinitionPage.objects.child_of(self).live()
-        return context

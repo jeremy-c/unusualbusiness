@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'organizations',
     'articles',
     'events',
+    'definitions',
     'search',
 ]
 

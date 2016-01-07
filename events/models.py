@@ -113,7 +113,7 @@ class EventPage(TranslationMixin, Page):
 
 class EventIndexPage(TranslationMixin, Page):
 
-    # parent_page_types = ['home.HomePage']
+    parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage']
 
     def get_context(self, request):

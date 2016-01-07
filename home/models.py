@@ -74,18 +74,3 @@ class HomePage(TranslationMixin, Page):
     # ])
 
     # Parent page / subpage type rules
-
-class EventIndexPage(TranslationMixin, Page):
-
-    # parent_page_types = ['home.HomePage']
-    subpage_types = [
-        'organizations.OrganizationIndexPage'
-        'events.EventIndexPage',
-        ''
-    ]
-
-    def get_context(self, request):
-        context = super(EventIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['events'] = EventPage.objects.child_of(self).live()
-        return context
