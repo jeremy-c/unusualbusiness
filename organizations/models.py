@@ -17,8 +17,6 @@ from wagtail.wagtailcore import blocks
 
 class OrganizationPage(TranslationMixin, Page):
 
-    # Database fields
-
     description = RichTextField(
         verbose_name = _("Description"),
         null=True
@@ -81,23 +79,6 @@ class OrganizationPage(TranslationMixin, Page):
         FieldPanel('facebook'),
         ImageChooserPanel('featured_image')
     ]
-    #
-    # dutch_content_panels = [
-    #     FieldPanel('title_nl', classname="full"),
-    #     FieldPanel('description_nl', classname="full"),
-    # ]
-    #
-    # promote_panels = [
-    #     MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-    #     ImageChooserPanel('feed_image'),
-    # ]
-    #
-    # edit_handler = TabbedInterface([
-    #     ObjectList(content_panels, heading='English'),
-    #     ObjectList(dutch_content_panels, heading='Nederlands'),
-    #     ObjectList(Page.promote_panels, heading='Promote'),
-    #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
-    # ])
 
     # Parent page / subpage type rules]
     parent_page_types = ['organizations.OrganizationIndexPage']

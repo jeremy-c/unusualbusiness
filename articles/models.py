@@ -28,13 +28,11 @@ class AbstractArticle(models.Model):
         help_text=_("The subtitle of the page"),
         blank=True
     )
-
     author = models.CharField(
         verbose_name=_('author'),
         max_length=255,
         help_text=_("The author of the article")
     )
-
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name=_('featured_image'),
@@ -43,19 +41,16 @@ class AbstractArticle(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
     summary = models.TextField(
         verbose_name=_('summary'),
         help_text=_("The summary of the articles (max 100 words)"),
         blank=True
     )
-
     publication_date = models.DateField(
         verbose_name=_('publication_date'),
         help_text=_("The publication date of the article"),
         blank=True
     )
-
     body = RichTextField(
         verbose_name=_('body text'),
         help_text=_("The main text of the article"),
@@ -68,11 +63,13 @@ class AbstractArticle(models.Model):
 
 
 class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
+
     parent_page_types = ['home.HomePage']
     subpage_types = []
 
     class Meta:
         verbose_name = _("Story")
+        verbose_name_plural = _("Stories")
 
 StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
