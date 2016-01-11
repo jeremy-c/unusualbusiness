@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 
     'home',
+    'howtos',
     'organizations',
     'articles',
     'events',
