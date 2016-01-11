@@ -4,14 +4,9 @@
 {% block body_class %}template-organization-index-page{% endblock %}
 
 {% block content %}
-
-    {% get_current_language as locale %}
-
-    <h1>{{ page.title }}</h1>
-
     {% for organization in organizations %}
         <ul>
-            <li><a href="/{{ locale }}{{ organization.url_path }}">{{ organization.title }}</a></li>
+            <li><a href="{{ organization.url }}">{{ organization.title }}</a></li>
         </ul>
 
     {% endfor %}
