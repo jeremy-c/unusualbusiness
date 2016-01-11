@@ -4,7 +4,6 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    {% get_current_language as LANGUAGE_CODE %}
 
     <div class="publication-date">
         <label>{% trans "Publication date:" %}</label>
@@ -17,6 +16,18 @@
 
     <div class="body">
         {{ page.body|safe }}
+    </div>
+
+    <h2>Pages</h2>
+
+    <div class="index-pages">
+    
+        {% for index_page in index_pages %}
+            <ul>
+                <li><a href="{{ index_page.url }}">{{ index_page.title }}</a></li>
+            </ul>
+        {% endfor %}
+
     </div>
 
     <div class="stream">

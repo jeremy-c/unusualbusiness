@@ -64,7 +64,6 @@ class EventPage(TranslationMixin, Page):
     )
     tags = ClusterTaggableManager(through=EventPageTag, blank=True)
 
-
     search_fields = Page.search_fields + (
         index.SearchField('title_en'),
         index.SearchField('title_nl'),

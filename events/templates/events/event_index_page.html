@@ -5,15 +5,10 @@
 
 {% block content %}
 
-    {% get_current_language as locale %}
-
-    <h1>{{ page.title }}</h1>
-
     {% for event in events %}
         <ul>
-            <li><a href="/{{ locale }}{{ event.url_path }}">{{ event.title }}</a></li>
+            <li><a href="{{ event.url }}">{{ event.title }}</a></li>
         </ul>
-
     {% endfor %}
 
 {% endblock %}

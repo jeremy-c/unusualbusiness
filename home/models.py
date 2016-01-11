@@ -24,6 +24,11 @@ class HomePage(TranslationMixin, Page):
         'organizations.OrganizationIndexPage',
     ]
 
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['index_pages'] = HomePage.objects.child_of(self).live()
+        return context
 
     # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),

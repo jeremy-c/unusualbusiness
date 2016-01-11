@@ -4,6 +4,7 @@
 {% block body_class %}template-organization-index-page{% endblock %}
 
 {% block content %}
+
     {% for organization in organizations %}
         <ul>
             <li><a href="{{ organization.url }}">{{ organization.title }}</a></li>

@@ -1,17 +1,3 @@
-{% extends "base.html" %}
-{% load wagtailcore_tags ub_wagtailcore_tags wagtailimages_tags i18n %}
+{% extends "articles/article_page_base.html" %}
 
-{% block body_class %}template-article-page{% endblock %}
-
-{% block content %}
-    {% get_current_language as LANGUAGE_CODE %}
-
-    <div class="image">
-        {% image page.featured_image width-400 %}
-    </div>
-
-    <div class="body">
-        {{ page.body|ub_richtext }}
-    </div>
-
-{% endblock %}
+{% block body_class %}template-story-article-page{% endblock %}
