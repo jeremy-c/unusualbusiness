@@ -66,4 +66,3 @@ class HowToIndexPage(TranslationMixin, Page):
         # Add extra variables and return the updated context
         context['howtos'] = HowToIndexPage.objects.child_of(self).live()
         return context
-

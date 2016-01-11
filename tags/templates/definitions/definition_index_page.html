@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block body_class %}template-definition-index-page{% endblock %}
+
+{% block content %}
+
+    {% for definition in definitions %}
+        <ul>
+            <li><a href="{{ definition.url }}">{{ definition.title }}</a></li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

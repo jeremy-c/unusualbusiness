@@ -1,15 +1,3 @@
-{% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags url_tags i18n %}
+{% extends "articles/article_index_page_base.html" %}
 
 {% block body_class %}template-theory-article-index-page{% endblock %}
-
-{% block content %}
-
-    {% for story in stories %}
-        <ul>
-            <li><a href="{{ story.url }}">{{ story.title }}</a></li>
-        </ul>
-
-    {% endfor %}
-
-{% endblock %}

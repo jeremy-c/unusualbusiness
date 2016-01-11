@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags url_tags i18n %}
+
+{% block body_class %}template-how-to-index-page{% endblock %}
+
+{% block content %}
+
+    {{ howtos.count }}
+    {% for how_to in page.howtos %}
+        <ul>
+            <li><a href="{{ how_to.url }}">{{ how_to.title }}</a></li>
+        </ul>
+
+    {% endfor %}
+
+{% endblock %}

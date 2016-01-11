@@ -32,7 +32,7 @@ class TheoryArticleIndexPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(TheoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['theories'] = TheoryArticleIndexPage.objects.child_of(self).live()
+        context['articles'] = TheoryArticlePage.objects.all().live()
         return context
 
 
@@ -44,7 +44,7 @@ class StoryArticleIndexPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(StoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['stories'] = StoryArticleIndexPage.objects.child_of(self).live()
+        context['articles'] = StoryArticleIndexPage.objects.child_of(self).live()
         return context
 
 
@@ -138,6 +138,7 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
     class Meta:
         verbose_name = _("Theory")
         verbose_name_plural = _("Theories")
+
 
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),

@@ -14,6 +14,8 @@ from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
+from events.models import EventPage
+
 
 class HomePage(TranslationMixin, Page):
     subpage_types = [
@@ -22,12 +24,13 @@ class HomePage(TranslationMixin, Page):
         'events.EventIndexPage',
         'definitions.DefinitionIndexPage',
         'organizations.OrganizationIndexPage',
+        'howtos.HowToIndexPage',
     ]
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['index_pages'] = HomePage.objects.child_of(self).live()
+        context['index_pages'] = Page.objects.child_of(self).live()
         return context
 
     # dutch_content_panels = [

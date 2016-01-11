@@ -46,4 +46,8 @@
         {{ page.description|richtext }}
     </div>
 
+    {% for tag in page.tags.all %}
+        <a href="{% pageurl page.tag_index %}?tag={{ tag }}">{{ tag }}</a>
+    {% endfor %}
+
 {% endblock %}
