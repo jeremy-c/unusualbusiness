@@ -4,8 +4,7 @@
 {% block body_class %}template-howto-index-page{% endblock %}
 
 {% block content %}
-    {% get_current_language as locale %}
-
+    
     {% for howto in howtos %}
         <ul>
             <li><a href="{{ howto.url }}">{{ howto.title }}</a></li>
