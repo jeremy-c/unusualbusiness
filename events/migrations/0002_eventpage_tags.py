@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import taggit.managers
+import modelcluster.contrib.taggit
 
 
 class Migration(migrations.Migration):
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='eventpage',
             name='tags',
-            field=taggit.managers.TaggableManager(to='taggit.Tag', through='tags.TaggedPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.EventPageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
         ),
     ]

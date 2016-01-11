@@ -12,7 +12,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
         ('wagtailimages', '0010_change_on_delete_behaviour'),
-        ('articles', '0001_initial'),
     ]
 
     operations = [
@@ -60,7 +59,6 @@ class Migration(migrations.Migration):
                 ('flyer_link', models.URLField(verbose_name='Flyer', blank=True)),
                 ('facebook_event', models.URLField(verbose_name='Facebook event', blank=True)),
                 ('featured_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='Featured image', blank=True, to='wagtailimages.Image', null=True)),
-                ('report_page', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.ReportArticlePage', null=True)),
             ],
             options={
                 'abstract': False,

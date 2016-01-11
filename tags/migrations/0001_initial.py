@@ -2,23 +2,69 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import modelcluster.fields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('articles', '0001_initial'),
         ('taggit', '0002_auto_20150616_2121'),
-        ('contenttypes', '0002_remove_content_type_name'),
+        ('events', '0001_initial'),
+        ('organizations', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TaggedPage',
+            name='EventPageTag',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('object_id', models.CharField(max_length=50, verbose_name='Object id', db_index=True)),
-                ('content_type', models.ForeignKey(related_name='tags_taggedpage_tagged_items', verbose_name='Content type', to='contenttypes.ContentType')),
-                ('tag', models.ForeignKey(related_name='tags_taggedpage_items', to='taggit.Tag')),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='events.EventPage')),
+                ('tag', models.ForeignKey(related_name='tags_eventpagetag_items', to='taggit.Tag')),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='OrganizationPageTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='organizations.OrganizationPage')),
+                ('tag', models.ForeignKey(related_name='tags_organizationpagetag_items', to='taggit.Tag')),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='ReportArticlePageTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='articles.ReportArticlePage')),
+                ('tag', models.ForeignKey(related_name='tags_reportarticlepagetag_items', to='taggit.Tag')),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='StoryArticlePageTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='articles.StoryArticlePage')),
+                ('tag', models.ForeignKey(related_name='tags_storyarticlepagetag_items', to='taggit.Tag')),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='TheoryArticlePageTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='articles.TheoryArticlePage')),
+                ('tag', models.ForeignKey(related_name='tags_theoryarticlepagetag_items', to='taggit.Tag')),
             ],
             options={
                 'abstract': False,

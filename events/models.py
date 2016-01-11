@@ -2,7 +2,11 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 from taggit.managers import TaggableManager
+from taggit.models import TaggedItemBase, GenericUUIDTaggedItemBase, Tag, CommonGenericTaggedItemBase
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -15,11 +19,10 @@ from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
-from tags.models import TaggedPage
+from tags.models import EventPageTag
 
 
 class EventPage(TranslationMixin, Page):
-
     start_date = models.DateTimeField(
         verbose_name = _("Starting date"),
     )
@@ -59,15 +62,8 @@ class EventPage(TranslationMixin, Page):
         verbose_name = _("Facebook event"),
         blank=True
     )
-    report_page = models.ForeignKey(
-        'articles.ReportArticlePage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    tags = TaggableManager(through=TaggedPage, blank=True)
-    # Search index configuration
+    tags = ClusterTaggableManager(through=EventPageTag, blank=True)
+
 
     search_fields = Page.search_fields + (
         index.SearchField('title_en'),
@@ -90,7 +86,6 @@ class EventPage(TranslationMixin, Page):
         FieldPanel('flyer_link'),
         FieldPanel('facebook_event'),
         FieldPanel('tags'),
-        PageChooserPanel('report_page'),
     ]
 
     #

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.managers import TaggableManager
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel
@@ -15,7 +16,7 @@ from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
-from articles.models import TaggedPage
+from tags.models import OrganizationPageTag
 
 
 class OrganizationPage(TranslationMixin, Page):
@@ -59,9 +60,10 @@ class OrganizationPage(TranslationMixin, Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    tags = TaggableManager(through=TaggedPage, blank=True)
+    tags = ClusterTaggableManager(through=OrganizationPageTag, blank=True)
 
-    # Search index configuration
+    parent_page_types = ['organizations.OrganizationIndexPage']
+    subpage_types = []
 
     search_fields = Page.search_fields + (
         index.SearchField('title_en'),
@@ -84,10 +86,6 @@ class OrganizationPage(TranslationMixin, Page):
         ImageChooserPanel('featured_image'),
         FieldPanel('tags'),
     ]
-
-    # Parent page / subpage type rules]
-    parent_page_types = ['organizations.OrganizationIndexPage']
-    subpage_types = []
 
 
 class OrganizationIndexPage(TranslationMixin, Page):

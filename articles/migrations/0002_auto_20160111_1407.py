@@ -2,26 +2,27 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import modelcluster.fields
+import modelcluster.contrib.taggit
 import django.db.models.deletion
-import taggit.managers
+import modelcluster.fields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taggit', '0002_auto_20150616_2121'),
-        ('articles', '0001_initial'),
+        ('events', '0001_initial'),
         ('wagtailimages', '0010_change_on_delete_behaviour'),
         ('tags', '0001_initial'),
+        ('taggit', '0002_auto_20150616_2121'),
         ('organizations', '0001_initial'),
+        ('articles', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='theoryarticlepage',
             name='tags',
-            field=taggit.managers.TaggableManager(to='taggit.Tag', through='tags.TaggedPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.TheoryArticlePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
         ),
         migrations.AddField(
             model_name='storyarticlepageorganization',
@@ -41,7 +42,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='storyarticlepage',
             name='tags',
-            field=taggit.managers.TaggableManager(to='taggit.Tag', through='tags.TaggedPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.StoryArticlePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+        ),
+        migrations.AddField(
+            model_name='reportarticlepage',
+            name='event_page',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True),
         ),
         migrations.AddField(
             model_name='reportarticlepage',
@@ -51,6 +57,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reportarticlepage',
             name='tags',
-            field=taggit.managers.TaggableManager(to='taggit.Tag', through='tags.TaggedPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.ReportArticlePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
         ),
     ]

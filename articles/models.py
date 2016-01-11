@@ -21,7 +21,7 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
 from events.models import EventPage
-from tags.models import TaggedPage
+from tags.models import TheoryArticlePageTag, StoryArticlePageTag, ReportArticlePageTag
 
 
 class TheoryArticleIndexPage(TranslationMixin, Page):
@@ -94,7 +94,7 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
 
-    tags = TaggableManager(through=TaggedPage, blank=True)
+    tags = ClusterTaggableManager(through=StoryArticlePageTag, blank=True)
 
     class Meta:
         verbose_name = _("Story")
@@ -107,8 +107,8 @@ StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('summary'),
         FieldPanel('publication_date'),
         FieldPanel('body'),
+        InlinePanel('organizations', label=_("Organizations")),
         FieldPanel('tags'),
-        InlinePanel('organizations', label=_("Organizations"))
     ]
 
 StoryArticlePage.promote_panels = Page.promote_panels
@@ -133,7 +133,7 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
 
-    tags = TaggableManager(through=TaggedPage, blank=True)
+    tags = ClusterTaggableManager(through=TheoryArticlePageTag, blank=True)
 
     class Meta:
         verbose_name = _("Theory")
@@ -153,15 +153,23 @@ TheoryArticlePage.promote_panels = Page.promote_panels
 
 
 class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
+    event_page = models.ForeignKey(
+        'events.EventPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    tags = ClusterTaggableManager(through=ReportArticlePageTag, blank=True)
+
     parent_page_types = ['events.EventPage']
     subpage_types = []
-
-    tags = TaggableManager(through=TaggedPage, blank=True)
 
     class Meta:
         verbose_name = _("Event report")
 
 ReportArticlePage.content_panels = Page.content_panels + [
+        PageChooserPanel('event_page'),
         FieldPanel('subtitle'),
         FieldPanel('author'),
         ImageChooserPanel('featured_image'),
