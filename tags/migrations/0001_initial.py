@@ -8,10 +8,11 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('articles', '0001_initial'),
         ('taggit', '0002_auto_20150616_2121'),
-        ('events', '0001_initial'),
         ('organizations', '0001_initial'),
+        ('events', '0001_initial'),
+        ('howtos', '0001_initial'),
+        ('articles', '0001_initial'),
     ]
 
     operations = [
@@ -21,6 +22,17 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='events.EventPage')),
                 ('tag', models.ForeignKey(related_name='tags_eventpagetag_items', to='taggit.Tag')),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='HowToPageTag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='tagged_items', to='howtos.HowToPage')),
+                ('tag', models.ForeignKey(related_name='tags_howtopagetag_items', to='taggit.Tag')),
             ],
             options={
                 'abstract': False,

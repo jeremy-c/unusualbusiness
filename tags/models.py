@@ -10,6 +10,10 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.models import Page
 
 
+class HowToPageTag(TaggedItemBase):
+    content_object = ParentalKey('howtos.HowToPage', related_name='tagged_items')
+
+
 class EventPageTag(TaggedItemBase):
     content_object = ParentalKey('events.EventPage', related_name='tagged_items')
 
