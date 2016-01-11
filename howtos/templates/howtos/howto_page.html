@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block body_class %}template-howto-page{% endblock %}
+
+{% block content %}
+
+    <div class="image">
+        {% image page.featured_image width-400 %}
+    </div>
+
+    <div class="body">
+        {{ page.description|richtext }}
+    </div>
+
+{% endblock %}
