@@ -70,6 +70,12 @@ class EventPage(TranslationMixin, Page):
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
         index.FilterField('start_date'),
+        index.RelatedFields('report_article_page', [
+            index.SearchField('title'),
+        ]),
+        index.RelatedFields('how_to_page', [
+            index.SearchField('title'),
+        ]),
     )
 
     # Editor panels configuration

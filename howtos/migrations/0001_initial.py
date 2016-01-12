@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('event', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True)),
+                ('event', models.ForeignKey(related_name='how_to_page', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True)),
                 ('how_to_page', modelcluster.fields.ParentalKey(related_name='event_pages', to='howtos.HowToPage')),
             ],
             options={
@@ -82,7 +82,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('article', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.StoryArticlePage', null=True)),
+                ('article', models.ForeignKey(related_name='how_to_page', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.StoryArticlePage', null=True)),
                 ('how_to_page', modelcluster.fields.ParentalKey(related_name='story_article_pages', to='howtos.HowToPage')),
             ],
             options={
@@ -95,7 +95,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('article', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.TheoryArticlePage', null=True)),
+                ('article', models.ForeignKey(related_name='how_to_page', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.TheoryArticlePage', null=True)),
                 ('how_to_page', modelcluster.fields.ParentalKey(related_name='theory_article_pages', to='howtos.HowToPage')),
             ],
             options={

@@ -8,6 +8,7 @@ from wagtail_modeltranslation.models import TranslationMixin
 
 from articles.models import TheoryArticlePage, ReportArticlePage, StoryArticlePage
 from events.models import EventPage
+from howtos.models import HowToPage
 from organizations.models import OrganizationPage
 
 
@@ -24,8 +25,11 @@ class HomePage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['index_pages'] = Page.objects.child_of(self).live()
+        # context['index_pages'] = Page.objects.child_of(self).live()
         return context
+
+    def how_tos(self):
+        return HowToPage.objects.all().live()
 
     def pages(self, tag=None):
         theory_article_page_list = TheoryArticlePage.objects.all().live()
@@ -60,9 +64,12 @@ class HomePage(TranslationMixin, Page):
         else:
             pages = self.pages()
 
+        how_tos = self.how_tos()
+
         return render(request, self.template, {
             'page': self,
             'pages': pages,
+            'how_tos': how_tos,
         })
 
     # dutch_content_panels = [

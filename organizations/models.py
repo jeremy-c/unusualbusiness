@@ -65,6 +65,9 @@ class OrganizationPage(TranslationMixin, Page):
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
         index.FilterField('date_founded'),
+        index.RelatedFields('story_article_page', [
+            index.SearchField('title'),
+        ]),
     )
 
     # Editor panels configuration

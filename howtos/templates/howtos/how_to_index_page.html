@@ -7,7 +7,7 @@
 
     {% for how_to in how_tos %}
         <ul>
-            <li><a href="{{ how_to.url }}">{{ how_to.title }}</a></li>
+            <li><a href="{% pageurl how_to %}">{{ how_to.title }}</a></li>
         </ul>
     {% endfor %}
 

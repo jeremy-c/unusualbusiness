@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='storyarticlepageorganization',
             name='organization_page',
-            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='organizations.OrganizationPage', null=True),
+            field=models.ForeignKey(related_name='story_article_page', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='organizations.OrganizationPage', null=True),
         ),
         migrations.AddField(
             model_name='storyarticlepageorganization',
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reportarticlepage',
             name='event_page',
-            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True),
+            field=models.ForeignKey(related_name='report_article_page', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True),
         ),
         migrations.AddField(
             model_name='reportarticlepage',

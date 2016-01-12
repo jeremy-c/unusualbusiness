@@ -6,9 +6,16 @@
 {% block content %}
 
     <h2>Pages</h2>
-    {% for a_page in pages %}
+    {% for the_page in pages %}
         <ul>
-            <li><a href="{{ a_page.url }}">{{ a_page.title }}</a> ({{ a_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+            <li><a href="{% pageurl the_page %}">{{ the_page.title }}</a> ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+        </ul>
+    {% endfor %}
+
+    <h2>How to's</h2>
+    {% for how_to in how_tos %}
+        <ul>
+            <li><a href="{% pageurl how_to %}">{{ how_to.title }}</a> ({{ how_to.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
         </ul>
     {% endfor %}
 

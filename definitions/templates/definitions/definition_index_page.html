@@ -7,7 +7,7 @@
 
     {% for definition in definitions %}
         <ul>
-            <li><a href="{{ definition.url }}">{{ definition.title }}</a></li>
+            <li><a href="{% pageurl definition %}">{{ definition.title }}</a></li>
         </ul>
     {% endfor %}
 

@@ -1,6 +1,38 @@
 [
 {
     "fields": {
+        "query_string": "ub"
+    },
+    "model": "wagtailsearch.query",
+    "pk": 1
+},
+{
+    "fields": {
+        "query_string": "business"
+    },
+    "model": "wagtailsearch.query",
+    "pk": 2
+},
+{
+    "fields": {
+        "date": "2016-01-12",
+        "query": 1,
+        "hits": 1
+    },
+    "model": "wagtailsearch.querydailyhits",
+    "pk": 1
+},
+{
+    "fields": {
+        "date": "2016-01-12",
+        "query": 2,
+        "hits": 1
+    },
+    "model": "wagtailsearch.querydailyhits",
+    "pk": 2
+},
+{
+    "fields": {
         "root_page": 3,
         "hostname": "localhost",
         "site_name": "(Un)usual Business",
@@ -256,12 +288,41 @@
 },
 {
     "fields": {
+        "url_path_en": "/home/how-to/how-learn-together/",
+        "search_description_nl": "",
+        "slug_en": "how-learn-together",
+        "seo_title_nl": "",
+        "title_nl": "",
+        "title_en": "How to learn together",
+        "description_en": null,
+        "description_nl": null,
+        "search_description_en": "",
+        "url_path_nl": "/thuis/how-to/how-learn-together/",
+        "seo_title_en": "",
+        "slug_nl": "",
+        "featured_image": null,
+        "description": null
+    },
+    "model": "howtos.howtopage",
+    "pk": 17
+},
+{
+    "fields": {
         "article": 15,
         "sort_order": 0,
         "how_to_page": 10
     },
     "model": "howtos.howtopagestoryarticlepage",
     "pk": 1
+},
+{
+    "fields": {
+        "article": 15,
+        "sort_order": 0,
+        "how_to_page": 17
+    },
+    "model": "howtos.howtopagestoryarticlepage",
+    "pk": 2
 },
 {
     "fields": {
@@ -940,7 +1001,7 @@
     "fields": {
         "locked": false,
         "title": "How to's",
-        "numchild": 1,
+        "numchild": 2,
         "show_in_menus": false,
         "live": true,
         "seo_title": "",
@@ -1175,5 +1236,35 @@
     },
     "model": "wagtailcore.page",
     "pk": 16
+},
+{
+    "fields": {
+        "locked": false,
+        "title": "How to learn together",
+        "numchild": 0,
+        "show_in_menus": false,
+        "live": true,
+        "seo_title": "",
+        "latest_revision_created_at": "2016-01-12T14:26:58.683Z",
+        "depth": 4,
+        "first_published_at": "2016-01-12T14:26:58.697Z",
+        "search_description": "",
+        "content_type": [
+            "howtos",
+            "howtopage"
+        ],
+        "has_unpublished_changes": false,
+        "owner": [
+            "admin"
+        ],
+        "path": "0001000200060002",
+        "url_path": "/home/how-to/how-learn-together/",
+        "expired": false,
+        "slug": "how-learn-together",
+        "expire_at": null,
+        "go_live_at": null
+    },
+    "model": "wagtailcore.page",
+    "pk": 17
 }
 ]

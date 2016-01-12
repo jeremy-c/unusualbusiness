@@ -7,7 +7,7 @@
 
     {% for organization in organizations %}
         <ul>
-            <li><a href="{{ organization.url }}">{{ organization.title }}</a></li>
+            <li><a href="{% pageurl organization %}">{{ organization.title }}</a></li>
         </ul>
 
     {% endfor %}

@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
+from itertools import chain
 
 from django.db import models
+from django.shortcuts import render
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
@@ -11,6 +13,9 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
+from articles.models import TheoryArticlePage, StoryArticlePage, ReportArticlePage
+from events.models import EventPage
+from organizations.models import OrganizationPage
 from tags.models import HowToPageTag
 
 
@@ -34,6 +39,16 @@ class HowToPage(TranslationMixin, Page):
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
+
+        index.RelatedFields('story_article_pages', [
+            index.SearchField('title'),
+        ]),
+        index.RelatedFields('theory_article_pages', [
+            index.SearchField('title'),
+        ]),
+        index.RelatedFields('event_pages', [
+            index.SearchField('title'),
+        ]),
     )
 
     # Editor panels configuration
@@ -56,6 +71,44 @@ class HowToPage(TranslationMixin, Page):
         verbose_name = _("How to")
         verbose_name_plural = _("How to's")
 
+    def pages(self, tag=None):
+        theory_article_page_list = TheoryArticlePage.objects.all().live()
+        story_article_page_list = StoryArticlePage.objects.all().live()
+        report_article_page_list = ReportArticlePage.objects.all().live()
+        event_page_list = EventPage.objects.all().live()
+        organization_page_list = OrganizationPage.objects.all().live()
+
+        if tag:
+            theory_article_page_list = theory_article_page_list.filter(tags__name=tag)
+            story_article_page_list = story_article_page_list.filter(tags__name=tag)
+            report_article_page_list = report_article_page_list.filter(tags__name=tag)
+            event_page_list = event_page_list.filter(tags__name=tag)
+            organization_page_list = organization_page_list.filter(tags__name=tag)
+
+        return sorted(chain(
+                theory_article_page_list,
+                story_article_page_list,
+                report_article_page_list,
+                event_page_list,
+                organization_page_list
+            ),
+            key=lambda instance: instance.first_published_at,
+            reverse=True)
+
+    def serve(self, request):
+
+        # Filter by tag
+        tag = request.GET.get('tag')
+        if tag:
+            pages = self.pages(tag)
+        else:
+            pages = self.pages()
+
+        return render(request, self.template, {
+            'page': self,
+            'pages': pages,
+        })
+
 
 class HowToPageStoryArticlePage(Orderable, models.Model):
     how_to_page = ParentalKey('howtos.HowToPage', related_name='story_article_pages')
@@ -64,7 +117,7 @@ class HowToPageStoryArticlePage(Orderable, models.Model):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='how_to_page'
     )
 
     panels = [
@@ -82,7 +135,7 @@ class HowToPageTheoryArticlePage(Orderable, models.Model):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='how_to_page'
     )
 
     panels = [
@@ -100,7 +153,7 @@ class HowToPageEventPage(Orderable, models.Model):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='how_to_page'
     )
 
     panels = [

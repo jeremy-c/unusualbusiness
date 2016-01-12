@@ -3,6 +3,13 @@
 
 {% block body_class %}template-how-to-page{% endblock %}
 
+{% block side1 %}
+    <h3>Tags</h3>
+    {% for tag in page.tags.all %}
+        <a href="?tag={{ tag }}">{{ tag }}</a>
+    {% endfor %}
+{% endblock %}
+
 {% block content %}
 
     <div class="image">
@@ -12,5 +19,12 @@
     <div class="body">
         {{ page.description|richtext }}
     </div>
+
+    <h2>Pages</h2>
+    {% for the_page in pages %}
+        <ul>
+            <li><a href="{{ the_page.url }}">{{ the_page.title }}</a> ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+        </ul>
+    {% endfor %}
 
 {% endblock %}

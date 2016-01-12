@@ -9,6 +9,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChoo
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
 from events.models import EventPage
@@ -105,6 +106,24 @@ StoryArticlePage.content_panels = Page.content_panels + [
 
 StoryArticlePage.promote_panels = Page.promote_panels
 
+StoryArticlePage.search_fields = Page.search_fields + (
+        index.SearchField('title_en'),
+        index.SearchField('title_nl'),
+        index.SearchField('subtitle_en'),
+        index.SearchField('subtitle_nl'),
+        index.SearchField('author'),
+        index.SearchField('summary_en'),
+        index.SearchField('summary_nl'),
+        index.SearchField('body_en'),
+        index.SearchField('body_nl'),
+        index.RelatedFields('organizations', [
+            index.SearchField('title'),
+        ]),
+        index.RelatedFields('how_to_page', [
+            index.SearchField('title'),
+        ]),
+    )
+
 
 class StoryArticlePageOrganization(Orderable, models.Model):
     story_article_page = ParentalKey('articles.StoryArticlePage', related_name='organizations')
@@ -113,7 +132,7 @@ class StoryArticlePageOrganization(Orderable, models.Model):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='story_article_page'
     )
 
     panels = [
@@ -134,7 +153,6 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
         verbose_name = _("Theory")
         verbose_name_plural = _("Theories")
 
-
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('author'),
@@ -147,6 +165,21 @@ TheoryArticlePage.content_panels = Page.content_panels + [
 
 TheoryArticlePage.promote_panels = Page.promote_panels
 
+TheoryArticlePage.search_fields = Page.search_fields + (
+        index.SearchField('title_en'),
+        index.SearchField('title_nl'),
+        index.SearchField('subtitle_en'),
+        index.SearchField('subtitle_nl'),
+        index.SearchField('author'),
+        index.SearchField('summary_en'),
+        index.SearchField('summary_nl'),
+        index.SearchField('body_en'),
+        index.SearchField('body_nl'),
+        index.RelatedFields('how_to_page', [
+            index.SearchField('title'),
+        ]),
+    )
+
 
 class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
     event_page = models.ForeignKey(
@@ -154,7 +187,7 @@ class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='report_article_page'
     )
     tags = ClusterTaggableManager(through=ReportArticlePageTag, blank=True)
 
@@ -176,3 +209,19 @@ ReportArticlePage.content_panels = Page.content_panels + [
     ]
 
 ReportArticlePage.promote_panels = Page.promote_panels
+
+ReportArticlePage.search_fields = Page.search_fields + (
+        index.SearchField('title_en'),
+        index.SearchField('title_nl'),
+        index.SearchField('subtitle_en'),
+        index.SearchField('subtitle_nl'),
+        index.SearchField('author'),
+        index.SearchField('summary_en'),
+        index.SearchField('summary_nl'),
+        index.SearchField('body_en'),
+        index.SearchField('body_nl'),
+        index.RelatedFields('event_page', [
+            index.SearchField('title'),
+        ]),
+    )
+

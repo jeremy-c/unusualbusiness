@@ -31,8 +31,8 @@
             </header>
 
             <aside class="side1 box">
-                <h3>Tags</h3>
                 {% block side1 %}
+                    <h3>Tags</h3>
                     {% for tag in page.tags.all %}
                         <a href="/?tag={{ tag }}">{{ tag }}</a>
                     {% endfor %}
