@@ -3,18 +3,12 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from taggit.managers import TaggableManager
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
-from wagtail.wagtailcore import blocks
+from wagtail_modeltranslation.models import TranslationMixin
 
 from tags.models import OrganizationPageTag
 

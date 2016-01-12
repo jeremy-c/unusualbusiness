@@ -5,13 +5,16 @@ from django.db import migrations, models
 import wagtail_modeltranslation.models
 import django.db.models.deletion
 import wagtail.wagtailcore.fields
+import modelcluster.fields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
+        ('events', '0001_initial'),
         ('wagtailimages', '0010_change_on_delete_behaviour'),
+        ('articles', '0001_initial'),
     ]
 
     operations = [
@@ -31,7 +34,8 @@ class Migration(migrations.Migration):
                 ('search_description_nl', models.TextField(null=True, verbose_name='search description', blank=True)),
             ],
             options={
-                'abstract': False,
+                'verbose_name': 'How to Index Page',
+                'verbose_name_plural': 'How to Index Pages',
             },
             bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page'),
         ),
@@ -55,8 +59,48 @@ class Migration(migrations.Migration):
                 ('featured_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='Featured image', blank=True, to='wagtailimages.Image', null=True)),
             ],
             options={
-                'abstract': False,
+                'verbose_name': 'How to',
+                'verbose_name_plural': "How to's",
             },
             bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page'),
+        ),
+        migrations.CreateModel(
+            name='HowToPageEventPage',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('event', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='events.EventPage', null=True)),
+                ('how_to_page', modelcluster.fields.ParentalKey(related_name='event_pages', to='howtos.HowToPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='HowToPageStoryArticlePage',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('article', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.StoryArticlePage', null=True)),
+                ('how_to_page', modelcluster.fields.ParentalKey(related_name='story_article_pages', to='howtos.HowToPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='HowToPageTheoryArticlePage',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('article', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='articles.TheoryArticlePage', null=True)),
+                ('how_to_page', modelcluster.fields.ParentalKey(related_name='theory_article_pages', to='howtos.HowToPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
         ),
     ]

@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='storyarticlepageorganization',
-            name='page',
+            name='story_article_page',
             field=modelcluster.fields.ParentalKey(related_name='organizations', to='articles.StoryArticlePage'),
         ),
         migrations.AddField(

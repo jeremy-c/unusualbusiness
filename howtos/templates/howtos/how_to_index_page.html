@@ -6,7 +6,7 @@
 {% block content %}
 
     {{ howtos.count }}
-    {% for how_to in page.howtos %}
+    {% for how_to in how_tos %}
         <ul>
             <li><a href="{{ how_to.url }}">{{ how_to.title }}</a></li>
         </ul>

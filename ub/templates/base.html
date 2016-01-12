@@ -39,7 +39,16 @@
             </article>
 
             <aside class="side2 box">
-                {% block side2 %}{% endblock %}
+                <h3>Menu</h3>
+
+                <div class="menu">
+                    <ul>
+                    {% for index_page in index_pages %}
+                        <li><a href="{{ index_page.url }}">{{ index_page.title }}</a></li>
+                    {% endfor %}
+                        <li><a href="{{ parent.url }}"><< back</a></li>
+                    </ul>
+                </div>
             </aside>
 
             <footer class="footer box"><p>Footer.</p></footer>

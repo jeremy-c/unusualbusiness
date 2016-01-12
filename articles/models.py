@@ -1,24 +1,15 @@
 from __future__ import unicode_literals
-from django.utils.translation import ugettext as _
 
 from django.db import models
+from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
-from taggit.managers import TaggableManager
 from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel, PageChooserPanel
-from wagtail.wagtailcore.blocks import PageChooserBlock
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
+from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
-from wagtail.wagtailsnippets.models import register_snippet
 from wagtail_modeltranslation.models import TranslationMixin
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore import blocks
 
 from events.models import EventPage
 from tags.models import TheoryArticlePageTag, StoryArticlePageTag, ReportArticlePageTag
@@ -115,18 +106,21 @@ StoryArticlePage.promote_panels = Page.promote_panels
 
 
 class StoryArticlePageOrganization(Orderable, models.Model):
-    organization_page =  models.ForeignKey(
+    story_article_page = ParentalKey('articles.StoryArticlePage', related_name='organizations')
+    organization_page = models.ForeignKey(
         'organizations.OrganizationPage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    page = ParentalKey('articles.StoryArticlePage', related_name='organizations')
 
     panels = [
           PageChooserPanel('organization_page'),
     ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.story_article_page.title + " -> " + self.organization_page.title
 
 
 class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):

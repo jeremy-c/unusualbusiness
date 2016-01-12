@@ -18,15 +18,6 @@
         {{ page.body|safe }}
     </div>
 
-    <h2>Index Pages</h2>
-    <div class="index-pages">
-        <ul>
-        {% for index_page in index_pages %}
-            <li><a href="{{ index_page.url }}">{{ index_page.title }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-
     <div class="stream">
         {% for block in page.stream %}
             {% if block.block_type == 'heading' %}
@@ -38,7 +29,5 @@
             {% endif %}
         {% endfor %}
     </div>
-
-
 
 {% endblock %}

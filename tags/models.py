@@ -1,12 +1,7 @@
 from __future__ import unicode_literals
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
-
-from taggit.models import CommonGenericTaggedItemBase, TaggedItemBase, TagBase, GenericTaggedItemBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from taggit.models import CommonGenericTaggedItemBase, TaggedItemBase, TagBase, GenericTaggedItemBase, ItemBase
 from wagtail.wagtailcore.models import Page
 
 
@@ -32,3 +27,4 @@ class ReportArticlePageTag(TaggedItemBase):
 
 class OrganizationPageTag(TaggedItemBase):
     content_object = ParentalKey('organizations.OrganizationPage', related_name='tagged_items')
+
