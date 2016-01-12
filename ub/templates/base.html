@@ -31,7 +31,12 @@
             </header>
 
             <aside class="side1 box">
-                {% block side1 %}{% endblock %}
+                <h3>Tags</h3>
+                {% block side1 %}
+                    {% for tag in page.tags.all %}
+                        <a href="/?tag={{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                {% endblock %}
             </aside>
 
             <article class="content box">

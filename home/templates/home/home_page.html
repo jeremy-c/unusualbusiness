@@ -1,22 +1,16 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags i18n %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
 
-    <div class="publication-date">
-        <label>{% trans "Publication date:" %}</label>
-        <span>{{ page.date }}</span>
-    </div>
-
-    <div class="image">
-        {% image page.feed_image width-400 %}
-    </div>
-
-    <div class="body">
-        {{ page.body|safe }}
-    </div>
+    <h2>Pages</h2>
+    {% for a_page in pages %}
+        <ul>
+            <li><a href="{{ a_page.url }}">{{ a_page.title }}</a> ({{ a_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+        </ul>
+    {% endfor %}
 
     <div class="stream">
         {% for block in page.stream %}

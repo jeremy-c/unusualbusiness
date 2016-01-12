@@ -5,6 +5,11 @@
 
 {% block content %}
 
+    <div class="publication-date">
+        <label>{% trans "Publication date:" %}</label>
+        <span>{{ page.date|date:"SHORT_DATETIME_FORMAT" }}</span>
+    </div>
+
     <div class="image">
         {% image page.featured_image width-400 %}
     </div>

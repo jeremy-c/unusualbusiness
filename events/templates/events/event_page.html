@@ -11,40 +11,44 @@
 
     <div class="start-date">
         <label>{% trans "Starting date:" %}</label>
-        <span>{{ page.start_date }}</span>
+        <span>{{ page.start_date|date:"SHORT_DATETIME_FORMAT" }}</span>
     </div>
 
+    {% if page.end_date %}
     <div class="end-date">
         <label>{% trans "End date:" %}</label>
-        <span>{{ page.end_date }}</span>
+        <span>{{ page.end_date|date:"SHORT_DATETIME_FORMAT" }}</span>
     </div>
+    {% endif %}
 
     <div class="location">
         <label>{% trans "Location:" %}</label>
         <span>{{ page.location }}</span>
     </div>
 
+    {% if page.poster_link %}
     <div class="poster-link">
         <label>{% trans "Poster:" %}</label>
         <span>{{ page.poster_link }}</span>
     </div>
+    {% endif %}
 
+    {% if page.flyer_link %}
     <div class="flyer-link">
         <label>{% trans "Flyer:" %}</label>
         <span>{{ page.flyer_link }}</span>
     </div>
+    {% endif %}
 
+    {% if page.facebook_event %}
     <div class="facebook">
         <label>{% trans "Facebook:" %}</label>
-        <span>{{ page.facebook_event }}</span>
+        <span><a href="{{ page.facebook_event }}">{{ page.facebook_event }}</a></span>
     </div>
+    {% endif %}
 
     <div class="body">
         {{ page.description|richtext }}
     </div>
-
-    {% for tag in page.tags.all %}
-        <a href="{% pageurl page.tag_index %}?tag={{ tag }}">{{ tag }}</a>
-    {% endfor %}
 
 {% endblock %}

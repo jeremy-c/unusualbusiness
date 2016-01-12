@@ -24,18 +24,19 @@ class TheoryArticleIndexPage(TranslationMixin, Page):
         context = super(TheoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['articles'] = TheoryArticlePage.objects.all().live()
+        context['parent'] = self.get_parent()
         return context
 
 
 class StoryArticleIndexPage(TranslationMixin, Page):
-
     parent_page_types = ['home.HomePage']
     subpage_types = ['articles.StoryArticlePage']
 
     def get_context(self, request):
         context = super(StoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['articles'] = StoryArticleIndexPage.objects.child_of(self).live()
+        context['articles'] = StoryArticlePage.objects.all().live()
+        context['parent'] = self.get_parent()
         return context
 
 

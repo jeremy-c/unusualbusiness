@@ -1,20 +1,14 @@
 from __future__ import unicode_literals
 
-from django.utils.translation import ugettext as _
-from django.db import models
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
+from itertools import chain
 
+from django.shortcuts import render
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
 from wagtail_modeltranslation.models import TranslationMixin
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore import blocks
 
+from articles.models import TheoryArticlePage, ReportArticlePage, StoryArticlePage
 from events.models import EventPage
+from organizations.models import OrganizationPage
 
 
 class HomePage(TranslationMixin, Page):
@@ -32,6 +26,44 @@ class HomePage(TranslationMixin, Page):
         # Add extra variables and return the updated context
         context['index_pages'] = Page.objects.child_of(self).live()
         return context
+
+    def pages(self, tag=None):
+        theory_article_page_list = TheoryArticlePage.objects.all().live()
+        story_article_page_list = StoryArticlePage.objects.all().live()
+        report_article_page_list = ReportArticlePage.objects.all().live()
+        event_page_list = EventPage.objects.all().live()
+        organization_page_list = OrganizationPage.objects.all().live()
+
+        if tag:
+            theory_article_page_list = theory_article_page_list.filter(tags__name=tag)
+            story_article_page_list = story_article_page_list.filter(tags__name=tag)
+            report_article_page_list = report_article_page_list.filter(tags__name=tag)
+            event_page_list = event_page_list.filter(tags__name=tag)
+            organization_page_list = organization_page_list.filter(tags__name=tag)
+
+        return sorted(chain(
+                theory_article_page_list,
+                story_article_page_list,
+                report_article_page_list,
+                event_page_list,
+                organization_page_list
+            ),
+            key=lambda instance: instance.first_published_at,
+            reverse=True)
+
+    def serve(self, request):
+
+        # Filter by tag
+        tag = request.GET.get('tag')
+        if tag:
+            pages = self.pages(tag)
+        else:
+            pages = self.pages()
+
+        return render(request, self.template, {
+            'page': self,
+            'pages': pages,
+        })
 
     # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),
