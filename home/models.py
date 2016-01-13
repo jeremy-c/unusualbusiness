@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from itertools import chain
 
 from django.shortcuts import render
+from taggit.models import Tag
 from wagtail.wagtailcore.models import Page
 from wagtail_modeltranslation.models import TranslationMixin
 
@@ -30,6 +31,9 @@ class HomePage(TranslationMixin, Page):
 
     def how_tos(self):
         return HowToPage.objects.all().live()
+
+    def tags(self):
+        return Tag.objects.all()
 
     def pages(self, tag=None):
         theory_article_page_list = TheoryArticlePage.objects.all().live()
@@ -70,6 +74,7 @@ class HomePage(TranslationMixin, Page):
             'page': self,
             'pages': pages,
             'how_tos': how_tos,
+            'tags': self.tags,
         })
 
     # dutch_content_panels = [
