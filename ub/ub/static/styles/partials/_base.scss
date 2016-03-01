@@ -1,0 +1,243 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+    font-family: ClearSans, sans-serif;
+}
+
+body {
+  margin: 40px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+}
+
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 100px 10px auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "sidebar . header"
+      "sidebar . content"
+      "sidebar footer footer";
+    margin: 0 auto;
+    width: 960px;
+    max-width: 100%;
+    background-color: #fff;
+}
+
+.box {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.aside {
+    width: auto;
+}
+
+.content {
+    padding: 0 20px;
+    width: auto;
+}
+
+.header,
+.footer {
+    width: 840px;
+}
+
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Base Font
+$base-font-family: sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 13px;
+$base-line-height: 1.4;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Headings
+$header-font-weight: $bold;
+
+body {
+    color: #000000;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+    color: #000000;
+}
+
+h1 {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 2em;
+    line-height: 2em;
+}
+
+p {
+    font-size: 1em;
+}
+
+h2 {
+    margin: 20px 0 5px;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
+.how-to-circles {
+    width: 40px;
+    vertical-align: baseline;
+}
+
+.ub-logo {
+    padding: 12px;
+    width: 70px;
+}
+
+.green {
+    color: #22b573;
+}
+
+.blue {
+    color: #547aff;
+}
+
+.yellow {
+    color: #ffa700;
+}
+
+.black {
+    color: #000000;
+}
+
+.template-theory-article-page h1,
+.template-theory-article-index-page h1 {
+    background-color: #22b573;
+    color: #ffffff;
+}
+
+.template-story-article-page h1,
+.template-story-article-index-page h1 {
+    background-color: #ffa700;
+    color: #ffffff;
+}
+
+.template-event-index-page h1,
+.template-event-page h1,
+.template-report-article-page h1,
+.template-definition-page h1,
+.template-definition-index-page h1 {
+    background-color: #547aff;
+    color: #ffffff;
+}
+
+.template-organization-page h1,
+.template-organization-index-page h1 {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.template-how-to-page,
+.template-how-to-index-page {
+
+}
+li {
+    list-style: none;
+}
+
+.storyarticlepage::before,
+.stories::before {
+    content: "• ";
+    font-size: 24px;
+    color: #ffa700;
+}
+
+.events-reports-news::before,
+.eventpage::before ,
+.reportarticlepage::before  {
+    content: "• ";
+    font-size: 24px;
+    color: #547aff;
+}
+
+.ideas::before,
+.theoryarticlepage::before  {
+    content: "• ";
+    font-size: 24px;
+    color: #22b573;
+}
+
+.organizationpage::before,
+.organizations::before {
+    content: "• ";
+    font-size: 24px;
+    color: #000000;
+}

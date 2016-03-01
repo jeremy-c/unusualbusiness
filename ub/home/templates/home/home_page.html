@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block header %}
+    <h1>Home</h1>
+{% endblock %}
+
+{% block content %}
+
+    <h2>Filters 3</h2>
+    <ul>
+        <li class="stories"><a href="{% slugurl 'stories' %}">Stories</a></li>
+        <li class="events-reports-news"><a href="{% slugurl 'events' %}">Events & News</a></li>
+        <li class="ideas"><a href="{% slugurl 'theory' %}">Ideas</a></li>
+        <li class="organizations"><a href="{% slugurl 'organizations' %}">Organizations</a></li>
+    </ul>
+
+    <h2><img src="/static/images/how-to-circles.svg" class="how-to-circles" /> How to's</h2>
+
+    <div class="how-tos">
+        {% for how_to in how_tos %}
+            <ul>
+                <li class="{{ how_to | to_class_name }}"><a href="{% pageurl how_to %}">{{ how_to.title }}</a> ({{ how_to.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+    <h2>Pages</h2>
+    <div class="pages">
+        {% for the_page in pages %}
+            <ul>
+                <li class="{{ the_page | to_class_name }}"><a href="{% pageurl the_page %}">{{ the_page.title }}</a> ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+    <div class="stream">
+        {% for block in page.stream %}
+            {% if block.block_type == 'heading' %}
+                <h1>{{ block.value }}</h1>
+            {% else %}
+                <section class="block-{{ block.block_type }}">
+                    {{ block }}
+                </section>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

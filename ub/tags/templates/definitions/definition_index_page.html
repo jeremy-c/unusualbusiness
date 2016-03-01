@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block body_class %}template-definition-index-page{% endblock %}
+
+{% block content %}
+
+    {% for definition in definitions %}
+        <ul>
+            <li class="{{ organization | to_class_name }}"><a href="{% pageurl definition %}">{{ definition.title }}</a></li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

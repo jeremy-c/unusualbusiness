@@ -5,3 +5,4 @@ wagtail-modeltranslation==0.4.4
 wagtailplus==0.3.6
 elasticsearch==1.9.0
 wagtailmodeladmin==2.2.1
+django-gulp==2.3.0

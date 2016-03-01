@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block body_class %}template-how-to-page{% endblock %}
+
+{% block header %}
+    <h1><img src="/static/images/how-to-circles.svg" class="how-to-circles" /> {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class="image">
+        {% image self.featured_image width-400 %}
+    </div>
+
+    <div class="body">
+        {{ self.description|richtext }}
+    </div>
+
+
+    <h2 class="green">Theory</h2>
+    {% for the_page in theory_pages %}
+        <ul>
+            <li class="{{ the_page.article | to_class_name }}"><a href="{{ the_page.article.url }}" >
+                {{ the_page.article.title }}
+            </a>
+                ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
+            </li>
+        </ul>
+    {% endfor %}
+
+    <h2 class="yellow">Stories</h2>
+    {% for the_page in story_pages %}
+        <ul>
+            <li class="{{ the_page.article | to_class_name }}"><a href="{{ the_page.article.url }}" >
+                {{ the_page.article.title }}
+            </a>
+                ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
+            </li>
+        </ul>
+    {% endfor %}
+
+    <h2 class="black">Organizations</h2>
+    {% for the_page in organization_pages %}
+        <ul>
+            <li class="{{ the_page.organization | to_class_name }}"><a href="{{ the_page.organization.url }}" >
+                {{ the_page.organization.title }}
+            </a>
+            </li>
+        </ul>
+    {% endfor %}
+
+    <h2 class="blue">Events</h2>
+    {% for the_page in event_pages %}
+        <ul>
+            <li class="{{ the_page.event | to_class_name }}"><a href="{{ the_page.event.url }}" >
+                {{ the_page.event.title }}
+            </a>
+                ({{ the_page.event.start_date|date:"SHORT_DATETIME_FORMAT" }})
+            </li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

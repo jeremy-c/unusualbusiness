@@ -1,0 +1,82 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script>
+        <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: [ 'Open+Sans:400italic,400,700,300:latin' ] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,300&amp;subset=latin" media="all">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="favicon.png" />
+
+        <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'styles/screen.css' %}" />
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+
+        <div class="wrapper">
+		    <header class="header box">
+
+                {% block header %}
+                    <h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+                {% endblock %}
+            </header>
+
+            <aside class="sidebar box">
+                <a href="/" class="ub-logo-wrapper" >
+                    <img src="/static/images/ub-logo.svg" class="ub-logo" />
+                </a>
+                {% block side1 %}
+                {% endblock %}
+            </aside>
+
+            <article class="content box">
+                {% block content %}{% endblock %}
+            </article>
+
+            <footer class="footer box"></footer>
+        </div>
+
+        {# Global javascript #}
+
+        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+        <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
+        <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'scripts/main.min.js' %}"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
