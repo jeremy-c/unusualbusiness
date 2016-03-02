@@ -33,14 +33,14 @@ import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import {output as pagespeed} from 'psi';
 import pkg from './package.json';
-//import {stream as wiredep} from 'wiredep';
+import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 // Lint JavaScript
 gulp.task('lint', () =>
-  gulp.src('ub/ub/static/scripts/**/*.js')
+  gulp.src('unusualbusiness/assets/scripts/**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failOnError()))
@@ -48,35 +48,28 @@ gulp.task('lint', () =>
 
 // Optimize images
 gulp.task('images', () =>
-  gulp.src('ub/ub/static/images/**/*')
+  gulp.src('unusualbusiness/assets/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/static/images'))
+    .pipe(gulp.dest('unusualbusiness/static/images'))
     .pipe($.size({title: 'images'}))
-);
-
-// Copy all files at the root level (app)
-gulp.task('copy', () =>
-  gulp.src([
-    'ub/**',
-    '!ub/.idea{,/**}',
-    '!ub/**/__pycache__{,/**}',
-    '!ub/ub/templates{,/**/*.html}',
-    '!ub/ub/static{/fonts/**,/images/**,/scripts/**,/styles/**}'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}))
 );
 
 // Copy Web Fonts To Dist
 gulp.task('fonts', function () {
-  return gulp.src(['ub/ub/static/fonts/**'])
-    .pipe(gulp.dest('dist/static/fonts'))
+  return gulp.src(['unusualbusiness/assets/fonts/**'])
+    .pipe(gulp.dest('unusualbusiness/static/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
+
+//gulp.task('fonts', () => {
+//  return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
+//    .concat('unusualbusiness/assets/fonts/**/*'))
+//    .pipe(gulp.dest('.tmp/fonts'))
+//    .pipe(gulp.dest('unusualbusiness/static/fonts'));
+//});
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
@@ -94,8 +87,8 @@ gulp.task('styles', () => {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'ub/ub/static/styles/**/*.scss',
-    'ub/ub/static/styles/**/*.css'
+    'unusualbusiness/assets/styles/**/*.scss',
+    'unusualbusiness/static/styles/**/*.css'
   ])
     .pipe($.newer('.tmp/styles'))
     .pipe($.sourcemaps.init())
@@ -108,7 +101,7 @@ gulp.task('styles', () => {
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('dist/static/styles'));
+    .pipe(gulp.dest('unusualbusiness/static/styles'));
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -119,7 +112,7 @@ gulp.task('scripts', () =>
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      './ub/ub/static/scripts/main.js'
+      './unusualbusiness/assets/scripts/main.js'
       // Other scripts
     ])
       .pipe($.newer('.tmp/scripts'))
@@ -132,17 +125,17 @@ gulp.task('scripts', () =>
       // Output files
       .pipe($.size({title: 'scripts'}))
       .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('dist/static/scripts'))
+      .pipe(gulp.dest('unusualbusiness/static/scripts'))
 );
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
-  return gulp.src('ub/ub/templates/**/*.html')
+  return gulp.src('unusualbusiness/templates/**/*.html')
     .pipe($.useref({searchPath: '{.tmp,app}'}))
     // Remove any unused CSS
     .pipe($.if('*.css', $.uncss({
       html: [
-        'ub/ub/templates/**/*.html'
+        'unusualbusiness/templates/**/*.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: []
@@ -153,61 +146,41 @@ gulp.task('html', () => {
     .pipe($.if('*.css', $.cssnano()))
 
     // Minify any HTML
-    .pipe($.if('*.html', $.htmlmin({
-      removeComments: true,
-      collapseWhitespace: true,
-      collapseBooleanAttributes: true,
-      removeAttributeQuotes: true,
-      removeRedundantAttributes: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeOptionalTags: true
-    })))
+//    .pipe($.if('*.html', $.htmlmin({
+//      removeComments: true,
+//      collapseWhitespace: true,
+//      collapseBooleanAttributes: true,
+//      removeAttributeQuotes: true,
+//      removeRedundantAttributes: true,
+//      removeEmptyAttributes: true,
+//      removeScriptTypeAttributes: true,
+//      removeStyleLinkTypeAttributes: true,
+//      removeOptionalTags: true
+//    })))
     // Output files
     .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
-    .pipe(gulp.dest('dist/ub/templates'));
+    .pipe(gulp.dest('unusualbusiness/templates'));
 });
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
-
-////Activate virtualenv and run Django server
-//gulp.task('runserver', function() {
-//    var cmd =  '. ../../../virtualenvs/ub/bin/activate';
-//
-//    var proc = $.exec(cmd + ' && python ub/ub/manage.py runserver');
-//});
-//
-//gulp.task('runserver:dist', function() {
-//    var cmd =  '. ../../../virtualenvs/ub/bin/activate';
-//    var proc = $.exec(cmd + ' && python dist/manage.py runserver');
-//});
-
-// Build and serve the output from the dist build
-gulp.task('serve:dist', ['build' /*,'runserver:dist'*/], function () {
-  browserSync({
-    notify: false,
-    proxy: "127.0.0.1:8000"
-  });
-});
+gulp.task('clean', () => del(['.tmp'], {dot: true}));
 
 // Build Production Files
 gulp.task('build', ['clean'], function (cb) {
-  runSequence('styles', ['lint', 'scripts', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', ['lint', 'scripts', 'html', 'images', 'fonts'], cb);
 });
 
 // Watch Files For Changes & Reload, the default task
-gulp.task('default', ['styles', 'lint', 'scripts' /*,'runserver'*/], function () {
+gulp.task('default', ['styles', 'lint', 'scripts'], function () {
   browserSync({
     notify: false,
     proxy: "127.0.0.1:8000"
   });
 
-  gulp.watch(['ub/**/*.html'], reload);
-  gulp.watch(['ub/ub/static/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['ub/ub/static/scripts/**/*.js'], ['lint']);
-  gulp.watch(['ub/ub/static/scripts/**/*.{js}'], ['scripts', reload]);
-  gulp.watch(['ub/ub/static/images/**/*'], reload);
-//  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  gulp.watch(['unusualbusiness/**/*.html'], reload);
+  gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint']);
+  gulp.watch(['unusualbusiness/assets/scripts/**/*.{js}'], ['scripts', reload]);
+  gulp.watch(['unusualbusiness/assets/images/**/*'], reload);
+  gulp.watch('bower.json', ['fonts']);
 });

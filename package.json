@@ -1,4 +1,5 @@
 {
+  "name": "unusual-business",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "babel-core": "^6.0.15",
@@ -28,7 +29,9 @@
     "psi": "^2.0.2",
     "run-sequence": "^1.0.1",
     "sw-precache": "^2.2.0",
-    "sw-toolbox": "^3.0.1"
+    "sw-toolbox": "^3.0.1",
+    "main-bower-files": "^2.11.1",
+    "wiredep": "^3.0.0"
   },
   "engines": {
     "node": ">=0.12"

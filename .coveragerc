@@ -1,0 +1,5 @@
+[run]
+include = unusualbusiness/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
