@@ -1,0 +1,46 @@
+/* ==|====================
+   Layout/Header
+   ======================= */
+
+.l-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 34px;
+  padding: 14px 0;
+  height: 84px;
+}
+
+.header .ub-logo-link {
+  flex-wrap: wrap;
+}
+
+.header .how-to-circles-link {
+  margin-left: 32px;
+}
+
+.header .how-to-links {
+  flex: 1;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.header .how-to-link {
+  flex: 1;
+  justify-content: space-around;
+  text-align: center;
+
+}
+
+.header .help-button {
+  margin: 0 15px;
+}
+
+.header .search-icon {
+  margin: 0 15px;
+}
+
+.header .language {
+  padding: 5px 0 5px 8px;
+
+}

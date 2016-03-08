@@ -36,6 +36,7 @@ import pkg from './package.json';
 import {stream as wiredep} from 'wiredep';
 import postcss from 'gulp-postcss';
 import cssnext from 'postcss-cssnext';
+import autoprefixer from 'autoprefixer';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -107,25 +108,30 @@ gulp.task('styles', () => {
 
 
     var postcss_processors = [
-        cssnext()
+        cssnext(),
+        autoprefixer(AUTOPREFIXER_BROWSERS)
     ];
 
   return gulp.src([
     'unusualbusiness/assets/styles/**/*.scss',
-    'unusualbusiness/static/styles/**/*.css'
+    'unusualbusiness/static/styles/**/*.css',
   ])
     .pipe($.newer('.tmp/styles'))
-    .pipe($.sourcemaps.init())
+    //.pipe($.sourcemaps.init())
+    //.pipe($.sourcemaps.write({includeContent:false, sourceRoot:'../../static/bower_components/bourbon/app/assets/stylesheets/'})) // inline sourcemap without embedded sources
+    //.pipe($.sourcemaps.write({includeContent:false, sourceRoot:'../../static/bower_components/neat/app/assets/stylesheets/'})) // external sourcemap without embedded sources, remove options to embed.
+
     .pipe($.sass({
       precision: 10
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+//    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+
     .pipe(postcss(postcss_processors))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
-    .pipe($.sourcemaps.write('./'))
+    //.pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('unusualbusiness/static/styles'));
 
 });
