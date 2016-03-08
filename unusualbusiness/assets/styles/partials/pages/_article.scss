@@ -1,0 +1,16 @@
+
+
+.sidebar-left {
+  @include span-columns(2);
+  min-height: $inner-wrapper-min-height;
+}
+
+.sidebar-right {
+  @include span-columns(2);
+  min-height: $inner-wrapper-min-height;
+}
+
+article {
+  @include span-columns(12);
+  min-height: $inner-wrapper-min-height;
+}

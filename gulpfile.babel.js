@@ -34,6 +34,8 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import {output as pagespeed} from 'psi';
 import pkg from './package.json';
 import {stream as wiredep} from 'wiredep';
+import postcss from 'gulp-postcss';
+import cssnext from 'postcss-cssnext';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -86,6 +88,28 @@ gulp.task('styles', () => {
   ];
 
   // For best performance, don't add Sass partials to `gulp.src`
+//  return gulp.src([
+//    'unusualbusiness/assets/styles/**/*.scss',
+//    'unusualbusiness/static/styles/**/*.css'
+//  ])
+//    .pipe($.newer('.tmp/styles'))
+//    .pipe($.sourcemaps.init())
+//    .pipe($.sass({
+//      precision: 10
+//    }).on('error', $.sass.logError))
+//    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+//    .pipe(gulp.dest('.tmp/styles'))
+//    // Concatenate and minify styles
+//    .pipe($.if('*.css', $.cssnano()))
+//    .pipe($.size({title: 'styles'}))
+//    .pipe($.sourcemaps.write('./'))
+//    .pipe(gulp.dest('unusualbusiness/static/styles'));
+
+
+    var postcss_processors = [
+        cssnext()
+    ];
+
   return gulp.src([
     'unusualbusiness/assets/styles/**/*.scss',
     'unusualbusiness/static/styles/**/*.css'
@@ -96,12 +120,14 @@ gulp.task('styles', () => {
       precision: 10
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(postcss(postcss_processors))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('unusualbusiness/static/styles'));
+
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.

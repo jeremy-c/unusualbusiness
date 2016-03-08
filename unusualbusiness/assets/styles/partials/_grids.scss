@@ -1,0 +1,50 @@
+
+.wrapper {
+
+}
+
+header {
+  display: flex;
+  align-items: center;
+  margin: 0 34px;
+  padding: 14px 0;
+  height: 84px;
+}
+
+.inner-wrapper {
+  min-height: calc(100vh - (50px + 84px));
+}
+
+footer {
+  height: 50px;
+  background-color: #ddd;
+}
+
+@include media($tablet) {
+
+  .inner-wrapper {
+
+    .sidebar-left {
+      display:none;
+    }
+
+    .sidebar-right {
+      display:none;
+    }
+
+    article {
+      @include span-columns(14);
+      @include shift(1);
+    }
+  }
+}
+
+@include media($mobile) {
+
+  .inner-wrapper {
+
+    article {
+
+    }
+  }
+}

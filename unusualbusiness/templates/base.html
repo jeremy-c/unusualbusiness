@@ -33,7 +33,7 @@
 
         <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
 
-        <link rel="stylesheet" href="{% static 'styles/screen.css' %}" />
+        <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -44,39 +44,47 @@
         {% wagtailuserbar %}
 
         <div class="wrapper">
-		    <header class="header box">
 
+            <header class="header">
                 {% block header %}
-                    <h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+                <a href="/" class="ub-logo-link" >
+                    <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
+                </a>
+                <a href="/" class="how-to-circles-link" >
+                    <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles" width="48.159px" height="48.158px" />
+                </a>
+
                 {% endblock %}
             </header>
 
-            <aside class="sidebar box">
-                <a href="/" class="ub-logo-wrapper" >
-                    <img src="/static/images/ub-logo.svg" class="ub-logo" />
-                </a>
-                {% block side1 %}
+            <section class="inner-wrapper">
+
+                {% block sidebarleft %}
+                    <aside class="sidebar-left">
+                    </aside>
                 {% endblock %}
-            </aside>
 
-            <article class="content box">
                 {% block content %}{% endblock %}
-            </article>
 
-            <footer class="footer box"></footer>
+                {% block sidebarright %}
+                    <aside class="sidebar-right">
+                    </aside>
+                {% endblock %}
+
+            </section>
+
+            <footer class="footer"></footer>
         </div>
-
-        {# Global javascript #}
 
         <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
         <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
         <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
         <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
 
-        <script type="text/javascript" src="{% static 'scripts/main.min.js' %}"></script>
-
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+
+        <script type="text/javascript" src="{% static 'scripts/main.min.js' %}"></script>
     </body>
 </html>
