@@ -4,6 +4,10 @@
 
 @import "base";
 
+.fluid-grid {
+  margin: 0 $gutter;
+}
+
 .border-top {
   border-top: solid 2px $light-gray;
 }

@@ -2,7 +2,9 @@
    Layout/Header
    ======================= */
 
+@import "../base/mixins";
+
 .l-header {
-  margin: 0 34px;
+  @extend .fluid-grid;
   height: 84px;
 }

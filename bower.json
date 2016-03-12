@@ -6,10 +6,7 @@
     "modernizr": "~2.8.2",
     "normalize-css": "normalize.css#^3.0.3",
     "picturefill": "^3.0.2",
-    "flexibility": "^1.0.6",
-    "bourbon": "^4.2.6",
-    "neat": "^1.7.4",
-    "letteringjs": "^0.7.0"
+    "flexibility": "^1.0.6"
   },
   "ignore": [
     "**/.*",
