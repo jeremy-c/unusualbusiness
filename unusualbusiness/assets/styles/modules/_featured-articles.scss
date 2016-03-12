@@ -1,0 +1,55 @@
+/* ==|====================
+   Module/Featured Articles
+   ======================= */
+
+@import "../base/base";
+@import "../base/mixins";
+
+.featured-articles {
+
+}
+
+.featured-article {
+
+}
+
+.featured-article-link {
+  text-decoration: none;
+  display: flex;
+}
+
+.featured-article-preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 370px;
+
+  background-size: cover;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+.featured-article-date {
+  display: flex;
+  flex-direction: column;
+  padding-right: 30px;
+}
+
+.featured-article-preview-title {
+  padding: 20px;
+  width: 40%;
+  background-color: $yellow;
+
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  color: $white;
+}
+
+.featured-article-preview-image {
+  width: 100%;
+}
+
+

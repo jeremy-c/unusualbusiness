@@ -1,41 +1,5 @@
+/* ==|====================
+   Base/Typography
+   ======================= */
 
-h4 {
-  font-weight: normal;
-  color: $light-gray;
-}
-
-
-.article-preview-title {
-  font-size: 36px;
-  line-height: 46px;
-  text-align: center;
-  color: $white;
-}
-
-.article-preview-date {
-  font-size: 36px;
-  font-weight: bold;
-  color: $ub-blue;
-
-  span {
-    display: inline-block;
-    width: 50%;
-    height: 33%;
-
-    &:nth-of-type(odd) {
-      text-align: right;
-    }
-
-    &:nth-of-type(even) {
-      text-align: left;
-    }
-  }
-
-  .char1,
-  .char2,
-  .char3,
-  .char4 {
-    padding-bottom: 143px;
-  }
-
-}
+@import "base";

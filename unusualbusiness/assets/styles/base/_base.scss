@@ -1,15 +1,71 @@
+/* ==|====================
+   Base/Base
+   ======================= */
 
-$ub-green: #22b573;
-$ub-blue: #547aff;
-$ub-yellow: #ffa700;
-$ub-black: #000000;
-$light-gray: #d6dff1;
+$green: #22b573;
+$blue: #547aff;
+$yellow: #ffa700;
+$black: #000;
 $white: #fff;
+$light-gray: #d6dff1;
+$medium-gray: #929db7;
+
+$merriweather: 'Merriweather', serif;
+$open-sans: 'Open Sans', sans-serif;
+
+html {
+  height: 100%;
+}
 
 body {
-  color: $ub-black;
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: $black;
+  font-family: $merriweather;
+}
+
+* {
+  &:before,
+  &:after { box-sizing: inherit; }
 }
 
 a {
-  color: $ub-black;
+  color: $black;
+}
+
+ul,li {
+  margin:0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+}
+
+
+
+h3 {
+  margin: 5px 0 25px 0;
 }

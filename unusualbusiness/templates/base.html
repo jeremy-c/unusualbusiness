@@ -12,26 +12,28 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script>
         <script type="text/javascript">
-        WebFontConfig = {
-            google: { families: [ 'Open+Sans:400italic,400,700,300:latin' ] }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })(); </script>
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,300&amp;subset=latin" media="all">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        'Open+Sans:400,700:latin',
+                        'Merriweather:300italic,300,700,400:latin'
+                    ]
+                }
+            };
+
+            (function(d) {
+              var wf = d.createElement('script'), s = d.scripts[0];
+              wf.src = 'https://cdn.jsdelivr.net/webfontloader/1.6.22/webfontloader.js';
+              s.parentNode.insertBefore(wf, s);
+            })(document);
+        </script>
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon.png" />
 
-        <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
+        <link rel="stylesheet" crossorigin="anonymous" integrity="sha256-z3Zd2vSyiYzTkz83GvboBvga8btMdZo4LGsO+yxzQQg=" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
+{#        <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />#}
 
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
@@ -45,35 +47,57 @@
 
         <div class="l-wrapper">
 
-            <header class="l-header header">
+            <header class="l-header">
                 {% block header %}
-                <a href="#" class="ub-logo-link" >
-                    <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
-                </a>
-                <a href="#" class="how-to-circles-link" >
-                    <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles" width="50.457px" height="50.457px" />
-                </a>
-                <a href="#" class="how-to-link" >
-                    <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
-                </a>
-                <a href="#" class="how-to-link" >
-                    <img src="{% static 'images/how-to-eyebrow-black.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
-                </a>
-                <a href="#" class="how-to-link" >
-                    <img src="{% static 'images/how-to-eyebrow-yellow.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
-                </a>
-                <a href="#" class="how-to-link" >
-                    <img src="{% static 'images/how-to-eyebrow-green.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
-                </a>
-                <a href="#" class="help-link" >
-                    <img src="{% static 'images/help-button.svg' %}" class="help-button" width="29.541px" height="29.602px" />
-                </a>
-                <a href="#" class="search" >
-                    <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
-                </a>
-                <a href="#" class="language m-language" >
-                    EN
-                </a>
+                <nav>
+                  <ul class="main-menu">
+                    <li class="ub-logo">
+                      <a href="#"  >
+                        <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
+                      </a>
+                    </li>
+                    <li class="how-to-circles" >
+                      <a href="#" >
+                        <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles" width="50.457px" height="50.457px" />
+                      </a>
+                    </li>
+                    <li class="how-to">
+                      <a href="#" >
+                        <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
+                      </a>
+                    </li>
+                    <li class="how-to">
+                      <a href="#"  >
+                        <img src="{% static 'images/how-to-eyebrow-black.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
+                      </a>
+                    </li>
+                    <li class="how-to">
+                      <a href="#"  >
+                        <img src="{% static 'images/how-to-eyebrow-yellow.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
+                      </a>
+                    </li>
+                    <li class="how-to">
+                      <a href="#"  >
+                        <img src="{% static 'images/how-to-eyebrow-green.svg' %}" class="how-to-link" width="118.123px" height="19.413px" />
+                      </a>
+                    </li>
+                    <li class="help-link">
+                      <a href="#"  >
+                        <img src="{% static 'images/help-button.svg' %}" class="help-button" width="29.541px" height="29.602px" />
+                      </a>
+                    </li>
+                    <li class="search" >
+                      <a href="#" >
+                        <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
+                      </a>
+                    </li>
+                    <li class="language">
+                      <a href="#" class="m-language" >
+                        EN
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
                 {% endblock %}
             </header>
 
@@ -96,9 +120,15 @@
             <footer class="footer"></footer>
         </div>
 
-        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-        <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
+{#        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>#}
+{#        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>#}
+{#        <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>#}
+
+
+        <script crossorigin="anonymous" integrity="sha256-tyoKpDaoqJZQQb7aMFdyMmd+9liLuTO1vr7S3gLATcg=" src="https://cdn.jsdelivr.net/jquery/3.0.0-beta1/jquery.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-2oGVQmkrPxwqZnujTv80Zagtl1aVOhRGq30Hcvmx7dU=" src="https://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-iT+n/otuaeKCgxnASny7bxKeqCDbaV1M7VdX1ZRQtqg=" src="https://cdn.jsdelivr.net/picturefill/3.0.2/picturefill.min.js"></script>
+
         <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
 
         {% block extra_js %}

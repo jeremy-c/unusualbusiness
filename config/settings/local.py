@@ -39,10 +39,9 @@ CACHES = {
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+# MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += (
-    'debug_toolbar',
-    'djangobower',
+    # 'debug_toolbar',
 )
 
 STATICFILES_FINDERS += (

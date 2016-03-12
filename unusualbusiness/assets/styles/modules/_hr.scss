@@ -1,0 +1,14 @@
+/* ==|====================
+   Module/HR
+   ======================= */
+
+@import "../base/base";
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 2px solid $light-gray;
+  margin: 24px 34px;
+  padding: 0;
+}

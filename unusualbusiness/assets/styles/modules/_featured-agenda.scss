@@ -1,0 +1,65 @@
+/* ==|====================
+   Module/Featured Agenda
+   ======================= */
+
+@import "../base/base";
+@import "../base/mixins";
+
+.featured-agenda {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-agenda-title {
+  height: 20px;
+}
+
+.featured-agenda-items {
+  flex: 1;
+}
+
+.featured-agenda-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.featured-agenda-date {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  padding-right: 9px;
+  width: 40px;
+}
+
+.featured-agenda-item .description {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-agenda-item-link {
+  text-decoration: none;
+  justify-self: flex-start;
+}
+
+.featured-agenda-item .p-name {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.featured-agenda-item .p-category {
+  justify-self: flex-end;
+  margin-top: auto;
+
+  color: $blue;
+}
+
+.featured-agenda-footer {
+
+  a {
+    font-size: 14px;
+    font-family: $open-sans;
+    color: $blue;
+  }
+}

@@ -1,0 +1,37 @@
+/* ==|====================
+   Base/Mixins
+   ======================= */
+
+@import "base";
+
+.border-top {
+  border-top: solid 2px $light-gray;
+}
+
+.border-right {
+  border-right: solid 2px $light-gray;
+}
+
+.border-bottom {
+  border-bottom: solid 2px $light-gray;
+}
+
+.border-left {
+  border-left: solid 2px $light-gray;
+}
+
+@mixin border-top {
+  @extend .border-top;
+}
+
+@mixin border-right {
+  @extend .border-right;
+}
+
+@mixin border-bottom {
+  @extend .border-bottom;
+}
+
+@mixin border-left {
+  @extend .border-left;
+}

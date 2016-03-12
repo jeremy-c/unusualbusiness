@@ -1,0 +1,41 @@
+/* ==|====================
+   Module/Main Menu
+   ======================= */
+
+@import "../base/mixins";
+
+.main-menu  {
+  @extend bottom-line;
+  padding: 14px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.main-menu .ub-logo {
+  flex-wrap: wrap;
+}
+
+.main-menu .how-to-circles {
+  margin-left: 20px;
+}
+
+.main-menu .how-to {
+  flex: 1;
+  justify-content: space-around;
+  text-align: center;
+
+}
+
+.main-menu .help-button {
+  margin: 0 15px;
+}
+
+.main-menu .search-icon {
+  margin: 0 15px;
+}
+
+.main-menu .language {
+  padding: 5px 0 5px 8px;
+}

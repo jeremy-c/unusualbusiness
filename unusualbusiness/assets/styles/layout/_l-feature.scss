@@ -1,0 +1,20 @@
+/* ==|====================
+   Layout/Feature
+   ======================= */
+
+.l-feature {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.l-featured-articles {
+    width: 100%;
+}
+
+.l-featured-agenda {
+  margin-left: 50px;
+  width: 220px;
+}

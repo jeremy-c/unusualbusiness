@@ -1,0 +1,16 @@
+/* ==|====================
+   Module/Headings
+   ======================= */
+
+@import "../base/base";
+
+.invisible-title {
+  display: none;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: $open-sans;
+  color: $medium-gray;
+}

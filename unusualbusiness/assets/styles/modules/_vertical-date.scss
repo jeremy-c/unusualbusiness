@@ -1,0 +1,66 @@
+
+.vertical-date-element {
+  width: 100%;
+  text-align: center;
+  font-family: $open-sans;
+  font-weight: bold;
+  color: $blue;
+}
+
+.vertical-date-day {
+  @extend .vertical-date-element;
+  padding-bottom: 10px;
+  font-weight: normal;
+}
+
+.vertical-date-day-of-month {
+  @extend .vertical-date-element;
+  padding-top: 10px;
+  flex: 10;
+}
+
+.vertical-date-month {
+  @extend .vertical-date-element;
+  flex: 10;
+}
+
+.vertical-date-year {
+  @extend .vertical-date-element;
+  flex: 1;
+}
+
+.vertical-date-time {
+  @extend .vertical-date-element;
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.vertical-date-large {
+  font-size: 32px;
+
+  .vertical-date-day {
+    font-size: 24px;
+    line-height: 37px;
+  }
+}
+
+.vertical-date-small {
+
+  .vertical-date-day {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .vertical-date-day-of-month {
+    padding: 10px 0;
+  }
+
+  .vertical-date-month {
+    padding: 10px 0;
+  }
+
+  .vertical-date-year {
+    padding: 10px 0 0;
+  }
+}

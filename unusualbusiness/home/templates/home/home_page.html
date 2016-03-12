@@ -2,7 +2,7 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
 {% block extra_js %}
-<script src="{% static 'bower_components/letteringjs/jquery.lettering.js' %}"></script>
+    <script src="{% static 'bower_components/letteringjs/jquery.lettering.js' %}"></script>
 {% endblock %}
 
 {% block extra_css %}
@@ -13,72 +13,143 @@
 
 {% block content %}
 
-  <section class="content">
+    <section class="content">
 
-      <h1>(Un)usual Business</h1>
-      <!--<h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>-->
+        <h1 class="invisible-title">(Un)usual Business</h1>
+        <!--<h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>-->
 
-      <section class="feature">
-        <a class="featured-article" href="#">
-          <div class="date">
-            <span class="article-preview-date">170115</span>
-          </div>
-          <div class="preview">
-            <div class="article-preview-title-wrapper">
-              <h3 class="article-preview-title">We tried to live together with 10 people but we failed dramatically</h3>
+        <section class="l-feature">
+
+            <section class="l-featured-articles featured-articles">
+                <h3 class="section-title">Uitgelicht</h3>
+                <ul>
+                    <li class="featured-article">
+                        <a href="#" class="featured-article-link">
+                            <time class="featured-article-date vertical-date-large dt-start"
+                                  datetime="{% now 'SHORT_DATETIME_FORMAT' %}">
+                                <div class="vertical-date-day border-bottom">ma</div>
+                                <div class="vertical-date-day-of-month">17</div>
+                                <div class="vertical-date-month">01</div>
+                                <div class="vertical-date-year">16</div>
+                                <div class="vertical-date-time border-top">19:30</div>
+                            </time>
+                            <div class="featured-article-preview" style="background-image:url(/media/images/people.jpg)">
+                                <h4 class="featured-article-preview-title">
+                                    We tried to live together with 10 people but we failed dramatically
+                                </h4>
+
+                            </div>
+                        </a>
+                    </li>
+{#                    <li class="featured-article">#}
+{#                        <a href="#" class="featured-article-link">#}
+{#                            <div class="featured-article-date">#}
+{#                                <span class="vertical-date vertical-date-large">170115</span>#}
+{#                            </div>#}
+{#                            <div class="featured-article-preview">#}
+{#                                <div class="featured-article-preview-title-wrapper">#}
+{#                                    <h4 class="featured-article-preview-title">#}
+{#                                        We tried to live together with 10 people but we failed dramatically#}
+{#                                    </h4>#}
+{#                                </div>#}
+{#                                <img src="/media/images/people.jpg" class="featured-article-preview-image">#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+                </ul>
+            </section>
+
+            <section class="l-featured-agenda featured-agenda">
+                <h3 class="section-title featured-agenda-title">Agenda</h3>
+                <ul class="featured-agenda-items">
+                    <li class="featured-agenda-item h-event">
+                        <time class="featured-agenda-date vertical-date-small border-right dt-start"
+                              datetime="{% now 'SHORT_DATETIME_FORMAT' %}">
+                            <div class="vertical-date-day">ma</div>
+                            <div class="vertical-date-day-of-month">17</div>
+                            <div class="vertical-date-month">01</div>
+                            <div class="vertical-date-year">16</div>
+                        </time>
+                        <div class="description">
+                            <a href="#" class="featured-agenda-item-link" >
+                                <h4 class="p-name">
+                                Casco forum 1: Commoning
+                                </h4>
+                            </a>
+                            <div class="p-category">Lezing</div>
+                        </div>
+                    </li>
+                    <li class="featured-agenda-item h-event">
+                        <time class="featured-agenda-date vertical-date-small border-right dt-start"
+                              datetime="{% now 'SHORT_DATETIME_FORMAT' %}">
+                            <div class="vertical-date-day">ma</div>
+                            <div class="vertical-date-day-of-month">17</div>
+                            <div class="vertical-date-month">01</div>
+                            <div class="vertical-date-year">16</div>
+                        </time>
+                        <div class="description">
+                            <a href="#" class="featured-agenda-item-link" >
+                                <h4 class="p-name">
+                                    Casco forum 2: Commoning Economy
+                                </h4>
+                            </a>
+                            <div class="p-category">Lezing</div>
+                        </div>
+                    </li>
+                </ul>
+                <footer class="featured-agenda-footer">
+                    <a href="#" >Alle evenementen >></a>
+                </footer>
+            </section>
+
+        </section>
+
+        <hr>
+
+        <section class="links">
+
+        </section>
+
+        <section class="latest">
+            <h2>Filters</h2>
+            <ul>
+                <li class="stories"><a href="{% slugurl 'stories' %}">Stories</a></li>
+                <li class="events-reports-news"><a href="{% slugurl 'events' %}">Events & News</a></li>
+                <li class="ideas"><a href="{% slugurl 'theory' %}">Ideas</a></li>
+                <li class="organizations"><a href="{% slugurl 'organizations' %}">Organizations</a></li>
+            </ul>
+
+            <h2><img src="/static/images/how-to-circles.svg" width="40" height="40" class="how-to-circles" /> How to's</h2>
+
+            <div class="how-tos">
+                {% for how_to in how_tos %}
+                    <ul>
+                        <li class="{{ how_to | to_class_name }}"><a href="{% pageurl how_to %}">{{ how_to.title }}</a> ({{ how_to.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+                    </ul>
+                {% endfor %}
             </div>
-            <img src="/media/images/people.jpg" class="article-preview-image">
-          </div>
-        </a>
-        <div class="agenda">
-          Agenda
-        </div>
-      </section>
 
-      <section class="links">
+            <h2>Pages</h2>
+            <div class="pages">
+                {% for the_page in pages %}
+                    <ul>
+                        <li class="{{ the_page | to_class_name }}"><a href="{% pageurl the_page %}">{{ the_page.title }}</a> ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
+                    </ul>
+                {% endfor %}
+            </div>
 
-      </section>
-
-      <section class="latest">
-        <h2>Filters</h2>
-        <ul>
-            <li class="stories"><a href="{% slugurl 'stories' %}">Stories</a></li>
-            <li class="events-reports-news"><a href="{% slugurl 'events' %}">Events & News</a></li>
-            <li class="ideas"><a href="{% slugurl 'theory' %}">Ideas</a></li>
-            <li class="organizations"><a href="{% slugurl 'organizations' %}">Organizations</a></li>
-        </ul>
-
-        <h2><img src="/static/images/how-to-circles.svg" width="40" height="40" class="how-to-circles" /> How to's</h2>
-
-        <div class="how-tos">
-            {% for how_to in how_tos %}
-                <ul>
-                    <li class="{{ how_to | to_class_name }}"><a href="{% pageurl how_to %}">{{ how_to.title }}</a> ({{ how_to.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
-                </ul>
-            {% endfor %}
-        </div>
-
-        <h2>Pages</h2>
-        <div class="pages">
-            {% for the_page in pages %}
-                <ul>
-                    <li class="{{ the_page | to_class_name }}"><a href="{% pageurl the_page %}">{{ the_page.title }}</a> ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>
-                </ul>
-            {% endfor %}
-        </div>
-
-        <div class="stream">
-            {% for block in page.stream %}
-                {% if block.block_type == 'heading' %}
-                    <h1>{{ block.value }}</h1>
-                {% else %}
-                    <section class="block-{{ block.block_type }}">
-                        {{ block }}
-                    </section>
-                {% endif %}
-            {% endfor %}
-        </div>
-      </section>
-  </section>
+            <div class="stream">
+                {% for block in page.stream %}
+                    {% if block.block_type == 'heading' %}
+                        <h1>{{ block.value }}</h1>
+                    {% else %}
+                        <section class="block-{{ block.block_type }}">
+                            {{ block }}
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </section>
 
 {% endblock %}
