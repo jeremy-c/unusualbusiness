@@ -40,16 +40,27 @@
 .featured-article-preview-title {
   padding: 20px;
   width: 40%;
-  background-color: $yellow;
 
   font-size: 36px;
   line-height: 46px;
   text-align: center;
   color: $white;
+
+  background-color: $blue;
+
+  .featured-article-event & {
+    background-color: $yellow;
+  }
 }
 
 .featured-article-preview-image {
   width: 100%;
 }
 
+.featured-article-icon {
+  width: 70px;
+}
 
+.article-icon {
+  padding: 8px 0 0 10px;
+}
