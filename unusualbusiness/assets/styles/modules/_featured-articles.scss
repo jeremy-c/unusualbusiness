@@ -6,7 +6,6 @@
 @import "../base/mixins";
 
 .featured-articles {
-
 }
 
 .featured-article {
@@ -46,10 +45,10 @@
   text-align: center;
   color: $white;
 
-  background-color: $blue;
+  background-color: $yellow;
 
   .featured-article-event & {
-    background-color: $yellow;
+    background-color: $blue;
   }
 }
 

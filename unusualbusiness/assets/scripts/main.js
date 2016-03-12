@@ -9,7 +9,9 @@ console.log('Hello, World!');
 
 (function() {
   $(document).ready(function() {
-    //$('.article-preview-date').lettering();
-    //$('.vertical-date').lettering();
+    $('.slider').unslider({
+      keys: false,
+      arrows: false,
+      nav: true});
   });
 })();

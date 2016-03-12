@@ -1,0 +1,26 @@
+/* ==|====================
+   Vendor/Unslider
+   ======================= */
+
+@import "../base/base";
+
+.unslider-nav {
+  position: relative;
+  float: right;
+  margin-top: -30px;
+  padding-right: 20px;
+  z-index: 9999;
+}
+
+.unslider-nav ol li {
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 7px !important;
+  border-radius: 10px !important;
+  background: $white !important;
+}
+
+.unslider-nav ol li.unslider-active {
+  background: $black !important;
+  border: 2px solid $black !important;
+}
