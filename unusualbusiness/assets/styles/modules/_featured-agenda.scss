@@ -38,8 +38,8 @@
 }
 
 .featured-agenda-item-link {
+  flex: 1;
   text-decoration: none;
-  justify-self: flex-start;
 }
 
 .featured-agenda-item .p-name {
@@ -50,7 +50,6 @@
 
 .featured-agenda-item .p-category {
   justify-self: flex-end;
-  margin-top: auto;
   padding-bottom: 1px;
 
   font-family: $open-sans;
@@ -65,4 +64,14 @@
     font-family: $open-sans;
     color: $blue;
   }
+}
+
+/* ==|====================
+   States/Featured Agenda
+   ======================= */
+
+&.is-hovered {
+  border-right: solid 8px $blue;
+  margin-right: 9px;
+  //padding-right: 10px;
 }
