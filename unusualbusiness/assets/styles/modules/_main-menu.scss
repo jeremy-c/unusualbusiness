@@ -20,10 +20,7 @@
 
 .main-menu .ub-logo {
   flex-wrap: wrap;
-}
-
-.main-menu .how-to-circles {
-  margin-left: 20px;
+  margin-right: 55px;
 }
 
 .main-menu .how-to {
@@ -38,16 +35,16 @@
   display: inline-block;
 }
 
-.main-menu .help-button {
-  margin: 0 15px;
+.main-menu .how-to-circles {
+  margin: 0 7px 0 55px;
 }
 
 .main-menu .search-icon {
-  margin: 0 15px;
+  margin: 0 29px;
 }
 
 .main-menu .language {
-  padding: 5px 0 5px 8px;
+  padding: 4px 1px 6px 7px;
 
   font-family: $open-sans;
 }
