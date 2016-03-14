@@ -5,5 +5,14 @@
 @import "../base/mixins";
 
 .l-header {
-  @extend .fluid-grid;
+  margin: 0 $gutter;
+
+  @media(max-width: $tablet) {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+  }
 }

@@ -44,10 +44,6 @@ INSTALLED_APPS += (
     # 'debug_toolbar',
 )
 
-STATICFILES_FINDERS += (
-    'djangobower.finders.BowerFinder',
-)
-
 INTERNAL_IPS = ('127.0.0.1', '10.0.2.2', '10.0.0.2',)
 
 DEBUG_TOOLBAR_CONFIG = {

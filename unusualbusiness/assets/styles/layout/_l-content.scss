@@ -7,7 +7,12 @@
 .l-wrapper {
 }
 
-.l-grid {
-  @extend .fluid-grid;
+.l-content {
+  margin: 0 $gutter;
   min-height: calc(100vh - (50px + 84px));
+
+  @media(max-width: $tablet) {
+    margin: 54px $gutter / 2 0;
+    min-height: inherit;
+  }
 }

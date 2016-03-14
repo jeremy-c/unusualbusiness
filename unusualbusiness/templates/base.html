@@ -50,58 +50,79 @@
             <header class="l-header header">
                 {% block header %}
                 <nav class="main-nav">
-                    <div class="ub-logo">
+                    <div class="ub-logo clearfix">
                         <a href="#"  >
-                            <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
+                            <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo-icon" width="41.401px" height="33.63px" />
                         </a>
                     </div>
-                  <ul class="main-menu">
-
-                    <li class="how-to">
-                      <a href="#" class="how-to-link" >
-                        <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-eyebrow" width="118.123px" height="19.413px" />
-                        <img src="{% static 'images/how-to-eyebrow-blue-hover.svg' %}" class="how-to-eyebrow-hover is-hidden" width="22.941px" height="15.687px" />
-                      </a>
-                    </li>
-                    <li class="how-to">
-                      <a href="#" class="how-to-link" >
-                        <img src="{% static 'images/how-to-eyebrow-black.svg' %}" class="how-to-eyebrow" width="118.123px" height="19.413px" />
-                        <img src="{% static 'images/how-to-eyebrow-black-hover.svg' %}" class="how-to-eyebrow-hover is-hidden" width="22.941px" height="15.687px" />
-                      </a>
-                    </li>
-                    <li class="how-to">
-                      <a href="#" class="how-to-link" >
-                        <img src="{% static 'images/how-to-eyebrow-yellow.svg' %}" class="how-to-eyebrow" width="118.123px" height="19.413px" />
-                        <img src="{% static 'images/how-to-eyebrow-yellow-hover.svg' %}" class="how-to-eyebrow-hover is-hidden" width="22.941px" height="15.687px" />
-                      </a>
-                    </li>
-                    <li class="how-to">
-                      <a href="#" class="how-to-link" >
-                        <img src="{% static 'images/how-to-eyebrow-green.svg' %}" class="how-to-eyebrow" width="118.123px" height="19.413px" />
-                        <img src="{% static 'images/how-to-eyebrow-green-hover.svg' %}" class="how-to-eyebrow-hover is-hidden" width="22.941px" height="15.687px" />
-                      </a>
-                    </li>
-                    <li class="how-to-circles" >
-                      <a href="#" >
-                        <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles" width="50.457px" height="50.457px" />
-                      </a>
-                    </li>
-                    <li class="search" >
-                      <a href="#" >
-                        <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
-                      </a>
-                    </li>
-                    <li class="language">
-                      <a href="#" class="m-language" >
-                        EN
-                      </a>
-                    </li>
-                  </ul>
+                    <div class="search-bar">
+                        <label class="search-label"  for="searchTextBox" aria="label">
+                            <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
+                        </label>
+                        <input type="text" class="search-textbox" id="searchTextBox" placeholder="">
+                    </div>
+                    <div class="hamburger-menu">
+                        <img src="{% static 'images/hamburger-menu-icon.svg' %}" class="hamburger-menu-icon" width="16.717px" height="14.062px" />
+                        <img src="{% static 'images/close-menu-icon.svg' %}" class="close-menu-icon is-hidden" width="17px" height="17px" />
+                    </div>
+                    <ul class="main-menu">
+                        <li class="main-menu-item main-menu-how-to">
+                            <a href="#" class="how-to-link" >
+                                <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
+                                <img src="{% static 'images/how-to-eyebrow-blue-hover.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                <span class="menu-item-text">Nieuws en agenda</span>
+                            </a>
+                        </li>
+                        <li class="main-menu-item main-menu-how-to">
+                            <a href="#" class="how-to-link" >
+                                <img src="{% static 'images/how-to-eyebrow-black.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
+                                <img src="{% static 'images/how-to-eyebrow-black-hover.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                <span class="menu-item-text">Groepen</span>
+                            </a>
+                        </li>
+                        <li class="main-menu-item main-menu-how-to">
+                            <a href="#" class="how-to-link" >
+                                <img src="{% static 'images/how-to-eyebrow-yellow.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
+                                <img src="{% static 'images/how-to-eyebrow-yellow-hover.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                <span class="menu-item-text">Verhalen</span>
+                            </a>
+                        </li>
+                        <li class="main-menu-item main-menu-how-to">
+                            <a href="#" class="how-to-link" >
+                                <img src="{% static 'images/how-to-eyebrow-green.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
+                                <img src="{% static 'images/how-to-eyebrow-green-hover.svg' %}" class="how-to-eye-icon is-hidden"
+                                     width="22.941px" height="15.687px" />
+                                <span class="menu-item-text">Ideeën</span>
+                            </a>
+                        </li>
+                        <li class="main-menu-item over-ub">
+                            <a href="#" class="over-ub-link" >
+                                <span class="menu-item-text">Over (Un)usual Business</span>
+                            </a>
+                        </li>
+                        <li class="main-menu-item main-menu-how-to-circles" >
+                          <a href="#" class="how-to-circles-link" >
+                            <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles-icon" width="50.457px" height="50.457px" />
+                            <span class="menu-item-text">Thema's</span>
+                          </a>
+                        </li>
+                        <li class="main-menu-item main-menu-search" >
+                          <a href="#" >
+                            <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
+                          </a>
+                        </li>
+                        <li class="main-menu-item main-menu-language">
+                          <a href="#" class="language" >
+                            <span class="menu-item-short-text">EN</span>
+                            <span class="menu-item-text">English</span>
+                          </a>
+                        </li>
+                    </ul>
                 </nav>
                 {% endblock %}
             </header>
 
-            <section class="l-grid">
+            <section class="l-content">
 
                 {% block sidebarleft %}
                     <aside class="sidebar-left">

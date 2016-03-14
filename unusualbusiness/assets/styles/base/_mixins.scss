@@ -4,14 +4,6 @@
 
 @import "base";
 
-.fluid-grid {
-  margin: 0 $gutter;
-
-  @media(max-width: $tablet) {
-    margin: 0 $gutter / 2;
-  }
-}
-
 .border-top {
   border-top: solid 2px $light-gray;
 }
@@ -29,17 +21,28 @@
 }
 
 @mixin border-top {
-  @extend .border-top;
+  border-top: solid 2px $light-gray;
 }
 
 @mixin border-right {
-  @extend .border-right;
+  border-right: solid 2px $light-gray;
 }
 
 @mixin border-bottom {
-  @extend .border-bottom;
+  border-bottom: solid 2px $light-gray;
 }
 
 @mixin border-left {
-  @extend .border-left;
+  border-left: solid 2px $light-gray;
 }
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */

@@ -5,10 +5,19 @@
 @import "../base/base";
 @import "../base/mixins";
 
+// Main nav
 .main-nav {
-  @extend .border-bottom;
+  border-bottom: solid 2px $light-gray;
+
+  @media(max-width: $tablet) {
+    border-bottom: none;
+    display: flex;
+    height: 44px;
+    background-color: $white;
+  }
 }
 
+// Main menu
 .main-menu  {
   padding: 14px 0;
   width: calc(100% - 155px);
@@ -19,37 +28,191 @@
   a {
     text-decoration: none;
   }
+
+  @media(max-width: $tablet) {
+    position: absolute;
+    right: 0;
+    top: 44px;
+    display: inherit;
+    width: calc(100% - 46px);
+    min-height: calc(100vh - 44px);
+    background-color: $white;
+    overflow: hidden;
+  }
 }
 
+// UB logo
 .ub-logo {
   float: left;
-  margin-right: 110px;
-  padding: 11px 0 17px 0;
-  width: 41.401px;
+
+  .ub-logo-icon {
+    padding: 23px 0 17px 0;
+    margin-right: 110px;
+    width: 41.401px;
+
+    @media(max-width: $tablet) {
+      margin-right: 0;
+      padding: 10px 8px 0;
+      width: 30px;
+    }
+  }
 }
 
-.main-menu .how-to {
+// Search bar
+.search-bar {
+  display: none;
+
+  @media(max-width: $tablet) {
+    display: inherit;
+    flex: 1;
+    border-left: solid 1px $light-gray;
+    height: 100%;
+  }
+
+  .search-label {
+    @media(max-width: $tablet) {
+      align-self: center;
+      text-align: center;
+      width: 40px;
+    }
+  }
+
+  .search-textbox {
+    @media(max-width: $tablet) {
+      border: none;
+      padding: 0;
+      height: 100%;
+    }
+  }
+}
+
+// Hamburder menu
+.hamburger-menu {
+  display: none;
+
+  @media(max-width: $tablet) {
+    display: inherit;
+    border-left: solid 1px $light-gray;
+    padding: 0 13px;
+  }
+}
+
+// MenuItems
+.main-menu-item {
+  @media(max-width: $tablet) {
+    flex: inherit;
+    width: 100%;
+    padding: 20px 30px;
+    border-bottom: solid 1px $light-gray;
+  }
+
+  .menu-item-short-text {
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .menu-item-text {
+    display: none;
+
+    @media(max-width: $tablet) {
+      display: inherit;
+    }
+  }
+}
+
+
+// MenuItem: How to
+.main-menu-how-to {
   flex: 1;
   justify-content: space-around;
   text-align: center;
+
+  @media(max-width: $tablet) {
+    width: 100%;
+    display: inline-block;
+    flex: inherit;
+  }
+
+  .how-to-link {
+    width: 120px;
+    height: 25px;
+    display: inline-block;
+
+    @media(max-width: $tablet) {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .how-to-eyebrow-icon {
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .how-to-eye-icon {
+    @media(max-width: $tablet) {
+      display: inherit !important;
+      float: left;
+    }
+  }
 }
 
-.how-to-link {
-  width: 120px;
-  height: 25px;
-  display: inline-block;
-}
-
-.main-menu .how-to-circles {
+// MenuItem: How to circles
+.main-menu-how-to-circles {
   margin: 0 7px 0 50px;
+
+  @media(max-width: $tablet) {
+    margin: 0;
+    padding: 10px 30px;
+    order: -1;
+  }
+
+  .how-to-circles-link {
+    @media(max-width: $tablet) {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .how-to-circles-icon {
+    @media(max-width: $tablet) {
+      float: left;
+    }
+  }
+
+  .menu-item-text {
+    padding-top: 15px;
+    margin-left: -25px;
+  }
 }
 
-.main-menu .search-icon {
-  margin: 0 29px;
+// MenuItem: search
+.main-menu-search {
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
-.main-menu .language {
+// MenuItem: over ub
+.over-ub {
+  text-align: center;
+
+  @media(max-width: $tablet) {
+    padding: 20px 30px;
+  }
+}
+
+// MenuItem: language
+.main-menu-language {
   padding: 4px 1px 6px 7px;
-
+  text-align: center;
+  font-weight: bold;
   font-family: $open-sans;
+
+  @media(max-width: $tablet) {
+    padding: 20px 30px;
+  }
 }

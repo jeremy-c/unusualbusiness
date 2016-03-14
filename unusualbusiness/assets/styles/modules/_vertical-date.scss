@@ -15,13 +15,13 @@
 
 .vertical-date-day-of-month {
   @extend .vertical-date-element;
-  padding-top: 10px;
-  flex: 10;
+  padding-top: 15px;
+  flex: 2;
 }
 
 .vertical-date-month {
   @extend .vertical-date-element;
-  flex: 10;
+  flex: 2;
 }
 
 .vertical-date-year {
