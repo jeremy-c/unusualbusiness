@@ -6,9 +6,10 @@
 
 hr {
   display: block;
-  height: 2px;
   border: 0;
   border-top: 2px solid $light-gray;
   margin: $gutter 0;
   padding: 0;
+  height: 2px;
+  width: 100%;
 }
