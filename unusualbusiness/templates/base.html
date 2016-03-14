@@ -47,15 +47,16 @@
 
         <div class="l-wrapper">
 
-            <header class="l-header">
+            <header class="l-header header">
                 {% block header %}
                 <nav>
+                    <div class="ub-logo">
+                        <a href="#"  >
+                            <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
+                        </a>
+                    </div>
                   <ul class="main-menu">
-                    <li class="ub-logo">
-                      <a href="#"  >
-                        <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo" width="41.401px" height="33.63px" />
-                      </a>
-                    </li>
+
                     <li class="how-to">
                       <a href="#" class="how-to-link" >
                         <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-eyebrow" width="118.123px" height="19.413px" />

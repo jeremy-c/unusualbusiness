@@ -5,10 +5,13 @@
 @import "../base/base";
 @import "../base/mixins";
 
-.main-menu  {
+.header nav {
   @extend .border-bottom;
+}
+
+.main-menu  {
   padding: 14px 0;
-  width: 100%;
+  width: calc(100% - 155px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -18,9 +21,11 @@
   }
 }
 
-.main-menu .ub-logo {
-  flex-wrap: wrap;
-  margin-right: 55px;
+.ub-logo {
+  float: left;
+  margin-right: 110px;
+  padding: 11px 0 17px 0;
+  width: 41.401px;
 }
 
 .main-menu .how-to {
@@ -36,7 +41,7 @@
 }
 
 .main-menu .how-to-circles {
-  margin: 0 7px 0 55px;
+  margin: 0 7px 0 50px;
 }
 
 .main-menu .search-icon {
