@@ -2,6 +2,7 @@
    Module/Main Menu
    ======================= */
 
+@import "../base/base";
 @import "../base/mixins";
 
 .main-menu  {
@@ -11,6 +12,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .main-menu .ub-logo {
@@ -25,7 +30,12 @@
   flex: 1;
   justify-content: space-around;
   text-align: center;
+}
 
+.how-to-link {
+  width: 120px;
+  height: 25px;
+  display: inline-block;
 }
 
 .main-menu .help-button {
@@ -38,4 +48,6 @@
 
 .main-menu .language {
   padding: 5px 0 5px 8px;
+
+  font-family: $open-sans;
 }

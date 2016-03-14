@@ -7,6 +7,28 @@
 
 console.log('Hello, World!');
 
+var mainMenu = () => {
+  let toggleEyebrows = function() {
+    let howToEyebrow = $(this).children().first();
+    let howToEye = howToEyebrow.siblings().first();
+
+    howToEyebrow.toggleClass('is-hidden');
+    howToEye.toggleClass('is-hidden');
+
+    console.log('done');
+  };
+
+  let initMouseEvents = function() {
+    let howToLink = $('.how-to-link');
+    howToLink.on('mouseenter', toggleEyebrows);
+    howToLink.on('mouseleave', toggleEyebrows);
+  };
+
+  return {
+    initMouseEvents: initMouseEvents
+  };
+};
+
 var featuredAgenda = () => {
   let initMouseEvents = function() {
     let agendaItemLink = $('.featured-agenda-item-link');
@@ -42,6 +64,9 @@ var featuredArticles = () => {
 
 (function() {
   $(document).ready(function() {
+    let MainMenu = mainMenu();
+    MainMenu.initMouseEvents();
+
     let FeaturedArticles = featuredArticles();
     FeaturedArticles.initSlider();
 
