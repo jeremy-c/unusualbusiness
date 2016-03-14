@@ -70,8 +70,3 @@ staticfiles/
 
 # SqlLite
 *.sqlite3
-
-# Bourbon
-
-unusualbusiness/assets/styles/bourbon/
-unusualbusiness/assets/styles/neat/
