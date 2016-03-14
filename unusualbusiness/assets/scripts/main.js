@@ -13,11 +13,11 @@ var featuredAgenda = () => {
 
     agendaItemLink.on('mouseover', function() {
       let timeElement = $(this).parent().siblings().first();
-      timeElement.addClass('is-hovered');
+      timeElement.addClass('is-hover');
     });
     agendaItemLink.on('mouseout', function() {
       let timeElement = $(this).parent().siblings().first();
-      timeElement.removeClass('is-hovered');
+      timeElement.removeClass('is-hover');
     });
   };
 

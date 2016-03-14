@@ -9,7 +9,11 @@
   float: right;
   margin-top: -30px;
   padding-right: 20px;
-  z-index: 9999;
+
+  @media(max-width: $tablet) {
+    margin-top: -25px;
+    padding-right: 5px;
+  }
 }
 
 .unslider-nav ol li {
@@ -18,6 +22,13 @@
   margin: 0 7px !important;
   border-radius: 10px !important;
   background: $white !important;
+
+  @media(max-width: $tablet) {
+    width: 6px !important;
+    height: 6px !important;
+    margin: 0 4px !important;
+    border-radius: 6px !important;
+  }
 }
 
 .unslider-nav ol li.unslider-active {

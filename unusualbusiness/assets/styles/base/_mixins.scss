@@ -6,6 +6,10 @@
 
 .fluid-grid {
   margin: 0 $gutter;
+
+  @media(max-width: $tablet) {
+    margin: 0 $gutter / 2;
+  }
 }
 
 .border-top {

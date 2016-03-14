@@ -8,6 +8,10 @@
 .featured-agenda {
   display: flex;
   flex-direction: column;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
 .featured-agenda-title {
@@ -70,7 +74,7 @@
    States/Featured Agenda
    ======================= */
 
-&.is-hovered {
+&.is-hover {
   border-right: solid 8px $blue;
   margin-right: 9px;
   //padding-right: 10px;

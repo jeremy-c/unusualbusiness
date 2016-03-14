@@ -23,17 +23,25 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 370px;
+  height: 370px;
 
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
+
+  @media(max-width: $tablet) {
+    height: 150px;
+  }
 }
 
 .featured-article-date {
   display: flex;
   flex-direction: column;
   padding-right: 30px;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
 .featured-article-preview-title {
@@ -50,6 +58,12 @@
   .featured-article-event & {
     background-color: $blue;
   }
+
+  @media(max-width: $tablet) {
+    width: 55%;
+    font-size: 4vw;
+    line-height: 3.5vh;
+  }
 }
 
 .featured-article-preview-image {
@@ -58,6 +72,10 @@
 
 .featured-article-icon {
   width: 70px;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
 .article-icon {
