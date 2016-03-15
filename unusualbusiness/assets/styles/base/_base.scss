@@ -59,6 +59,11 @@ img {
 }
 
 textarea:focus,
-input:focus{
+textarea:active,
+input:focus,
+input:active,
+button:focus,
+button:active {
     outline: none;
 }
+

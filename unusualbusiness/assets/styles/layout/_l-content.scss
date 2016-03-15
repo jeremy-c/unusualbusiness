@@ -5,14 +5,24 @@
 @import "../base/mixins";
 
 .l-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
+
+.l-wrapper-inner {
+  position: relative;
+  width: 100%;
+}
+
 
 .l-content {
   margin: 0 $gutter;
   min-height: calc(100vh - (50px + 84px));
 
   @media(max-width: $tablet) {
-    margin: 54px $gutter / 2 0;
+    margin: 0 $gutter / 2 0;
+    padding-top: 54px;
     min-height: inherit;
   }
 }

@@ -7,7 +7,8 @@
     "normalize-css": "normalize.css#^3.0.3",
     "picturefill": "^3.0.2",
     "flexibility": "^1.0.6",
-    "unslider": "^2.0.3"
+    "unslider": "^2.0.3",
+    "css-hamburgers": "^0.3.0"
   },
   "ignore": [
     "**/.*",

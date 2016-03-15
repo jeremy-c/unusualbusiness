@@ -114,7 +114,7 @@ gulp.task('styles', () => {
 
   return gulp.src([
     'unusualbusiness/assets/styles/**/*.scss',
-    'unusualbusiness/static/styles/**/*.css',
+    'unusualbusiness/static/styles/**/*.css'
   ])
     .pipe($.newer('.tmp/styles'))
     //.pipe($.sourcemaps.init())
@@ -144,7 +144,7 @@ gulp.task('scripts', () =>
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      './unusualbusiness/assets/scripts/main.js'
+      './unusualbusiness/assets/scripts/**/*.js'
       // Other scripts
     ])
       .pipe($.newer('.tmp/scripts'))
@@ -152,7 +152,7 @@ gulp.task('scripts', () =>
       .pipe($.babel())
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest('.tmp/scripts'))
-      .pipe($.concat('main.min.js'))
+      .pipe($.concat('bundle.min.js'))
       .pipe($.uglify({preserveComments: 'some'}))
       // Output files
       .pipe($.size({title: 'scripts'}))

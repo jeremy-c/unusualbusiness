@@ -31,11 +31,10 @@
 
   @media(max-width: $tablet) {
     position: absolute;
-    right: 0;
-    top: 44px;
+    top: 0;
     display: inherit;
-    width: calc(100% - 46px);
-    min-height: calc(100vh - 44px);
+    width: 315px;
+    height: 100vh;
     background-color: $white;
     overflow: hidden;
   }
@@ -216,3 +215,50 @@
     padding: 20px 30px;
   }
 }
+
+
+@media (max-width: $tablet) {
+
+  .js-ready .main-menu {
+    right: -315px;
+  }
+
+  .js-ready .l-wrapper-inner {
+    right: 0;
+  }
+
+  .js-nav .l-wrapper-inner {
+    right: 315px;
+  }
+
+  .csstransforms3d.csstransitions.js-ready .main-menu {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  .csstransforms3d.csstransitions .l-wrapper-inner {
+    right: 0 !important;
+    transform: translate3d(0, 0, 0);
+    transition: transform 500ms ease;
+    backface-visibility: hidden;
+  }
+
+  .csstransforms3d.csstransitions.js-nav .l-wrapper-inner {
+    transform: translate3d(-315px, 0, 0) scale3d(1, 1, 1);
+  }
+
+  .csstransforms3d.csstransitions .main-menu li {
+    opacity: 0.7;
+    transition: opacity 300ms 100ms ease, transform 500ms ease;
+    transform: translate3d(315px, 0, 0) scale3d(0.9, 0.9, 0.9);
+    transform-origin: 50% 0%;
+  }
+
+  .csstransforms3d.csstransitions.js-nav .main-menu li {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+
