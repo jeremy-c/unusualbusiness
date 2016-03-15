@@ -20,7 +20,7 @@
 // Main menu
 .main-menu  {
   padding: 14px 0;
-  width: calc(100% - 45px);
+  width: calc(100% - 41.401px); // 100% - logo width
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -160,6 +160,7 @@
 // MenuItem: How to circles
 .main-menu-how-to-circles {
   margin: 0 7px 0 0;
+  padding-right: 36px;
 
   @media(max-width: $tablet) {
     margin: 0;
@@ -189,6 +190,8 @@
 
 // MenuItem: search
 .main-menu-search {
+  padding-right: 29px;
+
   @media(max-width: $tablet) {
     display: none;
   }
