@@ -45,6 +45,7 @@
     flex-flow: wrap;
     margin: $gutter / 2 $gutter / 2 0 $gutter / 2;
     padding: $gutter / 2;
+    //noinspection CssInvalidFunction
     width: calc(33.33333333333333% - 2 * var(--gutter));
     background-color: $white;
   }
@@ -53,6 +54,7 @@
 .featured-article-category {
   position: absolute;
   top: $gutter / 2;
+  //noinspection CssInvalidFunction
   left: calc(33.33333333333333% - 4 * var(--gutter));
   margin: 6px 0;
   padding: $gutter / 3 $gutter;
