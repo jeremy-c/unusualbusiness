@@ -13,4 +13,8 @@
   font-weight: 400;
   font-family: $open-sans;
   color: $medium-gray;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }

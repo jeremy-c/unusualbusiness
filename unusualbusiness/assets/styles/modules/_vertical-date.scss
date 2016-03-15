@@ -8,28 +8,52 @@
   font-family: $open-sans;
   font-weight: bold;
   color: $blue;
+
+  @media(max-width: $tablet) {
+    font-size: 15px;
+    width: auto;
+  }
 }
 
 .vertical-date-day {
   @extend .vertical-date-element;
   padding-bottom: 10px;
   font-weight: normal;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
 .vertical-date-day-of-month {
   @extend .vertical-date-element;
   padding-top: 15px;
   flex: 2;
+
+  @media(max-width: $tablet) {
+    flex: inherit;
+    padding: 0 2px;
+  }
 }
 
 .vertical-date-month {
   @extend .vertical-date-element;
   flex: 2;
+
+  @media(max-width: $tablet) {
+    flex: inherit;
+    padding: 0 2px;
+  }
 }
 
 .vertical-date-year {
   @extend .vertical-date-element;
   flex: 1;
+
+  @media(max-width: $tablet) {
+    flex: inherit;
+    padding: 0 2px;
+  }
 }
 
 .vertical-date-time {
@@ -37,6 +61,10 @@
   padding-top: 10px;
   font-size: 16px;
   font-weight: normal;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
 .vertical-date-large {

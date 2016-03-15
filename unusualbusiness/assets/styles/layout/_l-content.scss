@@ -23,8 +23,8 @@
   min-height: calc(100vh - (50px + 84px));
 
   @media(max-width: $tablet) {
-    margin: 0 $gutter / 2 0;
-    padding-top: 54px;
+    margin: 0;
+    padding-top: 44px;
 
     // .footer height + .main-nav (mobile) height
     min-height: calc(100vh - (50px + 44px));
