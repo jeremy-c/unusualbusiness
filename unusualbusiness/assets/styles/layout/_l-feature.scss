@@ -2,12 +2,18 @@
    Layout/Feature
    ======================= */
 
+@import "../base/base";
+
 .l-feature {
   padding-top: 14px;
   margin-bottom: 14px;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    padding-top: 0;
+  }
 }
 
 .l-featured-articles,

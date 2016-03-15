@@ -8,21 +8,25 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  height: 100%;
 }
 
 .l-wrapper-inner {
   position: relative;
   width: 100%;
+  height: 100%;
 }
-
 
 .l-content {
   margin: 0 $gutter;
+    // .footer height + .main-nav height
   min-height: calc(100vh - (50px + 84px));
 
   @media(max-width: $tablet) {
     margin: 0 $gutter / 2 0;
     padding-top: 54px;
-    min-height: inherit;
+
+    // .footer height + .main-nav (mobile) height
+    min-height: calc(100vh - (50px + 44px));
   }
 }

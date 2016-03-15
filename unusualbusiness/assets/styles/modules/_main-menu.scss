@@ -20,7 +20,7 @@
 // Main menu
 .main-menu  {
   padding: 14px 0;
-  width: calc(100% - 155px);
+  width: calc(100% - 45px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -46,11 +46,9 @@
 
   .ub-logo-icon {
     padding: 23px 0 17px 0;
-    margin-right: 110px;
     width: 41.401px;
 
     @media(max-width: $tablet) {
-      margin-right: 0;
       padding: 10px 8px 0;
       width: 30px;
     }
@@ -81,6 +79,7 @@
       border: none;
       padding: 0;
       height: 100%;
+      width: 100%;
     }
   }
 }
@@ -160,7 +159,7 @@
 
 // MenuItem: How to circles
 .main-menu-how-to-circles {
-  margin: 0 7px 0 50px;
+  margin: 0 7px 0 0;
 
   @media(max-width: $tablet) {
     margin: 0;
