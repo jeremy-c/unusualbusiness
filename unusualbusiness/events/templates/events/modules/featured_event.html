@@ -1,0 +1,26 @@
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+<li class="featured-article blue">
+    <a href="{{ the_page.url }}" class="featured-article-link">
+
+        <time class="featured-article-date vertical-date-large dt-start"
+              datetime="{{ page.start_date|date:"SHORT_DATE_FORMAT" }}">
+            <div class="vertical-date-day border-bottom">{{ page.start_date|date:"D" }}</div>
+            <div class="vertical-date-day-of-month">{{ page.start_date|date:"d" }}</div>
+            <div class="vertical-date-month">{{ page.start_date|date:"m" }}</div>
+            <div class="vertical-date-year">{{ page.start_date|date:"y" }}</div>
+            <div class="vertical-date-time border-top">{{ page.start_date|time:"H:i" }}</div>
+        </time>
+        <div class="featured-article-preview" >
+            <div class="featured-article-category p-category">
+                Lezing <!-- TODO: make dynamic -->
+            </div>
+            {% if page.featured_image %}
+                {% include "modules/featured_responsive_image.html" with image=page.featured_image %}
+            {% endif %}
+            <h4 class="featured-article-preview-title">
+                {{ page.title }}
+            </h4>
+        </div>
+    </a>
+</li>

@@ -27,68 +27,25 @@
             <section class="l-featured-articles featured-articles slider" >
                 <h3 class="section-title">Uitgelicht</h3>
                 <ul>
-                    <li class="featured-article featured-article-event">
-                        <a href="#" class="featured-article-link">
-                            <time class="featured-article-date vertical-date-large dt-start"
-                                  datetime="{% now 'SHORT_DATETIME_FORMAT' %}">
-                                <div class="vertical-date-day border-bottom">ma</div>
-                                <div class="vertical-date-day-of-month">17</div>
-                                <div class="vertical-date-month">01</div>
-                                <div class="vertical-date-year">16</div>
-                                <div class="vertical-date-time border-top">19:30</div>
-                            </time>
-                            <div class="featured-article-category p-category">Lezing</div>
-                            <div class="featured-article-preview" style="background-image:url(/media/images/how-to-get-together.jpg)">
-                                <h4 class="featured-article-preview-title">
-                                    Casco Forum 1: Commoning Economy
-                                </h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="featured-article">
-                        <a href="#" class="featured-article-link">
-                            <div class="featured-article-icon">
-                                <img src="{% static 'images/article-icon.svg' %}" width="41.992px" height="29.445px" class="article-icon" />
-                            </div>
-                            <div class="featured-article-preview" style="background-image:url(/media/images/people.jpg)">
-                                <h4 class="featured-article-preview-title">
-                                    We tried to live together with 10 people but we failed dramatically
-                                </h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="featured-article featured-article-event">
-                        <a href="#" class="featured-article-link">
-                            <time class="featured-article-date vertical-date-large dt-start"
-                                  datetime="{% now 'SHORT_DATETIME_FORMAT' %}">
-                                <div class="vertical-date-day border-bottom">ma</div>
-                                <div class="vertical-date-day-of-month">17</div>
-                                <div class="vertical-date-month">01</div>
-                                <div class="vertical-date-year">16</div>
-                                <div class="vertical-date-time border-top">19:30</div>
-                            </time>
-                            <div class="featured-article-preview" style="background-image:url(/media/images/how-to-get-together.jpg)">
-                                <h4 class="featured-article-preview-title">
-                                    Casco forum 2: Commoning Economy
-                                </h4>
-                            </div>
-                        </a>
-                    </li>
-{#                    <li class="featured-article">#}
-{#                        <a href="#" class="featured-article-link">#}
-{#                            <div class="featured-article-date">#}
-{#                                <span class="vertical-date vertical-date-large">170115</span>#}
-{#                            </div>#}
-{#                            <div class="featured-article-preview">#}
-{#                                <div class="featured-article-preview-title-wrapper">#}
-{#                                    <h4 class="featured-article-preview-title">#}
-{#                                        We tried to live together with 10 people but we failed dramatically#}
-{#                                    </h4>#}
-{#                                </div>#}
-{#                                <img src="/media/images/people.jpg" class="featured-article-preview-image">#}
-{#                            </div>#}
-{#                        </a>#}
-{#                    </li>#}
+                    {% for page in pages %}
+                        {% if page.content_type.model == 'eventpage' %}
+                            {% include "events/modules/featured_event.html" %}
+                        {%  elif page.content_type.model == 'howtopage' %}
+                            {% include "howtos/modules/featured_howto.html" %}
+                        {%  elif page.content_type.model == 'definitionpage' %}
+                            {% include "definitions/modules/featured_definition.html" %}
+                        {%  elif page.content_type.model == 'organizationpage' %}
+                            {% include "organizations/modules/featured_organization.html" %}
+                        {%  elif page.content_type.model == 'reportarticlepage' %}
+                            {% include "articles/modules/featured_article.html" with article_class="blue" %}
+                        {%  elif page.content_type.model == 'storyarticlepage' %}
+                            {% include "articles/modules/featured_article.html" with article_class="yellow" %}
+                        {%  elif page.content_type.model == 'theoryarticlepage' %}
+                            {% include "articles/modules/featured_article.html" with article_class="green" %}
+                        {% else %}
+                            {% include "articles/modules/featured_article.html" with article_class="blue" %}
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </section>
 

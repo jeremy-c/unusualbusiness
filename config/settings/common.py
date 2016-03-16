@@ -265,7 +265,7 @@ ADMIN_URL = r'^admin/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = '(Un)usual Business'
-
+# WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
 LANGUAGES = (
     ('en', u'English'),
