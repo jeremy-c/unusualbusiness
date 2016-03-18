@@ -8,10 +8,15 @@
 // Main nav
 .main-nav {
   border-bottom: solid 2px $light-gray;
+  margin-top: 8px;
+  padding: 0 $gutter;
+  background-color: $white;
 
   @media(max-width: $tablet) {
-    border-bottom: none;
     display: flex;
+    border-bottom: none;
+    margin-top: 0;
+    padding: 0;
     height: 44px;
     background-color: $white;
   }

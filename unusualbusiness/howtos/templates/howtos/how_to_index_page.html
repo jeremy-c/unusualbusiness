@@ -1,14 +1,34 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
 
-{% block body_class %}template-how-to-index-page{% endblock %}
+{% block body_class %}how-tos{% endblock %}
 
 {% block content %}
 
-    {% for how_to in how_tos %}
-        <ul>
-            <li class="{{ how_to | to_class_name }}"><a href="{% pageurl how_to %}">{{ how_to.title }}</a></li>
+    <header class="content-header">
+        <h1 class="content-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+        <p class="content-header-text">
+            Hier komt een introducerende tekst op onze “thema-pagina’s”.
+            Iets over dat wij onderwerpen selecteren en redactie voeren over de bestaande content,
+            om zo beter te kunnen informeren en verkennen. Dat dit ook een manier is om het
+            onderzoek en wat er werkelijk speelt –daarmee onze praktijk ofzo– op elkaar aan te sluiten.
+        </p>
+    </header>
+
+    <section class="l-blocks">
+        <ul class="howto-blocks">
+            {% for how_to in how_tos %}
+                <li class="howto-block {{ how_to.content_type.model }}">
+                    <a href="{% pageurl how_to %}">{{ how_to.title }}</a>
+                </li>
+            {% endfor %}
+                <li class="howto-block arg">
+                    <a href="#">1234 5 test</a>
+                </li>
+                <li class="howto-block arg">
+                    <a href="#">1234 5 test</a>
+                </li>
         </ul>
-    {% endfor %}
+    </section>
 
 {% endblock %}

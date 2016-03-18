@@ -5,7 +5,6 @@
 @import "../base/mixins";
 
 .l-header {
-  margin: 0 $gutter;
 
   @media(max-width: $tablet) {
     z-index: 1;

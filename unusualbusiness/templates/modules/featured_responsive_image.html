@@ -7,19 +7,19 @@
 {% image image height-740 as ri_h370_2x %}
 <picture>
     <source media="(max-width: 361px)"
-        srcset=" {{ ri_cropped.url }} 2x, {{ ri_small_cropped.url }} 1x"
+        srcset=" {{ ri_cropped.url }} 2x,{{ ri_small_cropped.url }} 1x"
         sizes="100vw" />
     <source media="(max-width: 768px)"
-        srcset="{{ ri_cropped_2x.url }} 2x, {{ ri_cropped.url }} 1x"
+        srcset="{{ ri_cropped_2x.url }} 2x,{{ ri_cropped.url }} 1x"
         sizes="100vw" />
     <source media="(min-width: 768px)"
-        srcset="{{ ri_h370_2x.url }} 2x, {{ ri_h370.url }} 1x"
+        srcset="{{ ri_h370_2x.url }} 2x,{{ ri_h370.url }} 1x"
         sizes="100%" />
     <source media="(min-width: 1440px)"
-        srcset="{{ ri_h370_2x.url }} 2x, {{ ri_h370.url }} 1x"
+        srcset="{{ ri_h370_2x.url }} 2x,{{ ri_h370.url }} 1x"
         sizes="100%" />
     <img
-        srcset="{{ ri_h370_2x.url }} 2x, {{ ri_h370.url }} 1x"
+        srcset="{{ ri_h370_2x.url }} 2x,{{ ri_h370.url }} 1x"
         src="{{ ri_h370.url }}"
         width="{{ ri_h370.width }}"
         height="{{ ri_h370.height }}"
