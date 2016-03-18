@@ -6,7 +6,7 @@
 
 var featuredArticles = () => {
   let initSlider = function() {
-    $('.slider').unslider({
+    $('.unslider').unslider({
       keys: false,
       arrows: false,
       nav: true

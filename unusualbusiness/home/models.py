@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from itertools import chain
 
+from datetime import datetime
 from django.shortcuts import render
 from taggit.models import Tag
 from wagtail.wagtailcore.models import Page
@@ -73,6 +74,7 @@ class HomePage(TranslationMixin, Page):
         return render(request, self.template, {
             'page': self,
             'pages': pages,
+            'upcoming_events': EventPage.upcoming_events(),
             'how_tos': how_tos,
             'tags': self.tags,
         })

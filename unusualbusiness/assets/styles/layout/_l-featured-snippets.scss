@@ -1,0 +1,28 @@
+/* ==|====================
+   Layout/Featured Snippets
+   ======================= */
+
+@import "../base/base";
+
+.l-featured-snippets {
+  display: flex;
+  flex-direction: row;
+  padding-top: 34px;
+  margin-bottom: 34px;
+
+}
+
+.featured-links {
+  margin-left: 62.5px;
+  flex: 1;
+  align-self: center;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.featured-callouts {
+  width: 215px;
+  margin: 0 100px;
+}

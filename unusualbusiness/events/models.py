@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -114,6 +115,11 @@ class EventPage(TranslationMixin, Page):
     # Parent page / subpage type rules]
     parent_page_types = ['events.EventIndexPage']
     subpage_types = ['articles.ReportArticlePage']
+
+    # Methods
+    @staticmethod
+    def upcoming_events():
+        return EventPage.objects.all().filter(start_date__gt=datetime.now).live()
 
 
 class EventIndexPage(TranslationMixin, Page):

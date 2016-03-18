@@ -14,10 +14,13 @@
   @media (max-width: $tablet) {
     padding-top: 0;
   }
+
+  .unslider {
+    width: 100%;
+  }
 }
 
-.l-featured-articles,
-.unslider {
+.l-featured-articles {
   width: 100%;
 }
 
