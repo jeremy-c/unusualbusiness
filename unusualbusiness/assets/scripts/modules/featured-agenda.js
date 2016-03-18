@@ -19,13 +19,13 @@ var featuredAgenda = () => {
   };
 
   return {
-    initMouseEvents: initMouseEvents
+    initGrid: initMouseEvents
   };
 };
 
 (function() {
   $(document).ready(function() {
     let FeaturedAgenda = featuredAgenda();
-    FeaturedAgenda.initMouseEvents();
+    FeaturedAgenda.initGrid();
   });
 })();

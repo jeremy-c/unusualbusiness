@@ -1,0 +1,21 @@
+/* ==|====================
+   Module/Howto Grid
+   ======================= */
+
+@import "../base/base";
+
+.howto-grid {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  margin: -$gutter / 2;
+}
+
+.howto-grid-item {
+  flex: 1 0 360px - $gutter;
+  width: 360px - $gutter;
+  height: 400px;
+  margin: $gutter / 2;
+  padding: $gutter / 2;
+  background-color: $white;
+}

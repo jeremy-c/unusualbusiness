@@ -18,13 +18,13 @@ var featuredJournal = () => {
   };
 
   return {
-    initMouseEvents: initMouseEvents
+    initGrid: initMouseEvents
   };
 };
 
 (function() {
   $(document).ready(function() {
     let FeaturedJournal = featuredJournal();
-    FeaturedJournal.initMouseEvents();
+    FeaturedJournal.initGrid();
   });
 })();

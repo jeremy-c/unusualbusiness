@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
 
+{% block extra_js %}
+{% endblock %}
+
 {% block body_class %}how-tos{% endblock %}
 
 {% block content %}
@@ -16,16 +19,22 @@
     </header>
 
     <section class="l-blocks">
-        <ul class="howto-blocks">
+        <ul class="howto-grid">
             {% for how_to in how_tos %}
-                <li class="howto-block {{ how_to.content_type.model }}">
+                <li class="howto-grid-item {{ how_to.content_type.model }}">
                     <a href="{% pageurl how_to %}">{{ how_to.title }}</a>
                 </li>
             {% endfor %}
-                <li class="howto-block arg">
+                <li class="howto-grid-item">
                     <a href="#">1234 5 test</a>
                 </li>
-                <li class="howto-block arg">
+                <li class="howto-grid-item">
+                    <a href="#">1234 5 test</a>
+                </li>
+                <li class="howto-grid-item">
+                    <a href="#">1234 5 test</a>
+                </li>
+                <li class="howto-grid-item">
                     <a href="#">1234 5 test</a>
                 </li>
         </ul>
