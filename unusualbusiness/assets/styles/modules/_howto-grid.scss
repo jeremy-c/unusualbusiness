@@ -14,8 +14,116 @@
 .howto-grid-item {
   flex: 1 0 360px - $gutter;
   width: 360px - $gutter;
-  height: 400px;
+  min-height: 400px;
   margin: $gutter / 2;
   padding: $gutter / 2;
   background-color: $white;
+}
+
+.howto-grid-item-link {
+  text-decoration: none;
+}
+
+.howto-grid-item-title {
+  padding: $gutter;
+  text-align: center;
+  color: $green;
+  font-size: 36px;
+  line-height: 1.3em;
+}
+
+.howto-grid-item-how-to-circles {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: $gutter / 2;
+  width: 192.921px;
+  height: 192.921px;
+
+
+  img {
+    position: absolute;
+    display: none;
+  }
+
+  .how-to-circles-empty {
+    display: inherit;
+  }
+
+  &.green {
+    .how-to-circles-green {
+      display: inherit;
+    }
+  }
+
+  &.yellow {
+    .how-to-circles-yellow {
+      display: inherit;
+    }
+  }
+
+  &.black {
+    .how-to-circles-black {
+      display: inherit;
+    }
+  }
+
+  &.blue {
+    .how-to-circles-blue {
+      display: inherit;
+    }
+  }
+}
+
+.howto-grid-item-description {
+  padding: $gutter / 2 $gutter;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7em;
+}
+
+.howto-grid-item-meta {
+  padding: 0 $gutter / 2;
+}
+
+.howto-grid-item-meta-list-item {
+  display: inline-block;
+
+  width: 48%;
+  margin: 8px 1px;
+
+  .number {
+    display: inline-block;
+    min-width: 15px;
+
+    text-align: center;
+    font-family: $open-sans;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .article-type {
+    padding-left: 15px;
+  }
+
+  &.event-count .number  {
+    color: $blue;
+  }
+
+  &.story-count .number  {
+    color: $yellow;
+  }
+
+  &.organization-count .number  {
+    color: $black;
+  }
+
+  &.theory-count .number  {
+    color: $green;
+  }
+
+  .empty.number {
+    color: $light-gray;
+  }
+
 }
