@@ -202,4 +202,6 @@ class HowToIndexPage(TranslationMixin, Page):
         # Add extra variables and return the updated context
         context['how_tos'] = HowToPage.objects.child_of(self).live()
         context['parent'] = self.get_parent()
+        context['upcoming_events'] = EventPage.upcoming_events()
         return context
+

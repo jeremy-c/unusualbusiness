@@ -100,7 +100,11 @@
                         </div>
                         <hr>
                         <div class="howto-grid-item-events">
-
+                            <ul class="featured-agenda-items">
+                                {% for event in upcoming_events %}
+                                    {% include "events/modules/agenda_item.html" %}
+                                {% endfor %}
+                            </ul>
                         </div>
                     </a>
                 </li>
@@ -143,7 +147,6 @@
                         </div>
                         <hr>
                         <div class="howto-grid-item-events">
-
                         </div>
                     </a>
                 </li>
