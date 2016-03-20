@@ -95,3 +95,21 @@
     padding: 8px 0 0;
   }
 }
+
+.vertical-date-smaller {
+
+  .vertical-date-day {
+    display: none;
+  }
+
+  .vertical-date-day-of-month,
+  .vertical-date-month,
+  .vertical-date-year {
+    padding: 0 0 4px 0;
+  }
+
+   .vertical-date-year {
+    padding-bottom: 0;
+  }
+}
+

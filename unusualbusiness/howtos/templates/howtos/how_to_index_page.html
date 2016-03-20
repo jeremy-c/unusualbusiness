@@ -102,7 +102,7 @@
                         <div class="howto-grid-item-events">
                             <ul class="featured-agenda-items">
                                 {% for event in upcoming_events %}
-                                    {% include "events/modules/agenda_item.html" %}
+                                    {% include "events/modules/agenda_item.html" with vertical_date_class="vertical-date-smaller" %}
                                 {% endfor %}
                             </ul>
                         </div>

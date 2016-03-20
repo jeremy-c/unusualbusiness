@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
 <li class="featured-agenda-item h-event">
-    <time class="featured-agenda-date vertical-date-small border-right dt-start"
+    <time class="featured-agenda-date {{ vertical_date_class }} border-right dt-start"
           datetime="{{ event.start_date|date:"SHORT_DATETIME_FORMAT" }}">
         <div class="vertical-date-day">{{ event.start_date|date:"D" }}</div>
         <div class="vertical-date-day-of-month">{{ event.start_date|date:"d" }}</div>
