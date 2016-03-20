@@ -39,6 +39,7 @@
 .featured-agenda-item .description {
   display: flex;
   flex-direction: column;
+  width: calc(100% - 40px);
 }
 
 .featured-agenda-item-link {
@@ -75,7 +76,7 @@
    ======================= */
 
 &.is-hover {
-  border-right: solid 8px $blue;
+  border-right: solid 8px $blue !important;
   margin-right: 9px;
   //padding-right: 10px;
 }
