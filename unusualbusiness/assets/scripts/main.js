@@ -9,6 +9,11 @@ console.log('(Un)usual Business go!');
 
 (function() {
   $(document).ready(function() {
+    /* global svg4everybody*/
+    /* eslint no-undef: 2*/
 
+    svg4everybody({
+      polyfill: true
+    });
   });
 })();

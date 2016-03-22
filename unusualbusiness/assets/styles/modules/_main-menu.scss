@@ -269,3 +269,48 @@
 
 }
 
+.how-to-eyebrow-icon {
+  &.blue path {
+    stroke: $blue;
+  }
+  &.black path {
+    stroke: $black;
+  }
+  &.green path {
+    stroke: $green;
+  }
+  &.yellow path {
+    stroke: $yellow;
+  }
+}
+
+.how-to-eye-icon {
+  &.blue {
+    path,
+    circle {
+      stroke: $blue;
+    }
+  }
+
+  &.black {
+    path,
+    circle {
+      stroke: $black;
+    }
+  }
+
+  &.green {
+    path,
+    circle {
+      stroke: $green;
+    }
+  }
+
+  &.yellow {
+    path,
+    circle {
+      stroke: $yellow;
+    }
+  }
+
+}

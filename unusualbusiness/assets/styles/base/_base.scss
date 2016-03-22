@@ -16,10 +16,12 @@ $open-sans: 'Open Sans', sans-serif;
 $gutter: 34px;
 $mobile: 480px;
 $tablet: 768px;
+$boxed: 1100px;
 $desktop: 1440px;
 
 :root {
   --gutter: 34px;
+  //--halfgutter: calc(var(--gutter) / 2);
 }
 
 html {

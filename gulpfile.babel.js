@@ -37,9 +37,12 @@ import {stream as wiredep} from 'wiredep';
 import postcss from 'gulp-postcss';
 import cssnext from 'postcss-cssnext';
 import autoprefixer from 'autoprefixer';
+import svgSprite from 'gulp-svg-sprite';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+console.log($);
 
 // Lint JavaScript
 gulp.task('lint', () =>
@@ -194,16 +197,37 @@ gulp.task('html', () => {
     .pipe(gulp.dest('unusualbusiness/templates'));
 });
 
+
+// Build SVG Sprites
+let config                  = {
+        mode                : {
+            view            : {         // Activate the «view» mode
+                bust        : false,
+                render      : {
+                    scss    : true      // Activate Sass output (with default options)
+                }
+            },
+            symbol          : true,      // Activate the «symbol» mode
+            example         : true
+        }
+};
+
+gulp.task('sprites', () => {
+    return gulp.src('**/*.svg', {cwd: 'unusualbusiness/assets/images'})
+        .pipe(svgSprite(config))
+        .pipe(gulp.dest('unusualbusiness/static/images/sprites'));
+});
+
 // Clean output directory
 gulp.task('clean', () => del(['.tmp'], {dot: true}));
 
 // Build Production Files
 gulp.task('build', ['clean'], function (cb) {
-  runSequence('styles', ['lint', 'scripts', 'html', 'images', 'fonts'], cb);
+  runSequence('styles', ['lint', 'scripts', 'html', 'fonts', 'images',  'sprites'], cb);
 });
 
 // Watch Files For Changes & Reload, the default task
-gulp.task('default', ['styles', 'lint', 'scripts'], function () {
+gulp.task('default', ['styles', 'lint', 'scripts', 'images', 'sprites'], function () {
   browserSync({
     notify: false,
     proxy: "127.0.0.1:8000"
@@ -212,6 +236,6 @@ gulp.task('default', ['styles', 'lint', 'scripts'], function () {
   gulp.watch(['unusualbusiness/**/*.html'], reload);
   gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', 'scripts', reload]);
-  gulp.watch(['unusualbusiness/assets/images/**/*'], reload);
+  gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprites', reload]);
   gulp.watch('bower.json', ['fonts']);
 });

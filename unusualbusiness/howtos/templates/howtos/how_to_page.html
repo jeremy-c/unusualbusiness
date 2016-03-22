@@ -1,64 +1,146 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
 
-{% block body_class %}template-how-to-page{% endblock %}
-
-{% block header %}
-    <h1><img src="/static/images/how-to-circles.svg" class="how-to-circles" /> {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+{% block extra_js %}
 {% endblock %}
+
+{% block body_class %}how-to{% endblock %}
 
 {% block content %}
 
-    <div class="image">
-        {% image self.featured_image width-400 %}
-    </div>
-
-    <div class="body">
+    <header class="content-header">
+        <h1 class="content-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+        <div class="image">
+            {% image self.featured_image width-400 %}
+        </div>
         {{ self.description|richtext }}
-    </div>
+        <p class="content-header-text">
+            Een korte tekst of indleiding, of gewoon het begin van de volledige tekst die dit thema,
+            deze cirkelgroep, uitlegd. En inleid waar deze over gaat. Hoeft niet veel tekst te zijn.
+            Het zou vooral de context van het onderwerp ten overstaande van het algemene theme “commons” moeten uitleggen,
+            zodat mensen snappen wat er belangrijk is of behandeld wordt.
+            Stukje reflectie, misschien een kritische noot of alvast hypothestische, visionaire kantekening is allemaal welkom.
+        </p>
+    </header>
 
+    <section class="l-boxed">
 
-    <h2 class="green">Theory</h2>
-    {% for the_page in theory_pages %}
-        <ul>
-            <li class="{{ the_page.article | to_class_name }}"><a href="{{ the_page.article.url }}" >
-                {{ the_page.article.title }}
+        <section class="expander introduction">
+            <a href="#" class="expander-trigger is-expander-hidden">
+                <h2 class="expander-title">Introductie</h2>
+                <div class="expander-open-close">
+                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
+                </div>
             </a>
-                ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
-            </li>
-        </ul>
-    {% endfor %}
+            <div class="expander-content is-closed">
+                <p class="content-header-text">
+                    Een korte tekst of indleiding, of gewoon het begin van de volledige tekst die dit thema,
+                    deze cirkelgroep, uitlegd. En inleid waar deze over gaat. Hoeft niet veel tekst te zijn.
+                    Het zou vooral de context van het onderwerp ten overstaande van het algemene theme “commons” moeten uitleggen,
+                    zodat mensen snappen wat er belangrijk is of behandeld wordt.
+                    Stukje reflectie, misschien een kritische noot of alvast hypothestische, visionaire kantekening is allemaal welkom.
+                </p>
+            </div>
+        </section>
 
-    <h2 class="yellow">Stories</h2>
-    {% for the_page in story_pages %}
-        <ul>
-            <li class="{{ the_page.article | to_class_name }}"><a href="{{ the_page.article.url }}" >
-                {{ the_page.article.title }}
+        <section class="expander events">
+            <a href="#" class="expander-trigger is-expander-hidden">
+                <div class="expander-article-count">3</div>
+                <img src="{% static 'images/upcoming-event-icon.svg' %}" class="upcoming-event-icon" width="23.086px" height="23.087px"/>
+                <h2 class="expander-title">Toon evenementen die met {{ self.title }} te maken hebben</h2>
+                <div class="expander-open-close">
+                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
+                </div>
             </a>
-                ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
-            </li>
-        </ul>
-    {% endfor %}
+            <div class="expander-content is-closed">
+                <ul>
+                    {% for the_page in event_pages %}
+                        <li class="{{ the_page.event | to_class_name }}">
+                            <a href="{{ the_page.event.url }}" >
+                                {{ the_page.event.title }}
+                            </a>
+                        ({{ the_page.event.start_date|date:"SHORT_DATETIME_FORMAT" }})
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-    <h2 class="black">Organizations</h2>
-    {% for the_page in organization_pages %}
-        <ul>
-            <li class="{{ the_page.organization | to_class_name }}"><a href="{{ the_page.organization.url }}" >
-                {{ the_page.organization.title }}
+        </section>
+
+        <section class="expander organizations">
+            <a href="#" class="expander-trigger is-expander-hidden">
+                <div class="expander-article-count">1</div>
+                <h2 class="expander-title">Zie bestaande groepen gerelateerd aan {{ self.title }}</h2>
+                <div class="expander-open-close">
+                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
+                </div>
             </a>
-            </li>
-        </ul>
-    {% endfor %}
+            <div class="expander-content is-closed">
+                <ul>
+                    {% for the_page in organization_pages %}
+                        <li class="{{ the_page.organization | to_class_name }}">
+                            <a href="{{ the_page.organization.url }}" >
+                                {{ the_page.organization.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
 
-    <h2 class="blue">Events</h2>
-    {% for the_page in event_pages %}
-        <ul>
-            <li class="{{ the_page.event | to_class_name }}"><a href="{{ the_page.event.url }}" >
-                {{ the_page.event.title }}
+        <section class="expander stories">
+            <a href="#" class="expander-trigger is-expander-hidden">
+                <div class="expander-article-count">2</div>
+                <h2 class="expander-title">Leer over {{ self.title }} van bestaande groepen</h2>
+                <div class="expander-open-close">
+                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
+                </div>
             </a>
-                ({{ the_page.event.start_date|date:"SHORT_DATETIME_FORMAT" }})
-            </li>
-        </ul>
-    {% endfor %}
+            <div class="expander-content is-closed">
+                <ul>
+                    {% for the_page in story_pages %}
+                        <li class="{{ the_page.article | to_class_name }}">
+                            <a href="{{ the_page.article.url }}" >
+                                {{ the_page.article.title }}
+                            </a>
+                            ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
 
+        <section class="expander theory">
+            <a href="#" class="expander-trigger is-expander-hidden">
+                <div class="expander-article-count">4</div>
+                <h2 class="expander-title">Lees verdiepende artikelen over het commonen en {{ self.title }}</h2>
+                <div class="expander-open-close">
+                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
+                </div>
+            </a>
+            <div class="expander-content is-closed">
+                <ul>
+                    {% for the_page in theory_pages %}
+                        <li class="{{ the_page.article | to_class_name }}">
+                            <a href="{{ the_page.article.url }}" >
+                                {{ the_page.article.title }}
+                            </a>
+                            ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </section>
+
+    </section>
+
+{% endblock %}
+
+{% block sidebarleft %}
+    <aside class="sidebar-left" id="scroll-on-page-top">
+        <a class="scroll-on-page-link" href="#scroll-link-1">First Scroll Link</a>
+        <a class="scroll-on-page-link" href="#scroll-link-2">Second Link</a>
+        <a class="scroll-on-page-link" href="#scroll-link-3">Last Link</a>
+    </aside>
 {% endblock %}

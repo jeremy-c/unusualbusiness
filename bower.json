@@ -8,7 +8,8 @@
     "picturefill": "^3.0.2",
     "flexibility": "^1.0.6",
     "unslider": "^2.0.3",
-    "css-hamburgers": "^0.3.0"
+    "css-hamburgers": "^0.3.0",
+    "svg4everybody": "^2.0.3"
   },
   "ignore": [
     "**/.*",

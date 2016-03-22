@@ -1,30 +1,19 @@
 /* ==|====================
-   Module/Howto Grid
+   Module/Howto Block
    ======================= */
 
 @import "../base/base";
 
-.howto-grid {
-  display: flex;
-  flex-flow: row wrap;
-  align-content: space-between;
-  margin: -$gutter / 2;
-}
-
-.howto-grid-item {
-  flex: 1 0 360px - $gutter;
-  width: 360px - $gutter;
-  min-height: 400px;
-  margin: $gutter / 2;
+.howto-block {
   padding: $gutter / 2;
   background-color: $white;
 }
 
-.howto-grid-item-link {
+.howto-block-link {
   text-decoration: none;
 }
 
-.howto-grid-item-title {
+.howto-block-title {
   padding: $gutter;
   text-align: center;
   color: $green;
@@ -32,14 +21,13 @@
   line-height: 1.3em;
 }
 
-.howto-grid-item-how-to-circles {
+.howto-block-circles {
   position: relative;
   display: block;
   margin: 0 auto;
   padding: $gutter / 2;
   width: 192.921px;
   height: 192.921px;
-
 
   img {
     position: absolute;
@@ -75,18 +63,18 @@
   }
 }
 
-.howto-grid-item-description {
+.howto-block-description {
   padding: $gutter / 2 $gutter;
   text-align: center;
   font-size: 14px;
   line-height: 1.7em;
 }
 
-.howto-grid-item-meta {
+.howto-block-meta {
   padding: 0 $gutter / 2;
 }
 
-.howto-grid-item-meta-list-item {
+.howto-block-meta-list-item {
   display: inline-block;
 
   width: 48%;

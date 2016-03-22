@@ -1,0 +1,17 @@
+/* ==|====================
+   Layout/Blocks
+   ======================= */
+
+@import "../base/mixins";
+
+.l-columns {
+  column-count: auto;
+  column-width: 360px - $gutter;
+  column-gap: 1em;
+
+  > li {
+    display: inline-block;
+    margin-bottom: $gutter / 2;
+  }
+}
+

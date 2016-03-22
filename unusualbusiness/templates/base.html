@@ -43,7 +43,7 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-{#        {% wagtailuserbar %}#}
+        {#{% wagtailuserbar %}#}
 
         <div class="l-wrapper">
             <div class="l-wrapper-inner" id="l-wrapper-inner">
@@ -52,12 +52,16 @@
                     <nav class="main-nav">
                         <div class="ub-logo clearfix">
                             <a href="#"  >
-                                <img src="{% static 'images/ub-logo.svg' %}" class="ub-logo-icon" width="41.401px" height="33.63px" />
+                                <svg class="ub-logo-icon"  width="41.401px" height="33.63px" >
+                                  <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#ub-logo' %}" />
+                                </svg>
                             </a>
                         </div>
                         <div class="search-bar">
                             <label class="search-label"  for="searchTextBox" aria="label">
-                                <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
+                                <svg class="search-icon" width="23.334px" height="23.334px" >
+                                  <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#search-icon' %}" />
+                                </svg>
                             </label>
                             <input type="text" class="search-textbox" id="searchTextBox" placeholder="">
                         </div>
@@ -71,30 +75,45 @@
                         <ul class="main-menu" id="nav">
                             <li class="main-menu-item main-menu-how-to">
                                 <a href="#" class="how-to-link" >
-                                    <img src="{% static 'images/how-to-eyebrow-blue.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
-                                    <img src="{% static 'images/how-to-eye-blue.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                    <svg width="118.123px" height="19.413px" class="how-to-eyebrow-icon blue" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eyebrow' %}" />
+                                    </svg>
+                                    <svg width="118.123px" height="19.413px" class="how-to-eye-icon blue is-hidden" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eye' %}" />
+                                    </svg>
                                     <span class="menu-item-text">Nieuws en agenda</span>
                                 </a>
                             </li>
                             <li class="main-menu-item main-menu-how-to">
                                 <a href="#" class="how-to-link" >
-                                    <img src="{% static 'images/how-to-eyebrow-black.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
-                                    <img src="{% static 'images/how-to-eye-black.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                    <svg width="118.123px" height="19.413px" class="how-to-eyebrow-icon black" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eyebrow' %}" />
+                                    </svg>
+                                    <svg width="118.123px" height="19.413px" class="how-to-eye-icon black is-hidden" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eye' %}" />
+                                    </svg>
                                     <span class="menu-item-text">Groepen</span>
                                 </a>
                             </li>
                             <li class="main-menu-item main-menu-how-to">
                                 <a href="#" class="how-to-link" >
-                                    <img src="{% static 'images/how-to-eyebrow-yellow.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
-                                    <img src="{% static 'images/how-to-eye-yellow.svg' %}" class="how-to-eye-icon is-hidden" width="22.941px" height="15.687px" />
+                                    <svg width="118.123px" height="19.413px" class="how-to-eyebrow-icon yellow" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eyebrow' %}" />
+                                    </svg>
+                                    <svg width="118.123px" height="19.413px" class="how-to-eye-icon yellow is-hidden" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eye' %}" />
+                                    </svg>
                                     <span class="menu-item-text">Verhalen</span>
                                 </a>
                             </li>
                             <li class="main-menu-item main-menu-how-to">
                                 <a href="#" class="how-to-link" >
-                                    <img src="{% static 'images/how-to-eyebrow-green.svg' %}" class="how-to-eyebrow-icon" width="118.123px" height="19.413px" />
-                                    <img src="{% static 'images/how-to-eye-green.svg' %}" class="how-to-eye-icon is-hidden"
-                                         width="22.941px" height="15.687px" />
+                                    <svg width="118.123px" height="19.413px" class="how-to-eyebrow-icon green" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eyebrow' %}" />
+                                    </svg>
+                                    <svg width="118.123px" height="19.413px" class="how-to-eye-icon green  is-hidden" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-eye' %}" />
+                                    </svg>
                                     <span class="menu-item-text">Ideeën</span>
                                 </a>
                             </li>
@@ -105,14 +124,18 @@
                             </li>
                             <li class="main-menu-item main-menu-how-to-circles" >
                               <a href="/how-to/" class="how-to-circles-link" >
-                                <img src="{% static 'images/how-to-circles.svg' %}" class="how-to-circles-icon" width="50.457px" height="50.457px" />
+                                <svg class="how-to-circles-icon" width="50.457px" height="50.457px" >
+                                  <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#how-to-circles' %}" />
+                                </svg>
                                 <span class="menu-item-text">Thema's</span>
                               </a>
                             </li>
                             <li class="main-menu-item main-menu-search" >
-                              <a href="#" >
-                                <img src="{% static 'images/search-icon.svg' %}" class="search-icon" width="23.334px" height="23.334px" />
-                              </a>
+                                <a href="#" >
+                                    <svg class="search-icon" width="23.334px" height="23.334px" >
+                                      <use xlink:href="{% static 'images/sprites/symbol/svg/sprite.symbol.svg#search-icon' %}" />
+                                    </svg>
+                                </a>
                             </li>
                             <li class="main-menu-item main-menu-language">
                               <a href="#" class="language" >
@@ -176,6 +199,10 @@
         <!-- Isotope -->
         <script crossorigin="anonymous" integrity="sha256-M4hn22AGHQ12lwC9Kd7yL9Y7zlXpBAAey3pL/i9JErQ="
                 src="https://cdn.jsdelivr.net/isotope/2.2.2/isotope.pkgd.min.js"></script>
+
+{#        <script crossorigin="anonymous" integrity="sha256-3I0LzPmusmR3Y+Rg60qqFiJrlnowKBfAqtLCWNfyBWU="#}
+{#                src="https://cdn.jsdelivr.net/svg4everybody/2.0.3/svg4everybody.legacy.min.js"></script>#}
+        <script src="{% static 'bower_components/svg4everybody/dist/svg4everybody.js' %}"></script>
 
 {#        <script src="{% static 'bower_components/isotope-fit-columns/fit-columns.js' %}"></script>#}
         <script src="{% static 'bower_components/isotope-masonry-horizontal/masonry-horizontal.js' %}"></script>

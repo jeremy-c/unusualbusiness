@@ -144,4 +144,20 @@
 
 .article-icon {
   padding: 8px 0 0 10px;
+
+  .blue & path {
+    fill: $blue;
+  }
+
+  .black & path {
+    fill: $black;
+  }
+
+  .green & path {
+    fill: $green;
+  }
+
+  .yellow & path {
+    fill: $yellow;
+  }
 }
