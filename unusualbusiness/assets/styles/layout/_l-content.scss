@@ -10,22 +10,17 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
-
+  //display: none;
   .how-tos & {
     background-color: $light-gray;
   }
 }
 
-.l-wrapper-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .l-content {
   margin: 0 $gutter;
+  padding-top: 78px;
     // .footer height + .main-nav height
-  min-height: calc(100vh - (50px + 84px));
+  min-height: calc(100vh - (50px + 78px));
 
   .l-boxed {
     margin: 0 auto;

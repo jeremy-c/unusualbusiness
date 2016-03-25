@@ -2,16 +2,34 @@
    Layout/Header
    ======================= */
 
+@import "../base/base";
 @import "../base/mixins";
 
 .l-header {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  margin: 0 $gutter;
+  padding: 2px 0;
+  width: calc(100% - (var(--gutter) * 2));
+  border-bottom: solid 2px $light-gray;
 
   @media(max-width: $tablet) {
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
     margin: 0;
+    padding: 0;
     width: 100%;
+    height: 44px;
+    border-bottom: none;
   }
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  background-color: $white;
 }

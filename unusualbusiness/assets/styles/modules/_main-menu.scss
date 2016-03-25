@@ -5,20 +5,42 @@
 @import "../base/base";
 @import "../base/mixins";
 
+.sidr {
+  display: block;
+  position: fixed;
+  top: 44px;
+  height: 100%;
+  z-index: 999999;
+  width: calc(100% - 44px);
+  overflow-x: hidden;
+  overflow-y: auto
+}
+
+.sidr.right {
+  left: auto;
+  right: calc(44px - 100%);
+}
+
+.sidr.left {
+  left: calc(44px - 100%);
+  right: auto
+}
+
 // Main nav
 .main-nav {
-  border-bottom: solid 2px $light-gray;
-  margin-top: 8px;
+  z-index: 1010;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 75px;
+  margin-right: $gutter;
   padding: 0 $gutter;
+  width: calc(100% - (75px + var(--gutter))); // - margin-left & gutter
+
   background-color: $white;
 
   @media(max-width: $tablet) {
-    display: flex;
-    border-bottom: none;
-    margin-top: 0;
-    padding: 0;
-    height: 44px;
-    background-color: $white;
+    display: none;
   }
 }
 
@@ -35,13 +57,9 @@
   }
 
   @media(max-width: $tablet) {
-    position: absolute;
-    top: 0;
-    display: inherit;
-    width: 315px;
-    height: 100vh;
-    background-color: $white;
-    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    //overflow: hidden;
   }
 }
 
@@ -54,9 +72,14 @@
     width: 41.401px;
 
     @media(max-width: $tablet) {
-      padding: 10px 8px 0;
+      padding: 5px 8px 0;
       width: 30px;
     }
+  }
+
+  @media(max-width: $tablet) {
+    flex-basis: 46px;
+    float: inherit;
   }
 }
 
@@ -68,6 +91,8 @@
     display: inherit;
     flex: 1;
     border-left: solid 1px $light-gray;
+    border-right: solid 1px $light-gray;
+    margin: auto;
     height: 100%;
   }
 
@@ -94,9 +119,10 @@
   display: none;
 
   @media(max-width: $tablet) {
+    flex-basis: 40px;
     display: inherit;
-    border-left: solid 1px $light-gray;
-    padding: 0 13px;
+    margin: auto;
+    width: 40px;
   }
 }
 
@@ -105,7 +131,7 @@
   @media(max-width: $tablet) {
     flex: inherit;
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px 15px;
     border-bottom: solid 1px $light-gray;
   }
 
@@ -156,8 +182,10 @@
 
   .how-to-eye-icon {
     @media(max-width: $tablet) {
-      display: inherit !important;
+      display: inherit;
       float: left;
+      margin-left: 14px;
+      width: 20px;
     }
   }
 }
@@ -169,7 +197,7 @@
 
   @media(max-width: $tablet) {
     margin: 0;
-    padding: 10px 30px;
+    padding: 10px 15px;
     order: -1;
   }
 
@@ -223,52 +251,7 @@
   }
 }
 
-
-@media (max-width: $tablet) {
-
-  .js-ready .main-menu {
-    right: -315px;
-  }
-
-  .js-ready .l-wrapper-inner {
-    right: 0;
-  }
-
-  .js-nav .l-wrapper-inner {
-    right: 315px;
-  }
-
-  .csstransforms3d.csstransitions.js-ready .main-menu {
-    right: 0;
-    transform: translate3d(100%, 0, 0);
-    backface-visibility: hidden;
-  }
-
-  .csstransforms3d.csstransitions .l-wrapper-inner {
-    right: 0 !important;
-    transform: translate3d(0, 0, 0);
-    transition: transform 500ms ease;
-    backface-visibility: hidden;
-  }
-
-  .csstransforms3d.csstransitions.js-nav .l-wrapper-inner {
-    transform: translate3d(-315px, 0, 0) scale3d(1, 1, 1);
-  }
-
-  .csstransforms3d.csstransitions .main-menu li {
-    opacity: 0.7;
-    transition: opacity 300ms 100ms ease, transform 500ms ease;
-    transform: translate3d(315px, 0, 0) scale3d(0.9, 0.9, 0.9);
-    transform-origin: 50% 0%;
-  }
-
-  .csstransforms3d.csstransitions.js-nav .main-menu li {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-}
-
+// SVG Colors
 .how-to-eyebrow-icon {
   &.blue path {
     stroke: $blue;
@@ -312,5 +295,68 @@
       stroke: $yellow;
     }
   }
-
 }
+
+/* ==|====================
+   State/Main Menu
+   ======================= */
+
+// Spin Logo Icon
+.ub-logo-icon {
+  transition: all 0.4s ease-out;
+
+  .is-spinned & {
+    transform: rotate(360deg);
+  }
+}
+
+// Animate Hamburger Menu Icon
+
+#hamburger-menu-button {
+  cursor: pointer;
+  color: $black;
+  padding: 0 12px;
+}
+
+#hamburger-menu-button span,
+#hamburger-menu-button span:before,
+#hamburger-menu-button span:after {
+  cursor: pointer;
+  border-radius: 0;
+  height: 2px;
+  width: 16px;
+  background: $black;
+  position: absolute;
+  display: block;
+  content: '';
+}
+#hamburger-menu-button span:before {
+  top: -6px;
+}
+#hamburger-menu-button span:after {
+  bottom: -6px;
+}
+
+#hamburger-menu-button span,
+#hamburger-menu-button span:before,
+#hamburger-menu-button span:after {
+  transition: all 200ms ease-in-out;
+}
+
+#hamburger-menu-button.active span {
+  background-color: transparent;
+}
+
+#hamburger-menu-button.active span:before,
+#hamburger-menu-button.active span:after {
+  top: 0;
+}
+
+#hamburger-menu-button.active span:before {
+  transform: rotate(45deg);
+}
+
+#hamburger-menu-button.active span:after {
+  transform: rotate(-45deg);
+}
+

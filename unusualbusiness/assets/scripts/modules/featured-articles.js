@@ -20,6 +20,7 @@ var featuredArticles = () => {
 
 (function() {
   $(document).ready(function() {
+    console.log('Featured Articles go!');
     let FeaturedArticles = featuredArticles();
     FeaturedArticles.initSlider();
   });

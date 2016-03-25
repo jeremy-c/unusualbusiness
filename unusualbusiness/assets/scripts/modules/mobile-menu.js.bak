@@ -1,7 +1,6 @@
-/**
- * ub2
- * (c) (Un)usual Business <info@unusualbusiness.nl>
- */
+/* ==|====================
+   Module/Mobile Menu
+   ======================= */
 
 'use strict';
 
@@ -24,8 +23,7 @@ let mobileMenu = () => {
   };
 
   let initMenu = function() {
-    // wait for SVG's to be copied
-    window.setTimeout(initSidrMenu, 1000);
+    initSidrMenu();
   };
 
   return {
@@ -34,16 +32,9 @@ let mobileMenu = () => {
 };
 
 (function() {
-  $(window).ready(function() {
-    console.log('Main go!');
-    /* global svg4everybody*/
-    /* eslint no-undef: 2*/
-
-    svg4everybody({
-      polyfill: true
-    });
-
+  $(document).ready(function() {
     let MobileMenu = mobileMenu();
     MobileMenu.initMenu();
   });
 })();
+

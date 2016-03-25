@@ -24,6 +24,7 @@ var featuredJournal = () => {
 
 (function() {
   $(document).ready(function() {
+    console.log('Featured Journal go!');
     let FeaturedJournal = featuredJournal();
     FeaturedJournal.initGrid();
   });

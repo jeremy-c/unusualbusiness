@@ -54,8 +54,10 @@ gulp.task('lint', () =>
 
 // Optimize images
 gulp.task('images', () =>
-  gulp.src('unusualbusiness/assets/images/**/*')
-    .pipe($.cache($.imagemin({
+  gulp.src([
+      'unusualbusiness/assets/images/**/*',
+      '!unusualbusiness/assets/images/**/*.svg'
+  ]).pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
@@ -91,52 +93,28 @@ gulp.task('styles', () => {
     'bb >= 10'
   ];
 
-  // For best performance, don't add Sass partials to `gulp.src`
-//  return gulp.src([
-//    'unusualbusiness/assets/styles/**/*.scss',
-//    'unusualbusiness/static/styles/**/*.css'
-//  ])
-//    .pipe($.newer('.tmp/styles'))
-//    .pipe($.sourcemaps.init())
-//    .pipe($.sass({
-//      precision: 10
-//    }).on('error', $.sass.logError))
-//    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-//    .pipe(gulp.dest('.tmp/styles'))
-//    // Concatenate and minify styles
-//    .pipe($.if('*.css', $.cssnano()))
-//    .pipe($.size({title: 'styles'}))
-//    .pipe($.sourcemaps.write('./'))
-//    .pipe(gulp.dest('unusualbusiness/static/styles'));
-
-
     var postcss_processors = [
-        cssnext(),
-        autoprefixer(AUTOPREFIXER_BROWSERS)
+        cssnext()
+        // autoprefixer(AUTOPREFIXER_BROWSERS)
     ];
 
   return gulp.src([
     'unusualbusiness/assets/styles/**/*.scss',
     'unusualbusiness/static/styles/**/*.css'
+    // "unusualbusiness/static/bower_components/Materialize/sass/**/*.scss"
   ])
     .pipe($.newer('.tmp/styles'))
-    //.pipe($.sourcemaps.init())
-    //.pipe($.sourcemaps.write({includeContent:false, sourceRoot:'../../static/bower_components/bourbon/app/assets/stylesheets/'})) // inline sourcemap without embedded sources
-    //.pipe($.sourcemaps.write({includeContent:false, sourceRoot:'../../static/bower_components/neat/app/assets/stylesheets/'})) // external sourcemap without embedded sources, remove options to embed.
+    .pipe($.sourcemaps.init())
+    //.pipe($.sourcemaps.write({includeContent:false, sourceRoot:'unusualbusiness/static/bower_components/css-hamburgers/dist/hamburgers.css'})) // inline sourcemap without embedded sources
 
-    .pipe($.sass({
-      precision: 10
-    }).on('error', $.sass.logError))
-//    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-
+    .pipe($.sass({}))
     .pipe(postcss(postcss_processors))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
-    //.pipe($.sourcemaps.write('./'))
+    .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('unusualbusiness/static/styles'));
-
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -212,10 +190,14 @@ let config                  = {
         }
 };
 
+//https://www.liquidlight.co.uk/blog/article/creating-svg-sprites-using-gulp-and-sass/
 gulp.task('sprites', () => {
     return gulp.src('**/*.svg', {cwd: 'unusualbusiness/assets/images'})
         .pipe(svgSprite(config))
-        .pipe(gulp.dest('unusualbusiness/static/images/sprites'));
+        .pipe(gulp.dest('unusualbusiness/static/images/sprites'))
+        .pipe($.filter("**/*.svg"))  // Filter out everything except the SVG file
+        .pipe($.svg2png())
+        .pipe(gulp.dest('unusualbusiness/static/images/sprites'));           // Create a PNG;
 });
 
 // Clean output directory
@@ -235,7 +217,7 @@ gulp.task('default', ['styles', 'lint', 'scripts', 'images', 'sprites'], functio
 
   gulp.watch(['unusualbusiness/**/*.html'], reload);
   gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', 'scripts', reload]);
+  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', reload]);
   gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprites', reload]);
   gulp.watch('bower.json', ['fonts']);
 });

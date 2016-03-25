@@ -15,6 +15,7 @@ var howtoGrid = () => {
 
 (function() {
   $(document).ready(function() {
+    console.log('Howto Grid go!');
     let HowtoGrid = howtoGrid();
     HowtoGrid.initGrid();
   });
