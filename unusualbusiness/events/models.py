@@ -24,6 +24,8 @@ from unusualbusiness.tags.models import EventPageTag
 
 
 class EventPage(TranslationMixin, Page):
+    ajax_template = 'events/modules/agenda_item.html'
+
     start_date = models.DateTimeField(
         verbose_name = _("Starting date"),
     )

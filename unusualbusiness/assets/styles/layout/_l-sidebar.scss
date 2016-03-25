@@ -1,0 +1,33 @@
+/* ==|====================
+   Layout/Sidebars
+   ======================= */
+
+@import "../base/base";
+
+.l-sidebar {
+  position: absolute;
+  top: 78px;
+  width: 300px;
+  margin-top: $gutter;
+  height: calc(100% - (78px + var(--gutter)));
+
+  @media(max-width: $desktop) {
+    display: none;
+  }
+}
+
+.l-sidebar-right {
+  right: 0;
+  left: auto;
+  background-color: $light-gray;
+}
+
+.l-sidebar-left {
+  left: 0;
+  right: auto;
+  background-color: $light-gray;
+}
+
+.sidebar-sticky {
+
+}

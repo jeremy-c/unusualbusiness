@@ -2,7 +2,6 @@
 
 <li class="featured-article blue">
     <a href="{{ the_page.url }}" class="featured-article-link">
-
         <time class="featured-article-date vertical-date-large dt-start"
               datetime="{{ page.start_date|date:"SHORT_DATE_FORMAT" }}">
             <div class="vertical-date-day border-bottom">{{ page.start_date|date:"D" }}</div>
@@ -16,7 +15,7 @@
                 Lezing <!-- TODO: make dynamic -->
             </div>
             {% if page.featured_image %}
-                {% include "modules/featured_responsive_image.html" with image=page.featured_image %}
+                {% include "modules/responsive_image.html" with image=page.featured_image image_class="featured-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
                 {{ page.title }}

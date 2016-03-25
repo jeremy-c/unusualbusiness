@@ -1,21 +1,58 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-{% block body_class %}template-article-page{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body_class %}article{% endblock %}
+
 
 {% block content %}
 
-    <div class="publication-date">
-        <label>{% trans "Publication date:" %}</label>
-        <span>{{ page.date|date:"SHORT_DATETIME_FORMAT" }}</span>
-    </div>
+    <header class="content-header">
+        <h1 class="content-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
+        <div class="subtitle">{{ self.subtitle }}</div>
+        <div class="image">
+            {% include "modules/responsive_image.html" with image=self.featured_image image_class="article-image" %}
+        </div>
+        <div class="content-header-text">
+            {{ self.summary|richtext }}
+        </div>
+    </header>
 
-    <div class="image">
-        {% image page.featured_image width-400 %}
-    </div>
+    <section class="l-boxed article">
 
-    <div class="body">
-        {{ page.body|richtext }}
-    </div>
+        <div class="publication-date article-publication-date">
+            <time class="featured-article-date vertical-date-large dt-start"
+                  datetime="{{ page.publication_date|date:"SHORT_DATE_FORMAT" }}">
+                <div class="vertical-date-day border-bottom">{{ page.publication_date|date:"D" }}</div>
+                <div class="vertical-date-day-of-month">{{ page.publication_date|date:"d" }}</div>
+                <div class="vertical-date-month">{{ page.publication_date|date:"m" }}</div>
+                <div class="vertical-date-year">{{ page.publication_date|date:"y" }}</div>
+                <div class="vertical-date-time border-top">{{ page.publication_date|time:"H:i" }}</div>
+            </time>
+        </div>
 
+        <div class="article-author">
+            <label>{% trans "Author:" %}</label>
+            <span>{{ self.author }}</span>
+        </div>
+
+        <div class="article-body">
+            {{ page.body|richtext }}
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block sidebarleft %}
+    <aside class="l-sidebar l-sidebar-left sidebar">
+        <section class="sidebar-menu">
+            <h3>Menu</h3>
+
+        </section>
+    </aside>
 {% endblock %}

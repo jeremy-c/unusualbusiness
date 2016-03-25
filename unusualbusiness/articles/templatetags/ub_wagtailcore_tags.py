@@ -1,7 +1,7 @@
 from django import template
 from django.utils.safestring import mark_safe
 
-from articles.ub_page_link_handler import expand_db_html, RichText
+from unusualbusiness.articles.ub_page_link_handler import expand_db_html, RichText
 
 register = template.Library()
 

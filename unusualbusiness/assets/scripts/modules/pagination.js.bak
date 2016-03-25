@@ -1,0 +1,32 @@
+ /* ==|====================
+   Module/Pagination
+   ======================= */
+
+'use strict';
+
+var pagination = () => {
+  let initPagination = function() {
+    $.ajax({
+        url: "/controller/myfunction",
+        dataType: "json",
+        data: request,
+        success: function(data) {
+           if(data.response == 'true') {
+           response(data.message);
+        }
+        }
+    });
+  };
+
+  return {
+    initPagination: initPagination
+  };
+};
+
+(function() {
+  $(document).ready(function() {
+    console.log('Pagination go!');
+    let Pagination = pagination();
+    Pagination.initPagination();
+  });
+})();

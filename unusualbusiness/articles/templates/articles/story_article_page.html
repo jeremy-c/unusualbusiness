@@ -1,3 +1,18 @@
 {% extends "articles/article_page_base.html" %}
 
-{% block body_class %}template-story-article-page{% endblock %}
+{% block body_class %}story-article{% endblock %}
+
+{% block sidebarright %}
+    <aside class="l-sidebar l-sidebar-right sidebar">
+        <section class="organisations">
+            <h3>Organizations</h3>
+            <ul>
+                {% for organization in organizations %}
+                    {% include "organizations/modules/featured_organization.html" %}
+                {% empty %}
+                    <li>Sorry no organisations found.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </aside>
+{% endblock %}

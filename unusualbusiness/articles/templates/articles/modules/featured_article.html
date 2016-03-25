@@ -9,7 +9,7 @@
         </div>
         <div class="featured-article-preview" >
             {% if page.featured_image %}
-                {% include "modules/featured_responsive_image.html" with image=page.featured_image %}
+                {% include "modules/responsive_image.html" with image=page.featured_image image_class="featured-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
                 {{ page.title }}

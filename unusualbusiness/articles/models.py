@@ -13,6 +13,7 @@ from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
 from unusualbusiness.events.models import EventPage
+from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, ReportArticlePageTag
 
 
@@ -93,6 +94,12 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
         verbose_name = _("Story")
         verbose_name_plural = _("Stories")
 
+    def get_context(self, request):
+        context = super(StoryArticlePage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['organizations'] = OrganizationPage.objects.all().live()
+        return context
+
 StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('author'),
@@ -103,6 +110,8 @@ StoryArticlePage.content_panels = Page.content_panels + [
         InlinePanel('organizations', label=_("Organizations")),
         FieldPanel('tags'),
     ]
+
+
 
 StoryArticlePage.promote_panels = Page.promote_panels
 
