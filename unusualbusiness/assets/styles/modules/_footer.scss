@@ -1,0 +1,15 @@
+/* ==|====================
+   Module/Footer
+   ======================= */
+
+@import "../base/base";
+
+.footer {
+  background-color: $black;
+  color: $white;
+  height: 165px;
+
+  @media(max-width: $tablet) {
+    height: 50px;
+  }
+}
