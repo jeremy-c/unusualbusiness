@@ -5,12 +5,16 @@ from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
+
+from wagtail.wagtailcore import blocks
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
@@ -40,6 +44,25 @@ class StoryArticleIndexPage(TranslationMixin, Page):
         context['articles'] = StoryArticlePage.objects.all().live()
         context['parent'] = self.get_parent()
         return context
+
+
+class PullQuoteBlock(blocks.StructBlock):
+    text = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/pullquote.html'
+        icon = 'openquote'
+        label = 'Pull Quote'
+
+
+class CarouselBlock(blocks.StreamBlock):
+    image = ImageChooserBlock()
+    embed = EmbedBlock()
+
+    class Meta:
+        template = 'articles/blocks/carousel.html'
+        icon = 'media'
+        label = 'Carousel'
 
 
 class AbstractArticle(models.Model):
@@ -73,11 +96,12 @@ class AbstractArticle(models.Model):
         help_text=_("The publication date of the article"),
         blank=True
     )
-    body = RichTextField(
-        verbose_name=_('body text'),
-        help_text=_("The main text of the article"),
-        blank=True
-    )
+    body = StreamField([
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('pullquote', PullQuoteBlock()),
+        ('carousel', CarouselBlock())
+    ])
 
     class Meta:
         abstract = True
@@ -106,7 +130,7 @@ StoryArticlePage.content_panels = Page.content_panels + [
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
         FieldPanel('tags'),
     ]
@@ -168,7 +192,7 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
         FieldPanel('tags'),
     ]
 
@@ -213,7 +237,7 @@ ReportArticlePage.content_panels = Page.content_panels + [
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
         FieldPanel('tags'),
     ]
 

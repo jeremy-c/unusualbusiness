@@ -48,7 +48,6 @@ THIRD_PARTY_APPS = (
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
 
-
     'modelcluster',
     'compressor',
     'taggit',
@@ -57,6 +56,7 @@ THIRD_PARTY_APPS = (
     'wagtail.contrib.wagtailsitemaps',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailapi',
+    'wagtail.contrib.wagtailstyleguide',
     'rest_framework',
     'wagtail_modeltranslation',
 

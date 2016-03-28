@@ -1,0 +1,11 @@
+/* ==|====================
+   Module/Inline Organization
+   ======================= */
+
+@import "../base/base";
+@import "../base/mixins";
+
+.inline-organization {
+  background-color: $white;
+  height: 200px;
+}

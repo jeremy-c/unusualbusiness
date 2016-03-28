@@ -17,13 +17,13 @@
 }
 
 .sidr.right {
-  left: auto;
   right: calc(44px - 100%);
+  left: auto;
 }
 
 .sidr.left {
   left: calc(44px - 100%);
-  right: auto
+  right: auto;
 }
 
 // Main nav

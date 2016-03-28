@@ -7,7 +7,7 @@
 .l-sidebar {
   position: absolute;
   top: 78px;
-  width: 300px;
+  width: $sidebar;
   margin-top: $gutter;
   height: calc(100% - (78px + var(--gutter)));
 
@@ -30,4 +30,11 @@
 
 .sidebar-sticky {
 
+}
+
+.l-sidebar-right-inline {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  width: $sidebar;
 }
