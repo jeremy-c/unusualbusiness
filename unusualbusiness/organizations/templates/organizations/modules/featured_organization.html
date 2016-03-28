@@ -1,16 +1,16 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
 <li class="featured-article">
-    <a href="{{ page.url }}" class="featured-article-link black">
+    <a href="{{ self.url }}" class="featured-article-link black">
         <div class="featured-article-icon">
-            <img src="{{ STATIC_URL }}images/article-icon-black.svg" width="41.992px" height="29.445px" class="article-icon" />
+            <img src="{% static 'images/article-icon-black.svg' %}" width="41.992px" height="29.445px" class="article-icon" />
         </div>
         <div class="featured-article-preview" >
-            {% if page.featured_image %}
-                {% include "modules/responsive_image.html" with image=page.featured_image image_class="featured-article-image"  %}
+            {% if self.featured_image %}
+                {% include "modules/responsive_image.html" with image=self.featured_image image_class="inline-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
-                {{ page.title }}
+                {{ self.title }}
             </h4>
         </div>
     </a>

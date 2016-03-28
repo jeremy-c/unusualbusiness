@@ -104,11 +104,14 @@ class PageLinkHandler(object):
             # else:
             #     return ''
 
-            return '<span class="article-inline article-inline-{page_type}" id="{page_type}-{id}">{title}</span>'.format(
-                page_type=page.specific._meta.model_name,
-                title=page.specific.title,
-                id=page.id
-            )
+            if isinstance(page.specific, OrganizationPage):
+                return page.specific.render_inline()
+            else:
+                return '<span class="article-inline article-inline-{page_type}" id="{page_type}-{id}">{title}</span>'.format(
+                    page_type=page.specific._meta.model_name,
+                    title=page.specific.title,
+                    id=page.id
+                )
 
         except Page.DoesNotExist:
             return ''

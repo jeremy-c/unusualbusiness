@@ -2,6 +2,7 @@ from django import template
 from django.utils.safestring import mark_safe
 
 from unusualbusiness.articles.ub_page_link_handler import expand_db_html, RichText, expand_inline_html
+from django.template import RequestContext
 
 register = template.Library()
 
@@ -15,6 +16,7 @@ def ub_richtext(value):
         html = ''
     else:
         html = expand_inline_html(value)
+
         # html = expand_db_html(value)
 
     return mark_safe(html)

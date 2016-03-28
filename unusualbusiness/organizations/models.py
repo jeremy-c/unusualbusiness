@@ -1,8 +1,12 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.shortcuts import render
+from django.template.loader import get_template
+from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from requests import request
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
@@ -14,10 +18,12 @@ from unusualbusiness.tags.models import OrganizationPageTag
 
 
 class OrganizationPage(TranslationMixin, Page):
+    ajax_template = 'organizations/modules/inline_organization.html'
 
-    description = RichTextField(
+    description = models.CharField(
         verbose_name = _("Description"),
-        null=True
+        max_length=512,
+        blank=True
     )
     date_founded = models.DateField(
         verbose_name = _("Founded date"),
@@ -83,6 +89,12 @@ class OrganizationPage(TranslationMixin, Page):
         ImageChooserPanel('featured_image'),
         FieldPanel('tags'),
     ]
+
+    def render_inline(self):
+        template = get_template(self.ajax_template)
+        return template.render({
+            'self': self
+        })
 
 
 class OrganizationIndexPage(TranslationMixin, Page):
