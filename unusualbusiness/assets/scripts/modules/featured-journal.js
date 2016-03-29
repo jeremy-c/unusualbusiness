@@ -18,7 +18,7 @@ var featuredJournal = () => {
   };
 
   return {
-    initGrid: initMouseEvents
+    initMouseEvents: initMouseEvents
   };
 };
 
@@ -26,6 +26,6 @@ var featuredJournal = () => {
   $(document).ready(function() {
     console.log('Featured Journal go!');
     let FeaturedJournal = featuredJournal();
-    FeaturedJournal.initGrid();
+    FeaturedJournal.initMouseEvents();
   });
 })();

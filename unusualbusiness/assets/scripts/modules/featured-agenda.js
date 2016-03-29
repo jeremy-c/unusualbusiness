@@ -19,7 +19,7 @@ var featuredAgenda = () => {
   };
 
   return {
-    initGrid: initMouseEvents
+    initMouseEvents: initMouseEvents
   };
 };
 
@@ -27,6 +27,6 @@ var featuredAgenda = () => {
   $(document).ready(function() {
     console.log('Featured Agenda go!');
     let FeaturedAgenda = featuredAgenda();
-    FeaturedAgenda.initGrid();
+    FeaturedAgenda.initMouseEvents();
   });
 })();

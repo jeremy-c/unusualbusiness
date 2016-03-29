@@ -1,16 +1,14 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
-<span class="article-inline article-inline-organization is-hidden" id="organization-{{ self.id }}">
-    <a href="{{ self.url }}" class="inline-organization-link black">
-        <span class="inline-organization-title">
+<span class="l-pull-left article-inline article-inline-organization" id="organization-{{ self.id }}">
+    <a href="{{ self.url }}" class="article-inline-organization-link black">
+        <span class="article-inline-organization-title">
             {{ self.title }}
         </span>
     </a>
-    <span class="inline-organization-image-wrapper" >
+    <span class="article-inline-organization-description" >
         {% if self.featured_image %}
-            {% include "modules/responsive_image.html" with image=self.featured_image image_class="inline-organization-image"  %}
+            {% include "modules/responsive_image.html" with image=self.featured_image image_class="article-inline-organization-image"  %}
         {% endif %}
-    </span>
-    <span class="inline-organization-description" >
         {{ self.description }}
     </span>
 </span>

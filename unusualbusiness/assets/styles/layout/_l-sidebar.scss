@@ -5,6 +5,7 @@
 @import "../base/base";
 
 .l-sidebar {
+  display: none;
   position: absolute;
   top: 78px;
   width: $sidebar;

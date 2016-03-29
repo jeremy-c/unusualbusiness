@@ -73,8 +73,8 @@ class PageLinkHandler(object):
                 # else:
                 #     return '<a %shref="%s">' % (editor_attrs, escape(page.url))
 
-            return '<a class="article-inline-link article-inline-link-{page_type}" {editor_attrs} href="{page_type}-{id}">'.format(
-                page_type=page.specific._meta.model_name,
+            return '<a class="article-inline-link article-inline-link-{page_type}" {editor_attrs} href="#{page_type}-{id}">'.format(
+                page_type=page.specific._meta.model_name.replace("page", ""),
                 id=page.id,
                 editor_attrs = editor_attrs
             )
@@ -107,8 +107,8 @@ class PageLinkHandler(object):
             if isinstance(page.specific, OrganizationPage):
                 return page.specific.render_inline()
             else:
-                return '<span class="article-inline article-inline-{page_type}" id="{page_type}-{id}">{title}</span>'.format(
-                    page_type=page.specific._meta.model_name,
+                return '<span class="article-inline article-inline-{page_type} is-hidden" id="{page_type}-{id}">{title}</span>'.format(
+                    page_type=page.specific._meta.model_name.replace("page", ""),
                     title=page.specific.title,
                     id=page.id
                 )

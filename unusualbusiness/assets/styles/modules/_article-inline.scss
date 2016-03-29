@@ -1,0 +1,40 @@
+/* ==|====================
+   Module/Inline Organization
+   ======================= */
+
+@import "../base/base";
+@import "../base/mixins";
+
+.l-pull-left {
+  position: relative;
+  margin: $gutter 0 $gutter -333px;
+}
+
+.article-inline {
+  display: block;
+  background-color: $white;
+  height: 250px;
+  width: 100%;
+}
+
+.article-inline-organization {
+  border-top: solid 7px $black;
+  padding-top: $gutter;
+  padding-left: 50px;
+}
+
+.article-inline-organization-link {
+  display: block;
+  width: 100%;
+}
+
+.article-inline-organization-image-wrapper {
+}
+
+.article-inline-organization-image {
+  float: left;
+  padding: $gutter;
+}
+
+.article-inline-organization-description {
+}

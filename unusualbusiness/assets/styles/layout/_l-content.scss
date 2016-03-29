@@ -23,12 +23,6 @@
     // .footer height + .main-nav height
   min-height: calc(100vh - (50px + 78px));
 
-  .l-boxed {
-    margin: 0 auto;
-    width: 100%;
-    max-width: $boxed;
-  }
-
   @media(max-width: $tablet) {
     margin: 0;
     padding-top: 44px;
@@ -36,4 +30,10 @@
     // .footer height + .main-nav (mobile) height
     min-height: calc(100vh - (50px + 44px));
   }
+}
+
+.l-boxed {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $boxed;
 }
