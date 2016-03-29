@@ -2,6 +2,8 @@
    Module/Article
    ======================= */
 
+@import "../base/base";
+
 .article {
   border: solid 1px $light-gray;
 }
@@ -23,4 +25,9 @@
 
 .article-inline-link {
   font-weight: 400;
+
+  &:after {
+      @include sprite(eye-icon);
+      content: '';
+  }
 }
