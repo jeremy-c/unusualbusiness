@@ -309,20 +309,20 @@
   transition: all 200ms ease-in-out;
 }
 
-#hamburger-menu-button.active span {
+#hamburger-menu-button.is-expanded span {
   background-color: transparent;
 }
 
-#hamburger-menu-button.active span:before,
-#hamburger-menu-button.active span:after {
+#hamburger-menu-button.is-expanded span:before,
+#hamburger-menu-button.is-expanded span:after {
   top: 0;
 }
 
-#hamburger-menu-button.active span:before {
+#hamburger-menu-button.is-expanded span:before {
   transform: rotate(45deg);
 }
 
-#hamburger-menu-button.active span:after {
+#hamburger-menu-button.is-expanded span:after {
   transform: rotate(-45deg);
 }
 

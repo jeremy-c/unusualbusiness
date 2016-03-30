@@ -50,20 +50,29 @@
             <div class="ub-logo clearfix">
                 <a href="#" class="ub-logo-link" >
                     <svg class="ub-logo-icon" width="41.401px" height="33.63px" >
-                      <use xlink:href="{% static 'images/sprite.svg#ub-logo' %}" />
+                        <title>Unusual Business logo</title>
+                        <desc>Click to go home</desc>
+                        <use xlink:href="{% static 'images/sprite.svg#ub-logo' %}" />
                     </svg>
                 </a>
             </div>
             <div class="search-bar">
                 <label class="search-label"  for="searchTextBox" aria="label">
                     <svg class="search-icon" width="23.334px" height="23.334px" >
+                        <title>Seach icon</title>
+                        <desc>Click to open search text field</desc>
                       <use xlink:href="{% static 'images/sprite.svg#search-icon' %}" />
                     </svg>
                 </label>
                 <input type="text" class="search-textbox" id="searchTextBox" placeholder="">
             </div>
             <div class="hamburger-menu">
-                <a id="hamburger-menu-button" href="#mobile-menu">
+                <a id="hamburger-menu-button" href="#mobile-menu"
+                   title="navigation menu"
+                   aria-label="navigation menu"
+                   role="button"
+                   aria-controls="navigation"
+                   aria-expanded="false" >
                     <span></span>
                 </a>
             </div>

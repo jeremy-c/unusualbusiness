@@ -7,7 +7,13 @@
 
 let mobileMenu = () => {
   let toggleHamburgerMenu = function() {
-    $('#hamburger-menu-button').toggleClass('active');
+    let hamburgerMenuButtonLink = $('#hamburger-menu-button');
+    let isExpanded = hamburgerMenuButtonLink.attr('aria-expanded') === 'true';
+    hamburgerMenuButtonLink.attr(
+        'aria-expanded',
+        (!isExpanded).toString()
+    );
+    hamburgerMenuButtonLink.toggleClass('is-expanded');
   };
 
   let initSidrMenu = function() {
