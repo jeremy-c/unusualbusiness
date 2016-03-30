@@ -174,13 +174,7 @@
     }
   }
 
-  .how-to-eyebrow-icon {
-    @media(max-width: $tablet) {
-      display: none;
-    }
-  }
-
-  .how-to-eye-icon {
+  .circle {
     @media(max-width: $tablet) {
       display: inherit;
       float: left;
@@ -252,50 +246,21 @@
 }
 
 // SVG Colors
-.how-to-eyebrow-icon {
-  &.blue path {
-    stroke: $blue;
+.circle {
+  &.blue circle {
+    fill: $blue;
   }
-  &.black path {
-    stroke: $black;
+  &.black circle {
+    fill: $black;
   }
-  &.green path {
-    stroke: $green;
+  &.green circle {
+    fill: $green;
   }
-  &.yellow path {
-    stroke: $yellow;
-  }
-}
-
-.how-to-eye-icon {
-  &.blue {
-    path,
-    circle {
-      stroke: $blue;
-    }
-  }
-
-  &.black {
-    path,
-    circle {
-      stroke: $black;
-    }
-  }
-
-  &.green {
-    path,
-    circle {
-      stroke: $green;
-    }
-  }
-
-  &.yellow {
-    path,
-    circle {
-      stroke: $yellow;
-    }
+  &.yellow circle {
+    fill: $yellow;
   }
 }
+
 
 /* ==|====================
    State/Main Menu
