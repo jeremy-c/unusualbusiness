@@ -7,15 +7,19 @@
 
 .l-pull-left {
   position: relative;
-  margin: $gutter 0 $gutter -333px;
+  margin: $gutter 0;
+  left: -333px;
 }
 
 .article-inline {
   display: block;
-  border-top: solid 7px $black;
+  border-top: solid 8px $black;
   padding: $gutter $gutter / 2 $gutter 50px;
   width: 85%;
+
   background-color: $white;
+
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 
@@ -72,5 +76,19 @@ article-inline-organization-title {
 }
 
 .article-inline-definition-text {
+
+}
+
+
+// Event
+.article-inline-event {
+  border-top-color: $blue;
+  color: $blue;
+}
+
+.article-inline-event-title {
+}
+
+.article-inline-event-text {
 
 }

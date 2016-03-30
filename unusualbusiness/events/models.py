@@ -21,10 +21,11 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
 from unusualbusiness.tags.models import EventPageTag
+from unusualbusiness.utils.models import RenderInlineMixin
 
 
-class EventPage(TranslationMixin, Page):
-    ajax_template = 'events/blocks/agenda_item.html'
+class EventPage(TranslationMixin, Page, RenderInlineMixin):
+    ajax_template = 'events/blocks/inline_event.html'
 
     start_date = models.DateTimeField(
         verbose_name = _("Starting date"),

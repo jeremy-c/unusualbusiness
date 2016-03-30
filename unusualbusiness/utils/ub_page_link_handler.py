@@ -73,7 +73,7 @@ class PageLinkHandler(object):
                 # else:
                 #     return '<a %shref="%s">' % (editor_attrs, escape(page.url))
 
-            return '<a class="article-inline-link article-inline-link-{page_type}" {editor_attrs} href="#{page_type}-{id}">'.format(
+            return '<a class="article-inline-link article-inline-link-{page_type}" data-id="{page_type}-{id}" {editor_attrs} href="javascript: void(0)">'.format(
                 page_type=page.specific._meta.model_name.replace("page", ""),
                 id=page.id,
                 editor_attrs = editor_attrs
@@ -108,6 +108,9 @@ class PageLinkHandler(object):
                 return page.specific.render_inline()
             elif isinstance(page.specific, DefinitionPage):
                 return page.specific.render_inline()
+            elif isinstance(page.specific, EventPage):
+                return page.specific.render_inline()
+
             else:
                 return '<span class="article-inline article-inline-{page_type} is-hidden" id="{page_type}-{id}">{title}</span>'.format(
                     page_type=page.specific._meta.model_name.replace("page", ""),
@@ -255,11 +258,13 @@ def expand_db_html(html, for_editor=False):
         # generate inline <span> tag.
         inline_tag = handler.expand_inline_tags(attrs, for_editor)
 
+        # replace <a db-attributes> with real link
+        a_tag = FIND_A_TAG.sub(replace_a_tag, m.group(0))
+
         # add inline <span> tag after <a></a> tag.
-        return ''.join([m.group(0), inline_tag])
+        return ''.join([a_tag, inline_tag])
 
     html = FIND_ENTIRE_A_TAG.sub(add_inline_tag, html)
-    html = FIND_A_TAG.sub(replace_a_tag, html)
     html = FIND_EMBED_TAG.sub(replace_embed_tag, html)
     return html
 

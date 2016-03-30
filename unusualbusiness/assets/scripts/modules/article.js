@@ -9,10 +9,10 @@ var article = () => {
     let articleInlineLinks = $('.article-inline-link');
 
     articleInlineLinks.on('click', function() {
-      let inlineElement = $(this).attr('href');
+      let inlineElement = $(this).data('id');
 
-      $(this).toggleClass('is-open');
-      $(inlineElement).toggleClass('is-hidden');
+      $(this).toggleClass('is-expanded');
+      $('#' + inlineElement).toggleClass('is-visuallyhidden');
     });
   };
 
