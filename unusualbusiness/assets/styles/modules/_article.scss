@@ -179,13 +179,14 @@
 }
 
 .article li {
+  margin: $gutter 0 $gutter 0;
   font-size: 28px;
   line-height: 1.5em;
   font-family: $open-sans;
 }
 
 .article ul li {
-  margin: $gutter 0 $gutter 100px;
+  margin-left: 100px;
 
   &:before {
     display: block;
@@ -198,7 +199,7 @@
 }
 
 .article ol li {
-  margin: $gutter 0 $gutter 60px;
+  margin-left: 60px;
 
   &:before {
     display: block;
