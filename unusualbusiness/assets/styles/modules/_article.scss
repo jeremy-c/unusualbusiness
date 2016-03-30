@@ -93,5 +93,28 @@
       content: '';
       margin-left: 7px;
       vertical-align: top;
+
+  }
+      path,
+      .inner-lense {
+        stroke: $green;
+      }
+
+  &.article-inline-link-event {
+    color: $blue;
+  }
+
+  &.article-inline-link-organization {
+    color: $black;
+  }
+
+  &.article-inline-link-definition,
+  &.article-inline-link-theory {
+    color: $green;
+  }
+
+  &.article-inline-link-story {
+    color: $yellow;
   }
 }
+

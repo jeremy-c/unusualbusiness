@@ -3,10 +3,15 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     StreamFieldPanel
 from wagtail_modeltranslation.models import TranslationMixin
+from unusualbusiness.utils.models import RenderInlineMixin
 
 
 # Create your models here.
-class DefinitionPage(TranslationMixin, Page):
+
+
+class DefinitionPage(TranslationMixin, Page, RenderInlineMixin):
+    ajax_template = 'definitions/blocks/inline_definition.html'
+
     #TODO: add bold and italic to Wysiwyg
     definition = models.TextField(null=True, blank=True)
 

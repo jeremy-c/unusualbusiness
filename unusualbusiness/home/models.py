@@ -4,6 +4,7 @@ from itertools import chain
 
 from datetime import datetime
 from django.shortcuts import render
+from django.template.loader import get_template
 from taggit.models import Tag
 from wagtail.wagtailcore.models import Page
 from wagtail_modeltranslation.models import TranslationMixin

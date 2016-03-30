@@ -15,9 +15,10 @@ from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
 from unusualbusiness.tags.models import OrganizationPageTag
+from unusualbusiness.utils.models import RenderInlineMixin
 
 
-class OrganizationPage(TranslationMixin, Page):
+class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'organizations/blocks/inline_organization.html'
 
     description = models.CharField(
@@ -89,12 +90,6 @@ class OrganizationPage(TranslationMixin, Page):
         ImageChooserPanel('featured_image'),
         FieldPanel('tags'),
     ]
-
-    def render_inline(self):
-        template = get_template(self.ajax_template)
-        return template.render({
-            'self': self
-        })
 
 
 class OrganizationIndexPage(TranslationMixin, Page):

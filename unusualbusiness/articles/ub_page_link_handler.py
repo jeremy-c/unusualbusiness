@@ -106,6 +106,8 @@ class PageLinkHandler(object):
 
             if isinstance(page.specific, OrganizationPage):
                 return page.specific.render_inline()
+            elif isinstance(page.specific, DefinitionPage):
+                return page.specific.render_inline()
             else:
                 return '<span class="article-inline article-inline-{page_type} is-hidden" id="{page_type}-{id}">{title}</span>'.format(
                     page_type=page.specific._meta.model_name.replace("page", ""),

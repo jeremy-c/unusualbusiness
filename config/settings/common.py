@@ -75,6 +75,7 @@ LOCAL_APPS = (
     'unusualbusiness.definitions',
     'unusualbusiness.tags',
     'unusualbusiness.search',
+    'unusualbusiness.utils',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

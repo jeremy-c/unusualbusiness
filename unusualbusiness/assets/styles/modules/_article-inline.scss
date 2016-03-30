@@ -12,29 +12,65 @@
 
 .article-inline {
   display: block;
-  background-color: $white;
-  height: 250px;
-  width: 100%;
-}
-
-.article-inline-organization {
   border-top: solid 7px $black;
-  padding-top: $gutter;
-  padding-left: 50px;
+  padding: $gutter $gutter / 2 $gutter 50px;
+  width: 85%;
+  background-color: $white;
 }
 
-.article-inline-organization-link {
+
+.article-inline-title {
   display: block;
+  padding-bottom: $gutter;
   width: 100%;
+  font-size: 18px;
 }
 
-.article-inline-organization-image-wrapper {
+.article-inline-image {
+  flex: 1;
+}
+
+.article-inline-text {
+  font-family: $open-sans;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+// Organization
+.article-inline-organization {
+  border-top-color: $black;
+  color: $black;
+}
+
+article-inline-organization-title {
+}
+
+
+.article-inline-organization-text {
+  display: flex;
 }
 
 .article-inline-organization-image {
-  float: left;
-  padding: $gutter;
+  flex: 1;
+  width: 270px;
+  height: auto;
 }
 
 .article-inline-organization-description {
+  flex: 2;
+  padding: $gutter / 2 0 $gutter $gutter;
+}
+
+
+// Definition
+.article-inline-definition {
+  border-top-color: $green;
+  color: $green;
+}
+
+.article-inline-definition-title {
+}
+
+.article-inline-definition-text {
+
 }
