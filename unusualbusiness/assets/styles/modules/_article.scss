@@ -84,14 +84,14 @@
   }
 }
 
-.article-inline-link {
+.article-link {
   font-weight: 400;
   text-decoration: none;
 
-  //&:hover {
-  //  border-bottom: 2px solid;
-  //  padding-bottom: 3px;
-  //}
+  &:hover {
+    border-bottom: 2px solid;
+    padding-bottom: 3px;
+  }
   //
   //&.article-inline-link-event:hover {
   //  border-bottom-color: $blue;
@@ -109,6 +109,44 @@
   //&.article-inline-link-story:hover {
   //  border-bottom-color: $yellow;
   //}
+
+  &.article-link-event,
+  &.article-link-reportarticle {
+    color: $blue;
+
+    &:hover {
+      border-bottom-color: $blue;
+    }
+  }
+
+  &.article-link-organization {
+    color: $black;
+    &:hover {
+      border-bottom-color: $black;
+    }
+  }
+
+  &.article-link-definition,
+  &.article-link-theoryarticle {
+    color: $green;
+
+    &:hover {
+      border-bottom-color: $green;
+    }
+  }
+
+  &.article-link-storyarticle {
+    color: $yellow;
+
+    &:hover {
+      border-bottom-color: $yellow;
+    }
+  }
+}
+
+.article-inline-link {
+  font-weight: 400;
+  text-decoration: none;
 
   &:after {
     @include sprite(eye-icon);
@@ -132,6 +170,44 @@
 
   &.article-inline-link-story {
     color: $yellow;
+  }
+}
+
+.article ul,
+.article ol {
+  margin: $gutter 0;
+}
+
+.article li {
+  font-size: 28px;
+  line-height: 1.5em;
+  font-family: $open-sans;
+}
+
+.article ul li {
+  margin: $gutter 0 $gutter 100px;
+
+  &:before {
+    display: block;
+    margin: 0 0 $gutter -100px;
+    height: 8px;
+    width: 163px;
+    content: ' ';
+    background-color: $yellow;
+  }
+}
+
+.article ol li {
+  margin: $gutter 0 $gutter 60px;
+
+  &:before {
+    display: block;
+    margin: 0 0 -8px -100px;
+    padding-top: $gutter;
+    height: 8px;
+    width: 163px;
+    content: ' ';
+    border-top: solid $yellow 8px;
   }
 }
 

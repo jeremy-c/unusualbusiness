@@ -1,7 +1,8 @@
 from django import template
 from django.utils.safestring import mark_safe
+from wagtail.wagtailcore.rich_text import RichText
 
-from unusualbusiness.utils.ub_page_link_handler import RichText, expand_inline_html
+from unusualbusiness.utils.ub_link_handlers import expand_inline_html, UBRichText
 
 register = template.Library()
 
@@ -9,6 +10,9 @@ register = template.Library()
 @register.filter
 def ub_richtext(value):
     if isinstance(value, RichText):
+        # passing a RichText value through the |richtext filter should have no effect
+        return value
+    elif isinstance(value, UBRichText):
         # passing a RichText value through the |richtext filter should have no effect
         return value
     elif value is None:
