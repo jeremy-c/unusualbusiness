@@ -69,11 +69,11 @@
 
   .ub-logo-icon {
     padding: 23px 0 17px 0;
-    width: 41.401px;
 
     @media(max-width: $tablet) {
       padding: 5px 8px 0;
       width: 30px;
+      height: 24.432px;
     }
   }
 
@@ -225,7 +225,8 @@
 }
 
 // MenuItem: over ub
-.over-ub {
+.about-ub {
+  padding-right: 29px;
   text-align: center;
 
   @media(max-width: $tablet) {
