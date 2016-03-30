@@ -47,7 +47,7 @@ class StoryArticleIndexPage(TranslationMixin, Page):
 
 
 class PullQuoteBlock(blocks.StructBlock):
-    text = blocks.CharBlock(required=True)
+    pull_quote = blocks.CharBlock(required=True)
 
     class Meta:
         template = 'articles/blocks/pullquote.html'
