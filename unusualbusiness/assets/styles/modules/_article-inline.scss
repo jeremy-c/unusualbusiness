@@ -11,11 +11,31 @@
   left: -333px;
 }
 
+.pullquote {
+  display: block;
+  box-sizing: border-box;
+  border-top: solid 8px $yellow;
+  border-bottom: solid 8px $yellow;
+  margin: $gutter * 2 0;
+  padding: $gutter * 2;
+  width: 90%;
+
+  background-color: $white;
+
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  font-size: 52px;
+  line-height: 1.3em;
+  font-family: $open-sans;
+  text-align: center;
+}
+
 .article-inline {
   display: block;
+  box-sizing: border-box;
   border-top: solid 8px $black;
   padding: $gutter $gutter / 2 $gutter 50px;
-  width: 85%;
+  width: 90%;
 
   background-color: $white;
 
