@@ -8,7 +8,7 @@
             <h3>Organizations</h3>
             <ul>
                 {% for organization in organizations %}
-                    {% include "organizations/modules/featured_organization.html" %}
+                    {% include "organizations/blocks/featured_organization.html" %}
                 {% empty %}
                     <li>Sorry no organisations found.</li>
                 {% endfor %}

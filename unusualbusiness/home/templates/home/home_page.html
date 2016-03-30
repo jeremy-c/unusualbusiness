@@ -26,21 +26,21 @@
                 <ul class="featured-articles-list">
                     {% for page in pages %}
                         {% if page.content_type.model == 'eventpage' %}
-                            {% include "events/modules/featured_event.html" %}
+                            {% include "events/blocks/featured_event.html" %}
                         {%  elif page.content_type.model == 'howtopage' %}
-                            {% include "howtos/modules/featured_howto.html" %}
+                            {% include "howtos/blocks/featured_howto.html" %}
                         {%  elif page.content_type.model == 'definitionpage' %}
-                            {% include "definitions/modules/featured_definition.html" %}
+                            {% include "definitions/blocks/featured_definition.html" %}
                         {%  elif page.content_type.model == 'organizationpage' %}
-                            {% include "organizations/modules/featured_organization.html" %}
+                            {% include "organizations/blocks/featured_organization.html" %}
                         {%  elif page.content_type.model == 'reportarticlepage' %}
-                            {% include "articles/modules/featured_article.html" with article_class="blue" %}
+                            {% include "articles/blocks/featured_article.html" with article_class="blue" %}
                         {%  elif page.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/modules/featured_article.html" with article_class="yellow" %}
+                            {% include "articles/blocks/featured_article.html" with article_class="yellow" %}
                         {%  elif page.content_type.model == 'theoryarticlepage' %}
-                            {% include "articles/modules/featured_article.html" with article_class="green" %}
+                            {% include "articles/blocks/featured_article.html" with article_class="green" %}
                         {% else %}
-                            {% include "articles/modules/featured_article.html" with article_class="blue" %}
+                            {% include "articles/blocks/featured_article.html" with article_class="blue" %}
                         {% endif %}
                     {% endfor %}
                 </ul>

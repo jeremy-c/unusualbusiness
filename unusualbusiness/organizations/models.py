@@ -18,7 +18,7 @@ from unusualbusiness.tags.models import OrganizationPageTag
 
 
 class OrganizationPage(TranslationMixin, Page):
-    ajax_template = 'organizations/modules/inline_organization.html'
+    ajax_template = 'organizations/blocks/inline_organization.html'
 
     description = models.CharField(
         verbose_name = _("Description"),

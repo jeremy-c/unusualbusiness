@@ -7,7 +7,7 @@
     </a>
     <span class="article-inline-organization-description" >
         {% if self.featured_image %}
-            {% include "modules/responsive_image.html" with image=self.featured_image image_class="article-inline-organization-image"  %}
+            {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-inline-organization-image"  %}
         {% endif %}
         {{ self.description }}
     </span>

@@ -17,7 +17,7 @@
             <h1 class="article-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
             <div class="article-header-subtitle">{{ self.subtitle }}</div>
             <div class="article-header-image">
-                {% include "modules/responsive_image.html" with image=self.featured_image image_class="article-image" %}
+                {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image" %}
             </div>
             <div class="article-header-summary">
                 {{ self.summary|ub_richtext }}
