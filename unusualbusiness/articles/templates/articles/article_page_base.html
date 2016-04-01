@@ -31,9 +31,9 @@
             </div>
 
             {% if self.author %}
-                <div class="article-author">
-                    <label>{% trans "Author:" %}</label>
-                    <span>{{ self.author }}</span>
+                <div class="article-header-author">
+                    <label class="article-header-label">{% trans "Author:" %}</label>
+                    <span class="article-header-author-name">{{ self.author }}</span>
                 </div>
             {% endif %}
         </header>
@@ -67,12 +67,17 @@
         </div>
 
         {% if self.author %}
-            <div class="article-author-detail">
-                <div class="article-author-photo">
-                    {% include "blocks/responsive_image.html" with image=self.author.photo image_class="bio-pic" %}
+            <section class="author">
+                <div class="author-photo">
+                    {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}
                 </div>
-                <div class="article-author-photo">{{ self.author.biography }}</div>
-            </div>
+                <div class="author-biography">
+                    <h3 class="author-name">
+                        {{ self.author.title }}
+                    </h3>
+                    <p>{{ self.author.biography }}</p>
+                </div>
+            </section>
         {% endif %}
 
     </article>

@@ -92,23 +92,6 @@
     border-bottom: 2px solid;
     padding-bottom: 3px;
   }
-  //
-  //&.article-inline-link-event:hover {
-  //  border-bottom-color: $blue;
-  //}
-  //
-  //&.article-inline-link-organization:hover {
-  //  border-bottom-color: $black;
-  //}
-  //
-  //&.article-inline-link-definition:hover,
-  //.article-inline-link-theory:hover {
-  //  border-bottom-color: $green;
-  //}
-  //
-  //&.article-inline-link-story:hover {
-  //  border-bottom-color: $yellow;
-  //}
 
   &.article-link-event,
   &.article-link-reportarticle {
@@ -212,4 +195,3 @@
     border-top: solid $yellow 8px;
   }
 }
-

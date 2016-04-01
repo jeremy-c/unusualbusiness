@@ -1,0 +1,48 @@
+/* ==|====================
+   Module/Author
+   ======================= */
+
+@import "../base/base";
+
+.author {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border-top: solid $green 8px;
+  padding: $gutter;
+  color: $green;
+  font-family: $open-sans;
+}
+
+.author-photo {
+  padding: $gutter;
+  width: 140px;
+}
+
+.bio-pic {
+  border-radius: 70px;
+  width: 140px;
+  max-width: inherit;
+  height: 140px;
+}
+
+.author-biography {
+  margin: $gutter;
+}
+
+
+/* ==|====================
+   Module/Author (article header)
+   ======================= */
+
+.article-header-author {
+
+}
+
+.article-header-label {
+  display: none;
+}
+
+.article-header-author-name {
+  
+}

@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% if image %}
+    {% image image fill-140x140-c100 as ri_cropped %}
+    {% image image fill-280x280-c100 as ri_cropped_2x %}
+
+    <picture>
+        <source srcset="{{ ri_cropped_2x.url }} 2x,{{ ri_cropped.url }} 1x" />
+        <img
+            srcset="{{ ri_cropped_2x.url }} 2x,{{ ri_cropped.url }} 1x"
+            src="{{ ri_cropped.url }}"
+            width="{{ ri_cropped.width }}"
+            height="{{ ri_cropped.height }}"
+            alt="{{ ri_cropped.alt }}"
+            class="{{ image_class }}"  />
+    </picture>
+
+{% endif %}
