@@ -6,8 +6,9 @@
 @import "../base/mixins";
 
 .featured-journal {
-  height: 300px;
+  margin-right: $gutter;
   width: 215px;
+  height: 300px;
   overflow: hidden;
 
   a {
