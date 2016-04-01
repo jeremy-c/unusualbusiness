@@ -22,7 +22,6 @@ from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTa
 
 
 class TheoryArticleIndexPage(TranslationMixin, Page):
-
     parent_page_types = ['home.HomePage']
     subpage_types = ['articles.TheoryArticlePage']
 
@@ -66,21 +65,23 @@ class CarouselBlock(blocks.StreamBlock):
 
 
 class AbstractArticle(models.Model):
-
     subtitle = models.CharField(
         verbose_name=_('subtitle'),
         max_length=255,
         help_text=_("The subtitle of the page"),
         blank=True
     )
-    author = models.CharField(
-        verbose_name=_('author'),
-        max_length=255,
-        help_text=_("The author of the article")
-    )
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name=_('featured_image'),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    author = models.ForeignKey(
+        'articles.AuthorPage',
+        verbose_name=_('author'),
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -126,7 +127,7 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
 
 StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
-        FieldPanel('author'),
+        PageChooserPanel('author', page_type='articles.AuthorPage'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
@@ -144,7 +145,6 @@ StoryArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('author'),
         index.SearchField('summary_en'),
         index.SearchField('summary_nl'),
         index.SearchField('body_en'),
@@ -153,6 +153,9 @@ StoryArticlePage.search_fields = Page.search_fields + (
             index.SearchField('title'),
         ]),
         index.RelatedFields('how_to_page', [
+            index.SearchField('title'),
+        ]),
+        index.RelatedFields('author', [
             index.SearchField('title'),
         ]),
     )
@@ -188,7 +191,7 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
 
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
-        FieldPanel('author'),
+        PageChooserPanel('author', page_type='articles.AuthorPage'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
@@ -203,13 +206,15 @@ TheoryArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('author'),
         index.SearchField('summary_en'),
         index.SearchField('summary_nl'),
         index.SearchField('body_en'),
         index.SearchField('body_nl'),
         index.RelatedFields('how_to_page', [
             index.SearchField('title'),
+        ]),
+        index.RelatedFields('author', [
+          index.SearchField('title'),
         ]),
     )
 
@@ -233,7 +238,7 @@ class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
 ReportArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('event_page'),
         FieldPanel('subtitle'),
-        FieldPanel('author'),
+        PageChooserPanel('author', page_type='articles.AuthorPage'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
@@ -248,7 +253,6 @@ ReportArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('author'),
         index.SearchField('summary_en'),
         index.SearchField('summary_nl'),
         index.SearchField('body_en'),
@@ -256,5 +260,51 @@ ReportArticlePage.search_fields = Page.search_fields + (
         index.RelatedFields('event_page', [
             index.SearchField('title'),
         ]),
+        index.RelatedFields('author', [
+            index.SearchField('title'),
+        ]),
+
+)
+
+
+class AuthorPage(TranslationMixin, Page):
+    photo = models.ForeignKey(
+        'wagtailimages.Image',
+        verbose_name=_('photo'),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
     )
+    biography = models.TextField(
+        verbose_name=_('biography'),
+        help_text=_("The biography of the author (max. 150 woorden)"),
+        blank=True
+    )
+
+    parent_page_types = ['articles.AuthorIndexPage']
+    subpage_types = []
+
+    class Meta:
+        verbose_name = _("Author")
+        verbose_name_plural = _("Authors")
+
+AuthorPage.content_panels = Page.content_panels + [
+    FieldPanel('biography'),
+    ImageChooserPanel('photo'),
+]
+
+AuthorPage.promote_panels = Page.promote_panels
+
+
+class AuthorIndexPage(TranslationMixin, Page):
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['articles.AuthorPage']
+
+    def get_context(self, request):
+        context = super(AuthorIndexPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['authors'] = AuthorPage.objects.all().live()
+        context['parent'] = self.get_parent()
+        return context
 

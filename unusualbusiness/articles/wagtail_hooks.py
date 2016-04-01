@@ -2,7 +2,7 @@ from wagtailmodeladmin.options import (
     ModelAdmin, ModelAdminGroup, wagtailmodeladmin_register)
 from django.utils.translation import ugettext as _
 
-from .models import TheoryArticlePage, StoryArticlePage, ReportArticlePage
+from .models import TheoryArticlePage, StoryArticlePage, ReportArticlePage, AuthorPage
 
 
 class TheoryArticlePageModelAdmin(ModelAdmin):
@@ -35,6 +35,15 @@ class ReportArticlePageModelAdmin(ModelAdmin):
     search_fields = ('title',)
 
 
+class AuthorPageModelAdmin(ModelAdmin):
+    model = AuthorPage
+    menu_label = 'Authors' # ditch this to use verbose_name_plural from model
+    menu_icon = 'user author' # change as required
+    menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
+    list_display = ('title', )
+    search_fields = ('title',)
+
+
 class ArticlePageTypesAdminGroup(ModelAdminGroup):
     menu_label = 'Articles'
     menu_icon = 'doc-full-inverse' # change as required
@@ -42,7 +51,8 @@ class ArticlePageTypesAdminGroup(ModelAdminGroup):
     items = (
         TheoryArticlePageModelAdmin,
         StoryArticlePageModelAdmin,
-        ReportArticlePageModelAdmin
+        ReportArticlePageModelAdmin,
+        AuthorPageModelAdmin
     )
 
 # Now you just need to register your customised ModelAdmin class with Wagtail

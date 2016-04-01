@@ -46,11 +46,15 @@
 
 // Main menu
 .main-menu  {
-  padding: 14px 0;
-  width: calc(100% - 41.401px); // 100% - logo width
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
+  padding: 14px 0;
+  width: calc(100% - 41.401px); // 100% - logo width
+
+  background-color: $white;
 
   a {
     text-decoration: none;
@@ -153,9 +157,12 @@
 
 // MenuItem: How to
 .main-menu-how-to {
-  flex: 1;
+  z-index: 1;
+  flex: none;
   justify-content: space-around;
   text-align: center;
+
+  transition: all 1s ease-in-out;
 
   @media(max-width: $tablet) {
     width: 100%;
@@ -163,9 +170,12 @@
     flex: inherit;
   }
 
+  &.is-in-position {
+    z-index: 1;
+    flex: 1;
+  }
+
   .how-to-link {
-    width: 120px;
-    height: 25px;
     display: inline-block;
 
     @media(max-width: $tablet) {

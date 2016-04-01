@@ -19,6 +19,7 @@ class HomePage(TranslationMixin, Page):
     subpage_types = [
         'articles.StoryArticleIndexPage',
         'articles.TheoryArticleIndexPage',
+        'articles.AuthorIndexPage',
         'events.EventIndexPage',
         'definitions.DefinitionIndexPage',
         'organizations.OrganizationIndexPage',
