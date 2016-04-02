@@ -6,7 +6,7 @@
 @import "../base/mixins";
 
 .l-header {
-  z-index: 1000;
+  z-index: 10;
   //TODO: sticky
   position: fixed;
   top: 0;
@@ -16,6 +16,7 @@
   padding: 2px 0;
   width: calc(100% - (var(--gutter) * 2));
   border-bottom: solid 2px $light-gray;
+  background-color: $white;
 
   @media(max-width: $tablet) {
     margin: 0;

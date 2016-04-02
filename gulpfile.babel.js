@@ -245,6 +245,6 @@ gulp.task('default', ['sprite', 'styles', 'lint', 'scripts', 'images'], function
   gulp.watch(['unusualbusiness/**/*.html'], reload);
   gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprite', reload]);
   gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', reload]);
+  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch('bower.json', ['fonts']);
 });
