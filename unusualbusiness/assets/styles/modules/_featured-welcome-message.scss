@@ -4,8 +4,18 @@
 
 .featured-welcome-message {
   border-left: solid 1px $light-gray;
-  padding-left: $gutter * 2;
-  width: 380px;
+  padding: 0 $gutter * 2;
+  max-width: 380px;
+
+  @media (max-width: $tablet) {
+    border-left: none;
+    padding: 0 0 $gutter $gutter;
+  }
+
+  @media (max-width: $mobile) {
+    order: 0;
+    padding-bottom: 0;
+  }
 }
 
 .featured-welcome-message-title {

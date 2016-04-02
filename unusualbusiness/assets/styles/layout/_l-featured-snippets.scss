@@ -8,4 +8,12 @@
   display: flex;
   flex-direction: row;
   margin: $gutter 250px $gutter 70px;
+
+  @media (max-width: $tablet-horizontal) {
+    margin: 0 $gutter;
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
