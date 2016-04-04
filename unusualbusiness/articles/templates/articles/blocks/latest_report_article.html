@@ -1,0 +1,9 @@
+{% extends "articles/blocks/latest_article.html" %}
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block list_item_classes %}latest-article-report article-format-event{% endblock %}
+
+{% block above_title %}
+    {{ page.event_page.start_date }}
+{% endblock %}
+

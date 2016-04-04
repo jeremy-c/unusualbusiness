@@ -26,8 +26,33 @@
   border-radius: 24px;
   text-align: center;
 
-  .article-type-text & {
+  .latest-article-story & {
     background-color: $yellow;
+  }
+
+  .latest-article-theory & {
+    background-color: $green;
+  }
+
+  .latest-article-report & {
+    background-color: $blue;
+  }
+
+  &:before {
+    content: '';
+    margin-top: 16px;
+  }
+
+  .article-format-text & {
+    &:before {
+      @include sprite(article-icon);
+    }
+  }
+
+  .article-format-event & {
+    &:before {
+      @include sprite(megaphone-icon);
+    }
   }
 
   .latest-article-icon {
@@ -59,6 +84,10 @@
   &:active {
     text-decoration: none;
   }
+
+  .latest-article-report & {
+    display: none;
+  }
 }
 
 .latest-article-image {
@@ -70,11 +99,17 @@
     padding-top: $gutter;
     max-width: 100%;
   }
+
+  .latest-article-report & {
+    flex: 0 1 auto;
+    padding-top: $gutter;
+    max-width: 100%;
+  }
 }
 
 
 // Story Article
-.latest-story-article {
+.latest-article-story {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
@@ -98,7 +133,7 @@
 }
 
 // Report Article
-.latest-report-article {
+.latest-article-report {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
@@ -111,6 +146,27 @@
     border-bottom: solid $light-gray 1px;
   }
 }
+
+// Theory Article
+.latest-article-theory {
+  border-left: solid $light-gray 1px;
+  border-right: solid $light-gray 1px;
+  box-sizing: border-box;
+  padding: $gutter;
+
+  @media(max-width: $mobile) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: solid $light-gray 1px;
+  }
+}
+
+
+
+
+
+
 
 .latest-report-article-link {
   display: flex;
@@ -129,21 +185,6 @@
   padding: $gutter / 2;
 }
 
-
-// Theory Article
-.latest-theory-article {
-  border-left: solid $light-gray 1px;
-  border-right: solid $light-gray 1px;
-  box-sizing: border-box;
-  padding: $gutter;
-
-  @media(max-width: $mobile) {
-    border-left: none;
-    border-right: none;
-    border-top: solid $light-gray 1px;
-    border-bottom: solid $light-gray 1px;
-  }
-}
 
 .latest-theory-article-link {
   display: flex;
@@ -169,7 +210,6 @@
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter / 2;
-
 }
 
 .latest-organization-link {

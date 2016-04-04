@@ -1,0 +1,12 @@
+{% extends "articles/blocks/latest_article.html" %}
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block list_item_classes %}l-grid-item-double-width latest-article-story article-format-text{% endblock %}
+
+{% block below_title %}
+    <div class="latest-article-author">
+        {% if page.author %}
+            {{ page.author }}
+        {% endif %}
+    </div>
+{% endblock %}

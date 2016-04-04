@@ -115,14 +115,12 @@
                 {% for the_page in pages %}
                     {%  if the_page.content_type.model == 'organizationpage' %}
                         {% include "organizations/blocks/latest_organization.html" with page=the_page %}
-    {#                    {%  elif page.content_type.model == 'reportarticlepage' %}#}
-    {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
-                        {%  elif the_page.content_type.model == 'storyarticlepage' %}
-                            {% with article_classes="l-grid-item-double-width latest-story-article article-type-text"  %}
-                                {% include "articles/blocks/latest_article.html" with page=the_page article_classes=article_classes %}
-                            {%  endwith %}
-    {#                    {%  elif page.content_type.model == 'theoryarticlepage' %}#}
-    {#                        {% include "articles/blocks/list_article.html" with article_class="green" %}#}
+                    {%  elif the_page.content_type.model == 'reportarticlepage' %}
+                        {% include "articles/blocks/latest_report_article.html" with page=the_page %}
+                    {% elif the_page.content_type.model == 'storyarticlepage' %}
+                            {% include "articles/blocks/latest_story_article.html" with page=the_page  %}
+                    {% elif the_page.content_type.model == 'theoryarticlepage' %}
+                        {% include "articles/blocks/latest_article.html" with page=the_page %}
     {#                    {% else %}#}
     {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
                     {% endif %}
