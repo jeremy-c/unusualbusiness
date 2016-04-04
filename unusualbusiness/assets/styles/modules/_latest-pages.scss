@@ -2,6 +2,77 @@
    Modules/Latest Pages
    ======================= */
 
+@import "../base/base";
+
+.latest-article-link {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.latest-article-icon-wrapper {
+  flex: 0 0 48px;
+  margin-bottom: $gutter / 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  text-align: center;
+
+  .article-type-text & {
+    background-color: $yellow;
+  }
+
+  .latest-article-icon {
+    margin-top: 8px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.latest-article-info {
+  flex: 1;
+  padding: 0 $gutter;
+  min-width: 345px;
+}
+
+.latest-article-title {
+  font-weight: 200;
+  font-size: 28px;
+}
+
+.latest-article-author {
+  padding: 7px 0;
+
+  font-family: $open-sans;
+  font-size: 14px;
+  color: $light-grayish;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.latest-article-image {
+  flex: 0 1 428px;
+  max-width: 428px;
+
+  @media(max-width: $tablet-horizontal) {
+    flex: 0 1 auto;
+    padding-top: $gutter;
+    max-width: 100%;
+  }
+}
+
+
 // Story Article
 .latest-story-article {
   border-top: solid $light-gray 1px;
@@ -125,6 +196,7 @@
 }
 
 .latest-organization-title {
+  margin-left: $gutter;
   padding: $gutter / 2;
   text-align: center;
 

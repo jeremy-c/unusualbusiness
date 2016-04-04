@@ -1,0 +1,24 @@
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+<li class="l-grid-item latest-article {{ article_classes }}">
+    <a href="{{ page.url }}" class="latest-article-link">
+        <div class="latest-article-icon-wrapper">
+            <svg width="22.439px" height="22.439px" class="latest-article-icon">
+                <use xlink:href="{% static 'images/sprite.svg#article-icon' %}" />
+            </svg>
+        </div>
+        <div class="latest-article-info" >
+            <h4 class="latest-article-title">
+                {{ page.title }}
+            </h4>
+            <div class="latest-article-author">
+                {% if page.author %}
+                    {{ page.author }}
+                {% endif %}
+            </div>
+        </div>
+        {% if page.featured_image %}
+            {% include "blocks/responsive_image.html" with image=page.featured_image image_class="latest-article-image"  %}
+        {% endif %}
+    </a>
+</li>
