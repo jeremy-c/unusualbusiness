@@ -20,6 +20,7 @@
 
 .latest-article-icon-wrapper {
   flex: 0 0 48px;
+  align-self: flex-start;
   margin-bottom: $gutter / 2;
   width: 48px;
   height: 48px;
@@ -27,6 +28,8 @@
   text-align: center;
 
   .latest-article-story & {
+    align-self: center;
+    margin-top: -14px; // lower below date
     background-color: $yellow;
   }
 
@@ -35,12 +38,14 @@
   }
 
   .latest-article-report & {
+    margin-top: calc(var(--gutter + 14px)); // lower below date
     background-color: $blue;
   }
 
   &:before {
     content: '';
     margin-top: 16px;
+    @include sprite(article-icon);
   }
 
   .article-format-text & {
@@ -51,7 +56,13 @@
 
   .article-format-event & {
     &:before {
-      @include sprite(megaphone-icon);
+      @include sprite(article-icon);
+    }
+  }
+
+  .article-format-theory & {
+    &:before {
+      @include sprite(theory-article-icon);
     }
   }
 
@@ -66,6 +77,7 @@
   flex: 1;
   padding: 0 $gutter;
   min-width: 345px;
+
 }
 
 .latest-article-title {
@@ -87,6 +99,10 @@
 
   .latest-article-report & {
     display: none;
+  }
+
+  .latest-article-theory & {
+    padding: $gutter 0;
   }
 }
 
@@ -116,28 +132,12 @@
   padding: $gutter;
 }
 
-.latest-story-article-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $yellow;
-
-  font-weight: 300;
-  font-size: 28px;
-  text-decoration: none;
-  color: $white;
-}
-
-.latest-story-article-title {
-  padding: $gutter / 2;
-}
-
 // Report Article
 .latest-article-report {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
-  padding: $gutter;
+  padding: 0 $gutter $gutter;
 
   @media(max-width: $mobile) {
     border-left: none;
@@ -145,6 +145,13 @@
     border-top: solid $light-gray 1px;
     border-bottom: solid $light-gray 1px;
   }
+}
+
+.latest-article-report-related-event-date {
+  padding-bottom: $gutter / 2;
+  font-family: $open-sans;
+  font-size: 14px;
+  color: $light-grayish;
 }
 
 // Theory Article
@@ -160,47 +167,11 @@
     border-top: solid $light-gray 1px;
     border-bottom: solid $light-gray 1px;
   }
-}
 
+  .latest-article-summary {
 
+  }
 
-
-
-
-
-.latest-report-article-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: $blue;
-
-  font-weight: 300;
-  font-size: 28px;
-  text-decoration: none;
-  color: $white;
-}
-
-.latest-report-article-title {
-  padding: $gutter / 2;
-}
-
-
-.latest-theory-article-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: $green;
-
-  font-weight: 300;
-  font-size: 28px;
-  text-decoration: none;
-  color: $white;
-}
-
-.latest-theory-article-title {
-  padding: $gutter / 2;
 }
 
 

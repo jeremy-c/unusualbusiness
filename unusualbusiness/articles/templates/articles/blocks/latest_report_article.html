@@ -4,6 +4,6 @@
 {% block list_item_classes %}latest-article-report article-format-event{% endblock %}
 
 {% block above_title %}
-    {{ page.event_page.start_date }}
+    <div class="latest-article-report-related-event-date">{{ page.event_page.start_date|date:"j F" }}</div>
 {% endblock %}
 

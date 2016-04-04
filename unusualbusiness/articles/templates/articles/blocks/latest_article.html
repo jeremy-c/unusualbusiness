@@ -7,6 +7,9 @@
             {% block above_title %}{% endblock %}
             <h4 class="latest-article-title">
                 {{ page.title }}
+                {% if page.subtitle %}
+                    - {{ page.subtitle }}
+                {% endif %}
             </h4>
             {% block below_title %}{% endblock %}
         </div>

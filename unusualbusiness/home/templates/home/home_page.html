@@ -112,6 +112,9 @@
         <section class="latest-articles">
             <h2 class="hidden-title">Pages</h2>
             <ul class="l-grid">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+
                 {% for the_page in pages %}
                     {%  if the_page.content_type.model == 'organizationpage' %}
                         {% include "organizations/blocks/latest_organization.html" with page=the_page %}
@@ -120,106 +123,13 @@
                     {% elif the_page.content_type.model == 'storyarticlepage' %}
                             {% include "articles/blocks/latest_story_article.html" with page=the_page  %}
                     {% elif the_page.content_type.model == 'theoryarticlepage' %}
-                        {% include "articles/blocks/latest_article.html" with page=the_page %}
+                        {% include "articles/blocks/latest_theory_article.html" with page=the_page %}
     {#                    {% else %}#}
     {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
                     {% endif %}
                     {% empty %}
                         <li>Sorry, no pages found.</li>
                 {% endfor %}
-
-                <li class="l-grid-sizer"></li>
-                <li class="l-grid-gutter-sizer"></li>
-
-                <li class="l-grid-item l-grid-item-double-width latest-story-article">
-                    <a href="#" class="latest-story-article-link">
-                        <h4 class="latest-story-article-title">
-                            We tried to live together with 10 people but we officially failed dramatically
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item latest-report-article">
-                    <a href="#" class="latest-report-article-link">
-                        <h4 class="latest-report-article-title">
-                            Mini Fest was a super succes!
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item latest-theory-article">
-                    <a href="#" class="latest-theory-article-link">
-                        <h4 class="latest-theory-article-title">
-                            Economic Meltdown, or what an Iceberg can tell us about the Economy –
-                            with a very long title to give everything away
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
-                    <a href="#" class="latest-organization-link">
-                        <h4 class="latest-organization-title">
-                            Voedselkollektief <br>Utrecht
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item latest-report-article">
-                    <a href="#" class="latest-report-article-link">
-                        <h4 class="latest-report-article-title">
-                            Mini Fest was a super succes!
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item l-grid-item-double-width latest-story-article">
-                    <a href="#" class="latest-story-article-link">
-                        <h4 class="latest-story-article-title">
-                            We tried to live together with 10 people but we officially failed dramatically
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
-                    <a href="#" class="latest-organization-link">
-                        <h4 class="latest-organization-title">
-                            (Un)usual Business
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item latest-report-article">
-                    <a href="#" class="latest-report-article-link">
-                        <h4 class="latest-report-article-title">
-                            Mini Fest was a super succes!
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
-                    <a href="#" class="latest-organization-link">
-                        <h4 class="latest-organization-title">
-                            (Un)usual Business
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
-                    <a href="#" class="latest-organization-link">
-                        <h4 class="latest-organization-title">
-                            Voedselkollektief <br>Utrecht
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="l-grid-item latest-theory-article">
-                    <a href="#" class="latest-theory-article-link">
-                        <h4 class="latest-theory-article-title">
-                            Economic Meltdown, or what an Iceberg can tell us about the Economy –
-                            with a very long title to give everything away
-                        </h4>
-                    </a>
-                </li>
 
             </ul>
 

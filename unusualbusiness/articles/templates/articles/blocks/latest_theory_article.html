@@ -1,12 +1,15 @@
 {% extends "articles/blocks/latest_article.html" %}
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-{% block list_item_classes %}latest-article-theory article-format-event{% endblock %}
+{% block list_item_classes %}latest-article-theory article-format-theory{% endblock %}
 
 {% block below_title %}
     <div class="latest-article-author">
         {% if page.author %}
             {{ page.author }}
         {% endif %}
+    </div>
+    <div class="latest-article-summary">
+        {{ page.summary }}
     </div>
 {% endblock %}
