@@ -6,14 +6,14 @@
 
 var pageList = () => {
   let initPageList = function() {
-    $('.page-list').isotope({
+    $('.l-grid').isotope({
       // set itemSelector so .grid-sizer is not used in layout
-      itemSelector: '.page-list-item',
+      itemSelector: '.l-grid-item',
       percentPosition: true,
       masonry: {
         // use element for option
-        columnWidth: '.grid-sizer',
-        gutter: 40
+        columnWidth: '.l-grid-sizer',
+        gutter: '.l-grid-gutter-sizer'
       }
     });
   };

@@ -1,32 +1,16 @@
 /* ==|====================
-   Module/Page List
+   Modules/Latest Pages
    ======================= */
 
-@import "../base/base";
-
-.page-list {
-
-}
-
-.grid-sizer,
-.page-list-item {
-  width: calc(50% - 20px);
-}
-
-.page-list-item {
-  margin-bottom: 40px;
-}
-
 // Story Article
-.page-list-item-story-article {
+.latest-story-article {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter;
-  width: 100%;
 }
 
-.page-list-item-story-article-link {
+.latest-story-article-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,19 +22,26 @@
   color: $white;
 }
 
-.page-list-item-story-article-title {
+.latest-story-article-title {
   padding: $gutter / 2;
 }
 
 // Report Article
-.page-list-item-report-article {
+.latest-report-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter;
+
+  @media(max-width: $mobile) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: solid $light-gray 1px;
+  }
 }
 
-.page-list-item-report-article-link {
+.latest-report-article-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,21 +54,27 @@
   color: $white;
 }
 
-.page-list-item-report-article-title {
+.latest-report-article-title {
   padding: $gutter / 2;
-
 }
 
 
 // Theory Article
-.page-list-item-theory-article {
+.latest-theory-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter;
+
+  @media(max-width: $mobile) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: solid $light-gray 1px;
+  }
 }
 
-.page-list-item-theory-article-link {
+.latest-theory-article-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,21 +87,20 @@
   color: $white;
 }
 
-.page-list-item-theory-article-title {
+.latest-theory-article-title {
   padding: $gutter / 2;
 }
 
 
 // Organization
-.page-list-item-organization {
+.latest-organization {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter / 2;
-  height: 73px;
 }
 
-.page-list-item-organization-link {
+.latest-organization-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,7 +117,7 @@
   }
 }
 
-.page-list-item-organization-title {
+.latest-organization-title {
   padding: $gutter / 2;
   text-align: center;
 }

@@ -111,7 +111,7 @@
 
         <section class="latest-articles">
             <h2 class="hidden-title">Pages</h2>
-            <ul class="page-list">
+            <ul class="l-grid">
 {#                {% for the_page in pages %}#}
 {#                    {%  if the_page.content_type.model == 'organizationpage' %}#}
 {#                        {% include "organizations/blocks/list_item_organization.html" with page=the_page %}#}
@@ -128,77 +128,93 @@
 {#                        <li>Sorry, no pages found.</li>#}
 {#                {% endfor %}#}
 
-                <li class="grid-sizer"></li>
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
 
-                <li class="page-list-item page-list-item-story-article">
-                    <a href="#" class="page-list-item-story-article-link">
-                        <h4 class="page-list-item-story-article-title">
+                <li class="l-grid-item l-grid-item-double-width latest-story-article">
+                    <a href="#" class="latest-story-article-link">
+                        <h4 class="latest-story-article-title">
                             We tried to live together with 10 people but we officially failed dramatically
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-report-article">
-                    <a href="#" class="page-list-item-report-article-link">
-                        <h4 class="page-list-item-report-article-title">
+                <li class="l-grid-item latest-report-article">
+                    <a href="#" class="latest-report-article-link">
+                        <h4 class="latest-report-article-title">
                             Mini Fest was a super succes!
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-theory-article">
-                    <a href="#" class="page-list-item-theory-article-link">
-                        <h4 class="page-list-item-theory-article-title">
+                <li class="l-grid-item latest-theory-article">
+                    <a href="#" class="latest-theory-article-link">
+                        <h4 class="latest-theory-article-title">
                             Economic Meltdown, or what an Iceberg can tell us about the Economy –
                             with a very long title to give everything away
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-organization">
-                    <a href="#" class="page-list-item-organization-link">
-                        <h4 class="page-list-item-organization-title">
+                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
+                    <a href="#" class="latest-organization-link">
+                        <h4 class="latest-organization-title">
                             Voedselkollektief <br>Utrecht
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-organization">
-                    <a href="#" class="page-list-item-organization-link">
-                        <h4 class="page-list-item-organization-title">
-                            (Un)usual Business
-                        </h4>
-                    </a>
-                </li>
-
-                <li class="page-list-item page-list-item-report-article">
-                    <a href="#" class="page-list-item-report-article-link">
-                        <h4 class="page-list-item-report-article-title">
+                <li class="l-grid-item latest-report-article">
+                    <a href="#" class="latest-report-article-link">
+                        <h4 class="latest-report-article-title">
                             Mini Fest was a super succes!
                         </h4>
                     </a>
                 </li>
 
+                <li class="l-grid-item l-grid-item-double-width latest-story-article">
+                    <a href="#" class="latest-story-article-link">
+                        <h4 class="latest-story-article-title">
+                            We tried to live together with 10 people but we officially failed dramatically
+                        </h4>
+                    </a>
+                </li>
 
-                <li class="page-list-item page-list-item-organization">
-                    <a href="#" class="page-list-item-organization-link">
-                        <h4 class="page-list-item-organization-title">
+                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
+                    <a href="#" class="latest-organization-link">
+                        <h4 class="latest-organization-title">
                             (Un)usual Business
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-organization">
-                    <a href="#" class="page-list-item-organization-link">
-                        <h4 class="page-list-item-organization-title">
-                            Voedselkollektief Utrecht
+                <li class="l-grid-item latest-report-article">
+                    <a href="#" class="latest-report-article-link">
+                        <h4 class="latest-report-article-title">
+                            Mini Fest was a super succes!
                         </h4>
                     </a>
                 </li>
 
-                <li class="page-list-item page-list-item-theory-article">
-                    <a href="#" class="page-list-item-theory-article-link">
-                        <h4 class="page-list-item-theory-article-title">
+                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
+                    <a href="#" class="latest-organization-link">
+                        <h4 class="latest-organization-title">
+                            (Un)usual Business
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="l-grid-item l-grid-item-fixed-height latest-organization">
+                    <a href="#" class="latest-organization-link">
+                        <h4 class="latest-organization-title">
+                            Voedselkollektief <br>Utrecht
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="l-grid-item latest-theory-article">
+                    <a href="#" class="latest-theory-article-link">
+                        <h4 class="latest-theory-article-title">
                             Economic Meltdown, or what an Iceberg can tell us about the Economy –
                             with a very long title to give everything away
                         </h4>
