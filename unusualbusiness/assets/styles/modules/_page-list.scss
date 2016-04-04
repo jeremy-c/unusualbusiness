@@ -2,8 +2,126 @@
    Module/Page List
    ======================= */
 
-.pages {
-  li {
-    padding: 10px 20px;
+@import "../base/base";
+
+.page-list {
+
+}
+
+.grid-sizer,
+.page-list-item {
+  width: calc(50% - 20px);
+}
+
+.page-list-item {
+  margin-bottom: 40px;
+}
+
+// Story Article
+.page-list-item-story-article {
+  border-top: solid $light-gray 1px;
+  border-bottom: solid $light-gray 1px;
+  box-sizing: border-box;
+  padding: $gutter;
+  width: 100%;
+}
+
+.page-list-item-story-article-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $yellow;
+
+  font-weight: 300;
+  font-size: 28px;
+  text-decoration: none;
+  color: $white;
+}
+
+.page-list-item-story-article-title {
+  padding: $gutter / 2;
+}
+
+// Report Article
+.page-list-item-report-article {
+  border-left: solid $light-gray 1px;
+  border-right: solid $light-gray 1px;
+  box-sizing: border-box;
+  padding: $gutter;
+}
+
+.page-list-item-report-article-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $blue;
+
+  font-weight: 300;
+  font-size: 28px;
+  text-decoration: none;
+  color: $white;
+}
+
+.page-list-item-report-article-title {
+  padding: $gutter / 2;
+
+}
+
+
+// Theory Article
+.page-list-item-theory-article {
+  border-left: solid $light-gray 1px;
+  border-right: solid $light-gray 1px;
+  box-sizing: border-box;
+  padding: $gutter;
+}
+
+.page-list-item-theory-article-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $green;
+
+  font-weight: 300;
+  font-size: 28px;
+  text-decoration: none;
+  color: $white;
+}
+
+.page-list-item-theory-article-title {
+  padding: $gutter / 2;
+}
+
+
+// Organization
+.page-list-item-organization {
+  border-top: solid $light-gray 1px;
+  border-bottom: solid $light-gray 1px;
+  box-sizing: border-box;
+  padding: $gutter / 2;
+  height: 73px;
+}
+
+.page-list-item-organization-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  font-weight: bold;
+  font-family: $open-sans;
+  text-decoration: none;
+  color: $black;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
   }
+}
+
+.page-list-item-organization-title {
+  padding: $gutter / 2;
+  text-align: center;
 }

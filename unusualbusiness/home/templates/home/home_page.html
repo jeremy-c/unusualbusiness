@@ -16,7 +16,7 @@
 
     <section class="content">
 
-        <h1 class="invisible-title">(Un)usual Business</h1>
+        <h1 class="hidden-title">(Un)usual Business</h1>
         <!--<h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>-->
 
         <section class="l-feature">
@@ -109,40 +109,103 @@
 
         <hr>
 
-        <section class="latest">
-{#            <h2>Filters</h2>#}
-{#            <ul>#}
-{#                <li class="stories"><a href="{% slugurl 'stories' %}">Stories</a></li>#}
-{#                <li class="events-reports-news"><a href="{% slugurl 'events' %}">Events & News</a></li>#}
-{#                <li class="ideas"><a href="{% slugurl 'theory' %}">Ideas</a></li>#}
-{#                <li class="organizations"><a href="{% slugurl 'organizations' %}">Organizations</a></li>#}
-{#            </ul>#}
-{##}
-{#            <h2><img src="/static/images/how-to-circles.svg" width="40" height="40" class="how-to-circles" /> How to's</h2>#}
-{##}
-{#            <div class="how-tos">#}
-{#                {% for how_to in how_tos %}#}
-{#                    <ul>#}
-{#                        <li class="{{ how_to | to_class_name }}"><a href="{% pageurl how_to %}">{{ how_to.title }}</a> ({{ how_to.first_published_at|date:"SHORT_DATETIME_FORMAT" }})</li>#}
-{#                    </ul>#}
+        <section class="latest-articles">
+            <h2 class="hidden-title">Pages</h2>
+            <ul class="page-list">
+{#                {% for the_page in pages %}#}
+{#                    {%  if the_page.content_type.model == 'organizationpage' %}#}
+{#                        {% include "organizations/blocks/list_item_organization.html" with page=the_page %}#}
+    {#                    {%  elif page.content_type.model == 'reportarticlepage' %}#}
+    {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
+    {#                    {%  elif page.content_type.model == 'storyarticlepage' %}#}
+    {#                        {% include "articles/blocks/list_article.html" with article_class="yellow" %}#}
+    {#                    {%  elif page.content_type.model == 'theoryarticlepage' %}#}
+    {#                        {% include "articles/blocks/list_article.html" with article_class="green" %}#}
+    {#                    {% else %}#}
+    {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
+{#                    {% endif %}#}
+{#                    {% empty %}#}
+{#                        <li>Sorry, no pages found.</li>#}
 {#                {% endfor %}#}
-{#            </div>#}
 
-            <h2>Pages</h2>
-            <div class="pages">
-                <ul>
-                {% for the_page in pages %}
-                    <li class="{{ the_page | to_class_name }}">
-                        <a href="{% pageurl the_page %}">
-                            {{ the_page.title }}
-                        </a>
-                        ({{ the_page.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
-                    </li>
-                    {% empty %}
-                        <li>Sorry, no pages found.</li>
-                {% endfor %}
-                </ul>
-            </div>
+                <li class="grid-sizer"></li>
+
+                <li class="page-list-item page-list-item-story-article">
+                    <a href="#" class="page-list-item-story-article-link">
+                        <h4 class="page-list-item-story-article-title">
+                            We tried to live together with 10 people but we officially failed dramatically
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-report-article">
+                    <a href="#" class="page-list-item-report-article-link">
+                        <h4 class="page-list-item-report-article-title">
+                            Mini Fest was a super succes!
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-theory-article">
+                    <a href="#" class="page-list-item-theory-article-link">
+                        <h4 class="page-list-item-theory-article-title">
+                            Economic Meltdown, or what an Iceberg can tell us about the Economy –
+                            with a very long title to give everything away
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-organization">
+                    <a href="#" class="page-list-item-organization-link">
+                        <h4 class="page-list-item-organization-title">
+                            Voedselkollektief <br>Utrecht
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-organization">
+                    <a href="#" class="page-list-item-organization-link">
+                        <h4 class="page-list-item-organization-title">
+                            (Un)usual Business
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-report-article">
+                    <a href="#" class="page-list-item-report-article-link">
+                        <h4 class="page-list-item-report-article-title">
+                            Mini Fest was a super succes!
+                        </h4>
+                    </a>
+                </li>
+
+
+                <li class="page-list-item page-list-item-organization">
+                    <a href="#" class="page-list-item-organization-link">
+                        <h4 class="page-list-item-organization-title">
+                            (Un)usual Business
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-organization">
+                    <a href="#" class="page-list-item-organization-link">
+                        <h4 class="page-list-item-organization-title">
+                            Voedselkollektief Utrecht
+                        </h4>
+                    </a>
+                </li>
+
+                <li class="page-list-item page-list-item-theory-article">
+                    <a href="#" class="page-list-item-theory-article-link">
+                        <h4 class="page-list-item-theory-article-title">
+                            Economic Meltdown, or what an Iceberg can tell us about the Economy –
+                            with a very long title to give everything away
+                        </h4>
+                    </a>
+                </li>
+
+            </ul>
 
 {#            <div class="stream">#}
 {#                {% for block in page.stream %}#}
