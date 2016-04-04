@@ -98,6 +98,7 @@
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter / 2;
+
 }
 
 .latest-organization-link {
@@ -106,10 +107,16 @@
   align-items: center;
   height: 100%;
 
-  font-weight: bold;
-  font-family: $open-sans;
   text-decoration: none;
-  color: $black;
+
+  &:before {
+    @include sprite(organization-icon);
+    content: '';
+    position: absolute;
+    left: 0;
+    margin-left: $gutter;
+    vertical-align: top;
+  }
 
   &:hover,
   &:active {
@@ -120,4 +127,8 @@
 .latest-organization-title {
   padding: $gutter / 2;
   text-align: center;
+
+  font-weight: bold;
+  font-family: $open-sans;
+  color: $black;
 }

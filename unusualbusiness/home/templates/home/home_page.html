@@ -112,9 +112,9 @@
         <section class="latest-articles">
             <h2 class="hidden-title">Pages</h2>
             <ul class="l-grid">
-{#                {% for the_page in pages %}#}
-{#                    {%  if the_page.content_type.model == 'organizationpage' %}#}
-{#                        {% include "organizations/blocks/list_item_organization.html" with page=the_page %}#}
+                {% for the_page in pages %}
+                    {%  if the_page.content_type.model == 'organizationpage' %}
+                        {% include "organizations/blocks/list_item_organization.html" with page=the_page %}
     {#                    {%  elif page.content_type.model == 'reportarticlepage' %}#}
     {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
     {#                    {%  elif page.content_type.model == 'storyarticlepage' %}#}
@@ -123,10 +123,10 @@
     {#                        {% include "articles/blocks/list_article.html" with article_class="green" %}#}
     {#                    {% else %}#}
     {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
-{#                    {% endif %}#}
-{#                    {% empty %}#}
-{#                        <li>Sorry, no pages found.</li>#}
-{#                {% endfor %}#}
+                    {% endif %}
+                    {% empty %}
+                        <li>Sorry, no pages found.</li>
+                {% endfor %}
 
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
