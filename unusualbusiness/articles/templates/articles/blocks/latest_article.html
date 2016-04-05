@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-<li class="l-grid-item latest-article {{ article_classes }} {% block list_item_classes %}{% endblock %}">
+<li class="l-grid-item latest-article{{ article_classes }} {% block list_item_classes %}{% endblock %} {{ page.format }}">
     <a href="{{ page.url }}" class="latest-article-link">
         <div class="latest-article-icon-wrapper"></div>
         <div class="latest-article-info" >

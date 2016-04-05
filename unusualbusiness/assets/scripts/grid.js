@@ -4,10 +4,10 @@
 
 'use strict';
 
-var pageList = () => {
+let gridModule = () => {
   let grid = $('.l-grid');
 
-  let initPageList = function() {
+  let initGrid = function() {
     grid.imagesLoaded(function() {
       grid.isotope({
         itemSelector: '.l-grid-item',
@@ -22,7 +22,7 @@ var pageList = () => {
   };
 
   return {
-    initPageList: initPageList,
+    initGrid: initGrid,
     grid: grid
   };
 };
@@ -30,7 +30,7 @@ var pageList = () => {
 (function() {
   $(document).ready(function() {
     console.log('Page List go!');
-    let PageList = pageList();
-    PageList.initPageList();
+    let GridModule = gridModule();
+    GridModule.initGrid();
   });
 })();

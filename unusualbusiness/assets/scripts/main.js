@@ -19,39 +19,35 @@ let mobileMenu = () => {
   let initAnimateMenuBar = function() {
     let menuItemHowTo = $('.main-menu-how-to');
     menuItemHowTo.addClass('is-in-position');
-    menuItemHowTo.on('click', function() {
-      menuItemHowTo.addClass('is-fading-out');
-    });
-    // let menuItemHowTo1 = $('.main-menu-how-to:nth-last-of-type(1)');
-    // let menuItemHowTo2 = $('.main-menu-how-to:nth-last-of-type(2)');
-    // let menuItemHowTo3 = $('.main-menu-how-to:nth-last-of-type(3)');
-    // let menuItemHowTo4 = $('.main-menu-how-to:nth-last-of-type(4)');
     // menuItemHowTo.on('click', function() {
-    //   menuItemHowTo1.velocity({
-    //     left: '100%'
-    //   }, {
-    //     easing: 'easeInOutExpo',
-    //     duration: 200
-    //   });
-    //   menuItemHowTo2.velocity({
-    //     left: '100%'
-    //   }, {
-    //     easing: 'easeInOutExpo',
-    //     duration: 200
-    //   });
-    //   menuItemHowTo3.velocity({
-    //     left: '100%'
-    //   }, {
-    //     easing: 'easeInOutExpo',
-    //     duration: 200
-    //   });
-    //   menuItemHowTo4.velocity({
-    //     left: '100%'
-    //   }, {
-    //     easing: 'easeInOutExpo',
-    //     duration: 200
-    //   });
+    //   menuItemHowTo.addClass('is-fading-out');
     // });
+  };
+  let filterGrid = function() {
+    /* global gridModule*/
+    /* eslint no-undef: 2*/
+
+    let GridModule = gridModule();
+    $('.how-to-link-blue').on('click', function() {
+      GridModule.grid.isotope({
+        filter: '.latest-article-report'
+      });
+    });
+    $('.how-to-link-black').on('click', function() {
+      GridModule.grid.isotope({
+        filter: '.latest-organization'
+      });
+    });
+    $('.how-to-link-yellow').on('click', function() {
+      GridModule.grid.isotope({
+        filter: '.latest-article-story'
+      });
+    });
+    $('.how-to-link-green').on('click', function() {
+      GridModule.grid.isotope({
+        filter: '.latest-article-theory'
+      });
+    });
   };
 
   let initSidrMenu = function() {
@@ -69,6 +65,7 @@ let mobileMenu = () => {
 
   let initMenu = function() {
     initAnimateMenuBar();
+    filterGrid();
     // wait for SVG's to be copied
     window.setTimeout(initSidrMenu, 1000);
   };
