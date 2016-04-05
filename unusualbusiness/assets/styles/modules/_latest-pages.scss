@@ -114,6 +114,10 @@
     max-width: 100%;
   }
 
+  @media(max-width: $tablet) {
+    width: 100%;
+  }
+
   .latest-article-report & {
     flex: 0 1 auto;
     padding-top: $gutter;
