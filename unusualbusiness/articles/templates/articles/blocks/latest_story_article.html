@@ -10,3 +10,7 @@
         {% endif %}
     </div>
 {% endblock %}
+
+{% block featured_image %}
+    {% include "blocks/responsive_image_w428.html" with image=page.featured_image image_class="latest-article-image"  %}
+{% endblock %}

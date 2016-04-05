@@ -1,0 +1,19 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% if image %}
+
+    {% image image width-428 as ri_w428 %}
+    {% image image width-856 as ri_w428_2x %}
+    <picture>
+        <source media="(min-width: 320px)"
+            srcset="{{ ri_w428_2x.url }} 2x,{{ ri_w428.url }} 1x"
+            sizes="100%" />
+        <img
+            srcset="{{ ri_w428_2x.url }} 2x,{{ ri_w428.url }} 1x"
+            src="{{ ri_w428.url }}"
+            width="{{ ri_w428.width }}"
+            height="{{ ri_w428.height }}"
+            alt="{{ ri_w428.alt }}" class="{{ image_class }}"  />
+    </picture>
+
+{% endif %}
