@@ -15,12 +15,17 @@ from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
 from unusualbusiness.tags.models import OrganizationPageTag
-from unusualbusiness.utils.models import RenderInlineMixin
+from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
 
 
 class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'organizations/blocks/inline_organization.html'
-
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=16,
+        null=False,
+        default=PageFormat.ORGANIZATION,
+        choices=PageFormat.ALL)
     description = models.CharField(
         verbose_name = _("Description"),
         max_length=512,

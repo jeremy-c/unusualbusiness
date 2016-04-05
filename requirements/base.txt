@@ -33,6 +33,3 @@ wagtailmodeladmin==2.2.1
 
 # Search
 elasticsearch==1.9.0
-
-# Package management
-django-gulp==2.3.0

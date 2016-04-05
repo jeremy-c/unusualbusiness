@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
@@ -19,6 +20,7 @@ from wagtail.wagtailcore import blocks
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, ReportArticlePageTag
+from unusualbusiness.utils.models import PageFormat
 
 
 class TheoryArticleIndexPage(TranslationMixin, Page):
@@ -71,6 +73,12 @@ class AbstractArticle(models.Model):
         help_text=_("The subtitle of the page"),
         blank=True
     )
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=16,
+        null=False,
+        default = PageFormat.TEXT,
+        choices=PageFormat.ALL)
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name=_('featured_image'),
@@ -92,10 +100,12 @@ class AbstractArticle(models.Model):
         help_text=_("The summary of the articles (max 100 words)"),
         blank=True
     )
-    publication_date = models.DateField(
+    publication_date = models.DateTimeField(
         verbose_name=_('publication_date'),
         help_text=_("The publication date of the article"),
-        blank=True
+        default=timezone.now,
+        blank=True,
+        null=True,
     )
     body = StreamField([
         ('paragraph', blocks.RichTextBlock()),
@@ -128,6 +138,7 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
 StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
+        FieldPanel('format'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
@@ -192,6 +203,7 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
+        FieldPanel('format'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),
@@ -239,6 +251,7 @@ ReportArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('event_page'),
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
+        FieldPanel('format'),
         ImageChooserPanel('featured_image'),
         FieldPanel('summary'),
         FieldPanel('publication_date'),

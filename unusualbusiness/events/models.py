@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 from django.db import models
+from django.forms import ChoiceField
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
@@ -21,17 +22,22 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailcore import blocks
 
 from unusualbusiness.tags.models import EventPageTag
-from unusualbusiness.utils.models import RenderInlineMixin
+from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
 
 
 class EventPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'events/blocks/inline_event.html'
-
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=16,
+        null=False,
+        default=PageFormat.EVENT,
+        choices=PageFormat.ALL)
     start_date = models.DateTimeField(
-        verbose_name = _("Starting date"),
+        verbose_name=_("Starting date"),
     )
     end_date = models.DateTimeField(
-        verbose_name = _("End date"),
+        verbose_name=_("End date"),
         null=True,
         blank=True
     )

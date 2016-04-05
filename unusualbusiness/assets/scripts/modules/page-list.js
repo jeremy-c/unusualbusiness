@@ -5,10 +5,11 @@
 'use strict';
 
 var pageList = () => {
+  let grid = $('.l-grid');
+
   let initPageList = function() {
-    let $grid = $('.l-grid');
-    $grid.imagesLoaded(function() {
-      $grid.isotope({
+    grid.imagesLoaded(function() {
+      grid.isotope({
         itemSelector: '.l-grid-item',
         percentPosition: true,
         masonry: {
@@ -21,7 +22,8 @@ var pageList = () => {
   };
 
   return {
-    initPageList: initPageList
+    initPageList: initPageList,
+    grid: grid
   };
 };
 
