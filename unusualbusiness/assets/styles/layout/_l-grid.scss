@@ -22,7 +22,7 @@
     width: 40px;
   }
 
-  @media(max-width: $mobile) {
+  @media(max-width: $tablet) {
     width: 0;
   }
 }
@@ -35,7 +35,7 @@
     width: calc(50% - 20px);
   }
 
-  @media(max-width: $mobile) {
+  @media(max-width: $tablet) {
     width: 100%;
   }
 }
@@ -47,7 +47,7 @@
     margin-bottom: 40px;
   }
 
-  @media(max-width: $mobile) {
+  @media(max-width: $tablet) {
     margin-bottom: 40px;
   }
 }

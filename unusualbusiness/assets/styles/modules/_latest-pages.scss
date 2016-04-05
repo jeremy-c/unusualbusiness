@@ -11,11 +11,6 @@
   align-items: center;
 
   text-decoration: none;
-
-  &:hover,
-  &:active {
-    text-decoration: underline;
-  }
 }
 
 .latest-article-icon-wrapper {
@@ -78,6 +73,9 @@
   padding: 0 $gutter;
   min-width: 345px;
 
+  @media(max-width: $tablet-horizontal) {
+    min-width: inherit;
+  }
 }
 
 .latest-article-title {
