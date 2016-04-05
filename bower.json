@@ -13,6 +13,7 @@
     "svg4everybody": "^2.0.3",
     "velocity": "^1.2.3",
     "isotope": "^2.2.2",
+    "imagesloaded": "^4.1.0",
     "sidr": "^2.2.1"
   },
   "ignore": [

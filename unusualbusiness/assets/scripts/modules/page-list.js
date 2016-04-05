@@ -6,15 +6,17 @@
 
 var pageList = () => {
   let initPageList = function() {
-    $('.l-grid').isotope({
-      // set itemSelector so .grid-sizer is not used in layout
-      itemSelector: '.l-grid-item',
-      percentPosition: true,
-      masonry: {
-        // use element for option
-        columnWidth: '.l-grid-sizer',
-        gutter: '.l-grid-gutter-sizer'
-      }
+    let $grid = $('.l-grid');
+    $grid.imagesLoaded(function() {
+      $grid.isotope({
+        itemSelector: '.l-grid-item',
+        percentPosition: true,
+        masonry: {
+          // use element for option
+          columnWidth: '.l-grid-sizer',
+          gutter: '.l-grid-gutter-sizer'
+        }
+      });
     });
   };
 
