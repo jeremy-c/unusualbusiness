@@ -4,24 +4,23 @@
 
 'use strict';
 
-var featuredArticles = () => {
+let FeaturedArticles = () => {
   let initSlider = function() {
     $('.unslider').unslider({
       keys: false,
-      arrows: false,
+      arrows: false, 
       nav: true
     });
   };
 
+  let init = function () {
+    console.log('Featured Articles go!');
+    initSlider();
+  };
+
   return {
-    initSlider: initSlider
+    init: init
   };
 };
 
-(function() {
-  $(document).ready(function() {
-    console.log('Featured Articles go!');
-    let FeaturedArticles = featuredArticles();
-    FeaturedArticles.initSlider();
-  });
-})();
+export default FeaturedArticles;

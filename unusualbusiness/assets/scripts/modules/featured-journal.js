@@ -4,7 +4,7 @@
 
 'use strict';
 
-var featuredJournal = () => {
+let FeaturedJournal = () => {
   let toggleOverlay = function() {
     let overlayElement = $(this).find('.featured-journal-overlay');
     overlayElement.toggleClass('is-hidden');
@@ -17,15 +17,14 @@ var featuredJournal = () => {
     calloutLink.on('mouseout', toggleOverlay);
   };
 
+  let init = function() {
+    console.log('Featured Journal go!');
+    initMouseEvents();
+  };
+
   return {
-    initMouseEvents: initMouseEvents
+    init: init
   };
 };
 
-(function() {
-  $(document).ready(function() {
-    console.log('Featured Journal go!');
-    let FeaturedJournal = featuredJournal();
-    FeaturedJournal.initMouseEvents();
-  });
-})();
+export default FeaturedJournal

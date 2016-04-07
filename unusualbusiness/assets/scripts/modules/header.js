@@ -2,7 +2,7 @@
    Module/Header
    ======================= */
 
-let headerMenus = () => {
+let HeaderMenus = () => {
   let toggleEyebrows = function() {
     let howToEyebrow = $(this).children().first();
     let howToEye = howToEyebrow.siblings().first();
@@ -25,16 +25,15 @@ let headerMenus = () => {
     ubLogoLink.on('mouseleave', spinLogo);
   };
 
+  let init = function () {
+    console.log('Header go!');
+    initHeader();
+  };
+
   return {
-    initHeader: initHeader
+    init: init
   };
 };
 
-(function() {
-  $(document).ready(function() {
-    console.log('Header go!');
-    let HeaderMenus = headerMenus();
-    HeaderMenus.initHeader();
-  });
-})();
 
+export default HeaderMenus;

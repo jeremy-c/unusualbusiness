@@ -38,6 +38,12 @@ import postcss from 'gulp-postcss';
 import cssnext from 'postcss-cssnext';
 import autoprefixer from 'autoprefixer';
 import svgSprite from 'gulp-svg-sprite';
+import webpack from 'webpack-stream';
+import webpackConfig from './webpack.config.js';
+// import browserify from 'browserify';
+// import babelify from 'babelify';
+// import source from 'vinyl-source-stream';
+// import buffer from 'vinyl-buffer';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -51,6 +57,26 @@ gulp.task('lint', () =>
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failOnError()))
 );
+
+gulp.task('browserify', function () {
+    // app.js is your main JS file with all your module inclusions
+    return browserify({entries: './unusualbusiness/assets/scripts/main.js', debug: true})
+        .transform("babelify", { presets: ["es2015"] })
+        .bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe($.sourcemaps.init())
+        .pipe($.concat('bundle.min.js'))
+        .pipe($.uglify({preserveComments: 'some'}))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest('unusualbusiness/static/scripts'))
+});
+
+gulp.task('webpack', function() {
+    return gulp.src( './unusualbusiness/assets/scripts/main.js')
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest('unusualbusiness/static/scripts'));
+});
 
 // Optimize images
 gulp.task('images', () =>
@@ -117,29 +143,6 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('unusualbusiness/static/styles'));
 });
 
-// Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
-// to enables ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
-// `.babelrc` file.
-gulp.task('scripts', () =>
-    gulp.src([
-      // Note: Since we are not using useref in the scripts build pipeline,
-      //       you need to explicitly list your scripts here in the right order
-      //       to be correctly concatenated
-      './unusualbusiness/assets/scripts/**/*.js'
-      // Other scripts
-    ])
-      .pipe($.newer('.tmp/scripts'))
-      .pipe($.sourcemaps.init())
-      .pipe($.babel())
-      .pipe($.sourcemaps.write())
-      .pipe(gulp.dest('.tmp/scripts'))
-      .pipe($.concat('bundle.min.js'))
-      .pipe($.uglify({preserveComments: 'some'}))
-      // Output files
-      .pipe($.size({title: 'scripts'}))
-      .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('unusualbusiness/static/scripts'))
-);
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
@@ -232,11 +235,13 @@ gulp.task('clean', () => del(['.tmp'], {dot: true}));
 
 // Build Production Files
 gulp.task('build', ['clean'], function (cb) {
-  runSequence('styles', ['lint', 'scripts', 'html', 'fonts', 'sprite', 'images'], cb);
+  // runSequence('styles', ['lint', 'scripts', 'html', 'fonts', 'sprite', 'images'], cb);
+  runSequence('styles', ['lint', 'webpack', 'html', 'fonts', 'sprite', 'images'], cb);
 });
 
 // Watch Files For Changes & Reload, the default task
-gulp.task('default', ['sprite', 'styles', 'lint', 'scripts', 'images'], function () {
+gulp.task('default', ['sprite', 'styles', 'webpack', 'images'], function () {
+// gulp.task('default', ['sprite', 'styles', 'scripts', 'images'], function () {
   browserSync({
     notify: false,
     proxy: "127.0.0.1:8000"
@@ -245,6 +250,7 @@ gulp.task('default', ['sprite', 'styles', 'lint', 'scripts', 'images'], function
   gulp.watch(['unusualbusiness/**/*.html'], reload);
   gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprite', reload]);
   gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['lint', 'scripts', reload]);
+  // gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['scripts', reload]);
+  gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['webpack', reload]);
   gulp.watch('bower.json', ['fonts']);
 });

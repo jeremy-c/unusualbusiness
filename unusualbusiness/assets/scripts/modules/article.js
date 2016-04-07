@@ -4,7 +4,7 @@
 
 'use strict';
 
-var article = () => {
+let Article = () => {
   let initInlineAricleLinks = function() {
     let articleInlineLinks = $('.article-inline-link');
 
@@ -16,19 +16,14 @@ var article = () => {
     });
   };
 
-  let initArticle = function() {
+  let init = function() {
+    console.log('Article go!');
     initInlineAricleLinks();
   };
 
   return {
-    initArticle: initArticle
+    init: init
   };
 };
 
-(function() {
-  $(document).ready(function() {
-    console.log('Article go!');
-    let Article = article();
-    Article.initArticle();
-  });
-})();
+export default Article;

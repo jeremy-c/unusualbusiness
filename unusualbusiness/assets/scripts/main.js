@@ -5,87 +5,43 @@
 
 'use strict';
 
-let mobileMenu = () => {
-  let toggleHamburgerMenu = function() {
-    let hamburgerMenuButtonLink = $('#hamburger-menu-button');
-    let isExpanded = hamburgerMenuButtonLink.attr('aria-expanded') === 'true';
-    hamburgerMenuButtonLink.attr(
-        'aria-expanded',
-        (!isExpanded).toString()
-    );
-    hamburgerMenuButtonLink.toggleClass('is-expanded');
-  };
-
-  let initAnimateMenuBar = function() {
-    let menuItemHowTo = $('.main-menu-how-to');
-    menuItemHowTo.addClass('is-in-position');
-    // menuItemHowTo.on('click', function() {
-    //   menuItemHowTo.addClass('is-fading-out');
-    // });
-  };
-  let filterGrid = function() {
-    /* global gridModule*/
-    /* eslint no-undef: 2*/
-
-    let GridModule = gridModule();
-    $('.how-to-link-blue').on('click', function() {
-      GridModule.grid.isotope({
-        filter: '.latest-article-report'
-      });
-    });
-    $('.how-to-link-black').on('click', function() {
-      GridModule.grid.isotope({
-        filter: '.latest-organization'
-      });
-    });
-    $('.how-to-link-yellow').on('click', function() {
-      GridModule.grid.isotope({
-        filter: '.latest-article-story'
-      });
-    });
-    $('.how-to-link-green').on('click', function() {
-      GridModule.grid.isotope({
-        filter: '.latest-article-theory'
-      });
-    });
-  };
-
-  let initSidrMenu = function() {
-    $('#hamburger-menu-button').sidr({
-      name: 'mobile-menu',
-      side: 'right',
-      source: '.main-nav',
-      body: '.l-wrapper',
-      renaming: false,
-      dispace: false,
-      onOpen: toggleHamburgerMenu,
-      onClose: toggleHamburgerMenu
-    });
-  };
-
-  let initMenu = function() {
-    initAnimateMenuBar();
-    filterGrid();
-    // wait for SVG's to be copied
-    window.setTimeout(initSidrMenu, 1000);
-  };
-
-  return {
-    initMenu: initMenu
-  };
-};
+import Grid from './modules/grid';
+import MobileMenu from './modules/mobile-menu';
+import Article from './modules/article';
+import FeaturedAgenda from './modules/featured-agenda';
+import FeaturedArticles from './modules/featured-articles';
+import FeaturedJournal from './modules/featured-journal';
+import HeaderMenus from './modules/header';
 
 (function() {
-  $(window).ready(function() {
-    console.log('Main go!');
-    /* global svg4everybody*/
-    /* eslint no-undef: 2*/
+  console.log('Main: go!');
 
+  $(document).ready(function() {
+    console.log('Main: Document ready go!');
+
+    let grid = Grid();
+    let mobileMenu = MobileMenu();
+    let article = Article();
+    let featuredAgenda = FeaturedAgenda();
+    let featuredArticles = FeaturedArticles();
+    let featuredJournal = FeaturedJournal();
+    let headerMenus = HeaderMenus();
+
+    grid.init();
+    mobileMenu.init();
+    article.init();
+    featuredAgenda.init();
+    featuredArticles.init();
+    featuredJournal.init();
+    headerMenus.init();
+  });
+
+  $(window).ready(function() {
+    console.log('Main: Window ready go!');
+
+    // SVG Polyfill
     svg4everybody({
       polyfill: true
     });
-
-    let MobileMenu = mobileMenu();
-    MobileMenu.initMenu();
   });
 })();

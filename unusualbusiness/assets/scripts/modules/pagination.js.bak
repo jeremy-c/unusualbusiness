@@ -4,7 +4,7 @@
 
 'use strict';
 
-var pagination = () => {
+let Pagination = () => {
   let initPagination = function() {
     $.ajax({
         url: "/controller/myfunction",
@@ -18,15 +18,13 @@ var pagination = () => {
     });
   };
 
+  let init = function() {
+    initPagination();
+  };
+
   return {
-    initPagination: initPagination
+    init: init
   };
 };
 
-(function() {
-  $(document).ready(function() {
-    console.log('Pagination go!');
-    let Pagination = pagination();
-    Pagination.initPagination();
-  });
-})();
+export default Pagination;
