@@ -4,8 +4,8 @@
 
 'use strict';
 
-import imagesLoaded from 'imagesloaded';
-import isotope from 'isotope-layout';
+// import imagesLoaded from 'imagesloaded';
+// import Isotope from 'isotope-layout';
 
 let Grid = () => {
   let initIsotope = function() {
