@@ -193,7 +193,7 @@ let config              = {
         //         scss    : true      // Activate Sass output (with default options)
         //     }
         // },
-        symbol          : true,      // Activate the «symbol» mode
+        // symbol          : true,      // Activate the «symbol» mode
         css: {
             dest: "./",
             layout: "diagonal",
