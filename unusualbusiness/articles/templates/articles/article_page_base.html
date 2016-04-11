@@ -11,59 +11,51 @@
 
 
 {% block content %}
-    <article class="l-boxed article yellow">
+    <article class="article yellow">
 
         <header class="article-header">
             <h1 class="article-header-title">
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                {% if self.seo_title %}
+                    {{ self.seo_title }}
+                {% else %}
+                    {{ self.title }}
+                {% endif %}
+                {% if self.subtitle %}
+                    <div class="article-header-subtitle">
+                        {{ self.subtitle }}
+                    </div>
+                {% endif %}
             </h1>
 
-            <div class="article-header-subtitle">
-                {{ self.subtitle }}
+            <div class="article-meta">
+                {% if self.author %}
+                    <div class="article-header-author">
+                        <label class="article-header-label">{% trans "Author:" %}</label>
+                        <span class="article-header-author-name">{{ self.author }}</span>
+                    </div>
+                {% endif %}
             </div>
-
-            <div class="article-header-image">
-                {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image" %}
-            </div>
-
-            <div class="article-header-summary">
-                {{ self.summary|ub_richtext }}
-            </div>
-
-            {% if self.author %}
-                <div class="article-header-author">
-                    <label class="article-header-label">{% trans "Author:" %}</label>
-                    <span class="article-header-author-name">{{ self.author }}</span>
-                </div>
-            {% endif %}
         </header>
 
-        <div class="publication-date article-publication-date">
-            <time class="featured-article-date vertical-date-large dt-start"
-                  datetime="{{ page.publication_date|date:"SHORT_DATE_FORMAT" }}">
-                <div class="vertical-date-day border-bottom">{{ page.publication_date|date:"D" }}</div>
-                <div class="vertical-date-day-of-month">{{ page.publication_date|date:"d" }}</div>
-                <div class="vertical-date-month">{{ page.publication_date|date:"m" }}</div>
-                <div class="vertical-date-year">{{ page.publication_date|date:"y" }}</div>
-                <div class="vertical-date-time border-top">{{ page.publication_date|time:"H:i" }}</div>
-            </time>
-        </div>
+        <div class="l-boxed">
+            <div class="article-summary">
+                {{ self.summary|ub_richtext }}
+            </div>
+            <div class="article-body">
 
+                {% for block in page.body %}
 
-        <div class="article-body">
+                    {% if block.block_type == 'paragraph' %}
+                        {{ block.value.source|ub_richtext }}
+                    {% else %}
+                        <section class="block-{{ block.block_type }}">
+                            {{ block }}
+                        </section>
+                    {% endif %}
 
-            {% for block in page.body %}
+                {% endfor %}
 
-                {% if block.block_type == 'paragraph' %}
-                    {{ block.value.source|ub_richtext }}
-                {% else %}
-                    <section class="block-{{ block.block_type }}">
-                        {{ block }}
-                    </section>
-                {% endif %}
-
-            {% endfor %}
-
+            </div>
         </div>
 
         {% if self.author %}
