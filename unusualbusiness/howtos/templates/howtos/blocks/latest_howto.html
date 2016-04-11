@@ -4,7 +4,7 @@
     <a href="{% pageurl how_to %}" class="howto-block-link"  >
         <h2 class="howto-block-title">{{ how_to.title }}</h2>
     </a>
-    <div class="howto-block-circles green black blue">
+    <div class="howto-block-circles {{ how_to.circles }}">
         <img src="{% static 'images/how-to-circles-empty.svg' %}" class="how-to-circles-empty" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-green.svg' %}" class="how-to-circles-green" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-yellow.svg' %}" class="how-to-circles-yellow" width="192.921px" height="192.921px" />
@@ -15,19 +15,43 @@
     <div class="howto-block-meta">
         <ul>
             <li class="howto-block-meta-list-item event-count">
-                <div class="number">4</div>
+                <div class="number {% ifequal how_to.events.count 0 %}empty{% endifequal %}">
+                    {% ifequal how_to.events.count 0 %}
+                        -
+                    {% else %}
+                        {{ how_to.events.count }}
+                    {% endifequal %}
+                </div>
                 <span class="article-type">evenementen</span>
             </li>
             <li class="howto-block-meta-list-item story-count">
-                <div class="number empty">-</div>
+                <div class="number {% ifequal how_to.story_pages.count 0 %}empty{% endifequal %}">
+                    {% ifequal how_to.story_pages.count 0 %}
+                        -
+                    {% else %}
+                        {{ how_to.story_pages.count }}
+                    {% endifequal %}
+                </div>
                 <span class="article-type">verhalen</span>
             </li>
             <li class="howto-block-meta-list-item organization-count">
-                <div class="number">1</div>
+                <div class="number {% ifequal how_to.organizations.count 0 %}empty{% endifequal %}">
+                    {% ifequal how_to.organizations.count 0 %}
+                        -
+                    {% else %}
+                        {{ how_to.organizations.count }}
+                    {% endifequal %}
+                </div>
                 <span class="article-type">groepen</span>
             </li>
             <li class="howto-block-meta-list-item theory-count">
-                <div class="number">10</div>
+                <div class="number {% ifequal how_to.theory_pages.count 0 %}empty{% endifequal %}">
+                    {% ifequal how_to.theory_pages.count 0 %}
+                        -
+                    {% else %}
+                        {{ how_to.theory_pages.count }}
+                    {% endifequal %}
+                </div>
                 <span class="article-type">artikelen</span>
             </li>
         </ul>

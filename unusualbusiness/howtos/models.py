@@ -96,24 +96,47 @@ class HowToPage(TranslationMixin, Page):
 
         return organization_pages
 
+    def events(self, tag=None):
+        event_pages = self.event_pages.all()
+
+        if tag:
+            event_pages = event_pages.filter(tags__name=tag)
+
+        return event_pages
+
+    def circles(self):
+        circles = ''
+
+        if self.organizations().count() > 0:
+            circles += 'black'
+        elif self.story_pages().count() > 0:
+            circles += ' yellow'
+        elif self.theory_pages().count() > 0:
+            circles += ' green'
+        elif self.events().count() > 0:
+            circles += ' blue'
+
+        return circles
+
     def serve(self, request):
         tag = request.GET.get('tag')
         if tag:
             theory_pages = self.theory_pages(tag)
             story_pages = self.story_pages(tag)
-            organization_pages = self.organizations(tag)
-            theory_pages = self.theory_pages(tag)
+            organizations = self.organizations(tag)
+            events = self.events(tag)
         else:
             theory_pages = self.theory_pages()
             story_pages = self.story_pages()
-            organization_pages = self.organizations()
-            theory_pages = self.theory_pages()
+            organizations = self.organizations()
+            events = self.events()
 
         return render(request, self.template, {
             'self': self,
             'theory_pages': theory_pages,
             'story_pages': story_pages,
-            'organization_pages': organization_pages,
+            'organizations': organizations,
+            'event_pages': events,
         })
 
 

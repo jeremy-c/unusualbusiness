@@ -4,7 +4,7 @@
     <a href="{% pageurl how_to %}" class="howto-block-link"  >
         <h2 class="howto-block-title">{{ how_to.title }}</h2>
     </a>
-    <div class="howto-block-circles green black blue">
+    <div class="howto-block-circles {{ how_to.circles }}">
         <img src="{% static 'images/how-to-circles-empty.svg' %}" class="how-to-circles-empty" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-green.svg' %}" class="how-to-circles-green" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-yellow.svg' %}" class="how-to-circles-yellow" width="192.921px" height="192.921px" />
