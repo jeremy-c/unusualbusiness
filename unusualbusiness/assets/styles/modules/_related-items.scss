@@ -1,0 +1,26 @@
+/* ==|====================
+   Module/Related Items
+   ======================= */
+
+@import "../base/base";
+
+.related-items {
+  background-color: $light-gray;
+}
+
+.l-related-items {
+  box-sizing: border-box;
+  padding: $gutter * 2 $gutter;
+
+  @media(max-width: $tablet) {
+    flex-wrap: wrap;
+    padding: $gutter;
+  }
+}
+
+.section-title-related-items {
+  margin-bottom: $gutter;
+  font-size: 32px;
+  font-family: $merriweather;
+  color: $black;
+}

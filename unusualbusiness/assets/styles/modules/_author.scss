@@ -5,18 +5,30 @@
 @import "../base/base";
 
 .author {
+  background-color: $verylight-gray;
+}
+
+.l-author {
   display: flex;
-  align-items: center;
-  justify-items: center;
-  border-top: solid $green 8px;
-  padding: $gutter;
-  color: $green;
-  font-family: $open-sans;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  box-sizing: border-box;
+  padding: $gutter * 2 $gutter;
+
+  @media(max-width: $tablet) {
+    flex-wrap: wrap;
+    padding: $gutter;
+  }
 }
 
 .author-photo {
   padding: $gutter;
   width: 140px;
+  text-align: center;
+
+  @media(max-width: $tablet) {
+    width: 100%;
+  }
 }
 
 .bio-pic {
@@ -26,6 +38,28 @@
   height: 140px;
 }
 
-.author-biography {
-  margin: $gutter;
+.author-name {
+  columns: 2;
+  column-gap: $gutter * 2;
+
+  font-weight: bold;
+  line-height: 1.7em;
+
+  @media(max-width: $desktop) {
+    columns: inherit;
+  }
+}
+
+
+
+.author-biography-text {
+  columns: 2;
+  column-gap: $gutter * 2;
+  margin-top: 0;
+
+  line-height: 1.7em;
+
+  @media(max-width: $desktop) {
+    columns: inherit;
+  }
 }

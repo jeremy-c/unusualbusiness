@@ -4,6 +4,12 @@
 
 @import "box";
 @import "main-menu";
+@import "sidebar";
+@import "buttons";
+@import "headings";
+@import "footer";
+
+@import "hr";
 @import "vertical-date";
 @import "featured-articles";
 @import "featured-agenda";
@@ -14,11 +20,7 @@
 @import "latest-pages";
 @import "article";
 @import "author";
+@import "related-items";
 @import "article-inline";
-@import "sidebar";
-@import "buttons";
-@import "headings";
-@import "hr";
 @import "howto-block";
 @import "expander";
-@import "footer";

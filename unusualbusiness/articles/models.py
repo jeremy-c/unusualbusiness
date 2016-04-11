@@ -133,6 +133,9 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
         context = super(StoryArticlePage, self).get_context(request)
         # Add extra variables and return the updated context
         context['organizations'] = OrganizationPage.objects.all().live()
+
+        context['how_tos'] = self.how_to_page.select_related().all();
+
         return context
 
 StoryArticlePage.content_panels = Page.content_panels + [

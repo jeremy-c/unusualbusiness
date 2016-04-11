@@ -12,10 +12,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  border-right: solid 8px $yellow;
-  border-left: solid 8px $yellow;
-  border-bottom: solid 1px $light-gray;
-  margin-bottom: $gutter;
+  border-right: solid 15px $yellow;
+  border-left: solid 15px $yellow;
   padding: $gutter;
   min-height: 410px;
 
@@ -23,7 +21,9 @@
 
   @media(max-width: $tablet) {
     height: auto;
+    min-height: inherit;
   }
+
 }
 
 .article-header-title {
@@ -34,20 +34,35 @@
   text-align: center;
   font-weight: bold;
   font-size: 64px;
+
+  @media(max-width: $tablet) {
+    margin-top:0;
+    font-size: 9vw;
+  }
 }
 
 .article-header-subtitle {
   font-size: 54px;
   font-style: italic;
+
+  @media(max-width: $tablet) {
+    padding-top: 5px;
+    font-size: 7vw;
+  }
 }
 
 .article-header-image {
   display: none;
 }
 
-.article-meta {
-  padding: $gutter $gutter $gutter / 2;
+.article-header-meta {
+  padding: $gutter $gutter /2 $gutter / 2;
   align-self: flex-start;
+
+  @media(max-width: $tablet) {
+    align-self: center;
+    padding-bottom: 0;
+  }
 }
 
 .article-header-author {
@@ -56,10 +71,47 @@
   font-size: 14px;
 }
 
-.article-summary {
+.article-subheader {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  border-top: solid 1px $light-gray;
+  margin: 0 $gutter;
+  padding: $gutter;
 
-  font-size: 34px;
-  line-height: 1.4em;
+  @media(max-width: $tablet) {
+    padding: $gutter / 2;
+  }
+}
+
+.back-link {
+  display: block;
+  font-family: $open-sans;
+  font-weight: bold;
+  font-size: 14px;
+
+  text-decoration: none;
+
+  &:before {
+    content: '';
+    padding-right: $gutter / 2;
+    vertical-align: bottom;
+    @include sprite(back-icon);
+  }
+}
+
+.facebook-link,
+.twitter-link {
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.article-summary {
+  padding-bottom: $gutter;
+
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.7em;
 
   .yellow & {
     color: $yellow;
@@ -75,6 +127,11 @@
 
   .green & {
     color: $green;
+  }
+
+  @media(max-width: $tablet) {
+    padding-bottom: 0;
+    font-size: 5vw;
   }
 }
 
@@ -94,6 +151,10 @@
   font-size: 18px;
   font-weight: 300;
   line-height: 32px;
+
+  @media(max-width: $tablet) {
+    padding: 0;
+  }
 
   p {
     position: relative;
@@ -172,17 +233,22 @@
   }
 }
 
-.article ul,
-.article ol {
+.article-body ul,
+.article-body ol {
   margin: $gutter 0;
 }
 
-.article li {
+.article-body li {
   margin: $gutter 0;
 
   font-size: 28px;
   line-height: 1.5em;
   font-family: $open-sans;
+
+  @media(max-width: $tablet) {
+    margin: $gutter / 2 0;
+    font-size: 5vw;
+  }
 }
 
 .article ul li {
@@ -196,9 +262,17 @@
     content: ' ';
     background-color: $yellow;
   }
+
+  @media(max-width: $tablet) {
+    margin-left: $gutter;
+
+    &:before {
+      margin: 0 0 $gutter / 2 calc(-1* var(--gutter));
+    }
+  }
 }
 
-.article ol li {
+.article-body ol li {
   margin-left: 60px;
 
   &:before {
@@ -210,23 +284,85 @@
     content: ' ';
     border-top: solid $yellow 8px;
   }
+
+  @media(max-width: $tablet) {
+    margin-left: 0;
+
+    &:before {
+      margin-left: 0;
+      padding-top: $gutter / 2;
+    }
+  }
 }
 
 .rich-text img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.block-image {
+  border-top: solid $yellow 8px;
+
+  @media(max-width: $tablet) {
+    margin: 0 calc(-1 * var(--gutter));
+  }
+}
+
+.block-pullquote {
+  @media(max-width: $tablet) {
+    margin: 0 calc(-1 * var(--gutter));
+  }
+}
+
+.pullquote {
+  display: block;
+  box-sizing: border-box;
+  border-top: solid 8px $yellow;
+  border-bottom: solid 8px $yellow;
+  margin: $gutter * 2 0;
+  padding: $gutter * 2;
+  width: 90%;
+
+  background-color: $white;
+
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  font-size: 52px;
+  line-height: 1.3em;
+  font-family: $open-sans;
+  text-align: center;
+
+  @media(max-width: $tablet) {
+    margin: $gutter 0;
+    padding: $gutter;
+    width: inherit;
+
+    font-size: 7vw;
+    line-height: 1.3em;
+  }
 }
 
 .responsive-object {
-    position: relative;
+  position: relative;
+
+  @media(max-width: $tablet) {
+    margin: 0 calc(-1 * var(--gutter));
+  }
 }
 
 .responsive-object iframe,
 .responsive-object object,
 .responsive-object embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.article-section-title {
+  margin-bottom: $gutter;
+  font-size: 32px;
+  font-family: $merriweather;
+  color: $black;
 }
