@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 from itertools import chain
 
+import datetime
 from django.db import models
 from django.shortcuts import render
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
@@ -103,6 +105,10 @@ class HowToPage(TranslationMixin, Page):
             event_pages = event_pages.filter(tags__name=tag)
 
         return event_pages
+
+    def upcoming_events(self):
+        now = timezone.now().date()
+        return [event_page.event for event_page in self.event_pages.all() if event_page.event.start_date.date() >= now]
 
     def circles(self):
         circles = ''
