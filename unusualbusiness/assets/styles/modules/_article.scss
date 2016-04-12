@@ -371,6 +371,11 @@
   color: $black;
 }
 
+// In this story
+
+.in-this-story {
+  border-top: solid 2px $light-gray;
+}
 
 // Related Organizations
 
@@ -415,7 +420,7 @@
 
 .l-related-section {
   box-sizing: border-box;
-  padding: $gutter * 2 $gutter;
+  padding: $gutter * 2 0;
 
   @media(max-width: $tablet) {
     flex-wrap: wrap;
