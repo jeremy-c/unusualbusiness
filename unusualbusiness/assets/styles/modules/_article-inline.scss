@@ -15,6 +15,10 @@
   background-color: $white;
 
   transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  @media(max-width: $boxed) {
+    width: 100%;
+  }
 }
 
 .article-inline-title {

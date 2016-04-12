@@ -121,7 +121,7 @@
                     {%  elif the_page.content_type.model == 'reportarticlepage' %}
                         {% include "articles/blocks/latest_report_article.html" with page=the_page %}
                     {% elif the_page.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/blocks/latest_story_article.html" with page=the_page  %}
+                            {% include "articles/blocks/latest_story_article.html" with page=the_page list_item_classes='l-grid-item-double-width'  %}
                     {% elif the_page.content_type.model == 'theoryarticlepage' %}
                         {% include "articles/blocks/latest_theory_article.html" with page=the_page %}
     {#                    {% else %}#}

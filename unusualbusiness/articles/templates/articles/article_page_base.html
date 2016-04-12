@@ -114,7 +114,7 @@
             <h3 class="article-section-title" >See more</h3>
             <ul class="">
                 {% for related_article in related_articles %}
-                    {% include "articles/blocks/latest_story_article.html" with page=related_article %}
+                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}
                 {% endfor %}
             </ul>
         </div>

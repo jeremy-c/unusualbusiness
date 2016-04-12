@@ -107,7 +107,7 @@
 }
 
 .article-summary {
-  padding-bottom: $gutter;
+  padding: 0 $gutter $gutter;
 
   font-size: 30px;
   font-weight: bold;
@@ -144,7 +144,7 @@
 .article-body {
   box-sizing: border-box;
   margin: 0 0 0 auto;
-  padding: 0 $gutter;
+  padding: $gutter;
   width: 100%;
   max-width: $tablet;
 
@@ -331,6 +331,10 @@
   line-height: 1.3em;
   font-family: $open-sans;
   text-align: center;
+
+  @media(max-width: $boxed) {
+    width: 100%;
+  }
 
   @media(max-width: $tablet) {
     margin: $gutter 0;
