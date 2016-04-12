@@ -62,14 +62,43 @@
             <div class="article-summary">
                 {{ self.summary|ub_richtext }}
             </div>
+
+            <div class="artitle-table-of-contents">
+
+                {% for block in page.body %}
+
+                    {% if block.block_type == 'chapter' %}
+                        <div class="block-{{ block.block_type }}">
+                            <a href="#{{ block.value.chapter_name.split|join:"-"|lower|urlencode }}">
+                                {{ block.value.chapter_name }}
+                            </a>
+                        </div>
+                    {% elif block.block_type == 'section' %}
+                        <div class="block-{{ block.block_type }}">
+                            <a href="#{{ block.value.section_name.split|join:"-"|lower|urlencode }}">
+                                {{ block.value.section_name }}
+                            </a>
+                        </div>
+                    {% elif block.block_type == 'subsection' %}
+                        <div class="block-{{ block.block_type }}">
+                            <a href="#{{ block.value.subsection_name.split|join:"-"|lower|urlencode }}">
+                                {{ block.value.subsection_name }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
             <div class="article-body">
 
                 {% for block in page.body %}
 
                     {% if block.block_type == 'paragraph' %}
                         {{ block.value.source|ub_richtext }}
+                    {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
+                        {{ block }}
                     {% else %}
-                        <section class="block-{{ block.block_type }}">
+                        <section class="block-{{ block.block_type }}" >
                             {{ block }}
                         </section>
                     {% endif %}
