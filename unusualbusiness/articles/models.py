@@ -132,9 +132,17 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
     def get_context(self, request):
         context = super(StoryArticlePage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['organizations'] = OrganizationPage.objects.all().live()
 
-        context['how_tos'] = self.how_to_page.select_related().all();
+        how_tos = [related_how_to_page.how_to_page for related_how_to_page in self.how_to_page.select_related().all()]
+        related_story_pages =[how_to_page.story_pages() for how_to_page in how_tos]
+
+        story_article_pages = []
+        for related_story_page in related_story_pages:
+            story_article_pages.append(related_story_page.first().article)
+
+        context['organizations'] = OrganizationPage.objects.all().live()
+        context['how_tos'] = how_tos
+        context['related_articles'] = story_article_pages
 
         return context
 

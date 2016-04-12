@@ -366,3 +366,24 @@
   font-family: $merriweather;
   color: $black;
 }
+
+// Related Howto's
+.related-howtos {
+  background-color: $light-gray;
+}
+
+.l-related-section {
+  box-sizing: border-box;
+  padding: $gutter * 2 $gutter;
+
+  @media(max-width: $tablet) {
+    flex-wrap: wrap;
+    padding: $gutter;
+  }
+}
+
+// Related Articles
+
+.related-articles {
+  background-color: $white;
+}

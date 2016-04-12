@@ -1,6 +1,6 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags  i18n %}
 
-<li class="howto-block {{ how_to.content_type.model }}">
+<li class="howto-block howto-block-fixed-height {{ how_to.content_type.model }}">
     <a href="{% pageurl how_to %}" class="howto-block-link"  >
         <h2 class="howto-block-title">{{ how_to.title }}</h2>
     </a>
@@ -56,12 +56,14 @@
             </li>
         </ul>
     </div>
-    <hr>
-    <div class="howto-grid-item-events">
-        <ul class="featured-agenda-items">
-            {% for event in how_to.upcoming_events %}
-                {% include "events/blocks/agenda_item.html" with vertical_date_class="vertical-date-smaller" %}
-            {% endfor %}
-        </ul>
-    </div>
+    {% if how_to.upcoming_events %}
+        <hr>
+        <div class="howto-grid-item-events">
+            <ul class="featured-agenda-items">
+                {% for event in how_to.upcoming_events %}
+                    {% include "events/blocks/agenda_item.html" with vertical_date_class="vertical-date-smaller" %}
+                {% endfor %}
+            </ul>
+        </div>
+    {%  endif %}
 </li>

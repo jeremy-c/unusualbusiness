@@ -98,12 +98,23 @@
 
     </article>
 
-    <section class="related-items">
-        <div class="l-boxed l-related-items">
+    <section class="related-howtos">
+        <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >Related themes</h3>
             <ul class="l-columns">
-                {% for related_how_to in how_tos %}
-                    {% include "howtos/blocks/related_howto.html" with how_to=related_how_to.how_to_page %}
+                {% for how_to in how_tos %}
+                    {% include "howtos/blocks/related_howto.html" %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <section class="related-articles">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >See more</h3>
+            <ul class="">
+                {% for related_article in related_articles %}
+                    {% include "articles/blocks/latest_story_article.html" with page=related_article %}
                 {% endfor %}
             </ul>
         </div>

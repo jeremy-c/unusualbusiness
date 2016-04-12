@@ -115,11 +115,11 @@ class HowToPage(TranslationMixin, Page):
 
         if self.organizations().count() > 0:
             circles += 'black'
-        elif self.story_pages().count() > 0:
+        if self.story_pages().count() > 0:
             circles += ' yellow'
-        elif self.theory_pages().count() > 0:
+        if self.theory_pages().count() > 0:
             circles += ' green'
-        elif self.events().count() > 0:
+        if self.events().count() > 0:
             circles += ' blue'
 
         return circles

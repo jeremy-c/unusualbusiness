@@ -7,7 +7,7 @@ class EventPageModelAdmin(ModelAdmin):
     menu_label = 'Events' # ditch this to use verbose_name_plural from model
     menu_icon = 'date' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
-    list_display = ('title', )
+    list_display = ('title', 'start_date', )
     list_filter = ('live', )
     search_fields = ('title',)
 
