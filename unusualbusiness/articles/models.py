@@ -163,21 +163,30 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
         context = super(StoryArticlePage, self).get_context(request)
         # Add extra variables and return the updated context
 
-        how_tos = [related_how_to_page.how_to_page for related_how_to_page in self.how_to_page.select_related().all()]
-        related_story_pages =[how_to_page.story_pages() for how_to_page in how_tos]
+        how_tos = [related_how_to_page.how_to_page
+                   for related_how_to_page
+                   in self.how_to_page.select_related().all()]
+
+        related_story_pages =[how_to_page.story_pages()
+                              for how_to_page
+                              in how_tos]
 
         story_article_pages = []
         for related_story_page in related_story_pages:
             story_article_pages.append(related_story_page.first().article)
 
-        how_to_events = [how_to_page.events() for how_to_page in how_tos]
+        how_to_events = [how_to_page.events()
+                         for how_to_page
+                         in how_tos]
         event_pages = []
         for how_to_event in how_to_events:
             how_to_event = how_to_event.first()
             if how_to_event:
                 event_pages.append(how_to_event.event)
 
-        organizations = [related_organization.organization_page for related_organization in self.organizations.select_related().all()]
+        organizations = [related_organization.organization_page
+                            for related_organization
+                            in self.organizations.select_related().all()]
 
         context['organizations'] = organizations
         context['events'] = event_pages

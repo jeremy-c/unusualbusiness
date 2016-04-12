@@ -69,19 +69,19 @@
 
                     {% if block.block_type == 'chapter' %}
                         <div class="block-{{ block.block_type }}">
-                            <a href="#{{ block.value.chapter_name.split|join:"-"|lower|urlencode }}">
+                            <a href="#{{ block.value.chapter_name|slugify }}">
                                 {{ block.value.chapter_name }}
                             </a>
                         </div>
                     {% elif block.block_type == 'section' %}
                         <div class="block-{{ block.block_type }}">
-                            <a href="#{{ block.value.section_name.split|join:"-"|lower|urlencode }}">
+                            <a href="#{{ block.value.section_name|slugify }}">
                                 {{ block.value.section_name }}
                             </a>
                         </div>
                     {% elif block.block_type == 'subsection' %}
                         <div class="block-{{ block.block_type }}">
-                            <a href="#{{ block.value.subsection_name.split|join:"-"|lower|urlencode }}">
+                            <a href="#{{ block.value.subsection_name|slugify }}">
                                 {{ block.value.subsection_name }}
                             </a>
                         </div>
@@ -132,7 +132,7 @@
             <div class="l-boxed l-related-section">
                 <h3 class="article-section-title" >In this story</h3>
                 <div class="l-flex">
-                    {% if organizations %}
+                    {% if organizations and organizations|first %}
                         <section class="related-organizations">
                             <h5 class="related-organizations-section-title" >Groups</h5>
                             <ul class="related-organization-list l-grid">

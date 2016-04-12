@@ -1,3 +1,3 @@
-<h3 class="block-{{ block.block_type }}" id="{{ value.section_name.split|join:"-"|lower|urlencode }}">
+<h3 class="block-{{ block.block_type }}" id="{{ value.section_name|slugify }}">
     {{ value.section_name }}
 </h3>
