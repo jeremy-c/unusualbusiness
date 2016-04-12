@@ -117,7 +117,7 @@
 
                 {% for the_page in pages %}
                     {%  if the_page.content_type.model == 'organizationpage' %}
-                        {% include "organizations/blocks/latest_organization.html" with page=the_page %}
+                        {% include "organizations/blocks/latest_organization.html" with page=the_page list_item_classes='l-grid-item l-grid-item-fixed-height' %}
                     {%  elif the_page.content_type.model == 'reportarticlepage' %}
                         {% include "articles/blocks/latest_report_article.html" with page=the_page %}
                     {% elif the_page.content_type.model == 'storyarticlepage' %}

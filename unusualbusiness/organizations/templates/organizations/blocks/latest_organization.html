@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-<li class="l-grid-item l-grid-item-fixed-height latest-organization">
+<li class="{{ list_item_classes }} latest-organization">
     <a href="{{ page.url }}" class="latest-organization-link">
         <h4 class="latest-organization-title">
             {{ page.title }}

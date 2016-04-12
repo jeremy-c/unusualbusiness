@@ -141,6 +141,7 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
             story_article_pages.append(related_story_page.first().article)
 
         context['organizations'] = OrganizationPage.objects.all().live()
+        context['events'] = EventPage.objects.all().live()
         context['how_tos'] = how_tos
         context['related_articles'] = story_article_pages
 

@@ -56,3 +56,9 @@
     left: inherit;
   }
 }
+
+.l-flex {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}

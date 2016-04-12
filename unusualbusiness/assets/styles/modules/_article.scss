@@ -371,6 +371,43 @@
   color: $black;
 }
 
+
+// Related Organizations
+
+.related-organizations {
+  padding: 0 $gutter;
+  width: 50%;
+}
+
+.related-organizations-section-title {
+  font-family: $open-sans;
+  font-weight: bold;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.related-organization-list {
+}
+
+
+// Related Events
+
+.related-events {
+  padding: 0 $gutter;
+  width: 50%;
+}
+
+.related-events-section-title {
+  font-family: $open-sans;
+  font-weight: bold;
+  font-size: 24px;
+  padding-bottom: 20px;
+  color: $blue;
+}
+
+.related-events-list {
+}
+
 // Related Howto's
 .related-howtos {
   background-color: $light-gray;
