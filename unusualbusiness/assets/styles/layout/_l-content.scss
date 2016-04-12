@@ -61,4 +61,8 @@
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+
+  @media(max-width: $tablet) {
+    flex-flow: row wrap;
+  }
 }

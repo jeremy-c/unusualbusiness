@@ -382,13 +382,23 @@
 .related-organizations {
   padding: 0 $gutter;
   width: 50%;
+
+  @media(max-width: $tablet) {
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .related-organizations-section-title {
+  padding-bottom: $gutter;
+
   font-family: $open-sans;
   font-weight: bold;
   font-size: 24px;
-  padding-bottom: 20px;
+
+  @media(max-width: $tablet) {
+    padding: $gutter;
+  }
 }
 
 .related-organization-list {
@@ -400,14 +410,24 @@
 .related-events {
   padding: 0 $gutter;
   width: 50%;
+
+  @media(max-width: $tablet) {
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .related-events-section-title {
+  padding-bottom: $gutter;
+
   font-family: $open-sans;
   font-weight: bold;
   font-size: 24px;
-  padding-bottom: 20px;
   color: $blue;
+
+  @media(max-width: $tablet) {
+    padding: $gutter;
+  }
 }
 
 .related-events-list {
@@ -420,7 +440,7 @@
 
 .l-related-section {
   box-sizing: border-box;
-  padding: $gutter * 2 0;
+  padding: $gutter * 2 $gutter;
 
   @media(max-width: $tablet) {
     flex-wrap: wrap;
