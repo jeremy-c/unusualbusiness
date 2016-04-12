@@ -14,7 +14,8 @@
     "velocity": "^1.2.3",
     "isotope": "^2.2.2",
     "imagesloaded": "^4.1.0",
-    "sidr": "^2.2.1"
+    "sidr": "^2.2.1",
+    "jquery-sticky": "sticky#^1.0.3"
   },
   "ignore": [
     "**/.*",

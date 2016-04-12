@@ -16,9 +16,22 @@ let Article = () => {
     });
   };
 
+  let initTOC = function() {
+    $(".article-table-of-contents").sticky({
+      topSpacing: 112,
+      getWidthFrom: '.article-table-of-contents'
+    });
+
+    $('.toggle-toc-link').on('click', function () {
+      $('.toc-list').toggleClass('is-visuallyhidden');
+      return false;
+    });
+  };
+
   let init = function() {
     console.log('Article go!');
     initInlineAricleLinks();
+    initTOC();
   };
 
   return {

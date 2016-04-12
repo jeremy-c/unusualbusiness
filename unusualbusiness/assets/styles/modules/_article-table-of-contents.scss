@@ -1,0 +1,73 @@
+/* ==|====================
+   Module/Table of Contents
+   ======================= */
+
+@import "../base/base";
+
+.article-table-of-contents {
+  position: absolute;
+  background-color: $light-gray;
+
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+
+  @media(max-width: $desktop) {
+    display: none;
+  }
+}
+
+.sticky-wrapper {
+  position: absolute;
+}
+
+.toggle-toc-link {
+  display: block;
+  padding: $gutter / 2;
+  width: 30px;
+}
+
+.toc-list {
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toc-list-item  {
+  box-sizing: border-box;
+  border-bottom: solid 1px $white;
+  padding: $gutter / 2 $gutter $gutter / 2 $gutter * 2;
+  width: 300px;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.toc-link {
+  font-size: 14px;
+  font-family: $open-sans;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.toc-chapter {
+
+}
+
+.toc-section {
+
+}
+
+.toc-subsection {
+
+}
+
+:target:before {
+  content:"";
+  display:block;
+  height:78px + 20px; /* fixed header height*/
+  margin:-78px - 20px 0 0; /* negative fixed header height */
+
+  @media(max-width: $tablet) {
+    height:44px + 20px; /* fixed header height*/
+    margin:-44px - 20px 0 0; /* negative fixed header height */
+  }
+}
