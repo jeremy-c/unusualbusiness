@@ -140,8 +140,17 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
         for related_story_page in related_story_pages:
             story_article_pages.append(related_story_page.first().article)
 
-        context['organizations'] = OrganizationPage.objects.all().live()
-        context['events'] = EventPage.objects.all().live()
+        how_to_events = [how_to_page.events() for how_to_page in how_tos]
+        event_pages = []
+        for how_to_event in how_to_events:
+            how_to_event = how_to_event.first()
+            if how_to_event:
+                event_pages.append(how_to_event.event)
+
+        organizations = [related_organization.organization_page for related_organization in self.organizations.select_related().all()]
+
+        context['organizations'] = organizations
+        context['events'] = event_pages
         context['how_tos'] = how_tos
         context['related_articles'] = story_article_pages
 
