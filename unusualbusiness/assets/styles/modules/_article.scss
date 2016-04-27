@@ -5,16 +5,17 @@
 @import "../base/base";
 
 .article {
+
 }
 
 .article-header {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   justify-content: space-between;
 
   border-right: solid 15px $yellow;
   border-left: solid 15px $yellow;
-  padding: $gutter;
+  padding: $gutter $gutter / 2 28px;
   min-height: 410px;
 
   background-color: $white;
@@ -27,8 +28,7 @@
 }
 
 .article-header-title {
-  align-self: center;
-  margin-top: $gutter * 2;
+  margin: $gutter * 2 auto 0;
   max-width: 1300px;
 
   text-align: center;
@@ -56,20 +56,32 @@
 }
 
 .article-header-meta {
-  padding: $gutter $gutter /2 $gutter / 2;
-  align-self: flex-start;
+  position: relative;
+  padding: $gutter 0 0;
+  width: 100%;
+}
 
-  @media(max-width: $tablet) {
-    align-self: center;
-    padding-bottom: 0;
-  }
+.article-header-format {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
+.article-header-publication-date {
+  position: absolute;
+  left: 50px;
+  bottom: 0;
 }
 
 .article-header-author {
+  margin: 0 auto;
+
+  text-align: center;
   font-family: $open-sans;
   font-weight: bold;
   font-size: 14px;
 }
+
 
 .article-subheader {
   display: flex;
@@ -188,7 +200,6 @@
   @media(max-width: $tablet) {
     padding: 0;
   }
-
 
   p {
     position: relative;

@@ -37,75 +37,19 @@
     background-color: $blue;
   }
 
-  &:before {
-    content: '';
-    margin-top: 16px;
-  }
-
-  .latest-article.text & {
-    &:before {
-      @include sprite(article-icon);
-    }
-  }
-
-  .latest-article.event & {
-    &:before {
-      @include sprite(callout-icon);
-    }
-  }
-
-  .latest-article.theory & {
-    &:before {
-      @include sprite(theory-article-icon);
-    }
-  }
-
-  .latest-article.video & {
-    &:before {
-      @include sprite(video-icon);
-    }
-  }
-
-  .latest-article.audio & {
-    &:before {
-      @include sprite(audio-icon);
-    }
-  }
-
-  .latest-article.images & {
-    &:before {
-      @include sprite(image-gallery-icon);
-    }
-  }
-
-  .latest-article.organization & {
-    &:before {
-      @include sprite(organization-icon);
-    }
-  }
-
-  .latest-article.link & {
-    &:before {
-      @include sprite(link-icon);
-    }
-  }
-
-  .latest-article.document & {
-    &:before {
-      @include sprite(pdf-icon);
-    }
-  }
-
-  .latest-article-icon {
-    margin-top: 8px;
-    width: 32px;
-    height: 32px;
+  //.latest-article.text //article-icon
+  //.latest-article.event //callout-icon
+  //.latest-article.theory
+  //.latest-article.audio
+  //.latest-article.images
+  //.latest-article.organization
+  //.latest-article.link
+  //.latest-article.document
+  .article-format-icon {
+    padding-top: 12px;
   }
 }
 
-.latest-article-icon-wrapper {
-
-}
 
 
 .latest-article-info {

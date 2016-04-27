@@ -41,7 +41,7 @@ import HeaderMenus from './modules/header';
 
     // SVG Polyfill
     svg4everybody({
-      polyfill: true
+      polyfill: false
     });
   });
 })();

@@ -27,9 +27,21 @@
             </h1>
 
             <div class="article-header-meta">
+                {% if self.format %}
+                    <div class="article-header-format">
+                        <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon yellow-icon" >
+                          <use xlink:href="#{{ page.format }}-icon" />
+                        </svg>
+                    </div>
+                {% endif %}
+                {% if self.publication_date %}
+                    <div class="article-header-publication-date">
+                        {{ self.publication_date|date:"j F Y" }}
+                    </div>
+                {% endif %}
                 {% if self.author %}
                     <div class="article-header-author">
-                        <label class="article-header-label">{% trans "Author:" %}</label>
+                        <label class="article-header-label">{% trans "by" %}</label>
                         <span class="article-header-author-name">{{ self.author }}</span>
                     </div>
                 {% endif %}
@@ -45,14 +57,14 @@
                     <svg class="facebook-icon" width="15.152px" height="32.433px" >
                         <title>Facebook icon</title>
                         <desc>Click to share on Facebook</desc>
-                        <use xlink:href="{% static 'images/sprite.svg#facebook-icon' %}" />
+                        <use xlink:href="#facebook-icon" />
                     </svg>
                 </a>
                 <a href="#" class="twitter-link">
                     <svg class="twitter-icon" width="34.198px" height="28.543px" >
                         <title>Twitter icon</title>
                         <desc>Click to share on Twitter</desc>
-                        <use xlink:href="{% static 'images/sprite.svg#twitter-icon' %}" />
+                        <use xlink:href="#twitter-icon" />
                     </svg>
                 </a>
             </div>
@@ -67,7 +79,7 @@
                 <svg width="25.178px" height="20.185px"  class="toc-icon" >
                     <title>Table of Contents icon</title>
                     <desc>Click to open Table of Contents</desc>
-                    <use xlink:href="{% static 'images/sprite.svg#toc-icon' %}" />
+                    <use xlink:href="#toc-icon" />
                 </svg>
             </a>
             <ul class="toc-list is-visuallyhidden">

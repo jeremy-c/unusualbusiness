@@ -228,7 +228,22 @@ gulp.task('pngSprite', ['svgSprite'], function() {
 		.pipe(gulp.dest('unusualbusiness/static/images'));
 });
 
-gulp.task('sprite', ['pngSprite']);
+gulp.task('svgStore', function () {
+    var svgs = gulp
+        .src('unusualbusiness/assets/images/*.svg')
+        .pipe($.svgstore({ inlineSvg: true }));
+
+    function fileContents (filePath, file) {
+        return file.contents.toString();
+    }
+
+    return gulp
+        .src('unusualbusiness/templates/blocks/svg_include.html')
+        .pipe($.inject(svgs, { transform: fileContents }))
+        .pipe(gulp.dest('unusualbusiness/templates/blocks'));
+});
+
+gulp.task('sprite', ['pngSprite', 'svgStore']);
 
 // Clean output directory
 gulp.task('clean', () => del(['.tmp'], {dot: true}));

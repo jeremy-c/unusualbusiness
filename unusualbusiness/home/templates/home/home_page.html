@@ -124,26 +124,12 @@
                             {% include "articles/blocks/latest_story_article.html" with page=the_page list_item_classes='l-grid-item-double-width'  %}
                     {% elif the_page.content_type.model == 'theoryarticlepage' %}
                         {% include "articles/blocks/latest_theory_article.html" with page=the_page %}
-    {#                    {% else %}#}
-    {#                        {% include "articles/blocks/list_article.html" with article_class="blue" %}#}
                     {% endif %}
                     {% empty %}
                         <li>Sorry, no pages found.</li>
                 {% endfor %}
 
             </ul>
-
-{#            <div class="stream">#}
-{#                {% for block in page.stream %}#}
-{#                    {% if block.block_type == 'heading' %}#}
-{#                        <h1>{{ block.value }}</h1>#}
-{#                    {% else %}#}
-{#                        <section class="block-{{ block.block_type }}">#}
-{#                            {{ block }}#}
-{#                        </section>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
-{#            </div>#}
         </section>
     </section>
 
