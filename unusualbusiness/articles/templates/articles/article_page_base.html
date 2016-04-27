@@ -38,7 +38,7 @@
 
         <div class="article-subheader">
             <div class="article-subheader-back-links">
-                <a href="#" class="back-link">Stories</a>
+                <a href="#" class="back-link">All stories</a>
             </div>
             <div class="article-subheader-social-links">
                 <a href="#" class="facebook-link">
@@ -56,6 +56,10 @@
                     </svg>
                 </a>
             </div>
+        </div>
+
+        <div class="article-featured-image">
+         {% include "blocks/responsive_image.html" with image=page.featured_image image_class="article-image"  %}
         </div>
 
         <section class="article-table-of-contents">

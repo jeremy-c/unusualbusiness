@@ -84,6 +84,30 @@
   }
 }
 
+.article-featured-image {
+  margin: 0 120px $gutter * 2;
+  text-align: center;
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  @media(max-width: $desktop) {
+    margin: 0 $gutter $gutter;
+    width: calc(100% - var(--gutter) * 2);
+    max-width: $desktop
+  }
+
+  @media(max-width: $tablet) {
+    margin: 0;
+    width: 100%;
+    max-width: inherit;
+  } 
+}
+
+.article-image {
+  object-fit: cover;
+  width: 100%;
+  max-height: 370px;
+}
+
 .back-link {
   display: block;
   font-family: $open-sans;
