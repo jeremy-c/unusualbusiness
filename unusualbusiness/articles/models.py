@@ -121,11 +121,6 @@ class AbstractArticle(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    summary = models.TextField(
-        verbose_name=_('summary'),
-        help_text=_("The summary of the articles (max 100 words)"),
-        blank=True
-    )
     publication_date = models.DateTimeField(
         verbose_name=_('publication_date'),
         help_text=_("The publication date of the article"),
@@ -134,6 +129,7 @@ class AbstractArticle(models.Model):
         null=True,
     )
     body = StreamField([
+        ('introduction', blocks.RichTextBlock(icon="italic")),
         ('chapter', Heading2Block()),
         ('section', Heading3Block()),
         ('subsection', Heading4Block()),
@@ -200,7 +196,6 @@ StoryArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('summary'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
@@ -216,8 +211,6 @@ StoryArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('summary_en'),
-        index.SearchField('summary_nl'),
         index.SearchField('body_en'),
         index.SearchField('body_nl'),
         index.RelatedFields('organizations', [
@@ -278,8 +271,6 @@ TheoryArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('summary_en'),
-        index.SearchField('summary_nl'),
         index.SearchField('body_en'),
         index.SearchField('body_nl'),
         index.RelatedFields('how_to_page', [
@@ -326,8 +317,6 @@ ReportArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
         index.SearchField('subtitle_nl'),
-        index.SearchField('summary_en'),
-        index.SearchField('summary_nl'),
         index.SearchField('body_en'),
         index.SearchField('body_nl'),
         index.RelatedFields('event_page', [

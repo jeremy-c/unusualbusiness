@@ -10,7 +10,6 @@ class StoryArticlePageTR(TranslationOptions):
  fields = (
     'title',
     'subtitle',
-    'summary',
     'body',
  )
 
@@ -20,7 +19,6 @@ class TheoryArticlePageTR(TranslationOptions):
  fields = (
     'title',
     'subtitle',
-    'summary',
     'body',
  )
 
@@ -30,7 +28,6 @@ class ReportArticlePageTR(TranslationOptions):
  fields = (
     'title',
     'subtitle',
-    'summary',
     'body',
  )
 
