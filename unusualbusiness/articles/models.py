@@ -73,6 +73,7 @@ class Heading4Block(blocks.StructBlock):
         icon = 'title'
         label = _('Subsection (h4)')
 
+
 class PullQuoteBlock(blocks.StructBlock):
     pull_quote = blocks.CharBlock(required=True)
 
@@ -258,7 +259,6 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('summary'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),
@@ -304,7 +304,6 @@ ReportArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('summary'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),
