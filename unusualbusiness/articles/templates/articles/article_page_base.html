@@ -98,13 +98,13 @@
         </section>
 
         <div class="l-boxed">
-            <div class="article-introduction">
-                {% for block in page.body %}
-                    {% if block.block_type == 'introduction' %}
+            {% for block in page.body %}
+                {% if block.block_type == 'introduction' and forloop.first %}
+                    <div class="article-introduction">
                         {{ block.value.source|ub_richtext }}
-                    {% endif %}
-                {% endfor %}
-            </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
 
             <div class="article-body">
 

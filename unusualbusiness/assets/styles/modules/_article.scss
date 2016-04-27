@@ -90,16 +90,21 @@
   transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   @media(max-width: $desktop) {
-    margin: 0 $gutter $gutter;
+    margin-left: $gutter;
+    margin-right: $gutter;
     width: calc(100% - var(--gutter) * 2);
     max-width: $desktop
+  }
+
+  @media(max-width: $tablet-horizontal) {
+    margin-bottom: $gutter;
   }
 
   @media(max-width: $tablet) {
     margin: 0;
     width: 100%;
     max-width: inherit;
-  } 
+  }
 }
 
 .article-image {
@@ -131,7 +136,7 @@
 }
 
 .article-introduction {
-  padding: 0 $gutter $gutter;
+  padding: 0 $gutter;
 
   font-size: 30px;
   font-weight: bold;
@@ -154,7 +159,7 @@
   }
 
   @media(max-width: $tablet) {
-    padding-bottom: 0;
+    padding: 0;
     font-size: 5vw;
   }
 }
@@ -176,9 +181,14 @@
   font-weight: 300;
   line-height: 32px;
 
+  @media(max-width: $tablet-horizontal) {
+    padding-top: 0;
+  }
+
   @media(max-width: $tablet) {
     padding: 0;
   }
+
 
   p {
     position: relative;
