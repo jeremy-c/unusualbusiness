@@ -9,9 +9,9 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('taggit', '0002_auto_20150616_2121'),
+        ('howtos', '0002_auto_20160503_1741'),
         ('organizations', '0001_initial'),
         ('events', '0001_initial'),
-        ('howtos', '0001_initial'),
         ('articles', '0001_initial'),
     ]
 

@@ -14,7 +14,7 @@ class DefinitionPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'definitions/blocks/inline_definition.html'
     format = models.CharField(
         verbose_name=_('page_format'),
-        max_length=16,
+        max_length=32,
         null=False,
         default=PageFormat.THEORY,
         choices=PageFormat.ALL)

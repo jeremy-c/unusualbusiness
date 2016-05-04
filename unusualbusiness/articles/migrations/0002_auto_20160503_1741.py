@@ -36,6 +36,11 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='storyarticlepage',
+            name='author',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='author', blank=True, to='articles.AuthorPage', null=True),
+        ),
+        migrations.AddField(
+            model_name='storyarticlepage',
             name='featured_image',
             field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='featured_image', blank=True, to='wagtailimages.Image', null=True),
         ),
@@ -43,6 +48,11 @@ class Migration(migrations.Migration):
             model_name='storyarticlepage',
             name='tags',
             field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.StoryArticlePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+        ),
+        migrations.AddField(
+            model_name='reportarticlepage',
+            name='author',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='author', blank=True, to='articles.AuthorPage', null=True),
         ),
         migrations.AddField(
             model_name='reportarticlepage',
@@ -58,5 +68,10 @@ class Migration(migrations.Migration):
             model_name='reportarticlepage',
             name='tags',
             field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='tags.ReportArticlePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+        ),
+        migrations.AddField(
+            model_name='authorpage',
+            name='photo',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='photo', blank=True, to='wagtailimages.Image', null=True),
         ),
     ]

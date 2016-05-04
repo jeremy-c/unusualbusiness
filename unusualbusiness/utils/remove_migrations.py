@@ -28,7 +28,7 @@ import sys
 from distutils.util import strtobool
 
 # Cambiar el valor de acuerdo a la configuración de tu proyecto.
-APPS_FOLDER = ""  # <- Ruta de nuestra carpeta contenedora de apps
+APPS_FOLDER = "../../"  # <- Ruta de nuestra carpeta contenedora de apps
 
 
 BASE_DIR = os.getcwd()  # <- Obtenemos la ruta de nuestro archivo.

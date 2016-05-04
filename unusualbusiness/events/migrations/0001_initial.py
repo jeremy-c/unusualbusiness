@@ -5,6 +5,7 @@ from django.db import migrations, models
 import wagtail_modeltranslation.models
 import django.db.models.deletion
 import wagtail.wagtailcore.fields
+import unusualbusiness.utils.models
 
 
 class Migration(migrations.Migration):
@@ -49,6 +50,7 @@ class Migration(migrations.Migration):
                 ('seo_title_nl', models.CharField(help_text="Optional. 'Search Engine Friendly' title. This will appear at the top of the browser window.", max_length=255, null=True, verbose_name='page title', blank=True)),
                 ('search_description_en', models.TextField(null=True, verbose_name='search description', blank=True)),
                 ('search_description_nl', models.TextField(null=True, verbose_name='search description', blank=True)),
+                ('format', models.CharField(default=b'event', max_length=32, verbose_name='page_format', choices=[(b'text', 'Normal Article'), (b'theory', 'Theory Article'), (b'video', 'Video embed'), ((b'audio',), 'Audio embed'), (b'images', 'Image slideshow'), (b'event', 'Event'), (b'organization', 'Organization'), (b'link', 'External Link'), (b'document', 'Document Download')])),
                 ('start_date', models.DateTimeField(verbose_name='Starting date')),
                 ('end_date', models.DateTimeField(null=True, verbose_name='End date', blank=True)),
                 ('location', models.CharField(max_length=512, verbose_name='Location', blank=True)),
@@ -63,6 +65,6 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page'),
+            bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page', unusualbusiness.utils.models.RenderInlineMixin),
         ),
     ]
