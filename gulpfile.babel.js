@@ -259,7 +259,8 @@ gulp.task('default', ['sprite', 'styles', 'webpack', 'images'], function () {
 // gulp.task('default', ['sprite', 'styles', 'scripts', 'images'], function () {
   browserSync({
     notify: false,
-    proxy: "127.0.0.1:8000"
+    // proxy: "127.0.0.1:8000"
+    proxy: "192.168.99.109:8000"
   });
 
   gulp.watch(['unusualbusiness/**/*.html'], reload);

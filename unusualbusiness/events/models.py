@@ -29,7 +29,7 @@ class EventPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'events/blocks/inline_event.html'
     format = models.CharField(
         verbose_name=_('page_format'),
-        max_length=16,
+        max_length=32,
         null=False,
         default=PageFormat.EVENT,
         choices=PageFormat.ALL)

@@ -102,7 +102,7 @@ class AbstractArticle(models.Model):
     )
     format = models.CharField(
         verbose_name=_('page_format'),
-        max_length=16,
+        max_length=32,
         null=False,
         default = PageFormat.TEXT,
         choices=PageFormat.ALL)

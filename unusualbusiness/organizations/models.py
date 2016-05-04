@@ -6,7 +6,6 @@ from django.template.loader import get_template
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from requests import request
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
@@ -22,7 +21,7 @@ class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     ajax_template = 'organizations/blocks/inline_organization.html'
     format = models.CharField(
         verbose_name=_('page_format'),
-        max_length=16,
+        max_length=32,
         null=False,
         default=PageFormat.ORGANIZATION,
         choices=PageFormat.ALL)

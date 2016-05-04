@@ -6,7 +6,7 @@ from wagtail_modeltranslation.models import TranslationMixin
 from django.utils.translation import ugettext as _
 
 
-class RenderInlineMixin():
+class RenderInlineMixin(object):
     def __init__(self):
         pass
 

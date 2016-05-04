@@ -34,7 +34,7 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
-    'django_gulp',
+    # 'django_gulp',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -68,8 +68,8 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'unusualbusiness.home',
-    'unusualbusiness.howtos',
     'unusualbusiness.organizations',
+    'unusualbusiness.howtos',
     'unusualbusiness.articles',
     'unusualbusiness.events',
     'unusualbusiness.definitions',
