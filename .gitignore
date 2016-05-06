@@ -51,6 +51,10 @@ node_modules/
 
 # virtual environments
 .env
+.env.production
+.env.staging
+.env.local
+
 
 # User-uploaded media
 unusualbusiness/media/
