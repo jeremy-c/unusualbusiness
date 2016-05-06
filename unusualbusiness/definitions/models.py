@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 # Create your models here.
 
 
-class DefinitionPage(TranslationMixin, Page, RenderInlineMixin):
+class DefinitionPage(Page, RenderInlineMixin):
     ajax_template = 'definitions/blocks/inline_definition.html'
     format = models.CharField(
         verbose_name=_('page_format'),
@@ -31,7 +31,7 @@ DefinitionPage.content_panels = Page.content_panels + [
     ]
 DefinitionPage.promote_panels = Page.promote_panels
 
-class DefinitionIndexPage(TranslationMixin, Page):
+class DefinitionIndexPage(Page):
 
     parent_page_types = ['home.HomePage']
     subpage_types = ['definitions.DefinitionPage']

@@ -25,7 +25,7 @@ from unusualbusiness.tags.models import EventPageTag
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
 
 
-class EventPage(TranslationMixin, Page, RenderInlineMixin):
+class EventPage(Page, RenderInlineMixin):
     ajax_template = 'events/blocks/inline_event.html'
     format = models.CharField(
         verbose_name=_('page_format'),
@@ -33,8 +33,18 @@ class EventPage(TranslationMixin, Page, RenderInlineMixin):
         null=False,
         default=PageFormat.EVENT,
         choices=PageFormat.ALL)
+    event_type = models.CharField(
+        verbose_name = _("Type of event"),
+        max_length=512,
+        blank=True
+    )
+    is_featured = models.BooleanField(
+        verbose_name = _("Is Featured on home page"),
+        default=False
+    )
     start_date = models.DateTimeField(
         verbose_name=_("Starting date"),
+        null=True
     )
     end_date = models.DateTimeField(
         verbose_name=_("End date"),
@@ -50,7 +60,8 @@ class EventPage(TranslationMixin, Page, RenderInlineMixin):
     # TODO: Add participating groups as ForeignKeys
     description = RichTextField(
         verbose_name = _("Description"),
-        null=True
+        null=True,
+        blank=True
     )
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -91,6 +102,7 @@ class EventPage(TranslationMixin, Page, RenderInlineMixin):
     # Editor panels configuration
 
     content_panels = Page.content_panels + [
+        FieldPanel('is_featured'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
         FieldPanel('location'),
@@ -128,10 +140,13 @@ class EventPage(TranslationMixin, Page, RenderInlineMixin):
     # Methods
     @staticmethod
     def upcoming_events():
-        return EventPage.objects.all().filter(start_date__gt=datetime.now).live()
+        if EventPage.objects.count() > 0:
+            return EventPage.objects.filter(start_date__gt=datetime.now).live()
+        else:
+            return None
 
 
-class EventIndexPage(TranslationMixin, Page):
+class EventIndexPage(Page):
 
     parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage']

@@ -1,9 +1,7 @@
 from django.db.models import Model
 from django.template.loader import get_template
-from django_choices_enum import ChoicesEnum
-from wagtail.wagtailcore.models import Page
-from wagtail_modeltranslation.models import TranslationMixin
 from django.utils.translation import ugettext as _
+from wagtail.wagtailcore.models import Page
 
 
 class RenderInlineMixin(object):

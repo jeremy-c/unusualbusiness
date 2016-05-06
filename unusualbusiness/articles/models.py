@@ -7,15 +7,13 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail_modeltranslation.models import TranslationMixin
-
-from wagtail.wagtailcore import blocks
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
@@ -23,7 +21,7 @@ from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTa
 from unusualbusiness.utils.models import PageFormat
 
 
-class TheoryArticleIndexPage(TranslationMixin, Page):
+class TheoryArticleIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['articles.TheoryArticlePage']
 
@@ -35,7 +33,7 @@ class TheoryArticleIndexPage(TranslationMixin, Page):
         return context
 
 
-class StoryArticleIndexPage(TranslationMixin, Page):
+class StoryArticleIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['articles.StoryArticlePage']
 
@@ -94,6 +92,10 @@ class CarouselBlock(blocks.StreamBlock):
 
 
 class AbstractArticle(models.Model):
+    is_featured = models.BooleanField(
+        verbose_name = _("Is Featured on home page"),
+        default=False
+    )
     subtitle = models.CharField(
         verbose_name=_('subtitle'),
         max_length=255,
@@ -146,7 +148,7 @@ class AbstractArticle(models.Model):
         verbose_name = _("Article")
 
 
-class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
+class StoryArticlePage(Page, AbstractArticle):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
 
@@ -193,6 +195,7 @@ class StoryArticlePage(TranslationMixin, Page, AbstractArticle):
         return context
 
 StoryArticlePage.content_panels = Page.content_panels + [
+        FieldPanel('is_featured'),
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
@@ -244,7 +247,7 @@ class StoryArticlePageOrganization(Orderable, models.Model):
         return self.story_article_page.title + " -> " + self.organization_page.title
 
 
-class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
+class TheoryArticlePage(Page, AbstractArticle):
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
 
@@ -255,6 +258,7 @@ class TheoryArticlePage(TranslationMixin, Page, AbstractArticle):
         verbose_name_plural = _("Theories")
 
 TheoryArticlePage.content_panels = Page.content_panels + [
+        FieldPanel('is_featured'),
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
@@ -282,7 +286,7 @@ TheoryArticlePage.search_fields = Page.search_fields + (
     )
 
 
-class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
+class ReportArticlePage(Page, AbstractArticle):
     event_page = models.ForeignKey(
         'events.EventPage',
         null=True,
@@ -299,6 +303,7 @@ class ReportArticlePage(TranslationMixin, Page, AbstractArticle):
         verbose_name = _("Event report")
 
 ReportArticlePage.content_panels = Page.content_panels + [
+        FieldPanel('is_featured'),
         PageChooserPanel('event_page'),
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
@@ -328,7 +333,7 @@ ReportArticlePage.search_fields = Page.search_fields + (
 )
 
 
-class AuthorPage(TranslationMixin, Page):
+class AuthorPage(Page):
     photo = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name=_('photo'),
@@ -358,7 +363,7 @@ AuthorPage.content_panels = Page.content_panels + [
 AuthorPage.promote_panels = Page.promote_panels
 
 
-class AuthorIndexPage(TranslationMixin, Page):
+class AuthorIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['articles.AuthorPage']
 

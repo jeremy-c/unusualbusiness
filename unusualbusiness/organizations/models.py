@@ -17,7 +17,7 @@ from unusualbusiness.tags.models import OrganizationPageTag
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
 
 
-class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
+class OrganizationPage(Page, RenderInlineMixin):
     ajax_template = 'organizations/blocks/inline_organization.html'
     format = models.CharField(
         verbose_name=_('page_format'),
@@ -25,6 +25,10 @@ class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
         null=False,
         default=PageFormat.ORGANIZATION,
         choices=PageFormat.ALL)
+    is_featured = models.BooleanField(
+        verbose_name = _("Is Featured on home page"),
+        default=False
+    )
     description = models.CharField(
         verbose_name = _("Description"),
         max_length=512,
@@ -37,7 +41,8 @@ class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     )
     amount_of_members = models.PositiveIntegerField(
         verbose_name = _("Amount of members"),
-        null=True
+        null=True,
+        blank=True
     )
     # This should probably be a specific geolocation field:
     location = models.CharField(
@@ -84,10 +89,13 @@ class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     # Editor panels configuration
 
     content_panels = Page.content_panels + [
+        FieldPanel('is_featured'),
         FieldPanel('date_founded'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
         FieldPanel('location'),
+        FieldPanel('date_founded'),
+        FieldPanel('amount_of_members'),
         FieldPanel('email'),
         FieldPanel('website'),
         FieldPanel('facebook'),
@@ -96,7 +104,7 @@ class OrganizationPage(TranslationMixin, Page, RenderInlineMixin):
     ]
 
 
-class OrganizationIndexPage(TranslationMixin, Page):
+class OrganizationIndexPage(Page):
 
     # content_panels = Page.content_panels + [
     # ]

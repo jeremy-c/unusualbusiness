@@ -21,7 +21,7 @@ from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import HowToPageTag
 
 
-class HowToPage(TranslationMixin, Page):
+class HowToPage(Page):
     description = RichTextField(
         verbose_name = _("Description"),
         null=True
@@ -218,7 +218,7 @@ class HowToPageEventPage(Orderable, models.Model):
         return self.how_to_page.title + " -> " + self.event.title
 
 
-class HowToIndexPage(TranslationMixin, Page):
+class HowToIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['howtos.HowToPage']
 

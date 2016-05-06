@@ -15,7 +15,7 @@ from unusualbusiness.howtos.models import HowToPage
 from unusualbusiness.organizations.models import OrganizationPage
 
 
-class HomePage(TranslationMixin, Page):
+class HomePage(Page):
     subpage_types = [
         'articles.StoryArticleIndexPage',
         'articles.TheoryArticleIndexPage',

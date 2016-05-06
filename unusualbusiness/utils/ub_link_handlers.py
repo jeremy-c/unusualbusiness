@@ -11,7 +11,9 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore import hooks
 
 from django.utils.html import escape
-from wagtailplus.wagtaillinks.rich_text import Link
+# from wagtailplus.wagtaillinks.rich_text import Link
+# from wagtailplus.wagtaillinks.models import Link
+from wagtail.wagtaildocs.rich_text import DocumentLinkHandler
 
 from unusualbusiness.definitions.models import DefinitionPage
 from unusualbusiness.organizations.models import OrganizationPage
@@ -28,54 +30,54 @@ Contains rich-text link handler definition.
 """
 
 
-class UBLinkHandler(object):
-    """
-    LinkHandler will be invoked whenever we encounter an <a> element in HTML content
-    with an attribute of data-linktype="link". The resulting element in the database
-    representation will be: <a linktype="link" id="42">linked text</a>.
-    """
-    @staticmethod
-    def get_db_attributes(tag):
-        """
-        Given an <a> tag that we've identified as a page link embed (because it has a
-        data-linktype="link" attribute), return a dict of the attributes we should
-        have on the resulting <a linktype="link"> element.
-
-        :param tag: the tag dictionary.
-        :rtype: dict.
-        """
-        return {'id': tag['data-id']}
-
-    @staticmethod
-    def expand_db_attributes(attrs, for_editor):
-        """
-        Given a dictionary of attributes, find the corresponding link instance and
-        return its HTML representation.
-
-        :param attrs: dictionary of link attributes.
-        :param for_editor: whether or not HTML is for editor.
-        :rtype: str.
-        """
-        try:
-            editor_attrs    = ''
-            link            = Link.objects.get(id=attrs['id'])
-
-            if for_editor:
-                editor_attrs = 'data-linktype="link" data-id="{0}" '.format(
-                    link.id
-                )
-
-            return '<a {0}href="{1}" target="_blank" title="{2}">'.format(
-                editor_attrs,
-                escape(link.get_absolute_url()),
-                link.title
-            )
-        except Link.DoesNotExist:
-            return '<a>'
-
-    @staticmethod
-    def expand_inline_tags(attrs, for_editor):
-        return ''
+# class UBLinkHandler(object):
+#     """
+#     LinkHandler will be invoked whenever we encounter an <a> element in HTML content
+#     with an attribute of data-linktype="link". The resulting element in the database
+#     representation will be: <a linktype="link" id="42">linked text</a>.
+#     """
+#     @staticmethod
+#     def get_db_attributes(tag):
+#         """
+#         Given an <a> tag that we've identified as a page link embed (because it has a
+#         data-linktype="link" attribute), return a dict of the attributes we should
+#         have on the resulting <a linktype="link"> element.
+#
+#         :param tag: the tag dictionary.
+#         :rtype: dict.
+#         """
+#         return {'id': tag['data-id']}
+#
+#     @staticmethod
+#     def expand_db_attributes(attrs, for_editor):
+#         """
+#         Given a dictionary of attributes, find the corresponding link instance and
+#         return its HTML representation.
+#
+#         :param attrs: dictionary of link attributes.
+#         :param for_editor: whether or not HTML is for editor.
+#         :rtype: str.
+#         """
+#         try:
+#             editor_attrs    = ''
+#             link            = Link.objects.get(id=attrs['id'])
+#
+#             if for_editor:
+#                 editor_attrs = 'data-linktype="link" data-id="{0}" '.format(
+#                     link.id
+#                 )
+#
+#             return '<a {0}href="{1}" target="_blank" title="{2}">'.format(
+#                 editor_attrs,
+#                 escape(link.get_absolute_url()),
+#                 link.title
+#             )
+#         except Link.DoesNotExist:
+#             return '<a>'
+#
+#     @staticmethod
+#     def expand_inline_tags(attrs, for_editor):
+#         return ''
 
 
 class UBPageLinkHandler(object):
@@ -140,12 +142,12 @@ class UBPageLinkHandler(object):
 EMBED_HANDLERS = {}
 LINK_HANDLERS = {
     'page': UBPageLinkHandler,
-    'link': UBLinkHandler,
+    # 'link': UBLinkHandler,
 }
 
-@hooks.register('register_rich_text_link_handler')
-def register_document_link_handler():
-    return ('link', UBLinkHandler)
+# @hooks.register('register_rich_text_link_handler')
+# def register_document_link_handler():
+#     return ('link', UBLinkHandler)
 
 has_loaded_embed_handlers = False
 has_loaded_link_handlers = False
@@ -165,6 +167,12 @@ def get_embed_handler(embed_type):
 
 
 def get_link_handler(link_type):
+    # type: (object) -> object
+    # type: (object) -> object
+    """
+
+    :rtype: object
+    """
     global LINK_HANDLERS, has_loaded_link_handlers
 
     if not has_loaded_link_handlers:
@@ -299,7 +307,9 @@ def expand_inline_html(html, for_editor=False):
         complete_tag = m.group(0)
         found_a_tag = FIND_A_TAG.search(complete_tag)
         attrs = extract_attrs(found_a_tag.group(1))
-        if 'linktype' not in attrs:
+
+        if 'linktype' not in attrs or \
+            attrs.get('linktype') == u'document':
             # return unchanged
             return complete_tag
         handler = get_link_handler(attrs['linktype'])
@@ -310,6 +320,7 @@ def expand_inline_html(html, for_editor=False):
 
         # add inline <span> tag after <a></a> tag.
         return ''.join([a_tag, inline_tag])
+
 
     def replace_a_tag(m):
         attrs = extract_attrs(m.group(1))

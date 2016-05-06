@@ -28,7 +28,7 @@ celery==3.1.20
 # Wagtail
 wagtail==1.4.3
 wagtail-modeltranslation==0.5.0a
-wagtailplus==0.3.7
+#wagtailplus==0.3.7
 wagtailmodeladmin==2.5.7
 
 # Search
@@ -38,4 +38,4 @@ elasticsearch==1.9.0
 django-choices-enum==0.2
 
 # Compression
-django_compressor==2.0
+#django_compressor==2.0
