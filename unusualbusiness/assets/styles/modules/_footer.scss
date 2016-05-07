@@ -6,10 +6,54 @@
 
 .footer {
   background-color: $black;
-  color: $white;
-  height: 165px;
 
-  @media(max-width: $tablet) {
-    height: 50px;
+  font-family: $open-sans;
+  font-size: 14px;
+  color: $white;
+
+  li {
+    padding: 5px 0;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
   }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+.ub-logo-footer {
+  text-align: center;
+}
+
+.ub-logo-large {
+  padding: $gutter / 2 0;
+}
+
+.contact-links-search {
+  margin-bottom: 33px;
+}
+
+.casco-ksu-logos {
+  text-align: center;
+}
+
+.casco-logo {
+  padding: $gutter / 2 $gutter;
+}
+
+.ksu-logo {
+  padding: $gutter / 2 $gutter 0;
 }

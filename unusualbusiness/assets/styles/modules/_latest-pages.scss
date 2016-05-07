@@ -93,7 +93,7 @@
     object-fit: cover;
     overflow: hidden; // Cuts off the parts of the image poking out
   }
- 
+
   @media(max-width: $tablet-horizontal) {
     flex: 0 1 auto;
     padding-top: $gutter;

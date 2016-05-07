@@ -2,5 +2,23 @@
    Layout/Footer
    ======================= */
 
+@import "../base/base";
+
 .l-footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: space-between;
+
+  padding: $gutter;
+
+  > div {
+    width: 20%;
+    border-right: solid 1px $light-gray;
+    padding: 0 $gutter;
+
+    &:last-of-type {
+      border: none;
+    }
+  }
 }
