@@ -5,7 +5,10 @@
 .featured-welcome-message {
   border-left: solid 1px $light-gray;
   padding: 0 $gutter * 2;
-  max-width: 380px;
+  max-width: 480px;
+
+  font-size: 16px;
+  line-height: 26px;
 
   @media (max-width: $tablet) {
     border-left: none;
@@ -20,6 +23,7 @@
 
 .featured-welcome-message-title {
   padding-bottom: $gutter;
+  font-size: 36px;
 }
 
 .featured-welcome-message-body {

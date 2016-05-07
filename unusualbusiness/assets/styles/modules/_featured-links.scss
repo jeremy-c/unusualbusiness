@@ -8,7 +8,7 @@
 .featured-links {
   margin-left: auto;
   margin-right: 0;
-  width: 240px;
+  width: 293px;
   height: 300px;
 
   @media (max-width: $tablet) {
@@ -33,20 +33,44 @@
     line-height: 1.3em;
     text-decoration: none;
 
+    &:after {
+      content: '';
+      float: right;
+      padding-bottom: 1px;
+      vertical-align: middle;
+      font-size: 18px;
+    }
+
     &.yellow {
       color: $yellow;
+
+      &:after {
+        @include sprite(chevron-yellow-icon);
+      }
     }
 
     &.green {
       color: $green;
+
+      &:after {
+        @include sprite(chevron-green-icon);
+      }
     }
 
     &.black {
       color: $black;
+
+      &:after {
+        @include sprite(chevron-icon);
+      }
     }
 
     &.blue {
       color: $blue;
+
+      &:after {
+        @include sprite(chevron-blue-icon);
+      }
     }
   }
 }

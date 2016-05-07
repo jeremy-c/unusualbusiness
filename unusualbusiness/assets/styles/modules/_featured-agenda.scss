@@ -70,6 +70,15 @@
     font-family: $open-sans;
     text-decoration: none;
     color: $blue;
+
+    &:after {
+      @include sprite(chevron-blue-icon);
+      content: '';
+      margin-left: 7px;
+      padding-bottom: 1px;
+      vertical-align: middle;
+      font-size: 18px;
+    }
   }
 }
 

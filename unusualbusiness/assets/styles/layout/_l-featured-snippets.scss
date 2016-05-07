@@ -7,7 +7,7 @@
 .l-featured-snippets {
   display: flex;
   flex-direction: row;
-  margin: $gutter 250px $gutter 70px;
+  margin: $gutter 70px;
 
   @media (max-width: $tablet-horizontal) {
     margin: 0 $gutter;
