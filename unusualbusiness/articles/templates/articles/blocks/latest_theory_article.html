@@ -1,15 +1,19 @@
 {% extends "articles/blocks/latest_article.html" %}
-{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags ub_wagtailcore_tags ub_core_tags i18n %}
 
 {% block list_item_classes %}latest-article-theory{% endblock %}
 
 {% block below_title %}
-    <div class="latest-article-author">
-        {% if page.author %}
+    {% if page.author %}
+        <div class="latest-article-author">
             {{ page.author }}
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     <div class="latest-article-introduction">
-{#        {{ page.summary }}#}
+        {% for block in page.body %}
+            {% if block.block_type == 'introduction' and forloop.first %}
+                {{ block.value.source|ub_richtext|truncatewords:30 }}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
