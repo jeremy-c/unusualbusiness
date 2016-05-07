@@ -24,23 +24,15 @@
             <section class="l-featured-articles featured-articles unslider" >
                 <h3 class="section-title">Uitgelicht</h3>
                 <ul class="featured-articles-list">
-                    {% for page in pages %}
-                        {% if page.content_type.model == 'eventpage' %}
-                            {% include "events/blocks/featured_event.html" %}
-                        {%  elif page.content_type.model == 'howtopage' %}
-                            {% include "howtos/blocks/featured_howto.html" %}
-                        {%  elif page.content_type.model == 'definitionpage' %}
-                            {% include "definitions/blocks/featured_definition.html" %}
-                        {%  elif page.content_type.model == 'organizationpage' %}
-                            {% include "organizations/blocks/featured_organization.html" %}
-                        {%  elif page.content_type.model == 'reportarticlepage' %}
+                    {% for featured_article in featured_articles %}
+                        {% if featured_article.content_type.model == 'eventpage' %}
+                            {% include "events/blocks/featured_event.html" with featured_event=featured_article %}
+                        {%  elif featured_article.content_type.model == 'reportarticlepage' %}
                             {% include "articles/blocks/featured_article.html" with article_class="blue" %}
-                        {%  elif page.content_type.model == 'storyarticlepage' %}
+                        {%  elif featured_article.content_type.model == 'storyarticlepage' %}
                             {% include "articles/blocks/featured_article.html" with article_class="yellow" %}
-                        {%  elif page.content_type.model == 'theoryarticlepage' %}
+                        {%  elif featured_article.content_type.model == 'theoryarticlepage' %}
                             {% include "articles/blocks/featured_article.html" with article_class="green" %}
-                        {% else %}
-                            {% include "articles/blocks/featured_article.html" with article_class="blue" %}
                         {% endif %}
                     {% endfor %}
                 </ul>

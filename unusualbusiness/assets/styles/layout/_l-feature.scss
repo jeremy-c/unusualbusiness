@@ -5,7 +5,7 @@
 @import "../base/base";
 
 .l-feature {
-  padding-top: 14px;
+  padding-top: 6px;
   margin-bottom: 14px;
   display: flex;
   align-items: stretch;
@@ -25,6 +25,7 @@
 }
 
 .l-featured-agenda {
+  padding-top: $gutter / 2;
   margin-left: 50px;
   width: 240px;
 }

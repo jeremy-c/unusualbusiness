@@ -24,17 +24,24 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 370px;
+  height: 393px;
 
   @media(max-width: $tablet) {
     height: 310px;
   }
 }
 
+.featured-article-format {
+  padding-top: $gutter / 2;
+  padding-left: 8px;
+  width: 70px;
+}
+
 .featured-article-date {
   z-index: 5;
   display: flex;
   flex-direction: column;
+  padding-top: 7px;
   padding-right: 30px;
 
   @media(max-width: $tablet) {
@@ -75,7 +82,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 370px;
+  height: 393px;
 
   object-fit: cover;
   overflow: hidden; // Cuts off the parts of the image poking out
@@ -89,12 +96,12 @@
 .featured-article-preview-title {
   z-index: 10;
   padding: $gutter;
-  width: 40%;
+  width: 55%;
   max-height: 70%;
   overflow: hidden;
 
-  font-size: 36px;
-  line-height: 46px;
+  font-size: 42px;
+  line-height: 50px;
   text-align: center;
   color: $white;
 
@@ -142,22 +149,25 @@
   }
 }
 
-.article-icon {
-  padding: 8px 0 0 10px;
+.article-format-icon {
 
-  .blue & path {
+  .blue & {
     fill: $blue;
+    stroke: $blue;
   }
 
-  .black & path {
+  .black & {
     fill: $black;
+    stroke: $black;
   }
 
-  .green & path {
+  .green & {
     fill: $green;
+    stroke: $green;
   }
 
-  .yellow & path {
+  .yellow & {
     fill: $yellow;
+    stroke: $yellow;
   }
 }

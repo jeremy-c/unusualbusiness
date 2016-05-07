@@ -63,6 +63,7 @@
 }
 
 .featured-agenda-footer {
+  padding-bottom: $gutter;
 
   a {
     font-size: 14px;
@@ -71,6 +72,7 @@
   }
 }
 
+
 /* ==|====================
    States/Featured Agenda
    ======================= */
@@ -78,5 +80,4 @@
 &.is-hover {
   border-right: solid 8px $blue !important;
   margin-right: 9px;
-  //padding-right: 10px;
 }

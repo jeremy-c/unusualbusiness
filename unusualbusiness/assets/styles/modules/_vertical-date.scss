@@ -59,7 +59,7 @@
 .vertical-date-time {
   @extend .vertical-date-element;
   padding-top: 10px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
 
   @media(max-width: $tablet) {
@@ -71,16 +71,18 @@
   font-size: 32px;
 
   .vertical-date-day {
-    font-size: 24px;
+    font-size: 14px;
     line-height: 37px;
+    text-transform: uppercase;
   }
 }
 
 .vertical-date-small {
 
   .vertical-date-day {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
+    text-transform: uppercase;
   }
 
   .vertical-date-day-of-month {

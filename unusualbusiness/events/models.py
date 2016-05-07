@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import datetime
+import datetime
 from django.db import models
 from django.forms import ChoiceField
 from django.utils.translation import ugettext as _
@@ -90,6 +90,7 @@ class EventPage(Page, RenderInlineMixin):
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
+        index.SearchField('event_type'),
         index.FilterField('start_date'),
         index.RelatedFields('report_article_page', [
             index.SearchField('title'),
@@ -105,6 +106,7 @@ class EventPage(Page, RenderInlineMixin):
         FieldPanel('is_featured'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
+        FieldPanel('event_type'),
         FieldPanel('location'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
@@ -140,10 +142,7 @@ class EventPage(Page, RenderInlineMixin):
     # Methods
     @staticmethod
     def upcoming_events():
-        if EventPage.objects.count() > 0:
-            return EventPage.objects.filter(start_date__gt=datetime.now).live()
-        else:
-            return None
+        return EventPage.objects.live().filter(start_date__gt=datetime.datetime.now())
 
 
 class EventIndexPage(Page):

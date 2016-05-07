@@ -20,6 +20,14 @@
   border-left: solid 2px $light-gray;
 }
 
+.border-bottom-blue {
+  border-bottom: solid 1px $blue;
+}
+
+.border-top-blue {
+  border-top: solid 1px $blue;
+}
+
 @mixin border-top {
   border-top: solid 2px $light-gray;
 }

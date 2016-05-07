@@ -5,23 +5,19 @@
 @import "../base/base";
 
 .unslider-nav {
-  position: relative;
-  float: right;
-  margin-top: -35px;
-  padding-right: 35px;
+  padding-left: 70px;
+  padding-top: 14px;
 
   @media(max-width: $tablet) {
-    float: none;
-    top: -35px;
-    margin-top: 0;
-    padding-right: 0;
+    padding-left: 0;
+    padding-top: 0;
   }
 }
 
 .unslider-nav ol li {
   width: 10px !important;
   height: 10px !important;
-  margin: 0 7px !important;
+  margin: 0 9px !important;
   border-radius: 10px !important;
   border: 2px solid $light-gray !important;
   background: $light-gray !important;

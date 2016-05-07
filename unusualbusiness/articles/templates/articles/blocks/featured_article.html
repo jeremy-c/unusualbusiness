@@ -1,18 +1,20 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
 <li class="featured-article">
-    <a href="{{ page.url }}" class="featured-article-link {{ article_class }}">
-        <div class="featured-article-icon">
-            <svg width="41.992px" height="29.445px" class="article-icon" >
-                <use xlink:href="#article-icon" />
-            </svg>
+    <a href="{{ featured_article.url }}" class="featured-article-link {{ article_class }}">
+        <div class="featured-article-format">
+            {% if featured_article.format %}
+                <svg width="32px" height="32px" class="article-format-icon {{ featured_article.format }}-icon" >
+                    <use xlink:href="#{{ featured_article.format }}-icon" />
+                </svg>
+            {% endif %}
         </div>
         <div class="featured-article-preview" >
-            {% if page.featured_image %}
-                {% include "blocks/responsive_image.html" with image=page.featured_image image_class="featured-article-image"  %}
+            {% if featured_article.featured_image %}
+                {% include "blocks/responsive_image.html" with image=featured_article.featured_image image_class="featured-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
-                {{ page.title }}
+                {{ featured_article.title }}
             </h4>
         </div>
     </a>

@@ -62,6 +62,22 @@ class HomePage(Page):
             key=lambda instance: instance.first_published_at,
             reverse=True)
 
+    @staticmethod
+    def featured_articles():
+        theory_article_list = TheoryArticlePage.objects.live().filter(is_featured=True)
+        story_article_list = StoryArticlePage.objects.live().filter(is_featured=True)
+        report_article_list = ReportArticlePage.objects.live().filter(is_featured=True)
+        event_list = EventPage.objects.live().filter(is_featured=True)
+
+        return sorted(chain(
+            theory_article_list,
+            story_article_list,
+            report_article_list,
+            event_list
+        ),
+        key=lambda instance: instance.first_published_at,
+        reverse=True)
+
     def serve(self, request):
 
         # Filter by tag
@@ -76,6 +92,7 @@ class HomePage(Page):
         return render(request, self.template, {
             'page': self,
             'pages': pages,
+            'featured_articles': self.featured_articles(),
             'upcoming_events': EventPage.upcoming_events(),
             'how_tos': how_tos,
             'tags': self.tags,
