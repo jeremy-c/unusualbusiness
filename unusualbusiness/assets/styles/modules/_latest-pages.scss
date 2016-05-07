@@ -88,6 +88,12 @@
   flex: 0 1 428px;
   max-width: 428px;
 
+  .latest-article-story & {
+    height: 120px;
+    object-fit: cover;
+    overflow: hidden; // Cuts off the parts of the image poking out
+  }
+ 
   @media(max-width: $tablet-horizontal) {
     flex: 0 1 auto;
     padding-top: $gutter;
