@@ -34,7 +34,17 @@
   }
 }
 
-.ub-logo-footer {
+.mobile-contact-links {
+  display: none;
+
+  @media(max-width: $mobile) {
+    display: inline;
+  }
+}
+
+.ub-logo-footer-text {
+  margin: 0;
+  width: 100%;
   text-align: center;
 }
 
@@ -50,10 +60,52 @@
   text-align: center;
 }
 
+.casco-ksu-logos-text {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .casco-logo {
-  padding: $gutter / 2 $gutter;
+  padding: $gutter / 2 0;
 }
 
 .ksu-logo {
-  padding: $gutter / 2 $gutter 0;
+  padding: $gutter / 2 0 0;
+}
+
+.l-footer-element.contact-links {
+  @media(max-width: $mobile) {
+    display: inherit;
+    order: -1;
+    margin-bottom: $gutter;
+  }
+}
+
+.l-footer-element.ub-logo-footer {
+  @media(max-width: $mobile) {
+    padding-top: $gutter / 2;
+  }
+}
+
+.contact-links-search,
+.contact-links-contact {
+  @media(max-width: $mobile) {
+    display: none;
+  }
+}
+
+.contact-links-newsletter,
+.contact-links-facebook {
+  @media(max-width: $mobile) {
+    display: inline;
+  }
+}
+
+.contact-links-newsletter-link {
+  @media(max-width: $mobile) {
+    border-right: solid 1px $light-gray;
+    margin-right: 4px;
+    padding-right: 8px;
+  }
 }
