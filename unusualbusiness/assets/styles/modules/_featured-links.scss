@@ -21,17 +21,23 @@
 
 .featured-link {
   display: flex;
-  border-top: solid 1px $light-gray;
-  height: calc(300px / 4);
 
   a {
+    box-sizing: border-box;
     align-self: center;
-    padding: 0 2px 0 $gutter / 2;
+    border-top: solid 1px $light-gray;
+    padding: 25px 2px 25px $gutter;
     width: 100%;
 
     font-size: 16px;
     line-height: 1.3em;
     text-decoration: none;
+
+    &:hover,
+    &:active {
+      border-top: solid 10px $light-gray;
+      padding-top: 16px; //25px - 9px
+    }
 
     &:after {
       content: '';
@@ -44,6 +50,11 @@
     &.yellow {
       color: $yellow;
 
+      &:hover,
+      &:active {
+        border-top-color: $yellow;
+      }
+
       &:after {
         @include sprite(chevron-yellow-icon);
       }
@@ -51,6 +62,11 @@
 
     &.green {
       color: $green;
+
+      &:hover,
+      &:active {
+        border-top-color: $green;
+      }
 
       &:after {
         @include sprite(chevron-green-icon);
@@ -60,6 +76,11 @@
     &.black {
       color: $black;
 
+      &:hover,
+      &:active {
+        border-top-color: $black;
+      }
+
       &:after {
         @include sprite(chevron-icon);
       }
@@ -67,6 +88,11 @@
 
     &.blue {
       color: $blue;
+
+      &:hover,
+      &:active {
+        border-top-color: $blue;
+      }
 
       &:after {
         @include sprite(chevron-blue-icon);
