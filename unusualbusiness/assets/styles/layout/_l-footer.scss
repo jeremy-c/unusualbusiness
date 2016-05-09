@@ -63,6 +63,7 @@
 
     &:first-of-type {
       box-sizing: border-box;
+      padding-top: $gutter / 2;
       padding-left: $gutter;
       padding-right: $gutter;
       border-top: solid 1px $light-gray;
@@ -78,6 +79,13 @@
     &:last-of-type {
       display: inherit;
       text-align: center;
+    }
+
+    // .contact-links
+    &:nth-of-type(4) {
+      display: inherit;
+      order: -1;
+      margin-bottom: $gutter;
     }
   }
 }

@@ -74,20 +74,6 @@
   padding: $gutter / 2 0 0;
 }
 
-.l-footer-element.contact-links {
-  @media(max-width: $mobile) {
-    display: inherit;
-    order: -1;
-    margin-bottom: $gutter;
-  }
-}
-
-.l-footer-element.ub-logo-footer {
-  @media(max-width: $mobile) {
-    padding-top: $gutter / 2;
-  }
-}
-
 .contact-links-search,
 .contact-links-contact {
   @media(max-width: $mobile) {
