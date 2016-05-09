@@ -10,8 +10,13 @@
   color: $blue;
 
   @media(max-width: $tablet) {
-    font-size: 15px;
     width: auto;
+    font-size: 28px;
+  }
+
+  @media(max-width: $mobile) {
+    width: auto;
+    font-size: 20px;
   }
 }
 
@@ -21,7 +26,7 @@
   font-weight: normal;
 
   @media(max-width: $tablet) {
-    display: none;
+    flex: inherit;
   }
 }
 
@@ -30,11 +35,13 @@
   padding-top: 15px;
   flex: 2;
 
-  font-size: 20px;
-
   @media(max-width: $tablet) {
     flex: inherit;
-    padding: 0 2px;
+    padding: 0 8px;
+  }
+
+  @media(max-width: $mobile) {
+    padding: 0 3px;
   }
 }
 
@@ -44,7 +51,11 @@
 
   @media(max-width: $tablet) {
     flex: inherit;
-    padding: 0 2px;
+    padding: 0 8px;
+  }
+
+  @media(max-width: $mobile) {
+    padding: 0 3px;
   }
 }
 
@@ -54,7 +65,11 @@
 
   @media(max-width: $tablet) {
     flex: inherit;
-    padding: 0 2px;
+    padding: 0 8px;
+  }
+
+  @media(max-width: $mobile) {
+    padding: 0 3px;
   }
 }
 
@@ -76,6 +91,29 @@
     font-size: 14px;
     line-height: 37px;
     text-transform: uppercase;
+
+    @media(max-width: $tablet) {
+      border-bottom: 0;
+      padding-right: 15px;
+      padding-bottom: 0;
+
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    @media(max-width: $mobile) {
+      padding-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  @media(max-width: $tablet) {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 20px;
   }
 }
 
@@ -101,7 +139,6 @@
 }
 
 .vertical-date-smaller {
-
   .vertical-date-day {
     display: none;
   }
