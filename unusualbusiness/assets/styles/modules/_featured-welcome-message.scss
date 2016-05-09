@@ -2,30 +2,27 @@
    Module/Featured Welcome Message
    ======================= */
 
-.featured-welcome-message {
-  border-left: solid 1px $light-gray;
-  padding: 0 $gutter * 2;
-  max-width: 480px;
-
-  font-size: 16px;
-  line-height: 26px;
-
-  @media (max-width: $tablet) {
-    border-left: none;
-    padding: 0 0 $gutter $gutter;
-  }
-
-  @media (max-width: $mobile) {
-    order: 0;
-    padding-bottom: 0;
-  }
-}
+@import "../base/base";
 
 .featured-welcome-message-title {
   padding-bottom: $gutter;
   font-size: 36px;
+
+  @media (max-width: $tablet) {
+    padding-bottom: $gutter / 2;
+  }
 }
 
 .featured-welcome-message-body {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
 
+  @media (max-width: $tablet) {
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 4.2vw;
+    line-height: 1.7em;
+  }
 }

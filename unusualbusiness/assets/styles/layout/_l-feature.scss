@@ -5,11 +5,11 @@
 @import "../base/base";
 
 .l-feature {
-  padding-top: 6px;
-  margin-bottom: 14px;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+
+  padding-top: 6px;
 
   @media (max-width: $tablet) {
     padding-top: 0;

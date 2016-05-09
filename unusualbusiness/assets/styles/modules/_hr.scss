@@ -7,9 +7,15 @@
 hr {
   display: block;
   border: 0;
-  border-top: 2px solid $light-gray;
+  border-top: 1px solid $light-gray;
   margin: $gutter 0;
   padding: 0;
-  height: 2px;
+  height: 1px;
   width: 100%;
+}
+
+.latest-article-divider {
+  @media (max-width: $tablet) {
+    display:none;
+  }
 }

@@ -5,18 +5,9 @@
 @import "../base/base";
 @import "../base/mixins";
 
-.featured-links {
-  margin-left: auto;
-  margin-right: 0;
-  width: 293px;
-  height: 300px;
-
-  @media (max-width: $tablet) {
-    display: none;
-  }
-}
 
 .featured-link-list {
+
 }
 
 .featured-link {
@@ -98,5 +89,33 @@
         @include sprite(chevron-blue-icon);
       }
     }
+  }
+}
+
+.over-ub {
+  margin-top: $gutter;
+  margin-bottom: $gutter;
+}
+
+.over-ub-link {
+  border-bottom: solid 1px $light-gray;
+}
+
+
+/* ==|====================
+   State/Featured Links
+   ======================= */
+
+.is-mobile-only {
+  display: none;
+
+  @media (max-width: $mobile) {
+    display: inherit;
+  }
+}
+
+.is-desktop-only {
+  @media (max-width: $mobile) {
+    display: none;
   }
 }

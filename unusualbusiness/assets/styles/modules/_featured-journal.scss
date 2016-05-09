@@ -5,31 +5,13 @@
 @import "../base/base";
 @import "../base/mixins";
 
-.featured-journal {
-  margin-right: $gutter * 2;
-  width: 215px;
-  height: 300px;
-  overflow: hidden;
-
-  @media (max-width: $tablet) {
-    margin: 0;
-  }
-
-  @media (max-width: $mobile) {
-    order: 1;
-    align-self: center;
-  }
-
-  a {
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-  }
-}
-
 .featured-journal-link {
   position: relative;
   display: block;
+  height: 100%;
+  width: 100%;
+
+  text-decoration: none;
 }
 
 .featured-journal-image {
