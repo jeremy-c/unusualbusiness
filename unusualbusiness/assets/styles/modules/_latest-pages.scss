@@ -4,6 +4,13 @@
 
 @import "../base/base";
 
+.latest-articles {
+
+  @media(max-width: $mobile) {
+    padding: 0 $gutter;
+  }
+}
+
 .latest-article-link {
   display: flex;
   flex-flow: row wrap;
@@ -11,34 +18,63 @@
   align-items: center;
 
   text-decoration: none;
+
+  @media(max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
 .latest-article-icon-wrapper {
   flex: 0 0 48px;
   align-self: flex-start;
-  margin-bottom: $gutter / 2;
   width: 48px;
   height: 48px;
   border-radius: 24px;
   text-align: center;
 
+  @media(max-width: $tablet) {
+    margin-top: $gutter / 2;
+  }
+
+  @media(max-width: $mobile) {
+    align-self: center;
+  }
+
   .latest-article-story & {
     align-self: center;
     margin-top: -14px; // lower below date
     background-color: $yellow;
+
+    @media(max-width: $tablet) {
+      align-self: flex-start;
+      margin-top: $gutter / 2;
+    }
+
+    @media(max-width: $mobile) {
+      align-self: center;
+    }
   }
 
   .latest-organization & {
     background-color: $black;
+    margin-bottom: $gutter / 2;
   }
 
   .latest-article-theory & {
     background-color: $green;
+
+    @media(max-width: $tablet) {
+      margin-top: $gutter / 2;
+    }
   }
 
   .latest-article-report & {
     margin-top: calc(var(--gutter + 14px)); // lower below date
     background-color: $blue;
+
+    @media(max-width: $tablet) {
+      margin-top: $gutter / 2;
+    }
   }
 
   .article-format-icon {
@@ -49,6 +85,15 @@
 .latest-article-info {
   flex: 1;
   padding: 0 $gutter;
+
+  @media(max-width: $tablet) {
+    margin-top: $gutter / 2;
+    padding-right: 0;
+  }
+
+  @media(max-width: $mobile) {
+    padding-left: 0;
+  }
 }
 
 .latest-article-title {
@@ -124,6 +169,18 @@
     border-bottom: solid $yellow 10px;
     padding-top: calc(var(--gutter) - 9px);
     padding-bottom: calc(var(--gutter) - 9px);
+
+    @media(max-width: $tablet) {
+      border-top: solid $light-gray 1px;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: $gutter / 2 0;
+    }
+  }
+
+  @media(max-width: $tablet) {
+    padding: $gutter / 2 0;
   }
 }
 
@@ -139,13 +196,21 @@
     border-right: solid $blue 10px;
     padding-left: calc(var(--gutter) - 9px);
     padding-right: calc(var(--gutter) - 9px);
+
+    @media(max-width: $tablet) {
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: $gutter / 2 0 $gutter;
+    }
   }
 
-  @media(max-width: $mobile) {
+  @media(max-width: $tablet) {
     border-left: none;
     border-right: none;
     border-top: solid $light-gray 1px;
-    border-bottom: solid $light-gray 1px;
+    border-bottom: none;
+    padding: $gutter / 2 0 $gutter;
   }
 }
 
@@ -154,6 +219,11 @@
   font-family: $open-sans;
   font-size: 14px;
   color: $light-grayish;
+
+  @media(max-width: $tablet) {
+    padding-top: 10px;
+    font-size: 24px;
+  }
 }
 
 // Theory Article
@@ -168,13 +238,21 @@
     border-right: solid $green 10px;
     padding-left: calc(var(--gutter) - 9px);
     padding-right: calc(var(--gutter) - 9px);
+
+    @media(max-width: $tablet) {
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: $gutter / 2 0;
+    }
   }
 
-  @media(max-width: $mobile) {
+  @media(max-width: $tablet) {
     border-left: none;
     border-right: none;
     border-top: solid $light-gray 1px;
-    border-bottom: solid $light-gray 1px;
+    border-bottom: none;
+    padding: $gutter / 2 0;
   }
 
   .latest-article-introduction {
@@ -190,20 +268,34 @@
 .latest-organization {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
-  box-sizing: border-box;
-  padding: $gutter * 2 $gutter / 2;
+  padding: $gutter * 1.5 0;
 
   &.is-hovered {
     border-top: solid $black 10px;
     border-bottom: solid $black 10px;
-    padding-top: calc(var(--gutter) * 2 - 9px);
-    padding-bottom: calc(var(--gutter) * 2 - 9px);
+    padding-top: calc(var(--gutter) * 1.5 - 9px);
+    padding-bottom: calc(var(--gutter) * 1.5 - 9px);
+
+    @media(max-width: $tablet) {
+      border-top: solid $light-gray 1px;
+      border-bottom: none;
+      padding: $gutter / 2 0;
+    }
   }
 
   .latest-article-icon-wrapper {
     margin-top: 10px;
     margin-left: $gutter / 2;
     align-self: center;
+
+    @media(max-width: $tablet) {
+      margin-left: 0;
+    }
+  }
+
+  @media(max-width: $tablet) {
+    border-bottom: none;
+    padding: $gutter / 2 0;
   }
 }
 
@@ -211,7 +303,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  //height: 100%;
 
   text-decoration: none;
 

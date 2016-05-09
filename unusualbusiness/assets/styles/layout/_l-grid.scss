@@ -52,7 +52,7 @@
   }
 
   @media(max-width: $tablet) {
-    margin-bottom: 40px;
+    margin-bottom: 0;
   }
 }
 
@@ -70,4 +70,8 @@
 
 .l-grid-item-fixed-height {
   height: 73px;
+
+  @media(max-width: $mobile) {
+    height: auto;
+  }
 }
