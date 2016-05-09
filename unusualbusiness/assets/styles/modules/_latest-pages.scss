@@ -118,6 +118,13 @@
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter;
+
+  &.is-hovered {
+    border-top: solid $yellow 10px;
+    border-bottom: solid $yellow 10px;
+    padding-top: calc(var(--gutter) - 9px);
+    padding-bottom: calc(var(--gutter) - 9px);
+  }
 }
 
 // Report Article
@@ -126,6 +133,13 @@
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
   padding: 0 $gutter $gutter;
+
+  &.is-hovered {
+    border-left: solid $blue 10px;
+    border-right: solid $blue 10px;
+    padding-left: calc(var(--gutter) - 9px);
+    padding-right: calc(var(--gutter) - 9px);
+  }
 
   @media(max-width: $mobile) {
     border-left: none;
@@ -149,6 +163,13 @@
   box-sizing: border-box;
   padding: $gutter;
 
+  &.is-hovered {
+    border-left: solid $green 10px;
+    border-right: solid $green 10px;
+    padding-left: calc(var(--gutter) - 9px);
+    padding-right: calc(var(--gutter) - 9px);
+  }
+
   @media(max-width: $mobile) {
     border-left: none;
     border-right: none;
@@ -171,6 +192,13 @@
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
   padding: $gutter * 2 $gutter / 2;
+
+  &.is-hovered {
+    border-top: solid $black 10px;
+    border-bottom: solid $black 10px;
+    padding-top: calc(var(--gutter) * 2 - 9px);
+    padding-bottom: calc(var(--gutter) * 2 - 9px);
+  }
 
   .latest-article-icon-wrapper {
     margin-top: 10px;
