@@ -101,10 +101,28 @@
   font-size: 28px;
   line-height: 40px;
 
+  @media(max-width: $tablet) {
+    font-size: 5vw;
+    line-height: 1.3em;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 6vw;
+  }
+
   .latest-article-theory & {
     font-weight: 400;
     font-size: 22px;
     line-height: 34px;
+
+    @media(max-width: $tablet) {
+      font-size: 4vw;
+      line-height: 1.2em;
+    }
+
+    @media(max-width: $mobile) {
+      font-size: 5vw;
+    }
   }
 }
 
@@ -126,6 +144,21 @@
 
   .latest-article-theory & {
     padding: 24px 0;
+  }
+}
+
+.latest-article-introduction {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+
+  @media(max-width: $tablet) {
+    font-size: 3vw;
+    line-height: 1.5em;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 4vw;
   }
 }
 
@@ -254,13 +287,6 @@
     border-bottom: none;
     padding: $gutter / 2 0;
   }
-
-  .latest-article-introduction {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-  }
-
 }
 
 
