@@ -56,9 +56,9 @@
 }
 
 .l-featured-links {
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   width: 293px;
-  height: 300px;
+  height: 300px; 
 
   @media (max-width: $tablet-horizontal) {
     width: 100%;
