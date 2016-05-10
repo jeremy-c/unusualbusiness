@@ -11,23 +11,23 @@
   top: 44px;
   height: 100%;
   z-index: 999999;
-  width: calc(100% - 44px);
+  width: calc(100% - 47px);
   overflow-x: hidden;
   overflow-y: auto
 }
 
 .sidr.right {
-  right: calc(44px - 100%);
+  right: calc(47px - 100%);
   left: auto;
 }
 
 .sidr.left {
-  left: calc(44px - 100%);
+  left: calc(47px - 100%);
   right: auto;
 }
 
 // Main nav
-.main-nav {
+.l-main-nav {
   z-index: 1010;
   position: fixed;
   top: 0;
@@ -45,12 +45,12 @@
 }
 
 // Main menu
-.main-menu  {
+.l-main-menu  {
   z-index: 100;
   position: absolute;
   right: 271px;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-end;
   padding: 14px 0;
@@ -63,34 +63,31 @@
   }
 
   @media(max-width: $tablet) {
+    position: relative;
+    right: inherit;
     padding: 0;
     width: 100%;
-    //overflow: hidden;
   }
 }
 
-.right-menu {
-  z-index: 1000;
+.l-right-menu {
+  z-index: 100;
   position: absolute;
   right: 0;
   display: inline-flex;
-  flex-wrap: nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-end;
   padding: 14px 68px 14px 0;
 
   background-color: $white;
 
-  a {
-    text-decoration: none;
-  }
-
   @media(max-width: $tablet) {
+    position: relative;
+    right: inherit;
     padding: 0;
     width: 100%;
-    //overflow: hidden;
   }
-
 }
 
 // UB logo
@@ -158,11 +155,19 @@
 
 // MenuItems
 .main-menu-item {
+  a {
+    text-decoration: none;
+  }
+
   @media(max-width: $tablet) {
     flex: inherit;
     width: 100%;
     padding: 20px 15px;
     border-bottom: solid 1px $light-gray;
+
+    &:first-of-type {
+      border-top: 1px solid $light-gray;
+    }
   }
 
   .menu-item-short-text {
@@ -176,10 +181,38 @@
 
     @media(max-width: $tablet) {
       display: inherit;
+      padding: 15px;
+      font-size: 4vw;
     }
   }
 }
 
+
+// MenuItem: home
+.main-menu-home {
+  display: none;
+
+  @media(max-width: $tablet) {
+    display: inline-block;
+    padding: 20px 30px;
+    width: 100%;
+  }
+
+  .main-menu-home-link {
+    text-align: center;
+  }
+
+  .ub-logo-icon {
+    display: inherit;
+    float: left;
+    padding: 12px 0;
+  }
+
+  .menu-item-text {
+    display: inherit;
+    padding-top: 15px;
+  }
+}
 
 // MenuItem: How to
 .main-menu-how-to {
@@ -234,7 +267,7 @@
 
   @media(max-width: $tablet) {
     margin: 0;
-    padding: 10px 15px;
+    padding: 20px 15px;
     order: -1;
   }
 
@@ -274,6 +307,16 @@
 
   @media(max-width: $tablet) {
     padding: 20px 30px;
+    
+  }
+
+  .menu-item-text {
+    display: none;
+
+    @media(max-width: $tablet) {
+      display: block;
+      padding: 20px 30px;
+    }
   }
 }
 
@@ -288,6 +331,31 @@
     padding: 20px 30px;
   }
 }
+
+.main-menu-footer {
+  display: none;
+
+  @media(max-width: $tablet) {
+    display: inline-block;
+    background-color: $black;
+
+    font-family: $open-sans;
+    font-size: 3.5vw;
+    text-align: center;
+  }
+
+  .main-menu-divider {
+    padding: 15px 4px;
+    color: $white;
+  }
+
+  .main-menu-newsletter-link,
+  .main-menu-facebook-link {
+    padding: 15px 0;
+    color: $white;
+  }
+}
+
 
 /* ==|====================
    State/Main Menu
@@ -305,9 +373,13 @@
 // Animate Hamburger Menu Icon
 
 #hamburger-menu-button {
+  margin-top: 22px;
+  padding: 0 12px;
+  width: 16px;
+  height: 27px;
+
   cursor: pointer;
   color: $black;
-  padding: 0 12px;
 }
 
 #hamburger-menu-button span,

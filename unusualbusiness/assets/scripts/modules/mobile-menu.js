@@ -51,7 +51,7 @@ let MobileMenu = () => {
     $('#hamburger-menu-button').sidr({
       name: 'mobile-menu',
       side: 'right',
-      source: '.main-nav',
+      source: '.l-main-nav',
       body: '.l-wrapper',
       renaming: false,
       dispace: false,
