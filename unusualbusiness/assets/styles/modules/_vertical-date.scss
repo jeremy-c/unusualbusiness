@@ -11,11 +11,6 @@
 
   @media(max-width: $tablet) {
     width: auto;
-    font-size: 28px;
-  }
-
-  @media(max-width: $mobile) {
-    width: auto;
     font-size: 20px;
   }
 }
@@ -94,26 +89,17 @@
 
     @media(max-width: $tablet) {
       border-bottom: 0;
-      padding-right: 15px;
       padding-bottom: 0;
-
-      font-size: 26px;
-      line-height: 30px;
-    }
-
-    @media(max-width: $mobile) {
       padding-right: 5px;
+
       font-size: 18px;
+      line-height: 29px;
     }
   }
 
   @media(max-width: $tablet) {
-    font-size: 28px;
-    line-height: 30px;
-  }
-
-  @media(max-width: $mobile) {
     font-size: 20px;
+    line-height: 30px;
   }
 }
 
