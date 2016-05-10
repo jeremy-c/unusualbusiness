@@ -53,15 +53,15 @@
 .l-main-menu  {
   z-index: 100;
   position: absolute;
-  right: 271px;
+  right: 315px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
   padding: 14px 0;
-  width: calc(100% - 289.401px); // 100% - logo width
+  width: calc(100% - 342px); // 100% - logo width
 
-  background-color: $white;
+  background-color: $white; 
 
   a {
     text-decoration: none;
@@ -254,6 +254,16 @@
   }
 }
 
+.circle {
+  width: 48.158px;
+  height: 48.158px;
+
+  @media(max-width: $tablet) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .menu-icon {
   @media(max-width: $tablet) {
     padding-left: 10px;
@@ -269,6 +279,7 @@
     height: 100%;
   }
 }
+
 
 // MenuItem: How to circles
 .main-menu-how-to-circles {
