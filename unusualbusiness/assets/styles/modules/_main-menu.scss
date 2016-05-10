@@ -6,15 +6,19 @@
 @import "../base/mixins";
 
 .sidr {
-  z-index: 999999;
-  position: fixed;
-  display: block;
-  top: 44px;
-  border-top: 1px solid $light-gray;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto
+  display: none;
+
+  @media(max-width: $tablet) {
+    z-index: 999999;
+    position: fixed;
+    display: block;
+    top: 44px;
+    border-top: 1px solid $light-gray;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 .sidr-inner {
@@ -61,7 +65,7 @@
   padding: 14px 0;
   width: calc(100% - 342px); // 100% - logo width
 
-  background-color: $white; 
+  background-color: $white;
 
   a {
     text-decoration: none;
@@ -267,6 +271,7 @@
 .menu-icon {
   @media(max-width: $tablet) {
     padding-left: 10px;
+    height: 66%;
   }
 }
 
@@ -284,7 +289,7 @@
 // MenuItem: How to circles
 .main-menu-how-to-circles {
   margin: 0 7px 0 0;
-  padding-right: 36px;
+  padding-right: 30px;
 
   @media(max-width: $tablet) {
     margin: 0;
@@ -301,6 +306,7 @@
   .how-to-circles-icon {
     @media(max-width: $tablet) {
       padding-left: 2px;
+      height: 82%;
     }
   }
 
