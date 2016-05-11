@@ -40,7 +40,7 @@
     align-self: center;
   }
 
-  .latest-article-story & {
+  .latest-story-article & {
     align-self: center;
     margin-top: -14px; // lower below date
     background-color: $yellow;
@@ -60,7 +60,7 @@
     margin-bottom: $gutter / 2;
   }
 
-  .latest-article-theory & {
+  .latest-theory-article & {
     background-color: $green;
 
     @media(max-width: $tablet) {
@@ -68,7 +68,7 @@
     }
   }
 
-  .latest-article-report & {
+  .latest-report-article & {
     margin-top: calc(var(--gutter + 14px)); // lower below date
     background-color: $blue;
 
@@ -110,7 +110,7 @@
     font-size: 6vw;
   }
 
-  .latest-article-theory & {
+  .latest-theory-article & {
     font-weight: 400;
     font-size: 22px;
     line-height: 34px;
@@ -138,11 +138,11 @@
     text-decoration: none;
   }
 
-  .latest-article-report & {
+  .latest-report-article & {
     display: none;
   }
 
-  .latest-article-theory & {
+  .latest-theory-article & {
     padding: 24px 0;
   }
 }
@@ -166,7 +166,7 @@
   flex: 0 1 428px;
   max-width: 428px;
 
-  .latest-article-story & {
+  .latest-story-article & {
     height: 120px;
     object-fit: cover;
     overflow: hidden; // Cuts off the parts of the image poking out
@@ -182,7 +182,7 @@
     width: 100%;
   }
 
-  .latest-article-report & {
+  .latest-report-article & {
     flex: 0 1 auto;
     padding-top: $gutter;
     max-width: 100%;
@@ -191,7 +191,7 @@
 
 
 // Story Article
-.latest-article-story {
+.latest-story-article {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
@@ -218,7 +218,7 @@
 }
 
 // Report Article
-.latest-article-report {
+.latest-report-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
@@ -247,7 +247,7 @@
   }
 }
 
-.latest-article-report-related-event-date {
+.latest-report-article-related-event-date {
   padding-bottom: $gutter / 2;
   font-family: $open-sans;
   font-size: 14px;
@@ -260,7 +260,7 @@
 }
 
 // Theory Article
-.latest-article-theory {
+.latest-theory-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;

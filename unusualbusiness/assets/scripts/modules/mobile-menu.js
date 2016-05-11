@@ -27,7 +27,7 @@ let MobileMenu = () => {
   let filterGrid = function() {
     $('.how-to-link-blue').on('click', function() {
       Grid.grid.isotope({
-        filter: '.latest-article-report'
+        filter: '.latest-report-article'
       });
     });
     $('.how-to-link-black').on('click', function() {
@@ -37,12 +37,12 @@ let MobileMenu = () => {
     });
     $('.how-to-link-yellow').on('click', function() {
       Grid.grid.isotope({
-        filter: '.latest-article-story'
+        filter: '.latest-story-article'
       });
     });
     $('.how-to-link-green').on('click', function() {
       Grid.grid.isotope({
-        filter: '.latest-article-theory'
+        filter: '.latest-theory-article'
       });
     });
   };
