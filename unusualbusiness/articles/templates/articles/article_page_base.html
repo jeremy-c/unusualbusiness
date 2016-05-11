@@ -10,7 +10,7 @@
 {% block body_class %}l-article-content{% endblock %}
 
 {% block content %}
-    <article class="article yellow">
+    <article class="article">
 
         <header class="article-header">
             <h1 class="article-header-title">
@@ -29,7 +29,7 @@
             <div class="article-header-meta">
                 {% if self.format %}
                     <div class="article-header-format">
-                        <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon yellow-icon" >
+                        <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon white-icon" >
                           <use xlink:href="#{{ page.format }}-icon" />
                         </svg>
                     </div>
