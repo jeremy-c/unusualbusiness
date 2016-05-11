@@ -5,13 +5,23 @@
 @import "../base/base";
 
 .author {
+  z-index: 5;
+  position: relative;
+  top: -272px;
+  height: auto;
+  overflow: hidden;
+
   background-color: $verylight-gray;
+}
+
+.is-hidden-author {
+  display: none;
 }
 
 .l-author {
   display: flex;
-  align-items: flex-start;
-  flex-flow: column nowrap;
+  align-items: center;
+  flex-flow: row nowrap;
   box-sizing: border-box;
   padding: $gutter * 2 $gutter;
 
@@ -22,11 +32,13 @@
 }
 
 .author-photo {
-  padding: $gutter;
+  align-self: flex-start;
+  padding: 0 $gutter * 2 $gutter;
   width: 140px;
   text-align: center;
 
   @media(max-width: $tablet) {
+    padding: $gutter / 2 0 $gutter;
     width: 100%;
   }
 }
@@ -38,28 +50,18 @@
   height: 140px;
 }
 
-.author-name {
-  columns: 2;
-  column-gap: $gutter * 2;
-
+.author-name-inline {
   font-weight: bold;
   line-height: 1.7em;
-
-  @media(max-width: $desktop) {
-    columns: inherit;
-  }
 }
 
-
-
 .author-biography-text {
-  columns: 2;
+  margin: 0;
+
+  columns: 200px 2;
   column-gap: $gutter * 2;
-  margin-top: 0;
 
-  line-height: 1.7em;
-
-  @media(max-width: $desktop) {
-    columns: inherit;
-  }
+  font-size: 18px;
+  line-height: 1.8em;
+  font-weight: 300;
 }

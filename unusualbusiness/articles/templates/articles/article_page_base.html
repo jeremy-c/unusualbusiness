@@ -39,14 +39,34 @@
                         {{ self.publication_date|date:"j F Y" }}
                     </div>
                 {% endif %}
-                {% if self.author %}
-                    <div class="article-header-author">
-                        <label class="article-header-label">{% trans "by" %}</label>
-                        <span class="article-header-author-name">{{ self.author }}</span>
-                    </div>
-                {% endif %}
             </div>
         </header>
+
+        {% if self.author %}
+            <a href="#" class="open-author-pane-button" >
+                <label class="article-header-label">{% trans "by" %}</label>
+                <span class="article-header-author-name">{{ self.author }}</span>
+            </a>
+            <section class="author is-visuallyhidden">
+                <div class="l-boxed l-author">
+                    <h3 class="is-hidden" >About</h3>
+                    <div class="author-photo">
+                        {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}
+                    </div>
+                    <div class="author-biography">
+                        <h4 class="author-name is-hidden">
+                            {{ self.author.title }}
+                        </h4>
+                        <p class="author-biography-text">
+                            <span class="author-name-inline">
+                                {{ self.author.title }}
+                            </span>
+                            {{ self.author.biography }}
+                        </p>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
 
         <div class="article-subheader">
             <div class="article-subheader-back-links">
@@ -137,23 +157,6 @@
 
             </div>
         </div>
-
-        {% if self.author %}
-            <section class="author">
-                <div class="l-boxed l-author">
-                    <h3 class="article-section-title" >About the contributor</h3>
-{#                    <div class="author-photo">#}
-{#                        {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}#}
-{#                    </div>#}
-                    <div class="author-biography">
-                        <h4 class="author-name">
-                            {{ self.author.title }}
-                        </h4>
-                        <p class="author-biography-text">{{ self.author.biography }}</p>
-                    </div>
-                </div>
-            </section>
-        {% endif %}
 
     </article>
 
