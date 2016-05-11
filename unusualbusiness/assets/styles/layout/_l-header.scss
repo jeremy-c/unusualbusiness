@@ -12,8 +12,8 @@
   top: 0;
   bottom: auto;
   left: 0;
-  margin: 0 $gutter;
-  padding: 2px 0;
+  margin: 0;
+  padding: 2px $gutter;
   width: calc(100% - (var(--gutter) * 2));
   border-bottom: solid 2px $light-gray;
   background-color: $white;
