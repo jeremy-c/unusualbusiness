@@ -57,13 +57,13 @@
 .l-main-menu  {
   z-index: 100;
   position: absolute;
-  right: 315px;
+  right: 335px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
   padding: 14px 0;
-  width: calc(100% - 342px); // 100% - logo width
+  width: calc(100% - 362px); // 100% - logo width
 
   background-color: $white;
 
