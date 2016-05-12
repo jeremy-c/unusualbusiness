@@ -90,7 +90,6 @@ class OrganizationPage(Page, RenderInlineMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
-        FieldPanel('date_founded'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
         FieldPanel('location'),

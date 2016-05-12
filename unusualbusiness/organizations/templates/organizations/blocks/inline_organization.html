@@ -1,14 +1,16 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
-<span class="l-pull-left article-inline article-inline-organization is-visuallyhidden" id="organization-{{ self.id }}">
-    <span class="article-inline-title article-inline-organization-title">
-        {{ organizations.title }}
+<a href="{{ page.url }}"class="l-pull-left article-inline article-inline-organization is-visuallyhidden" id="organization-{{ self.id }}">
+    <span class="icon-wrapper">
+        <svg width="22px" height="22px" class="article-format-icon organization-icon white-icon" >
+            <use xlink:href="#organization-icon" />
+        </svg>
     </span>
-    <span class="article-inline-text article-inline-organization-text" >
-        {% if organizations.featured_image %}
-            {% include "blocks/responsive_image.html" with image=organizations.featured_image image_class="article-inline-image article-inline-organization-image"  %}
-        {% endif %}
-        <span class="article-inline-organization-description" >
-            {{ organizations.description }}
+    <span class="article-inline-body">
+        <span class="article-inline-title article-inline-organization-title">
+            {{ self.title }}
+        </span>
+        <span class="article-inline-text article-inline-organization-description" >
+            {{ self.description|truncatewords:45 }}
         </span>
     </span>
-</span>
+</a>

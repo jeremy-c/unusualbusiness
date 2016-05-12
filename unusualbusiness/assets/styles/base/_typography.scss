@@ -15,6 +15,17 @@ h6 {
   font-weight: 300;
 }
 
+h2 {
+  margin: $gutter 0 25px 0;
+  font-family: $open-sans;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 h3 {
   margin: 9px 0 25px 0;
+}
+
+p {
+  margin: 22px 0;
 }

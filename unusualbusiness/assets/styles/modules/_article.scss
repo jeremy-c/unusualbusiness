@@ -231,24 +231,31 @@
 .article-introduction {
   padding: 0 $gutter;
 
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 1.7em;
+  font-size: 26px;
+  line-height: 1.6em;
 
-  .yellow & {
-    color: $yellow;
-  }
-
-  .blue & {
+  .report-article & {
     color: $blue;
   }
 
-  .black & {
+  .theory-article & {
+    color: $green;
+  }
+
+  .story-article & {
+    color: $yellow;
+  }
+
+  .organization & {
     color: $black;
   }
 
-  .green & {
-    color: $green;
+  @media(max-width: $boxed) {
+    box-sizing: border-box;
+    margin: 0 0 0 auto;
+    padding: 0 $gutter;
+    width: 100%;
+    max-width: $tablet;
   }
 
   @media(max-width: $tablet) {
@@ -256,7 +263,6 @@
     font-size: 5vw;
   }
 }
-
 
 .article-content-header-text {
   font-size: 24px;
@@ -443,18 +449,18 @@
 .pullquote {
   display: block;
   box-sizing: border-box;
-  border-top: solid 8px $yellow;
-  border-bottom: solid 8px $yellow;
+  border-left: solid 10px $yellow;
+  border-right: solid 10px $yellow;
   margin: $gutter * 2 0;
-  padding: $gutter * 2;
+  padding: $gutter $gutter * 2;
   width: 90%;
 
   background-color: $white;
 
   transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
 
-  font-size: 52px;
-  line-height: 1.3em;
+  font-size: 34px;
+  line-height: 43px;
   font-family: $open-sans;
   text-align: center;
 
@@ -463,12 +469,33 @@
   }
 
   @media(max-width: $tablet) {
-    margin: $gutter 0;
-    padding: $gutter;
+    margin: $gutter;
+    border-left: none;
+    border-right: none;
+    border-top: solid 8px $yellow;
+    border-bottom: solid 8px $yellow;
+
+    padding: $gutter 0;
     width: inherit;
 
     font-size: 7vw;
     line-height: 1.3em;
+  }
+
+  .report-article & {
+    color: $blue;
+  }
+
+  .theory-article & {
+    color: $green;
+  }
+
+  .story-article & {
+    color: $yellow;
+  }
+
+  .organization & {
+    color: $black;
   }
 }
 

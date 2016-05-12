@@ -90,44 +90,14 @@
             </div>
         </div>
 
-        <div class="article-featured-image">
-         {% include "blocks/responsive_image.html" with image=page.featured_image image_class="article-image"  %}
-        </div>
+        {% if page.featured_image %}
+            <div class="article-featured-image">
+             {% include "blocks/responsive_image.html" with image=page.featured_image image_class="article-image"  %}
+            </div>
+        {% endif %}
 
-        <section class="article-table-of-contents">
-            <a href="" class="toggle-toc-link">
-                <svg width="25.178px" height="20.185px"  class="toc-icon" >
-                    <title>Table of Contents icon</title>
-                    <desc>Click to open Table of Contents</desc>
-                    <use xlink:href="#toc-icon" />
-                </svg>
-            </a>
-            <ul class="toc-list is-visuallyhidden">
-                {% for block in page.body %}
-
-                    {% if block.block_type == 'chapter' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.chapter_name|slugify }}">
-                                {{ block.value.chapter_name }}
-                            </a>
-                        </li>
-                    {% elif block.block_type == 'section' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.section_name|slugify }}">
-                                {{ block.value.section_name }}
-                            </a>
-                        </li>
-                    {% elif block.block_type == 'subsection' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.subsection_name|slugify }}">
-                                {{ block.value.subsection_name }}
-                            </a>
-                        </li>
-                    {% endif %}
-
-                {% endfor %}
-            </ul>
-        </section>
+        {%  block tableofcontents %}
+        {% endblock %}
 
         <div class="l-boxed">
             {% for block in page.body %}
@@ -194,27 +164,27 @@
         </section>
     {% endif %}
 
-    <section class="related-howtos">
-        <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Related themes</h3>
-            <ul class="l-columns">
-                {% for how_to in how_tos %}
-                    {% include "howtos/blocks/related_howto.html" %}
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
-
-    <section class="related-articles">
-        <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >See more</h3>
-            <ul class="">
-                {% for related_article in related_articles %}
-                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
+{#    <section class="related-howtos">#}
+{#        <div class="l-boxed l-related-section">#}
+{#            <h3 class="article-section-title" >Related themes</h3>#}
+{#            <ul class="l-columns">#}
+{#                {% for how_to in how_tos %}#}
+{#                    {% include "howtos/blocks/related_howto.html" %}#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    </section>#}
+{##}
+{#    <section class="related-articles">#}
+{#        <div class="l-boxed l-related-section">#}
+{#            <h3 class="article-section-title" >See more</h3>#}
+{#            <ul class="">#}
+{#                {% for related_article in related_articles %}#}
+{#                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    </section>#}
 
 {% endblock %}
 

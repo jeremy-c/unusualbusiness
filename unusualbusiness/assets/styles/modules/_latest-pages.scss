@@ -24,64 +24,6 @@
   }
 }
 
-.latest-article-icon-wrapper {
-  flex: 0 0 48px;
-  align-self: flex-start;
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
-  text-align: center;
-
-  @media(max-width: $tablet) {
-    margin-top: $gutter / 2;
-  }
-
-  @media(max-width: $mobile) {
-    align-self: center;
-  }
-
-  .latest-story-article & {
-    align-self: center;
-    margin-top: -14px; // lower below date
-    background-color: $yellow;
-
-    @media(max-width: $tablet) {
-      align-self: flex-start;
-      margin-top: $gutter / 2;
-    }
-
-    @media(max-width: $mobile) {
-      align-self: center;
-    }
-  }
-
-  .latest-organization & {
-    background-color: $black;
-    margin-bottom: $gutter / 2;
-  }
-
-  .latest-theory-article & {
-    background-color: $green;
-
-    @media(max-width: $tablet) {
-      margin-top: $gutter / 2;
-    }
-  }
-
-  .latest-report-article & {
-    margin-top: calc(var(--gutter + 14px)); // lower below date
-    background-color: $blue;
-
-    @media(max-width: $tablet) {
-      margin-top: $gutter / 2;
-    }
-  }
-
-  .article-format-icon {
-    padding-top: 13px;
-  }
-}
-
 .latest-article-info {
   flex: 1;
   padding: 0 $gutter;
@@ -309,7 +251,7 @@
     }
   }
 
-  .latest-article-icon-wrapper {
+  .icon-wrapper {
     margin-top: 10px;
     margin-left: $gutter / 2;
     align-self: center;
