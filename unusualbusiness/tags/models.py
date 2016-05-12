@@ -21,8 +21,8 @@ class StoryArticlePageTag(TaggedItemBase):
     content_object = ParentalKey('articles.StoryArticlePage', related_name='tagged_items')
 
 
-class ReportArticlePageTag(TaggedItemBase):
-    content_object = ParentalKey('articles.ReportArticlePage', related_name='tagged_items')
+class NewsArticlePageTag(TaggedItemBase):
+    content_object = ParentalKey('articles.NewsArticlePage', related_name='tagged_items')
 
 
 class OrganizationPageTag(TaggedItemBase):

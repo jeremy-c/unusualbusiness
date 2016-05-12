@@ -27,7 +27,7 @@
                     {% for featured_article in featured_articles %}
                         {% if featured_article.content_type.model == 'eventpage' %}
                             {% include "events/blocks/featured_event.html" with featured_event=featured_article %}
-                        {%  elif featured_article.content_type.model == 'reportarticlepage' %}
+                        {%  elif featured_article.content_type.model == 'newsarticlepage' %}
                             {% include "articles/blocks/featured_article.html" with article_class="blue" %}
                         {%  elif featured_article.content_type.model == 'storyarticlepage' %}
                             {% include "articles/blocks/featured_article.html" with article_class="yellow" %}
@@ -113,8 +113,8 @@
                 {% for the_page in pages %}
                     {%  if the_page.content_type.model == 'organizationpage' %}
                         {% include "organizations/blocks/latest_organization.html" with page=the_page list_item_classes='l-grid-item l-grid-item-fixed-height' %}
-                    {%  elif the_page.content_type.model == 'reportarticlepage' %}
-                        {% include "articles/blocks/latest_report_article.html" with page=the_page %}
+                    {%  elif the_page.content_type.model == 'newsarticlepage' %}
+                        {% include "articles/blocks/latest_news_article.html" with page=the_page %}
                     {% elif the_page.content_type.model == 'storyarticlepage' %}
                             {% include "articles/blocks/latest_story_article.html" with page=the_page list_item_classes='l-grid-item-double-width'  %}
                     {% elif the_page.content_type.model == 'theoryarticlepage' %}

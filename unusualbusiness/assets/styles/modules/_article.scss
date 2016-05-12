@@ -26,7 +26,7 @@
     min-height: inherit;
   }
 
-  .report-article & {
+  .news-article & {
     background-color: $blue;
   }
 
@@ -234,7 +234,7 @@
   font-size: 26px;
   line-height: 1.6em;
 
-  .report-article & {
+  .news-article & {
     color: $blue;
   }
 
@@ -303,7 +303,7 @@
   }
 
   &.article-link-event,
-  &.article-link-reportarticle {
+  &.article-link-newsarticle {
     color: $blue;
 
     &:hover {
@@ -482,7 +482,7 @@
     line-height: 1.3em;
   }
 
-  .report-article & {
+  .news-article & {
     color: $blue;
   }
 

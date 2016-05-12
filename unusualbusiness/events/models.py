@@ -1,25 +1,17 @@
 from __future__ import unicode_literals
 
 import datetime
+
 from django.db import models
-from django.forms import ChoiceField
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from taggit.managers import TaggableManager
 from taggit.models import TaggedItemBase, GenericUUIDTaggedItemBase, Tag, CommonGenericTaggedItemBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel, PageChooserPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail_modeltranslation.models import TranslationMixin
 from wagtail.wagtailsearch import index
-from wagtail.wagtailcore import blocks
 
 from unusualbusiness.tags.models import EventPageTag
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
@@ -92,7 +84,7 @@ class EventPage(Page, RenderInlineMixin):
         index.SearchField('description_nl'),
         index.SearchField('event_type'),
         index.FilterField('start_date'),
-        index.RelatedFields('report_article_page', [
+        index.RelatedFields('event_article_page', [
             index.SearchField('title'),
         ]),
         index.RelatedFields('how_to_page', [
@@ -136,22 +128,10 @@ class EventPage(Page, RenderInlineMixin):
     # ])
 
     # Parent page / subpage type rules]
-    parent_page_types = ['events.EventIndexPage']
-    subpage_types = ['articles.ReportArticlePage']
+    parent_page_types = ['articles.ActivityIndexPage']
+    subpage_types = []
 
     # Methods
     @staticmethod
     def upcoming_events():
         return EventPage.objects.live().filter(start_date__gt=datetime.datetime.now())
-
-
-class EventIndexPage(Page):
-
-    parent_page_types = ['home.HomePage']
-    subpage_types = ['events.EventPage']
-
-    def get_context(self, request):
-        context = super(EventIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['events'] = EventPage.objects.child_of(self).live()
-        return context

@@ -1,0 +1,9 @@
+{% extends "articles/blocks/latest_article.html" %}
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+{% block list_item_classes %} latest-news-article{% endblock %}
+
+{% block above_title %}
+    <div class="latest-news-article-related-event-date">{{ page.event_page.start_date|date:"j F Y" }}</div>
+{% endblock %}
+

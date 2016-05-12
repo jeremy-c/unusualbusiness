@@ -17,7 +17,7 @@ from wagtail.wagtailsearch import index
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
-from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, ReportArticlePageTag
+from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
 from unusualbusiness.utils.models import PageFormat
 
 
@@ -42,6 +42,18 @@ class StoryArticleIndexPage(Page):
         # Add extra variables and return the updated context
         context['articles'] = StoryArticlePage.objects.all().live()
         context['parent'] = self.get_parent()
+        return context
+
+
+class ActivityIndexPage(Page):
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['events.EventPage', 'articles.NewsArticlePage', ]
+
+    def get_context(self, request):
+        context = super(ActivityIndexPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['events'] = EventPage.objects.child_of(self).live()
+        context['news'] = NewsArticlePage.objects.child_of(self).live()
         return context
 
 
@@ -286,23 +298,23 @@ TheoryArticlePage.search_fields = Page.search_fields + (
     )
 
 
-class ReportArticlePage(Page, AbstractArticle):
+class NewsArticlePage(Page, AbstractArticle):
     event_page = models.ForeignKey(
         'events.EventPage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='report_article_page'
+        related_name='news_article_page'
     )
-    tags = ClusterTaggableManager(through=ReportArticlePageTag, blank=True)
+    tags = ClusterTaggableManager(through=NewsArticlePageTag, blank=True)
 
     parent_page_types = ['events.EventPage']
     subpage_types = []
 
     class Meta:
-        verbose_name = _("Event report")
+        verbose_name = _("News")
 
-ReportArticlePage.content_panels = Page.content_panels + [
+NewsArticlePage.content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
         PageChooserPanel('event_page'),
         FieldPanel('subtitle'),
@@ -314,9 +326,9 @@ ReportArticlePage.content_panels = Page.content_panels + [
         FieldPanel('tags'),
     ]
 
-ReportArticlePage.promote_panels = Page.promote_panels
+NewsArticlePage.promote_panels = Page.promote_panels
 
-ReportArticlePage.search_fields = Page.search_fields + (
+NewsArticlePage.search_fields = Page.search_fields + (
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),

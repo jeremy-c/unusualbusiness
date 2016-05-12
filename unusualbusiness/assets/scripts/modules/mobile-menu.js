@@ -27,7 +27,7 @@ let MobileMenu = () => {
   let filterGrid = function() {
     $('.how-to-link-blue').on('click', function() {
       Grid.grid.isotope({
-        filter: '.latest-report-article'
+        filter: '.latest-news-article'
       });
     });
     $('.how-to-link-black').on('click', function() {

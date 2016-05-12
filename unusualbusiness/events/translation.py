@@ -1,4 +1,4 @@
-from .models import EventPage, EventIndexPage
+from .models import EventPage
 from wagtail_modeltranslation.translator import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
@@ -9,10 +9,4 @@ class EventPageTR(TranslationOptions):
         'title',
         'slug',
         'description',
-    )
-
-
-@register(EventIndexPage)
-class EventIndexPageTR(TranslationOptions):
-    fields = (
     )

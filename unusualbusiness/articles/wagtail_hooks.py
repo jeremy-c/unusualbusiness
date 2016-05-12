@@ -2,7 +2,7 @@ from wagtailmodeladmin.options import (
     ModelAdmin, ModelAdminGroup, wagtailmodeladmin_register)
 from django.utils.translation import ugettext as _
 
-from .models import TheoryArticlePage, StoryArticlePage, ReportArticlePage, AuthorPage
+from .models import TheoryArticlePage, StoryArticlePage, NewsArticlePage, AuthorPage
 
 
 class TheoryArticlePageModelAdmin(ModelAdmin):
@@ -26,9 +26,9 @@ class StoryArticlePageModelAdmin(ModelAdmin):
 
 
 class ReportArticlePageModelAdmin(ModelAdmin):
-    model = ReportArticlePage
-    menu_label = _('Event reports') # ditch this to use verbose_name_plural from model
-    menu_icon = 'doc-full-inverse event-report' # change as required
+    model = NewsArticlePage
+    menu_label = _('News') # ditch this to use verbose_name_plural from model
+    menu_icon = 'doc-full-inverse news' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )

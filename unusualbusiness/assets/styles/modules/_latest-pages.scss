@@ -80,7 +80,7 @@
     text-decoration: none;
   }
 
-  .latest-report-article & {
+  .latest-news-article & {
     display: none;
   }
 
@@ -124,7 +124,7 @@
     width: 100%;
   }
 
-  .latest-report-article & {
+  .latest-news-article & {
     flex: 0 1 auto;
     padding-top: $gutter;
     max-width: 100%;
@@ -160,7 +160,7 @@
 }
 
 // Report Article
-.latest-report-article {
+.latest-news-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
@@ -189,7 +189,7 @@
   }
 }
 
-.latest-report-article-related-event-date {
+.latest-news-article-related-event-date {
   padding-bottom: $gutter / 2;
   font-family: $open-sans;
   font-size: 14px;
