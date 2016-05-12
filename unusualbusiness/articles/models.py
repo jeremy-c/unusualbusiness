@@ -58,7 +58,8 @@ class ActivityIndexPage(Page):
 
 
 class Heading2Block(blocks.StructBlock):
-    chapter_name = blocks.CharBlock(required=True)
+    chapter_name = \
+        blocks.CharBlock(required=True)
 
     class Meta:
         template = 'articles/blocks/heading2.html'
@@ -93,14 +94,31 @@ class PullQuoteBlock(blocks.StructBlock):
         label = 'Pull Quote'
 
 
-class CarouselBlock(blocks.StreamBlock):
-    image = ImageChooserBlock()
-    embed = EmbedBlock()
+class FeaturedImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
 
     class Meta:
-        template = 'articles/blocks/carousel.html'
-        icon = 'media'
-        label = 'Image Carousel'
+        icon='image'
+        label=_('Image')
+        template='articles/blocks/featured_image.html'
+
+
+class FeaturedVideoBlock(blocks.StructBlock):
+    video = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Video')
+        template='articles/blocks/featured_video.html'
+
+
+class FeaturedAudioBlock(blocks.StructBlock):
+    audio = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Audio')
+        template='articles/blocks/featured_audio.html'
 
 
 class AbstractArticle(models.Model):
@@ -128,6 +146,11 @@ class AbstractArticle(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    featured = StreamField([
+        ('featured_image', FeaturedImageBlock()),
+        ('featured_video', FeaturedVideoBlock()),
+        ('featured_audio', FeaturedAudioBlock()),
+    ])
     author = models.ForeignKey(
         'articles.AuthorPage',
         verbose_name=_('author'),
@@ -150,7 +173,6 @@ class AbstractArticle(models.Model):
         ('subsection', Heading4Block()),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         ('image', ImageChooserBlock(icon="image")),
-        ('carousel', CarouselBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
         ('embed', EmbedBlock()),
     ])
@@ -211,8 +233,9 @@ StoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
-        ImageChooserPanel('featured_image'),
         FieldPanel('publication_date'),
+        ImageChooserPanel('featured_image'),
+        StreamFieldPanel('featured'),
         StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
         FieldPanel('tags'),
@@ -275,6 +298,7 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         ImageChooserPanel('featured_image'),
+        StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),
@@ -308,11 +332,12 @@ class NewsArticlePage(Page, AbstractArticle):
     )
     tags = ClusterTaggableManager(through=NewsArticlePageTag, blank=True)
 
-    parent_page_types = ['events.EventPage']
+    parent_page_types = ['events.EventPage', 'articles.ActivityIndexPage']
     subpage_types = []
 
     class Meta:
-        verbose_name = _("News")
+        verbose_name = _("News or report article")
+        verbose_name_plural = _("News or report articles")
 
 NewsArticlePage.content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
@@ -321,6 +346,7 @@ NewsArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         ImageChooserPanel('featured_image'),
+        StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),

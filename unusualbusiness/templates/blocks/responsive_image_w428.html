@@ -4,14 +4,14 @@
 
     {% image image width-428 as ri_w428 %}
     {% image image width-856 as ri_w428_2x %}
-    {% image image height-370 as ri_h370 %}
-    {% image image height-740 as ri_h370_2x %}
+    {% image image height-393 as ri_h393 %}
+    {% image image height-786 as ri_h393_2x %}
     <picture>
         <source media="(max-width: 361px)"
             srcset=" {{ ri_w428_2x.url }} 2x,{{ ri_w428.url }} 1x"
             sizes="100vw" />
         <source media="(max-width: 768px)"
-            srcset="{{ ri_h370_2x.url }} 2x,{{ ri_h370.url }} 1x"
+            srcset="{{ ri_h393_2x.url }} 2x,{{ ri_h393.url }} 1x"
             sizes="100vw" />
         <source media="(min-width: 768px)"
             srcset="{{ ri_w428_2x.url }} 2x,{{ ri_w428.url }} 1x"

@@ -30,7 +30,7 @@
                 {% if self.format %}
                     <div class="article-header-format">
                         <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon white-icon" >
-                          <use xlink:href="#{{ page.format }}-icon" />
+                          <use xlink:href="#{{ self.format }}-icon" />
                         </svg>
                     </div>
                 {% endif %}
@@ -90,18 +90,31 @@
             </div>
         </div>
 
-        {% if page.featured_image %}
-            <div class="article-featured-image">
-             {% include "blocks/responsive_image.html" with image=page.featured_image image_class="article-image"  %}
-            </div>
+        {% if page.format == 'video' or page.format == 'audio' %}
+            {% for block in page.featured %}
+                {% if block.block_type == 'featured_video' or block.block_type == 'featured_audio'  %}
+                    {{ block }}
+                {% endif %}
+            {% endfor %}
+        {%  else %}
+            {% for block in page.featured %}
+                {{ block }}
+            {% endfor %}
         {% endif %}
+
+
+{#        {% if page.featured_image %}#}
+{#            <div class="article-featured-image">#}
+{#             {% include "blocks/responsive_image.html" with image=page.featured_image image_class="article-image"  %}#}
+{#            </div>#}
+{#        {% endif %}#}
 
         {%  block tableofcontents %}
         {% endblock %}
 
         <div class="l-boxed">
             {% for block in page.body %}
-                {% if block.block_type == 'introduction' and forloop.first %}
+                {% if forloop.first and block.block_type == 'introduction' %}
                     <div class="article-introduction">
                         {{ block.value.source|ub_richtext }}
                     </div>

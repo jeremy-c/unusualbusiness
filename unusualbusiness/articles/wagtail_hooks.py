@@ -25,9 +25,9 @@ class StoryArticlePageModelAdmin(ModelAdmin):
     search_fields = ('title',)
 
 
-class ReportArticlePageModelAdmin(ModelAdmin):
+class NewsArticlePageModelAdmin(ModelAdmin):
     model = NewsArticlePage
-    menu_label = _('News') # ditch this to use verbose_name_plural from model
+    menu_label = _('News and reports') # ditch this to use verbose_name_plural from model
     menu_icon = 'doc-full-inverse news' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
@@ -51,7 +51,7 @@ class ArticlePageTypesAdminGroup(ModelAdminGroup):
     items = (
         TheoryArticlePageModelAdmin,
         StoryArticlePageModelAdmin,
-        ReportArticlePageModelAdmin,
+        NewsArticlePageModelAdmin,
         AuthorPageModelAdmin
     )
 
