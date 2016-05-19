@@ -101,6 +101,7 @@ class FeaturedImageBlock(blocks.StructBlock):
         icon='image'
         label=_('Image')
         template='articles/blocks/featured_image.html'
+        help_text=_('The featured image is shown in the list-view and detail-view')
 
 
 class FeaturedVideoBlock(blocks.StructBlock):
@@ -110,6 +111,7 @@ class FeaturedVideoBlock(blocks.StructBlock):
         icon='media'
         label=_('Video')
         template='articles/blocks/featured_video.html'
+        help_text=_('The featured video is only shown in the detail-view, make sure to also selecte a featured image')
 
 
 class FeaturedAudioBlock(blocks.StructBlock):
@@ -119,6 +121,7 @@ class FeaturedAudioBlock(blocks.StructBlock):
         icon='media'
         label=_('Audio')
         template='articles/blocks/featured_audio.html'
+        help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
 
 
 class AbstractArticle(models.Model):
@@ -172,6 +175,7 @@ class AbstractArticle(models.Model):
         ('section', Heading3Block()),
         ('subsection', Heading4Block()),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
+        # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
         ('embed', EmbedBlock()),

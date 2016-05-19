@@ -80,6 +80,60 @@ Contains rich-text link handler definition.
 #         return ''
 
 
+class UBMarkdownHandler(object):
+    """
+    UBMarkdownHandler will be invoked whenever we encounter an
+    [^123]
+    or
+    [^123]: string  up to new line.
+    element in HTML content.
+    The resulting element representation will be:
+    <a class="footnote-ref" id="ref-123"></a> or
+    <span class="footnote-anchor" id="anchor-123"></span> or
+    """
+    @staticmethod
+    def expand_article_footnote_link_id(id, for_editor):
+        if for_editor:
+            return ''
+        else:
+            element_id = "article-footnote-link-{id}".format(id=id)
+            element_data_id = "article-footnote-{id}".format(id=id)
+            element_classes = 'article-inline-link article-inline-footnote-link'
+            return '<a class="{element_classes}" id="{element_id}" data-id="{element_data_id}" href="javascript: void(0)"></a>'.format(
+                element_id=element_id,
+                element_data_id=element_data_id,
+                element_classes=element_classes
+            )
+
+    @staticmethod
+    def expand_article_footnote_id(id, body, for_editor):
+        if for_editor:
+            return ''
+        else:
+            element_id = "article-footnote-{id}".format(id=id)
+            element_classes = 'l-pull-left article-inline article-inline-footnote is-visuallyhidden'
+            return '<span class="{element_classes}" id="{element_id}">{body}</span>'.format(
+                element_id=element_id,
+                element_classes=element_classes,
+                body=body
+            )
+
+    @staticmethod
+    def markdown_to_html_url(body, for_editor):
+        if for_editor:
+            return ''
+        else:
+            return FIND_MARKDOWN_URL.sub(replace_url, body)
+
+
+def replace_url(m):
+    url_text = m.group(1)
+    url = m.group(2)
+    return '<a href="{url}" target="_blank" >{url_text}</a>'.format(
+        url_text=url_text,
+        url=url
+    )
+
 class UBPageLinkHandler(object):
     """
     PageLinkHandler will be invoked whenever we encounter an <a> element in HTML content
@@ -241,11 +295,14 @@ class DbWhitelister(Whitelister):
 
             super(DbWhitelister, cls).clean_tag_node(doc, tag)
 
-
+# http://www.regexr.com/
 FIND_A_TAG = re.compile(r'<a(\b[^>]*)>')
 FIND_ENTIRE_A_TAG = re.compile(r'<a\b[^>]*>([\S\s]*?)<\/a>')
 FIND_EMBED_TAG = re.compile(r'<embed(\b[^>]*)/>')
 FIND_ATTRS = re.compile(r'([\w-]+)\="([^"]*)"')
+FIND_MARKDOWN_NOTE = re.compile(r'\[\^([0-9a-zA-Z]+)\][:](.*?)<\/p>')
+FIND_MARKDOWN_NOTE_REF = re.compile(r'\[\^([0-9a-zA-Z])+\]')
+FIND_MARKDOWN_URL = re.compile(r'\[([^]]+)]\(\s*(http[s]?://[^)]+)\s*\)')
 
 
 def extract_attrs(attr_string):
@@ -321,7 +378,6 @@ def expand_inline_html(html, for_editor=False):
         # add inline <span> tag after <a></a> tag.
         return ''.join([a_tag, inline_tag])
 
-
     def replace_a_tag(m):
         attrs = extract_attrs(m.group(1))
         if 'linktype' not in attrs:
@@ -335,9 +391,24 @@ def expand_inline_html(html, for_editor=False):
         handler = get_embed_handler(attrs['embedtype'])
         return handler.expand_db_attributes(attrs, for_editor)
 
+    def replace_markdown_note_ref(m, for_editor=False):
+        footnote_link_id = m.group(1)
+        handler = UBMarkdownHandler()
+        return handler.expand_article_footnote_link_id(footnote_link_id, for_editor)
+
+    def replace_markdown_note(m, for_editor=False):
+        footnote_id = m.group(1)
+        footnote_text = m.group(2)
+        handler = UBMarkdownHandler()
+        footnote_text = handler.markdown_to_html_url(footnote_text, for_editor)
+        return handler.expand_article_footnote_id(footnote_id, footnote_text, for_editor)
+
     html = FIND_ENTIRE_A_TAG.sub(add_inline_tag, html)
     html = FIND_A_TAG.sub(replace_a_tag, html)
     html = FIND_EMBED_TAG.sub(replace_embed_tag, html)
+    html = FIND_MARKDOWN_NOTE.sub(replace_markdown_note, html)
+    html = FIND_MARKDOWN_NOTE_REF.sub(replace_markdown_note_ref, html)
+
     return html
 
 

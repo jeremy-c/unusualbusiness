@@ -60,8 +60,19 @@ let Article = () => {
   };
 
 
+  let initArticleNotes = function() {
+    let articleFootnotes = $('.article-inline-footnote');
+
+    articleFootnotes.each(function() {
+      let footnoteIndex = $(this).attr('id').split('-')[2];
+      let articleFootnoteLink = $('#article-footnote-link-' + footnoteIndex);
+      articleFootnoteLink.after($(this).detach());
+    });
+  };
+
   let init = function() {
     console.log('Article go!');
+    initArticleNotes();
     initInlineAricleLinks();
     initTOC();
     initAuthorPane();

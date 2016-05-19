@@ -39,3 +39,7 @@ django-choices-enum==0.2
 
 # Compression
 #django_compressor==2.0
+
+git+ssh://git@github.com/torchbox/wagtail-markdown.git
+
+django-modelcluster==2.0
