@@ -1,5 +1,5 @@
-from wagtailmodeladmin.options import (
-    ModelAdmin, ModelAdminGroup, wagtailmodeladmin_register)
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register)
 from django.utils.translation import ugettext as _
 
 from .models import DefinitionPage
@@ -16,4 +16,4 @@ class DefinitionPageModelAdmin(ModelAdmin):
 
 
 # Now you just need to register your customised ModelAdmin class with Wagtail
-wagtailmodeladmin_register(DefinitionPageModelAdmin)
+modeladmin_register(DefinitionPageModelAdmin)

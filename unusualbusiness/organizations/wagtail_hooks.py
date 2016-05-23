@@ -1,4 +1,5 @@
-from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register)
 from .models import OrganizationPage
 
 
@@ -12,4 +13,4 @@ class OrganizationPageModelAdmin(ModelAdmin):
     search_fields = ('title',)
 
 # Now you just need to register your customised ModelAdmin class with Wagtail
-wagtailmodeladmin_register(OrganizationPageModelAdmin)
+modeladmin_register(OrganizationPageModelAdmin)

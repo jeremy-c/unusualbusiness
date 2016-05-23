@@ -75,7 +75,7 @@ class OrganizationPage(Page, RenderInlineMixin):
     parent_page_types = ['organizations.OrganizationIndexPage']
     subpage_types = []
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
@@ -84,7 +84,7 @@ class OrganizationPage(Page, RenderInlineMixin):
         index.RelatedFields('story_article_page', [
             index.SearchField('title'),
         ]),
-    )
+    ]
 
     # Editor panels configuration
 

@@ -249,7 +249,7 @@ StoryArticlePage.content_panels = Page.content_panels + [
 
 StoryArticlePage.promote_panels = Page.promote_panels
 
-StoryArticlePage.search_fields = Page.search_fields + (
+StoryArticlePage.search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
@@ -265,7 +265,7 @@ StoryArticlePage.search_fields = Page.search_fields + (
         index.RelatedFields('author', [
             index.SearchField('title'),
         ]),
-    )
+    ]
 
 
 class StoryArticlePageOrganization(Orderable, models.Model):
@@ -310,7 +310,7 @@ TheoryArticlePage.content_panels = Page.content_panels + [
 
 TheoryArticlePage.promote_panels = Page.promote_panels
 
-TheoryArticlePage.search_fields = Page.search_fields + (
+TheoryArticlePage.search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
@@ -323,7 +323,7 @@ TheoryArticlePage.search_fields = Page.search_fields + (
         index.RelatedFields('author', [
           index.SearchField('title'),
         ]),
-    )
+    ]
 
 
 class NewsArticlePage(Page, AbstractArticle):
@@ -358,7 +358,7 @@ NewsArticlePage.content_panels = Page.content_panels + [
 
 NewsArticlePage.promote_panels = Page.promote_panels
 
-NewsArticlePage.search_fields = Page.search_fields + (
+NewsArticlePage.search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('subtitle_en'),
@@ -371,8 +371,7 @@ NewsArticlePage.search_fields = Page.search_fields + (
         index.RelatedFields('author', [
             index.SearchField('title'),
         ]),
-
-)
+    ]
 
 
 class AuthorPage(Page):

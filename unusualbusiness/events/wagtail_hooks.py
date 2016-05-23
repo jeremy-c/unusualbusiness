@@ -1,4 +1,5 @@
-from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register)
 from .models import EventPage
 
 
@@ -12,4 +13,4 @@ class EventPageModelAdmin(ModelAdmin):
     search_fields = ('title',)
 
 # Now you just need to register your customised ModelAdmin class with Wagtail
-wagtailmodeladmin_register(EventPageModelAdmin)
+modeladmin_register(EventPageModelAdmin)

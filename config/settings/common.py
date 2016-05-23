@@ -50,11 +50,11 @@ THIRD_PARTY_APPS = (
     'compressor',
     'taggit',
 
-    'wagtailmodeladmin',
     'wagtail.contrib.wagtailsitemaps',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailapi',
     'wagtail.contrib.wagtailstyleguide',
+    'wagtail.contrib.modeladmin',
     'rest_framework',
     'wagtail_modeltranslation',
 
@@ -96,7 +96,6 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    'wagtailmodeladmin.middleware.ModelAdminMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION

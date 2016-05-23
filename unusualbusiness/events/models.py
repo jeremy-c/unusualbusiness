@@ -77,7 +77,7 @@ class EventPage(Page, RenderInlineMixin):
     )
     tags = ClusterTaggableManager(through=EventPageTag, blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
@@ -90,7 +90,7 @@ class EventPage(Page, RenderInlineMixin):
         index.RelatedFields('how_to_page', [
             index.SearchField('title'),
         ]),
-    )
+    ]
 
     # Editor panels configuration
 

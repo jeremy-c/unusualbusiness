@@ -1,5 +1,5 @@
-from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
-
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register)
 from unusualbusiness.howtos.models import HowToPage
 
 
@@ -13,4 +13,4 @@ class HowToPageModelAdmin(ModelAdmin):
     search_fields = ('title',)
 
 # Now you just need to register your customised ModelAdmin class with Wagtail
-wagtailmodeladmin_register(HowToPageModelAdmin)
+modeladmin_register(HowToPageModelAdmin)
