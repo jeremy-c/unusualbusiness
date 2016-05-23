@@ -290,6 +290,8 @@
 }
 
 .article-introduction {
+  margin-right: 150px;
+
   padding: 0 $gutter;
 
   font-size: 26px;
@@ -516,11 +518,25 @@
 }
 
 .block-image {
-  border-top: solid $yellow 8px;
+  margin: $gutter 0 $gutter -332px;
+
+  @media(max-width: $boxed) {
+    margin: $gutter 0;
+  }
+
 
   @media(max-width: $tablet) {
     margin: 0 calc(-1 * var(--gutter));
   }
+}
+
+.image-description {
+  padding: 0 $gutter $gutter / 2;
+  max-width: 50%;
+
+  font-family: $open-sans;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .block-pullquote {
@@ -528,6 +544,7 @@
     margin: 0 calc(-1 * var(--gutter));
   }
 }
+
 
 .pullquote {
   display: block;
