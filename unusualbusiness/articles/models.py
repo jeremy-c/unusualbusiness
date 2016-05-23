@@ -141,14 +141,6 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         null=False,
         default = PageFormat.TEXT,
         choices=PageFormat.ALL)
-    featured_image = models.ForeignKey(
-        'wagtailimages.Image',
-        verbose_name=_('featured_image'),
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
     featured = StreamField([
         ('featured_image', FeaturedImageBlock()),
         ('featured_video', FeaturedVideoBlock()),
@@ -184,6 +176,24 @@ class AbstractArticle(models.Model, RenderInlineMixin):
     class Meta:
         abstract = True
         verbose_name = _("Article")
+
+    def __featured_item(self, block_type='featured_image'):
+        for stream_child in self.featured:
+            if stream_child.block_type == block_type:
+                return stream_child
+        return None
+
+    @property
+    def featured_image(self):
+        return self.__featured_item('featured_image')
+
+    @property
+    def featured_audio(self):
+        return self.__featured_item('featured_audio')
+
+    @property
+    def featured_video(self):
+        return self.__featured_item('featured_video')
 
 
 class StoryArticlePage(Page, AbstractArticle):
@@ -238,7 +248,6 @@ StoryArticlePage.content_panels = Page.content_panels + [
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
         FieldPanel('publication_date'),
-        ImageChooserPanel('featured_image'),
         StreamFieldPanel('featured'),
         StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
@@ -302,7 +311,6 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
-        ImageChooserPanel('featured_image'),
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
@@ -350,7 +358,6 @@ NewsArticlePage.content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),
-        ImageChooserPanel('featured_image'),
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),

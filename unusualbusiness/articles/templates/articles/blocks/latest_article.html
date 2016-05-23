@@ -17,10 +17,8 @@
             </h4>
             {% block below_title %}{% endblock %}
         </div>
-        {% if page.featured_image %}
-            {% block featured_image %}
-                {% include "blocks/responsive_image.html" with image=page.featured_image image_class="latest-article-image"  %}
-            {% endblock %}
-        {% endif %}
+        {% block featured_image %}
+            {% include "blocks/responsive_image.html" with image=page.featured_image.value.image image_class="latest-article-image"  %}
+        {% endblock %}
     </a>
 </li>

@@ -6,7 +6,7 @@
             <img src="{{ STATIC_URL }}images/article-icon-green.svg" width="41.992px" height="29.445px" class="article-icon" />
         </div>
         <div class="featured-article-preview" >
-            {% if page.featured_image %}
+            {% if page.has_featured_image %}
                 {% include "blocks/responsive_image.html" with image=page.featured_image image_class="featured-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
