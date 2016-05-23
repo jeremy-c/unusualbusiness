@@ -14,7 +14,9 @@ let Article = () => {
       let inlineElement = $(this).data('id');
 
       $(this).toggleClass('is-expanded');
-      $('#' + inlineElement).toggleClass('is-visuallyhidden');
+      $('#' + inlineElement).each( function () {
+        $(this).toggleClass('is-visuallyhidden');
+      });
     });
   };
 

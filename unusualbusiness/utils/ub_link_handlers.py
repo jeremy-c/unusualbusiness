@@ -15,9 +15,9 @@ from django.utils.html import escape
 # from wagtailplus.wagtaillinks.models import Link
 from wagtail.wagtaildocs.rich_text import DocumentLinkHandler
 
+from unusualbusiness.articles.models import TheoryArticlePage
 from unusualbusiness.definitions.models import DefinitionPage
 from unusualbusiness.organizations.models import OrganizationPage
-
 
 # Define a set of 'embed handlers' and 'link handlers'. These handle the translation
 # of 'special' HTML elements in rich text - ones which we do not want to include
@@ -91,6 +91,7 @@ class UBMarkdownHandler(object):
     <a class="footnote-ref" id="ref-123"></a> or
     <span class="footnote-anchor" id="anchor-123"></span> or
     """
+
     @staticmethod
     def expand_article_footnote_link_id(id, for_editor):
         if for_editor:
@@ -134,6 +135,7 @@ def replace_url(m):
         url=url
     )
 
+
 class UBPageLinkHandler(object):
     """
     PageLinkHandler will be invoked whenever we encounter an <a> element in HTML content
@@ -141,6 +143,7 @@ class UBPageLinkHandler(object):
     representation will be:
     <a linktype="page" id="42">hello world</a>
     """
+
     @staticmethod
     def get_db_attributes(tag):
         """
@@ -162,7 +165,9 @@ class UBPageLinkHandler(object):
 
             page_type = page.specific._meta.model_name.replace("page", "")
 
-            if isinstance(page.specific, OrganizationPage) or isinstance(page.specific, DefinitionPage):
+            if isinstance(page.specific, OrganizationPage) \
+                or isinstance(page.specific, DefinitionPage) \
+                or isinstance(page.specific, TheoryArticlePage):
                 return '<a class="article-inline-link article-inline-link-{page_type}" data-id="{page_type}-{id}" {editor_attrs} href="javascript: void(0)">'.format(
                     page_type=page_type,
                     id=page.id,
@@ -187,11 +192,14 @@ class UBPageLinkHandler(object):
                 return page.specific.render_inline()
             elif isinstance(page.specific, DefinitionPage):
                 return page.specific.render_inline()
+            elif isinstance(page.specific, TheoryArticlePage):
+                return page.specific.render_inline()
             else:
                 return ''
 
         except Page.DoesNotExist:
             return ''
+
 
 EMBED_HANDLERS = {}
 LINK_HANDLERS = {
@@ -295,6 +303,7 @@ class DbWhitelister(Whitelister):
 
             super(DbWhitelister, cls).clean_tag_node(doc, tag)
 
+
 # http://www.regexr.com/
 FIND_A_TAG = re.compile(r'<a(\b[^>]*)>')
 FIND_ENTIRE_A_TAG = re.compile(r'<a\b[^>]*>([\S\s]*?)<\/a>')
@@ -320,6 +329,7 @@ def expand_db_html(html, for_editor=False):
     Expand database-representation HTML into proper HTML usable in either
     templates or the rich text editor
     """
+
     def replace_a_tag(m):
         attrs = extract_attrs(m.group(1))
         if 'linktype' not in attrs:
@@ -360,13 +370,14 @@ def expand_inline_html(html, for_editor=False):
     Expand database-representation HTML to extra inline HTML elements usable in either
     templates or the rich text editor
     """
+
     def add_inline_tag(m):
         complete_tag = m.group(0)
         found_a_tag = FIND_A_TAG.search(complete_tag)
         attrs = extract_attrs(found_a_tag.group(1))
 
         if 'linktype' not in attrs or \
-            attrs.get('linktype') == u'document':
+                attrs.get('linktype') == u'document':
             # return unchanged
             return complete_tag
         handler = get_link_handler(attrs['linktype'])
@@ -420,6 +431,7 @@ class UBRichText(object):
     and renders to the front-end HTML rendering.
     Used as the native value of a wagtailcore.blocks.field_block.RichTextBlock.
     """
+
     def __init__(self, source):
         self.source = (source or '')
 

@@ -45,8 +45,9 @@
   }
 }
 
-// Organization
-.article-inline-organization {
+// Organization & Theory Article
+.article-inline-organization,
+.article-inline-theoryarticle {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -60,16 +61,18 @@
 
   &:hover,
   &:active {
-    border-left: solid 10px $black;
-    border-right: solid 10px $black;
+    border-right: 10px solid;
+    border-left: 10px solid;
     padding: 10px 25px 0;
     text-decoration: none;
   }
 
+
   @media(max-width: $tablet) {
     flex-flow: column nowrap;
 
-    border-top: solid 8px $black;
+    border-top: solid 8px;
+
     border-left: none;
     border-right: none;
     padding-left: 0;
@@ -85,6 +88,71 @@
     }
 
   }
+}
+// Organization
+.article-inline-organization {
+  &:hover,
+  &:active {
+    border-left-color: $black;
+    border-right-color: $black;
+  }
+
+  @media(max-width: $tablet) {
+    border-top-color: $black;
+  }
+}
+
+// Theory Article
+.article-inline-theoryarticle {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:active {
+    border-left-color: $green;
+    border-right-color: $green;
+  }
+
+  @media(max-width: $mobile) {
+    flex-direction: column;
+  }
+
+  @media(max-width: $tablet) {
+    border-top-color: $green;
+  }
+}
+
+.article-inline-theoryarticle-info {
+  flex: 1;
+  padding: 0 $gutter;
+
+  @media(max-width: $tablet) {
+    margin-top: $gutter / 2;
+    padding-right: 0;
+  }
+
+  @media(max-width: $mobile) {
+    padding-left: 0;
+  }
+}
+
+.article-inline-theoryarticle-title {
+  display: block;
+  padding-bottom: $gutter / 2;
+
+  text-decoration: none;
+  font-family: $merriweather;
+  font-size: 22px;
+  line-height: 34px;
+}
+
+
+.article-inline-theoryarticle-author {
+  text-decoration: none;
+  font-family: $open-sans;
+  font-size: 14px;
+  color: $light-grayish;
 }
 
 .article-inline-body {

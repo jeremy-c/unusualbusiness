@@ -71,7 +71,8 @@
     margin-bottom: $gutter / 2;
   }
 
-  .latest-theory-article & {
+  .latest-theory-article &,
+  .article-inline-theoryarticle & {
     background-color: $green;
 
     @media(max-width: $tablet) {

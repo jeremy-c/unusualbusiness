@@ -387,7 +387,8 @@
     vertical-align: top;
   }
 
-  &.article-inline-link-event {
+  &.article-inline-link-event,
+  &.article-inline-link-newsarticle {
     color: $blue;
   }
 
@@ -396,11 +397,11 @@
   }
 
   &.article-inline-link-definition,
-  &.article-inline-link-theory {
+  &.article-inline-link-theoryarticle {
     color: $green;
   }
 
-  &.article-inline-link-story {
+  &.article-inline-link-storyarticle {
     color: $yellow;
   }
 }

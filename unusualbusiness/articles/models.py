@@ -18,7 +18,7 @@ from wagtail.wagtailsearch import index
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
-from unusualbusiness.utils.models import PageFormat
+from unusualbusiness.utils.models import PageFormat, RenderInlineMixin
 
 
 class TheoryArticleIndexPage(Page):
@@ -124,7 +124,7 @@ class FeaturedAudioBlock(blocks.StructBlock):
         help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
 
 
-class AbstractArticle(models.Model):
+class AbstractArticle(models.Model, RenderInlineMixin):
     is_featured = models.BooleanField(
         verbose_name = _("Is Featured on home page"),
         default=False
@@ -287,6 +287,7 @@ class StoryArticlePageOrganization(Orderable, models.Model):
 
 
 class TheoryArticlePage(Page, AbstractArticle):
+    ajax_template = 'articles/blocks/inline_theory_article.html'
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
 
