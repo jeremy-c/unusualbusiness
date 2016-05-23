@@ -16,6 +16,13 @@ import HeaderMenus from './modules/header';
 (function() {
   console.log('Main: go!');
 
+  $.expr[':'].external = function(obj){
+      return !obj.href.match(/^mailto\:/)
+             && (obj.hostname != location.hostname)
+             && !obj.href.match(/^javascript\:/)
+             && !obj.href.match(/^$/)
+  };
+  
   $(document).ready(function() {
     console.log('Main: Document ready go!');
 

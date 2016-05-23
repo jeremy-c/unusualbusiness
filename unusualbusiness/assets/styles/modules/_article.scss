@@ -376,6 +376,18 @@
   }
 }
 
+.external-link {
+  font-weight: 400;
+  text-decoration: none;
+
+  &:after {
+    @include sprite(external-link-icon);
+    content: '';
+    margin-left: 6px;
+  }
+}
+
+
 .article-inline-link {
   font-weight: 400;
   text-decoration: none;

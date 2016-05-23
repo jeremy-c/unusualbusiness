@@ -72,12 +72,18 @@ let Article = () => {
     });
   };
 
+  let initExternalLinks = function() {
+    $('a:external').attr('target', '_blank');
+    $('a:external').addClass('external-link');
+  };
+
   let init = function() {
     console.log('Article go!');
     initArticleNotes();
     initInlineAricleLinks();
     initTOC();
     initAuthorPane();
+    initExternalLinks();
   };
 
   return {
