@@ -130,7 +130,7 @@ class UBMarkdownHandler(object):
 def replace_url(m):
     url_text = m.group(1)
     url = m.group(2)
-    return '<a href="{url}" target="_blank" >{url_text}</a>'.format(
+    return '<a href="{url}" >{url_text}</a>'.format(
         url_text=url_text,
         url=url
     )
