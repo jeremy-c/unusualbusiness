@@ -12,8 +12,10 @@
                 - {{ self.subtitle }}
             {% endif %}
         </span>
-        <span class="article-inline-theoryarticle-author">
-            {{ self.author }}
-        </span>
+        {% if self.author %}
+            <span class="article-inline-theoryarticle-author">
+                {{ self.author }}
+            </span>
+        {% endif %}
     </span>
 </a>

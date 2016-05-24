@@ -601,8 +601,9 @@
 
 .article-section-title {
   margin-bottom: $gutter;
-  font-size: 32px;
+  font-size: 20px;
   font-family: $merriweather;
+  font-weight: 300;
   color: $black;
 }
 
@@ -670,12 +671,13 @@
 
 // Related Howto's
 .related-howtos {
-  background-color: $light-gray;
+  margin: 0 $gutter;
+  border-top: solid 1px $light-gray;
 }
 
 .l-related-section {
   box-sizing: border-box;
-  padding: $gutter * 2 $gutter;
+  padding: $gutter;
 
   @media(max-width: $tablet) {
     flex-wrap: wrap;

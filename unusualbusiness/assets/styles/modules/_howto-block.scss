@@ -5,7 +5,7 @@
 @import "../base/base";
 
 .howto-block {
-  padding: $gutter / 2;
+  padding: 0 $gutter / 2;
   background-color: $white;
 }
 
@@ -18,10 +18,12 @@
 }
 
 .howto-block-title {
-  padding: $gutter;
+  padding: 0 $gutter $gutter;
   text-align: center;
   color: $green;
   font-size: 36px;
+  font-family: $merriweather;
+  font-weight: normal;
   line-height: 1.3em;
 }
 
@@ -29,7 +31,7 @@
   position: relative;
   display: block;
   margin: 0 auto;
-  padding: $gutter / 2;
+  padding: 0 $gutter / 2;
   width: 192.921px;
   height: 192.921px;
 
