@@ -640,35 +640,6 @@
 .related-organization-list {
 }
 
-
-// Related Events
-
-.related-events {
-  padding: 0 $gutter;
-  width: 50%;
-
-  @media(max-width: $tablet) {
-    padding: 0;
-    width: 100%;
-  }
-}
-
-.related-events-section-title {
-  padding-bottom: $gutter;
-
-  font-family: $open-sans;
-  font-weight: bold;
-  font-size: 24px;
-  color: $blue;
-
-  @media(max-width: $tablet) {
-    padding: $gutter;
-  }
-}
-
-.related-events-list {
-}
-
 // Related Howto's
 .related-howtos {
   margin: 0 $gutter;
@@ -677,16 +648,15 @@
 
 .l-related-section {
   box-sizing: border-box;
-  padding: $gutter;
+  padding: $gutter 0;
 
   @media(max-width: $tablet) {
     flex-wrap: wrap;
-    padding: $gutter;
   }
 }
 
 // Related Articles
-
 .related-articles {
-  background-color: $white;
+  margin: 0 $gutter;
+  border-top: solid 1px $light-gray;
 }

@@ -5,6 +5,7 @@
 @import "../base/base";
 
 .latest-articles {
+  position: relative;
 
   @media(max-width: $mobile) {
     padding: 0 $gutter;
@@ -289,4 +290,20 @@
   font-weight: bold;
   font-family: $open-sans;
   color: $black;
+}
+
+.related-articles .l-grid-item {
+  position: relative;
+  margin-bottom: $gutter * 2;
+}
+
+.latest-article-how-to {
+  position: absolute;
+  bottom: -$gutter;
+  right: 0;
+
+  a {
+    color: $green;
+    text-decoration: none;
+  }
 }
