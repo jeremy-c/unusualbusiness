@@ -47,6 +47,10 @@
 
 .l-upcoming-related-event-title {
   display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: calc(100% - 150px);
 }
 
 .l-upcoming-related-event-date {
