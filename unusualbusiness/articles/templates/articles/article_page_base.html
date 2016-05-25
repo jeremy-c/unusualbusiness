@@ -9,6 +9,20 @@
 
 {% block body_class %}l-article-content{% endblock %}
 
+{% block custom_header %}
+    <header class="l-header custom-header">
+
+        <div class="custom-header-hamburger">
+            <a href="javascript: void(0);" class="custom-header-hamburger-button"></a>
+        </div>
+        <div class="custom-header-title">
+            {{ self.title }}
+        </div>
+        <div class="custom-header-social"></div>
+    </header>
+    <!--/.l-header-->
+{% endblock %}
+
 {% block content %}
     <article class="article">
 

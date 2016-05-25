@@ -1,0 +1,90 @@
+/* ==|====================
+   Module/Footer
+   ======================= */
+
+@import "../base/base";
+
+// Header
+.header {
+  z-index: 200;
+  height: 85px;
+
+  animation-duration: .3s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+
+  background-color: $white;
+
+  @media(max-width: $tablet) {
+    height: 44px;
+  }
+}
+
+.pin-custom-header-under-header {
+  top: 85px;
+
+  @media(max-width: $tablet) {
+    height: 44px;
+  }
+}
+
+// Custom Header
+.custom-header {
+  z-index: 190;
+
+  height: 64px;
+
+  transition: all 0.2s ease-in;
+  animation-duration: .3s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+
+  @media(max-width: $tablet) {
+    height: 44px;
+  }
+
+  .news-article &,
+  .event & {
+    background-color: $blue;
+  }
+
+  .theory-article & {
+    background-color: $green;
+  }
+
+  .story-article & {
+    background-color: $yellow;
+  }
+
+  .organization & {
+    background-color: $black ;
+  }
+}
+
+.custom-header-hamburger {
+  width: 50px;
+}
+
+.custom-header-hamburger-button {
+  @include sprite(hamburger-menu-white-icon);
+  content: '';
+  padding-right: $gutter / 2;
+
+  font-size: 23px;
+  vertical-align: baseline;
+  color: $white;
+}
+
+.custom-header-title {
+  color: $white;
+  margin-right: auto;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: calc(100% - 120px);
+}
+
+.custom-header-social {
+
+}

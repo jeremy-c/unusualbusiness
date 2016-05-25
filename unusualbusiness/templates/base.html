@@ -35,6 +35,7 @@
 {#        <link rel="stylesheet" crossorigin="anonymous" integrity="sha256-z3Zd2vSyiYzTkz83GvboBvga8btMdZo4LGsO+yxzQQg="#}
 {#              href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">#}
         <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
+        <link rel="stylesheet" href="{% static 'bower_components/animate.css/animate.css' %}" />
 
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
@@ -57,6 +58,91 @@
                     </svg>
                 </a>
             </div>
+            <nav class="l-main-nav" >
+                <ul class="l-main-menu" >
+                    <li class="main-menu-item main-menu-home">
+                        <a href="#" class="main-menu-item-link main-menu-home-link" >
+                            <svg  width="30px" height="30px" class="menu-icon ub-logo-icon" >
+                                <title>Unusual Business logo</title>
+                                <desc>Click to go home</desc>
+                                <use xlink:href="#ub-logo" />
+                            </svg>
+                            <span class="menu-item-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="#" class="main-menu-item-link how-to-link how-to-link-blue" >
+                            <svg width="30px" height="30px" class="menu-icon circle blue-icon" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <span class="menu-item-text">Activity</span>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="#" class="main-menu-item-link how-to-link how-to-link-black" >
+                            <svg width="30px" height="30px" class="menu-icon circle black-icon" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <span class="menu-item-text">Practitioners</span>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="" class="main-menu-item-link how-to-link how-to-link-yellow" >
+                            <svg width="30px" height="30px" class="menu-icon circle yellow-icon" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <span class="menu-item-text">Stories</span>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="" class="main-menu-item-link how-to-link how-to-link-green" >
+                            <svg width="30px" height="30px" class="menu-icon circle green-icon" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <span class="menu-item-text">Theory</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="l-right-menu">
+                    <li class="main-menu-item main-menu-how-to-circles" >
+                      <a href="/how-to/" class="main-menu-item-link how-to-circles-link" >
+                        <svg width="45px" height="45px" class="menu-icon how-to-circles-icon"  >
+                          <use xlink:href="#how-to-circles" />
+                        </svg>
+                        <span class="menu-item-text">Research overview</span>
+                      </a>
+                    </li>
+                    <li class="main-menu-item about-ub">
+                        <a href="#" class="main-menu-item-link about-ub-link" >
+                            <span class="menu-item-short-text">About</span>
+                            <span class="menu-item-text">Over (Un)usual Business</span>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-search" >
+                        <a href="#" class="main-menu-item-link" >
+                            <svg class="search-icon" width="23.334px" height="23.334px" >
+                                <title>Seach icon</title>
+                                <desc>Click to open search text field</desc>
+                              <use xlink:href="#search-icon" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="main-menu-item main-menu-language">
+                      <a href="#" class="main-menu-item-link language" >
+                        <span class="menu-item-short-text">EN</span>
+                        <span class="menu-item-text">English</span>
+                      </a>
+                    </li>
+                    <li class="main-menu-item main-menu-footer">
+                        <div class="main-menu-item-link main-menu-item-link-footer">
+                            <a href="#" class="main-menu-newsletter-link" >Nieuwsbrief</a>
+                            <span class="main-menu-divider">|</span>
+                            <a href="#" class="main-menu-facebook-link" >Facebook</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!--/.main-nav-->
             <div class="search-bar">
                 <label class="search-label"  for="searchTextBox" aria="label">
                     <svg class="search-icon" width="23.334px" height="23.334px" >
@@ -80,91 +166,8 @@
         </header>
         <!--/.l-header-->
 
-        <nav class="l-main-nav" >
-            <ul class="l-main-menu" >
-                <li class="main-menu-item main-menu-home">
-                    <a href="#" class="main-menu-item-link main-menu-home-link" >
-                        <svg  width="30px" height="30px" class="menu-icon ub-logo-icon" >
-                            <title>Unusual Business logo</title>
-                            <desc>Click to go home</desc>
-                            <use xlink:href="#ub-logo" />
-                        </svg>
-                        <span class="menu-item-text">Home</span>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-how-to">
-                    <a href="#" class="main-menu-item-link how-to-link how-to-link-blue" >
-                        <svg width="30px" height="30px" class="menu-icon circle blue-icon" >
-                          <use xlink:href="#circle" />
-                        </svg>
-                        <span class="menu-item-text">Activity</span>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-how-to">
-                    <a href="#" class="main-menu-item-link how-to-link how-to-link-black" >
-                        <svg width="30px" height="30px" class="menu-icon circle black-icon" >
-                          <use xlink:href="#circle" />
-                        </svg>
-                        <span class="menu-item-text">Practitioners</span>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-how-to">
-                    <a href="" class="main-menu-item-link how-to-link how-to-link-yellow" >
-                        <svg width="30px" height="30px" class="menu-icon circle yellow-icon" >
-                          <use xlink:href="#circle" />
-                        </svg>
-                        <span class="menu-item-text">Stories</span>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-how-to">
-                    <a href="" class="main-menu-item-link how-to-link how-to-link-green" >
-                        <svg width="30px" height="30px" class="menu-icon circle green-icon" >
-                          <use xlink:href="#circle" />
-                        </svg>
-                        <span class="menu-item-text">Theory</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="l-right-menu">
-                <li class="main-menu-item main-menu-how-to-circles" >
-                  <a href="/how-to/" class="main-menu-item-link how-to-circles-link" >
-                    <svg width="45px" height="45px" class="menu-icon how-to-circles-icon"  >
-                      <use xlink:href="#how-to-circles" />
-                    </svg>
-                    <span class="menu-item-text">Research overview</span>
-                  </a>
-                </li>
-                <li class="main-menu-item about-ub">
-                    <a href="#" class="main-menu-item-link about-ub-link" >
-                        <span class="menu-item-short-text">About</span>
-                        <span class="menu-item-text">Over (Un)usual Business</span>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-search" >
-                    <a href="#" class="main-menu-item-link" >
-                        <svg class="search-icon" width="23.334px" height="23.334px" >
-                            <title>Seach icon</title>
-                            <desc>Click to open search text field</desc>
-                          <use xlink:href="#search-icon" />
-                        </svg>
-                    </a>
-                </li>
-                <li class="main-menu-item main-menu-language">
-                  <a href="#" class="main-menu-item-link language" >
-                    <span class="menu-item-short-text">EN</span>
-                    <span class="menu-item-text">English</span>
-                  </a>
-                </li>
-                <li class="main-menu-item main-menu-footer">
-                    <div class="main-menu-item-link main-menu-item-link-footer">
-                        <a href="#" class="main-menu-newsletter-link" >Nieuwsbrief</a>
-                        <span class="main-menu-divider">|</span>
-                        <a href="#" class="main-menu-facebook-link" >Facebook</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!--/.main-nav-->
+        {% block custom_header %}
+        {% endblock %}
 
         <div class="l-wrapper">
 

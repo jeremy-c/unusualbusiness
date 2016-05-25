@@ -21,10 +21,14 @@ $tablet: 768px;
 $tablet-horizontal: 1024px;
 $boxed: 1100px;
 $desktop: 1440px;
-$sidebar: 270px;
 
 :root {
   --gutter: 34px;
+  --mobile: 480px;
+  --tablet: 768px;
+  --tablet-horizontal: 1024px;
+  --boxed: 1100px;
+  --desktop: 1440px;
   //--halfgutter: calc(var(--gutter) / 2);
 }
 
