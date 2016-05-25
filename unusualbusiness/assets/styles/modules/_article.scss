@@ -233,8 +233,10 @@
 .article-featured-image,
 .article-featured-audio {
   height: 360px;
+  @media(max-width: $tablet) {
+    height: inherit;
+  }
 }
-
 
 .article-featured-audio .responsive-object,
 .article-featured-video .responsive-object {
