@@ -109,11 +109,15 @@
   white-space: nowrap;
   overflow: hidden;
   width: calc(100% - 120px);
+
+  @media(max-width: $tablet) {
+    width: calc(100% - 50px);
+  }
 }
 
 .custom-header-social {
 
-  @media(max-width: $tablet) { 
+  @media(max-width: $tablet) {
     display: none;
   }
 
