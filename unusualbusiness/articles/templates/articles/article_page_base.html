@@ -10,35 +10,7 @@
 {% block body_class %}l-article-content{% endblock %}
 
 {% block custom_header %}
-    <header class="l-header custom-header">
-
-        <div class="custom-header-hamburger">
-            <a href="javascript: void(0);" class="custom-header-hamburger-button"></a>
-        </div>
-        <div class="custom-header-title">
-            {{ self.title }}
-        </div>
-        <div class="custom-header-social">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url|urlencode }}&ampdisplay=popup&ampref=plugin&src=share_button" class="facebook-link">
-                <svg class="facebook-icon white-icon" width="15.152px" height="32.433px" >
-                    <title>Facebook icon</title>
-                    <desc>Click to share on Facebook</desc>
-                    <use xlink:href="#facebook-icon" />
-                </svg>
-            </a>
-            <a href="https://twitter.com/home?status={{ page.title }} - (Un)usual Business" class="twitter-link">
-                <svg class="twitter-icon white-icon" width="34.198px" height="28.543px" >
-                    <title>Twitter icon</title>
-                    <desc>Click to share on Twitter</desc>
-                    <use xlink:href="#twitter-icon" />
-                </svg>
-            </a>
-        </div>
-        <div class="custom-header-hamburger-menu">
-            <a href="javascript: void(0);" class="custom-header-hamburger-menu-button"></a>
-        </div>
-    </header>
-    <!--/.l-header-->
+    {% include "blocks/custom-header.html" %}
 {% endblock %}
 
 {% block content %}
