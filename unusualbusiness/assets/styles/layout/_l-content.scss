@@ -10,7 +10,7 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
-  //display: none;
+
   .how-tos & {
     background-color: $light-gray;
   }
@@ -19,9 +19,9 @@
 .l-content {
   position: relative;
   margin: 0 $gutter;
-  padding-top: 78px;
+  padding-top: 85px; //78px;
     // .footer height + .main-nav height
-  min-height: calc(100vh - (50px + 78px));
+  min-height: calc(100vh - (50px + 85px)); //78px
 
   @media(max-width: $tablet) {
     margin: 0;
