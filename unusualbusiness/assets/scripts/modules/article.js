@@ -73,8 +73,12 @@ let Article = () => {
   };
 
   let initExternalLinks = function() {
-    $('a:external').attr('target', '_blank');
-    $('a:external').addClass('external-link');
+    $('a:external')
+        .attr('target', '_blank');
+    $('a:external')
+        .not('.facebook-link')
+        .not('.twitter-link')
+        .addClass('external-link');
   };
 
   let init = function() {
