@@ -31,15 +31,16 @@
 // Custom Header
 .custom-header {
   z-index: 190;
-
   height: 64px;
 
-  transition: all 0.2s ease-in;
+  transition: all 0.2s linear;
   animation-duration: .3s;
   animation-delay: 0s;
   animation-iteration-count: 1;
 
   @media(max-width: $tablet) {
+    box-sizing: border-box;
+    padding: 0 12px;
     height: 44px;
   }
 
@@ -63,16 +64,41 @@
 
 .custom-header-hamburger {
   width: 50px;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
 }
 
-.custom-header-hamburger-button {
+.custom-header-hamburger-button,
+.custom-header-hamburger-menu-button {
   @include sprite(hamburger-menu-white-icon);
   content: '';
-  padding-right: $gutter / 2;
 
   font-size: 23px;
   vertical-align: baseline;
   color: $white;
+}
+
+.custom-header-hamburger-button {
+  padding-right: 12px;
+}
+
+.custom-header-hamburger-menu {
+  display: none;
+
+  @media(max-width: $tablet) {
+    display: inherit;
+    border-left: solid 1px $white;
+    height: 100%;
+  }
+}
+
+.custom-header-hamburger-menu-button {
+  display: block;
+  margin-top: 12px;
+  margin-left: 12px;
+  width: 21px;
 }
 
 .custom-header-title {
@@ -87,4 +113,12 @@
 
 .custom-header-social {
 
+  @media(max-width: $tablet) { 
+    display: none;
+  }
+
+  .twitter-icon,
+  .facebook-icon {
+    height: 20px;
+  }
 }

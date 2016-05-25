@@ -11,7 +11,13 @@
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        {% block open_graph %}
+            <meta property="og:url"           content="{{ page.full_url }}" />
+            <meta property="og:type"          content="website" />
+            <meta property="og:title"         content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
+            <meta property="og:description"   content="(Un)usual Business aims to take democratic control over the common means of our lives and change the way we relate to each other. We envision a world in which economic and social relations are based on self-organization, care, solidarity and sustainability." />
+            <meta property="og:image"         content="{% static 'images/ub-logo.svg' %}" />
+        {% endblock %}
         <script type="text/javascript">
             WebFontConfig = {
                 google: {
@@ -192,6 +198,7 @@
         <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
         <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
         <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+{#        <script src="{% static 'bower_components/social-share-privacy-light/javascripts/socialshareprivacy.js' %}"></script>#}
 
         <!-- Polyfills -->
         <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>

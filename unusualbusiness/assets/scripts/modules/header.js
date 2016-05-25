@@ -42,8 +42,9 @@ let HeaderMenus = () => {
   };
 
   let initHeadroomJS = function() {
-    let customHeaderMenuButton = $('.custom-header-hamburger-button');
-    let header = $('.header');
+    let $customHeaderMenuButton = $('.custom-header-hamburger-button');
+    let $header = $('.header');
+    let $customHeader = $('.custom-header');
     let upcomingEventsHeight = $('.upcoming-related-events').height();
     let articleHeaderHeight = $('.article-header').height();
     let headerHeight = 85;
@@ -58,83 +59,53 @@ let HeaderMenus = () => {
     var customHeaderElement = document.querySelector(".custom-header");
 
     // construct an instance of Headroom, passing the element
-    var headroomHeader  = new Headroom(
+    let headroomCustomHeader;
+    let headroomHeader  = new Headroom(
         headerElement,
         {
-          // vertical offset in px before element is first unpinned
           offset : headroomOffset,
-          // or scroll tolerance per direction
           tolerance : {
             down : 10,
             up : 1000
           },
-          // element which is source of scroll events. Defaults to window
-          //scroller : element,
-          // css classes to apply
           "classes": {
             "initial": "animated",
             "pinned": "slideInDown",
             "unpinned": "slideOutUp"
           },
-          // callback when pinned, `this` is headroom object
           onPin : function() {
-              $('.custom-header').addClass('pin-custom-header-under-header');
+              $customHeader.addClass('pin-custom-header-under-header');
           },
-          // callback when unpinned, `this` is headroom object
           onUnpin : function() {
-              $('.custom-header').removeClass('pin-custom-header-under-header');
-          },
-          // callback when above offset, `this` is headroom object
-          onTop : function() {},
-          // callback when below offset, `this` is headroom object
-          onNotTop : function() {},
-          // callback at bottom of page, `this` is headroom object
-          onBottom : function() {},
-          // callback when moving away from bottom of page, `this` is headroom object
-          onNotBottom : function() {}
+              $customHeader.removeClass('pin-custom-header-under-header');
+          }
         }
     );
 
-    // construct an instance of Headroom, passing the element
-    var headroomCustomHeader  = new Headroom(
-        customHeaderElement,
-        {
-          // vertical offset in px before element is first unpinned
-          offset : headroomOffset,
-          // or scroll tolerance per direction
-          tolerance : {
-            down : 0,
-            up : 5000
-          },
-          // element which is source of scroll events. Defaults to window
-          //scroller : element,
-          // css classes to apply
-          "classes": {
-            "initial": "animated",
-            "pinned": "slideOutUp",
-            "unpinned": "slideInDown"
-          },
-          // callback when pinned, `this` is headroom object
-          onPin : function() {},
-          // callback when unpinned, `this` is headroom object
-          onUnpin : function() {},
-          // callback when above offset, `this` is headroom object
-          onTop : function() {},
-          // callback when below offset, `this` is headroom object
-          onNotTop : function() {},
-          // callback at bottom of page, `this` is headroom object
-          onBottom : function() {},
-          // callback when moving away from bottom of page, `this` is headroom object
-          onNotBottom : function() {}
+      if(customHeaderElement !== null) {
+        // construct an instance of Headroom, passing the element
+        headroomCustomHeader = new Headroom(
+            customHeaderElement,
+            {
+              offset : headroomOffset,
+              tolerance : {
+                down : 0,
+                up : 5000
+              },
+              "classes": {
+                "initial": "animated",
+                "pinned": "slideOutUp",
+                "unpinned": "slideInDown"
+              }
+            }
+        );
+        headroomCustomHeader.init();
       }
-    );
-
     // initialise
     headroomHeader.init();
-    headroomCustomHeader.init();
 
-    customHeaderMenuButton.on('click', function() {
-        if(header.hasClass('slideOutUp')) {
+    $customHeaderMenuButton.on('click', function() {
+        if($header.hasClass('slideOutUp')) {
             headroomCustomHeader.unpin();
             headroomHeader.pin();
         } else {
