@@ -12,6 +12,16 @@
 {% block content %}
     <article class="article">
 
+        {% if events %}
+            <section class="upcoming-related-events">
+                <ul class="upcoming-related-events-list">
+                    {% for event in events %}
+                        {% include "events/blocks/upcoming_related_event.html" %}
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
         <header class="article-header">
             <h1 class="article-header-title">
                 {% if self.seo_title %}
@@ -152,52 +162,16 @@
         </div>
     </section>
 
-    {% if organizations or events %}
-        <section class="in-this-story">
-            <div class="l-boxed l-related-section">
-                <h3 class="article-section-title" >In this story</h3>
-                <div class="l-flex">
-                    {% if organizations and organizations|first %}
-                        <section class="related-organizations">
-                            <h5 class="related-organizations-section-title" >Groups</h5>
-                            <ul class="related-organization-list l-grid">
-                                <li class="l-grid-sizer l-grid-sizer-full-width"></li>
-                                <li class="l-grid-gutter-sizer l-grid-gutter-sizer-empty"></li>
-                                {% for organization in organizations %}
-                                    {% include "organizations/blocks/latest_organization.html" with page=organization list_item_classes='l-grid-item l-grid-item-full-width l-grid-item-fixed-height' %}
-                                {% endfor %}
-                            </ul>
-                        </section>
-                    {% endif %}
-                    {% if events %}
-                    <section class="related-events">
-                        <h5 class="related-events-section-title" >Events</h5>
-                        <ul class="related-events-list l-grid">
-                            <li class="l-grid-sizer l-grid-sizer-full-width"></li>
-                            <li class="l-grid-gutter-sizer l-grid-gutter-sizer-empty"></li>
-                            {% for event in events %}
-                                {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item l-grid-item-full-width' %}
-                            {% endfor %}
-                        </ul>
-                    </section>
-                    {% endif %}
-                </div>
-            </div>
-        </section>
-    {% endif %}
-
-
-{##}
-{#    <section class="related-articles">#}
-{#        <div class="l-boxed l-related-section">#}
-{#            <h3 class="article-section-title" >See more</h3>#}
-{#            <ul class="">#}
-{#                {% for related_article in related_articles %}#}
-{#                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}#}
-{#                {% endfor %}#}
-{#            </ul>#}
-{#        </div>#}
-{#    </section>#}
+    <section class="related-articles">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >Read next:</h3>
+            <ul class="">
+                {% for related_article in related_articles %}
+                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 
 {% endblock %}
 

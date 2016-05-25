@@ -1,0 +1,15 @@
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+
+<li class="upcoming-related-event h-event">
+    <a href="{{ event.url }}" class="upcoming-related-event-link" >
+        <h4 class="l-upcoming-related-event-title p-name">{{ event.title|truncatechars:40 }}</h4>
+        <time class="l-upcoming-related-event-date horizontal-date horizontal-date-large dt-start"
+              datetime="{{ event.start_date|date:"SHORT_DATETIME_FORMAT" }}">
+            <div class="horizontal-date-day">{{ event.start_date|date:"D" }}</div>
+            <div class="horizontal-date-day-of-month">{{ event.start_date|date:"d" }}</div>
+            <div class="horizontal-date-month">{{ event.start_date|date:"m" }}</div>
+            <div class="horizontal-date-year">{{ event.start_date|date:"y" }}</div>
+            <div class="horizontal-date-time">{{ event.start_date|time:"H:i" }}</div>
+        </time>
+    </a>
+</li>

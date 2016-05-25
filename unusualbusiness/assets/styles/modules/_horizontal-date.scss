@@ -1,0 +1,120 @@
+/* ==|====================
+   Module/Horizontal Date
+   ======================= */
+
+.horizontal-date {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: space-between;
+}
+
+.horizontal-date-element {
+  padding: 0 $gutter / 2;
+  width: 100%;
+  text-align: center;
+  font-family: $open-sans;
+  font-weight: bold;
+  color: $white;
+
+  @media(max-width: $tablet) {
+    padding: 0 10px;
+    width: auto;
+    font-size: 20px;
+  }
+
+}
+
+.horizontal-date-day {
+  @extend .horizontal-date-element;
+
+  border-right: solid 1px $light-gray;
+
+  font-weight: normal;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
+
+.horizontal-date-day-of-month {
+  @extend .horizontal-date-element;
+  flex: 2;
+}
+
+.horizontal-date-month {
+  @extend .horizontal-date-element;
+  flex: 2;
+}
+
+.horizontal-date-year {
+  @extend .horizontal-date-element;
+  flex: 1;
+}
+
+.horizontal-date-time {
+  @extend .horizontal-date-element;
+
+  padding-right: 0;
+  border-left: solid 1px $light-gray;
+
+  font-size: 14px;
+  font-weight: normal;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
+
+.horizontal-date-large {
+  font-size: 26px;
+
+  .horizontal-date-time,
+  .horizontal-date-day {
+    font-size: 14px;
+    line-height: 37px;
+    text-transform: uppercase;
+  }
+
+  @media(max-width: $tablet) {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+.horizontal-date-small {
+
+  .horizontal-date-day {
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+
+  .horizontal-date-day-of-month {
+    font-size: 20px;
+  }
+
+  .horizontal-date-month {
+    font-size: 20px;
+  }
+
+  .horizontal-date-year {
+    font-size: 20px;
+  }
+}
+
+.horizontal-date-smaller {
+  .horizontal-date-day {
+    display: none;
+  }
+
+  .horizontal-date-day-of-month,
+  .horizontal-date-month,
+  .horizontal-date-year {
+    padding: 0 0 4px 0;
+  }
+
+  .horizontal-date-year {
+    padding-bottom: 0;
+  }
+}
+
