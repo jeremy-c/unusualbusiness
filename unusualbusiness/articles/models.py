@@ -196,47 +196,58 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         return self.__featured_item('featured_video')
 
 
-class StoryArticlePage(Page, AbstractArticle):
-    parent_page_types = ['articles.StoryArticleIndexPage']
-    subpage_types = []
+class AbstractHowToArticleMixin(object):
+    def __init__(self):
+        pass
 
-    tags = ClusterTaggableManager(through=StoryArticlePageTag, blank=True)
-
-    class Meta:
-        verbose_name = _("Story")
-        verbose_name_plural = _("Stories")
-
-    def how_tos(self):
+    def related_how_tos(self):
         return [related_how_to_page.how_to_page
                    for related_how_to_page
                    in self.how_to_page.select_related().all()]
 
-    def story_article_pages(self, how_tos=None):
-        if how_tos is None:
-            how_tos = self.how_tos()
+    def related_how_to_story_articles(self, related_how_tos=None):
+        if related_how_tos is None:
+            related_how_tos = self.related_how_tos()
 
-        related_story_pages = [how_to_page.story_pages()
-                                  for how_to_page
-                                  in how_tos]
+        how_to_story_articles_list = []
+        for related_how_to in related_how_tos:
+            how_to_story_articles = related_how_to.story_pages()
+            self_idx = None
 
-        story_article_pages = []
-        for related_story_page in related_story_pages:
-            story_article_pages.append(related_story_page.first().article)
+            for idx, story in enumerate(how_to_story_articles):
+                if story.id is self.id:
+                    self_idx = idx
 
-        return story_article_pages
+            previous_article_idx = self_idx - 1
+            next_article_idx = self_idx + 1
+            previous_article = None
+            next_article = None
 
-    def event_pages(self, how_tos=None):
-        if how_tos is None:
-            how_tos = self.how_tos()
+            if 0 <= previous_article_idx < len(how_to_story_articles):
+                previous_article = how_to_story_articles[previous_article_idx]
+
+            if 0 <= next_article_idx < len(how_to_story_articles):
+                next_article = how_to_story_articles[next_article_idx]
+
+            how_to_story_articles_list.append({
+                related_how_to,
+                (previous_article, next_article)
+            })
+
+        return how_to_story_articles_list
+
+    def upcoming_related_event_pages(self, related_how_tos=None):
+        if related_how_tos is None:
+            related_how_tos = self.related_how_tos()
 
         how_to_events = [how_to_page.events()
                  for how_to_page
-                 in how_tos]
+                 in related_how_tos]
 
         event_pages = []
         for how_to_event in how_to_events:
             how_to_event = how_to_event.first()
-            if how_to_event:
+            if how_to_event and how_to_event.event.is_upcoming:
                 event_pages.append(how_to_event.event)
 
         return event_pages
@@ -246,19 +257,25 @@ class StoryArticlePage(Page, AbstractArticle):
                             for related_organization
                             in self.organizations.select_related().all()]
 
+
+class StoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
+    parent_page_types = ['articles.StoryArticleIndexPage']
+    subpage_types = []
+
+    tags = ClusterTaggableManager(through=StoryArticlePageTag, blank=True)
+
+    class Meta:
+        verbose_name = _("Story")
+        verbose_name_plural = _("Stories")
+
     def get_context(self, request):
         context = super(StoryArticlePage, self).get_context(request)
-        # Add extra variables and return the updated context
 
-        how_tos = self.how_tos()
-        story_article_pages = self.story_article_pages(how_tos)
-        event_pages = self.event_pages(how_tos)
-        organizations = self.related_organizations()
+        related_how_tos = self.related_how_tos()
 
-        context['organizations'] = organizations
-        context['events'] = event_pages
-        context['how_tos'] = how_tos
-        context['related_articles'] = story_article_pages
+        context['how_tos'] = related_how_tos
+        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['related_how_to_story_articles'] = self.related_how_to_story_articles(related_how_tos)
 
         return context
 
@@ -273,8 +290,6 @@ StoryArticlePage.content_panels = Page.content_panels + [
         InlinePanel('organizations', label=_("Organizations")),
         FieldPanel('tags'),
     ]
-
-
 
 StoryArticlePage.promote_panels = Page.promote_panels
 
@@ -315,7 +330,7 @@ class StoryArticlePageOrganization(Orderable, models.Model):
         return self.story_article_page.title + " -> " + self.organization_page.title
 
 
-class TheoryArticlePage(Page, AbstractArticle):
+class TheoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
     ajax_template = 'articles/blocks/inline_theory_article.html'
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []

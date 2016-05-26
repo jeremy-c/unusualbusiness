@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-import datetime
+from datetime import date
 
 from django.db import models
 from django.utils.translation import ugettext as _
@@ -131,7 +131,15 @@ class EventPage(Page, RenderInlineMixin):
     parent_page_types = ['articles.ActivityIndexPage']
     subpage_types = []
 
-    # Methods
+    # Properties
+
+    @property
+    def is_upcoming(self):
+        if self.start_date.date() >= date.today():
+            return True
+        return False
+
+    # Static Methods
     @staticmethod
     def upcoming_events():
-        return EventPage.objects.live().filter(start_date__gt=datetime.datetime.now())
+        return EventPage.objects.live().filter(start_date__gte=date.today())

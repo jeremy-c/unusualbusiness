@@ -83,12 +83,16 @@ class HowToPage(Page):
         return theory_article_pages
 
     def story_pages(self, tag=None):
+        story_pages = []
         story_article_pages = self.story_article_pages.all()
 
         if tag:
             story_article_pages = story_article_pages.filter(tags__name=tag)
 
-        return story_article_pages
+        for story_article_page in story_article_pages:
+            story_pages.append(story_article_page.article)
+
+        return story_pages
 
     def organizations(self, tag=None):
         organization_pages = self.organization_pages.all()

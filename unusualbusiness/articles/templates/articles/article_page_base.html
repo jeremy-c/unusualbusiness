@@ -16,10 +16,10 @@
 {% block content %}
     <article class="article">
 
-        {% if events %}
+        {% if upcoming_related_events %}
             <section class="upcoming-related-events">
                 <ul class="upcoming-related-events-list">
-                    {% for event in events %}
+                    {% for event in upcoming_related_events %}
                         {% include "events/blocks/upcoming_related_event.html" %}
                     {% endfor %}
                 </ul>
@@ -155,26 +155,34 @@
 
     </article>
 
+    {% if related_how_tos %}
     <section class="related-howtos">
         <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >This story is part of:</h3>
             <ul class="l-columns">
-                {% for how_to in how_tos %}
+                {% for how_to in related_how_tos %}
                     {% include "howtos/blocks/related_howto.html" %}
                 {% endfor %}
             </ul>
         </div>
     </section>
+    {% endif %}
 
+    {% if related_how_to_story_articles %}
     <section class="related-articles">
         <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >Read next:</h3>
             <ul class="">
-                {% for related_article in related_articles %}
-                    {% include "articles/blocks/latest_story_article.html" with page=related_article list_item_classes="l-grid-item-full-width" %}
+                {% for articles, how_to in related_how_to_story_articles %}
+                    {% for article in articles %}
+                        {%  if article %}
+                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes="l-grid-item-full-width" %}
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
             </ul>
         </div>
     </section>
+    {% endif %}
 
 {% endblock %}

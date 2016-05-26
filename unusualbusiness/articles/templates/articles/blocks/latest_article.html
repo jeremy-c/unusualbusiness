@@ -21,9 +21,9 @@
             {% include "blocks/responsive_image.html" with image=page.featured_image.value.image image_class="latest-article-image"  %}
         {% endblock %}
     </a>
-    <div class="latest-article-how-to">
-        {% for how_to in page.how_tos %}
+    {% if how_to %}
+        <div class="latest-article-how-to">
             <a href="{{ how_to.url }}">{{ how_to.title }}</a>
-        {% endfor %}
-    </div>
+        </div>
+    {% endif %}
 </li>
