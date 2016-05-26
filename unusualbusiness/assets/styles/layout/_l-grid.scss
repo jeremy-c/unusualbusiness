@@ -68,6 +68,14 @@
   width: 100%;
 }
 
+.l-grid-item-half-width {
+  width: calc(50%);
+
+  @media(max-width: $tablet-horizontal) {
+    width: 100%;
+  }
+}
+
 .l-grid-item-fixed-height {
   height: 73px;
 

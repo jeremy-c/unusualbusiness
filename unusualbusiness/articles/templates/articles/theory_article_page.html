@@ -1,3 +1,41 @@
 {% extends "articles/article_page_base.html" %}
 
 {% block body_class %}theory-article {{ block.super }}{% endblock %}
+
+
+{%  block tableofcontents %}
+    <section class="article-table-of-contents">
+        <a href="" class="toggle-toc-link">
+            <svg width="25.178px" height="20.185px"  class="toc-icon" >
+                <title>Table of Contents icon</title>
+                <desc>Click to open Table of Contents</desc>
+                <use xlink:href="#toc-icon" />
+            </svg>
+        </a>
+        <ul class="toc-list is-visuallyhidden">
+            {% for block in page.body %}
+
+                {% if block.block_type == 'chapter' %}
+                    <li class="toc-list-item toc-{{ block.block_type }}">
+                        <a class="toc-link" href="#{{ block.value.chapter_name|slugify }}">
+                            {{ block.value.chapter_name }}
+                        </a>
+                    </li>
+                {% elif block.block_type == 'section' %}
+                    <li class="toc-list-item toc-{{ block.block_type }}">
+                        <a class="toc-link" href="#{{ block.value.section_name|slugify }}">
+                            {{ block.value.section_name }}
+                        </a>
+                    </li>
+                {% elif block.block_type == 'subsection' %}
+                    <li class="toc-list-item toc-{{ block.block_type }}">
+                        <a class="toc-link" href="#{{ block.value.subsection_name|slugify }}">
+                            {{ block.value.subsection_name }}
+                        </a>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -205,36 +205,55 @@ class AbstractHowToArticleMixin(object):
                    for related_how_to_page
                    in self.how_to_page.select_related().all()]
 
+    def related_how_to_theory_articles(self, related_how_tos=None):
+        if related_how_tos is None:
+            related_how_tos = self.related_how_tos()
+
+        related_how_to_theory_articles = []
+        for related_how_to in related_how_tos:
+            how_to_articles = related_how_to.theory_pages()
+            related_story_articles = self.related_how_to_articles(how_to_articles)
+            related_how_to_theory_articles.append({
+                related_how_to,
+                related_story_articles
+            })
+
+        return related_how_to_theory_articles
+
     def related_how_to_story_articles(self, related_how_tos=None):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
 
-        how_to_story_articles_list = []
+        related_how_to_story_articles = []
         for related_how_to in related_how_tos:
-            how_to_story_articles = related_how_to.story_pages()
-            self_idx = None
-
-            for idx, story in enumerate(how_to_story_articles):
-                if story.id is self.id:
-                    self_idx = idx
-
-            previous_article_idx = self_idx - 1
-            next_article_idx = self_idx + 1
-            previous_article = None
-            next_article = None
-
-            if 0 <= previous_article_idx < len(how_to_story_articles):
-                previous_article = how_to_story_articles[previous_article_idx]
-
-            if 0 <= next_article_idx < len(how_to_story_articles):
-                next_article = how_to_story_articles[next_article_idx]
-
-            how_to_story_articles_list.append({
+            how_to_articles = related_how_to.story_pages()
+            related_story_articles = self.related_how_to_articles(how_to_articles)
+            related_how_to_story_articles.append({
                 related_how_to,
-                (previous_article, next_article)
+                related_story_articles
             })
 
-        return how_to_story_articles_list
+        return related_how_to_story_articles
+
+    def related_how_to_articles(self, how_to_articles):
+        self_idx = None
+
+        for idx, story in enumerate(how_to_articles):
+            if story.id is self.id:
+                self_idx = idx
+
+        previous_article_idx = self_idx - 1
+        next_article_idx = self_idx + 1
+        previous_article = None
+        next_article = None
+
+        if 0 <= previous_article_idx < len(how_to_articles):
+            previous_article = how_to_articles[previous_article_idx]
+
+        if 0 <= next_article_idx < len(how_to_articles):
+            next_article = how_to_articles[next_article_idx]
+
+        return (previous_article, next_article)
 
     def upcoming_related_event_pages(self, related_how_tos=None):
         if related_how_tos is None:
@@ -273,9 +292,9 @@ class StoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
 
         related_how_tos = self.related_how_tos()
 
-        context['how_tos'] = related_how_tos
+        context['related_how_tos'] = related_how_tos
         context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
-        context['related_how_to_story_articles'] = self.related_how_to_story_articles(related_how_tos)
+        context['related_how_to_articles'] = self.related_how_to_story_articles(related_how_tos)
 
         return context
 
@@ -340,6 +359,17 @@ class TheoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
     class Meta:
         verbose_name = _("Theory")
         verbose_name_plural = _("Theories")
+
+    def get_context(self, request):
+        context = super(TheoryArticlePage, self).get_context(request)
+
+        related_how_tos = self.related_how_tos()
+
+        context['related_how_tos'] = related_how_tos
+        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['related_how_to_articles'] = self.related_how_to_theory_articles(related_how_tos)
+
+        return context
 
 TheoryArticlePage.content_panels = Page.content_panels + [
         FieldPanel('is_featured'),

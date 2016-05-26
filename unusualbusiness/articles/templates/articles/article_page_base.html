@@ -168,15 +168,19 @@
     </section>
     {% endif %}
 
-    {% if related_how_to_story_articles %}
+    {% if related_how_to_articles %}
     <section class="related-articles">
         <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >Read next:</h3>
-            <ul class="">
-                {% for articles, how_to in related_how_to_story_articles %}
+            <ul class="l-grid">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+                {% for articles, how_to in related_how_to_articles %}
                     {% for article in articles %}
-                        {%  if article %}
-                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes="l-grid-item-full-width" %}
+                        {% if article and article.content_type.model == 'storyarticlepage' %}
+                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
+                        {% elif article and article.content_type.model == 'theoryarticlepage' %}
+                            {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
                         {% endif %}
                     {% endfor %}
                 {% endfor %}

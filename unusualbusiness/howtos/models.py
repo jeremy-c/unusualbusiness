@@ -75,12 +75,16 @@ class HowToPage(Page):
         verbose_name_plural = _("How to's")
 
     def theory_pages(self, tag=None):
-        theory_article_pages= self.theory_article_pages.all()
+        theory_pages = []
+        theory_article_pages = self.theory_article_pages.all()
 
         if tag:
             theory_article_pages = theory_article_pages.filter(tags__name=tag)
 
-        return theory_article_pages
+        for theory_article_page in theory_article_pages:
+            theory_pages.append(theory_article_page.article)
+
+        return theory_pages
 
     def story_pages(self, tag=None):
         story_pages = []
@@ -119,9 +123,9 @@ class HowToPage(Page):
 
         if self.organizations().count() > 0:
             circles += 'black'
-        if self.story_pages().count() > 0:
+        if len(self.story_pages()) > 0:
             circles += ' yellow'
-        if self.theory_pages().count() > 0:
+        if len(self.theory_pages()) > 0:
             circles += ' green'
         if self.events().count() > 0:
             circles += ' blue'
