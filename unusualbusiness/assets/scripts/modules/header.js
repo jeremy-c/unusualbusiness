@@ -45,14 +45,23 @@ let HeaderMenus = () => {
     let $customHeaderMenuButton = $('.custom-header-hamburger-button');
     let $header = $('.header');
     let $customHeader = $('.custom-header');
-    let upcomingEventsHeight = $('.upcoming-related-events').height();
+    let $upcomingEventsElement = $('.upcoming-related-events');
+
     let articleHeaderHeight = $('.article-header').height();
-    let headerHeight = 85;
+    let articleSubHeaderHeight = $('.article-subheader').height();
+    let headerHeight = $header.height();
+    let gutter = 34;
+
+    let upcomingEventsHeight = 0;
+    if( $upcomingEventsElement.length )
+        upcomingEventsHeight = $upcomingEventsElement.height();
+
     const headroomOffset =
         upcomingEventsHeight +
         articleHeaderHeight +
-        headerHeight -
-        15;
+        headerHeight +
+        articleSubHeaderHeight -
+        gutter;
 
     // grab an element
     var headerElement = document.querySelector(".header");
