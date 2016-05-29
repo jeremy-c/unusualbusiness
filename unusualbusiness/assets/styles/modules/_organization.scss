@@ -4,19 +4,22 @@
 
 @import "../base/base";
 
-.l-pull-right,
-.l-pull-left,
-.l-full-width {
-  padding: 0 0 $gutter;
-}
+.organization {
+ .l-pull-right,
+ .l-pull-left,
+ .l-full-width {
+   padding: 0 0 $gutter;
+ }
 
-.l-full-width {
-  margin-bottom: 0;
+ .l-full-width {
+    margin-bottom: 0;
+  }
 }
 
 .organization-meta-top {
   border-top: solid 10px $black;
 }
+
 
 .organization-date-founded,
 .organization-amount-of-members,
@@ -40,11 +43,11 @@
   text-align: center;
 }
 
-.organization-meta-bottom {
+.organization .organization-meta-bottom {
   margin: $gutter 0;
   border-top: solid 10px $black;
   border-bottom: solid 10px $black;
-  padding: $gutter $gutter 0;
+  padding: $gutter;
 
   font-family: $open-sans;
   font-size: 18px;
@@ -96,7 +99,7 @@
 
 }
 
-.organization-leaflet-map {
+.organization-map {
   margin-bottom: $gutter;
   height: 360px;
   width: 100%;
