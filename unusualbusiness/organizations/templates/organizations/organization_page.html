@@ -157,7 +157,7 @@
     {% if related_how_tos %}
     <section class="related-howtos">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >This story is part of:</h3>
+            <h3 class="article-section-title" >This practitioner has been featured in:</h3>
             <ul class="l-columns">
                 {% for how_to in related_how_tos %}
                     {% include "howtos/blocks/related_howto.html" %}
@@ -167,21 +167,15 @@
     </section>
     {% endif %}
 
-    {% if related_how_to_articles %}
+    {% if related_story_articles %}
     <section class="related-articles">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Read next:</h3>
+            <h3 class="article-section-title" >Practitioner stories:</h3>
             <ul class="l-grid">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
-                {% for articles, how_to in related_how_to_articles %}
-                    {% for article in articles %}
-                        {% if article and article.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
-                        {% elif article and article.content_type.model == 'theoryarticlepage' %}
-                            {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
-                        {% endif %}
-                    {% endfor %}
+                {% for article in related_story_articles %}
+                    {% include "articles/blocks/latest_story_article.html" with page=article list_item_classes='l-grid-item-full-width' %}
                 {% endfor %}
             </ul>
         </div>

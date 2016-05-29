@@ -84,3 +84,15 @@
 .organization-twitter {
 
 }
+
+.l-pull-right,
+.l-pull-left,
+.l-full-width {
+  @media(max-width: $tablet-horizontal) {
+    padding-top: inherit;
+  }
+
+  @media(max-width: $tablet) {
+    padding: inherit;
+  }
+}

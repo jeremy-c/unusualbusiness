@@ -15,7 +15,6 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
-from unusualbusiness.articles.models import TheoryArticlePage, StoryArticlePage, NewsArticlePage
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import HowToPageTag
@@ -241,4 +240,3 @@ class HowToIndexPage(Page):
         context['parent'] = self.get_parent()
         context['upcoming_events'] = EventPage.upcoming_events()
         return context
-

@@ -14,10 +14,10 @@ from wagtail.wagtailsearch import index
 from wagtail_modeltranslation.models import TranslationMixin
 
 from unusualbusiness.tags.models import OrganizationPageTag
-from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
+from unusualbusiness.utils.models import RenderInlineMixin, PageFormat, RelatedHowToMixin
 
 
-class OrganizationPage(Page, RenderInlineMixin):
+class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
     ajax_template = 'organizations/blocks/inline_organization.html'
     format = models.CharField(
         verbose_name=_('page_format'),
@@ -89,6 +89,23 @@ class OrganizationPage(Page, RenderInlineMixin):
     class Meta:
         verbose_name = _("Practitioner")
         verbose_name_plural = _("Practitioners")
+
+    def related_story_articles(self):
+        return [related_story_article_page.story_article_page
+                    for related_story_article_page
+                    in self.story_article_page.select_related().all()]
+
+    def get_context(self, request):
+        context = super(OrganizationPage, self).get_context(request)
+
+        related_how_tos = self.related_how_tos()
+
+        context['related_how_tos'] = related_how_tos
+        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        # context['related_story_articles'] = StoryArticlePage.related_stories(self)
+        context['related_story_articles'] = self.related_story_articles()
+
+        return context
 
     parent_page_types = ['organizations.OrganizationIndexPage']
     subpage_types = []

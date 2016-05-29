@@ -18,7 +18,7 @@ from wagtail.wagtailsearch import index
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
-from unusualbusiness.utils.models import PageFormat, RenderInlineMixin
+from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin
 
 
 class TheoryArticleIndexPage(Page):
@@ -196,88 +196,7 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         return self.__featured_item('featured_video')
 
 
-class AbstractHowToArticleMixin(object):
-    def __init__(self):
-        pass
-
-    def related_how_tos(self):
-        return [related_how_to_page.how_to_page
-                   for related_how_to_page
-                   in self.how_to_page.select_related().all()]
-
-    def related_how_to_theory_articles(self, related_how_tos=None):
-        if related_how_tos is None:
-            related_how_tos = self.related_how_tos()
-
-        related_how_to_theory_articles = []
-        for related_how_to in related_how_tos:
-            how_to_articles = related_how_to.theory_pages()
-            related_story_articles = self.related_how_to_articles(how_to_articles)
-            related_how_to_theory_articles.append({
-                related_how_to,
-                related_story_articles
-            })
-
-        return related_how_to_theory_articles
-
-    def related_how_to_story_articles(self, related_how_tos=None):
-        if related_how_tos is None:
-            related_how_tos = self.related_how_tos()
-
-        related_how_to_story_articles = []
-        for related_how_to in related_how_tos:
-            how_to_articles = related_how_to.story_pages()
-            related_story_articles = self.related_how_to_articles(how_to_articles)
-            related_how_to_story_articles.append({
-                related_how_to,
-                related_story_articles
-            })
-
-        return related_how_to_story_articles
-
-    def related_how_to_articles(self, how_to_articles):
-        self_idx = None
-
-        for idx, story in enumerate(how_to_articles):
-            if story.id is self.id:
-                self_idx = idx
-
-        previous_article_idx = self_idx - 1
-        next_article_idx = self_idx + 1
-        previous_article = None
-        next_article = None
-
-        if 0 <= previous_article_idx < len(how_to_articles):
-            previous_article = how_to_articles[previous_article_idx]
-
-        if 0 <= next_article_idx < len(how_to_articles):
-            next_article = how_to_articles[next_article_idx]
-
-        return (previous_article, next_article)
-
-    def upcoming_related_event_pages(self, related_how_tos=None):
-        if related_how_tos is None:
-            related_how_tos = self.related_how_tos()
-
-        how_to_events = [how_to_page.events()
-                 for how_to_page
-                 in related_how_tos]
-
-        event_pages = []
-        for how_to_event in how_to_events:
-            how_to_event = how_to_event.first()
-            if how_to_event and how_to_event.event.is_upcoming:
-                event_pages.append(how_to_event.event)
-
-        return event_pages
-
-    def related_organizations(self):
-        return [related_organization.organization_page
-                            for related_organization
-                            in self.organizations.select_related().all()]
-
-
-class StoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
+class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
 
@@ -287,6 +206,11 @@ class StoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
         verbose_name = _("Story")
         verbose_name_plural = _("Stories")
 
+    def related_organizations(self):
+        return [related_organization.organization_page
+                    for related_organization
+                    in self.organizations.select_related().all()]
+
     def get_context(self, request):
         context = super(StoryArticlePage, self).get_context(request)
 
@@ -294,7 +218,7 @@ class StoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
 
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
-        context['related_how_to_articles'] = self.related_how_to_story_articles(related_how_tos)
+        context['related_how_to_articles'] = self.related_how_to_story_articles(related_how_tos, self.id)
 
         return context
 
@@ -349,7 +273,7 @@ class StoryArticlePageOrganization(Orderable, models.Model):
         return self.story_article_page.title + " -> " + self.organization_page.title
 
 
-class TheoryArticlePage(Page, AbstractArticle, AbstractHowToArticleMixin):
+class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     ajax_template = 'articles/blocks/inline_theory_article.html'
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
@@ -487,4 +411,3 @@ class AuthorIndexPage(Page):
         context['authors'] = AuthorPage.objects.all().live()
         context['parent'] = self.get_parent()
         return context
-
