@@ -4,15 +4,28 @@
 
 @import "../base/base";
 
+.organization {
+ .l-pull-right,
+ .l-pull-left,
+ .l-full-width {
+   padding: 0 0 $gutter;
+ }
+
+ .l-full-width {
+    margin-bottom: 0;
+  }
+}
 
 .organization-meta-top {
   border-top: solid 10px $black;
 }
 
+
 .organization-date-founded,
 .organization-amount-of-members,
 .organization-city {
   flex: 1;
+  padding: $gutter $gutter 0;
 }
 
 .meta-label {
@@ -34,6 +47,7 @@
   margin: $gutter 0;
   border-top: solid 10px $black;
   border-bottom: solid 10px $black;
+  padding: $gutter $gutter 0;
 
   font-family: $open-sans;
   font-size: 18px;
@@ -85,14 +99,4 @@
 
 }
 
-.l-pull-right,
-.l-pull-left,
-.l-full-width {
-  @media(max-width: $tablet-horizontal) {
-    padding-top: inherit;
-  }
 
-  @media(max-width: $tablet) {
-    padding: inherit;
-  }
-}
