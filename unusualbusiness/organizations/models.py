@@ -76,6 +76,10 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name = _("Facebook"),
         blank=True
     )
+    twitter = models.URLField(
+        verbose_name = _("Twitter"),
+        blank=True
+    )
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name = _("Featured image"),
@@ -138,6 +142,7 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('email'),
         FieldPanel('website'),
         FieldPanel('facebook'),
+        FieldPanel('twitter'),
         ImageChooserPanel('featured_image'),
         FieldPanel('tags'),
     ]
