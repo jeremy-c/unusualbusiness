@@ -291,7 +291,7 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
 
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
-        context['related_how_to_articles'] = self.related_how_to_theory_articles(related_how_tos)
+        context['related_how_to_articles'] = self.related_how_to_theory_articles(related_how_tos, self.id)
 
         return context
 
