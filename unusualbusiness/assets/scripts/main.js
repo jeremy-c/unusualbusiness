@@ -12,6 +12,7 @@ import FeaturedAgenda from './modules/featured-agenda';
 import FeaturedArticles from './modules/featured-articles';
 import FeaturedJournal from './modules/featured-journal';
 import HeaderMenus from './modules/header';
+import Organization from './modules/organization';
 
 (function() {
   console.log('Main: go!');
@@ -22,7 +23,7 @@ import HeaderMenus from './modules/header';
              && !obj.href.match(/^javascript\:/)
              && !obj.href.match(/^$/)
   };
-  
+
   $(document).ready(function() {
     console.log('Main: Document ready go!');
 
@@ -33,6 +34,7 @@ import HeaderMenus from './modules/header';
     let featuredArticles = FeaturedArticles();
     let featuredJournal = FeaturedJournal();
     let headerMenus = HeaderMenus();
+    let organization = Organization();
 
     grid.init();
     mobileMenu.init();
@@ -41,6 +43,7 @@ import HeaderMenus from './modules/header';
     featuredArticles.init();
     featuredJournal.init();
     headerMenus.init();
+    organization.init();
   });
 
   $(window).ready(function() {
