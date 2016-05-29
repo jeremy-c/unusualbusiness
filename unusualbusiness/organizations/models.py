@@ -29,9 +29,9 @@ class OrganizationPage(Page, RenderInlineMixin):
         verbose_name = _("Is Featured on home page"),
         default=False
     )
-    description = models.CharField(
-        verbose_name = _("Description"),
-        max_length=512,
+    description = models.TextField(
+        verbose_name=_("Description"),
+        max_length=1024,
         blank=True
     )
     date_founded = models.DateField(
@@ -44,14 +44,28 @@ class OrganizationPage(Page, RenderInlineMixin):
         null=True,
         blank=True
     )
-    # This should probably be a specific geolocation field:
-    location = models.CharField(
-        verbose_name = _("Location"),
-        max_length=512,
+    address = models.CharField(
+        verbose_name=_("Address"),
+        max_length=128,
+        blank=True
+    )
+    postal_code = models.CharField(
+        verbose_name=_("Postal code"),
+        max_length=8,
+        blank=True
+    )
+    city = models.CharField(
+        verbose_name=_("City"),
+        max_length=64,
+        blank=True
+    )
+    country = models.CharField(
+        verbose_name=_("Country"),
+        max_length=64,
         blank=True
     )
     email = models.EmailField(
-        verbose_name = _("Email"),
+        verbose_name=_("Email"),
         blank=True
     )
     website = models.URLField(
@@ -72,6 +86,10 @@ class OrganizationPage(Page, RenderInlineMixin):
     )
     tags = ClusterTaggableManager(through=OrganizationPageTag, blank=True)
 
+    class Meta:
+        verbose_name = _("Practitioner")
+        verbose_name_plural = _("Practitioners")
+
     parent_page_types = ['organizations.OrganizationIndexPage']
     subpage_types = []
 
@@ -81,6 +99,8 @@ class OrganizationPage(Page, RenderInlineMixin):
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
         index.FilterField('date_founded'),
+        index.FilterField('city'),
+        index.FilterField('country'),
         index.RelatedFields('story_article_page', [
             index.SearchField('title'),
         ]),
@@ -92,7 +112,10 @@ class OrganizationPage(Page, RenderInlineMixin):
         FieldPanel('is_featured'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
-        FieldPanel('location'),
+        FieldPanel('address'),
+        FieldPanel('postal_code'),
+        FieldPanel('city'),
+        FieldPanel('country'),
         FieldPanel('date_founded'),
         FieldPanel('amount_of_members'),
         FieldPanel('email'),

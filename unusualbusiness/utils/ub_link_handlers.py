@@ -112,7 +112,7 @@ class UBMarkdownHandler(object):
             return ''
         else:
             element_id = "article-footnote-{id}".format(id=id)
-            element_classes = 'l-pull-left article-inline article-inline-footnote is-visuallyhidden'
+            element_classes = 'l-body-article-pull-left article-inline article-inline-footnote is-visuallyhidden'
             return '<span class="{element_classes}" id="{element_id}">{body}</span>'.format(
                 element_id=element_id,
                 element_classes=element_classes,

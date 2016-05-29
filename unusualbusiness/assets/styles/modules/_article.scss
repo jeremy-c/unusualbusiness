@@ -26,7 +26,8 @@
     min-height: inherit;
   }
 
-  .news-article & {
+  .news-article &,
+  .event & {
     background-color: $blue;
   }
 
@@ -36,6 +37,10 @@
 
   .story-article & {
     background-color: $yellow;
+  }
+
+  .organization & {
+    background-color: $black;
   }
 }
 
@@ -335,23 +340,9 @@
 }
 
 .article-body {
-  box-sizing: border-box;
-  margin: 0 0 0 auto;
-  padding: $gutter;
-  width: 100%;
-  max-width: $tablet;
-
   font-size: 18px;
   font-weight: 300;
   line-height: 32px;
-
-  @media(max-width: $tablet-horizontal) {
-    padding-top: 0;
-  }
-
-  @media(max-width: $tablet) {
-    padding: 0;
-  }
 
   p {
     position: relative;

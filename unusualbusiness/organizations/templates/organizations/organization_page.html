@@ -1,54 +1,191 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
-{% block body_class %}template-organization-page{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body_class %}organization{% endblock %}
 
 {% block custom_header %}
     {% include "blocks/custom-header.html" %}
 {% endblock %}
 
 {% block content %}
+    <article class="article">
 
-    <div class="image">
-        {% image page.featured_image width-400 %}
-    </div>
+        {% if upcoming_related_events %}
+            <section class="upcoming-related-events">
+                <ul class="upcoming-related-events-list">
+                    {% for event in upcoming_related_events %}
+                        {% include "events/blocks/upcoming_related_event.html" %}
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
 
-    <div class="publication-date">
-        <label>{% trans "Founded:" %}</label>
-        <span>{{ page.date_founded }}</span>
-    </div>
+        <header class="article-header">
+            <h1 class="article-header-title">
+                {% if self.seo_title %}
+                    {{ self.seo_title }}
+                {% else %}
+                    {{ self.title }}
+                {% endif %}
+                {% if self.subtitle %}
+                    <div class="article-header-subtitle">
+                        {{ self.subtitle }}
+                    </div>
+                {% endif %}
+            </h1>
 
-    <div class="amount-of-members">
-        <label>{% trans "Amount of members:" %}</label>
-        <span>{{ page.amount_of_members }}</span>
-    </div>
+            <div class="article-header-meta">
+                <div class="article-header-format">
+                    <svg width="32px" height="32px" class="article-format-icon organization-icon white-icon" >
+                      <use xlink:href="#organization-icon" />
+                    </svg>
+                </div>
+                <div class="article-header-publication-date">
+                    Collective
+                </div>
+            </div>
+        </header>
 
-    <div class="location">
-        <label>{% trans "Location:" %}</label>
-        <span>{{ page.location }}</span>
-    </div>
+        <div class="article-subheader">
+            <div class="article-subheader-back-links">
+                <a href="javascript:window.history.back();" class="back-link">All {% get_verbose_name_plural self %} </a>
+            </div>
+            <div class="article-subheader-social-links">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button" class="facebook-link">
+                    <svg class="facebook-icon" width="15.152px" height="32.433px" >
+                        <title>Facebook icon</title>
+                        <desc>Click to share on Facebook</desc>
+                        <use xlink:href="#facebook-icon" />
+                    </svg>
+                </a>
+                <a href="https://twitter.com/home?status={{ page.full_url|urlencode }}" class="twitter-link">
+                    <svg class="twitter-icon" width="34.198px" height="28.543px" >
+                        <title>Twitter icon</title>
+                        <desc>Click to share on Twitter</desc>
+                        <use xlink:href="#twitter-icon" />
+                    </svg>
+                </a>
+            </div>
+        </div>
 
-    <div class="email">
-        <label>{% trans "Email:" %}</label>
-        <span>{{ page.email }}</span>
-    </div>
+        {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
 
-    <div class="website">
-        <label>{% trans "Website:" %}</label>
-        <span>{{ page.website }}</span>
-    </div>
+        <div class="l-boxed">
 
-    <div class="facebook">
-        <label>{% trans "Facebook:" %}</label>
-        <span>{{ page.facebook }}</span>
-    </div>
+            <section class="l-full-width organization-meta-top">
 
-    <div class="body">
-        {{ page.description|richtext }}
-    </div>
+                {% if self.city %}
+                <div class="organization-city">
+                    <label class="meta-label">{% trans "located" %}</label>
+                    <div class="meta-item">{{ self.city }}</div>
+                </div>
+                {% endif %}
 
-    <!--<div class="body">-->
-        <!--{{ page.articles }}-->
-    <!--</div>-->
+                {% if self.amount_of_members %}
+                <div class="organization-amount-of-members">
+                    <label class="meta-label">{% trans "members" %}</label>
+                    <div class="meta-item">{{ self.amount_of_members }}</div>
+                </div>
+                {% endif %}
+
+                {% if self.date_founded %}
+                <div class="organization-date-founded">
+                    <label class="meta-label">{% trans "Founding year" %}</label>
+                    <div class="meta-item">{{ page.date_founded|date:"Y" }}</div>
+                </div>
+                {% endif %}
+            </section>
+
+            <section class="article-body l-pull-right">
+                {{ page.description }}
+            </section>
+
+            <section class="l-pull-left organization-meta-bottom">
+
+                <div class="organization-name">{{ self.title }}</div>
+                <div class="organization-location">
+                    {% if self.address %}
+                        <div class="organization-address">{{ self.address }}</div>
+                    {% endif %}
+                    <div>
+                        {% if self.post_code %}
+                            <span class="organization-postal-code">{{ self.post_code }}</span>
+                        {% endif %}
+                        {% if self.city %}
+                            <span class="organization-city">{{ self.city }}</span>
+                        {% endif %}
+                    </div>
+                    {% if self.country %}
+                        <span class="organization-country">{{ self.country }}</span>
+                    {% endif %}
+                </div>
+
+                {% if self.email %}
+                    <div class="organization-email"><a href="mailto:{{ self.email }}">{{ self.email }}</a></div>
+                {% endif %}
+
+                {% if self.website %}
+                    <div class="organization-website">
+                        <a href="{{ self.website }}" class="organization-facebook">{{ self.website }}</a>
+                    </div>
+                {% endif %}
+
+                <div class="organization-social-media">
+                    {% if self.facebook %}
+                        <a href="{{ self.facebook }}" class="organization-facebook">facebook</a>
+                    {% endif %}
+                    {% if self.twitter and  self.facebook  %}
+                        <span>|</span>
+                    {% endif %}
+                    {% if self.twitter %}
+                        <a href="{{ self.twitter }}" class="organization-twitter">twitter</a>
+                    {% endif %}
+                </div>
+
+            </section>
+
+        </div>
+
+    </article>
+
+    {% if related_how_tos %}
+    <section class="related-howtos">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >This story is part of:</h3>
+            <ul class="l-columns">
+                {% for how_to in related_how_tos %}
+                    {% include "howtos/blocks/related_howto.html" %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if related_how_to_articles %}
+    <section class="related-articles">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >Read next:</h3>
+            <ul class="l-grid">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+                {% for articles, how_to in related_how_to_articles %}
+                    {% for article in articles %}
+                        {% if article and article.content_type.model == 'storyarticlepage' %}
+                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
+                        {% elif article and article.content_type.model == 'theoryarticlepage' %}
+                            {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
 
 {% endblock %}
