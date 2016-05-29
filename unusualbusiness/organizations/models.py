@@ -99,6 +99,13 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
                     for related_story_article_page
                     in self.story_article_page.select_related().all()]
 
+    def location(self):
+        return ", ".join([self.address,
+                        self.postal_code,
+                        self.city,
+                        self.country
+                        ])
+
     def get_context(self, request):
         context = super(OrganizationPage, self).get_context(request)
 
