@@ -5,9 +5,24 @@
 @import "../base/base";
 
 .organization-meta {
-  border-top: solid 10px $black;
+  border-top: solid 8px $black;
   margin-bottom: 0;
   padding: 0 0 $gutter;
+
+  .meta-label {
+    display: block;
+    margin-bottom: 10px;
+
+    font-family: $open-sans;
+    font-size: 14px;
+    text-transform: lowercase;
+    text-align: center;
+  }
+
+  .meta-item {
+    font-size: 24px;
+    text-align: center;
+  }
 }
 
 .organization-date-founded,
@@ -22,21 +37,6 @@
   }
 }
 
-.meta-label {
-  display: block;
-  margin-bottom: 10px;
-
-  font-family: $open-sans;
-  font-size: 14px;
-  text-transform: lowercase;
-  text-align: center;
-}
-
-.meta-item {
-  font-size: 24px;
-  text-align: center;
-}
-
 
 .organization-description {
    padding: 0 0 $gutter;
@@ -44,8 +44,8 @@
 
 .organization-contact-info {
   margin: 0 0 $gutter 0;
-  border-top: solid 10px $black;
-  border-bottom: solid 10px $black;
+  border-top: solid 8px $black;
+  border-bottom: solid 8px $black;
   padding: $gutter;
 
   font-family: $open-sans;
@@ -83,11 +83,11 @@
 }
 
 .organization-email {
-
+  word-wrap: break-word;
 }
 
 .organization-website {
-
+  word-wrap: break-word;
 }
 
 .organization-social-media {
@@ -102,7 +102,7 @@
 
 }
 
-.organization-map {
+.organization-location-map {
   margin-bottom: $gutter;
   height: 360px;
   width: 100%;

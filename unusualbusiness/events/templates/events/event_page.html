@@ -1,58 +1,217 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
-{% block body_class %}template-event-page{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body_class %}event{% endblock %}
 
 {% block custom_header %}
     {% include "blocks/custom-header.html" %}
 {% endblock %}
 
 {% block content %}
+    <article class="article" >
 
-    <div class="image">
-        {% image page.featured_image width-400 %}
-    </div>
+        {% if upcoming_related_events %}
+            <section class="upcoming-related-events">
+                <ul class="upcoming-related-events-list">
+                    {% for event in upcoming_related_events %}
+                        {% include "events/blocks/upcoming_related_event.html" %}
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
 
-    <div class="start-date">
-        <label>{% trans "Starting date:" %}</label>
-        <span>{{ page.start_date|date:"SHORT_DATETIME_FORMAT" }}</span>
-    </div>
+        <header class="article-header">
+            <h1 class="article-header-title">
+                {% if self.seo_title %}
+                    {{ self.seo_title }}
+                {% else %}
+                    {{ self.title }}
+                {% endif %}
+            </h1>
 
-    {% if page.end_date %}
-    <div class="end-date">
-        <label>{% trans "End date:" %}</label>
-        <span>{{ page.end_date|date:"SHORT_DATETIME_FORMAT" }}</span>
-    </div>
+            <div class="article-header-meta">
+                <div class="article-header-format">
+                    <svg width="32px" height="32px" class="article-format-icon organization-icon white-icon" >
+                      <use xlink:href="#event-icon" />
+                    </svg>
+                </div>
+                <div class="article-header-left-bottom">
+                    {{ page.event_type }}
+                </div>
+            </div>
+        </header>
+
+        {% include "blocks/article_subheader.html" %}
+
+        {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
+
+        <div class="l-boxed">
+
+            <section class="l-full-width event-meta">
+
+                <time class="l-event-date-time-heading horizontal-date horizontal-date-large dt-start"
+                      datetime="{{ self.start_date|date:"SHORT_DATETIME_FORMAT" }}">
+                    <div class="horizontal-date-day">{{ self.start_date|date:"l" }}</div>
+                    <div class="horizontal-date-day-of-month">{{ self.start_date|date:"d" }}</div>
+                    <div class="horizontal-date-month">{{ self.start_date|date:"m" }}</div>
+                    <div class="horizontal-date-year">{{ self.start_date|date:"y" }}</div>
+                    <div class="horizontal-date-time">{% trans "Aanvang:" %} {{ self.start_date|time:"H:i" }}</div>
+                </time>
+
+            </section>
+
+            {% for block in page.description %}
+                {% if forloop.first and block.block_type == 'introduction' %}
+                    <section class="l-pull-left article-introduction event-introduction">
+                        {{ block.value.source|ub_richtext }}
+                    </section>
+                {% endif %}
+            {% endfor %}
+
+            <section class="l-pull-right article-body event-description">
+
+                {% for block in page.description %}
+
+                    {% if block.block_type == 'introduction' %}
+                    {% elif block.block_type == 'paragraph' %}
+                        {{ block.value.source|ub_richtext }}
+                    {% elif block.block_type == 'image' %}
+                        <section class="block-{{ block.block_type }}" >
+                            {{ block }}
+                            <p class="image-description"> {{ block.value }}</p>
+                        </section>
+                    {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
+                        {{ block }}
+                    {% else %}
+                        <section class="block-{{ block.block_type }}" >
+                            {{ block }}
+                        </section>
+                    {% endif %}
+
+                {% endfor %}
+
+            </section>
+
+            <section class="l-pull-left event-info">
+
+                <div class="event-info-start-date">
+                    <label class="meta-label">{% trans "Date:" %}</label>
+                    <div class="meta-item">
+                        {{ page.start_date|date:"l d N Y" }}
+                    </div>
+                </div>
+
+                <div class="event-info-time">
+                    <label class="meta-label">{% trans "Time:" %}</label>
+                    <span class="meta-item">
+                        {{ page.start_date|time:"h:i" }}
+                        {% if page.end_date %}
+                            - {{ page.end_date|time:"h:i" }}
+                        {% endif %}
+                        {% trans ", inloop van" %}
+                        {{ page.doors_open_from|time:"h:i" }}
+                    </span>
+                </div>
+
+                <div class="event-info-location">
+                    <label class="meta-label">{% trans "Location:" %}</label>
+
+                    {% if page.venue_name %}
+                    <div class="meta-item event-venue-name">
+                        {{ page.venue_name }}
+                    </div>
+                    {% endif %}
+
+                    {% if page.venue_address %}
+                    <div class="meta-item event-venue-address">
+                        {{ page.venue_address }}
+                    </div>
+                    {% endif %}
+
+                    <div>
+                        {% if page.venue_postal_code %}
+                        <span class="meta-item event-venue-postal-code">
+                            {{ page.venue_postal_code }}
+                        </span>
+                        {% endif %}
+
+                        {% if page.venue_city %}
+                        <span class="meta-item event-venue-city">
+                            {{ page.venue_city }}
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    {% if page.venue_country %}
+                    <div class="meta-item event-venue-country">
+                        {{ page.venue_country }}
+                    </div>
+                    {% endif %}
+
+                </div>
+
+                {% if page.facebook_event %}
+                <div class="event-info-promotion">
+                    <label class="meta-label">{% trans "Promotion:" %}</label>
+
+                    <div class="facebook">
+                        <label>{% trans "Facebook:" %}</label>
+                        <span><a href="{{ page.facebook_event }}" class="event-info-facebook-link">{{ page.facebook_event }}</a></span>
+                    </div>
+                </div>
+                {% endif %}
+
+            </section>
+
+            <section class="event-location-map">
+                <iframe
+                  width="100%"
+                  height="360"
+                  frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
+                    &q={{ self.location }}" >
+                </iframe>
+            </section>
+        </div>
+
+    </article>
+
+    {% if self.event_report %}
+    <section class="event-report">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >Read the review</h3>
+            <ul class="l-grid">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+                {% include "articles/blocks/latest_news_article.html" with page=event_report  %}
+            </ul>
+        </div>
+    </section>
     {% endif %}
 
-    <div class="location">
-        <label>{% trans "Location:" %}</label>
-        <span>{{ page.location }}</span>
-    </div>
-
-    {% if page.poster_link %}
-    <div class="poster-link">
-        <label>{% trans "Poster:" %}</label>
-        <span>{{ page.poster_link }}</span>
-    </div>
+    {% if related_events %}
+    <section class="related-articles related-events">
+        <div class="l-boxed l-related-section">
+            <h3 class="article-section-title" >Related events:</h3>
+            <ul class="l-grid">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+                {% for related_how_to_events in related_events %}
+                    {% for event in related_how_to_events %}
+                        {% if event %}
+                            {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item-half-width' %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
     {% endif %}
-
-    {% if page.flyer_link %}
-    <div class="flyer-link">
-        <label>{% trans "Flyer:" %}</label>
-        <span>{{ page.flyer_link }}</span>
-    </div>
-    {% endif %}
-
-    {% if page.facebook_event %}
-    <div class="facebook">
-        <label>{% trans "Facebook:" %}</label>
-        <span><a href="{{ page.facebook_event }}">{{ page.facebook_event }}</a></span>
-    </div>
-    {% endif %}
-
-    <div class="body">
-        {{ page.description|richtext }}
-    </div>
 
 {% endblock %}

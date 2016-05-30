@@ -1,0 +1,23 @@
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
+
+<div class="article-subheader">
+    <div class="article-subheader-back-links">
+        <a href="javascript:window.history.back();" class="back-link">All {% get_verbose_name_plural self %} </a>
+    </div>
+    <div class="article-subheader-social-links">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button" class="facebook-link">
+            <svg class="facebook-icon" width="15.152px" height="32.433px" >
+                <title>Facebook icon</title>
+                <desc>Click to share on Facebook</desc>
+                <use xlink:href="#facebook-icon" />
+            </svg>
+        </a>
+        <a href="https://twitter.com/home?status={{ self.full_url|urlencode }}" class="twitter-link">
+            <svg class="twitter-icon" width="34.198px" height="28.543px" >
+                <title>Twitter icon</title>
+                <desc>Click to share on Twitter</desc>
+                <use xlink:href="#twitter-icon" />
+            </svg>
+        </a>
+    </div>
+</div>

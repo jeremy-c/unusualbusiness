@@ -106,10 +106,14 @@ class HowToPage(Page):
         return organization_pages
 
     def events(self, tag=None):
-        event_pages = self.event_pages.all()
+        event_pages = []
+        event_pages_qs = self.event_pages.all()
 
         if tag:
-            event_pages = event_pages.filter(tags__name=tag)
+            event_pages_qs = event_pages_qs.filter(tags__name=tag)
+
+        for event_page_qs in event_pages_qs.all():
+            event_pages.append(event_page_qs.event)
 
         return event_pages
 
@@ -126,7 +130,7 @@ class HowToPage(Page):
             circles += ' yellow'
         if len(self.theory_pages()) > 0:
             circles += ' green'
-        if self.events().count() > 0:
+        if len(self.events()) > 0:
             circles += ' blue'
 
         return circles

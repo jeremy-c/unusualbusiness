@@ -97,7 +97,7 @@
   bottom: -10px;
 }
 
-.article-header-publication-date {
+.article-header-left-bottom {
   position: absolute;
   left: 50px;
   bottom: 0;
@@ -174,8 +174,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   margin: 0;
-  padding: $gutter $gutter * 2;
-
+  padding: $gutter;
 
   @media(max-width: $tablet) {
     display: none;
@@ -542,8 +541,8 @@
 .pullquote {
   display: block;
   box-sizing: border-box;
-  border-left: solid 10px $yellow;
-  border-right: solid 10px $yellow;
+  border-left: solid 8px $yellow;
+  border-right: solid 8px $yellow;
   margin: $gutter * 2 0;
   padding: $gutter $gutter * 2;
   width: 90%;

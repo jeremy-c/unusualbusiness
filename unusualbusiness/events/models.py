@@ -1,23 +1,29 @@
 from __future__ import unicode_literals
 
-from datetime import date
+from datetime import date, timedelta
 
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase, GenericUUIDTaggedItemBase, Tag, CommonGenericTaggedItemBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailcore import blocks
 
 from unusualbusiness.tags.models import EventPageTag
-from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
+from unusualbusiness.utils.models import RenderInlineMixin, PageFormat, Heading2Block, Heading3Block, Heading4Block, \
+    PullQuoteBlock, RelatedHowToMixin
 
 
-class EventPage(Page, RenderInlineMixin):
+class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
     ajax_template = 'events/blocks/inline_event.html'
     format = models.CharField(
         verbose_name=_('page_format'),
@@ -43,18 +49,43 @@ class EventPage(Page, RenderInlineMixin):
         null=True,
         blank=True
     )
-    # This should probably be a specific geolocation field:
-    location = models.CharField(
-        verbose_name = _("Location"),
-        max_length=512,
+    venue_name = models.CharField(
+        verbose_name=_("Venue"),
+        max_length=128,
         blank=True
     )
-    # TODO: Add participating groups as ForeignKeys
-    description = RichTextField(
-        verbose_name = _("Description"),
-        null=True,
+    # TODO: Geolocation - http://www.tivix.com/blog/using-leaflet-geodjango-geospatial-data/
+    venue_address = models.CharField(
+        verbose_name=_("Address"),
+        max_length=128,
         blank=True
     )
+    venue_postal_code = models.CharField(
+        verbose_name=_("Postal code"),
+        max_length=8,
+        blank=True
+    )
+    venue_city = models.CharField(
+        verbose_name=_("City"),
+        max_length=64,
+        blank=True
+    )
+    venue_country = models.CharField(
+        verbose_name=_("Country"),
+        max_length=64,
+        blank=True
+    )
+    description = StreamField([
+        ('introduction', blocks.RichTextBlock(icon="italic")),
+        ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
+        ('image', ImageChooserBlock(icon="image")),
+        ('pullquote', PullQuoteBlock()),
+        ('embed', EmbedBlock()),
+        ('chapter', Heading2Block()),
+        ('section', Heading3Block()),
+        ('subsection', Heading4Block()),
+        # ('markdown_paragraph', MarkdownBlock(icon="code")),
+    ])
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         verbose_name = _("Featured image"),
@@ -63,19 +94,15 @@ class EventPage(Page, RenderInlineMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    poster_link = models.URLField(
-        verbose_name = _("Poster"),
-        blank=True
-    )
-    flyer_link = models.URLField(
-        verbose_name = _("Flyer"),
-        blank=True
-    )
     facebook_event = models.URLField(
         verbose_name = _("Facebook event"),
         blank=True
     )
     tags = ClusterTaggableManager(through=EventPageTag, blank=True)
+
+    class Meta:
+        verbose_name = _("Event")
+        verbose_name_plural = _("Events")
 
     search_fields = Page.search_fields + [
         index.SearchField('title_en'),
@@ -84,6 +111,9 @@ class EventPage(Page, RenderInlineMixin):
         index.SearchField('description_nl'),
         index.SearchField('event_type'),
         index.FilterField('start_date'),
+        index.FilterField('venue_name'),
+        index.FilterField('venue_city'),
+        index.FilterField('venue_country'),
         index.RelatedFields('event_article_page', [
             index.SearchField('title'),
         ]),
@@ -99,12 +129,14 @@ class EventPage(Page, RenderInlineMixin):
         FieldPanel('start_date'),
         FieldPanel('end_date'),
         FieldPanel('event_type'),
-        FieldPanel('location'),
-        FieldPanel('description_en', classname="full"),
-        FieldPanel('description_nl', classname="full"),
+        StreamFieldPanel('description_en'),
+        StreamFieldPanel('description_nl'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('poster_link'),
-        FieldPanel('flyer_link'),
+        FieldPanel('venue_name'),
+        FieldPanel('venue_address'),
+        FieldPanel('venue_postal_code'),
+        FieldPanel('venue_city'),
+        FieldPanel('venue_country'),
         FieldPanel('facebook_event'),
         FieldPanel('tags'),
     ]
@@ -139,7 +171,35 @@ class EventPage(Page, RenderInlineMixin):
             return True
         return False
 
+    @property
+    def doors_open_from(self):
+        return self.start_date - timedelta(minutes=settings.DOORS_OPEN_MINUTES_BEFORE_START_EVENT)
+
+    @property
+    def location(self):
+        return ", ".join([self.venue_name,
+                          self.venue_address,
+                          self.venue_postal_code,
+                          self.venue_city,
+                          self.venue_country
+                          ])
+
+    @property
+    def event_report(self):
+        return self.news_article_page.first()
+
     # Static Methods
+
     @staticmethod
     def upcoming_events():
         return EventPage.objects.live().filter(start_date__gte=date.today())
+
+    #  Methods
+
+    def get_context(self, request):
+        context = super(EventPage, self).get_context(request)
+
+        context['event_report'] = self.event_report
+        context['related_events'] = self.related_how_to_events(self_idx=self.id)
+
+        return context

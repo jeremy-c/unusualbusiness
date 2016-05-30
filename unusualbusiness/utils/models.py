@@ -2,8 +2,77 @@ from django.db.models import Model
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from unusualbusiness import articles
+# Blocks
+
+class Heading2Block(blocks.StructBlock):
+    chapter_name = \
+        blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading2.html'
+        icon = 'title'
+        label = _('Chapter (h2)')
+
+
+class Heading3Block(blocks.StructBlock):
+    section_name = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading3.html'
+        icon = 'title'
+        label = _('Section (h3)')
+
+
+class Heading4Block(blocks.StructBlock):
+    subsection_name = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading4.html'
+        icon = 'title'
+        label = _('Subsection (h4)')
+
+
+class PullQuoteBlock(blocks.StructBlock):
+    pull_quote = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/pullquote.html'
+        icon = 'openquote'
+        label = 'Pull Quote'
+
+
+class FeaturedImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
+
+    class Meta:
+        icon='image'
+        label=_('Image')
+        template='articles/blocks/featured_image.html'
+        help_text=_('The featured image is shown in the list-view and detail-view')
+
+
+class FeaturedVideoBlock(blocks.StructBlock):
+    video = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Video')
+        template='articles/blocks/featured_video.html'
+        help_text=_('The featured video is only shown in the detail-view, make sure to also selecte a featured image')
+
+
+class FeaturedAudioBlock(blocks.StructBlock):
+    audio = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Audio')
+        template='articles/blocks/featured_audio.html'
+        help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
 
 
 class RenderInlineMixin(object):
@@ -25,6 +94,13 @@ class RelatedHowToMixin(object):
         return [related_how_to_page.how_to_page
                    for related_how_to_page
                    in self.how_to_page.select_related().all()]
+        # related_how_to_qs = self.how_to_page.select_related().all()
+        #
+        # related_how_tos = []
+        # for related_how_to in related_how_to_qs.how_to_page:
+        #     related_how_tos.append(related_how_to.how_to_page)
+        #
+        # return related_how_tos
 
     def related_how_to_theory_articles(self, related_how_tos=None, self_idx=None):
         if related_how_tos is None:
@@ -33,7 +109,7 @@ class RelatedHowToMixin(object):
         related_how_to_theory_articles = []
         for related_how_to in related_how_tos:
             how_to_articles = related_how_to.theory_pages()
-            related_story_articles = self.related_how_to_articles(how_to_articles, self_idx)
+            related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_theory_articles.append({
                 related_how_to,
                 related_story_articles
@@ -48,7 +124,7 @@ class RelatedHowToMixin(object):
         related_how_to_story_articles = []
         for related_how_to in related_how_tos:
             how_to_articles = related_how_to.story_pages()
-            related_story_articles = self.related_how_to_articles(how_to_articles, self_idx)
+            related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_story_articles.append({
                 related_how_to,
                 related_story_articles
@@ -56,44 +132,58 @@ class RelatedHowToMixin(object):
 
         return related_how_to_story_articles
 
-    def related_how_to_articles(self, how_to_articles, self_idx=None):
-        previous_article_idx = 0
-        next_article_idx = 1
+    def related_how_to_events(self, related_how_tos=None, self_idx=None):
+        if related_how_tos is None:
+            related_how_tos = self.related_how_tos()
 
-        if self_idx:
-            for idx, story in enumerate(how_to_articles):
-                if story.id is self_idx:
-                    self_idx = idx
+        related_how_to_events = []
+        for related_how_to in related_how_tos:
+            how_to_events = related_how_to.events()
+            related_events = self.related_how_to_pages(how_to_events, self_idx)
+            related_how_to_events.append(related_events)
 
-            previous_article_idx = self_idx - 1
-            next_article_idx = self_idx + 1
-
-        previous_article = None
-        next_article = None
-
-        if 0 <= previous_article_idx < len(how_to_articles):
-            previous_article = how_to_articles[previous_article_idx]
-
-        if 0 <= next_article_idx < len(how_to_articles):
-            next_article = how_to_articles[next_article_idx]
-
-        return (previous_article, next_article)
+        return related_how_to_events
 
     def upcoming_related_event_pages(self, related_how_tos=None):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
 
-        how_to_events = [how_to_page.events()
-                 for how_to_page
-                 in related_how_tos]
+        how_to_event_lists = [how_to_page.events()
+             for how_to_page
+             in related_how_tos]
 
         event_pages = []
-        for how_to_event in how_to_events:
-            how_to_event = how_to_event.first()
-            if how_to_event and how_to_event.event.is_upcoming:
-                event_pages.append(how_to_event.event)
+        for how_to_event_list in how_to_event_lists:
+            if len(how_to_event_list) > 0:
+                for how_to_event in how_to_event_list:
+                    if how_to_event and how_to_event.is_upcoming:
+                        event_pages.append(how_to_event)
 
         return event_pages
+
+    @staticmethod
+    def related_how_to_pages(how_to_pages, self_idx=None):
+        previous_page_idx = 0
+        next_article_idx = 1
+
+        if self_idx:
+            for idx, page in enumerate(how_to_pages):
+                if page.id is self_idx:
+                    self_idx = idx
+
+            previous_page_idx = self_idx - 1
+            next_article_idx = self_idx + 1
+
+        previous_page = None
+        next_page = None
+
+        if 0 <= previous_page_idx < len(how_to_pages):
+            previous_page = how_to_pages[previous_page_idx]
+
+        if 0 <= next_article_idx < len(how_to_pages):
+            next_page = how_to_pages[next_article_idx]
+
+        return (previous_page, next_page)
 
 
 class PageFormat:

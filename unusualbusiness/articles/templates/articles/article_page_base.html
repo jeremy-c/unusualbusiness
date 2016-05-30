@@ -49,7 +49,7 @@
                     </div>
                 {% endif %}
                 {% if self.publication_date %}
-                    <div class="article-header-publication-date">
+                    <div class="article-header-left-bottom">
                         {{ self.publication_date|date:"j F Y" }}
                     </div>
                 {% endif %}
@@ -128,7 +128,7 @@
                 {% endif %}
             {% endfor %}
 
-            <div class="l-pull-right article-body">
+            <section class="l-pull-right article-body">
 
                 {% for block in page.body %}
 
@@ -150,7 +150,7 @@
 
                 {% endfor %}
 
-            </div>
+            </section>
         </div>
 
     </article>

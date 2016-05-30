@@ -18,7 +18,8 @@ from wagtail.wagtailsearch import index
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
-from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin
+from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin, FeaturedImageBlock, \
+    FeaturedVideoBlock, FeaturedAudioBlock, Heading2Block, Heading3Block, Heading4Block, PullQuoteBlock
 
 
 class TheoryArticleIndexPage(Page):
@@ -55,73 +56,6 @@ class ActivityIndexPage(Page):
         context['events'] = EventPage.objects.child_of(self).live()
         context['news'] = NewsArticlePage.objects.child_of(self).live()
         return context
-
-
-class Heading2Block(blocks.StructBlock):
-    chapter_name = \
-        blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading2.html'
-        icon = 'title'
-        label = _('Chapter (h2)')
-
-
-class Heading3Block(blocks.StructBlock):
-    section_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading3.html'
-        icon = 'title'
-        label = _('Section (h3)')
-
-
-class Heading4Block(blocks.StructBlock):
-    subsection_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading4.html'
-        icon = 'title'
-        label = _('Subsection (h4)')
-
-
-class PullQuoteBlock(blocks.StructBlock):
-    pull_quote = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/pullquote.html'
-        icon = 'openquote'
-        label = 'Pull Quote'
-
-
-class FeaturedImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=True)
-
-    class Meta:
-        icon='image'
-        label=_('Image')
-        template='articles/blocks/featured_image.html'
-        help_text=_('The featured image is shown in the list-view and detail-view')
-
-
-class FeaturedVideoBlock(blocks.StructBlock):
-    video = EmbedBlock(required=True)
-
-    class Meta:
-        icon='media'
-        label=_('Video')
-        template='articles/blocks/featured_video.html'
-        help_text=_('The featured video is only shown in the detail-view, make sure to also selecte a featured image')
-
-
-class FeaturedAudioBlock(blocks.StructBlock):
-    audio = EmbedBlock(required=True)
-
-    class Meta:
-        icon='media'
-        label=_('Audio')
-        template='articles/blocks/featured_audio.html'
-        help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
 
 
 class AbstractArticle(models.Model, RenderInlineMixin):
@@ -163,14 +97,14 @@ class AbstractArticle(models.Model, RenderInlineMixin):
     )
     body = StreamField([
         ('introduction', blocks.RichTextBlock(icon="italic")),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
         ('embed', EmbedBlock()),
+        ('chapter', Heading2Block()),
+        ('section', Heading3Block()),
+        ('subsection', Heading4Block()),
     ])
 
     class Meta:
@@ -343,7 +277,7 @@ class NewsArticlePage(Page, AbstractArticle):
 
 NewsArticlePage.content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
-        PageChooserPanel('event_page'),
+        PageChooserPanel('event_page', page_type='events.EventPage'),
         FieldPanel('subtitle'),
         PageChooserPanel('author', page_type='articles.AuthorPage'),
         FieldPanel('format'),

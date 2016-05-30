@@ -83,3 +83,12 @@
     height: auto;
   }
 }
+
+.l-grid-item-fixed-height-big {
+  height: 114px;
+
+  @media(max-width: $mobile) {
+    height: auto;
+  }
+
+}

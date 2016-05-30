@@ -1,0 +1,175 @@
+/* ==|====================
+   Module/Event
+   ======================= */
+
+@import "../base/base";
+
+.event-meta {
+  border-top: solid 8px $blue;
+  margin: $gutter 0 0;
+  padding: 0 0 $gutter;
+
+  @media(max-width: $tablet) {
+    padding: 0;
+  }
+}
+
+.l-event-date-time-heading {
+  width: 100%;
+
+  @media(max-width: $tablet) {
+    flex-wrap: wrap;
+  }
+}
+
+.event {
+  .horizontal-date-day,
+  .horizontal-date-day-of-month,
+  .horizontal-date-month,
+  .horizontal-date-year,
+  .horizontal-date-time {
+    flex: 1;
+    padding: $gutter / 2 $gutter 0;
+    color: $blue;
+
+    font-size: 40px;
+
+    @media(max-width: $tablet) {
+      box-sizing: border-box;
+      width: 33%;
+      padding: $gutter / 2 0 0;
+    }
+  }
+
+  .horizontal-date-day {
+    flex: inherit;
+    margin-right: auto;
+    border-right: none;
+    padding: $gutter / 2 0 0;
+
+    text-align: left;
+    font-size: 18px;
+
+    @media(max-width: $tablet) {
+      display: block;
+      width: 100%;
+
+      text-align: center;
+    }
+
+    .horizontal-date-large & {
+      @media(max-width: $tablet) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .horizontal-date-time {
+    flex: inherit;
+    margin-left: auto;
+    border-left: none;
+    padding: $gutter / 2 0 0;
+
+    text-align: right;
+    font-size: 18px;
+
+    @media(max-width: $tablet) {
+      display: block;
+      width: 100%;
+
+      text-align: center;
+    }
+
+    .horizontal-date-large & {
+      @media(max-width: $tablet) {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+
+.event-introduction {
+  padding-bottom: $gutter;
+  color: $blue;
+
+  @media(max-width: $tablet) {
+    padding-bottom: $gutter / 2;
+  }
+}
+
+.event-description {
+  padding: 0 0 $gutter;
+}
+
+.event-info {
+  margin: 0 0 $gutter 0;
+  border-top: solid 8px $black;
+  border-bottom: solid 8px $black;
+  padding: 0 $gutter $gutter;
+
+  font-family: $open-sans;
+  font-size: 18px;
+
+  @media(max-width: $tablet) {
+    padding: 0 0 $gutter 0;
+  }
+
+  .meta-label {
+    display: block;
+    margin-top: $gutter;
+    margin-bottom: 10px;
+
+    font-family: $open-sans;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .meta-item {
+    font-family: $open-sans;
+    font-size: 18px;
+  }
+}
+
+
+.event-social-media {
+
+}
+
+.event-facebook {
+
+}
+
+.event-info-facebook-link {
+  word-wrap: break-word;
+}
+
+.event-location-map {
+  margin-bottom: $gutter;
+  height: 360px;
+  width: 100%;
+}
+
+
+// Related Howto's
+.event-report {
+  margin: 0 $gutter;
+  border-top: solid 1px $light-gray;
+}
+
+// Related Events
+.related-events {
+  margin: 0 $gutter;
+  border-top: solid 1px $light-gray;
+  min-height: 300px;
+
+  @media(max-width: $tablet-horizontal) {
+    min-height: inherit;
+  }
+}
+
+.event .featured-agenda-item .featured-image {
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
