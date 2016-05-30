@@ -258,7 +258,7 @@ TheoryArticlePage.search_fields = Page.search_fields + [
     ]
 
 
-class NewsArticlePage(Page, AbstractArticle):
+class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     event_page = models.ForeignKey(
         'events.EventPage',
         null=True,
@@ -274,6 +274,17 @@ class NewsArticlePage(Page, AbstractArticle):
     class Meta:
         verbose_name = _("News or report article")
         verbose_name_plural = _("News or report articles")
+
+    def get_context(self, request):
+        context = super(NewsArticlePage, self).get_context(request)
+
+        related_how_tos = self.related_how_tos()
+
+        context['related_how_tos'] = related_how_tos
+        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['related_how_to_articles'] = self.related_how_to_news_articles(related_how_tos, self.id)
+
+        return context
 
 NewsArticlePage.content_panels = Page.content_panels + [
         FieldPanel('is_featured'),

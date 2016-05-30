@@ -652,3 +652,25 @@
   margin: 0 $gutter;
   border-top: solid 1px $light-gray;
 }
+
+// Related Events
+.related-event {
+  margin: 0 $gutter;
+  border-top: solid 1px $light-gray;
+
+  @media(max-width: $tablet-horizontal) {
+    min-height: 0;
+  }
+
+  .featured-event-image {
+    display: inherit;
+
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .featured-agenda-item .p-name {
+    padding-right: $gutter / 2;
+  } 
+}

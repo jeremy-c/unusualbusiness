@@ -164,7 +164,7 @@
   min-height: 300px;
 
   @media(max-width: $tablet-horizontal) {
-    min-height: inherit;
+    min-height: 0;
   }
 }
 

@@ -151,7 +151,19 @@
                 {% endfor %}
 
             </section>
+
         </div>
+
+        {% if self.event_page %}
+            <section class="related-event">
+                <div class="l-boxed l-related-section">
+                    <h3 class="article-section-title" >The event:</h3>
+                    <ul class="">
+                        {% include "events/blocks/agenda_item.html" with event=self.event_page list_item_classes='l-grid-item-half-width' %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
 
     </article>
 
@@ -177,10 +189,14 @@
                 <li class="l-grid-gutter-sizer"></li>
                 {% for articles, how_to in related_how_to_articles %}
                     {% for article in articles %}
-                        {% if article and article.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
-                        {% elif article and article.content_type.model == 'theoryarticlepage' %}
-                            {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                        {% if article %}
+                            {% if article.content_type.model == 'storyarticlepage' %}
+                                {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
+                            {% elif article.content_type.model == 'theoryarticlepage' %}
+                                {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                            {% elif article.content_type.model == 'newsarticlepage' %}
+                                {% include "articles/blocks/latest_news_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 {% endfor %}

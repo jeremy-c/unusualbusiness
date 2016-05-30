@@ -47,6 +47,9 @@ class HowToPage(Page):
         index.RelatedFields('theory_article_pages', [
             index.SearchField('title'),
         ]),
+        index.RelatedFields('news_article_pages', [
+            index.SearchField('title'),
+        ]),
         index.RelatedFields('event_pages', [
             index.SearchField('title'),
         ]),
@@ -61,6 +64,7 @@ class HowToPage(Page):
         InlinePanel('organization_pages', label=_("Organizations")),
         InlinePanel('story_article_pages', label=_("Story Articles")),
         InlinePanel('theory_article_pages', label=_("Theory Articles")),
+        InlinePanel('news_article_pages', label=_("News Articles")),
         InlinePanel('event_pages', label=_("Events")),
         FieldPanel('tags'),
     ]
@@ -97,6 +101,18 @@ class HowToPage(Page):
 
         return story_pages
 
+    def news_pages(self, tag=None):
+        news_pages = []
+        news_article_pages = self.news_article_pages.all()
+
+        if tag:
+            news_article_pages = news_article_pages.filter(tags__name=tag)
+
+        for news_article_page in news_article_pages:
+            news_pages.append(news_article_page.article)
+
+        return news_pages
+
     def organizations(self, tag=None):
         organization_pages = self.organization_pages.all()
 
@@ -130,7 +146,7 @@ class HowToPage(Page):
             circles += ' yellow'
         if len(self.theory_pages()) > 0:
             circles += ' green'
-        if len(self.events()) > 0:
+        if len(self.events()) > 0 or len(self.news_pages()) > 0:
             circles += ' blue'
 
         return circles
@@ -140,11 +156,13 @@ class HowToPage(Page):
         if tag:
             theory_pages = self.theory_pages(tag)
             story_pages = self.story_pages(tag)
+            news_pages = self.news_pages(tag)
             organizations = self.organizations(tag)
             events = self.events(tag)
         else:
             theory_pages = self.theory_pages()
             story_pages = self.story_pages()
+            news_pages = self.news_pages()
             organizations = self.organizations()
             events = self.events()
 
@@ -152,6 +170,7 @@ class HowToPage(Page):
             'self': self,
             'theory_pages': theory_pages,
             'story_pages': story_pages,
+            'news_pages': news_pages,
             'organizations': organizations,
             'event_pages': events,
         })
@@ -209,6 +228,25 @@ class HowToPageTheoryArticlePage(Orderable, models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.how_to_page.title + " -> " + self.article.title
+
+
+class HowToPageNewsArticlePage(Orderable, models.Model):
+    how_to_page = ParentalKey('howtos.HowToPage', related_name='news_article_pages')
+    article = models.ForeignKey(
+        'articles.NewsArticlePage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='how_to_page'
+    )
+
+    panels = [
+      PageChooserPanel('article'),
+    ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.how_to_page.title + " -> " + self.article.title
+
 
 
 class HowToPageEventPage(Orderable, models.Model):

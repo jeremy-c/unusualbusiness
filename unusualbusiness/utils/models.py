@@ -132,6 +132,22 @@ class RelatedHowToMixin(object):
 
         return related_how_to_story_articles
 
+    def related_how_to_news_articles(self, related_how_tos=None, self_idx=None):
+        if related_how_tos is None:
+            related_how_tos = self.related_how_tos()
+
+        related_how_to_news_articles = []
+        for related_how_to in related_how_tos:
+            how_to_articles = related_how_to.news_pages()
+            related_news_articles = self.related_how_to_pages(how_to_articles, self_idx)
+            related_how_to_news_articles.append({
+                'how_to': related_how_to,
+                'articles': related_news_articles
+            })
+
+        return related_how_to_news_articles
+
+
     def related_how_to_events(self, related_how_tos=None, self_idx=None):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
