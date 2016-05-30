@@ -153,23 +153,48 @@
 
 // Related Howto's
 .event-report {
-  margin: 0 $gutter;
   border-top: solid 1px $light-gray;
+
+  @media(max-width: $tablet) {
+    margin: 0 $gutter;
+  }
+}
+
+.event-report-list {
+  padding: 0 $gutter;
+
+  @media(max-width: $tablet) {
+    padding: 0;
+  }
 }
 
 // Related Events
 .related-events {
-  margin: 0 $gutter;
   border-top: solid 1px $light-gray;
-  min-height: 300px;
 
-  @media(max-width: $tablet-horizontal) {
-    min-height: 0;
+  @media(max-width: $tablet) {
+    margin: 0 $gutter;
   }
 }
 
-.event .featured-agenda-item .featured-event-image {
+.related-events-list {
+  padding: 0 $gutter;
+
   @media(max-width: $tablet) {
-    display: none;
+    padding: 0;
+  }
+}
+
+.event .featured-agenda-item {
+  .p-name {
+    padding-right: $gutter / 2;
+  }
+  
+  .featured-event-image {
+    display: inherit;
+
+    @media(max-width: $tablet) {
+      display: none;
+    }
   }
 }
