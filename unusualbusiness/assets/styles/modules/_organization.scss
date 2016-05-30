@@ -4,28 +4,22 @@
 
 @import "../base/base";
 
-.organization {
- .l-pull-right,
- .l-pull-left,
- .l-full-width {
-   padding: 0 0 $gutter;
- }
-
- .l-full-width {
-    margin-bottom: 0;
-  }
-}
-
-.organization-meta-top {
+.organization-meta {
   border-top: solid 10px $black;
+  margin-bottom: 0;
+  padding: 0 0 $gutter;
 }
-
 
 .organization-date-founded,
 .organization-amount-of-members,
 .organization-city {
   flex: 1;
   padding: $gutter $gutter 0;
+
+  @media(max-width: $mobile) {
+    border-bottom: solid 1px $light-grayish;
+    padding: $gutter / 2 $gutter;
+  }
 }
 
 .meta-label {
@@ -43,14 +37,23 @@
   text-align: center;
 }
 
-.organization .organization-meta-bottom {
-  margin: $gutter 0;
+
+.organization-description {
+   padding: 0 0 $gutter;
+}
+
+.organization-contact-info {
+  margin: 0 0 $gutter 0;
   border-top: solid 10px $black;
   border-bottom: solid 10px $black;
   padding: $gutter;
 
   font-family: $open-sans;
   font-size: 18px;
+
+  @media(max-width: $tablet) {
+    padding: $gutter 0;
+  }
 }
 
 .organization-name {

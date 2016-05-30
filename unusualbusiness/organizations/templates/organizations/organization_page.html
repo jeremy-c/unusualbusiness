@@ -78,7 +78,7 @@
 
         <div class="l-boxed">
 
-            <section class="l-full-width organization-meta-top">
+            <section class="l-full-width organization-meta">
 
                 {% if self.city %}
                 <div class="organization-city">
@@ -102,11 +102,11 @@
                 {% endif %}
             </section>
 
-            <section class="article-body l-pull-right">
+            <section class="l-pull-right article-body organization-description">
                 {{ page.description }}
             </section>
 
-            <section class="l-pull-left organization-meta-bottom">
+            <section class="l-pull-left organization-contact-info">
 
                 <div class="organization-name">{{ self.title }}</div>
                 <div class="organization-location">
