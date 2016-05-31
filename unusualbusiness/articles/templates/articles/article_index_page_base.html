@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "article_base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils article_tags i18n %}
 
 {% block extra_js %}
@@ -9,26 +9,21 @@
 
 {% block body_class %} {% endblock %}
 
-{% block content %}
+{% block boxed_content %}
 
-    <article class="article">
-
-        <header class="l-article-header l-article-header-small article-header">
-            <h1 class="article-header-title">
-                Theory
-            </h1>
-        </header>
-
-        <ul>
+    <ul class="l-grid">
+        <li class="l-grid-sizer"></li>
+        <li class="l-grid-gutter-sizer"></li>
         {% for article in articles %}
             {% if forloop.counter == 2 %}
                 <li class="">
-                    {% latest_quote %}
+                    {# {% latest_quote %}#}
                 </li>
             {% endif %}
-            <li class="{{ article | to_class_name }}"><a href="{% pageurl article %}">{{ article.title }}</a></li>
+            {% include "articles/blocks/latest_theory_article.html" with page=article %}
+            {% empty %}
+                <li>Sorry, no pages found.</li>
         {% endfor %}
-        </ul>
+    </ul>
 
-    </article>
 {% endblock %}

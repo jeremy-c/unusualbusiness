@@ -33,6 +33,13 @@
   .organization-list & {
     background-color: $black;
   }
+
+  .activities-list &,
+  .theory-article-list &,
+  .story-article-list &,
+  .organization-list & {
+    min-height: 170px;
+  } 
 }
 
 .article-header-title {

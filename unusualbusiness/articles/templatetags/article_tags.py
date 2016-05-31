@@ -16,7 +16,7 @@ register = template.Library()
 @register.inclusion_tag('articles/tags/quotes.html', takes_context=True)
 def latest_quote(context):
     return {
-        'adverts': Quote.objects.first(),
+        'quote': Quote.objects.first(),
         'request': context['request'],
     }
 
@@ -24,6 +24,6 @@ def latest_quote(context):
 @register.inclusion_tag('articles/tags/quote.html', takes_context=True)
 def all_quotes(context):
     return {
-        'adverts': Quote.objects.first(),
+        'quotes': Quote.objects.first(),
         'request': context['request'],
     }
