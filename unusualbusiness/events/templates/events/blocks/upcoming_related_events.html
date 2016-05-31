@@ -1,0 +1,9 @@
+{% if upcoming_related_events %}
+    <section class="upcoming-related-events">
+        <ul class="upcoming-related-events-list">
+            {% for event in upcoming_related_events %}
+                {% include "events/blocks/upcoming_related_event.html" %}
+            {% endfor %}
+        </ul>
+    </section>
+{% endif %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block extra_navbar %}{% endblock %}
+
+{% block content %}
+
+    <article class="article">
+
+        {% block above_header %}{% endblock %}
+
+        {% block header %}
+            <header class="l-article-header article-header">
+                <h1 class="article-header-title">
+                    {% if self.seo_title %}
+                        {{ self.seo_title }}
+                    {% else %}
+                        {{ self.title }}
+                    {% endif %}
+                </h1>
+            </header>
+        {% endblock %}
+
+        {% block below_header %}{% endblock %}
+
+        {% block featured %}{% endblock %}
+
+        {% block tableofcontents %}
+        {% endblock %}
+
+        {% block boxed_content %}{% endblock %}
+
+        {% block below_boxed_content %}{% endblock %}
+
+    </article>
+
+    {% block below_article %}{% endblock %}
+
+{% endblock %}

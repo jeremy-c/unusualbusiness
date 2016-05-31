@@ -4,7 +4,6 @@
 
 @import "../base/base";
 
-// Header
 .l-article-header {
   z-index: 10;
   position: relative;
@@ -22,8 +21,8 @@
   }
 }
 
-.article-header-image {
-  display: none;
+.l-article-header-small {
+  min-height: 170px;
 }
 
 .l-article-header-meta {

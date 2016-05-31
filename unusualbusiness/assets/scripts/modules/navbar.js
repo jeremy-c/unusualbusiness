@@ -44,7 +44,7 @@ let HeaderMenus = () => {
   let initHeadroomJS = function() {
     let $customHeaderMenuButton = $('.extra-navbar-hamburger-button');
     let $header = $('.navbar');
-    let $customHeader = $('.extra-navbar');
+    let $extraNavbar = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
 
     let articleHeaderHeight = $('.article-header').height();
@@ -64,13 +64,13 @@ let HeaderMenus = () => {
         gutter;
 
     // grab an element
-    var headerElement = document.querySelector(".header");
-    var customHeaderElement = document.querySelector(".custom-header");
+    var navbarElement = document.querySelector(".navbar");
+    var extraNavarElement = document.querySelector(".extra-navbar");
 
     // construct an instance of Headroom, passing the element
     let headroomCustomHeader;
     let headroomHeader  = new Headroom(
-        headerElement,
+        navbarElement,
         {
           offset : headroomOffset,
           tolerance : {
@@ -83,18 +83,18 @@ let HeaderMenus = () => {
             "unpinned": "slideOutUp"
           },
           onPin : function() {
-              $customHeader.addClass('pin-custom-header-under-header');
+              $extraNavbar.addClass('is-pined-under-navbar');
           },
           onUnpin : function() {
-              $customHeader.removeClass('pin-custom-header-under-header');
+              $extraNavbar.removeClass('is-pined-under-navbar');
           }
         }
     );
 
-      if(customHeaderElement !== null) {
+      if(extraNavarElement !== null) {
         // construct an instance of Headroom, passing the element
         headroomCustomHeader = new Headroom(
-            customHeaderElement,
+            extraNavarElement,
             {
               offset : headroomOffset,
               tolerance : {

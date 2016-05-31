@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "article_base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
 {% block extra_js %}
@@ -10,142 +10,148 @@
 {% block body_class %}l-article-content{% endblock %}
 
 {% block extra_navbar %}
-    {% include "blocks/custom-header.html" %}
+    {% include "blocks/extra-navbar.html" %}
 {% endblock %}
 
-{% block content %}
-    <article class="article">
+{% block above_header %}
+    {% include "events/blocks/upcoming_related_events.html" %}
+{% endblock %}
 
-        {% if upcoming_related_events %}
-            <section class="upcoming-related-events">
-                <ul class="upcoming-related-events-list">
-                    {% for event in upcoming_related_events %}
-                        {% include "events/blocks/upcoming_related_event.html" %}
-                    {% endfor %}
-                </ul>
-            </section>
-        {% endif %}
+{% block header %}
 
-        <header class="article-header">
-            <h1 class="article-header-title">
-                {% if self.seo_title %}
-                    {{ self.seo_title }}
-                {% else %}
-                    {{ self.title }}
-                {% endif %}
-                {% if self.subtitle %}
-                    <div class="article-header-subtitle">
-                        {{ self.subtitle }}
-                    </div>
-                {% endif %}
-            </h1>
-
-            <div class="l-article-header-meta article-header-meta">
-                {% if self.format %}
-                    <div class="l-article-header-meta-left-bottom">
-                        <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon white-icon" >
-                          <use xlink:href="#{{ self.format }}-icon" />
-                        </svg>
-                    </div>
-                {% endif %}
-                {% if self.publication_date %}
-                    <div class="l-article-header-meta-left-bottom-text">
-                        {{ self.publication_date|date:"j F Y" }}
-                    </div>
-                {% endif %}
-            </div>
-        </header>
-
-        {% if self.author %}
-            <a href="#" class="l-open-author-pane-button open-author-pane-button" >
-                <label class="article-header-label">{% trans "by" %}</label>
-                <span class="article-header-author-name">{{ self.author }}</span>
-            </a>
-            <section class="author is-visuallyhidden">
-                <div class="l-boxed l-author">
-                    <h3 class="is-hidden" >About</h3>
-                    <div class="author-photo">
-                        {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}
-                    </div>
-                    <div class="author-biography">
-                        <h4 class="author-name is-hidden">
-                            {{ self.author.title }}
-                        </h4>
-                        <p class="author-biography-text">
-                            <span class="author-name-inline">
-                                {{ self.author.title }}
-                            </span>
-                            {{ self.author.biography }}
-                        </p>
-                    </div>
+    <header class="article-header">
+        <h1 class="article-header-title">
+            {% if self.seo_title %}
+                {{ self.seo_title }}
+            {% else %}
+                {{ self.title }}
+            {% endif %}
+            {% if self.subtitle %}
+                <div class="article-header-subtitle">
+                    {{ self.subtitle }}
                 </div>
-            </section>
-        {% endif %}
+            {% endif %}
+        </h1>
+
+        <div class="l-article-header-meta article-header-meta">
+            {% if self.format %}
+                <div class="l-article-header-meta-left-bottom">
+                    <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon white-icon" >
+                      <use xlink:href="#{{ self.format }}-icon" />
+                    </svg>
+                </div>
+            {% endif %}
+            {% if self.publication_date %}
+                <div class="l-article-header-meta-left-bottom-text">
+                    {{ self.publication_date|date:"j F Y" }}
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+{% endblock %}
+
+
+{% block below_header %}
+
+    {% if self.author %}
+        <a href="#" class="l-open-author-pane-button open-author-pane-button" >
+            <label class="article-header-label">{% trans "by" %}</label>
+            <span class="article-header-author-name">{{ self.author }}</span>
+        </a>
+        <section class="author is-visuallyhidden">
+            <div class="l-boxed l-author">
+                <h3 class="is-hidden" >About</h3>
+                <div class="author-photo">
+                    {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}
+                </div>
+                <div class="author-biography">
+                    <h4 class="author-name is-hidden">
+                        {{ self.author.title }}
+                    </h4>
+                    <p class="author-biography-text">
+                        <span class="author-name-inline">
+                            {{ self.author.title }}
+                        </span>
+                        {{ self.author.biography }}
+                    </p>
+                </div>
+            </div>
+        </section>
 
         {% include "blocks/article_subheader.html" %}
+    {% endif %}
 
-        {% if page.format == 'video' or page.format == 'audio' %}
-            {% for block in page.featured %}
-                {% if block.block_type == 'featured_video' or block.block_type == 'featured_audio'  %}
-                    {{ block }}
-                {% endif %}
-            {% endfor %}
-        {%  else %}
-            {% for block in page.featured %}
+{% endblock %}
+
+{% block featured %}
+    {% if page.format == 'video' or page.format == 'audio' %}
+        {% for block in page.featured %}
+            {% if block.block_type == 'featured_video' or block.block_type == 'featured_audio'  %}
                 {{ block }}
-            {% endfor %}
-        {% endif %}
+            {% endif %}
+        {% endfor %}
+    {%  else %}
+        {% for block in page.featured %}
+            {{ block }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
 
-        {%  block tableofcontents %}
-        {% endblock %}
+{% block boxed_content %}
+    <div class="l-boxed">
 
-        <div class="l-boxed">
-            {% for block in page.body %}
-                {% if forloop.first and block.block_type == 'introduction' %}
-                    <div class="article-introduction">
-                        {{ block.value.source|ub_richtext }}
-                    </div>
-                {% endif %}
-            {% endfor %}
-
-            <section class="l-pull-right article-body">
-
-                {% for block in page.body %}
-
-                    {% if block.block_type == 'introduction' %}
-                    {% elif block.block_type == 'paragraph' %}
-                        {{ block.value.source|ub_richtext }}
-                    {% elif block.block_type == 'image' %}
-                        <section class="block-{{ block.block_type }}" >
-                            {{ block }}
-                            <p class="image-description"> {{ block.value }}</p>
-                        </section>
-                    {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                        {{ block }}
-                    {% else %}
-                        <section class="block-{{ block.block_type }}" >
-                            {{ block }}
-                        </section>
-                    {% endif %}
-
-                {% endfor %}
-
-            </section>
-
-        </div>
-
-        {% if self.event_page %}
-            <section class="related-event">
-                <div class="l-boxed l-related-section">
-                    <h3 class="article-section-title" >The event:</h3>
-                    <ul class="">
-                        {% include "events/blocks/agenda_item.html" with event=self.event_page list_item_classes='l-grid-item-half-width' %}
-                    </ul>
+        {% for block in page.body %}
+            {% if forloop.first and block.block_type == 'introduction' %}
+                <div class="article-introduction">
+                    {{ block.value.source|ub_richtext }}
                 </div>
-            </section>
-        {% endif %}
+            {% endif %}
+        {% endfor %}
 
-    </article>
+        <section class="l-pull-right article-body">
+
+        {% for block in page.body %}
+
+            {% if block.block_type == 'introduction' %}
+            {% elif block.block_type == 'paragraph' %}
+                {{ block.value.source|ub_richtext }}
+            {% elif block.block_type == 'image' %}
+                <section class="block-{{ block.block_type }}" >
+                    {{ block }}
+                    <p class="image-description"> {{ block.value }}</p>
+                </section>
+            {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
+                {{ block }}
+            {% else %}
+                <section class="block-{{ block.block_type }}" >
+                    {{ block }}
+                </section>
+            {% endif %}
+
+        {% endfor %}
+
+    </section>
+
+    </div>
+{% endblock %}
+
+{% block below_boxed_content %}
+
+    {% if self.event_page %}
+        <section class="related-event">
+            <div class="l-boxed l-related-section">
+                <h3 class="article-section-title" >The event:</h3>
+                <ul class="">
+                    {% include "events/blocks/agenda_item.html" with event=self.event_page list_item_classes='l-grid-item-half-width' %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+
+{% endblock %}
+
+{% block below_article %}
 
     {% if related_how_tos %}
     <section class="related-howtos">
@@ -186,3 +192,4 @@
     {% endif %}
 
 {% endblock %}
+

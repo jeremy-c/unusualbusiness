@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "article_base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
 {% block extra_js %}
@@ -10,177 +10,180 @@
 {% block body_class %}event{% endblock %}
 
 {% block custom_header %}
-    {% include "blocks/custom-header.html" %}
+    {% include "blocks/extra-navbar.html" %}
 {% endblock %}
 
-{% block content %}
-    <article class="article" >
+{% block above_header %}
+    {% include "events/blocks/upcoming_related_events.html" %}
+{% endblock %}
 
-        {% if upcoming_related_events %}
-            <section class="upcoming-related-events">
-                <ul class="upcoming-related-events-list">
-                    {% for event in upcoming_related_events %}
-                        {% include "events/blocks/upcoming_related_event.html" %}
-                    {% endfor %}
-                </ul>
-            </section>
-        {% endif %}
+{% block header %}
 
-        <header class="article-header">
-            <h1 class="article-header-title">
-                {% if self.seo_title %}
-                    {{ self.seo_title }}
-                {% else %}
-                    {{ self.title }}
-                {% endif %}
-            </h1>
+    <header class="l-article-header article-header">
+        <h1 class="article-header-title">
+            {% if self.seo_title %}
+                {{ self.seo_title }}
+            {% else %}
+                {{ self.title }}
+            {% endif %}
+        </h1>
 
-            <div class="l-article-header-meta article-header-meta">
-                <div class="l-article-header-meta-left-bottom">
-                    <svg width="32px" height="32px" class="article-format-icon organization-icon white-icon" >
-                      <use xlink:href="#event-icon" />
-                    </svg>
-                </div>
-                <div class="l-article-header-meta-left-bottom-text">
-                    {{ page.event_type }}
-                </div>
+        <div class="l-article-header-meta article-header-meta">
+            <div class="l-article-header-meta-left-bottom">
+                <svg width="32px" height="32px" class="article-format-icon organization-icon white-icon" >
+                  <use xlink:href="#event-icon" />
+                </svg>
             </div>
-        </header>
+            <div class="l-article-header-meta-left-bottom-text">
+                {{ page.event_type }}
+            </div>
+        </div>
+    </header>
 
+{% endblock %}
+
+{% block below_header %}
         {% include "blocks/article_subheader.html" %}
+{% endblock %}
 
-        {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
+{% block featured %}
+    {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
+{% endblock %}
 
-        <div class="l-boxed">
+{% block boxed_content %}
 
-            <section class="l-full-width event-meta">
+    <div class="l-boxed">
 
-                <time class="l-event-date-time-heading horizontal-date horizontal-date-large dt-start"
-                      datetime="{{ self.start_date|date:"SHORT_DATETIME_FORMAT" }}">
-                    <div class="horizontal-date-day">{{ self.start_date|date:"l" }}</div>
-                    <div class="horizontal-date-day-of-month">{{ self.start_date|date:"d" }}</div>
-                    <div class="horizontal-date-month">{{ self.start_date|date:"m" }}</div>
-                    <div class="horizontal-date-year">{{ self.start_date|date:"y" }}</div>
-                    <div class="horizontal-date-time">{% trans "Aanvang:" %} {{ self.start_date|time:"H:i" }}</div>
-                </time>
+        <section class="l-full-width event-meta">
 
-            </section>
+            <time class="l-event-date-time-heading horizontal-date horizontal-date-large dt-start"
+                  datetime="{{ self.start_date|date:"SHORT_DATETIME_FORMAT" }}">
+                <div class="horizontal-date-day">{{ self.start_date|date:"l" }}</div>
+                <div class="horizontal-date-day-of-month">{{ self.start_date|date:"d" }}</div>
+                <div class="horizontal-date-month">{{ self.start_date|date:"m" }}</div>
+                <div class="horizontal-date-year">{{ self.start_date|date:"y" }}</div>
+                <div class="horizontal-date-time">{% trans "Aanvang:" %} {{ self.start_date|time:"H:i" }}</div>
+            </time>
+
+        </section>
+
+        {% for block in page.description %}
+            {% if forloop.first and block.block_type == 'introduction' %}
+                <section class="l-pull-left article-introduction event-introduction">
+                    {{ block.value.source|ub_richtext }}
+                </section>
+            {% endif %}
+        {% endfor %}
+
+        <section class="l-pull-right article-body event-description">
 
             {% for block in page.description %}
-                {% if forloop.first and block.block_type == 'introduction' %}
-                    <section class="l-pull-left article-introduction event-introduction">
-                        {{ block.value.source|ub_richtext }}
+
+                {% if block.block_type == 'introduction' %}
+                {% elif block.block_type == 'paragraph' %}
+                    {{ block.value.source|ub_richtext }}
+                {% elif block.block_type == 'image' %}
+                    <section class="block-{{ block.block_type }}" >
+                        {{ block }}
+                        <p class="image-description"> {{ block.value }}</p>
+                    </section>
+                {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
+                    {{ block }}
+                {% else %}
+                    <section class="block-{{ block.block_type }}" >
+                        {{ block }}
                     </section>
                 {% endif %}
+
             {% endfor %}
 
-            <section class="l-pull-right article-body event-description">
+        </section>
 
-                {% for block in page.description %}
+        <section class="l-pull-left event-info">
 
-                    {% if block.block_type == 'introduction' %}
-                    {% elif block.block_type == 'paragraph' %}
-                        {{ block.value.source|ub_richtext }}
-                    {% elif block.block_type == 'image' %}
-                        <section class="block-{{ block.block_type }}" >
-                            {{ block }}
-                            <p class="image-description"> {{ block.value }}</p>
-                        </section>
-                    {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                        {{ block }}
-                    {% else %}
-                        <section class="block-{{ block.block_type }}" >
-                            {{ block }}
-                        </section>
-                    {% endif %}
-
-                {% endfor %}
-
-            </section>
-
-            <section class="l-pull-left event-info">
-
-                <div class="event-info-start-date">
-                    <label class="meta-label">{% trans "Date:" %}</label>
-                    <div class="meta-item">
-                        {{ page.start_date|date:"l d N Y" }}
-                    </div>
+            <div class="event-info-start-date">
+                <label class="meta-label">{% trans "Date:" %}</label>
+                <div class="meta-item">
+                    {{ page.start_date|date:"l d N Y" }}
                 </div>
+            </div>
 
-                <div class="event-info-time">
-                    <label class="meta-label">{% trans "Time:" %}</label>
-                    <span class="meta-item">
-                        {{ page.start_date|time:"h:i" }}
-                        {% if page.end_date %}
-                            - {{ page.end_date|time:"h:i" }}
-                        {% endif %}
-                        {% trans ", inloop van" %}
-                        {{ page.doors_open_from|time:"h:i" }}
-                    </span>
-                </div>
-
-                <div class="event-info-location">
-                    <label class="meta-label">{% trans "Location:" %}</label>
-
-                    {% if page.venue_name %}
-                    <div class="meta-item event-venue-name">
-                        {{ page.venue_name }}
-                    </div>
+            <div class="event-info-time">
+                <label class="meta-label">{% trans "Time:" %}</label>
+                <span class="meta-item">
+                    {{ page.start_date|time:"h:i" }}
+                    {% if page.end_date %}
+                        - {{ page.end_date|time:"h:i" }}
                     {% endif %}
+                    {% trans ", inloop van" %}
+                    {{ page.doors_open_from|time:"h:i" }}
+                </span>
+            </div>
 
-                    {% if page.venue_address %}
-                    <div class="meta-item event-venue-address">
-                        {{ page.venue_address }}
-                    </div>
-                    {% endif %}
+            <div class="event-info-location">
+                <label class="meta-label">{% trans "Location:" %}</label>
 
-                    <div>
-                        {% if page.venue_postal_code %}
-                        <span class="meta-item event-venue-postal-code">
-                            {{ page.venue_postal_code }}
-                        </span>
-                        {% endif %}
-
-                        {% if page.venue_city %}
-                        <span class="meta-item event-venue-city">
-                            {{ page.venue_city }}
-                        </span>
-                        {% endif %}
-                    </div>
-
-                    {% if page.venue_country %}
-                    <div class="meta-item event-venue-country">
-                        {{ page.venue_country }}
-                    </div>
-                    {% endif %}
-
-                </div>
-
-                {% if page.facebook_event %}
-                <div class="event-info-promotion">
-                    <label class="meta-label">{% trans "Promotion:" %}</label>
-
-                    <div class="facebook">
-                        <label>{% trans "Facebook:" %}</label>
-                        <span><a href="{{ page.facebook_event }}" class="event-info-facebook-link">{{ page.facebook_event }}</a></span>
-                    </div>
+                {% if page.venue_name %}
+                <div class="meta-item event-venue-name">
+                    {{ page.venue_name }}
                 </div>
                 {% endif %}
 
-            </section>
+                {% if page.venue_address %}
+                <div class="meta-item event-venue-address">
+                    {{ page.venue_address }}
+                </div>
+                {% endif %}
 
-            <section class="event-location-map">
-                <iframe
-                  width="100%"
-                  height="360"
-                  frameborder="0" style="border:0"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
-                    &q={{ self.location }}" >
-                </iframe>
-            </section>
-        </div>
+                <div>
+                    {% if page.venue_postal_code %}
+                    <span class="meta-item event-venue-postal-code">
+                        {{ page.venue_postal_code }}
+                    </span>
+                    {% endif %}
 
-    </article>
+                    {% if page.venue_city %}
+                    <span class="meta-item event-venue-city">
+                        {{ page.venue_city }}
+                    </span>
+                    {% endif %}
+                </div>
+
+                {% if page.venue_country %}
+                <div class="meta-item event-venue-country">
+                    {{ page.venue_country }}
+                </div>
+                {% endif %}
+
+            </div>
+
+            {% if page.facebook_event %}
+            <div class="event-info-promotion">
+                <label class="meta-label">{% trans "Promotion:" %}</label>
+
+                <div class="facebook">
+                    <label>{% trans "Facebook:" %}</label>
+                    <span><a href="{{ page.facebook_event }}" class="event-info-facebook-link">{{ page.facebook_event }}</a></span>
+                </div>
+            </div>
+            {% endif %}
+
+        </section>
+
+        <section class="event-location-map">
+            <iframe
+              width="100%"
+              height="360"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
+                &q={{ self.location }}" >
+            </iframe>
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block below_article %}
 
     {% if self.event_report %}
     <section class="event-report">

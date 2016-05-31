@@ -1,3 +1,24 @@
 {% extends "articles/article_index_page_base.html" %}
 
 {% block body_class %}theory-article-list{% endblock %}
+
+    <article class="article">
+
+        <header class="l-article-header l-article-header-small article-header">
+            <h1 class="article-header-title">
+                Theory
+            </h1>
+        </header>
+
+        <ul>
+        {% for article in articles %}
+            {% if forloop.counter == 2 %}
+                <li class="">
+                    {% latest_quote %}
+                </li>
+            {% endif %}
+            <li class="{{ article | to_class_name }}"><a href="{% pageurl article %}">{{ article.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+    </article>
