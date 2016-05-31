@@ -17,7 +17,7 @@ let HeaderMenus = () => {
     $(this).toggleClass('is-spinned');
   };
 
-  let initHeader = function() {
+  let initNavbar = function() {
     let howToLink = $('.how-to-link');
     howToLink.on('mouseenter', toggleEyebrows);
     howToLink.on('mouseleave', toggleEyebrows);
@@ -28,9 +28,9 @@ let HeaderMenus = () => {
   };
 
   let initCustomHeader = function() {
-    let customHeaderMenuButton = $('.custom-header-hamburger-button');
-    let customHeader = $('.custom-header');
-    let header = $('.header');
+    let customHeaderMenuButton = $('.extra-navbar-hamburger-button');
+    let customHeader = $('.extra-navbar');
+    let header = $('.navbar');
 
     customHeaderMenuButton.on('click', function() {
         customHeader.addClass('l-pin-custom-header-under-header');
@@ -42,9 +42,9 @@ let HeaderMenus = () => {
   };
 
   let initHeadroomJS = function() {
-    let $customHeaderMenuButton = $('.custom-header-hamburger-button');
-    let $header = $('.header');
-    let $customHeader = $('.custom-header');
+    let $customHeaderMenuButton = $('.extra-navbar-hamburger-button');
+    let $header = $('.navbar');
+    let $customHeader = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
 
     let articleHeaderHeight = $('.article-header').height();
@@ -124,8 +124,8 @@ let HeaderMenus = () => {
   };
 
   let init = function () {
-    console.log('Header go!');
-    initHeader();
+    console.log('Navbar go!');
+    initNavbar();
     initHeadroomJS();
     // initCustomHeader();
   };

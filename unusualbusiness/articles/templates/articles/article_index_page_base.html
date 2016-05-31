@@ -1,15 +1,34 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils article_tags i18n %}
 
-{% block body_class %}template-article-index-page{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body_class %}theory-list{% endblock %}
 
 {% block content %}
 
-    {% for article in articles %}
+    <article class="article">
+
+        <header class="article-header">
+            <h1 class="article-header-title">
+                Theory
+            </h1>
+        </header>
+
         <ul>
+        {% for article in articles %}
+            {% if forloop.counter == 2 %}
+                <li class="">
+                    {% latest_quote %}
+                </li>
+            {% endif %}
             <li class="{{ article | to_class_name }}"><a href="{% pageurl article %}">{{ article.title }}</a></li>
+        {% endfor %}
         </ul>
 
-    {% endfor %}
-
+    </article>
 {% endblock %}

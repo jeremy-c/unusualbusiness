@@ -58,7 +58,7 @@ let MobileMenu = () => {
       onClose: toggleHamburgerMenu
     });
 
-    $('.custom-header-hamburger-menu-button').sidr({
+    $('.extra-navbar-hamburger-menu-button').sidr({
       name: 'mobile-menu',
       side: 'right',
       source: '.l-main-nav',

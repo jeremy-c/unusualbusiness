@@ -1,10 +1,13 @@
-from django.db.models import Model
+from django.db.models import Model, CharField
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailsnippets.models import register_snippet
 
 # Blocks
 
@@ -227,3 +230,4 @@ class PageFormat:
 
     def __init__(self):
         pass
+

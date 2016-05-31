@@ -5,7 +5,8 @@
 @import "../base/base";
 @import "../base/mixins";
 
-.l-header {
+.l-navbar {
+  z-index: 200;
   position: fixed;
   top: 0;
   bottom: auto;

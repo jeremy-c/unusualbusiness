@@ -11,7 +11,7 @@ import Article from './modules/article';
 import FeaturedAgenda from './modules/featured-agenda';
 import FeaturedArticles from './modules/featured-articles';
 import FeaturedJournal from './modules/featured-journal';
-import HeaderMenus from './modules/header';
+import Navbar from './modules/navbar';
 import Organization from './modules/organization';
 
 (function() {
@@ -33,7 +33,7 @@ import Organization from './modules/organization';
     let featuredAgenda = FeaturedAgenda();
     let featuredArticles = FeaturedArticles();
     let featuredJournal = FeaturedJournal();
-    let headerMenus = HeaderMenus();
+    let navbar = Navbar();
     let organization = Organization();
 
     grid.init();
@@ -42,7 +42,7 @@ import Organization from './modules/organization';
     featuredAgenda.init();
     featuredArticles.init();
     featuredJournal.init();
-    headerMenus.init();
+    navbar.init();
     organization.init();
   });
 

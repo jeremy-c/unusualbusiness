@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import CharField
+from django.db.models import Model
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -14,6 +16,7 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
@@ -356,3 +359,26 @@ class AuthorIndexPage(Page):
         context['authors'] = AuthorPage.objects.all().live()
         context['parent'] = self.get_parent()
         return context
+
+
+# Snippets
+
+
+@register_snippet
+class Quote(Model):
+    quote = CharField(
+        verbose_name=_('quote'),
+        max_length=255,
+        help_text=_("A quote from an article."),
+        blank=False)
+
+    panels = [
+        FieldPanel('quote'),
+    ]
+
+    class Meta:
+        verbose_name = _("Quote")
+        verbose_name_plural = _("Quotes")
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.quote

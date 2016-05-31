@@ -5,6 +5,7 @@
 'use strict';
 
 import Velocity from 'velocity-animate';
+// import Froffcanvas from 'fr-offcanvas';
 
 let Article = () => {
   let initInlineAricleLinks = function() {
@@ -21,15 +22,8 @@ let Article = () => {
   };
 
   let initTOC = function() {
-    $(".article-table-of-contents").sticky({
-      topSpacing: 112,
-      getWidthFrom: '.article-table-of-contents'
-    });
-
-    $('.toggle-toc-link').on('click', function () {
-      $('.toc-list').toggleClass('is-visuallyhidden');
-      return false;
-    });
+    // var myOffcanvas = Froffcanvas();
+    // myOffcanvas.init()
   };
 
   let initAuthorPane = function() {

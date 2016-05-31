@@ -4,7 +4,10 @@
 
 
 {%  block tableofcontents %}
-    <section class="article-table-of-contents">
+    <button class="js-fr-offcanvas-open" aria-controls="offcanvas-1">
+        Open
+    </button>
+    <section class="article-table-of-contents js-fr-offcanvas" id="offcanvas-1">
         <a href="" class="toggle-toc-link">
             <svg width="25.178px" height="20.185px"  class="toc-icon" >
                 <title>Table of Contents icon</title>
@@ -37,5 +40,8 @@
 
             {% endfor %}
         </ul>
+        <button class="js-fr-offcanvas-close">
+            Close
+        </button>
     </section>
 {% endblock %}
