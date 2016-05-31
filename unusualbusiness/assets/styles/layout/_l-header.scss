@@ -1,0 +1,75 @@
+/* ==|====================
+   Layout/Header
+   ======================= */
+
+@import "../base/base";
+
+// Header
+.l-article-header {
+  z-index: 10;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  box-sizing: border-box;
+
+  padding: $gutter;
+  min-height: 380px;
+
+  @media(max-width: $tablet) {
+    height: auto;
+    min-height: inherit;
+  }
+}
+
+.article-header-image {
+  display: none;
+}
+
+.l-article-header-meta {
+  position: relative;
+  margin: $gutter 0 0;
+  width: 100%;
+
+  @media(max-width: $tablet) {
+    padding-top: 5px;
+  }
+}
+
+.l-article-header-meta-left-bottom {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
+.l-article-header-meta-left-bottom-text {
+  position: absolute;
+  left: 50px;
+  bottom: 0;
+}
+
+.l-open-author-pane-button {
+  z-index: 100;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+
+  margin: -80px auto 0;
+  padding-top: 22px;
+  height: 80px;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+
+  @media(max-width: $tablet) {
+    margin-top: 0;
+    margin-bottom: $gutter;
+    border-bottom: solid 1px $light-gray;
+    padding-bottom: $gutter;
+  }
+
+  &:after {
+    margin-left: 10px;
+    padding-bottom: 2px;
+  }
+}
+

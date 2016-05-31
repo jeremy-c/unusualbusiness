@@ -40,16 +40,16 @@
                 {% endif %}
             </h1>
 
-            <div class="article-header-meta">
+            <div class="l-article-header-meta article-header-meta">
                 {% if self.format %}
-                    <div class="article-header-format">
+                    <div class="l-article-header-meta-left-bottom">
                         <svg width="32px" height="32px" class="article-format-icon {{ self.format }}-icon white-icon" >
                           <use xlink:href="#{{ self.format }}-icon" />
                         </svg>
                     </div>
                 {% endif %}
                 {% if self.publication_date %}
-                    <div class="article-header-left-bottom">
+                    <div class="l-article-header-meta-left-bottom-text">
                         {{ self.publication_date|date:"j F Y" }}
                     </div>
                 {% endif %}
@@ -57,7 +57,7 @@
         </header>
 
         {% if self.author %}
-            <a href="#" class="open-author-pane-button" >
+            <a href="#" class="l-open-author-pane-button open-author-pane-button" >
                 <label class="article-header-label">{% trans "by" %}</label>
                 <span class="article-header-author-name">{{ self.author }}</span>
             </a>

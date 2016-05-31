@@ -6,16 +6,6 @@
 
 // Header
 .article-header {
-  z-index: 10;
-  position: relative;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  box-sizing: border-box;
-
-  padding: $gutter;
-  min-height: 380px;
-
   color: $white;
 
   @media(max-width: $tablet) {
@@ -24,19 +14,23 @@
   }
 
   .news-article &,
-  .event & {
+  .event &,
+  .activities-list & {
     background-color: $blue;
   }
 
-  .theory-article & {
+  .theory-article &,
+  .theory-article-list & {
     background-color: $green;
   }
 
-  .story-article & {
+  .story-article &,
+  .story-article-list & {
     background-color: $yellow;
   }
 
-  .organization & {
+  .organization &,
+  .organization-list & {
     background-color: $black;
   }
 }
@@ -74,43 +68,13 @@
 }
 
 .article-header-meta {
-  position: relative;
-  margin: $gutter 0 0;
-  width: 100%;
-
   text-align: center;
   font-family: $open-sans;
   font-weight: 400;
   font-size: 16px;
-
-  @media(max-width: $tablet) {
-    padding-top: 5px;
-  }
-}
-
-.article-header-format {
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-}
-
-.article-header-left-bottom {
-  position: absolute;
-  left: 50px;
-  bottom: 0;
 }
 
 .open-author-pane-button {
-  z-index: 100;
-  display: block;
-  position: relative;
-  box-sizing: border-box;
-
-  margin: -80px auto 0;
-  padding-top: 22px;
-  height: 80px;
-  width: 100%;
-  transition: all 200ms ease-in-out;
 
   font-family: $open-sans;
   font-weight: 400;
@@ -121,13 +85,8 @@
   color: $white;
 
   @media(max-width: $tablet) {
-    margin-top: 0;
     background-color: $white;
     color: $light-grayish;
-
-    margin-bottom: $gutter;
-    border-bottom: solid 1px $light-gray;
-    padding-bottom: $gutter;
   }
 
   &:after {
@@ -135,9 +94,7 @@
     transition: all 500ms ease-in-out;
     content: '';
     transform: rotate(90deg);
-    margin-left: 10px;
     vertical-align: middle;
-    padding-bottom: 2px;
     font-size: 18px;
 
     @media(max-width: $tablet) {
