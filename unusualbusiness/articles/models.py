@@ -32,7 +32,7 @@ class TheoryArticleIndexPage(Page):
     def get_context(self, request):
         context = super(TheoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['articles'] = TheoryArticlePage.objects.all().live()
+        context['articles'] = TheoryArticlePage.objects.all().live().order_by('-publication_date')
         context['parent'] = self.get_parent()
         return context
 
@@ -44,7 +44,7 @@ class StoryArticleIndexPage(Page):
     def get_context(self, request):
         context = super(StoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['articles'] = StoryArticlePage.objects.all().live()
+        context['articles'] = StoryArticlePage.objects.all().live().order_by('-publication_date')
         context['parent'] = self.get_parent()
         return context
 
@@ -56,8 +56,8 @@ class ActivityIndexPage(Page):
     def get_context(self, request):
         context = super(ActivityIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['events'] = EventPage.objects.child_of(self).live()
-        context['news'] = NewsArticlePage.objects.child_of(self).live()
+        context['events'] = EventPage.objects.child_of(self).live().order_by('start_date')
+        context['news'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
         return context
 
 

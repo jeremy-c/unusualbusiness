@@ -1,6 +1,8 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
 <li class="l-grid-item latest-article{{ article_classes }} {% block list_item_classes %}{% endblock %} {{ page.format }}">
+
+    {% block above_latest_article %}{% endblock %}
     <a href="{{ page.url }}" class="latest-article-link">
         <div class="icon-wrapper">
             <svg width="22px" height="22px" class="article-format-icon {{ page.format }}-icon white-icon" >
@@ -21,9 +23,5 @@
             {% include "blocks/responsive_image.html" with image=page.featured_image.value.image image_class="latest-article-image"  %}
         {% endblock %}
     </a>
-    {% if how_to %}
-        <div class="latest-article-how-to">
-            <a href="{{ how_to.url }}">{{ how_to.title }}</a>
-        </div>
-    {% endif %}
+    {% block below_latest_article %}{% endblock %}
 </li>

@@ -15,31 +15,31 @@
 
   .news-article &,
   .event &,
-  .activities-list & {
+  .activities-page & {
     background-color: $blue;
   }
 
   .theory-article &,
-  .theory-article-list & {
+  .theory-articles-page & {
     background-color: $green;
   }
 
   .story-article &,
-  .story-article-list & {
+  .story-articles-page & {
     background-color: $yellow;
   }
 
   .organization &,
-  .organization-list & {
+  .organizations-page & {
     background-color: $black;
   }
 
-  .activities-list &,
-  .theory-article-list &,
-  .story-article-list &,
-  .organization-list & {
+  .activities-page &,
+  .theory-articles-page &,
+  .story-articles-page &,
+  .organizations-page & {
     min-height: 170px;
-  } 
+  }
 }
 
 .article-header-title {

@@ -1,15 +1,5 @@
-{% extends "base.html" %}
+{% extends "articles/article_index_page_base.html" %}
 {% load wagtailcore_tags wagtailimages_tags ub_core_tags url_tags i18n %}
 
-{% block body_class %}template-organization-index-page{% endblock %}
+{% block body_class %}organizations-page {{ block.super }}{% endblock %}
 
-{% block content %}
-
-    {% for organization in organizations %}
-        <ul>
-            <li class="{{ organization | to_class_name }}"><a href="{% pageurl organization %}">{{ organization.title }}</a></li>
-        </ul>
-
-    {% endfor %}
-
-{% endblock %}

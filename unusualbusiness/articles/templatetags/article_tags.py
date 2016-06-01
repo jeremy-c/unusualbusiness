@@ -13,7 +13,7 @@ register = template.Library()
 #         'request': context['request'],
 #     }
 
-@register.inclusion_tag('articles/tags/quotes.html', takes_context=True)
+@register.inclusion_tag('articles/tags/quote.html', takes_context=True)
 def latest_quote(context):
     return {
         'quote': Quote.objects.first(),
@@ -21,9 +21,9 @@ def latest_quote(context):
     }
 
 
-@register.inclusion_tag('articles/tags/quote.html', takes_context=True)
+@register.inclusion_tag('articles/tags/quotes.html', takes_context=True)
 def all_quotes(context):
     return {
-        'quotes': Quote.objects.first(),
+        'quotes': Quote.objects.all(),
         'request': context['request'],
     }

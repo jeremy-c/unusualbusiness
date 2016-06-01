@@ -7,7 +7,7 @@
 {% block extra_css %}
 {% endblock %}
 
-{% block body_class %}l-article-content{% endblock %}
+{% block body_class %}{{ block.super }}{% endblock %}
 
 {% block extra_navbar %}
     {% include "blocks/extra-navbar.html" %}
@@ -50,7 +50,6 @@
     </header>
 
 {% endblock %}
-
 
 {% block below_header %}
 
@@ -98,7 +97,7 @@
     {% endif %}
 {% endblock %}
 
-{% block boxed_content %}
+{% block article_body %}
     <div class="l-boxed">
 
         {% for block in page.body %}
@@ -136,7 +135,7 @@
     </div>
 {% endblock %}
 
-{% block below_boxed_content %}
+{% block below_article_body %}
 
     {% if self.event_page %}
         <section class="related-event">
@@ -170,7 +169,7 @@
     <section class="related-articles">
         <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >Read next:</h3>
-            <ul class="l-grid">
+            <ul class="l-grid grid-masonry">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
                 {% for articles, how_to in related_how_tos_with_articles %}

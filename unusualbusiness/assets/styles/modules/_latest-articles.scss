@@ -1,5 +1,5 @@
 /* ==|====================
-   Modules/Latest Pages
+   Modules/Latest Articles
    ======================= */
 
 @import "../base/base";
@@ -9,6 +9,18 @@
 
   @media(max-width: $mobile) {
     padding: 0 $gutter;
+  }
+}
+
+.article-index-page-list {
+  margin: $gutter * 2;
+
+  @media(max-width: $tablet) {
+    margin: $gutter * 2 $gutter;
+  }
+
+  @media(max-width: $mobile) {
+    //padding-left: 0;
   }
 }
 
@@ -297,17 +309,35 @@
   margin-bottom: $gutter * 2;
 }
 
-.latest-article-how-to {
+.l-below-latest-article {
   position: absolute;
   bottom: -$gutter;
   right: 0;
 
-  a {
-    color: $green;
-    text-decoration: none;
+  .home & {
+    display: none;
   }
+}
+
+.l-above-latest-article {
+  position: absolute;
+  top: -$gutter;
+  left: 0;
 
   .home & {
     display: none;
   }
+}
+
+.latest-article-how-to {
+  a {
+    color: $green;
+    text-decoration: none;
+  }
+}
+
+.latest-article-publication-date {
+  font-size: 14px;
+  font-family: $open-sans;
+  color: $light-grayish;
 }

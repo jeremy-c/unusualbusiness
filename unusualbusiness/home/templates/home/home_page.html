@@ -106,19 +106,19 @@
 
         <section class="latest-articles" id="latest-articles">
             <h2 class="hidden-title">Latest Articles</h2>
-            <ul class="l-grid">
+            <ul class="l-grid grid-masonry">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
 
-                {% for the_page in pages %}
-                    {%  if the_page.content_type.model == 'organizationpage' %}
-                        {% include "organizations/blocks/latest_organization.html" with page=the_page list_item_classes='l-grid-item l-grid-item-fixed-height' %}
-                    {%  elif the_page.content_type.model == 'newsarticlepage' %}
-                        {% include "articles/blocks/latest_news_article.html" with page=the_page %}
-                    {% elif the_page.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/blocks/latest_story_article.html" with page=the_page list_item_classes='l-grid-item-double-width'  %}
-                    {% elif the_page.content_type.model == 'theoryarticlepage' %}
-                        {% include "articles/blocks/latest_theory_article.html" with page=the_page %}
+                {% for article in articles %}
+                    {%  if article.content_type.model == 'organizationpage' %}
+                        {% include "organizations/blocks/latest_organization.html" with page=article list_item_classes='l-grid-item l-grid-item-fixed-height' %}
+                    {%  elif article.content_type.model == 'newsarticlepage' %}
+                        {% include "articles/blocks/latest_news_article.html" with page=article %}
+                    {% elif article.content_type.model == 'storyarticlepage' %}
+                            {% include "articles/blocks/latest_story_article.html" with page=article list_item_classes='l-grid-item-double-width'  %}
+                    {% elif article.content_type.model == 'theoryarticlepage' %}
+                        {% include "articles/blocks/latest_theory_article.html" with page=article %}
                     {% endif %}
                     {% empty %}
                         <li>Sorry, no pages found.</li>

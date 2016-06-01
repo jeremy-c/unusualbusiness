@@ -91,7 +91,7 @@ class HomePage(Page):
 
         return render(request, self.template, {
             'page': self,
-            'pages': pages,
+            'articles': pages,
             'featured_articles': self.featured_articles(),
             'upcoming_events': EventPage.upcoming_events(),
             'how_tos': how_tos,

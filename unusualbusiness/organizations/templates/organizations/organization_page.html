@@ -50,7 +50,7 @@
     {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
 {% endblock %}
 
-{% block boxed_content %}
+{% block article_body %}
     <div class="l-boxed">
 
         <section class="l-full-width organization-meta">
@@ -157,7 +157,7 @@
     <section class="related-articles">
         <div class="l-boxed l-related-section">
             <h3 class="article-section-title" >Practitioner stories:</h3>
-            <ul class="l-grid">
+            <ul class="l-grid grid-masonry">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
                 {% for article in related_story_articles %}

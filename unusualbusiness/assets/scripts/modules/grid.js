@@ -9,16 +9,32 @@
 
 let Grid = () => {
   let initIsotope = function() {
-    $('.l-grid').imagesLoaded(function() {
-      $('.l-grid').isotope({
+    let masonrySettings = {
         itemSelector: '.l-grid-item',
+        stamp: '.l-stamp',
         percentPosition: true,
         masonry: {
-          // use element for option
           columnWidth: '.l-grid-sizer',
           gutter: '.l-grid-gutter-sizer'
         }
-      });
+      };
+
+    let packerySettings = {
+        itemSelector: '.l-grid-item',
+        stamp: '.l-stamp',
+        layoutMode: 'packery',
+        percentPosition: true,
+        packery: {
+          gutter: '.l-grid-gutter-sizer'
+        }
+      };
+
+    $('.grid-masonry').imagesLoaded(function() {
+      $('.grid-masonry').isotope(masonrySettings);
+    });
+
+    $('.grid-packery').imagesLoaded(function() {
+      $('.grid-packery').isotope(packerySettings);
     });
   };
 

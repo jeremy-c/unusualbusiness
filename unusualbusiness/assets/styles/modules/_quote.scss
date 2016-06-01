@@ -1,0 +1,28 @@
+/* ==|====================
+   Modules/Quote
+   ======================= */
+
+@import "../base/base";
+
+.quote {
+  padding: $gutter $gutter * 2;
+
+  background-color: $green;
+  color: $white;
+  text-align: center;
+
+  @media(max-width: $mobile) {
+    padding: 0 $gutter;
+  }
+}
+
+.quote-text {
+  margin-bottom: $gutter / 2;
+  font-size: 32px;
+}
+
+.quote-author {
+  font-size: 14px;
+  font-family: $open-sans;
+  font-style: normal;
+}
