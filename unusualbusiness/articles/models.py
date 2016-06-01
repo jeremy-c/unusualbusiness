@@ -154,7 +154,7 @@ class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         related_how_tos = self.related_how_tos()
 
         context['related_how_tos'] = related_how_tos
-        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_story_articles(related_how_tos, self.id)
 
         return context
@@ -227,7 +227,7 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         related_how_tos = self.related_how_tos()
 
         context['related_how_tos'] = related_how_tos
-        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_theory_articles(related_how_tos, self.id)
 
         return context
@@ -284,7 +284,7 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         related_how_tos = self.related_how_tos()
 
         context['related_how_tos'] = related_how_tos
-        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_news_articles(related_how_tos, self.id)
 
         return context

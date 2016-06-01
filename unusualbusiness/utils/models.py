@@ -150,7 +150,6 @@ class RelatedHowToMixin(object):
 
         return related_how_to_news_articles
 
-
     def related_how_to_events(self, related_how_tos=None, self_idx=None):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
@@ -163,7 +162,7 @@ class RelatedHowToMixin(object):
 
         return related_how_to_events
 
-    def upcoming_related_event_pages(self, related_how_tos=None):
+    def upcoming_related_event(self, related_how_tos=None):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
 
@@ -178,6 +177,8 @@ class RelatedHowToMixin(object):
                     if how_to_event and how_to_event.is_upcoming:
                         event_pages.append(how_to_event)
 
+        if len(event_pages) > 0:
+            return sorted(event_pages, key=lambda event: event.start_date)[0]
         return event_pages
 
     @staticmethod

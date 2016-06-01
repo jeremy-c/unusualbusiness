@@ -112,7 +112,7 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         related_how_tos = self.related_how_tos()
 
         context['related_how_tos'] = related_how_tos
-        context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
+        context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_story_articles'] = self.related_story_articles()
 
         return context
