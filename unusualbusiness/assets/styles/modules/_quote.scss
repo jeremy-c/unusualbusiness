@@ -12,7 +12,7 @@
   text-align: center;
 
   @media(max-width: $mobile) {
-    padding: 0 $gutter;
+    padding: $gutter;
   }
 }
 

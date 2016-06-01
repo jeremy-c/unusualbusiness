@@ -43,11 +43,7 @@
   text-align: center;
 
   @media(max-width: $tablet) {
-    margin-top: $gutter / 2;
-  }
-
-  @media(max-width: $mobile) {
-    align-self: center;
+    margin-top: 8px;
   }
 
   .latest-story-article & {
@@ -57,11 +53,7 @@
 
     @media(max-width: $tablet) {
       align-self: flex-start;
-      margin-top: $gutter / 2;
-    }
-
-    @media(max-width: $mobile) {
-      align-self: center;
+      margin-top: 8px;
     }
   }
 
@@ -76,7 +68,7 @@
     background-color: $green;
 
     @media(max-width: $tablet) {
-      margin-top: $gutter / 2;
+      margin-top: 8px;
     }
   }
 
@@ -85,11 +77,11 @@
     background-color: $blue;
 
     @media(max-width: $tablet) {
-      margin-top: $gutter / 2;
+      margin-top: 8px;
     }
   }
 
   .article-format-icon {
     padding-top: 13px;
   }
-}
+} 

@@ -6,7 +6,7 @@
     {% image image fill-768x310-c100 as ri_cropped %}
     {% image image fill-1536x620-c100 as ri_cropped_2x %}
     {% image image fill-3072x1240-c100 as ri_cropped_4x %}
-    <picture>
+    <picture class="picture">
         <source media="(max-width: 361px)"
             srcset=" {{ ri_cropped.url }} 2x,{{ ri_small_cropped.url }} 1x"
             sizes="100vw" />

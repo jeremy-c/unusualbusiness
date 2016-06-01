@@ -16,7 +16,7 @@
   margin: $gutter * 2;
 
   @media(max-width: $tablet) {
-    margin: $gutter * 2 $gutter;
+    margin: $gutter 0;
   }
 
   @media(max-width: $mobile) {
@@ -33,7 +33,7 @@
   text-decoration: none;
 
   @media(max-width: $mobile) {
-    flex-direction: column;
+    //flex-direction: column;
   }
 }
 
@@ -47,7 +47,7 @@
   }
 
   @media(max-width: $mobile) {
-    padding-left: 0;
+    padding-left: $gutter / 2;
   }
 }
 
@@ -98,7 +98,11 @@
   }
 
   .latest-theory-article & {
-    padding: 24px 0;
+    padding: 24px 0 ;
+
+    @media(max-width: $tablet) {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -134,12 +138,13 @@
   }
 
   @media(max-width: $tablet) {
+    padding-top: 0;
     width: 100%;
   }
 
   .latest-news-article & {
     flex: 0 1 auto;
-    padding-top: $gutter;
+    padding-top: $gutter / 2;
     max-width: 100%;
   }
 }
@@ -168,11 +173,21 @@
   }
 
   @media(max-width: $tablet) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: none;
     padding: $gutter / 2 0;
   }
 }
 
-// Report Article
+.latest-story-article .picture {
+  @media(max-width: $tablet) {
+    width: 100%;
+  }
+}
+
+// News Article
 .latest-news-article {
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
@@ -314,6 +329,10 @@
   bottom: -$gutter;
   right: 0;
 
+  @media(max-width: $tablet) {
+    display: none;
+  }
+
   .home & {
     display: none;
   }
@@ -324,9 +343,14 @@
   top: -$gutter;
   left: 0;
 
+  @media(max-width: $tablet) {
+    display: none;
+  }
+
   .home & {
     display: none;
   }
+
 }
 
 .latest-article-how-to {
