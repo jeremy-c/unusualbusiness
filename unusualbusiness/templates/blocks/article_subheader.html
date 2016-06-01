@@ -2,7 +2,7 @@
 
 <div class="article-subheader">
     <div class="article-subheader-back-links">
-        <a href="javascript:window.history.back();" class="back-link">All {% get_verbose_name_plural self %} </a>
+        <a href="{{ parent.url }}" class="back-link">All {{ parent.title }} </a>
     </div>
     <div class="article-subheader-social-links">
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button" class="facebook-link">

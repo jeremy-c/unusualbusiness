@@ -201,5 +201,6 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
 
         context['event_report'] = self.event_report
         context['related_events'] = self.related_how_to_events(self_idx=self.id)
+        context['parent'] = self.get_parent()
 
         return context
