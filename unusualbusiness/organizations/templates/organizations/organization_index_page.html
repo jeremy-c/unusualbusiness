@@ -3,3 +3,16 @@
 
 {% block body_class %}organizations-page {{ block.super }}{% endblock %}
 
+{% block above_article_body %}
+
+    <section class="l-above-article-body organization-location-map">
+        <iframe
+          width="100%"
+          height="360"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
+            &q=Utrecht, the Netherlands" >
+        </iframe>
+    </section>
+
+{% endblock %}

@@ -9,12 +9,12 @@
 
 {% block body_class %}event{% endblock %}
 
-{% block custom_header %}
+{% block extra_navbar %}
     {% include "blocks/extra-navbar.html" %}
 {% endblock %}
 
 {% block above_header %}
-    {% include "events/blocks/upcoming_related_event.html" %}
+    {% include "events/blocks/upcoming_related_events.html" %}
 {% endblock %}
 
 {% block header %}
