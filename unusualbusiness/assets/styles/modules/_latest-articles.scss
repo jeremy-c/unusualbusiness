@@ -311,7 +311,7 @@
 
 .latest-organization-title {
   padding: 0 $gutter;
-  text-align: center;
+  text-align: left;
 
   font-size: 20px;
   font-weight: bold;
@@ -322,6 +322,14 @@
 .related-articles .l-grid-item {
   position: relative;
   margin-bottom: $gutter * 2;
+}
+
+.l-above-article-body {
+  margin: $gutter * 2 $gutter * 2 0;
+
+  @media(max-width: $tablet) {
+    margin: $gutter $gutter 0;
+  }
 }
 
 .l-below-latest-article {

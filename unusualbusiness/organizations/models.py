@@ -113,7 +113,6 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
 
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_events'] = self.upcoming_related_event_pages(related_how_tos)
-        # context['related_story_articles'] = StoryArticlePage.related_stories(self)
         context['related_story_articles'] = self.related_story_articles()
 
         return context
@@ -179,8 +178,12 @@ class OrganizationIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['organizations.OrganizationPage']
 
+    class Meta:
+        verbose_name = _("Practitioner")
+        verbose_name_plural = _("Practitioners")
+
     def get_context(self, request):
         context = super(OrganizationIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['organizations'] = OrganizationPage.objects.child_of(self).live()
+        context['articles'] = OrganizationPage.objects.child_of(self).live().order_by('title')
         return context

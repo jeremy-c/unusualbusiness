@@ -5,8 +5,7 @@ from .models import OrganizationPage
 
 class OrganizationPageModelAdmin(ModelAdmin):
     model = OrganizationPage
-    menu_label = 'Organizations' # ditch this to use verbose_name_plural from model
-    menu_icon = 'group organization' # change as required
+    menu_icon = 'group' # change as required
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     list_filter = ('live', )

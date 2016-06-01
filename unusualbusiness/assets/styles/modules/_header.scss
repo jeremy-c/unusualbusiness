@@ -52,7 +52,8 @@
   line-height: 62px;
 
   @media(max-width: $tablet) {
-    margin-top:0;
+    margin-top: 0;
+    margin-bottom: 0;
     max-width: inherit;
     font-size: 9vw;
     line-height: 1.4em;

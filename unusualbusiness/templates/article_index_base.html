@@ -9,6 +9,20 @@
 
 {% block body_class %}{{ block.super }}{% endblock %}
 
+{% block above_article_body %}
+
+    <section class="l-above-article-body organization-location-map">
+        <iframe
+          width="100%"
+          height="360"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
+            &q=Utrecht, the Netherlands" >
+        </iframe>
+    </section>
+
+{% endblock %}
+
 {% block article_body %}
 
         <section class="latest-articles article-index-page-list" id="latest-articles">
@@ -20,7 +34,7 @@
                         {% block quote %}{% endblock %}
                     {% endif %}
                     {%  if article.content_type.model == 'organizationpage' %}
-                        {% include "organizations/blocks/latest_organization.html" with page=article list_item_classes='l-grid-item l-grid-item-fixed-height' %}
+                        {% include "organizations/blocks/latest_organization.html" with page=article list_item_classes='l-grid-item-fixed-height' %}
                     {%  elif article.content_type.model == 'newsarticlepage' %}
                         {% include "articles/blocks/latest_news_article.html" with page=article %}
                     {% elif article.content_type.model == 'storyarticlepage' %}
