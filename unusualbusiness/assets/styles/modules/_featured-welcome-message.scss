@@ -5,11 +5,15 @@
 @import "../base/base";
 
 .featured-welcome-message-title {
+  margin-top: 0;
   padding-bottom: $gutter;
   font-size: 36px;
+  font-weight: normal;
+  font-family: $merriweather;
 
   @media (max-width: $tablet) {
-    padding-bottom: $gutter / 2;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
