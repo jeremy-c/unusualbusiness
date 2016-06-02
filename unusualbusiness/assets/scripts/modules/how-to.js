@@ -3,6 +3,7 @@
    ======================= */
 
 'use strict';
+
 import smoothScroll from 'smooth-scroll';
 
 let HowTo = () => {
