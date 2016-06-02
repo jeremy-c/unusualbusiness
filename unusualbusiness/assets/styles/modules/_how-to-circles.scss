@@ -83,12 +83,6 @@
   }
 }
 
-.css-icon:after {
-  @include sprite(theory-icon);
-  content: '';
-  margin-top: 9px;
-}
-
 .article-count {
   text-align: center;
   font-size: 28px;
@@ -112,7 +106,7 @@
   }
 }
 
-.circle {
+.how-to-planet .circle {
   fill: transparent;
 
   animation-duration: 1s;

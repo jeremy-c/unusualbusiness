@@ -152,7 +152,7 @@
   }
 }
 
-.circle {
+.main-menu-item .circle {
   width: 48.158px;
   height: 48.158px;
 
@@ -162,12 +162,60 @@
   }
 }
 
+.main-menu-item-link-theory .circle {
+  fill: $green;
+  stroke: $green;
+
+  .story-articles-page &,
+  .activities-page &,
+  .organizations-page & {
+    fill: $light-gray;
+    stroke: $light-gray;
+  }
+}
+
+.main-menu-item-link-stories .circle {
+  fill: $yellow;
+  stroke: $yellow;
+
+  .theory-articles-page &,
+  .activities-page &,
+  .organizations-page & {
+    fill: $light-gray;
+    stroke: $light-gray;
+  }
+}
+
+.main-menu-item-link-practitioners .circle {
+  fill: $black;
+  stroke: $black;
+
+  .theory-articles-page &,
+  .story-articles-page &,
+  .activities-page & {
+    fill: $light-gray;
+    stroke: $light-gray;
+  }
+}
+
+.main-menu-item-link-activities .circle {
+  fill: $blue;
+  stroke: $blue;
+
+  .theory-articles-page &,
+  .story-articles-page &,
+  .organizations-page & {
+    fill: $light-gray;
+    stroke: $light-gray;
+  }
+}
+
 .menu-icon {
   @media(max-width: $tablet) {
     padding-left: 10px;
     height: 66%;
   }
-}
+} 
 
 .main-menu-item-link  {
   @media(max-width: $tablet) {

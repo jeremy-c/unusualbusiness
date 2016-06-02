@@ -97,13 +97,6 @@ class RelatedHowToMixin(object):
         return [related_how_to_page.how_to_page
                    for related_how_to_page
                    in self.how_to_page.select_related().all()]
-        # related_how_to_qs = self.how_to_page.select_related().all()
-        #
-        # related_how_tos = []
-        # for related_how_to in related_how_to_qs.how_to_page:
-        #     related_how_tos.append(related_how_to.how_to_page)
-        #
-        # return related_how_tos
 
     def related_how_to_theory_articles(self, related_how_tos=None, self_idx=None):
         if related_how_tos is None:
@@ -114,8 +107,8 @@ class RelatedHowToMixin(object):
             how_to_articles = related_how_to.theory_page_list()
             related_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_theory_articles.append({
-                related_how_to,
-                related_articles
+                'how_to': related_how_to,
+                'articles': related_articles
             })
 
         return related_how_to_theory_articles
@@ -129,8 +122,8 @@ class RelatedHowToMixin(object):
             how_to_articles = related_how_to.story_page_list()
             related_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_story_articles.append({
-                related_how_to,
-                related_articles
+                'how_to': related_how_to,
+                'articles': related_articles
             })
 
         return related_how_to_story_articles
