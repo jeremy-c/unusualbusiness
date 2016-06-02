@@ -18,9 +18,9 @@ let HeaderMenus = () => {
   };
 
   let initNavbar = function() {
-    let howToLink = $('.how-to-link');
-    howToLink.on('mouseenter', toggleEyebrows);
-    howToLink.on('mouseleave', toggleEyebrows);
+    // let howToLink = $('.how-to-link');
+    // howToLink.on('mouseenter', toggleEyebrows);
+    // howToLink.on('mouseleave', toggleEyebrows);
 
     let ubLogoLink = $('.ub-logo-link');
     ubLogoLink.on('mouseenter', spinLogo);

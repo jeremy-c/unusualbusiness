@@ -1,0 +1,143 @@
+/* ==|====================
+   Module/How-to Circles
+   ======================= */
+
+@import "../base/base";
+@import "../base/mixins";
+@import "../base/sprite-mixins";
+
+.how-to-circles-containter {
+  position: relative;
+  margin: 0 auto;
+  height: 520px;
+}
+
+.how-to-planet,
+.how-to-satellites {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.how-to-planet {
+  top: 83px;
+  left: 83px;
+}
+
+.how-to-satellites {
+  @include on-displaced-circle($item-count: 8, $circle-size: 580px, $item-size: 75px);
+  margin: 0 auto;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
+
+  &.is-hidden {
+    display: none !important;
+  }
+}
+
+.how-to-satellite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: .15s;
+
+  &.animated {
+    animation-duration: 0.5s;
+  }
+
+  .blue & {
+    background-color: $blue;
+  }
+
+  .green & {
+    background-color: $green;
+  }
+
+  .yellow & {
+    background-color: $yellow;
+  }
+
+  .black & {
+    background-color: $black;
+  }
+
+  .article-format {
+    padding-top: 20px;
+  }
+}
+
+.css-icon:after {
+  @include sprite(theory-icon);
+  content: '';
+  margin-top: 9px;
+}
+
+.article-count {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: $open-sans;
+
+  .blue & {
+    color: $blue;
+  }
+
+  .green & {
+    color: $green;
+  }
+
+  .yellow & {
+    color: $yellow;
+  }
+
+  .black & {
+    color: $black;
+  }
+}
+
+.circle {
+  fill: transparent;
+
+  animation-duration: 1s;
+  animation-delay: 0.3s;
+  animation-iteration-count: 1;
+
+  &.green {
+    stroke: $green;
+
+    &:hover {
+      fill: $green;
+    }
+  }
+
+  &.yellow {
+    stroke: $yellow;
+
+    &:hover {
+      fill: $yellow;
+    }
+  }
+
+  &.black {
+    stroke: $black;
+
+    &:hover {
+      fill: $black;
+    }
+  }
+
+  &.blue {
+    stroke: $blue;
+
+    &:hover {
+      fill: $blue;
+    }
+  }
+}
+
+.green-text {
+  color: $green;
+}

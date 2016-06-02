@@ -40,6 +40,10 @@
   .organizations-page & {
     min-height: 170px;
   }
+
+  .how-tos-page & {
+    min-height: 170px;
+  }
 }
 
 .article-header-title {
@@ -58,6 +62,17 @@
     font-size: 9vw;
     line-height: 1.4em;
   }
+
+  .how-tos-page & {
+    color: $green;
+  }
+}
+
+.article-header-text {
+  font-size: 20px;
+  line-height: 32px;
+  color: $black;
+  text-align: center;
 }
 
 .article-header-subtitle {

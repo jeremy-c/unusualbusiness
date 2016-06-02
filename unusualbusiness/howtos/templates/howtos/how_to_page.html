@@ -1,138 +1,117 @@
-{% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
+{% extends "article_index_base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n article_tags %}
 
 {% block extra_js %}
 {% endblock %}
 
 {% block body_class %}how-to{% endblock %}
 
-{% block content %}
+{% block header %}
 
-    <header class="content-header">
-        <h1 class="content-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
-        <div class="image">
-            {% image self.featured_image width-400 %}
+    <header class="l-article-header article-header how-to-title">
+        <h1 class="article-header-title">
+            {% if self.seo_title %}
+                {{ self.seo_title }}
+            {% else %}
+                {{ self.title }}
+            {% endif %}
+        </h1>
+
+        <div class="how-to-circles-containter">
+
+            <ul class='how-to-satellites'>
+                <li class="blue is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#video-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">1</div>
+                </li>
+                <li class="yellow is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#images-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">2</div>
+                </li>
+                <li class="green is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#theory-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">1</div>
+                </li>
+                <li class="yellow is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#text-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">3</div>
+                </li>
+
+                <li class="green is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#theory-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">1</div>
+                </li>
+                <li class="black is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#organization-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">10</div>
+                </li>
+                <li class="blue is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#event-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">25</div>
+                </li>
+                <li class="green is-hidden">
+                    <a href="#" class="how-to-satellite animated bounceIn">
+                        <svg width="30px" height="30px" class="white-icon article-format" >
+                          <use xlink:href="#link-icon" />
+                        </svg>
+                    </a>
+                    <div class="article-count">2</div>
+                </li>
+            </ul>
+
+            <svg class="how-to-planet animated slideInUp" x="0px" y="0px" width="420px" height="420px" viewBox="0 0 420 420" style="enable-background:new 0 0 420 420;" xml:space="preserve">
+                <circle class="circle green animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="203.168"/>
+                <circle class="circle yellow animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="151.724"/>
+                <circle class="circle black animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="95.949"/>
+                <circle class="circle blue animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="41.641"/>
+            </svg>
+
         </div>
-        {{ self.description|richtext }}
-        <p class="content-header-text">
-            Een korte tekst of indleiding, of gewoon het begin van de volledige tekst die dit thema,
-            deze cirkelgroep, uitlegd. En inleid waar deze over gaat. Hoeft niet veel tekst te zijn.
-            Het zou vooral de context van het onderwerp ten overstaande van het algemene theme “commons” moeten uitleggen,
-            zodat mensen snappen wat er belangrijk is of behandeld wordt.
-            Stukje reflectie, misschien een kritische noot of alvast hypothestische, visionaire kantekening is allemaal welkom.
-        </p>
+
+        <div class="how-to-description">
+            {{ self.description|richtext }}
+        </div>
     </header>
 
-    <section class="l-boxed">
+{% endblock %}
 
-        <section class="expander introduction">
-            <a href="#" class="expander-trigger is-expander-hidden">
-                <h2 class="expander-title">Introductie</h2>
-                <div class="expander-open-close">
-                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
-                </div>
-            </a>
-            <div class="expander-content is-closed">
-                <p class="content-header-text">
-                    Een korte tekst of indleiding, of gewoon het begin van de volledige tekst die dit thema,
-                    deze cirkelgroep, uitlegd. En inleid waar deze over gaat. Hoeft niet veel tekst te zijn.
-                    Het zou vooral de context van het onderwerp ten overstaande van het algemene theme “commons” moeten uitleggen,
-                    zodat mensen snappen wat er belangrijk is of behandeld wordt.
-                    Stukje reflectie, misschien een kritische noot of alvast hypothestische, visionaire kantekening is allemaal welkom.
-                </p>
-            </div>
-        </section>
 
-        <section class="expander events">
-            <a href="#" class="expander-trigger is-expander-hidden">
-                <div class="expander-article-count">3</div>
-                <img src="{% static 'images/upcoming-event-icon.svg' %}" class="upcoming-event-icon" width="23.086px" height="23.087px"/>
-                <h2 class="expander-title">Toon evenementen die met {{ self.title }} te maken hebben</h2>
-                <div class="expander-open-close">
-                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
-                </div>
-            </a>
-            <div class="expander-content is-closed">
-                <ul>
-                    {% for the_page in event_pages %}
-                        <li class="{{ the_page.event | to_class_name }}">
-                            <a href="{{ the_page.event.url }}" >
-                                {{ the_page.event.title }}
-                            </a>
-                        ({{ the_page.event.start_date|date:"SHORT_DATETIME_FORMAT" }})
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+{% block article_body %}
 
-        </section>
-
-        <section class="expander organizations">
-            <a href="#" class="expander-trigger is-expander-hidden">
-                <div class="expander-article-count">1</div>
-                <h2 class="expander-title">Zie bestaande groepen gerelateerd aan {{ self.title }}</h2>
-                <div class="expander-open-close">
-                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
-                </div>
-            </a>
-            <div class="expander-content is-closed">
-                <ul>
-                    {% for the_page in organization_pages %}
-                        <li class="{{ the_page.organization | to_class_name }}">
-                            <a href="{{ the_page.organization.url }}" >
-                                {{ the_page.organization.title }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
-        <section class="expander stories">
-            <a href="#" class="expander-trigger is-expander-hidden">
-                <div class="expander-article-count">2</div>
-                <h2 class="expander-title">Leer over {{ self.title }} van bestaande groepen</h2>
-                <div class="expander-open-close">
-                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
-                </div>
-            </a>
-            <div class="expander-content is-closed">
-                <ul>
-                    {% for the_page in story_pages %}
-                        <li class="{{ the_page.article | to_class_name }}">
-                            <a href="{{ the_page.article.url }}" >
-                                {{ the_page.article.title }}
-                            </a>
-                            ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
-        <section class="expander theory">
-            <a href="#" class="expander-trigger is-expander-hidden">
-                <div class="expander-article-count">4</div>
-                <h2 class="expander-title">Lees verdiepende artikelen over het commonen en {{ self.title }}</h2>
-                <div class="expander-open-close">
-                    <img src="{% static 'images/chevron-icon.svg' %}" class="chevron-icon" width="20.252px" height="11.669px"/>
-                </div>
-            </a>
-            <div class="expander-content is-closed">
-                <ul>
-                    {% for the_page in theory_pages %}
-                        <li class="{{ the_page.article | to_class_name }}">
-                            <a href="{{ the_page.article.url }}" >
-                                {{ the_page.article.title }}
-                            </a>
-                            ({{ the_page.article.first_published_at|date:"SHORT_DATETIME_FORMAT" }})
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-        </section>
-
-    </section>
+    {% include 'articles/blocks/latest_theory_articles.html' %}
+    <hr>
+    {% include 'articles/blocks/latest_story_articles.html' %}
+    <hr>
+    {% include 'articles/blocks/latest_news_articles.html' %}
+    <hr>
+    {% include 'organizations/blocks/latest_organizations.html' %}
 
 {% endblock %}

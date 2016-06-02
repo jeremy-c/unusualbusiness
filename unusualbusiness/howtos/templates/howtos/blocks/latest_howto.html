@@ -1,10 +1,10 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags  i18n %}
 
-<li class="howto-block howto-block-fixed-height {{ how_to.content_type.model }}">
-    <a href="{% pageurl how_to %}" class="howto-block-link"  >
-        <h2 class="howto-block-title">{{ how_to.title }}</h2>
+<li class="l-grid-item l-grid-item-one-third l-grid-item-one-third-minus-gutter how-to-grid-item {{ how_to.content_type.model }} ">
+    <a href="{% pageurl how_to %}" class="how-to-link"  >
+        <h2 class="how-to-title">{{ how_to.title }}</h2>
     </a>
-    <div class="howto-block-circles {{ how_to.circles }}">
+    <div class="how-to-circles {{ how_to.circles }}">
         <img src="{% static 'images/how-to-circles-empty.svg' %}" class="how-to-circles-empty" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-green.svg' %}" class="how-to-circles-green" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-yellow.svg' %}" class="how-to-circles-yellow" width="192.921px" height="192.921px" />
@@ -12,53 +12,41 @@
         <img src="{% static 'images/how-to-circles-blue.svg' %}" class="how-to-circles-blue" width="192.921px" height="192.921px" />
     </div>
     <hr>
-    <div class="howto-block-meta">
+    <div class="how-to-meta">
         <ul>
-            <li class="howto-block-meta-list-item event-count">
-                <div class="number {% ifequal how_to.events.count 0 %}empty{% endifequal %}">
-                    {% ifequal how_to.events.count 0 %}
-                        -
-                    {% else %}
-                        {{ how_to.events.count }}
-                    {% endifequal %}
+            <li class="how-to-meta-list-item event-count">
+                <div class="number count-{{ how_to.event_page_list|length }}">
+                    {{ how_to.event_page_list|length }}
                 </div>
-                <span class="article-type">evenementen</span>
+                <span class="article-type">Activities</span>
             </li>
-            <li class="howto-block-meta-list-item story-count">
-                <div class="number {% ifequal how_to.story_pages.count 0 %}empty{% endifequal %}">
-                    {% ifequal how_to.story_pages.count 0 %}
-                        -
-                    {% else %}
-                        {{ how_to.story_pages.count }}
-                    {% endifequal %}
+            <li class="how-to-meta-list-item story-count">
+                <div class="number count-{{ how_to.story_page_list|length }}">
+                    {{ how_to.story_page_list|length }}
                 </div>
-                <span class="article-type">verhalen</span>
+                <span class="article-type">Stories</span>
             </li>
-            <li class="howto-block-meta-list-item organization-count">
-                <div class="number {% ifequal how_to.organizations.count 0 %}empty{% endifequal %}">
+            <li class="how-to-meta-list-item organization-count">
+                <div class="number count-{{ how_to.organizations|length }}">
                     {% ifequal how_to.organizations.count 0 %}
                         -
                     {% else %}
                         {{ how_to.organizations.count }}
                     {% endifequal %}
                 </div>
-                <span class="article-type">groepen</span>
+                <span class="article-type">Practitioners</span>
             </li>
-            <li class="howto-block-meta-list-item theory-count">
-                <div class="number {% ifequal how_to.theory_pages.count 0 %}empty{% endifequal %}">
-                    {% ifequal how_to.theory_pages.count 0 %}
-                        -
-                    {% else %}
-                        {{ how_to.theory_pages.count }}
-                    {% endifequal %}
+            <li class="how-to-meta-list-item theory-count">
+                <div class="number count-{{ how_to.theory_page_list|length }}">
+                    {{ how_to.theory_page_list|length }}
                 </div>
-                <span class="article-type">artikelen</span>
+                <span class="article-type">Theory</span>
             </li>
         </ul>
     </div>
     {% if how_to.upcoming_events %}
         <hr>
-        <div class="howto-grid-item-events">
+        <div class="how-to-events">
             <ul class="featured-agenda-items">
                 {% for event in how_to.upcoming_events %}
                     {% include "events/blocks/agenda_item.html" with vertical_date_class="vertical-date-smaller" %}

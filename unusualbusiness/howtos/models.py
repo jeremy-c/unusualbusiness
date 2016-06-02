@@ -77,19 +77,19 @@ class HowToPage(Page):
         verbose_name = _("How to")
         verbose_name_plural = _("How to's")
 
-    def theory_pages(self, tag=None):
-        theory_pages = []
+    def theory_page_list(self, tag=None):
+        theory_page_list = []
         theory_article_pages = self.theory_article_pages.all()
 
         if tag:
             theory_article_pages = theory_article_pages.filter(tags__name=tag)
 
         for theory_article_page in theory_article_pages:
-            theory_pages.append(theory_article_page.article)
+            theory_page_list.append(theory_article_page.article)
 
-        return theory_pages
+        return theory_page_list
 
-    def story_pages(self, tag=None):
+    def story_page_list(self, tag=None):
         story_pages = []
         story_article_pages = self.story_article_pages.all()
 
@@ -101,7 +101,7 @@ class HowToPage(Page):
 
         return story_pages
 
-    def news_pages(self, tag=None):
+    def news_page_list(self, tag=None):
         news_pages = []
         news_article_pages = self.news_article_pages.all()
 
@@ -121,7 +121,7 @@ class HowToPage(Page):
 
         return organization_pages
 
-    def events(self, tag=None):
+    def event_page_list(self, tag=None):
         event_pages = []
         event_pages_qs = self.event_pages.all()
 
@@ -142,11 +142,11 @@ class HowToPage(Page):
 
         if self.organizations().count() > 0:
             circles += 'black'
-        if len(self.story_pages()) > 0:
+        if len(self.story_page_list()) > 0:
             circles += ' yellow'
-        if len(self.theory_pages()) > 0:
+        if len(self.theory_page_list()) > 0:
             circles += ' green'
-        if len(self.events()) > 0 or len(self.news_pages()) > 0:
+        if len(self.event_page_list()) > 0 or len(self.news_page_list()) > 0:
             circles += ' blue'
 
         return circles
@@ -154,23 +154,23 @@ class HowToPage(Page):
     def serve(self, request):
         tag = request.GET.get('tag')
         if tag:
-            theory_pages = self.theory_pages(tag)
-            story_pages = self.story_pages(tag)
-            news_pages = self.news_pages(tag)
+            theory_pages = self.theory_page_list(tag)
+            story_pages = self.story_page_list(tag)
+            news_pages = self.news_page_list(tag)
             organizations = self.organizations(tag)
-            events = self.events(tag)
+            events = self.event_page_list(tag)
         else:
-            theory_pages = self.theory_pages()
-            story_pages = self.story_pages()
-            news_pages = self.news_pages()
+            theory_pages = self.theory_page_list()
+            story_pages = self.story_page_list()
+            news_pages = self.news_page_list()
             organizations = self.organizations()
-            events = self.events()
+            events = self.event_page_list()
 
         return render(request, self.template, {
             'self': self,
-            'theory_pages': theory_pages,
-            'story_pages': story_pages,
-            'news_pages': news_pages,
+            'theory_articles': theory_pages,
+            'story_articles': story_pages,
+            'news_articles': news_pages,
             'organizations': organizations,
             'event_pages': events,
         })

@@ -1,32 +1,38 @@
-{% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n %}
+{% extends "article_index_base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
 {% block extra_js %}
 {% endblock %}
 
-{% block body_class %}how-tos{% endblock %}
+{% block body_class %}how-tos-page {{ block.super }}{% endblock %}
 
-{% block content %}
+{% block header %}
 
-    <header class="content-header">
-        <h1 class="content-header-title">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>
-        <p class="content-header-text">
+    <header class="l-article-header article-header">
+        <h1 class="article-header-title">
+            {% if self.seo_title %}
+                {{ self.seo_title }}
+            {% else %}
+                {{ self.title }}
+            {% endif %}
+        </h1>
+        <p class="article-header-text">
             Hier komt een introducerende tekst op onze “thema-pagina’s”.
             Iets over dat wij onderwerpen selecteren en redactie voeren over de bestaande content,
-            om zo beter te kunnen informeren en verkennen. Dat dit ook een manier is om het
-            onderzoek en wat er werkelijk speelt –daarmee onze praktijk ofzo– op elkaar aan te sluiten.
+            om zo beter te kunnen informeren en verkennen. Dat dit ook een manier is om het onderzoek
+            en wat er werkelijk speelt –daarmee onze praktijk ofzo– op elkaar aan te sluiten.
         </p>
     </header>
 
-    <section class="l-blocks">
-        <ul class="l-columns">
+{% endblock %}
+
+
+{% block article_body %}
+    <section class="l-how-tos">
+        <ul class="l-grid grid-packery">
+            <li class="l-grid-sizer"></li>
+            <li class="l-grid-gutter-sizer"></li>
             {% for how_to in how_tos %}
-                {% include "howtos/blocks/latest_howto.html" %}
-                {% include "howtos/blocks/latest_howto.html" %}
-                {% include "howtos/blocks/latest_howto.html" %}
-                {% include "howtos/blocks/latest_howto.html" %}
-                {% include "howtos/blocks/latest_howto.html" %}
-                {% include "howtos/blocks/latest_howto.html" %}
                 {% include "howtos/blocks/latest_howto.html" %}
             {% endfor %}
         </ul>

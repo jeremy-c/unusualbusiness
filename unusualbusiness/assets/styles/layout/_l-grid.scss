@@ -69,6 +69,12 @@
   }
 }
 
+.l-grid-item-one-third-minus-gutter {
+  @media(max-width: $tablet) {
+    width: calc((100% - var(--gutter) * 2));
+  }
+}
+
 .l-grid-item-packery-full-witdh {
   margin-bottom: 0;
   width: calc((100% - 2% * 2) / 3); // (width - 2 * sizer) / 3 elements

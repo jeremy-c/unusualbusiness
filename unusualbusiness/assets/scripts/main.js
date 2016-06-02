@@ -13,6 +13,8 @@ import FeaturedArticles from './modules/featured-articles';
 import FeaturedJournal from './modules/featured-journal';
 import Navbar from './modules/navbar';
 import Organization from './modules/organization';
+import HowTo from './modules/how-to';
+
 
 (function() {
   console.log('Main: go!');
@@ -35,6 +37,7 @@ import Organization from './modules/organization';
     let featuredJournal = FeaturedJournal();
     let navbar = Navbar();
     let organization = Organization();
+    let howTo = HowTo();
 
     grid.init();
     mobileMenu.init();
@@ -44,6 +47,7 @@ import Organization from './modules/organization';
     featuredJournal.init();
     navbar.init();
     organization.init();
+    howTo.init();
   });
 
   $(window).ready(function() {

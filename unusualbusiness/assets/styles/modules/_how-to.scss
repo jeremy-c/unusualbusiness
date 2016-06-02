@@ -1,23 +1,32 @@
 /* ==|====================
-   Module/Howto Block
+   Module/How to
    ======================= */
 
 @import "../base/base";
 
-.howto-block {
-  padding: 0 $gutter / 2;
-  background-color: $white;
+.l-how-tos {
+  margin: 0 auto;
 }
 
-.howto-block-fixed-height {
+.how-to-grid-item {
+  margin: 0 auto;
+  padding: 0 $gutter;
   min-height: 552px;
+
+  @media(max-width: $desktop) {
+    max-width: 425px;
+  }
+
+  @media(max-width: $tablet) {
+    border-top: solid 1px $light-gray;
+  }
 }
 
-.howto-block-link {
+.how-to-link {
   text-decoration: none;
 }
 
-.howto-block-title {
+.how-to-title {
   padding: 0 $gutter $gutter;
   text-align: center;
   color: $green;
@@ -27,7 +36,7 @@
   line-height: 1.3em;
 }
 
-.howto-block-circles {
+.how-to-circles {
   position: relative;
   display: block;
   margin: 0 auto;
@@ -69,22 +78,25 @@
   }
 }
 
-.howto-block-description {
-  padding: $gutter / 2 $gutter;
+.how-to-description {
+  margin: 20px auto;
+  max-width: 700px;
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 300;
   line-height: 1.7em;
+  color: $black;
 }
 
-.howto-block-meta {
+.how-to-meta {
   padding: 0 $gutter / 2;
 }
 
-.howto-block-meta-list-item {
+.how-to-meta-list-item {
   display: inline-block;
 
   width: 48%;
-  margin: 8px 1px;
+  margin: 8px 0;
 
   .number {
     display: inline-block;
@@ -117,8 +129,8 @@
     color: $green;
   }
 
-  .empty.number {
+  .count-0.number {
     color: $light-gray;
   }
-
 }
+

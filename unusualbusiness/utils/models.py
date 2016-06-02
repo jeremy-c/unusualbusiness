@@ -111,7 +111,7 @@ class RelatedHowToMixin(object):
 
         related_how_to_theory_articles = []
         for related_how_to in related_how_tos:
-            how_to_articles = related_how_to.theory_pages()
+            how_to_articles = related_how_to.theory_page_list()
             related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_theory_articles.append({
                 related_how_to,
@@ -126,7 +126,7 @@ class RelatedHowToMixin(object):
 
         related_how_to_story_articles = []
         for related_how_to in related_how_tos:
-            how_to_articles = related_how_to.story_pages()
+            how_to_articles = related_how_to.story_page_list()
             related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_story_articles.append({
                 related_how_to,
@@ -141,7 +141,7 @@ class RelatedHowToMixin(object):
 
         related_how_to_news_articles = []
         for related_how_to in related_how_tos:
-            how_to_articles = related_how_to.news_pages()
+            how_to_articles = related_how_to.news_page_list()
             related_news_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_news_articles.append({
                 'how_to': related_how_to,
@@ -156,7 +156,7 @@ class RelatedHowToMixin(object):
 
         related_how_to_events = []
         for related_how_to in related_how_tos:
-            how_to_events = related_how_to.events()
+            how_to_events = related_how_to.event_page_list()
             related_events = self.related_how_to_pages(how_to_events, self_idx)
             related_how_to_events.append(related_events)
 
@@ -166,7 +166,7 @@ class RelatedHowToMixin(object):
         if related_how_tos is None:
             related_how_tos = self.related_how_tos()
 
-        how_to_event_lists = [how_to_page.events()
+        how_to_event_lists = [how_to_page.event_page_list()
              for how_to_page
              in related_how_tos]
 

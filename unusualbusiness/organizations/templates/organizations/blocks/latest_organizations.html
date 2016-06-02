@@ -1,0 +1,14 @@
+
+{% if organizations %}
+    <section class="latest-articles article-index-page-list" id="latest-articles">
+        <h2 class="hidden-title">Latest Articles</h2>
+        <ul class="l-grid grid-packery">
+            <li class="l-grid-gutter-sizer"></li>
+            {% for article in organizations %}
+                {% include "organizations/blocks/latest_organization.html" with page=article list_item_classes='l-grid-item-fixed-height' %}
+                {% empty %}
+                    <li>Sorry, no organizations found.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endif %}
