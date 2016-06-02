@@ -10,8 +10,8 @@
             {% endif %}
         </div>
         <div class="featured-article-preview" >
-            {% if page.has_featured_image %}
-                {% include "blocks/responsive_image.html" with image=page.featured_image.value.image image_class="featured-article-image"  %}
+            {% if featured_article.featured_image %}
+                {% include "blocks/responsive_image.html" with image=featured_article.featured_image.value.image image_class="featured-article-image"  %}
             {% endif %}
             <h4 class="featured-article-preview-title">
                 {{ featured_article.title }}
