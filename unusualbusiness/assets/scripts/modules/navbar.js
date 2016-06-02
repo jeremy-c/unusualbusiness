@@ -18,31 +18,26 @@ let HeaderMenus = () => {
   };
 
   let initNavbar = function() {
-    // let howToLink = $('.how-to-link');
-    // howToLink.on('mouseenter', toggleEyebrows);
-    // howToLink.on('mouseleave', toggleEyebrows);
-
     let ubLogoLink = $('.ub-logo-link');
     ubLogoLink.on('mouseenter', spinLogo);
     ubLogoLink.on('mouseleave', spinLogo);
   };
 
-  let initCustomHeader = function() {
-    let customHeaderMenuButton = $('.extra-navbar-hamburger-button');
-    let customHeader = $('.extra-navbar');
-    let header = $('.navbar');
+  let initExtraNavbar = function() {
+    let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
+    let $extraNavbar = $('.extra-navbar');
+    let $navbar = $('.navbar');
 
-    customHeaderMenuButton.on('click', function() {
-        customHeader.addClass('l-pin-custom-header-under-header');
-
-        header.toggleClass('slideOutUp');
-        header.toggleClass('slideInDown');
-        customHeader.toggleClass('slideInDown');
+    $extraNavbarMenuButton.on('click', function() {
+        $extraNavbar.addClass('is-pined-under-navbar');
+        $navbar.toggleClass('slideOutUp');
+        $navbar.toggleClass('slideInDown');
+        $extraNavbar.toggleClass('slideInDown');
     });
   };
 
   let initHeadroomJS = function() {
-    let $customHeaderMenuButton = $('.extra-navbar-hamburger-button');
+    let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
     let $header = $('.navbar');
     let $extraNavbar = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
@@ -65,10 +60,10 @@ let HeaderMenus = () => {
 
     // grab an element
     var navbarElement = document.querySelector(".navbar");
-    var extraNavarElement = document.querySelector(".extra-navbar");
+    var extraNavbarElement = document.querySelector(".extra-navbar");
 
     // construct an instance of Headroom, passing the element
-    let headroomCustomHeader;
+    let headroomExtraNavbar;
     let headroomHeader  = new Headroom(
         navbarElement,
         {
@@ -91,10 +86,10 @@ let HeaderMenus = () => {
         }
     );
 
-      if(extraNavarElement !== null) {
+      if(extraNavbarElement !== null) {
         // construct an instance of Headroom, passing the element
-        headroomCustomHeader = new Headroom(
-            extraNavarElement,
+        headroomExtraNavbar = new Headroom(
+            extraNavbarElement,
             {
               offset : headroomOffset,
               tolerance : {
@@ -108,17 +103,19 @@ let HeaderMenus = () => {
               }
             }
         );
-        headroomCustomHeader.init();
+        headroomExtraNavbar.init();
       }
     // initialise
     headroomHeader.init();
 
-    $customHeaderMenuButton.on('click', function() {
-        if($header.hasClass('slideOutUp')) {
-            headroomCustomHeader.unpin();
+    $extraNavbarMenuButton.on('click', function() {
+        var sdf = headroomHeader;
+        if($header.hasClass('slideInDown')) {
+            headroomExtraNavbar.unpin();
             headroomHeader.pin();
         } else {
             headroomHeader.unpin();
+            $extraNavbar.removeClass('is-pined-under-navbar');
         }
     });
   };
@@ -126,8 +123,8 @@ let HeaderMenus = () => {
   let init = function () {
     console.log('Navbar go!');
     initNavbar();
+    initExtraNavbar();
     initHeadroomJS();
-    // initCustomHeader();
   };
 
   return {
