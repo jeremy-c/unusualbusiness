@@ -22,24 +22,24 @@ let HowTo = () => {
   };
 
   let howToCirclesEvents = function (event) {
-    let $greenCircle = $('.how-to-planet .green');
-    let $blueCircle = $('.how-to-planet .blue');
-    let $blackCircle = $('.how-to-planet .black');
-    let $yellowCircle = $('.how-to-planet .yellow');
+    let $theoryCircle = $('.how-to-planet .theory');
+    let $storiesCircle = $('.how-to-planet .stories');
+    let $activitiesCircle = $('.how-to-planet .activities');
+    let $practitionersCircle = $('.how-to-planet .practitioners');
 
-    $greenCircle.on('mouseout', toggleContentMetaInfo);
-    $greenCircle.on('mouseover', toggleContentMetaInfo);
-    $blackCircle.on('mouseout', toggleContentMetaInfo);
-    $blackCircle.on('mouseover', toggleContentMetaInfo);
-    $blueCircle.on('mouseout', toggleContentMetaInfo);
-    $blueCircle.on('mouseover', toggleContentMetaInfo);
-    $yellowCircle.on('mouseout', toggleContentMetaInfo);
-    $yellowCircle.on('mouseover', toggleContentMetaInfo);
+    $theoryCircle.on('mouseout', toggleContentMetaInfo);
+    $theoryCircle.on('mouseover', toggleContentMetaInfo);
+    $storiesCircle.on('mouseout', toggleContentMetaInfo);
+    $storiesCircle.on('mouseover', toggleContentMetaInfo);
+    $practitionersCircle.on('mouseout', toggleContentMetaInfo);
+    $practitionersCircle.on('mouseover', toggleContentMetaInfo);
+    $activitiesCircle.on('mouseout', toggleContentMetaInfo);
+    $activitiesCircle.on('mouseover', toggleContentMetaInfo);
 
-    $greenCircle.on('click', goToColor);
-    $blueCircle.on('click', goToColor);
-    $blackCircle.on('click', goToColor);
-    $yellowCircle.on('click', goToColor);
+    $theoryCircle.on('click', goToColor);
+    $storiesCircle.on('click', goToColor);
+    $activitiesCircle.on('click', goToColor);
+    $practitionersCircle.on('click', goToColor);
   };
 
   let init = function() {

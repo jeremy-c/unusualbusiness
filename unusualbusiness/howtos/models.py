@@ -18,6 +18,7 @@ from wagtail_modeltranslation.models import TranslationMixin
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.tags.models import HowToPageTag
+from unusualbusiness.utils.models import PageFormat
 
 
 class HowToPage(Page):
@@ -121,6 +122,18 @@ class HowToPage(Page):
 
         return organization_pages
 
+    def organization_list(self, tag=None):
+        organization_pages = self.organization_pages.all()
+        organization_list = []
+
+        if tag:
+            organization_pages = organization_pages.filter(tags__name=tag)
+
+        for organization_page in organization_pages:
+            organization_list.append(organization_page.organization)
+
+        return organization_list
+
     def event_page_list(self, tag=None):
         event_pages = []
         event_pages_qs = self.event_pages.all()
@@ -151,19 +164,130 @@ class HowToPage(Page):
 
         return circles
 
+    # def page_formats(self):
+    #     story_article_pages = self.story_article_pages.all()
+    #
+    #     activity_text_count = 5
+    #     activity_video_count = 2
+    #     activity_images_count = 7
+    #     activity_audio_count = 8
+    #     story_text_count = 0
+    #     story_video_count = 2
+    #     story_images_count = 3
+    #     story_audio_count = 0
+    #     theory_count = 9
+    #     link_count = 0
+    #     organization_count = self.organizations().count()
+    #
+    #     return {
+    #         'activity_text_count': activity_text_count,
+    #         'activity_video_count': activity_video_count,
+    #         'activity_images_count': activity_images_count,
+    #         'activity_audio_count': activity_audio_count,
+    #         'story_text_count': story_text_count,
+    #         'story_video_count': story_video_count,
+    #         'story_images_count': story_images_count,
+    #         'story_audio_count': story_audio_count,
+    #         'theory_count': theory_count,
+    #         'link_count': link_count,
+    #         'organization_count': organization_count,
+    #     }
+
+    def page_formats(self):
+        news_text_count = 0
+        news_video_count = 0
+        news_images_count = 0
+        news_audio_count = 0
+        story_text_count = 0
+        story_video_count = 0
+        story_images_count = 0
+        story_audio_count = 0
+        theory_count = len(self.theory_page_list())
+        organization_count = self.organizations().count()
+        link_count = 0
+
+        story_article_pages = self.story_article_pages.all()
+        for story_article_page in story_article_pages:
+            if story_article_page.article.format == 'text':
+                story_text_count += 1
+            elif story_article_page.article.format == 'video':
+                story_video_count += 1
+            elif story_article_page.article.format == 'images':
+                story_images_count += 1
+            elif story_article_page.article.format == 'audio':
+                story_audio_count += 1
+
+        news_article_pages = self.news_article_pages.all()
+        for news_article_page in news_article_pages:
+            if news_article_page.article.format == 'text':
+                news_text_count += 1
+            elif news_article_page.article.format == 'video':
+                news_video_count += 1
+            elif news_article_page.article.format == 'images':
+                news_images_count += 1
+            elif news_article_page.article.format == 'audio':
+                news_audio_count += 1
+
+        return [{
+                'page_type': 'theory',
+                'page_format': 'theory',
+                'page_count': theory_count
+             },{
+                'page_type': 'activities',
+                'page_format': 'text',
+                'page_count': news_text_count
+             }, {
+                'page_type': 'activities',
+                'page_format': 'video',
+                'page_count': news_video_count
+             },{
+                'page_type': 'theory',
+                'page_format': 'link',
+                'page_count': link_count
+             }, {
+                'page_type': 'activities',
+                'page_format': 'audio',
+                'page_count': news_audio_count
+             }, {
+                'page_type': 'stories',
+                'page_format': 'text',
+                'page_count': story_text_count
+             }, {
+                'page_type': 'practitioners',
+                'page_format': 'organization',
+                'page_count': organization_count
+             }, {
+                'page_type': 'stories',
+                'page_format': 'video',
+                'page_count': story_video_count
+             }, {
+                'page_type': 'activities',
+                'page_format': 'images',
+                'page_count': news_images_count
+             }, {
+                'page_type': 'stories',
+                'page_format': 'images',
+                'page_count': story_images_count
+             }, {
+                'page_type': 'stories',
+                'page_format': 'audio',
+                'page_count': story_audio_count
+             },
+        ]
+
     def serve(self, request):
         tag = request.GET.get('tag')
         if tag:
             theory_pages = self.theory_page_list(tag)
             story_pages = self.story_page_list(tag)
             news_pages = self.news_page_list(tag)
-            organizations = self.organizations(tag)
+            organizations = self.organization_list(tag)
             events = self.event_page_list(tag)
         else:
             theory_pages = self.theory_page_list()
             story_pages = self.story_page_list()
             news_pages = self.news_page_list()
-            organizations = self.organizations()
+            organizations = self.organization_list()
             events = self.event_page_list()
 
         return render(request, self.template, {
@@ -173,6 +297,7 @@ class HowToPage(Page):
             'news_articles': news_pages,
             'organizations': organizations,
             'event_pages': events,
+            'page_formats': self.page_formats()
         })
 
 
@@ -246,7 +371,6 @@ class HowToPageNewsArticlePage(Orderable, models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.how_to_page.title + " -> " + self.article.title
-
 
 
 class HowToPageEventPage(Orderable, models.Model):

@@ -4,7 +4,9 @@
     <ul class="l-grid grid-packery">
         <li class="l-grid-gutter-sizer"></li>
         {% for article in story_articles %}
-            {% include "articles/blocks/latest_story_article.html" with page=article list_item_classes='l-grid-item-full-width' %}
+            {% if article %}
+                {% include "articles/blocks/latest_story_article.html" with page=article list_item_classes='l-grid-item-full-width' %}
+            {% endif %}
             {% empty %}
                 <li>Sorry, no articles found.</li>
         {% endfor %}

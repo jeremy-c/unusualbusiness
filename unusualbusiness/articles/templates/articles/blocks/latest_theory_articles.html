@@ -8,7 +8,9 @@
             {% if forloop.counter == 3 %}
                 {{ latest_quote }}
             {% endif %}
-            {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
+            {% if article %}
+                {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
+            {% endif %}
             {% empty %}
                 <li>Sorry, no articles found.</li>
         {% endfor %}

@@ -20,78 +20,27 @@
         <div class="how-to-circles-containter">
 
             <ul class='how-to-satellites'>
-                <li class="blue is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#video-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">1</div>
-                </li>
-                <li class="yellow is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#images-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">2</div>
-                </li>
-                <li class="green is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#theory-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">1</div>
-                </li>
-                <li class="yellow is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#text-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">3</div>
-                </li>
 
-                <li class="green is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn css-icon">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#theory-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">1</div>
-                </li>
-                <li class="black is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#organization-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">10</div>
-                </li>
-                <li class="blue is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#event-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">25</div>
-                </li>
-                <li class="green is-hidden">
-                    <a href="#" class="how-to-satellite animated bounceIn">
-                        <svg width="30px" height="30px" class="white-icon article-format" >
-                          <use xlink:href="#link-icon" />
-                        </svg>
-                    </a>
-                    <div class="article-count">2</div>
-                </li>
+                {% for page_format in page_formats %}
+                    {% if page_format.page_count > 0 %}
+                        <li class="{{ page_format.page_type }} is-hidden">
+                            <a href="#" class="how-to-satellite animated bounceIn">
+                                <svg width="30px" height="30px" class="white-icon article-format" >
+                                  <use xlink:href="#{{ page_format.page_format }}-icon" />
+                                </svg>
+                            </a>
+                            <div class="article-count">{{ page_format.page_count }}</div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
             </ul>
 
             <svg class="how-to-planet animated slideInDown" x="0px" y="0px" width="420px" height="420px" viewBox="0 0 420 420" style="enable-background:new 0 0 420 420;" xml:space="preserve">
-                <circle class="circle green animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="203.168"/>
-                <circle class="circle yellow animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="151.724"/>
-                <circle class="circle black animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="95.949"/>
-                <circle class="circle blue animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="41.641"/>
+                <circle class="circle theory animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="203.168"/>
+                <circle class="circle stories animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="151.724"/>
+                <circle class="circle practitioners animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="95.949"/>
+                <circle class="circle activities animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="41.641"/>
             </svg>
 
         </div>
@@ -108,21 +57,25 @@
 
 {% if theory_articles %}
     <hr>
+    <a name="theory" id="theory"></a>
     {% include 'articles/blocks/latest_theory_articles.html' %}
 {% endif %}
 
 {% if story_articles %}
     <hr>
+    <a name="stories" id="stories"></a>
     {% include 'articles/blocks/latest_story_articles.html' %}
 {% endif %}
 
 {% if news_articles %}
     <hr>
+    <a name="activities" id="activities"></a>
     {% include 'articles/blocks/latest_news_articles.html' %}
 {% endif %}
 
 {% if organizations %}
     <hr>
+    <a name="practitioners" id="practitioners"></a>
     {% include 'organizations/blocks/latest_organizations.html' %}
 {% endif %}
 
