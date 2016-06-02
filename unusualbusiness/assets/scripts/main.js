@@ -14,7 +14,7 @@ import FeaturedJournal from './modules/featured-journal';
 import Navbar from './modules/navbar';
 import Organization from './modules/organization';
 import HowTo from './modules/how-to';
-
+import smoothScroll from 'smooth-scroll';
 
 (function() {
   console.log('Main: go!');
@@ -25,6 +25,16 @@ import HowTo from './modules/how-to';
              && !obj.href.match(/^javascript\:/)
              && !obj.href.match(/^$/)
   };
+
+  smoothScroll.init({
+      selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
+      selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
+      speed: 500, // Integer. How fast to complete the scroll in milliseconds
+      easing: 'easeInOutCubic', // Easing pattern to use
+      offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+      updateURL: true, // Boolean. If true, update the URL hash on scroll
+      callback: function ( anchor, toggle ) {} // Function to run after scrolling
+  });
 
   $(document).ready(function() {
     console.log('Main: Document ready go!');

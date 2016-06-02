@@ -3,6 +3,7 @@
    ======================= */
 
 'use strict';
+import smoothScroll from 'smooth-scroll';
 
 let HowTo = () => {
 
@@ -18,7 +19,7 @@ let HowTo = () => {
 
   let goToColor = function (event) {
      var color = this.classList[1];
-     location.hash = "#" + color;
+     smoothScroll.animateScroll( "#" + color);
   };
 
   let howToCirclesEvents = function (event) {
