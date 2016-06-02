@@ -54,12 +54,10 @@
     "wiredep": "^3.0.0"
   },
   "dependencies": {
-    "animate.css": "^3.5.1",
     "headroom.js": "^0.9.3",
     "imagesloaded": "^4.1.0",
     "isotope-layout": "^2.2.2",
-    "jquery": "^2.2.3",
-    "velocity-animate": "^1.2.3"
+    "jquery": "^2.2.3"
   },
   "engines": {
     "node": ">=0.12"

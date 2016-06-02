@@ -4,7 +4,6 @@
 
 'use strict';
 
-import Velocity from 'velocity-animate';
 // import Froffcanvas from 'fr-offcanvas';
 
 let Article = () => {
@@ -30,31 +29,27 @@ let Article = () => {
     let articleInlineLinks = $('.open-author-pane-button');
 
     articleInlineLinks.on('click', function() {
-      let buttonElement = $(this).toggleClass('is-opened-button');
-      let authorElement = $('.author');
+      $(this).toggleClass('is-opened-button');
+      let $authorElement = $('.author');
       let articleContentElement = $('.article-content');
 
-      if( authorElement.hasClass('is-visuallyhidden') ) {
-        authorElement.toggleClass('is-visuallyhidden');
-        Velocity.animate(authorElement, {
-          'min-height': "272px",
-          top: "0"
-        });
+      if( $authorElement.hasClass('is-visuallyhidden') ) {
+        $authorElement.removeClass('is-visuallyhidden');
+        $authorElement.toggleClass('slideInDown is-author-clicked');
       } else {
-        Velocity.animate(authorElement, {
-          'min-height': "0",
-          top: "-272px"
-        }).then(
-            function(elements) {
-              authorElement.toggleClass('is-visuallyhidden');
-            }
-        );
+        $authorElement.removeClass('slideInDown');
+        $authorElement.addClass('slideOutUp').one(
+            'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function() {
+          $authorElement.removeClass('is-author-clicked');
+          $authorElement.removeClass('slideOutUp');
+          $authorElement.addClass('is-visuallyhidden');
+        });
       }
 
       return false;
     });
   };
-
 
   let initArticleNotes = function() {
     let articleFootnotes = $('.article-inline-footnote');
