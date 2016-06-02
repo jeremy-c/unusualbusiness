@@ -2,3 +2,11 @@
 {% load wagtailcore_tags wagtailimages_tags url_tags i18n %}
 
 {% block body_class %}story-articles-page {{ block.super }}{% endblock %}
+
+{% block article_body %}
+
+    {% if story_articles %}
+        {% include 'articles/blocks/latest_story_articles.html' %}
+    {% endif %}
+
+{% endblock %}

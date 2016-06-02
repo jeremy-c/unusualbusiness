@@ -112,10 +112,10 @@ class RelatedHowToMixin(object):
         related_how_to_theory_articles = []
         for related_how_to in related_how_tos:
             how_to_articles = related_how_to.theory_page_list()
-            related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
+            related_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_theory_articles.append({
                 related_how_to,
-                related_story_articles
+                related_articles
             })
 
         return related_how_to_theory_articles
@@ -127,10 +127,10 @@ class RelatedHowToMixin(object):
         related_how_to_story_articles = []
         for related_how_to in related_how_tos:
             how_to_articles = related_how_to.story_page_list()
-            related_story_articles = self.related_how_to_pages(how_to_articles, self_idx)
+            related_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_story_articles.append({
                 related_how_to,
-                related_story_articles
+                related_articles
             })
 
         return related_how_to_story_articles
@@ -142,10 +142,10 @@ class RelatedHowToMixin(object):
         related_how_to_news_articles = []
         for related_how_to in related_how_tos:
             how_to_articles = related_how_to.news_page_list()
-            related_news_articles = self.related_how_to_pages(how_to_articles, self_idx)
+            related_articles = self.related_how_to_pages(how_to_articles, self_idx)
             related_how_to_news_articles.append({
                 'how_to': related_how_to,
-                'articles': related_news_articles
+                'articles': related_articles
             })
 
         return related_how_to_news_articles

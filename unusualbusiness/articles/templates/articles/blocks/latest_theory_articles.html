@@ -1,19 +1,16 @@
 {% load static article_tags i18n %}
 
-{% if theory_articles %}
-    <section class="latest-articles article-index-page-list" id="latest-articles">
-        <h2 class="hidden-title">Latest Articles</h2>
-        <ul class="l-grid grid-packery">
-            <li class="l-grid-gutter-sizer"></li>
-            {% for article in theory_articles %}
-                {% if forloop.counter == 3 %}
-                    {% block quote %}{% endblock %}
-                {% endif %}
-                {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
-                {% empty %}
-                    <li>Sorry, no articles found.</li>
-            {% endfor %}
-
-        </ul>
-    </section>
-{% endif %}
+<section class="latest-articles article-index-page-list" id="latest-articles">
+    <h2 class="hidden-title">Latest Articles</h2>
+    <ul class="l-grid grid-packery">
+        <li class="l-grid-gutter-sizer"></li>
+        {% for article in theory_articles %}
+            {% if forloop.counter == 3 %}
+                {{ latest_quote }}
+            {% endif %}
+            {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
+            {% empty %}
+                <li>Sorry, no articles found.</li>
+        {% endfor %}
+    </ul>
+</section>

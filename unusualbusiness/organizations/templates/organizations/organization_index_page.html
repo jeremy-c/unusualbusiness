@@ -16,3 +16,11 @@
     </section>
 
 {% endblock %}
+
+{% block article_body %}
+
+    {% if organizations %}
+        {% include 'organizations/blocks/latest_organizations.html' %}
+    {% endif %}
+
+{% endblock %}

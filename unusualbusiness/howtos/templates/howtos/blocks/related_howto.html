@@ -1,10 +1,10 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags  i18n %}
 
-<li class="howto-block {{ how_to.content_type.model }}">
-    <a href="{% pageurl how_to %}" class="howto-block-link"  >
-        <h2 class="howto-block-title">{{ how_to.title }}</h2>
+<li class="how-to {{ how_to.content_type.model }}">
+    <a href="{% pageurl how_to %}" class="how-to-link"  >
+        <h2 class="how-to-title">{{ how_to.title }}</h2>
     </a>
-    <div class="howto-block-circles {{ how_to.circles }}">
+    <div class="how-to-circles {{ how_to.circles }}">
         <img src="{% static 'images/how-to-circles-empty.svg' %}" class="how-to-circles-empty" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-green.svg' %}" class="how-to-circles-green" width="192.921px" height="192.921px" />
         <img src="{% static 'images/how-to-circles-yellow.svg' %}" class="how-to-circles-yellow" width="192.921px" height="192.921px" />

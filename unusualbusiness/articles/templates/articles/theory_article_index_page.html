@@ -8,3 +8,11 @@
      {% latest_quote %}
 </li>
 {% endblock %}
+
+{% block article_body %}
+
+    {% if theory_articles %}
+        {% include 'articles/blocks/latest_theory_articles.html' %}
+    {% endif %}
+
+{% endblock %}

@@ -1,15 +1,12 @@
 
-{% if news_articles %}
-    <section class="latest-articles article-index-page-list" id="latest-articles">
-        <h2 class="hidden-title">Latest Articles</h2>
-        <ul class="l-grid grid-packery">
-            <li class="l-grid-gutter-sizer"></li>
-            {% for article in news_articles %}
-                {% include "articles/blocks/latest_news_article.html" with page=article %}
-                {% empty %}
-                    <li>Sorry, no articles found.</li>
-            {% endfor %}
-
-        </ul>
-    </section>
-{% endif %}
+<section class="latest-articles article-index-page-list" id="latest-articles">
+    <h2 class="hidden-title">Latest Articles</h2>
+    <ul class="l-grid grid-packery">
+        <li class="l-grid-gutter-sizer"></li>
+        {% for article in news_articles %}
+            {% include "articles/blocks/latest_news_article.html" with page=article %}
+            {% empty %}
+                <li>Sorry, no articles found.</li>
+        {% endfor %}
+    </ul>
+</section>

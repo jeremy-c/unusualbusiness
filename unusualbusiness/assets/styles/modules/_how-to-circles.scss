@@ -10,6 +10,12 @@
   position: relative;
   margin: 0 auto;
   height: 520px;
+
+  @media(max-width: $tablet) {
+    position: relative;
+    margin: $gutter auto $gutter /2;
+    height: inherit;
+  }
 }
 
 .how-to-planet,
@@ -22,6 +28,14 @@
 .how-to-planet {
   top: 83px;
   left: 83px;
+
+  @media(max-width: $tablet) {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .how-to-satellites {

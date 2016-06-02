@@ -186,5 +186,5 @@ class OrganizationIndexPage(Page):
     def get_context(self, request):
         context = super(OrganizationIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['articles'] = OrganizationPage.objects.child_of(self).live().order_by('title')
+        context['organizations'] = OrganizationPage.objects.child_of(self).live().order_by('title')
         return context

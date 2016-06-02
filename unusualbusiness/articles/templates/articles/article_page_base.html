@@ -172,7 +172,7 @@
             <ul class="l-grid grid-masonry">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
-                {% for articles, how_to in related_how_tos_with_articles %}
+                {% for how_to,  articles in related_how_tos_with_articles %}
                     {% for article in articles %}
                         {% if article %}
                             {% if article.content_type.model == 'storyarticlepage' %}

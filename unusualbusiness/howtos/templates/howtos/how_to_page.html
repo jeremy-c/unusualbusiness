@@ -87,7 +87,7 @@
                 </li>
             </ul>
 
-            <svg class="how-to-planet animated slideInUp" x="0px" y="0px" width="420px" height="420px" viewBox="0 0 420 420" style="enable-background:new 0 0 420 420;" xml:space="preserve">
+            <svg class="how-to-planet animated slideInDown" x="0px" y="0px" width="420px" height="420px" viewBox="0 0 420 420" style="enable-background:new 0 0 420 420;" xml:space="preserve">
                 <circle class="circle green animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="203.168"/>
                 <circle class="circle yellow animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="151.724"/>
                 <circle class="circle black animated fadeIn" style="stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="95.949"/>
@@ -106,12 +106,24 @@
 
 {% block article_body %}
 
+{% if theory_articles %}
+    <hr>
     {% include 'articles/blocks/latest_theory_articles.html' %}
+{% endif %}
+
+{% if story_articles %}
     <hr>
     {% include 'articles/blocks/latest_story_articles.html' %}
+{% endif %}
+
+{% if news_articles %}
     <hr>
     {% include 'articles/blocks/latest_news_articles.html' %}
+{% endif %}
+
+{% if organizations %}
     <hr>
     {% include 'organizations/blocks/latest_organizations.html' %}
+{% endif %}
 
 {% endblock %}
