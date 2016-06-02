@@ -16,14 +16,8 @@ let MobileMenu = () => {
         (!isExpanded).toString()
     );
     hamburgerMenuButtonLink.toggleClass('is-expanded');
-
   };
 
-  let initAnimateMenuBar = function() {
-    let menuItemHowTo = $('.main-menu-how-to');
-    menuItemHowTo.addClass('is-in-position');
-  };
-  
   let initSidrMenu = function() {
     $('#hamburger-menu-button').sidr({
       name: 'mobile-menu',
@@ -49,8 +43,6 @@ let MobileMenu = () => {
   };
 
   let init = function() {
-    initAnimateMenuBar();
-    
     // wait for SVG's to be copied
     window.setTimeout(initSidrMenu, 1000);
   };

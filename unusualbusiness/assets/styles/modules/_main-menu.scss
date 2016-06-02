@@ -129,26 +129,13 @@
   position: relative;
   flex: inherit;
   justify-content: space-around;
-  opacity: 0;
   text-align: center;
-
-  transition: all .5s ease-in-out;
 
   @media(max-width: $tablet) {
     width: 100%;
     height: calc(20% - 1px);
     display: inline-block;
     justify-content: inherit;
-  }
-
-  &.is-in-position {
-    left: 0;
-    opacity: 1;
-  }
-
-  &.is-fading-out {
-    left: 100%;
-    opacity: 0;
   }
 }
 
@@ -215,7 +202,7 @@
     padding-left: 10px;
     height: 66%;
   }
-} 
+}
 
 .main-menu-item-link  {
   @media(max-width: $tablet) {
@@ -249,7 +236,7 @@
     @media(max-width: $tablet) {
       padding-left: 2px;
       height: 82%;
-    }
+    } 
   }
 
   .menu-item-text {
