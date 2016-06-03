@@ -341,7 +341,8 @@
     display: none;
   }
 
-  .home & {
+  .home &,
+  .story-article & {
     display: none;
   }
 }
@@ -355,10 +356,10 @@
     display: none;
   }
 
-  .home & {
+  .home &,
+  .story-article & {
     display: none;
   }
-
 }
 
 .latest-article-how-to {

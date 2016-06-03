@@ -79,7 +79,7 @@
         </section>
 
     {% endif %}
-    
+
     {% include "blocks/article_subheader.html" %}
 
 {% endblock %}
@@ -173,15 +173,15 @@
             <ul class="l-grid grid-masonry">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
-                {% for how_to, articles in related_how_tos_with_articles %}
-                    {% for article in articles %}
+                {% for related_how_to_with_articles in related_how_tos_with_articles %}
+                    {% for article in related_how_to_with_articles.articles %}
                         {% if article %}
                             {% if article.content_type.model == 'storyarticlepage' %}
-                                {% include "articles/blocks/latest_story_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-full-width' %}
+                                {% include "articles/blocks/latest_story_article.html" with page=article how_to=related_how_to_with_articles.how_to list_item_classes='l-grid-item-full-width' %}
                             {% elif article.content_type.model == 'theoryarticlepage' %}
-                                {% include "articles/blocks/latest_theory_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                                {% include "articles/blocks/latest_theory_article.html" with page=article how_to=related_how_to_with_articles.how_to list_item_classes='l-grid-item-half-width' %}
                             {% elif article.content_type.model == 'newsarticlepage' %}
-                                {% include "articles/blocks/latest_news_article.html" with page=article how_to=how_to list_item_classes='l-grid-item-half-width' %}
+                                {% include "articles/blocks/latest_news_article.html" with page=article how_to=related_how_to_with_articles.how_to list_item_classes='l-grid-item-half-width' %}
                             {% endif %}
                         {% endif %}
                     {% endfor %}
