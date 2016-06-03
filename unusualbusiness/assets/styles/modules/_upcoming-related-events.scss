@@ -2,14 +2,18 @@
    Modules/Upcoming Related Events
    ======================= */
 
+@import "../base/base";
+@import "../base/sprite-mixins";
+
 .upcoming-related-events {
+  z-index: 4;
   padding: 0 $gutter;
   background-color: $blue;
 
   @media(max-width: $tablet) {
     padding: 0 $gutter / 2;
   }
-}
+} 
 
 .upcoming-related-event-link {
   display: flex;
