@@ -20,4 +20,13 @@
 
 .article-subheader-social-links a {
   padding: 0 5px;
+  height: 100%;
+  text-decoration: none;
+  vertical-align: super;
+  transition: all 300ms ease-in-out;
+}
+
+.more-social-links-wrapper {
+  display: inline-block;
+  transition: all 300ms ease-in-out;
 }

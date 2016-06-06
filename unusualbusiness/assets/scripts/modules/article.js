@@ -90,6 +90,15 @@ let Article = () => {
         .not('.twitter-link')
         .addClass('external-link');
   };
+  let initSocialLinks = function() {
+    let $moreSocialLink = $('.more-social-link');
+    let $moreSocialLinksWrapper = $('.more-social-links-wrapper');
+
+    $moreSocialLink.on('click', function() {
+      $moreSocialLinksWrapper.toggleClass('is-hidden');
+      return false;
+    });
+  };
 
   let init = function() {
     console.log('Article go!');
@@ -98,6 +107,7 @@ let Article = () => {
     initTOC();
     initAuthorPane();
     initExternalLinks();
+    initSocialLinks();
   };
 
   return {

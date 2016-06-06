@@ -27,7 +27,7 @@
                 <use xlink:href="#plus-icon" />
             </svg>
         </a>
-        <div class="more-social-links is-hidden">
+        <div class="more-social-links-wrapper animated fadeInRight is-hidden">
             <a href="https://plus.google.com/share?url={{ self.full_url|urlencode }}">Google+</a>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ self.full_url|urlencode }}&title={{ self.title }}&summary={{ self.introduction|ub_richtext|striptags }}&source={{ self.full_url|urlencode }}">LinkedIn</a>
             <a href="https://pinterest.com/pin/create/button/?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}&media={{ self.featured_image.value.image.url|urlencode }}">Pinterest</a>
