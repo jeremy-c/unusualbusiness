@@ -33,6 +33,7 @@
 }
 
 .l-boxed {
+  position: relative;
   margin: 0 auto;
   width: 100%;
   max-width: $boxed;
@@ -83,7 +84,7 @@
 
 .l-pull-right {
   box-sizing: border-box;
-  margin: 0 0 0 auto;
+  margin: 0 0 0 auto !important;
   padding: $gutter;
   width: 100%;
   max-width: $tablet;

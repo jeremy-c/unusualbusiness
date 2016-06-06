@@ -1,0 +1,23 @@
+/* ==|====================
+   Module/Article Subheader
+   ======================= */
+
+@import "../base/base";
+
+.article-subheader {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: $gutter;
+
+  transition: all 300ms ease-in-out;
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
+
+.article-subheader-social-links a {
+  padding: 0 5px;
+}

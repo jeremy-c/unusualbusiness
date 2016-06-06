@@ -264,7 +264,7 @@ gulp.task('default', ['sprite', 'styles', 'webpack', 'images'], function () {
   });
 
   gulp.watch(['unusualbusiness/**/*.html'], reload);
-  gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprite', reload]);
+  // gulp.watch(['unusualbusiness/assets/images/**/*'], ['images', 'sprite', reload]);
   gulp.watch(['unusualbusiness/assets/styles/**/*.{scss,css}'], ['styles', reload]);
   // gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['scripts', reload]);
   gulp.watch(['unusualbusiness/assets/scripts/**/*.js'], ['webpack', reload]);

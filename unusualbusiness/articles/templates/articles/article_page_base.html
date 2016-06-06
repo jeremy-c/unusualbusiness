@@ -99,15 +99,17 @@
 {% endblock %}
 
 {% block article_body %}
+
+    {% block tableofcontents %}
+    {% endblock %}
+
     <div class="l-boxed">
 
-        {% for block in page.body %}
-            {% if forloop.first and block.block_type == 'introduction' %}
-                <div class="article-introduction">
-                    {{ block.value.source|ub_richtext }}
-                </div>
-            {% endif %}
-        {% endfor %}
+        {% if page.introduction %}
+            <div class="article-introduction" id="introduction">
+                {{ page.introduction|ub_richtext }}
+            </div>
+        {% endif %}
 
         <section class="l-pull-right article-body">
 
@@ -131,7 +133,7 @@
 
         {% endfor %}
 
-    </section>
+        </section>
 
     </div>
 {% endblock %}

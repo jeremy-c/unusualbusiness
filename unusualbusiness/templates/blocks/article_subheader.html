@@ -1,5 +1,6 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
 
+
 <div class="article-subheader">
     <div class="article-subheader-back-links">
         <a href="{{ parent.url }}" class="back-link">All {{ parent.title }} </a>
@@ -12,12 +13,28 @@
                 <use xlink:href="#facebook-icon" />
             </svg>
         </a>
-        <a href="https://twitter.com/home?status={{ self.full_url|urlencode }}" class="twitter-link">
+        <a href="https://twitter.com/intent/tweet?text={{ self.title }}&url={{ self.full_url|urlencode }}&via=unusual-business" class="twitter-link">
             <svg class="twitter-icon" width="34.198px" height="28.543px" >
                 <title>Twitter icon</title>
                 <desc>Click to share on Twitter</desc>
                 <use xlink:href="#twitter-icon" />
             </svg>
         </a>
-    </div>
+        <a href="" class="more-social-link">
+            <svg class="twitter-icon" width="28.543px" height="28.543px" >
+                <title>More social links icon</title>
+                <desc>Click to share on more social networks</desc>
+                <use xlink:href="#plus-icon" />
+            </svg>
+        </a>
+        <div class="more-social-links is-hidden">
+            <a href="https://plus.google.com/share?url={{ self.full_url|urlencode }}">Google+</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ self.full_url|urlencode }}&title={{ self.title }}&summary={{ self.introduction|ub_richtext|striptags }}&source={{ self.full_url|urlencode }}">LinkedIn</a>
+            <a href="https://pinterest.com/pin/create/button/?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}&media={{ self.featured_image.value.image.url|urlencode }}">Pinterest</a>
+            <a href="https://vk.com/share.php?url={{ self.full_url|urlencode }}&title={{ self.title }}&description={{ self.introduction|ub_richtext|striptags }}&image={{ self.featured_image.value.image.url|urlencode }}&noparse=true">VK</a>
+            <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url={{ self.full_url|urlencode }}">Xing</a>
+            <a href="http://www.tumblr.com/share/link?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}">Tumblr</a>
+            <a href="http://www.reddit.com/submit?url={{ self.full_url|urlencode }}&title={{ self.title }}">Reddit</a>
+        </div>
+     </div>
 </div>

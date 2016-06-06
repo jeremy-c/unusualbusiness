@@ -4,7 +4,7 @@
 
 'use strict';
 
-// import Froffcanvas from 'fr-offcanvas';
+import gumshoe from 'gumshoe';
 
 let Article = () => {
   let initInlineAricleLinks = function() {
@@ -21,8 +21,29 @@ let Article = () => {
   };
 
   let initTOC = function() {
-    // var myOffcanvas = Froffcanvas();
-    // myOffcanvas.init()
+    let $tocWrapper = $('.toc-wrapper');
+    let $tocToggleLink = $('.toggle-toc-link');
+    let $toc = $('.article-table-of-contents');
+    let $tocList = $('.toc-list');
+    let $articleIntroduction = $('.article-introduction');
+    let $blockImage = $('.block-image');
+
+    $tocToggleLink.on('click', function() {
+      $tocList.toggleClass('is-hidden');
+      $tocToggleLink.toggleClass('is-panel-open');
+      $toc.toggleClass('is-closed');
+      $articleIntroduction.toggleClass('l-pull-right');
+      $blockImage.toggleClass('l-pull-right');
+
+      return false;
+    });
+
+    $tocWrapper.sticky({
+      topSpacing: 98,
+      bottomSpacing: 2000
+    });
+
+    gumshoe.init();
   };
 
   let initAuthorPane = function() {

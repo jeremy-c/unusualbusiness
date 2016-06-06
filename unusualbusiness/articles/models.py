@@ -131,6 +131,13 @@ class AbstractArticle(models.Model, RenderInlineMixin):
     def featured_video(self):
         return self.__featured_item('featured_video')
 
+    @property
+    def introduction(self):
+        for stream_child in self.body:
+            if stream_child.block_type == 'introduction':
+                return stream_child.value.source
+        return None
+
 
 class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.StoryArticleIndexPage']

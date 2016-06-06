@@ -1,3 +1,5 @@
-<h3 class="block-{{ block.block_type }}" id="{{ value.section_name|slugify }}">
+{% load static ub_wagtailcore_tags i18n %}
+
+<h3 class="block-heading3" id="{{ value.section_name|ub_slugify_anchor }}">
     {{ value.section_name }}
 </h3>
