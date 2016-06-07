@@ -357,6 +357,10 @@
   .story-article & {
     display: none;
   }
+
+  .is-hovered & {
+    bottom: -41px;
+  }
 }
 
 .l-above-latest-article {
@@ -372,6 +376,10 @@
   .story-article & {
     display: none;
   }
+
+  .is-hovered & {
+    top: -41px;
+  }
 }
 
 .latest-article-how-to {
@@ -385,4 +393,5 @@
   font-size: 14px;
   font-family: $open-sans;
   color: $light-grayish;
+
 }

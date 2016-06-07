@@ -161,6 +161,11 @@
   }
 }
 
+.main-menu-item-link-theory:hover .circle {
+  fill: $green;
+  stroke: $green;
+}
+
 .main-menu-item-link-stories .circle {
   fill: $yellow;
   stroke: $yellow;
@@ -171,6 +176,11 @@
     fill: $light-gray;
     stroke: $light-gray;
   }
+}
+
+.main-menu-item-link-stories:hover .circle {
+  fill: $yellow;
+  stroke: $yellow;
 }
 
 .main-menu-item-link-practitioners .circle {
@@ -185,6 +195,11 @@
   }
 }
 
+.main-menu-item-link-practitioners:hover .circle {
+  fill: $black;
+  stroke: $black;
+}
+
 .main-menu-item-link-activities .circle {
   fill: $blue;
   stroke: $blue;
@@ -196,6 +211,12 @@
     stroke: $light-gray;
   }
 }
+
+.main-menu-item-link-activities:hover .circle {
+  fill: $blue;
+  stroke: $blue;
+}
+
 
 .menu-icon {
   @media(max-width: $tablet) {

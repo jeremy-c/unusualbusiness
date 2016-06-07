@@ -28,7 +28,9 @@
     border-bottom: none;
   }
 
-  .home & {
+  .home &,
+  .how-tos-page &,
+  .how-to & {
     border-bottom: solid 2px $light-gray;
   }
 }
