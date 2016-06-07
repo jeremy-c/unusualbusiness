@@ -1,5 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
-<a href="{{ self.url }}" class="l-body-article-pull-left article-inline article-inline-theoryarticle is-visuallyhidden" id="theoryarticle-{{ self.id }}">
+<a href="{{ self.url }}"
+   class="l-body-article-pull-left article-inline article-inline-theoryarticle is-visuallyhidden"
+   id="theoryarticle-{{ self.id }}">
     <span class="icon-wrapper">
         <svg width="22px" height="22px" class="article-format-icon {{ self.format }}-icon white-icon" >
           <use xlink:href="#{{ self.format }}-icon" />

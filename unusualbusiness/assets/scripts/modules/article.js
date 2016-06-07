@@ -8,7 +8,7 @@ import gumshoe from 'gumshoe';
 import Clipboard from 'clipboard';
 
 let Article = () => {
-  let initInlineAricleLinks = function() {
+  let initInlineArticleLinks = function() {
     let articleInlineLinks = $('.article-inline-link');
 
     articleInlineLinks.on('click', function() {
@@ -16,7 +16,7 @@ let Article = () => {
 
       $(this).toggleClass('is-expanded');
       $('#' + inlineElement).each( function () {
-        $(this).toggleClass('is-visuallyhidden');
+        $(this).toggleClass('is-visuallyhidden animated rollIn');
       });
     });
   };
@@ -149,7 +149,7 @@ let Article = () => {
   let init = function() {
     console.log('Article go!');
     initArticleNotes();
-    initInlineAricleLinks();
+    initInlineArticleLinks();
     initTOC();
     initAuthorPane();
     initExternalLinks();
