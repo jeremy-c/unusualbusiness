@@ -27,6 +27,34 @@
   align-items: center;
 
   text-decoration: none;
+
+  .latest-news-article &,
+  .latest-theory-article & {
+    padding: $gutter / 2 $gutter;
+
+    &:hover,
+    &:active {
+      padding: $gutter / 2 calc(var(--gutter) - 7px);
+
+      @media(max-width: $tablet) {
+        padding: $gutter / 2 $gutter;
+      }
+    }
+  }
+
+  .latest-story-article & {
+    padding: $gutter $gutter / 2;
+
+    &:hover,
+    &:active {
+      padding: calc(var(--gutter) - 7px) $gutter / 2;
+      text-decoration: none;
+
+      @media(max-width: $tablet) {
+        padding: $gutter $gutter / 2;
+      }
+    }
+  }
 }
 
 .latest-article-info {
@@ -147,13 +175,10 @@
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
-  padding: $gutter;
 
   &.is-hovered {
     border-top: solid $yellow 8px;
     border-bottom: solid $yellow 8px;
-    padding-top: calc(var(--gutter) - 7px);
-    padding-bottom: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-top: solid $light-gray 1px;
@@ -184,13 +209,10 @@
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
-  padding: 0 $gutter $gutter;
 
   &.is-hovered {
     border-left: solid $blue 8px;
     border-right: solid $blue 8px;
-    padding-left: calc(var(--gutter) - 7px);
-    padding-right: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-left: none;
@@ -226,13 +248,10 @@
   border-left: solid $light-gray 1px;
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
-  padding: $gutter;
 
   &.is-hovered {
     border-left: solid $green 8px;
     border-right: solid $green 8px;
-    padding-left: calc(var(--gutter) - 7px);
-    padding-right: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-left: none;
@@ -256,13 +275,10 @@
 .latest-organization {
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
-  padding: $gutter * 1.5 0;
 
   &.is-hovered {
     border-top: solid $black 8px;
     border-bottom: solid $black 8px;
-    padding-top: calc(var(--gutter) * 1.5 - 7px);
-    padding-bottom: calc(var(--gutter) * 1.5 - 7px);
 
     @media(max-width: $tablet) {
       border-top: solid $light-gray 1px;
@@ -291,13 +307,17 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  //height: 100%;
+  padding: $gutter * 1.5 0;
 
   text-decoration: none;
 
   &:hover,
   &:active {
-    text-decoration: none;
+    padding: calc(var(--gutter) * 1.5 - 7px) 0;
+
+    @media(max-width: $tablet) {
+      padding: $gutter * 1.5 0;
+    }
   }
 }
 
