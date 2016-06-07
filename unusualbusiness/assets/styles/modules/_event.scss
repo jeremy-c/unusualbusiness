@@ -88,7 +88,6 @@
   }
 }
 
-
 .event-introduction {
   padding-bottom: $gutter;
   color: $blue;
@@ -175,13 +174,14 @@
   @media(max-width: $tablet) {
     margin: 0 $gutter;
   }
-}
 
-.related-events-list {
-  padding: 0 $gutter;
+  .article-index-page-list & {
+    display: none;
 
-  @media(max-width: $tablet) {
-    padding: 0;
+    @media(max-width: $tablet) {
+      display: inherit;
+      margin: 0;
+    }
   }
 }
 
@@ -197,4 +197,47 @@
       display: none;
     }
   }
+}
+
+.activities-page {
+
+  .related-events {
+    margin: $gutter / 2 $gutter 0;
+    padding: 0 $gutter;
+
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+  }
+
+  .l-related-section {
+    margin-top: 34px;
+    padding: 0;
+  }
+
+  .related-events {
+    .featured-event-image {
+      display: inherit;
+    }
+
+    .featured-agenda-item .p-name {
+      padding-right: $gutter / 2;
+    }
+  }
+
+  .article-index-page-list {
+    margin: $gutter $gutter * 2;
+
+    @media(max-width: $tablet) {
+      margin: $gutter 0;
+    }
+  }
+}
+
+.featured-articles-and-agenda {
+  margin: $gutter $gutter 0;
+}
+
+.news-header {
+  margin: 0 $gutter;
 }

@@ -16,11 +16,7 @@
   margin: $gutter * 2;
 
   @media(max-width: $tablet) {
-    margin: $gutter 0;
-  }
-
-  @media(max-width: $mobile) {
-    //padding-left: 0;
+    margin: $gutter;
   }
 }
 
@@ -31,10 +27,6 @@
   align-items: center;
 
   text-decoration: none;
-
-  @media(max-width: $mobile) {
-    //flex-direction: column;
-  }
 }
 
 .latest-article-info {
@@ -158,10 +150,10 @@
   padding: $gutter;
 
   &.is-hovered {
-    border-top: solid $yellow 10px;
-    border-bottom: solid $yellow 10px;
-    padding-top: calc(var(--gutter) - 9px);
-    padding-bottom: calc(var(--gutter) - 9px);
+    border-top: solid $yellow 8px;
+    border-bottom: solid $yellow 8px;
+    padding-top: calc(var(--gutter) - 7px);
+    padding-bottom: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-top: solid $light-gray 1px;
@@ -195,10 +187,10 @@
   padding: 0 $gutter $gutter;
 
   &.is-hovered {
-    border-left: solid $blue 10px;
-    border-right: solid $blue 10px;
-    padding-left: calc(var(--gutter) - 9px);
-    padding-right: calc(var(--gutter) - 9px);
+    border-left: solid $blue 8px;
+    border-right: solid $blue 8px;
+    padding-left: calc(var(--gutter) - 7px);
+    padding-right: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-left: none;
@@ -217,8 +209,8 @@
   }
 }
 
-.latest-news-article-related-event-date {
-  padding-bottom: $gutter / 2;
+.latest-news-article-publication-date {
+  padding-bottom: 7px;
   font-family: $open-sans;
   font-size: 14px;
   color: $light-grayish;
@@ -237,10 +229,10 @@
   padding: $gutter;
 
   &.is-hovered {
-    border-left: solid $green 10px;
-    border-right: solid $green 10px;
-    padding-left: calc(var(--gutter) - 9px);
-    padding-right: calc(var(--gutter) - 9px);
+    border-left: solid $green 8px;
+    border-right: solid $green 8px;
+    padding-left: calc(var(--gutter) - 7px);
+    padding-right: calc(var(--gutter) - 7px);
 
     @media(max-width: $tablet) {
       border-left: none;
@@ -267,10 +259,10 @@
   padding: $gutter * 1.5 0;
 
   &.is-hovered {
-    border-top: solid $black 10px;
-    border-bottom: solid $black 10px;
-    padding-top: calc(var(--gutter) * 1.5 - 9px);
-    padding-bottom: calc(var(--gutter) * 1.5 - 9px);
+    border-top: solid $black 8px;
+    border-bottom: solid $black 8px;
+    padding-top: calc(var(--gutter) * 1.5 - 7px);
+    padding-bottom: calc(var(--gutter) * 1.5 - 7px);
 
     @media(max-width: $tablet) {
       border-top: solid $light-gray 1px;

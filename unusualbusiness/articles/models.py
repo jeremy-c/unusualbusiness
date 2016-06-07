@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from itertools import chain
+
 from django.db import models
 from django.db.models import CharField
 from django.db.models import Model
@@ -52,11 +54,22 @@ class ActivityIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage', 'articles.NewsArticlePage', ]
 
+    @staticmethod
+    def featured_articles():
+        event_list = EventPage.objects.live().filter(is_featured=True)
+
+        return sorted(event_list,
+            key=lambda instance: instance.first_published_at,
+            reverse=True)
+
     def get_context(self, request):
         context = super(ActivityIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
-        context['events'] = EventPage.objects.child_of(self).live().order_by('start_date')
+        context['events'] = EventPage.objects.live().order_by('start_date')
         context['news_articles'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
+        context['featured_articles'] = self.featured_articles()
+        context['upcoming_events'] = EventPage.upcoming_events()
+
         return context
 
 

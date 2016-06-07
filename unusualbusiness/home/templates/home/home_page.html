@@ -19,40 +19,7 @@
         <h1 class="hidden-title">(Un)usual Business</h1>
         <!--<h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>-->
 
-        <section class="l-feature">
-
-            <section class="l-featured-articles featured-articles unslider" >
-                <h3 class="section-title">Uitgelicht</h3>
-                <ul class="featured-articles-list">
-                    {% for featured_article in featured_articles %}
-                        {% if featured_article.content_type.model == 'eventpage' %}
-                            {% include "events/blocks/featured_event.html" with featured_event=featured_article %}
-                        {%  elif featured_article.content_type.model == 'newsarticlepage' %}
-                            {% include "articles/blocks/featured_article.html" with article_class="blue" %}
-                        {%  elif featured_article.content_type.model == 'storyarticlepage' %}
-                            {% include "articles/blocks/featured_article.html" with article_class="yellow" %}
-                        {%  elif featured_article.content_type.model == 'theoryarticlepage' %}
-                            {% include "articles/blocks/featured_article.html" with article_class="green" %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <section class="l-featured-agenda featured-agenda">
-                <h3 class="section-title featured-agenda-title">Agenda</h3>
-                <ul class="featured-agenda-items">
-                    {% for event in upcoming_events %}
-                        {% include "events/blocks/agenda_item.html" with vertical_date_class="vertical-date-small" %}
-                    {% endfor %}
-                </ul>
-                <footer class="featured-agenda-footer">
-                    <a href="#" >
-                        Alle evenementen
-                    </a>
-                </footer>
-            </section>
-
-        </section>
+        {% include 'blocks/featured_articles_and_agenda.html' %}
 
         <section class="l-featured-snippets">
 

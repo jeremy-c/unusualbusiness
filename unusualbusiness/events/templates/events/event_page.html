@@ -196,21 +196,6 @@
     </section>
     {% endif %}
 
-    {% if related_events %}
-    <section class="related-events">
-        <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Related events:</h3>
-            <ul class="related-events-list">
-                {% for related_how_to_events in related_events %}
-                    {% for event in related_how_to_events %}
-                        {% if event %}
-                            {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item-half-width' %}
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
-    {% endif %}
+    {% include 'events/blocks/related_events.html' %}
 
 {% endblock %}

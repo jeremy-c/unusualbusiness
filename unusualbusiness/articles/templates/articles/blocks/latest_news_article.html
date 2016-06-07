@@ -4,6 +4,6 @@
 {% block list_item_classes %} latest-news-article{% endblock %}
 
 {% block above_title %}
-    <div class="latest-news-article-related-event-date">{{ page.event_page.start_date|date:"j F Y" }}</div>
+    <div class="latest-news-article-publication-date">{{ page.publication_date|date:"j F" }}</div>
 {% endblock %}
 

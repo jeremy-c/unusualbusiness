@@ -11,6 +11,7 @@ from wagtail.wagtailsnippets.models import register_snippet
 
 # Blocks
 
+
 class Heading2Block(blocks.StructBlock):
     chapter_name = \
         blocks.CharBlock(required=True)

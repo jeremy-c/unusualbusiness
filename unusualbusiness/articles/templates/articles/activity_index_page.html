@@ -1,12 +1,38 @@
 {% extends "article_index_base.html" %}
-{% load wagtailcore_tags wagtailimages_tags url_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags url_tags i18n %}
 
 {% block body_class %}activities-page {{ block.super }}{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bower_components/unslider/dist/css/unslider.css' %}">
+    <link rel="stylesheet" href="{% static 'bower_components/unslider/dist/css/unslider-dots.css' %}">
+{% endblock %}
+
 {% block article_body %}
 
-    {% if news_articles %}
-        {% include 'articles/blocks/latest_news_articles.html' %}
+    <div class="featured-articles-and-agenda">
+        <h3>Events:</h3>
+        {% include 'blocks/featured_articles_and_agenda.html' %}
+    </div>
+
+    {% if events %}
+    <section class="related-events">
+        <div class="l-related-section">
+            <ul class="grid-masonry related-events-list">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
+                {% for event in events %}
+                    {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item l-grid-item-half-width' %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
     {% endif %}
 
+
+    {% if news_articles %}
+        <hr>
+        <h3 class="news-header">News:</h3>
+        {% include 'articles/blocks/latest_news_articles.html' %}
+    {% endif %}
 {% endblock %}

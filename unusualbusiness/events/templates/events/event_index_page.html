@@ -3,17 +3,9 @@
 
 {% block body_class %}template-event-index-page{% endblock %}
 
-{% block content %}
-
-    {% for event in events %}
-        <ul>
-            <li class="{{ event | to_class_name }}"><a href="{% pageurl event %}">{{ event.title }}</a></li>
-        </ul>
-    {% endfor %}
-
-{% endblock %}
-
 {% block article_body %}
+
+    {% include 'blocks/featured_articles_and_agenda.html' %}
 
     {% if news_articles %}
         {% include 'articles/blocks/latest_news_articles.html' %}
