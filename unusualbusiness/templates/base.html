@@ -42,7 +42,7 @@
 {#              href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">#}
         <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
         <link rel="stylesheet" href="{% static 'bower_components/animate.css/animate.css' %}" />
-
+        <link rel="stylesheet" href="{% static 'bower_components/remodal/dist/remodal.css' %}" />
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
         {% block extra_css %}
@@ -185,6 +185,9 @@
             <!--/#l-content-->
 
             {% include "blocks/footer.html" %}
+
+{#            {% include "blocks/social_modal.html" %}#}
+
         </div>
         <!--/#l-wrapper-->
 
@@ -201,7 +204,7 @@
         <script src="{% static 'bower_components/isotope-masonry-horizontal/masonry-horizontal.js' %}"></script>
         <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
         <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
-{#        <script src="{% static 'bower_components/social-share-privacy-light/javascripts/socialshareprivacy.js' %}"></script>#}
+        <script src="{% static 'bower_components/remodal/dist/remodal.js' %}"></script>
 
         <!-- Polyfills -->
         <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>

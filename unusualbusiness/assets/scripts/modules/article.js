@@ -5,6 +5,7 @@
 'use strict';
 
 import gumshoe from 'gumshoe';
+import Clipboard from 'clipboard';
 
 let Article = () => {
   let initInlineAricleLinks = function() {
@@ -90,14 +91,59 @@ let Article = () => {
         .not('.twitter-link')
         .addClass('external-link');
   };
+
   let initSocialLinks = function() {
     let $moreSocialLink = $('.more-social-link');
-    let $moreSocialLinksWrapper = $('.more-social-links-wrapper');
+    let $socialListItem = $('.social-list-item');
+
 
     $moreSocialLink.on('click', function() {
-      $moreSocialLinksWrapper.toggleClass('is-hidden');
+      $socialListItem.removeClass('is-hidden');
       return false;
     });
+  };
+
+  let initSocialLinksModal = function() {
+    let $articleHeader = $('.article-header');
+    let $articleSubheader = $('.article-subheader');
+    let $openSocialModal = $('.open-social-modal');
+    let $openAuthorPaneButton = $('.open-author-pane-button');
+
+    $openSocialModal.on('click', function() {
+      let status = $(this).attr('data-closed');
+      console.log(status);
+      if( status === 'true' ) { // Opening
+        console.log('Opening');
+
+        $openSocialModal.parent().toggleClass('is-open-social');
+
+        $articleHeader.toggleClass('is-no-position');
+        if( $articleSubheader.hasClass('slideOutDown')) {
+          $articleSubheader.removeClass('slideOutDown');
+        }
+
+        $articleSubheader.addClass('animated slideInUp is-show-article-subheader');
+        $openAuthorPaneButton.toggleClass('is-hidden');
+        $(this).attr('data-closed', 'false');
+
+      } else { // Closing
+        console.log('Closing');
+
+        $openSocialModal.parent().toggleClass('is-open-social');
+
+        $articleSubheader.removeClass('slideInUp');
+        $articleSubheader.addClass('slideOutDown ');
+        $articleSubheader.removeClass('is-show-article-subheader');
+        $openAuthorPaneButton.toggleClass('is-hidden');
+        $articleHeader.toggleClass('is-no-position');
+        $(this).attr('data-closed', 'true');
+      }
+    });
+  };
+
+
+  let initCopyUrlToClipboard = function() {
+    new Clipboard('.copy-url-link');
   };
 
   let init = function() {
@@ -108,6 +154,8 @@ let Article = () => {
     initAuthorPane();
     initExternalLinks();
     initSocialLinks();
+    initSocialLinksModal();
+    initCopyUrlToClipboard();
   };
 
   return {

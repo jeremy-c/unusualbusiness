@@ -47,6 +47,16 @@
                 </div>
             {% endif %}
         </div>
+        <div class="l-article-header-meta-right-bottom">
+            <a href="#social" class="open-social-modal" data-closed="true" >
+                <div class="share-icon-wrapper">
+                    <svg width="22.759px" height="32.316px" class="share-icon white-icon" >
+                      <use xlink:href="#share-icon" />
+                    </svg>
+                </div>
+                <div class="close-social-modal">Close</div>
+            </a>
+        </div>
     </header>
 
 {% endblock %}
@@ -77,7 +87,6 @@
                 </div>
             </div>
         </section>
-
     {% endif %}
 
     {% include "blocks/article_subheader.html" %}

@@ -1,0 +1,60 @@
+{% load static ub_core_tags ub_wagtailcore_tags i18n %}
+
+<div class="remodal" data-remodal-id="social">
+  <button data-remodal-action="close" class="remodal-close">Cancel</button>
+    <ul class="social-links-list">
+        <li class="social-list-item ">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button"
+               class="facebook-link">
+                <svg class="facebook-icon" width="15.152px" height="32.433px">
+                    <title>Facebook icon</title>
+                    <desc>Click to share on Facebook</desc>
+                    <use xlink:href="#facebook-icon"/>
+                </svg>
+                <span>Facebook</span>
+            </a>
+        </li>
+        <li class="social-list-item ">
+            <a href="https://twitter.com/intent/tweet?text={{ self.title }}&url={{ self.full_url|urlencode }}&via=unusual-business"
+               class="twitter-link">
+                <svg class="twitter-icon" width="34.198px" height="28.543px">
+                    <title>Twitter icon</title>
+                    <desc>Click to share on Twitter</desc>
+                    <use xlink:href="#twitter-icon"/>
+                </svg>
+                <span>Twitter</span>
+            </a>
+        </li>
+        <li class="social-list-item ">
+            <a href="" class="more-social-link">
+                <svg class="twitter-icon" width="28.543px" height="28.543px">
+                    <title>More social links icon</title>
+                    <desc>Click to share on more social networks</desc>
+                    <use xlink:href="#plus-icon"/>
+                </svg>
+            </a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="https://plus.google.com/share?url={{ self.full_url|urlencode }}">Google+</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ self.full_url|urlencode }}&title={{ self.title }}&summary={{ self.introduction|ub_richtext|striptags }}&source={{ self.full_url|urlencode }}">LinkedIn</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="https://pinterest.com/pin/create/button/?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}&media={{ self.featured_image.value.image.url|urlencode }}">Pinterest</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="https://vk.com/share.php?url={{ self.full_url|urlencode }}&title={{ self.title }}&description={{ self.introduction|ub_richtext|striptags }}&image={{ self.featured_image.value.image.url|urlencode }}&noparse=true">VK</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url={{ self.full_url|urlencode }}">Xing</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="http://www.tumblr.com/share/link?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}">Tumblr</a>
+        </li>
+        <li class="social-list-item is-hidden ">
+            <a href="http://www.reddit.com/submit?url={{ self.full_url|urlencode }}&title={{ self.title }}">Reddit</a>
+        </li>
+    </ul>
+
+</div>

@@ -15,9 +15,9 @@
     "isotope": "^2.2.2",
     "imagesloaded": "^4.1.0",
     "sidr": "^2.2.1",
-    "jquery-sticky": "sticky#^1.0.3",
     "animate.css": "^3.5.1",
-    "sticky": "^#1.0.3"
+    "sticky": "^1.0.3",
+    "remodal": "^1.0.7"
   },
   "ignore": [
     "**/.*",

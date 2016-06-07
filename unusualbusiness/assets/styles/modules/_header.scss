@@ -141,3 +141,36 @@
   }
 }
 
+.close-social-modal {
+  display: none;
+}
+
+.is-open-social {
+  height: 100%;
+  width: 100%;
+
+  .share-icon-wrapper {
+    transition: all 300ms ease-in-out;
+    height: 100px;
+    width: 100px;
+    background-color: $white;
+    border-radius: 50px;
+  }
+
+  .share-icon {
+    padding: 32px 38px;
+    fill: $black;
+    stroke: $black;
+  }
+
+  .close-social-modal {
+    position: absolute;
+    right: 34px;
+    bottom: 27px;
+    display: inherit;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+

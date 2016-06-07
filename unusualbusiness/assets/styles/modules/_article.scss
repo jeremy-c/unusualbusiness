@@ -108,6 +108,10 @@
 
   text-decoration: none;
 
+  @media(max-width: $tablet) {
+    display: none;
+  }
+
   &:before {
     content: '';
     padding-right: $gutter / 2;

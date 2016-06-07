@@ -43,6 +43,34 @@
   bottom: 0;
 }
 
+.l-article-header-meta-right-bottom {
+  display: none;
+  transition: all 300ms ease-in-out;
+
+  @media(max-width: $tablet) {
+    display: inherit;
+    position: absolute;
+    right: 34px;
+    bottom: 27px;
+  }
+
+  &.is-open-social {
+    position: absolute;
+    right: inherit;
+    bottom: inherit;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    opacity: .5;
+    background: $black;
+  }
+}
+
 .l-open-author-pane-button {
   z-index: 100;
   display: block;
