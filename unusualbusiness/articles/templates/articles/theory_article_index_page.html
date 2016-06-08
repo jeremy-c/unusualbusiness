@@ -3,12 +3,6 @@
 
 {% block body_class %}theory-articles-page {{ block.super }}{% endblock %}
 
-{% block quote %}
-<li class="l-grid-item l-grid-item-full-width">
-     {% latest_quote %}
-</li>
-{% endblock %}
-
 {% block article_body %}
 
     {% if theory_articles %}

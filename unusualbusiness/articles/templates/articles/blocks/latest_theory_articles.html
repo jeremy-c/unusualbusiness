@@ -6,7 +6,9 @@
         <li class="l-grid-gutter-sizer"></li>
         {% for article in theory_articles %}
             {% if forloop.counter == 3 %}
-                {{ latest_quote }}
+                <li class="l-grid-item l-grid-item-full-width">
+                     {% latest_quote  %}
+                </li>
             {% endif %}
             {% if article %}
                 {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
