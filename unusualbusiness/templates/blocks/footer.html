@@ -1,4 +1,6 @@
 
+{% load i18n %}
+
 <footer class="l-footer footer">
 
     <div class="l-footer-element ub-logo-footer">
@@ -15,30 +17,38 @@
 
     <div class="l-footer-element page-links">
         <ul>
-            <li><a href="#" class="">Onderzoeksoverzicht</a></li>
-            <li><a href="#" class="">Activiteiten</a></li>
-            <li><a href="#" class="">Groepen</a></li>
-            <li><a href="#" class="">Verhalen</a></li>
-            <li><a href="#" class="">Theoriën</a></li>
+            <li><a href="/how-to/" class="">{% trans "Research overview" %}</a></li>
+            <li><a href="/activities/" class="">{% trans "Activities" %}</a></li>
+            <li><a href="/practitioners/" class="">{% trans "Practitioners" %}</a></li>
+            <li><a href="/stories/" class="">{% trans "Stories" %}</a></li>
+            <li><a href="/theory/" class="">{% trans "Theory" %}</a></li>
         </ul>
     </div>
 
     <div class="l-footer-element about-links">
         <ul>
-            <li><a href="#" class="">Over (Un)usual Business</a></li>
-            <li><a href="#" class="">Waarom deze website?</a></li>
-            <li><a href="#" class="">Hoe werkt deze website?</a></li>
-            <li><a href="#" class="">Wie zijn wij?</a></li>
-            <li><a href="#" class="">Kan ik betrokken raken?</a></li>
+            <li><a href="/about/" class="">{% trans "About (Un)usual Business" %}</a></li>
+            <li><a href="/about/#why" class="">{% trans "Why this website?" %}</a></li>
+            <li><a href="/about/#how" class="">{% trans "How does this site work?" %}</a></li>
+            <li><a href="/about/#who" class="">{% trans "Who are we?" %}</a></li>
+            <li><a href="/about/#me" class="">{% trans "How can I get involved?" %}</a></li>
         </ul>
     </div>
 
     <div class="l-footer-element contact-links">
         <ul>
-            <li class="contact-links-search"><a href="#" class=" ">Search</a></li>
-            <li class="contact-links-contact"><a href="#" class="">Contact</a></li>
-            <li class="contact-links-newsletter"><a href="#"  class="contact-links-newsletter-link">Nieuwsbrief</a></li>
-            <li class="contact-links-facebook"><a href="#" class="">Facebook</a></li>
+            <li class="contact-links-search is-hidden">
+                <a href="#" class=" ">{% trans "Search" %}</a>
+            </li>
+            <li class="contact-links-contact">
+                <a href="/about/#contact" class=""></a>
+            </li>
+            <li class="contact-links-newsletter">
+                <a href="/about/#newsletter" class="contact-links-newsletter-link">{% trans "Newsletter" %}</a>
+            </li>
+            <li class="contact-links-facebook">
+                <a href="https://www.facebook.com/unusualbusinessutrecht/" class="">{% trans "Facebook" %}</a>
+            </li>
         </ul>
     </div>
 
