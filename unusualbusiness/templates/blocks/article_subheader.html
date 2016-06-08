@@ -26,16 +26,6 @@
                 <span class="menu-item-text">Twitter</span>
             </a>
         </li>
-        <li class="social-list-item ">
-            <a href="" class="social-list-item-link more-social-link">
-                <svg class="social-icon twitter-icon" width="28.543px" height="28.543px">
-                    <title>More social links icon</title>
-                    <desc>Click to share on more social networks</desc>
-                    <use xlink:href="#plus-icon"/>
-                </svg>
-                <span class="menu-item-text">Other</span>
-            </a>
-        </li>
         <li class="social-list-item social-list-item-copy-url">
             <a href="#" class="social-list-item-link copy-url-link black-icon" data-clipboard-text="{{ self.full_url }}">
                 <svg class="social-icon copy-url-icon" width="28.543px" height="28.543px">
@@ -79,6 +69,16 @@
         <li class="social-list-item extra-list-item is-hidden ">
             <a class="social-list-item-link " href="http://www.reddit.com/submit?url={{ self.full_url|urlencode }}&title={{ self.title }}">
                 <span class="menu-item-text">Reddit</span>
+            </a>
+        </li>
+        <li class="social-list-item ">
+            <a href="" class="social-list-item-link more-social-link">
+                <svg class="social-icon twitter-icon" width="28.543px" height="28.543px">
+                    <title>More social links icon</title>
+                    <desc>Click to share on more social networks</desc>
+                    <use xlink:href="#plus-icon"/>
+                </svg>
+                <span class="menu-item-text">Other</span>
             </a>
         </li>
     </ul>

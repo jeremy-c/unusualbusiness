@@ -26,8 +26,39 @@
   width: 100%;
   height: 393px;
 
+  transition: all .1s ease-in;
+
+
   @media(max-width: $tablet) {
     height: 310px;
+  }
+
+  .yellow & {
+    &:hover,
+    &:active {
+      background: $yellow;
+    }
+  }
+
+  .black & {
+    &:hover,
+    &:active {
+      background: $black;
+    }
+  }
+
+  .blue & {
+    &:hover,
+    &:active {
+      background: $blue;
+    }
+  }
+
+  .green & {
+    &:hover,
+    &:active {
+      background: $green;
+    }
   }
 }
 
@@ -101,7 +132,7 @@
 .featured-article-preview-title {
   z-index: 5;
   padding: $gutter;
-  width: 55%;
+  width: 65%;
   max-height: 70%;
   overflow: hidden;
 

@@ -170,7 +170,11 @@
 
   @media(max-width: $tablet) {
     padding: 0;
-    font-size: 5vw;
+    font-size: 4.5vw;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 22px;
   }
 }
 

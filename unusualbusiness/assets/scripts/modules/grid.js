@@ -8,6 +8,11 @@
 // import Isotope from 'isotope-layout';
 
 let Grid = () => {
+
+    let delayMe = function() {
+        $('.grid-masonry').isotope();
+        console.log('isotoped');
+    };
   let initIsotope = function() {
     let masonrySettings = {
         itemSelector: '.l-grid-item',

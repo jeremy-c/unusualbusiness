@@ -35,6 +35,12 @@
       padding-bottom: 1px;
       vertical-align: middle;
       font-size: 18px;
+
+      &:hover,
+      &:active {
+        transition: all .1s ease-in-out;
+        margin-right: 5px;
+      }
     }
 
     &.yellow {

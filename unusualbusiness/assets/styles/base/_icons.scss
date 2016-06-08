@@ -96,3 +96,18 @@
   border-radius: 40px;
   text-align: center;
 }
+
+#theory-paragraph {
+  transform-origin: 50% 50%;
+  animation-iteration-count: infinite;
+  animation-name: read-theory;
+  animation-duration: 10s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes read-theory {
+  0% {transform: none;}
+  20% {transform: translateY(-10px);}
+  100% {transform: translateY(-50px);}
+}

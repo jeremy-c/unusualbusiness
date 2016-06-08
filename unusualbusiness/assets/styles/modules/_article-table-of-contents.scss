@@ -15,6 +15,7 @@
 }
 
 .toggle-toc-link {
+  z-index: 20;
   position: absolute;
   top: 5px;
   left: $gutter;
@@ -22,7 +23,8 @@
   box-sizing: border-box;
   padding-top: 29px;
 
-  transition: all .5s ease-in-out;
+  animation-duration: .3s;
+  transition: all .3s ease-in-out;
   background-color: $light-gray;
 
   &.is-panel-open {
@@ -36,11 +38,12 @@
 }
 
 .article-table-of-contents {
+  z-index: 10;
   position: absolute;
-  top: 85px;
+  top: 0;
   left: 0;
 
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   background-color: $light-gray;
 
   &.is-closed {
@@ -53,6 +56,8 @@
 }
 
 .toc-list {
+  margin-top: 80px;
+  animation-duration: .3s;
 }
 
 .toc-list-item  {
