@@ -149,74 +149,118 @@
   }
 }
 
-.main-menu-item-link-theory .circle {
-  fill: $green;
-  stroke: $green;
+.main-menu-item-hover-icon {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: 13px;
 
-  .story-articles-page &,
-  .activities-page &,
-  .organizations-page & {
-    fill: $light-gray;
-    stroke: $light-gray;
+  animation-duration: 0.3s;
+}
+
+.main-menu-item-link-theory {
+  &:hover,
+  &:active {
+    .circle {
+      fill: $green;
+      stroke: $green;
+    }
+
+    .main-menu-item-hover-icon {
+      display: inherit;
+    }
+  }
+
+  .circle {
+    fill: $green;
+    stroke: $green;
+
+    .story-articles-page &,
+    .activities-page &,
+    .organizations-page & {
+      fill: $light-gray;
+      stroke: $light-gray;
+    }
   }
 }
 
-.main-menu-item-link-theory:hover .circle {
-  fill: $green;
-  stroke: $green;
-}
+.main-menu-item-link-stories {
+  &:hover,
+  &:active {
+    .circle {
+      fill: $yellow;
+      stroke: $yellow;
+    }
 
-.main-menu-item-link-stories .circle {
-  fill: $yellow;
-  stroke: $yellow;
+    .main-menu-item-hover-icon {
+      display: inherit;
+    }
+  }
 
-  .theory-articles-page &,
-  .activities-page &,
-  .organizations-page & {
-    fill: $light-gray;
-    stroke: $light-gray;
+  .circle {
+    fill: $yellow;
+    stroke: $yellow;
+
+    .theory-articles-page &,
+    .activities-page &,
+    .organizations-page & {
+      fill: $light-gray;
+      stroke: $light-gray;
+    }
   }
 }
 
-.main-menu-item-link-stories:hover .circle {
-  fill: $yellow;
-  stroke: $yellow;
-}
+.main-menu-item-link-practitioners {
+  &:hover,
+  &:active {
+    .circle {
+      fill: $black;
+      stroke: $black;
+    }
 
-.main-menu-item-link-practitioners .circle {
-  fill: $black;
-  stroke: $black;
+    .main-menu-item-hover-icon {
+      display: inherit;
+    }
+  }
 
-  .theory-articles-page &,
-  .story-articles-page &,
-  .activities-page & {
-    fill: $light-gray;
-    stroke: $light-gray;
+  .circle {
+    fill: $black;
+    stroke: $black;
+
+    .theory-articles-page &,
+    .story-articles-page &,
+    .activities-page & {
+      fill: $light-gray;
+      stroke: $light-gray;
+    }
   }
 }
 
-.main-menu-item-link-practitioners:hover .circle {
-  fill: $black;
-  stroke: $black;
-}
+.main-menu-item-link-activities {
+  &:hover,
+  &:active {
+    .circle {
+      fill: $blue;
+      stroke: $blue;
+    }
 
-.main-menu-item-link-activities .circle {
-  fill: $blue;
-  stroke: $blue;
+    .main-menu-item-hover-icon {
+      display: inherit;
+    }
+  }
 
-  .theory-articles-page &,
-  .story-articles-page &,
-  .organizations-page & {
-    fill: $light-gray;
-    stroke: $light-gray;
+  .circle {
+    fill: $blue;
+    stroke: $blue;
+
+    .theory-articles-page &,
+    .story-articles-page &,
+    .organizations-page & {
+      fill: $light-gray;
+      stroke: $light-gray;
+    }
   }
 }
-
-.main-menu-item-link-activities:hover .circle {
-  fill: $blue;
-  stroke: $blue;
-}
-
 
 .menu-icon {
   @media(max-width: $tablet) {
@@ -412,4 +456,3 @@
 #hamburger-menu-button.is-expanded span:after {
   transform: rotate(-45deg);
 }
-
