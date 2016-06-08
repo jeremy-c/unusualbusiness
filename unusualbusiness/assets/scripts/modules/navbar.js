@@ -17,10 +17,20 @@ let HeaderMenus = () => {
     $(this).toggleClass('is-spinned');
   };
 
+  let shakeIcon = function() {
+    $(this).togggleClass('shake');
+
+    return false;
+  };
+
   let initNavbar = function() {
     let ubLogoLink = $('.ub-logo-link');
+    let $searchLink = $('.main-menu-search-link');
+
     ubLogoLink.on('mouseenter', spinLogo);
     ubLogoLink.on('mouseleave', spinLogo);
+
+    $searchLink.on('click', shakeIcon);
   };
 
   let initExtraNavbar = function() {
