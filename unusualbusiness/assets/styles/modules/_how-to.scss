@@ -41,40 +41,33 @@
   display: block;
   margin: 0 auto;
   padding: 0 $gutter / 2;
-  width: 192.921px;
-  height: 192.921px;
+  width: 239.5px;
+  height: 239.5px;
+}
 
-  img {
-    position: absolute;
-    display: none;
+
+.how-to-circles-image {
+  stroke: $light-gray !important;
+  fill: transparent !important;
+
+  &.green circle.green {
+    stroke: $green !important;
   }
 
-  .how-to-circles-empty {
-    display: inherit;
+  &.yellow circle.yellow {
+    stroke: $yellow !important;
   }
 
-  &.green {
-    .how-to-circles-green {
-      display: inherit;
-    }
+  &.blue circle.blue {
+    stroke: $blue !important;
   }
 
-  &.yellow {
-    .how-to-circles-yellow {
-      display: inherit;
-    }
+  &.black circle.black {
+    stroke: $black !important;
   }
 
-  &.black {
-    .how-to-circles-black {
-      display: inherit;
-    }
-  }
-
-  &.blue {
-    .how-to-circles-blue {
-      display: inherit;
-    }
+  &.upcoming-event circle.blue{
+    fill: $blue !important;
   }
 }
 

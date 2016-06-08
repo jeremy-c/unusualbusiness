@@ -161,6 +161,8 @@ class HowToPage(Page):
             circles += ' green'
         if len(self.event_page_list()) > 0 or len(self.news_page_list()) > 0:
             circles += ' blue'
+        if len(self.upcoming_events()) > 0 :
+            circles += ' upcoming-event'
 
         return circles
 
