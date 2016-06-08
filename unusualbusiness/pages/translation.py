@@ -1,11 +1,12 @@
-from .models import HomePage
+from .models import GeneralPage
 from wagtail_modeltranslation.translator import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
 
-@register(HomePage)
-class HomePageTR(TranslationOptions):
+@register(GeneralPage)
+class GeneralPageTR(TranslationOptions):
     fields = (
         'title',
+        'body',
         'slug',
     )

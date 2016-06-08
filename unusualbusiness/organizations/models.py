@@ -179,10 +179,6 @@ class OrganizationIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['organizations.OrganizationPage']
 
-    class Meta:
-        verbose_name = _("Practitioner")
-        verbose_name_plural = _("Practitioners")
-
     def get_context(self, request):
         context = super(OrganizationIndexPage, self).get_context(request)
         # Add extra variables and return the updated context

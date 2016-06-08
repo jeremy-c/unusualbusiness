@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # 'unusualbusiness.wagtailmarkdown',
     'unusualbusiness.home',
+    'unusualbusiness.pages',
     'unusualbusiness.organizations',
     'unusualbusiness.events',
     'unusualbusiness.articles',

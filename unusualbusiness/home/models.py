@@ -2,17 +2,16 @@ from __future__ import unicode_literals
 
 from itertools import chain
 
-from datetime import datetime
 from django.shortcuts import render
-from django.template.loader import get_template
 from taggit.models import Tag
 from wagtail.wagtailcore.models import Page
-from wagtail_modeltranslation.models import TranslationMixin
+from django.utils.translation import ugettext as _
 
 from unusualbusiness.articles.models import TheoryArticlePage, NewsArticlePage, StoryArticlePage
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.howtos.models import HowToPage
 from unusualbusiness.organizations.models import OrganizationPage
+from wagtail.wagtailcore.models import Page, Orderable
 
 
 class HomePage(Page):
@@ -24,13 +23,8 @@ class HomePage(Page):
         'definitions.DefinitionIndexPage',
         'organizations.OrganizationIndexPage',
         'howtos.HowToIndexPage',
+        'pages.GeneralPage',
     ]
-
-    def get_context(self, request):
-        context = super(HomePage, self).get_context(request)
-        # Add extra variables and return the updated context
-        # context['index_pages'] = Page.objects.child_of(self).live()
-        return context
 
     def how_tos(self):
         return HowToPage.objects.all().live()
@@ -98,7 +92,13 @@ class HomePage(Page):
             'tags': self.tags,
         })
 
-    # dutch_content_panels = [
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+        # Add extra variables and return the updated context
+        # context['index_pages'] = Page.objects.child_of(self).live()
+        return context
+
+            # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),
     #     FieldPanel('body_nl', classname="full"),
     #     StreamFieldPanel('stream_nl'),
