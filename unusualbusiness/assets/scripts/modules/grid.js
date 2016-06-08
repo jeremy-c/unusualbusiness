@@ -9,37 +9,31 @@
 
 let Grid = () => {
 
-    let delayMe = function() {
-        $('.grid-masonry').isotope();
-        console.log('isotoped');
-    };
   let initIsotope = function() {
-    let masonrySettings = {
-        itemSelector: '.l-grid-item',
-        stamp: '.l-stamp',
-        percentPosition: true,
-        masonry: {
-          columnWidth: '.l-grid-sizer',
-          gutter: '.l-grid-gutter-sizer'
-        }
-      };
+    let $gridPackery = $('.grid-packery');
 
     let packerySettings = {
         itemSelector: '.l-grid-item',
         stamp: '.l-stamp',
         layoutMode: 'packery',
         percentPosition: true,
+        initLayout: false,
         packery: {
           gutter: '.l-grid-gutter-sizer'
         }
-      };
+    };
 
-    $('.grid-masonry').imagesLoaded(function() {
-      $('.grid-masonry').isotope(masonrySettings);
-    });
+    $gridPackery.isotope(packerySettings);
 
-    $('.grid-packery').imagesLoaded(function() {
-      $('.grid-packery').isotope(packerySettings);
+    // reveal all items after init
+    let $packeryItems = $gridPackery.find('.l-grid-item');
+    $gridPackery.addClass('is-showing-items').isotope(
+        'revealItemElements',
+        $packeryItems
+    );
+
+    $gridPackery.imagesLoaded(function() {
+        $gridPackery.isotope();
     });
   };
 

@@ -46,6 +46,7 @@
 
 .l-grid-item {
   margin-bottom: 2%;
+  opacity: 0; /* hide by default */
 
   @media(max-width: $desktop) {
     margin-bottom: 40px;
@@ -53,6 +54,10 @@
 
   @media(max-width: $tablet) {
     margin-bottom: 0;
+  }
+
+  .is-showing-items & {
+    opacity: 1; /* reveal when ready */
   }
 }
 
