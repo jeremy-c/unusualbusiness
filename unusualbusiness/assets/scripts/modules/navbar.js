@@ -18,8 +18,7 @@ let HeaderMenus = () => {
   };
 
   let shakeIcon = function() {
-    $(this).togggleClass('shake');
-
+    $(this).toggleClass('animated shake');
     return false;
   };
 
