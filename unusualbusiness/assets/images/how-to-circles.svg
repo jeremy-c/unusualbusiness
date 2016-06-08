@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="50.457px" height="50.457px" viewBox="0 0 50.457 50.457" style="enable-background:new 0 0 50.457 50.457;"
+	 width="49px" height="49px" viewBox="0 0 53.167 53.167" style="enable-background:new 0 0 53.167 53.167;"
 	 xml:space="preserve">
-    <g>
-        <circle style="fill:none;stroke:#24B574;stroke-width:2;stroke-miterlimit:10;" cx="25.25" cy="25.224" r="24.079"/>
-        <circle style="fill:none;stroke:#FAA71A;stroke-width:2;stroke-miterlimit:10;" cx="25.25" cy="25.224" r="17.982"/>
-        <circle style="fill:none;stroke:#010101;stroke-width:2;stroke-miterlimit:10;" cx="25.25" cy="25.224" r="11.642"/>
-        <circle style="fill:none;stroke:#5C73B8;stroke-width:2;stroke-miterlimit:10;" cx="25.249" cy="25.224" r="4.935"/>
-    </g>
+<circle style="fill:none;stroke:#22B573;stroke-width:2;stroke-miterlimit:10;" cx="26.518" cy="26.583" r="25"/>
+<circle style="fill:none;stroke:#FFA700;stroke-width:2;stroke-miterlimit:10;" cx="26.519" cy="26.583" r="18.669"/>
+<circle style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;" cx="26.518" cy="26.583" r="12.087"/>
+<circle style="fill:none;stroke:#547AFF;stroke-width:2;stroke-miterlimit:10;" cx="26.518" cy="26.583" r="5.124"/>
 </svg>
