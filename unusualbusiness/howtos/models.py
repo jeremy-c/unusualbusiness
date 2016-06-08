@@ -161,7 +161,7 @@ class HowToPage(Page):
             circles += ' green'
         if len(self.event_page_list()) > 0 or len(self.news_page_list()) > 0:
             circles += ' blue'
-        if len(self.upcoming_events()) > 0 :
+        if len(self.upcoming_events()) > 0:
             circles += ' upcoming-event'
 
         return circles
@@ -292,6 +292,10 @@ class HowToPage(Page):
             organizations = self.organization_list()
             events = self.event_page_list()
 
+        upcoming_related_event = None
+        if len(self.upcoming_events()) > 0:
+            upcoming_related_event = self.upcoming_events()[0]
+
         return render(request, self.template, {
             'self': self,
             'theory_articles': theory_pages,
@@ -299,7 +303,8 @@ class HowToPage(Page):
             'news_articles': news_pages,
             'organizations': organizations,
             'event_pages': events,
-            'page_formats': self.page_formats()
+            'page_formats': self.page_formats(),
+            'upcoming_related_event': upcoming_related_event
         })
 
 

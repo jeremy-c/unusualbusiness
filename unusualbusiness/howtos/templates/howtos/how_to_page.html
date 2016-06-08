@@ -4,7 +4,11 @@
 {% block extra_js %}
 {% endblock %}
 
-{% block body_class %}how-to{% endblock %}
+{% block body_class %}how-to {{ block.super }}{% endblock %}
+
+{% block above_header %}
+    {% include "events/blocks/upcoming_related_events.html" %}
+{% endblock %}
 
 {% block header %}
 
