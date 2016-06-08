@@ -15,9 +15,9 @@
 .l-content {
   position: relative;
   margin: 0 $gutter;
-  padding-top: 85px; //78px;
+  padding-top: 84px; //78px;
     // .footer height + .main-nav height
-  min-height: calc(100vh - (50px + 85px)); //78px
+  min-height: calc(100vh - (50px + 84px)); //78px
 
   @media(max-width: $tablet) {
     margin: 0;
