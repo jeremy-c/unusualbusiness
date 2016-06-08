@@ -4,6 +4,7 @@
 
 @import "../base/base";
 @import "../base/mixins";
+@import "../base/sprite-mixins";
 
 .featured-agenda {
   display: flex;
@@ -93,5 +94,5 @@
 
 &.is-hover {
   border-right: solid 8px $blue !important;
-  margin-right: 9px;
+  margin-right: 8px;
 }
