@@ -154,13 +154,13 @@ class HowToPage(Page):
         circles = ''
 
         if self.organizations().count() > 0:
-            circles += 'black'
+            circles += 'practitioners'
         if len(self.story_page_list()) > 0:
-            circles += ' yellow'
+            circles += ' stories'
         if len(self.theory_page_list()) > 0:
-            circles += ' green'
+            circles += ' theory'
         if len(self.event_page_list()) > 0 or len(self.news_page_list()) > 0:
-            circles += ' blue'
+            circles += ' activities'
         if len(self.upcoming_events()) > 0:
             circles += ' upcoming-event'
 

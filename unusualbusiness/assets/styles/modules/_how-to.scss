@@ -46,31 +46,6 @@
 }
 
 
-.how-to-circles-image {
-  stroke: $light-gray !important;
-  fill: transparent !important;
-
-  &.green circle.green {
-    stroke: $green !important;
-  }
-
-  &.yellow circle.yellow {
-    stroke: $yellow !important;
-  }
-
-  &.blue circle.blue {
-    stroke: $blue !important;
-  }
-
-  &.black circle.black {
-    stroke: $black !important;
-  }
-
-  &.upcoming-event circle.blue{
-    fill: $blue !important;
-  }
-}
-
 .how-to-description {
   margin: 20px auto;
   max-width: 700px;

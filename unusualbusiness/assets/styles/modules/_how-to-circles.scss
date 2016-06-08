@@ -106,46 +106,73 @@
   }
 }
 
-.how-to-planet .circle {
-  fill: transparent;
+.how-to-planet {
+  .circle {
+    fill: transparent !important;
 
-  animation-duration: 1s;
-  animation-delay: 0.3s;
-  animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+  }
 
-  &.theory {
-    stroke: $green;
+  &.theory circle.theory {
+    stroke: $green !important;
 
     &:hover {
-      fill: $green;
+      fill: $green !important;
     }
   }
 
-  &.stories {
-    stroke: $yellow;
+  &.stories circle.stories {
+    stroke: $yellow !important;
 
     &:hover {
-      fill: $yellow;
+      fill: $yellow !important;
     }
   }
 
-  &.practitioners {
-    stroke: $black;
+  &.practitioners circle.practitioners {
+    stroke: $black !important;
 
     &:hover {
-      fill: $black;
+      fill: $black !important;
     }
   }
 
-  &.activities {
-    stroke: $blue;
+  &.activities circle.activities {
+    stroke: $blue !important;
 
     &:hover {
-      fill: $blue;
+      fill: $blue !important;
     }
   }
 }
 
 .green-text {
   color: $green;
+}
+
+
+.how-to-circles-image {
+  fill: transparent !important;
+
+  &.theory circle.theory {
+    stroke: $green !important;
+  }
+
+  &.stories circle.stories {
+    stroke: $yellow !important;
+  }
+
+  &.practitioners circle.practitioners {
+    stroke: $black !important;
+  }
+
+  &.activities circle.activities {
+    stroke: $blue !important;
+  }
+
+  &.upcoming-event circle.activities {
+    fill: $blue !important;
+  }
 }
