@@ -7,7 +7,7 @@
 .l-featured-snippets {
   display: flex;
   flex-flow: row nowrap;
-  margin: $gutter 70px;
+  margin: $gutter 66px;
 
   @media (max-width: $tablet-horizontal) {
     flex-flow: row wrap;
