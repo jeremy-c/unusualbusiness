@@ -16,7 +16,7 @@ let Article = () => {
 
       $(this).toggleClass('is-expanded');
       $('#' + inlineElement).each( function () {
-        $(this).toggleClass('is-visuallyhidden animated rollIn');
+        $(this).toggleClass('is-visuallyhidden animated fadeIn');
       });
     });
   };
