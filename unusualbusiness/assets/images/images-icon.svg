@@ -3,8 +3,8 @@
 	 width="21.374px" height="16.412px" viewBox="0 0 21.374 16.412" style="enable-background:new 0 0 21.374 16.412;"
 	 xml:space="preserve">
     <g id="foto">
-        <polyline  id="fotooo" class="stroke-white" points="4.521,4.427 4.521,1.332
+        <polyline id="fotooo" class="stroke-white" style="fill:none;" points="4.521,4.427 4.521,1.332
             20.162,1.332 20.162,12.586 16.761,12.586 		"/>
-        <rect id="fotoo" class="stroke-white" x="1.122" y="4.427" width="15.64" height="10.879"/>
+        <rect id="fotoo" class="stroke-white" style="fill:none;"  x="1.122" y="4.427" width="15.64" height="10.879"/>
     </g>
 </svg>

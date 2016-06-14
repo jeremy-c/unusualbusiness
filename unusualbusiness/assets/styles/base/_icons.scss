@@ -115,3 +115,602 @@
   20% {transform: translateY(-10px);}
   100% {transform: translateY(-50px);}
 }
+
+.fill-white {
+  fill: $white;
+}
+
+.fill-blue {
+  fill: $black;
+}
+
+.stroke-white {
+  fill:none;
+  stroke:#ffffff;
+  stroke-width:1.564;
+  stroke-miterlimit:10;
+}
+
+.stroke-line-join {
+  stroke-linejoin:bevel;
+}
+
+.smaller-icons {
+  width: 40px;
+  height: 40px;
+
+  svg {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
+
+.is-running * {
+  animation-play-state: running !important;
+}
+
+#toeter {
+  transform-origin: 50% 50%;
+  animation: wiggle 2s ease both infinite paused;
+}
+
+#tstreepjes-b {
+  opacity: 1;
+  animation: spreek-b 2s linear both infinite paused;
+}
+
+#tstreepjes-m {
+  opacity: 1;
+  animation: spreek-m 2s linear both infinite paused;
+}
+
+#tstreepjes-o {
+  opacity: 1;
+  animation: spreek-o 2s linear both infinite paused;
+}
+
+#middenstreepje {
+  transform-origin: 0 50%;
+  animation: geluidjes_m 1s ease both infinite paused;
+}
+
+#onderstreepje {
+  transform-origin: 0 50%;
+  animation: geluidjes_o 1s ease both infinite paused;
+}
+
+#bovenstreepje {
+  transform-origin: 0 50%;
+  animation: geluidjes_b 1s ease both infinite paused;
+}
+
+#balletje1 {
+  transform-origin: 50% 50%;
+  animation: groepballetje_1 1.2s ease both infinite paused;
+}
+
+#balletje2 {
+  transform-origin: 50% 50%;
+  animation: groepballetje_2 1.2s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#balletje3 {
+  transform-origin: 50% 50%;
+  animation: groepballetje_3 1.2s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#balletje4 {
+  transform-origin: 50% 50%;
+  animation: groepballetje_4 1.2s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#balletje5 {
+  transform-origin: 50% 50%;
+  animation: groepballetje_5 1.2s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#zwart {
+  transform-origin: 50% 50%;
+  animation: kringdansje 1.2s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#line_1 {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: longread_1 2.5s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#line_2 {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: longread_2 2.5s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#line_3 {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: longread_3 2.5s ease both infinite paused;
+  animation-delay: 0.0s
+}
+
+#artline1 {
+  stroke-dasharray: 100 50;
+  stroke-dashoffset: 0;
+  animation: artl 4s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#artline2 {
+  stroke-dasharray: 100 50;
+  stroke-dashoffset: 0;
+  animation: artl 4s ease both infinite paused;
+  animation-delay: 0.1s;
+}
+
+#artline3 {
+  stroke-dasharray: 100 50;
+  stroke-dashoffset: 0;
+  animation: artl 4s ease both infinite paused;
+  animation-delay: 0.2s;
+}
+
+#artline4 {
+  stroke-dasharray: 100 50;
+  stroke-dashoffset: 0;
+  animation: artl 4s ease both infinite paused;
+  animation-delay: 0.3s;
+}
+
+#playbutton {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: playy 2.2s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#fotoo {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: fotoos 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#fotooo {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: fotooos 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#foto {
+  opacity:1;
+  transform-origin: 50% 50%;
+  animation: fotoroto 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#schakel1 {
+  transform-origin: 50% 50%;
+  animation: schakelp1 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#schakel2a {
+  transform-origin: 50% 50%;
+  animation: schakelp2a 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#schakel2b {
+  transform-origin: 50% 50%;
+  animation: schakelp2b 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+#schakel3 {
+  transform-origin: 50% 50%;
+  animation: schakelp3 1.5s ease both infinite paused;
+  animation-delay: 0.0s;
+}
+
+
+@-webkit-keyframes spreek-b {
+  0%, 17%, 78%, 100% {
+    opacity: 0;
+    transform: translate(0,0);
+  }
+
+  20%, 25%, 45%, 75% {
+    opacity: 1;
+    transform: translate(0px,0);
+  }
+
+  30%, 50% {
+    opacity: 1;
+    transform: translate(1px,-1px);
+  }
+
+}
+
+@-webkit-keyframes spreek-m {
+  0%, 17%, 78%, 100% {
+    opacity: 0;
+    transform: translate(0,0);
+  }
+
+  20%, 25%, 45%, 75% {
+    opacity: 1;
+    transform: translate(0px,0);
+  }
+
+  30%, 50% {
+    opacity: 1;
+    transform: translate(1px,0px);
+  }
+
+}
+
+@-webkit-keyframes spreek-o {
+  0%, 17%, 78%, 100% {
+    opacity: 0;
+    transform: translate(0,0);
+  }
+
+  20%, 25%, 45%, 75% {
+    opacity: 1;
+    transform: translate(0px,0);
+  }
+
+  30%, 50% {
+    opacity: 1;
+    transform: translate(1px,1px);
+  }
+
+}
+
+@-webkit-keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+
+  25%, 75% {
+    transform: rotate(-7deg);
+  }
+}
+
+@-webkit-keyframes geluidjes_m {
+  0%, 35%, 48%, 70%, 100% {
+    transform: translate(0,0);
+  }
+
+  30%, 53%, 75% {
+    transform: translate(0.80px,0);
+  }
+
+}
+
+@-webkit-keyframes geluidjes_o {
+  0%, 35%, 48%, 70%, 100% {
+    transform: translate(0,0);
+  }
+
+  30%, 53%, 75% {
+    transform: translate(0.80px,0.80px);
+  }
+
+}
+
+@-webkit-keyframes geluidjes_b {
+  0%, 35%, 48%, 70%, 100% {
+    transform: translate(0,0);
+  }
+
+  30%, 53%, 75% {
+    transform: translate(0.80px,-0.80px);
+  }
+
+}
+
+@-webkit-keyframes groepballetje_1 {
+  0%, 100% {
+    transform: translate(0,0);
+  }
+
+  30% {
+    transform: translate(0px,-1.25px);
+  }
+
+}
+
+@-webkit-keyframes groepballetje_2 {
+  0%, 100% {
+    transform: translate(0,0);
+  }
+
+  30% {
+    transform: translate(0.75px,-0.75px);
+  }
+
+}
+
+@-webkit-keyframes groepballetje_3 {
+  0%, 100% {
+    transform: translate(0,0);
+  }
+
+  30% {
+    transform: translate(0.75px,0.75px);
+  }
+
+}
+
+@-webkit-keyframes groepballetje_4 {
+  0%, 100% {
+    transform: translate(0,0);
+  }
+
+  30% {
+    transform: translate(-0.75px,0.75px);
+  }
+
+}
+
+@-webkit-keyframes groepballetje_5 {
+  0%, 100% {
+    transform: translate(0,0);
+  }
+
+  30% {
+    transform: translate(-0.75px,-0.75px);
+  }
+
+}
+
+@-webkit-keyframes kringdansje {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(72deg);
+  }
+}
+
+@-webkit-keyframes longread_1 {
+  0% {
+    opacity:1;
+    transform: translate(0,0);
+  }
+
+  10% {
+    opacity:1;
+  }
+
+  12% {
+    opacity:0;
+  }
+
+  65% {
+    opacity:0;
+    transform: translate(0,-12px);
+  }
+
+  66% {
+    opacity:0;
+    transform: translate(0,12px);
+  }
+
+  75% {
+    opacity:0;
+  }
+
+  80% {
+    opacity:1;
+
+  }
+
+  100% {
+    opacity:1;
+    transform: translate(0,0px);
+  }
+}
+
+@-webkit-keyframes longread_2 {
+  0% {
+    opacity:1;
+    transform: translate(0,0);
+  }
+
+  22% {
+    opacity:1;
+  }
+
+  24% {
+    opacity:0;
+  }
+
+  65% {
+    opacity:0;
+    transform: translate(0,-12px);
+  }
+
+  66% {
+    opacity:0;
+    transform: translate(0,12px);
+  }
+
+  75% {
+    opacity:0;
+  }
+
+  80% {
+    opacity:1;
+  }
+
+  100% {
+    opacity:1;
+    transform: translate(0,0px);
+  }
+
+}
+
+@-webkit-keyframes longread_3 {
+  0% {
+    opacity:1;
+    transform: translate(0,0);
+  }
+
+  32% {
+    opacity:1;
+  }
+
+  34% {
+    opacity:0;
+  }
+
+  65% {
+    opacity:0;
+    transform: translate(0,-12px);
+  }
+
+  66% {
+    opacity:0;
+    transform: translate(0,12px);
+  }
+
+  75% {
+    opacity:0;
+  }
+
+  80% {
+    opacity:1;
+  }
+
+  100% {
+    opacity:1;
+    transform: translate(0,0px);
+  }
+
+}
+
+@-webkit-keyframes artl {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -150;
+  }
+}
+
+@-webkit-keyframes playy {
+  0% {
+    opacity:1;
+    transform: translate(0,0);
+  }
+
+  20% {
+    opacity:1;
+  }
+
+  25% {
+    opacity:0;
+  }
+
+  65% {
+    opacity:0;
+    transform: translate(11px,0);
+  }
+
+  66% {
+    opacity:0;
+    transform: translate(-11px,0);
+  }
+
+  70% {
+    opacity:0;
+  }
+
+  75% {
+    opacity:1;
+  }
+
+  100% {
+    opacity:1;
+    transform: translate(0,0px);
+  }
+
+}
+
+@-webkit-keyframes fotoos {
+  0%, 2%, 100% {
+    opacity:1;
+    transform: rotate(0);
+  }
+
+  30%, 80% {
+    opacity:1;
+    transform: rotate(0deg) translate(0px,-1px);
+  }
+
+}
+
+@-webkit-keyframes fotooos {
+  0%, 100% {
+    opacity:1;
+    transform: rotate(0);
+  }
+
+  20%, 80% {
+    opacity:1;
+    transform: rotate(7deg);
+  }
+}
+
+@-webkit-keyframes schakelp1 {
+  0%, 100% {
+    transform: translate(0px,0px);
+  }
+
+  20%, 80% {
+    transform: translate(-0.75px,0.75px);
+  }
+}
+
+@-webkit-keyframes schakelp2a {
+  0%, 100% {
+    transform: translate(0px,0px);
+  }
+
+  20%, 80% {
+    transform: translate(-0.75px,-0.75px);
+  }
+}
+
+@-webkit-keyframes schakelp2b {
+  0%, 100% {
+    transform: translate(0px,0px);
+  }
+
+  20%, 80% {
+    transform: translate(0.75px,0.75px);
+  }
+}
+
+@-webkit-keyframes schakelp3 {
+  0%, 100% {
+    transform: translate(0px,0px);
+  }
+
+  20%, 80% {
+    transform: translate(0.75px,-0.75px);
+  }
+}
+

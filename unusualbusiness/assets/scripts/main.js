@@ -14,6 +14,7 @@ import FeaturedJournal from './modules/featured-journal';
 import Navbar from './modules/navbar';
 import Organization from './modules/organization';
 import HowTo from './modules/how-to';
+import Icons from './modules/icons';
 import smoothScroll from 'smooth-scroll';
 
 (function() {
@@ -53,10 +54,8 @@ import smoothScroll from 'smooth-scroll';
   $(window).ready(function() {
     console.log('Main: Window ready go!');
 
-    // SVG Polyfill
-    svg4everybody({
-      polyfill: false
-    });
+    let icons = Icons();
+    icons.init();
 
     smoothScroll.init({
       selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
