@@ -4,9 +4,9 @@
 	 width="19.507px" height="19.083px" viewBox="0 0 19.507 19.083" style="enable-background:new 0 0 19.507 19.083;"
 	 xml:space="preserve">
 <g>
-	<line style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" x1="4.966" y1="10.826" x2="11.326" y2="4.466"/>
-	<line style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" x1="8.283" y1="14.142" x2="14.642" y2="7.783"/>
-	<line style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" x1="2.202" y1="16.906" x2="8.562" y2="10.546"/>
-	<line style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" x1="11.046" y1="8.062" x2="17.406" y2="1.702"/>
+	<line id="schakel2a" class="stroke-white" x1="4.966" y1="10.826" x2="11.326" y2="4.466"/>
+	<line id="schakel2b" class="stroke-white" x1="8.283" y1="14.142" x2="14.642" y2="7.783"/>
+	<line id="schakel1" class="stroke-white" x1="2.202" y1="16.906" x2="8.562" y2="10.546"/>
+	<line id="schakel3" class="stroke-white" x1="11.046" y1="8.062" x2="17.406" y2="1.702"/>
 </g>
 </svg>

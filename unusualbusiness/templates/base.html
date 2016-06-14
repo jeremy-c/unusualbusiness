@@ -35,14 +35,13 @@
             })(document);
         </script>
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
 
 {#        <link rel="stylesheet" crossorigin="anonymous" integrity="sha256-z3Zd2vSyiYzTkz83GvboBvga8btMdZo4LGsO+yxzQQg="#}
 {#              href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">#}
         <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
         <link rel="stylesheet" href="{% static 'bower_components/animate.css/animate.css' %}" />
-        <link rel="stylesheet" href="{% static 'bower_components/remodal/dist/remodal.css' %}" />
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
         {% block extra_css %}
@@ -206,9 +205,7 @@
         <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
         <script src="{% static 'bower_components/jquery.event.move/js/jquery.event.move.js' %}"></script>
         <script src="{% static 'bower_components/jquery.event.swipe/js/jquery.event.swipe.js' %}"></script>
-        <script src="{% static 'bower_components/jquery-sticky/jquery.sticky.js' %}"></script>
         <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-{#        <script src="{% static 'bower_components/velocity/velocity.js' %}"></script>#}
         <script src="{% static 'bower_components/unslider/dist/js/unslider-min.js' %}"></script>
         <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
         <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
@@ -216,7 +213,6 @@
         <script src="{% static 'bower_components/isotope-masonry-horizontal/masonry-horizontal.js' %}"></script>
         <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
         <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
-        <script src="{% static 'bower_components/remodal/dist/remodal.js' %}"></script>
 
         <!-- Polyfills -->
         <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>

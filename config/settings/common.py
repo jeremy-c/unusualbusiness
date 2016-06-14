@@ -12,7 +12,7 @@ from __future__ import absolute_import, unicode_literals
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
+ROOT_DIR = environ.Path(__file__) - 3  # (unusualbusiness/config/settings/common.py - 3 = unusualbusiness/)
 APPS_DIR = ROOT_DIR.path('unusualbusiness')
 
 env = environ.Env()
@@ -24,6 +24,7 @@ DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -57,10 +58,6 @@ THIRD_PARTY_APPS = (
     'wagtail.contrib.modeladmin',
     'rest_framework',
     'wagtail_modeltranslation',
-
-    #'wagtailplus.wagtaillinks',
-    # 'wagtailplus.wagtailrelations',
-    # 'wagtailplus.wagtailrollbacks',
 )
 
 # Apps specific for this project go here.
@@ -84,7 +81,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES = (
-    # Make sure djangosecure.middleware.SecurityMiddleware is listed first
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -102,13 +98,13 @@ MIDDLEWARE_CLASSES = (
 # MIGRATIONS CONFIGURATION
 # ------------------------------------------------------------------------------
 MIGRATION_MODULES = {
-    # 'sites': 'unusualbusiness.contrib.sites.migrations'
+    'sites': 'unusualbusiness.contrib.sites.migrations'
 }
 
 # DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env.bool("DJANGO_DEBUG", False)
+DEBUG = env.bool('DJANGO_DEBUG', False)
 
 # FIXTURE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -125,7 +121,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ("""Jeremy C""", 'info@unusualbusiness.nl'),
+    ("""(Un)usual Business""", 'info@unusualbusiness.nl'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -136,7 +132,7 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="sqlite:///ub.sqlite3"),
+    'default': env.db('DATABASE_URL', default='postgres:///unusualbusiness'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -150,7 +146,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'Europe/Amsterdam'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-US'
+LANGUAGE_CODE = 'en-us'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -217,7 +213,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 # MEDIA CONFIGURATION
@@ -241,6 +236,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+
 # Custom user app defaults
 # Select the correct user model
 # AUTH_USER_MODEL = 'users.User'
@@ -252,10 +248,9 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
 ########## CELERY
 INSTALLED_APPS += ('unusualbusiness.taskapp.celery.CeleryConfig',)
-# if you are not using the django database broker (e.g. rabbitmq, redis, memcached),
-# you can remove the next line.
-# INSTALLED_APPS += ('kombu.transport.django',)
-# BROKER_URL = env("CELERY_BROKER_URL", default='django://')
+# if you are not using the django database broker (e.g. rabbitmq, redis, memcached), you can remove the next line.
+INSTALLED_APPS += ('kombu.transport.django',)
+BROKER_URL = env('CELERY_BROKER_URL', default='django://')
 ########## END CELERY
 
 
@@ -278,13 +273,5 @@ LANGUAGES = (
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'nl')
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'nl'
-
-# AUTHORITATIVE_FACTOR = [0.25]
-# CATEGORY_FACTOR = [0.25]
-# LIKE_TYPE_FACTOR = [0.25]
-# TAG_FACTOR = [0.25]
-
-GULP_PRODUCTION_COMMAND = 'gulp build'
-GULP_DEVELOP_COMMAND = 'gulp'
 
 DOORS_OPEN_MINUTES_BEFORE_START_EVENT = 15

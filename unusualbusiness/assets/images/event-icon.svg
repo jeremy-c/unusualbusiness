@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="24.477px" height="17.236px" viewBox="0 0 24.477 17.236" style="enable-background:new 0 0 24.477 17.236;"
+	 width="21.25px" height="14.625px" viewBox="0 0 21.25 14.625" style="enable-background:new 0 0 21.25 14.625;"
 	 xml:space="preserve">
-<g>
-	<path style="stroke:none;" d="M0,10.515l4.883,1.164v4.564l0.992,0.992h4.726l0.992-0.992v-2.965l5.607,1.336V0.509L0,4.996
-		V10.515z M9.609,12.82v2.431H6.868v-3.098l2.797,0.667H9.609z M1.985,6.529l13.231-3.451v9.024L1.985,8.949V6.529z"/>
-
-		<rect x="20.667" y="-0.551" transform="matrix(0.3922 0.9199 -0.9199 0.3922 14.8732 -18.7962)" style="stroke:none;" width="1.985" height="4.815"/>
-	<rect x="19.846" y="5.953" style="stroke:none;" width="4.631" height="1.985"/>
-
-		<rect x="19.252" y="11.223" transform="matrix(-0.92 -0.3919 0.3919 -0.92 36.7996 31.9402)" style="stroke:none;" width="4.815" height="1.984"/>
+<g id="toeter">
+    <polygon id="cone" class="stroke-white" points="1.459,5.537 1.459,8.604 12.956,11.328 12.956,2.557 "/>
+    <line id="tstreepjes-b" class="stroke-white" x1="15.682" y1="3.323" x2="19.003" y2="1.875"/>
+    <line id="tstreepjes-m" class="stroke-white" x1="15.938" y1="6.389" x2="19.429" y2="6.389"/>
+    <line id="tstreepjes-o" class="stroke-white" x1="15.682" y1="9.711" x2="19.003" y2="11.158"/>
+    <polyline id="handvat" class="stroke-white" points="8.954,10.817 8.954,13.372 5.462,13.372 5.462,9.881 "/>
 </g>
 </svg>

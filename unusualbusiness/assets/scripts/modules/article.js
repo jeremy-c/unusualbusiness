@@ -39,10 +39,10 @@ let Article = () => {
       return false;
     });
 
-    $tocWrapper.sticky({
-      topSpacing: 98,
-      bottomSpacing: 2000
-    });
+    // $tocWrapper.sticky({
+    //   topSpacing: 98,
+    //   bottomSpacing: 2000
+    // });
 
     gumshoe.init();
   };

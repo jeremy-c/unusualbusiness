@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="21.208px" height="20.583px" viewBox="0 0 21.208 20.583" style="enable-background:new 0 0 21.208 20.583;"
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="21.469px" height="21.219px" viewBox="0 0 21.469 21.219" style="enable-background:new 0 0 21.469 21.219;"
 	 xml:space="preserve">
-<path style="fill:#FFFFFF;" d="M13.457,3.125c0,1.566-1.271,2.836-2.836,2.836c-1.566,0-2.835-1.27-2.835-2.836
-	c0-1.566,1.269-2.836,2.835-2.836C12.187,0.289,13.457,1.559,13.457,3.125"/>
-<path style="fill:#FFFFFF;" d="M8.806,17.525c0,1.566-1.27,2.836-2.836,2.836s-2.835-1.27-2.835-2.836s1.269-2.836,2.835-2.836
-	S8.806,15.959,8.806,17.525"/>
-<path style="fill:#FFFFFF;" d="M18.08,17.525c0,1.566-1.271,2.836-2.836,2.836s-2.835-1.27-2.835-2.836s1.27-2.836,2.835-2.836
-	S18.08,15.959,18.08,17.525"/>
-<path style="fill:#FFFFFF;" d="M21.028,8.606c0,1.566-1.271,2.835-2.836,2.835c-1.566,0-2.836-1.27-2.836-2.835
-	s1.27-2.836,2.836-2.836C19.758,5.77,21.028,7.04,21.028,8.606"/>
-<path style="fill:#FFFFFF;" d="M5.886,8.606c0,1.566-1.27,2.835-2.836,2.835s-2.835-1.27-2.835-2.835S1.484,5.77,3.05,5.77
-	S5.886,7.04,5.886,8.606"/>
+<g id="balletjes">
+    <circle id="balletje1" class="fill-white" cx="10.791" cy="4.305" r="2.044"/>
+    <circle id="balletje2" class="fill-white" cx="17.101" cy="8.928" r="2.044" />
+    <circle id="balletje3" class="fill-white" cx="14.693" cy="16.303" r="2.044" />
+    <circle id="balletje4" class="fill-white" cx="6.857" cy="16.338" r="2.044" />
+    <circle id="balletje5" class="fill-white" cx="4.485" cy="8.866" r="2.044"/>
+</g>
 </svg>

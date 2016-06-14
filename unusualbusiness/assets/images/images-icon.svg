@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="21.374px" height="16.412px" viewBox="0 0 21.374 16.412" style="enable-background:new 0 0 21.374 16.412;"
 	 xml:space="preserve">
-    <polyline style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" points="4.521,4.427 4.521,1.332
-        20.162,1.332 20.162,12.586 16.761,12.586 		"/>
-    <rect x="1.122" y="4.427" style="fill:none;stroke-width:1.564;stroke-miterlimit:10;" width="15.64" height="10.879"/>
+    <g id="foto">
+        <polyline  id="fotooo" class="stroke-white" points="4.521,4.427 4.521,1.332
+            20.162,1.332 20.162,12.586 16.761,12.586 		"/>
+        <rect id="fotoo" class="stroke-white" x="1.122" y="4.427" width="15.64" height="10.879"/>
+    </g>
 </svg>

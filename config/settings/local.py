@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Local settings
 
 - Run in Debug mode
 - Use console backend for emails
 - Add Django Debug Toolbar
 - Add django-extensions as app
-'''
+"""
 
 from .common import *  # noqa
 
@@ -19,14 +19,14 @@ TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.
-SECRET_KEY = env("DJANGO_SECRET_KEY", default='a9cyc8w7!i1fcb=4kzp14k5^5-zf+zetuw!-aor3p()eo8zf1(')
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='3&+w^s8wdkd403ho#f4r#8&9ny=(eks^%%04p_f3()p5%jb)^#')
 
 # Mail settings
 # ------------------------------------------------------------------------------
-EMAIL_HOST = 'localhost'
+
 EMAIL_PORT = 1025
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
-                    default='django.core.mail.backends.console.EmailBackend')
+
+EMAIL_HOST = env("EMAIL_HOST", default='mailhog')
 
 # CACHING
 # ------------------------------------------------------------------------------
@@ -37,14 +37,18 @@ CACHES = {
     }
 }
 
+DATABASES = {
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+    'default': env.db("DATABASE_URL", default="sqlite:///ub.sqlite3"),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-# MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-INSTALLED_APPS += (
-    # 'debug_toolbar',
-)
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+INSTALLED_APPS += ('debug_toolbar', )
 
-INTERNAL_IPS = ('127.0.0.1', '10.0.2.2', '10.0.0.2',)
+INTERNAL_IPS = ('127.0.0.1', '10.0.2.2',)
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
@@ -67,5 +71,3 @@ CELERY_ALWAYS_EAGER = True
 ########## END CELERY
 
 # Your local stuff: Below this line define 3rd party library settings
-
-

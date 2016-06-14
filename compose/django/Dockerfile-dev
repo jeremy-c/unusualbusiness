@@ -6,9 +6,6 @@ ENV PYTHONUNBUFFERED 1
 COPY ./requirements /requirements
 RUN pip install -r /requirements/local.txt
 
-# Custom Postgress Fix
-RUN usermod -u 1000 www-data
-
 COPY ./compose/django/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r//' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
