@@ -52,10 +52,14 @@
     margin-top: 8px;
   }
 
+  .latest-story-article &,
+  .featured-story-article & {
+    background-color: $yellow;
+  }
+
   .latest-story-article & {
     align-self: center;
     margin-top: -14px; // lower below date
-    background-color: $yellow;
 
     @media(max-width: $tablet) {
       align-self: flex-start;
@@ -63,24 +67,37 @@
     }
   }
 
+  .featured-organization &,
   .article-inline-organization &,
   .latest-organization & {
     background-color: $black;
+  }
+
+  .article-inline-organization &,
+  .latest-organization & {
     margin-bottom: $gutter / 2;
+  }
+
+  .featured-theory-article &,
+  .latest-theory-article &,
+  .article-inline-theoryarticle & {
+    background-color: $green;
   }
 
   .latest-theory-article &,
   .article-inline-theoryarticle & {
-    background-color: $green;
-
     @media(max-width: $tablet) {
       margin-top: 8px;
     }
   }
 
+  .featured-news-article &,
+  .latest-news-article & {
+    background-color: $blue;
+  }
+
   .latest-news-article & {
     margin-top: calc(var(--gutter + 14px)); // lower below date
-    background-color: $blue;
 
     @media(max-width: $tablet) {
       margin-top: 8px;
@@ -90,6 +107,16 @@
   .article-format-icon {
     padding-top: 13px;
   }
+
+  .featured-news-article &,
+  .featured-story-article &,
+  .featured-theory-article &,
+  .featured-event-article & {
+    @media(max-width: $tablet) {
+      margin-top: 0;
+    }
+  }
+
 }
 
 

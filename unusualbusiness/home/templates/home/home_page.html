@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'bower_components/unslider/dist/css/unslider-dots.css' %}">
 {% endblock %}
 
-{% block body_class %}home{% endblock %}
-
+{% block body_class %}home l-article-content{% endblock %}
 
 {% block content %}
 
@@ -19,7 +18,9 @@
         <h1 class="hidden-title">(Un)usual Business</h1>
         <!--<h1>{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}</h1>-->
 
-        {% include 'blocks/featured_articles_and_agenda.html' %}
+        {% include 'articles/blocks/featured_articles.html' %}
+
+        {% include 'events/blocks/upcoming_events.html'  %}
 
         <section class="l-featured-snippets">
 

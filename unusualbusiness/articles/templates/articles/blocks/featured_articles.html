@@ -1,0 +1,21 @@
+
+<section class="l-feature">
+
+    <section class="l-featured-articles featured-articles unslider" >
+        <h3 class="section-title">Uitgelicht</h3>
+        <ul class="featured-articles-list">
+            {% for featured_article in featured_articles %}
+                {% if featured_article.content_type.model == 'eventpage' %}
+                    {% include "events/blocks/featured_event.html" with article_class="featured-event-article" featured_event=featured_article  %}
+                {%  elif featured_article.content_type.model == 'newsarticlepage' %}
+                    {% include "articles/blocks/featured_article.html" with article_class="featured-news-article" %}
+                {%  elif featured_article.content_type.model == 'storyarticlepage' %}
+                    {% include "articles/blocks/featured_article.html" with article_class="featured-story-article" %}
+                {%  elif featured_article.content_type.model == 'theoryarticlepage' %}
+                    {% include "articles/blocks/featured_article.html" with article_class="featured-theory-article" %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+
+</section>

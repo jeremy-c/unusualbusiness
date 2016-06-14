@@ -1,0 +1,15 @@
+
+{% if upcoming_events %}
+<section class="related-events">
+    <div class="l-boxed l-related-section">
+        <h3 class="article-section-title" >Related events:</h3>
+        <ul class="related-events-list">
+            {% for event in upcoming_events %}
+                {% if event %}
+                    {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item-half-width' %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}

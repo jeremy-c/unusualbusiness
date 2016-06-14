@@ -13,14 +13,9 @@
 }
 
 .featured-article-link {
-  text-decoration: none;
-  display: flex;
-}
-
-.featured-article-preview {
   position: relative;
-  flex: 1;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -28,36 +23,84 @@
 
   transition: all .1s ease-in;
 
+  text-decoration: none;
 
   @media(max-width: $tablet) {
     height: 310px;
   }
 
-  .yellow & {
+  .featured-story-article & {
     &:hover,
     &:active {
       background: $yellow;
     }
   }
 
-  .black & {
+  .featured-organization & {
     &:hover,
     &:active {
       background: $black;
     }
   }
 
-  .blue & {
+  .featured-news-article &
+  .featured-event-article & {
     &:hover,
     &:active {
       background: $blue;
     }
   }
 
-  .green & {
+  .featured-theory-article & {
     &:hover,
     &:active {
       background: $green;
+    }
+  }
+}
+
+.l-featured-article-top-left,
+.l-featured-article-top-right {
+  position: relative;
+  flex: 1;
+  align-self: flex-start;
+  margin: 23px 23px 0;
+  width: 50%;
+  height: 50px;
+
+  .featured-story-article &,
+  .featured-organization &,
+  .featured-news-article &,
+  .featured-theory-article & {
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
+}
+
+.l-featured-article-top-left {
+  z-index: 10;
+  margin-right: 0;
+}
+
+.l-featured-article-top-right {
+  z-index: 5;
+  margin-left: 0;
+}
+
+.l-featured-article-preview-title-wrapper {
+  align-self: flex-start;
+  margin-bottom: 100px;
+  padding: 0 23px;
+  width: 100%;
+
+  .featured-story-article &,
+  .featured-organization &,
+  .featured-news-article &,
+  .featured-theory-article & {
+    @media(max-width: $tablet) {
+      margin-top: auto;
+      margin-bottom: inherit;
     }
   }
 }
@@ -71,32 +114,63 @@
   }
 }
 
+.featured-article-date-element {
+  display: inline-block;
+  padding: 12px 4px 0;
+  height: $gutter;
+
+  text-align: center;
+  font-size: 20px;
+  font-family: $open-sans;
+  font-weight: bold;
+  color: $blue;
+}
+
 .featured-article-date {
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  padding-top: 7px;
-  padding-right: 30px;
+  display: block;
+  box-sizing: border-box;
+  padding-left: 6px;
+  padding-right: 2px;
+  width: 150px;
+  height: 100%;
+  background-color: $white;
 
-  @media(max-width: $tablet) {
-    position: absolute;
-    flex-direction: row;
-    flex-flow: wrap;
-    box-sizing: inherit;
-    margin: 27px 27px 0;
-    padding: 5px $gutter / 2;
-    width: calc(100vw - 102px);
+  .featured-event-article & {
+    @media(max-width: $tablet) {
+      width: 100%;
+    }
+  }
 
-    background-color: $white;
+  .featured-article-date-day,
+  .featured-article-date-year,
+  .featured-article-date-month,
+  .featured-article-date-day-of-month,
+  .featured-article-date-time {
+    @extend .featured-article-date-element;
+  }
+
+  .featured-article-date-time,
+  .featured-article-date-day {
+    padding-top: 16px;
+    vertical-align: top;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  .featured-article-date-time {
+    display: none;
   }
 }
 
 .featured-article-category {
   z-index: 10;
+  box-sizing: border-box;
   position: absolute;
-  top: 27px;
-  right: $gutter;
-  padding: $gutter / 3 $gutter;
+  top: 0;
+  right: 0;
+  padding: 15px $gutter;
+  height: 50px;
 
   background-color: $white;
 
@@ -104,10 +178,11 @@
   color: $blue;
   font-size: 14px;
 
-  @media(max-width: $tablet) {
-    margin: 6px 0;
-    padding: 0;
-    font-size: 18px;
+  .featured-event-article & {
+    @media(max-width: $tablet) {
+      width: 100%;
+      text-align: right;
+    }
   }
 }
 
@@ -130,6 +205,7 @@
 
 .featured-article-preview-title {
   z-index: 5;
+  margin: 0 auto;
   padding: $gutter;
   width: 65%;
   max-height: 70%;
@@ -141,25 +217,26 @@
   text-align: center;
   color: $white;
 
-  .yellow & {
+  .featured-story-article & {
     background-color: $yellow;
   }
 
-  .green & {
+  .featured-theory-article & {
     background-color: $green;
   }
 
-  .black & {
+  .featured-organization & {
     background-color: $black;
   }
 
-  .blue & {
+  .featured-event-article & ,
+  .featured-news-article & {
     background-color: $blue;
   }
 
   @media(max-width: $tablet) {
     box-sizing: border-box;
-    width: calc(100vw - var(--gutter) * 2);
+    width: 100%;
 
     font-size: 4vw;
     line-height: 1.4em;
@@ -186,23 +263,23 @@
 
 .article-format-icon {
 
-  .blue & {
-    fill: $blue;
-    stroke: $blue;
+  .featured-story-article & {
+    fill: $yellow;
+    stroke: $yellow;
   }
 
-  .black & {
+  .featured-theory-article & {
+    stroke: $green;
+  }
+
+  .featured-organization & {
     fill: $black;
     stroke: $black;
   }
 
-  .green & {
-    fill: $green;
-    stroke: $green;
-  }
-
-  .yellow & {
-    fill: $yellow;
-    stroke: $yellow;
+  .featured-event-article,
+  .featured-news-article & {
+    fill: $blue;
+    stroke: $blue;
   }
 }

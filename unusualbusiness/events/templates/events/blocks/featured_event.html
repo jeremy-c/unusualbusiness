@@ -1,25 +1,29 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-<li class="featured-article blue">
-    <a href="{{ featured_event.url }}" class="featured-article-link">
-        <time class="featured-article-date vertical-date-large dt-start"
-              datetime="{{ featured_event.start_date|date:"SHORT_DATE_FORMAT" }}">
-            <div class="vertical-date-day border-bottom-blue">{{ featured_event.start_date|date:"D" }}</div>
-            <div class="vertical-date-day-of-month">{{ featured_event.start_date|date:"d" }}</div>
-            <div class="vertical-date-month">{{ featured_event.start_date|date:"m" }}</div>
-            <div class="vertical-date-year">{{ featured_event.start_date|date:"y" }}</div>
-            <div class="vertical-date-time border-top-blue">{{ featured_event.start_date|time:"H:i" }}</div>
-        </time>
-        <div class="featured-article-preview" >
+<li class="featured-article">
+    <a href="{{ featured_event.url }}" class="featured-article-link {{ article_class }}">
+        <div class="l-featured-article-top-left">
+            <time class="featured-article-date dt-start"
+                  datetime="{{ featured_event.start_date|date:"SHORT_DATE_FORMAT" }}">
+                <div class="featured-article-date-day">{{ featured_event.start_date|date:"D" }}</div>
+                <div class="featured-article-date-day-of-month">{{ featured_event.start_date|date:"d" }}</div>
+                <div class="featured-article-date-month">{{ featured_event.start_date|date:"m" }}</div>
+                <div class="featured-article-date-year">{{ featured_event.start_date|date:"y" }}</div>
+                <div class="featured-article-date-time">{{ featured_event.start_date|time:"H:i" }}</div>
+            </time>
+        </div>
+        <div class="l-featured-article-top-right">
             <div class="featured-article-category p-category">
                 {{ featured_event.event_type }}
             </div>
-            {% if featured_event.featured_image %}
-                {% include "blocks/responsive_image.html" with image=featured_event.featured_image image_class="featured-article-image"  %}
-            {% endif %}
+        </div>
+        <div class="l-featured-article-preview-title-wrapper">
             <h4 class="featured-article-preview-title">
                 {{ featured_event.title }}
             </h4>
         </div>
+        {% if featured_event.featured_image %}
+            {% include "blocks/responsive_image.html" with image=featured_event.featured_image image_class="featured-article-image"  %}
+        {% endif %}
     </a>
 </li>
