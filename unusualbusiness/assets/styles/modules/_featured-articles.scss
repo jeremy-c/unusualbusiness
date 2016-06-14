@@ -101,8 +101,7 @@
   .featured-news-article &,
   .featured-theory-article & {
     @media(max-width: $tablet) {
-      margin-top: auto;
-      margin-bottom: inherit;
+      margin: auto;
     }
   }
 }
@@ -285,9 +284,6 @@
     stroke: $blue;
   }
 }
-.unslider {
-  //position: relative;
-}
 
 .unslider-arrow {
   top: 85px;
@@ -314,4 +310,9 @@
   &.next {
     right: 0 !important;
   }
+
+  @media(max-width: $tablet) {
+    display: none;
+  }
+
 }
