@@ -8,7 +8,7 @@ let FeaturedArticles = () => {
   let initSlider = function() {
     $('.unslider').unslider({
       keys: false,
-      arrows: false, 
+      arrows: true,
       nav: true
     });
   };

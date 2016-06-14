@@ -4,6 +4,8 @@
 
 @import "../base/base";
 @import "../base/mixins";
+@import "../base/sprite-mixins";
+
 
 .featured-articles {
 }
@@ -281,5 +283,35 @@
   .featured-news-article & {
     fill: $blue;
     stroke: $blue;
+  }
+}
+.unslider {
+  //position: relative;
+}
+
+.unslider-arrow {
+  top: 85px;
+  box-sizing: border-box;
+  height: 393px;
+  padding-top: 180px;
+  width: 80px;
+  color: $white;
+
+  &:after {
+    @include sprite(chevron-icon);
+    content: '';
+    display: block;
+  }
+
+  &.prev {
+    left: 0 !important;
+
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next {
+    right: 0 !important;
   }
 }
