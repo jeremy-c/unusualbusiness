@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField
+from django.db.models import Model, CharField, URLField
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
 from wagtail.wagtailcore.models import Page
@@ -225,4 +225,3 @@ class PageFormat:
 
     def __init__(self):
         pass
-

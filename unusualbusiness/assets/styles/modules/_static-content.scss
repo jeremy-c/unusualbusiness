@@ -1,0 +1,73 @@
+/* ==|====================
+   Modules/Static content
+   ======================= */
+
+@import "../base/base";
+@import "../base/sprite-mixins";
+
+
+// Home
+
+.home-spacer {
+  margin: 14px 80px $gutter;
+}
+
+.home-get-updated {
+  margin: $gutter 0;
+  border-top: solid 1px $light-gray;
+  border-bottom: solid 1px $light-gray;
+  padding: $gutter * 1.5;
+}
+
+.home-get-updated-link {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  width: 500px;
+  margin: 0 auto;
+
+  font-size: 24px;
+  font-style: normal;
+  color: $blue;
+  text-decoration: none;
+
+  &:after {
+    @include sprite(chevron-blue-icon);
+    align-self: center;
+    content: '';
+    display: block;
+    margin-left: 15px;
+    padding-bottom: 4px;
+    width: 33px;
+
+    transition: all .1s ease-in;
+
+    vertical-align: super;
+  }
+
+  &:hover,
+  &:active {
+    &:after {
+      margin-left: 18px;
+      width: 30px;
+    }
+  }
+
+  .icon-wrapper {
+    flex: 0 0 78px;
+    align-self: center;
+    box-sizing: border-box;
+    margin-right: $gutter;
+    border-radius: 39px;
+    padding-top: 17px;
+    padding-left: 7px;
+    width: 78px;
+    height: 78px;
+
+    background-color: $blue;
+  }
+
+  .home-get-updated-text {
+    align-self: center;
+  }
+}

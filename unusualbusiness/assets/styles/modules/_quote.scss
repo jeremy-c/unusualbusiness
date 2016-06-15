@@ -3,6 +3,7 @@
    ======================= */
 
 @import "../base/base";
+@import "../base/sprite-mixins";
 
 .quote {
   padding: $gutter $gutter * 2;
@@ -25,4 +26,27 @@
   font-size: 14px;
   font-family: $open-sans;
   font-style: normal;
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:after {
+      @include sprite(chevron-white-icon);
+      content: '';
+      display: block;
+      margin-left: 5px;
+      width: 15px;
+
+      transition: all .1s ease-in;
+    }
+
+    &:hover,
+    &:active {
+      &:after {
+        margin-left: 8px;
+        width: 12px;
+      }
+    }
+  }
 }

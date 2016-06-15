@@ -1,11 +1,16 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
+from django.db.models import CharField, URLField, TextField
+from django.db.models import Model
+from modelcluster.fields import ParentalKey
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
 from wagtail.wagtailcore import blocks
 from django.utils.translation import ugettext as _
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+from wagtail.wagtailsnippets.models import register_snippet
 
 from unusualbusiness.utils.models import FeaturedImageBlock, FeaturedAudioBlock, PullQuoteBlock, Heading2Block, \
     Heading3Block, Heading4Block
@@ -89,4 +94,91 @@ class GeneralPage(Page):
         StreamFieldPanel('featured'),
         StreamFieldPanel('body_en'),
         StreamFieldPanel('body_nl'),
+        InlinePanel('static_content_placements', label="Static Content"),
+    ]
+
+
+class GeneralPageStaticContentPlacement(Orderable, models.Model):
+    general_page = ParentalKey('pages.GeneralPage', related_name='static_content_placements')
+    static_content = models.ForeignKey('pages.StaticContent', related_name='+')
+
+    class Meta:
+        verbose_name = "Static content placement"
+        verbose_name_plural = "Static content placements"
+
+    panels = [
+        SnippetChooserPanel('static_content'),
+    ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.general_page.title + " -> " + self.static_content.body
+
+
+# Snippets
+
+
+@register_snippet
+class StaticContent(Model):
+    title = CharField(
+        verbose_name=_('Title'),
+        max_length=255,
+        help_text=_("Static HTML content for placement in pages"),
+        blank=False)
+    body = TextField(
+        verbose_name=_('HTML Body'),
+        help_text=_("Static HTML content for placement in pages"),
+        blank=False)
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('body'),
+    ]
+
+    class Meta:
+        verbose_name = _("Static content")
+        verbose_name_plural = _("Static contents")
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.title
+
+    search_fields = [
+        index.SearchField('body', partial_match=True),
+    ]
+
+
+@register_snippet
+class Quote(Model):
+    quote = CharField(
+        verbose_name=_('Quote'),
+        max_length=255,
+        help_text=_("A quote from an article."),
+        blank=False)
+    author = CharField(
+        verbose_name=_('Attribution'),
+        max_length=255,
+        help_text=_("Whom is this quote attributed to."),
+        blank=True)
+    link = URLField(
+        verbose_name=_('Link'),
+        max_length=255,
+        help_text=_("Click quote to go to link."),
+        null=True,
+        blank=True)
+
+    panels = [
+        FieldPanel('quote'),
+        FieldPanel('author'),
+        FieldPanel('link'),
+    ]
+
+    class Meta:
+        verbose_name = _("Quote")
+        verbose_name_plural = _("Quotes")
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.quote
+
+    search_fields = [
+        index.SearchField('quote', partial_match=True),
+        index.SearchField('author', partial_match=True),
     ]

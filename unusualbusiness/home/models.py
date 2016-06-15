@@ -2,10 +2,17 @@ from __future__ import unicode_literals
 
 from itertools import chain
 
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+
+from django.db import models
+from django.db.models import Model, URLField
 from django.shortcuts import render
+from modelcluster.fields import ParentalKey
 from taggit.models import Tag
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.wagtailcore.models import Page
 from django.utils.translation import ugettext as _
+from wagtail.wagtailsnippets.models import register_snippet
 
 from unusualbusiness.articles.models import TheoryArticlePage, NewsArticlePage, StoryArticlePage
 from unusualbusiness.events.models import EventPage
@@ -98,6 +105,10 @@ class HomePage(Page):
         # context['index_pages'] = Page.objects.child_of(self).live()
         return context
 
+    content_panels = Page.content_panels + [
+        InlinePanel('static_content_placements', label="Static Content"),
+    ]
+
             # dutch_content_panels = [
     #     FieldPanel('title_nl', classname="full"),
     #     FieldPanel('body_nl', classname="full"),
@@ -117,3 +128,19 @@ class HomePage(Page):
     # ])
 
     # Parent page / subpage type rules
+
+
+class HomePageStaticContentPlacement(Orderable, Model):
+    home_page = ParentalKey('home.HomePage', related_name='static_content_placements')
+    static_content = models.ForeignKey('pages.StaticContent', related_name='+')
+
+    class Meta:
+        verbose_name = "Static content placement"
+        verbose_name_plural = "Static content placements"
+
+    panels = [
+        SnippetChooserPanel('static_content'),
+    ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.home_page.title + " -> " + self.static_content.body

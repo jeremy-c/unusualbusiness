@@ -1,4 +1,4 @@
-from .models import GeneralPage
+from .models import GeneralPage, StaticContent
 from wagtail_modeltranslation.translator import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
@@ -9,4 +9,11 @@ class GeneralPageTR(TranslationOptions):
         'title',
         'body',
         'slug',
+    )
+
+
+@register(StaticContent)
+class StaticContentTR(TranslationOptions):
+    fields = (
+        'body',
     )
