@@ -1,3 +1,4 @@
+{% load static wagtailcore_tags i18n article_tags %}
 
 {% if upcoming_events %}
 <section class="related-events">
@@ -12,4 +13,6 @@
         </ul>
     </div>
 </section>
+{% else %}
+    {{ no_events_static_content }}
 {% endif %}

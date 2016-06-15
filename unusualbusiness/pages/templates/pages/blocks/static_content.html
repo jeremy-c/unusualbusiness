@@ -1,10 +1,5 @@
-
 {% load static wagtailcore_tags i18n %}
 
-{% for static_content_placements in page.static_content_placements.all %}
-
-    <div class="static-content" id="{{ static_content_placements.static_content.title|slugify }}">
-        {{ static_content_placements.static_content.body|safe }}
-    </div>
-
-{% endfor %}
+<div class="static-content" id="{{ static_content.slug }}">
+    {{ static_content.body|safe }}
+</div>

@@ -18,6 +18,7 @@ class StaticContentModelAdmin(ModelAdmin):
     menu_order = 200 # will put in 3rd place (000 being 1st, 100 2nd)
     list_display = ('title', )
     search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
 
 
 class SnippetsAdminGroup(ModelAdminGroup):

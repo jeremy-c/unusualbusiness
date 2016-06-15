@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags ub_core_tags article_tags i18n %}
 
 {% block extra_js %}
 {% endblock %}
@@ -20,10 +20,11 @@
 
         {% include 'articles/blocks/featured_articles.html' %}
 
-        {% include 'pages/blocks/static_content.html'  %}
+        {% include 'pages/blocks/static_contents.html'  %}
 
         {% include 'events/blocks/upcoming_events.html'  %}
 
+    {{ no_events_static_content }}
         <section class="l-featured-snippets">
 
             <section class="l-featured-journal">

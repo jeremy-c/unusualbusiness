@@ -29,3 +29,9 @@ def static_content(context):
     }
 
 
+@register.inclusion_tag('pages/blocks/static_content.html', takes_context=True)
+def no_events_static_content(context):
+    return {
+        'static_content': StaticContent.objects.get(slug='home-get-updated'),
+        'request': context['request'],
+    }

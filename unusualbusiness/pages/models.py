@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.db.models import CharField, URLField, TextField
+from django.db.models import CharField, URLField, TextField, SlugField
 from django.db.models import Model
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
@@ -122,7 +122,12 @@ class StaticContent(Model):
     title = CharField(
         verbose_name=_('Title'),
         max_length=255,
-        help_text=_("Static HTML content for placement in pages"),
+        help_text=_("Title of HTML content"),
+        blank=False)
+    slug = SlugField(
+        verbose_name=_('Slug'),
+        max_length=255,
+        help_text=_("Slug of HTML content"),
         blank=False)
     body = TextField(
         verbose_name=_('HTML Body'),
@@ -131,6 +136,7 @@ class StaticContent(Model):
 
     panels = [
         FieldPanel('title'),
+        FieldPanel('slug'),
         FieldPanel('body'),
     ]
 
