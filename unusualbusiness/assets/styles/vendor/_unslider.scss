@@ -3,6 +3,7 @@
    ======================= */
 
 @import "../base/base";
+@import "../base/sprite-mixins";
 
 .unslider-arrow {
   top: 85px;
@@ -51,16 +52,16 @@
   padding: 14px 0 10px;
 
   ol li {
-    width: 10px !important;
-    height: 10px !important;
-    margin: 0 9px !important;
-    border-radius: 10px !important;
-    border: 2px solid $light-gray !important;
-    background: $light-gray !important;
+    width: 10px;
+    height: 10px;
+    margin: 0 9px;
+    border-radius: 10px;
+    border: 2px solid $light-gray;
+    background: $light-gray;
   }
 
   ol li.unslider-active {
-    background: $black !important;
-    border: 2px solid $black !important;
+    background: $black;
+    border: 2px solid $black;
   }
 }

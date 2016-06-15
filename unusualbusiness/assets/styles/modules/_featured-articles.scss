@@ -31,29 +31,29 @@
     height: 310px;
   }
 
-  .featured-story-article & {
+  &.featured-story-article  {
     &:hover,
     &:active {
       background: $yellow;
     }
   }
 
-  .featured-organization & {
+  &.featured-organization {
     &:hover,
     &:active {
       background: $black;
     }
   }
 
-  .featured-news-article &
-  .featured-event-article & {
+  &.featured-news-article,
+  &.featured-event-article {
     &:hover,
     &:active {
       background: $blue;
     }
   }
 
-  .featured-theory-article & {
+  &.featured-theory-article {
     &:hover,
     &:active {
       background: $green;
