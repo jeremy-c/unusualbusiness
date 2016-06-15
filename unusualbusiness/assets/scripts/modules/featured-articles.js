@@ -7,8 +7,16 @@
 let FeaturedArticles = () => {
   let initSlider = function() {
     $('.unslider').unslider({
-      keys: false,
-      arrows: true,
+      keys: {
+          prev: 37,
+          next: 39,
+          stop: 27 //  Example: pause when the Esc key is hit
+      },
+      arrows: {
+        //  Unslider default behaviour
+        prev: '<a class="unslider-arrow prev" aria-controls="Previous slide"></a>',
+        next: '<a class="unslider-arrow next" aria-controls="Next slide"></a>'
+      },
       nav: true
     });
   };

@@ -4,25 +4,63 @@
 
 @import "../base/base";
 
-.unslider-nav {
-  padding-left: 70px;
-  padding-top: 14px;
+.unslider-arrow {
+  top: 85px;
+  box-sizing: border-box;
+  height: 393px;
+  padding: 180px 35px 0;
+  width: 80px;
+  color: $white;
+
+  transition: all .1s ease-in;
+
+  &:after {
+    @include sprite(chevron-icon);
+    content: '';
+    display: block;
+  }
+
+  &.prev {
+    left: 0;
+
+    &:hover,
+    &:active {
+      left: -3px;
+    }
+
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next {
+    right: 0;
+
+    &:hover,
+    &:active {
+      right: -3px;
+    }
+  }
 
   @media(max-width: $tablet) {
-    padding-left: 0;
+    display: none;
   }
 }
 
-.unslider-nav ol li {
-  width: 10px !important;
-  height: 10px !important;
-  margin: 0 9px !important;
-  border-radius: 10px !important;
-  border: 2px solid $light-gray !important;
-  background: $light-gray !important;
-}
+.unslider-nav {
+  padding: 14px 0 10px;
 
-.unslider-nav ol li.unslider-active {
-  background: $black !important;
-  border: 2px solid $black !important;
+  ol li {
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 9px !important;
+    border-radius: 10px !important;
+    border: 2px solid $light-gray !important;
+    background: $light-gray !important;
+  }
+
+  ol li.unslider-active {
+    background: $black !important;
+    border: 2px solid $black !important;
+  }
 }

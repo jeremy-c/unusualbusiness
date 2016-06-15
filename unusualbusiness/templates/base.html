@@ -38,8 +38,10 @@
         <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
         <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
 
-{#        <link rel="stylesheet" crossorigin="anonymous" integrity="sha256-z3Zd2vSyiYzTkz83GvboBvga8btMdZo4LGsO+yxzQQg="#}
-{#              href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">#}
+        {% block extra_vendor_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+
         <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}" />
         <link rel="stylesheet" href="{% static 'bower_components/animate.css/animate.css' %}" />
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
