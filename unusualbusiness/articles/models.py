@@ -68,7 +68,6 @@ class ActivityIndexPage(Page):
         context['events'] = EventPage.objects.live().order_by('start_date')
         context['news_articles'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
         context['featured_articles'] = self.featured_articles()
-        context['upcoming_events'] = EventPage.upcoming_events()
 
         return context
 

@@ -5,6 +5,21 @@
 @import "../base/base";
 
 
+.l-all-events {
+  margin: $gutter 0;
+  border-top: solid 1px $light-gray;
+  border-bottom: solid 1px $light-gray;
+  padding: 0 80px - 34px 0 80px - 34px;
+
+  @media(max-width: $tablet) {
+    padding: 0 $gutter;
+  }
+}
+
+.l-upcoming-events {
+  position: relative;
+}
+
 .l-related-events {
   margin: $gutter 0;
   border-top: solid 1px $light-gray;

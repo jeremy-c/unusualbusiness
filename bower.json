@@ -9,7 +9,6 @@
     "normalize-css": "normalize.css#^3.0.3",
     "picturefill": "^3.0.2",
     "flexibility": "^1.0.6",
-    "unslider": "^2.0.3",
     "svg4everybody": "^2.0.3",
     "velocity": "^1.2.3",
     "isotope": "^3.0.0",
@@ -20,7 +19,8 @@
     "remodal": "^1.0.7",
     "isotope-packery": "^2.0.0",
     "isotope-masonry-horizontal": "^2.0.0",
-    "isotope-fit-columns": "^1.1.3"
+    "isotope-fit-columns": "^1.1.3",
+    "slick-carousel": "^1.6.0"
   },
   "ignore": [
     "**/.*",

@@ -31,7 +31,7 @@
 }
 
 .latest-agenda-item {
-  margin-top: $gutter;
+  margin: $gutter;
 }
 
 .featured-agenda-date {
@@ -113,6 +113,9 @@
   text-transform: uppercase;
 }
 
+.upcoming-events-title {
+  margin: $gutter $gutter $gutter / 2;
+}
 
 /* ==|====================
    States/Featured Agenda

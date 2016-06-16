@@ -6,9 +6,9 @@
             <h3 class="related-events-title" >Upcoming</h3>
         </div>
         <div class="l-home-related-events">
-            <ul class="related-events-list">
-                {% include "events/blocks/latest_event.html" with event=upcoming_event list_item_classes='l-grid-item-full-width' %}
-            </ul>
+            <div class="related-events-list">
+                {% include "events/blocks/latest_event.html" with event=upcoming_event list_item_classes='' %}
+            </div>
         </div>
     {% endif %}
     <div class="l-home-get-updated">

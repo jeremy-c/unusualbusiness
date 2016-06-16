@@ -1,9 +1,9 @@
 
 <section class="l-feature">
 
-    <section class="l-featured-articles featured-articles unslider" >
+    <section class="l-featured-articles featured-articles" >
         <h3 class="section-title">Uitgelicht</h3>
-        <ul class="featured-articles-list">
+        <div class="featured-articles-list" id="featured-articles-carousel">
             {% for featured_article in featured_articles %}
                 {% if featured_article.content_type.model == 'eventpage' %}
                     {% include "events/blocks/featured_event.html" with article_class="featured-event-article" featured_event=featured_article  %}
@@ -15,7 +15,7 @@
                     {% include "articles/blocks/featured_article.html" with article_class="featured-theory-article" %}
                 {% endif %}
             {% endfor %}
-        </ul>
+        </div>
     </section>
 
 </section>

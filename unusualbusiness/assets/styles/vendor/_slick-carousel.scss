@@ -1,0 +1,40 @@
+/* ==|====================
+   Vendor/Slick carousel
+   ======================= */
+
+@import "../base/base";
+
+// Arrows
+
+.slick-prev,
+.slick-next {
+  &:before {
+    color: $blue;
+  }
+}
+
+.slick-prev {
+  left: 33px;
+
+  .related-events-list & {
+    left: -20px;
+  }
+}
+
+.slick-next {
+  right: 33px;
+
+  .related-events-list & {
+    right: -20px;
+  }
+}
+
+// Dots
+
+.slick-dots li {
+  top: 10px;
+}
+
+.slick-dots li button:before {
+  font-size: 15px;
+}

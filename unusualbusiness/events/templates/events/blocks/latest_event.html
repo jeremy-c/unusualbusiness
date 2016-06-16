@@ -1,24 +1,24 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
 
-<li class="{{ list_item_classes }} latest-agenda-item h-event">
-    <time class="featured-agenda-date {{ vertical_date_class }} border-right dt-start"
-          datetime="{{ event.start_date|date:"SHORT_DATETIME_FORMAT" }}">
-        <div class="vertical-date-day">{{ event.start_date|date:"D" }}</div>
-        <div class="vertical-date-day-of-month">{{ event.start_date|date:"d" }}</div>
-        <div class="vertical-date-month">{{ event.start_date|date:"m" }}</div>
-        <div class="vertical-date-year">{{ event.start_date|date:"y" }}</div>
-    </time>
-    <div class="description">
-        <a href="{{ event.url }}" class="latest-agenda-item-link" >
-            <h4 class="p-name">{{ event.title }}</h4>
-        </a>
-        <div class="p-category">
-            {{ event.event_type }}
+<div class="{{ list_item_classes }}">
+    <div class="latest-agenda-item h-event">
+        <time class="featured-agenda-date {{ vertical_date_class }} border-right dt-start"
+              datetime="{{ event.start_date|date:"SHORT_DATETIME_FORMAT" }}">
+            <div class="vertical-date-day">{{ event.start_date|date:"D" }}</div>
+            <div class="vertical-date-day-of-month">{{ event.start_date|date:"d" }}</div>
+            <div class="vertical-date-month">{{ event.start_date|date:"m" }}</div>
+            <div class="vertical-date-year">{{ event.start_date|date:"y" }}</div>
+        </time>
+        <div class="description">
+            <a href="{{ event.url }}" class="latest-agenda-item-link" >
+                <h4 class="p-name">{{ event.title }}</h4>
+            </a>
+            <div class="p-category">
+                {{ event.event_type }}
+            </div>
         </div>
-    </div>
-    {% if event.featured_image %}
-        <div class="latest-agenda-image">
+        {% if event.featured_image %}
             {% include "blocks/responsive_image.html" with image=event.featured_image image_class="article-image"  %}
-        </div>
-    {% endif %}
-</li>
+        {% endif %}
+    </div>
+</div>

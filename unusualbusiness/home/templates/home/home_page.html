@@ -2,11 +2,12 @@
 {% load static wagtailcore_tags wagtailimages_tags ub_core_tags article_tags i18n %}
 
 {% block extra_js %}
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 {% endblock %}
 
 {% block extra_vendor_css %}
-    <link rel="stylesheet" href="{% static 'bower_components/unslider/dist/css/unslider.css' %}">
-    <link rel="stylesheet" href="{% static 'bower_components/unslider/dist/css/unslider-dots.css' %}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
 {% endblock %}
 
 {% block body_class %}home l-article-content{% endblock %}

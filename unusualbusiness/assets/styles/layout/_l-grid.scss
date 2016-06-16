@@ -113,6 +113,19 @@
   }
 }
 
+.l-grid-item-fifty-percent {
+  margin-bottom: 2%;
+  width: 49%;
+
+  @media(max-width: $tablet) {
+    width: 100%;
+  }
+
+  .is-showing-items & {
+    opacity: 1; /* reveal when ready */
+  }
+}
+
 .l-grid-item-fixed-height {
   min-height: 73px;
 

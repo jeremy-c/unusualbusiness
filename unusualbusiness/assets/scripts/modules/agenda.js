@@ -4,7 +4,7 @@
 
 'use strict';
 
-var FeaturedAgenda = () => {
+var Agenda = () => {
   let initMouseEvents = function() {
     let agendaItemLink = $('.featured-agenda-item-link');
 
@@ -19,7 +19,7 @@ var FeaturedAgenda = () => {
   };
 
   let init = function () {
-    console.log('Featured Agenda go!');
+    console.log('Agenda go!');
     initMouseEvents()
   };
 
@@ -29,4 +29,4 @@ var FeaturedAgenda = () => {
 };
 
 
-export default FeaturedAgenda;
+export default Agenda;

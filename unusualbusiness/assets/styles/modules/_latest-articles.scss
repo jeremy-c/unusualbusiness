@@ -13,7 +13,7 @@
 }
 
 .article-index-page-list {
-  margin: $gutter * 2;
+  margin: $gutter 80px;
 
   @media(max-width: $tablet) {
     margin: $gutter;
@@ -28,6 +28,10 @@
 
   text-decoration: none;
 
+  @media(max-width: $tablet) {
+    padding: $gutter / 2 0;
+  }
+
   .latest-news-article &,
   .latest-theory-article & {
     padding: $gutter / 2 $gutter;
@@ -37,7 +41,7 @@
       padding: $gutter / 2 calc(var(--gutter) - 7px);
 
       @media(max-width: $tablet) {
-        padding: $gutter / 2 $gutter;
+        padding: $gutter / 2 0 !important;
       }
     }
   }
@@ -51,7 +55,7 @@
       text-decoration: none;
 
       @media(max-width: $tablet) {
-        padding: $gutter $gutter / 2;
+        padding: $gutter / 2 0 !important;
       }
     }
   }

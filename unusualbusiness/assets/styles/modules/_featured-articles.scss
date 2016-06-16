@@ -8,10 +8,15 @@
 
 
 .featured-articles {
+  margin-bottom: 15px;
 }
 
-.featured-article {
+.slick-current .featured-article {
+  margin: 0 72px;
 
+  @media(max-width: $tablet) {
+    margin: 0;
+  }
 }
 
 .featured-article-link {
@@ -32,31 +37,71 @@
   }
 
   &.featured-story-article  {
+    .slick-slide &,
     &:hover,
     &:active {
       background: $yellow;
     }
+
+    .slick-current.slick-slide & {
+      background: inherit;
+
+      &:hover,
+      &:active {
+        background: $yellow;
+      }
+    }
   }
 
   &.featured-organization {
+    .slick-slide &,
     &:hover,
     &:active {
       background: $black;
+    }
+
+    .slick-current.slick-slide & {
+      background: inherit;
+
+      &:hover,
+      &:active {
+        background: $black;
+      }
     }
   }
 
   &.featured-news-article,
   &.featured-event-article {
+    .slick-slide &,
     &:hover,
     &:active {
       background: $blue;
     }
+
+    .slick-current.slick-slide & {
+      background: inherit;
+
+      &:hover,
+      &:active {
+        background: $blue;
+      }
+    }
   }
 
   &.featured-theory-article {
+    .slick-slide &,
     &:hover,
     &:active {
       background: $green;
+    }
+
+    .slick-current.slick-slide & {
+      background: inherit;
+
+      &:hover,
+      &:active {
+        background: $green;
+      }
     }
   }
 }

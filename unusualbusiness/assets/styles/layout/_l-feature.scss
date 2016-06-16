@@ -9,16 +9,11 @@
   align-items: stretch;
   justify-content: space-between;
   overflow: hidden;
+  margin: 0;
   padding-top: 2px;
-  margin: 0 80px;
 
   @media (max-width: $tablet) {
-    margin: inherit;
     padding-top: 0;
-  }
-
-  .unslider {
-    width: 100%;
   }
 }
 
