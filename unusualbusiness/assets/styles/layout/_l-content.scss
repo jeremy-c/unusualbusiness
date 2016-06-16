@@ -32,6 +32,14 @@
   }
 }
 
+.l-home {
+  margin: 0 80px;
+
+  @media(max-width: $tablet) {
+    margin: 0;
+  }
+}
+
 .l-boxed {
   position: relative;
   margin: 0 auto;

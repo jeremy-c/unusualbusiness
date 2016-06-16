@@ -8,28 +8,76 @@
 
 // Home
 
-.home-spacer {
-  margin: 14px 80px $gutter;
-}
+.home-quote {
+  margin: 0 80px $gutter;
+  padding: $gutter $gutter * 2;
 
-.home-get-updated {
-  margin: $gutter 0;
-  border-top: solid 1px $light-gray;
-  border-bottom: solid 1px $light-gray;
-  padding: $gutter * 1.5;
+  background-color: $green;
+  color: $white;
+  text-align: center;
+
+  @media(max-width: $tablet) {
+    margin-left: $gutter;
+    margin-right: $gutter;
+    padding: $gutter;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      .quote-author:after {
+        margin-left: 8px;
+        width: 12px;
+      }
+    }
+  }
+
+  .quote-text {
+    font-size: 32px;
+
+    @media(max-width: $tablet) {
+      margin: 5px;
+      font-size: 6vw;
+    }
+  }
+
+  .quote-author {
+    margin-top: $gutter / 2;
+
+    font-size: 14px;
+    font-family: $open-sans;
+    font-style: normal;
+
+    &:after {
+      @include sprite(chevron-white-icon);
+      content: '';
+      display: block;
+      margin-left: 5px;
+      width: 15px;
+
+      transition: all .1s ease-in;
+    }
+  }
 }
 
 .home-get-updated-link {
   display: flex;
   flex-flow: row nowrap;
   align-content: center;
-  width: 500px;
+  width: 470px;
   margin: 0 auto;
 
   font-size: 24px;
   font-style: normal;
   color: $blue;
   text-decoration: none;
+
+  @media(max-width: $tablet-horizontal) {
+    width: inherit;
+  }
 
   &:after {
     @include sprite(chevron-blue-icon);
@@ -69,5 +117,9 @@
 
   .home-get-updated-text {
     align-self: center;
+
+    @media(max-width: $tablet-horizontal) {
+      font-size: 3vw;
+    }
   }
 }

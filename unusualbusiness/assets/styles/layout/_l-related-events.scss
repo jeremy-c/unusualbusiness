@@ -1,0 +1,38 @@
+/* ==|====================
+   Layout/Related Events
+   ======================= */
+
+@import "../base/base";
+
+
+.l-related-events {
+  margin: $gutter 0;
+  border-top: solid 1px $light-gray;
+  border-bottom: solid 1px $light-gray;
+  padding-right: 80px;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  @media(max-width: $tablet) {
+    padding-right: $gutter;
+  }
+}
+
+.l-related-events-title-wrapper {
+  width: 80px;
+}
+
+.l-home-related-events {
+  flex: 1;
+}
+
+.l-home-get-updated {
+  flex: 1;
+  padding: $gutter 0 $gutter $gutter;
+
+  @media(max-width: $mobile) {
+    padding-top: 0;
+  }
+}

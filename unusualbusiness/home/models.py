@@ -94,7 +94,7 @@ class HomePage(Page):
             'page': self,
             'articles': pages,
             'featured_articles': self.featured_articles(),
-            'upcoming_events': EventPage.upcoming_events(),
+            'upcoming_event': EventPage.upcoming_event(),
             'how_tos': how_tos,
             'tags': self.tags,
         })

@@ -1,18 +1,27 @@
 {% load static wagtailcore_tags i18n article_tags %}
 
-{% if upcoming_events %}
-<section class="related-events">
-    <div class="l-boxed l-related-section">
-        <h3 class="article-section-title" >Related events:</h3>
-        <ul class="related-events-list">
-            {% for event in upcoming_events %}
-                {% if event %}
-                    {% include "events/blocks/agenda_item.html" with list_item_classes='l-grid-item-half-width' %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+<section class="l-related-events">
+    {% if upcoming_event %}
+        <div class="l-related-events-title-wrapper" >
+            <h3 class="related-events-title" >Upcoming</h3>
+        </div>
+        <div class="l-home-related-events">
+            <ul class="related-events-list">
+                {% include "events/blocks/latest_event.html" with event=upcoming_event list_item_classes='l-grid-item-full-width' %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="l-home-get-updated">
+        <a href="/activities/" class="home-get-updated-link start-animation-on-hover" >
+            <div class="icon-wrapper">
+                <svg width="40px" height="40px" class="white-icon" >
+                  <use xlink:href="#event-icon" />
+                </svg>
+            </div>
+            <div class="home-get-updated-text">
+                Get updated on activity, <br>
+                meet people, get involved
+            </div>
+        </a>
     </div>
 </section>
-{% else %}
-    {{ no_events_static_content }}
-{% endif %}

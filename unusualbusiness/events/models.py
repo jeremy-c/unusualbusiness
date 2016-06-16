@@ -194,6 +194,10 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
     def upcoming_events():
         return EventPage.objects.live().filter(start_date__gte=date.today())
 
+    @staticmethod
+    def upcoming_event():
+        return EventPage.upcoming_events().first()
+
     #  Methods
 
     def get_context(self, request):
