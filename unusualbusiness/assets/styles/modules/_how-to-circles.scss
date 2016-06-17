@@ -5,6 +5,7 @@
 @import "../base/base";
 @import "../base/mixins";
 @import "../base/sprite-mixins";
+@import "icons";
 
 .how-to-circles-containter {
   position: relative;
@@ -28,6 +29,7 @@
 .how-to-planet {
   top: 83px;
   left: 83px;
+  cursor: pointer;
 
   @media(max-width: $tablet) {
     position: relative;
@@ -152,27 +154,210 @@
   color: $green;
 }
 
+.how-to-circles-middel {
+  transform-origin: 51% 50%;
+  animation-name: boogie;
+  animation-duration: 0.65s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: 0.0s;
 
-.how-to-circles-image {
-  fill: transparent !important;
+  fill:transparent;
+  stroke-width:6;
+  stroke-miterlimit:10;
+  stroke: $light-gray;
+}
 
-  &.theory circle.theory {
-    stroke: $green !important;
+
+#blauwmiddel {
+  @extend .animation-base;
+  @extend .how-to-circles-middel;
+
+  .upcoming-event & {
+    fill: $blue;
   }
 
-  &.stories circle.stories {
-    stroke: $yellow !important;
+  .activities & {
+    stroke: $blue;
   }
+}
 
-  &.practitioners circle.practitioners {
-    stroke: $black !important;
-  }
+#zwartmiddel {
+  @extend .animation-base;
+  @extend .how-to-circles-middel;
 
-  &.activities circle.activities {
-    stroke: $blue !important;
+  .practitioners & {
+    stroke: $black;
   }
+}
 
-  &.upcoming-event circle.activities {
-    fill: $blue !important;
+#geelmiddel {
+  @extend .animation-base;
+  @extend .how-to-circles-middel;
+
+  .stories & {
+    stroke: $yellow;
   }
+}
+
+#groenmiddel {
+  @extend .animation-base;
+  @extend .how-to-circles-middel;
+
+  .theory & {
+    stroke: $green;
+  }
+}
+
+.sterretje {
+  opacity: 1;
+  transform-origin: 51% 50%;
+  animation-duration: 0.65s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: 0.0s;
+
+  fill:none;
+  stroke:$white;
+  stroke-width:3;
+  stroke-miterlimit:10;
+}
+
+#sterretje1 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show1;
+}
+
+#sterretje2 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show2;
+}
+
+#sterretje3 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show3;
+}
+
+#sterretje4 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show4;
+}
+
+#sterretje5 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show5;
+}
+
+#sterretje6 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show6;
+}
+
+#sterretje7 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show7;
+}
+
+#sterretje8 {
+  @extend .animation-base;
+  @extend .sterretje;
+  animation-name: show8;
+}
+
+
+@-webkit-keyframes boogie {
+    0% {
+    -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+    -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes show1 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(0px,-1px);
+    }
+}
+
+@-webkit-keyframes show8 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(1px,-1px);
+    }
+}
+
+@-webkit-keyframes show4 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(1px,0px);
+    }
+}
+
+@-webkit-keyframes show6 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(1px,1px);
+    }
+}
+
+@-webkit-keyframes show2 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(0px,1px);
+    }
+}
+
+@-webkit-keyframes show7 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(-1px,1px);
+    }
+}
+
+@-webkit-keyframes show3 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(-1px,0px);
+    }
+}
+
+@-webkit-keyframes show5 {
+    0%, 100% {
+    -webkit-transform: translate(0px,0px);
+    }
+
+    30% {
+    -webkit-transform: translate(-1px,-1px);
+    }
 }

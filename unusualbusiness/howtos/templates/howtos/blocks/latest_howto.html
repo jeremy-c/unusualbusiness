@@ -1,36 +1,16 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags  i18n %}
 
-<li class="l-grid-item l-grid-item-one-third l-grid-item-one-third-minus-gutter how-to-grid-item {{ how_to.content_type.model }} ">
-    <a href="{% pageurl how_to %}" class="how-to-link"  >
+<li class="l-grid-item how-to-grid-item {{ how_to.content_type.model }} ">
+    <a href="{% pageurl how_to %}" class="how-to-link start-animation-on-hover"  >
         <h2 class="how-to-title">{{ how_to.title }}</h2>
+        <div class="how-to-circles ">
+            <svg  class="how-to-circles-image {{ how_to.circles }}" width="262" height="262" >
+                <title>How to</title>
+                <desc>Click to go to the How to page</desc>
+                <use xlink:href="#how-to-circles" />
+            </svg>
+        </div>
     </a>
-    <div class="how-to-circles ">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-              width="239.5px" height="239.5px" class="how-to-circles-image {{ how_to.circles }}"
-             viewBox="0 0 239.5 239.5" style="enable-background:new 0 0 239.5 239.5;" xml:space="preserve">
-            <circle class="theory" style="fill:transparent;stroke:#d6dff1;stroke-width:6;stroke-miterlimit:10;" cx="119.812" cy="119.696" r="115.752"/>
-            <circle class="stories" style="fill:transparent;stroke:#d6dff1;stroke-width:6;stroke-miterlimit:10;" cx="119.813" cy="119.696" r="86.443"/>
-            <circle class="practitioners" style="fill:transparent;stroke:#d6dff1;stroke-width:6;stroke-miterlimit:10;" cx="119.813" cy="119.696" r="54.666"/>
-            <circle class="activities" style="fill:transparent;stroke:#d6dff1;stroke-width:6;stroke-miterlimit:10;" cx="119.813" cy="119.696" r="23.724"/>
-            <g>
-                <defs>
-                    <rect id="SVGID_1_" x="87.54" y="87.409" width="64.392" height="64.392"/>
-                </defs>
-                <clipPath id="SVGID_2_">
-                    <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-                </clipPath>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="119.736" y1="103.899" x2="119.736" y2="112.516"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="119.736" y1="126.694" x2="119.736" y2="135.311"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="104.03" y1="119.605" x2="112.646" y2="119.605"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="126.824" y1="119.605" x2="135.441" y2="119.605"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="108.63" y1="108.5" x2="114.723" y2="114.593"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="124.748" y1="124.618" x2="130.842" y2="130.711"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="108.63" y1="130.711" x2="114.723" y2="124.618"/>
-                <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#FFFFFF;stroke-width:1.8768;stroke-miterlimit:10;" x1="124.748" y1="114.593" x2="130.842" y2="108.5"/>
-            </g>
-        </svg>
-    </div>
-    <hr>
     <div class="how-to-meta">
         <ul>
             <li class="how-to-meta-list-item event-count">

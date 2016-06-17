@@ -57,9 +57,11 @@ let Slider = () => {
       accessibility: false
     };
 
-    $('#featured-articles-carousel').slick(featuredArticlesSlickCarouselSettings);
-    $('#agenda-carousel').slick(agendaCarouselSettings);
-    $('#agenda-carousel-preview').slick(agendaPreviewCarouselSettings);
+    if($.fn.slick !== undefined) {
+      $('#featured-articles-carousel').slick(featuredArticlesSlickCarouselSettings);
+      $('#agenda-carousel').slick(agendaCarouselSettings);
+      $('#agenda-carousel-preview').slick(agendaPreviewCarouselSettings);
+    }
   };
 
   let init = function () {

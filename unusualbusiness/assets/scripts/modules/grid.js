@@ -11,11 +11,11 @@ let Grid = () => {
 
   let initIsotope = function() {
     let $gridPackery = $('.grid-packery');
+    let $gridMasonry = $('.grid-masonry');
 
     let packerySettings = {
         itemSelector: '.l-grid-item',
         stamp: '.l-stamp',
-        layoutMode: 'packery',
         percentPosition: true,
         initLayout: false,
         packery: {
@@ -23,17 +23,29 @@ let Grid = () => {
         }
     };
 
+    let masonrySettings = {
+        itemSelector: '.l-grid-item',
+        initLayout: false,
+        masonry: {
+            columnWidth: 459,
+            fitWidth: true
+        }
+    };
+
     $gridPackery.isotope(packerySettings);
+    $gridMasonry.isotope(masonrySettings);
 
     // reveal all items after init
-    let $packeryItems = $gridPackery.find('.l-grid-item');
-    $gridPackery.addClass('is-showing-items').isotope(
-        'revealItemElements',
-        $packeryItems
-    );
+    let $items = $gridPackery.find('.l-grid-item');
+    $gridPackery.addClass('is-showing-items').isotope('revealItemElements', $items);
+    $gridMasonry.addClass('is-showing-items').isotope('revealItemElements', $items);
 
     $gridPackery.imagesLoaded(function() {
         $gridPackery.isotope();
+    });
+
+    $gridMasonry.imagesLoaded(function() {
+        $gridMasonry.isotope();
     });
   };
 

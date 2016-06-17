@@ -29,9 +29,7 @@
 
 {% block article_body %}
     <section class="l-how-tos">
-        <ul class="l-grid grid-packery">
-            <li class="l-grid-sizer"></li>
-            <li class="l-grid-gutter-sizer"></li>
+        <ul class="l-grid grid-masonry">
             {% for how_to in how_tos %}
                 {% include "howtos/blocks/latest_howto.html" %}
             {% endfor %}

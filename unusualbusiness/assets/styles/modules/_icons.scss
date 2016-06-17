@@ -1,8 +1,8 @@
 /* ==|====================
-   Base/Icons
+   Modules/Icons
    ======================= */
 
-@import "base";
+@import "../base/base";
 
 // SVG Colors
 .blue-icon {
@@ -107,177 +107,219 @@
 }
 
 .is-running * {
+  //animation-iteration-count: 1 !important;
   animation-play-state: running !important;
 }
 
+.animation-base {
+  animation-iteration-count: 1;
+  animation-play-state: paused;
+}
+
 #toeter {
+  @extend .horizontal-date-element;
   transform-origin: 50% 50%;
-  animation: wiggle 2s ease both infinite paused;
+  animation: wiggle 2s ease both;
 }
 
 #tstreepjes-b {
+  @extend .animation-base;
   opacity: 1;
-  animation: spreek-b 2s linear both infinite paused;
+  animation: spreek-b 2s linear both;
 }
 
 #tstreepjes-m {
+  @extend .animation-base;
   opacity: 1;
-  animation: spreek-m 2s linear both infinite paused;
+  animation: spreek-m 2s linear both;
 }
 
 #tstreepjes-o {
+  @extend .animation-base;
   opacity: 1;
-  animation: spreek-o 2s linear both infinite paused;
+  animation: spreek-o 2s linear both;
 }
 
 #middenstreepje {
+  @extend .animation-base;
   transform-origin: 0 50%;
-  animation: geluidjes_m 1s ease both infinite paused;
+  animation: geluidjes_m 1s ease both;
 }
 
 #onderstreepje {
+  @extend .animation-base;
   transform-origin: 0 50%;
-  animation: geluidjes_o 1s ease both infinite paused;
+  animation: geluidjes_o 1s ease both;
 }
 
 #bovenstreepje {
+  @extend .animation-base;
   transform-origin: 0 50%;
-  animation: geluidjes_b 1s ease both infinite paused;
+  animation: geluidjes_b 1s ease both;
 }
 
 #balletje1 {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: groepballetje_1 1.2s ease both infinite paused;
+  animation: groepballetje_1 1.2s ease both;
 }
 
 #balletje2 {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: groepballetje_2 1.2s ease both infinite paused;
+  animation: groepballetje_2 1.2s ease both;
   animation-delay: 0.0s
 }
 
 #balletje3 {
   transform-origin: 50% 50%;
-  animation: groepballetje_3 1.2s ease both infinite paused;
+  animation: groepballetje_3 1.2s ease both;
   animation-delay: 0.0s
 }
 
 #balletje4 {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: groepballetje_4 1.2s ease both infinite paused;
+  animation: groepballetje_4 1.2s ease both;
   animation-delay: 0.0s
 }
 
 #balletje5 {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: groepballetje_5 1.2s ease both infinite paused;
+  animation-name: groepballetje_5;
+  animation-duration: 1.2s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
   animation-delay: 0.0s
 }
 
 #zwart {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: kringdansje 1.2s ease both infinite paused;
+  animation: kringdansje 1.2s ease both;
   animation-delay: 0.0s
 }
 
 #line_1 {
   opacity:1;
   transform-origin: 50% 50%;
-  animation: longread_1 2.5s ease both infinite paused;
-  animation-delay: 0.0s
+  animation-name: longread_1;
+  animation-duration: 2.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: 0.0s;
+  @extend .animation-base;
 }
 
 #line_2 {
   opacity:1;
   transform-origin: 50% 50%;
-  animation: longread_2 2.5s ease both infinite paused;
-  animation-delay: 0.0s
+  animation-name: longread_2;
+  animation-duration: 2.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: 0.0s;
+  @extend .animation-base;
 }
 
 #line_3 {
   opacity:1;
   transform-origin: 50% 50%;
-  animation: longread_3 2.5s ease both infinite paused;
-  animation-delay: 0.0s
+  animation-name: longread_3;
+  animation-duration: 2.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: 0.0s;
+  @extend .animation-base;
 }
 
 #artline1 {
+  @extend .animation-base;
   stroke-dasharray: 100 50;
   stroke-dashoffset: 0;
-  animation: artl 4s ease both infinite paused;
+  animation: artl 4s ease both;
   animation-delay: 0.0s;
 }
 
 #artline2 {
+  @extend .animation-base;
   stroke-dasharray: 100 50;
   stroke-dashoffset: 0;
-  animation: artl 4s ease both infinite paused;
+  animation: artl 4s ease both;
   animation-delay: 0.1s;
 }
 
 #artline3 {
+  @extend .animation-base;
   stroke-dasharray: 100 50;
   stroke-dashoffset: 0;
-  animation: artl 4s ease both infinite paused;
+  animation: artl 4s ease both;
   animation-delay: 0.2s;
 }
 
 #artline4 {
+  @extend .animation-base;
   stroke-dasharray: 100 50;
   stroke-dashoffset: 0;
-  animation: artl 4s ease both infinite paused;
+  animation: artl 4s ease both;
   animation-delay: 0.3s;
 }
 
 #playbutton {
+  @extend .animation-base;
   opacity:1;
   transform-origin: 50% 50%;
-  animation: playy 2.2s ease both infinite paused;
+  animation: playy 2.2s ease both;
   animation-delay: 0.0s;
 }
 
 #fotoo {
+  @extend .animation-base;
   opacity:1;
   transform-origin: 50% 50%;
-  animation: fotoos 1.5s ease both infinite paused;
+  animation: fotoos 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #fotooo {
+  @extend .animation-base;
   opacity:1;
   transform-origin: 50% 50%;
-  animation: fotooos 1.5s ease both infinite paused;
+  animation: fotooos 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #foto {
   opacity:1;
   transform-origin: 50% 50%;
-  animation: fotoroto 1.5s ease both infinite paused;
+  animation: fotoroto 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #schakel1 {
   transform-origin: 50% 50%;
-  animation: schakelp1 1.5s ease both infinite paused;
+  animation: schakelp1 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #schakel2a {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: schakelp2a 1.5s ease both infinite paused;
+  animation: schakelp2a 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #schakel2b {
+  @extend .animation-base;
   transform-origin: 50% 50%;
-  animation: schakelp2b 1.5s ease both infinite paused;
+  animation: schakelp2b 1.5s ease both;
   animation-delay: 0.0s;
 }
 
 #schakel3 {
   transform-origin: 50% 50%;
-  animation: schakelp3 1.5s ease both infinite paused;
+  animation: schakelp3 1.5s ease both;
   animation-delay: 0.0s;
 }
 
@@ -674,4 +716,3 @@
     transform: translate(0.75px,-0.75px);
   }
 }
-

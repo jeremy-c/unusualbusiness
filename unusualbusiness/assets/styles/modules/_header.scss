@@ -64,13 +64,15 @@
     line-height: 1.4em;
   }
 
+  .how-tos &,
   .how-tos-page & {
+    margin-top: $gutter / 2;
     color: $green;
   }
 }
 
 .article-header-text {
-  margin: $gutter auto 0;
+  margin: $gutter auto $gutter / 2;
   max-width: 700px;
   font-size: 20px;
   line-height: 32px;

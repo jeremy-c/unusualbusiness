@@ -5,20 +5,38 @@
 @import "../base/base";
 
 .l-how-tos {
+  margin: 0 auto $gutter * 2;
+  border-top: solid 1px $light-gray;
+}
+
+.grid-masonry {
   margin: 0 auto;
+
+  @media(max-width: $mobile) {
+    width: 100% !important;
+  }
+
+  /* clear fix */
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 .how-to-grid-item {
-  margin: 0 auto;
-  padding: 0 $gutter;
+  float: left;
+  box-sizing: border-box;
+  padding: 0 $gutter / 2;
   min-height: 552px;
-
-  @media(max-width: $desktop) {
-    max-width: 425px;
-  }
+  width: 459px;
 
   @media(max-width: $tablet) {
     border-top: solid 1px $light-gray;
+  }
+
+  @media(max-width: $mobile) {
+    width: 100%;
   }
 }
 
@@ -27,7 +45,7 @@
 }
 
 .how-to-title {
-  padding: $gutter;
+  padding: $gutter $gutter $gutter / 2;
   text-align: center;
   color: $green;
   font-size: 36px;
@@ -40,9 +58,13 @@
   position: relative;
   display: block;
   margin: 0 auto;
-  padding: 0 $gutter / 2;
-  width: 239.5px;
-  height: 239.5px;
+  padding: 0 $gutter / 2 $gutter * 1.5;
+  width: 262px;
+  height: 262px;
+
+  @media(max-width: $mobile) {
+    padding: 0 0 $gutter;
+  }
 }
 
 
@@ -57,7 +79,8 @@
 }
 
 .how-to-meta {
-  padding: 0 $gutter / 2;
+  border-top: solid 1px $light-gray;
+  padding: $gutter / 2 $gutter;
 }
 
 .how-to-meta-list-item {

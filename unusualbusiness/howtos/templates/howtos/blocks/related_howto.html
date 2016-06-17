@@ -1,14 +1,14 @@
 {% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags  i18n %}
 
 <li class="how-to {{ how_to.content_type.model }}">
-    <a href="{% pageurl how_to %}" class="how-to-link"  >
+    <a href="{% pageurl how_to %}" class="how-to-link start-animation-on-hover"  >
         <h2 class="how-to-title">{{ how_to.title }}</h2>
+        <div class="how-to-circles {{ how_to.circles }}">
+            <svg  class="how-to-circles-image {{ how_to.circles }}" width="262" height="262" >
+                <title>How to</title>
+                <desc>Click to go to the How to page</desc>
+                <use xlink:href="#how-to-circles" />
+            </svg>
+        </div>
     </a>
-    <div class="how-to-circles {{ how_to.circles }}">
-        <img src="{% static 'images/how-to-circles-empty.svg' %}" class="how-to-circles-empty" width="192.921px" height="192.921px" />
-        <img src="{% static 'images/how-to-circles-green.svg' %}" class="how-to-circles-green" width="192.921px" height="192.921px" />
-        <img src="{% static 'images/how-to-circles-yellow.svg' %}" class="how-to-circles-yellow" width="192.921px" height="192.921px" />
-        <img src="{% static 'images/how-to-circles-black.svg' %}" class="how-to-circles-black" width="192.921px" height="192.921px" />
-        <img src="{% static 'images/how-to-circles-blue.svg' %}" class="how-to-circles-blue" width="192.921px" height="192.921px" />
-    </div>
 </li>
