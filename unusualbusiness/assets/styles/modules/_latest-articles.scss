@@ -29,19 +29,23 @@
   text-decoration: none;
 
   @media(max-width: $tablet) {
-    padding: $gutter / 2 0;
+    padding: 0;
   }
 
   .latest-news-article &,
   .latest-theory-article & {
     padding: $gutter / 2 $gutter;
 
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+
     &:hover,
     &:active {
       padding: $gutter / 2 calc(var(--gutter) - 7px);
 
       @media(max-width: $tablet) {
-        padding: $gutter / 2 0 !important;
+        padding: 0;
       }
     }
   }
@@ -49,13 +53,17 @@
   .latest-story-article & {
     padding: $gutter $gutter / 2;
 
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+
     &:hover,
     &:active {
       padding: calc(var(--gutter) - 7px) $gutter / 2;
       text-decoration: none;
 
       @media(max-width: $tablet) {
-        padding: $gutter / 2 0 !important;
+        padding: 0;
       }
     }
   }
@@ -66,12 +74,14 @@
   padding: 0 $gutter;
 
   @media(max-width: $tablet) {
-    margin-top: $gutter / 2;
+    margin-top: 10px;
     padding-right: 0;
+    padding-left: $gutter / 2;
   }
 
-  @media(max-width: $mobile) {
-    padding-left: $gutter / 2;
+  .latest-theory-article &,
+  .latest-news-article & {
+    margin-top: $gutter / 2;
   }
 }
 
@@ -101,6 +111,17 @@
 
     @media(max-width: $mobile) {
       font-size: 5vw;
+    }
+  }
+
+  .latest-news-article & {
+    @media(max-width: $tablet) {
+      margin-top: $gutter / 2;
+      margin-left: -65px;
+    }
+
+    @media(max-width: $mobile) {
+      margin-top: 23px;
     }
   }
 }
@@ -149,12 +170,6 @@
   flex: 0 1 428px;
   max-width: 428px;
 
-  .latest-story-article & {
-    height: 120px;
-    object-fit: cover;
-    overflow: hidden; // Cuts off the parts of the image poking out
-  }
-
   @media(max-width: $tablet-horizontal) {
     flex: 0 1 auto;
     padding-top: $gutter;
@@ -164,6 +179,12 @@
   @media(max-width: $tablet) {
     padding-top: 0;
     width: 100%;
+  }
+
+  .latest-story-article & {
+    height: 120px;
+    object-fit: cover;
+    overflow: hidden; // Cuts off the parts of the image poking out
   }
 
   .latest-news-article & {
@@ -180,6 +201,14 @@
   border-bottom: solid $light-gray 1px;
   box-sizing: border-box;
 
+  @media(max-width: $tablet) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: none;
+    padding: $gutter / 2 0;
+  }
+
   &.is-hovered {
     border-top: solid $yellow 8px;
     border-bottom: solid $yellow 8px;
@@ -191,14 +220,6 @@
       border-bottom: none;
       padding: $gutter / 2 0;
     }
-  }
-
-  @media(max-width: $tablet) {
-    border-left: none;
-    border-right: none;
-    border-top: solid $light-gray 1px;
-    border-bottom: none;
-    padding: $gutter / 2 0;
   }
 }
 
@@ -214,6 +235,14 @@
   border-right: solid $light-gray 1px;
   box-sizing: border-box;
 
+  @media(max-width: $tablet) {
+    border-left: none;
+    border-right: none;
+    border-top: solid $light-gray 1px;
+    border-bottom: none;
+    padding: $gutter / 2 0 $gutter;
+  }
+
   &.is-hovered {
     border-left: solid $blue 8px;
     border-right: solid $blue 8px;
@@ -225,14 +254,6 @@
       padding: $gutter / 2 0 $gutter;
     }
   }
-
-  @media(max-width: $tablet) {
-    border-left: none;
-    border-right: none;
-    border-top: solid $light-gray 1px;
-    border-bottom: none;
-    padding: $gutter / 2 0 $gutter;
-  }
 }
 
 .latest-news-article-publication-date {
@@ -242,8 +263,12 @@
   color: $light-grayish;
 
   @media(max-width: $tablet) {
-    padding-top: 10px;
-    font-size: 24px;
+    font-size: 3vw;
+  }
+
+  @media(max-width: $mobile) {
+    margin-top: 5px;
+    font-size: 5vw;
   }
 }
 
@@ -280,6 +305,11 @@
   border-top: solid $light-gray 1px;
   border-bottom: solid $light-gray 1px;
 
+  @media(max-width: $tablet) {
+    border-bottom: none;
+    padding: 0;
+  }
+
   &.is-hovered {
     border-top: solid $black 8px;
     border-bottom: solid $black 8px;
@@ -287,7 +317,7 @@
     @media(max-width: $tablet) {
       border-top: solid $light-gray 1px;
       border-bottom: none;
-      padding: $gutter / 2 0;
+      padding: 0;
     }
   }
 
@@ -300,11 +330,6 @@
       margin-left: 0;
     }
   }
-
-  @media(max-width: $tablet) {
-    border-bottom: none;
-    padding: $gutter / 2 0;
-  }
 }
 
 .latest-organization-link {
@@ -315,12 +340,16 @@
 
   text-decoration: none;
 
+  @media(max-width: $tablet) {
+    padding: $gutter / 2 0;
+  }
+
   &:hover,
   &:active {
     padding: calc(var(--gutter) * 1.5 - 7px) 0;
 
     @media(max-width: $tablet) {
-      padding: $gutter * 1.5 0;
+      padding: $gutter / 2 0;
     }
   }
 }
@@ -397,5 +426,75 @@
   font-size: 14px;
   font-family: $open-sans;
   color: $light-grayish;
+
+}
+
+
+.icon-wrapper {
+
+  .latest-story-article &,
+  .featured-story-article & {
+    background-color: $yellow;
+  }
+
+  .latest-story-article & {
+    align-self: center;
+    margin-top: -14px; // lower below date
+
+    @media(max-width: $tablet) {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+  }
+
+  .featured-organization &,
+  .article-inline-organization &,
+  .latest-organization & {
+    background-color: $black;
+  }
+
+  .article-inline-organization &,
+  .latest-organization & {
+    margin-bottom: $gutter / 2;
+  }
+
+  .featured-theory-article &,
+  .latest-theory-article &,
+  .article-inline-theoryarticle & {
+    background-color: $green;
+  }
+
+  .latest-theory-article &,
+  .article-inline-theoryarticle & {
+    @media(max-width: $tablet) {
+      margin-top: 8px;
+    }
+  }
+
+  .featured-news-article &,
+  .latest-news-article & {
+    background-color: $blue;
+  }
+
+  .latest-news-article & {
+    margin-top: calc(var(--gutter + 14px)); // lower below date
+
+    @media(max-width: $tablet) {
+      margin-top: 8px;
+    }
+  }
+
+  .article-format-icon {
+    padding-top: 13px;
+  }
+
+  .featured-news-article &,
+  .featured-story-article &,
+  .featured-theory-article &,
+  .featured-event-article & {
+    @media(max-width: $tablet) {
+      margin-top: 0;
+    }
+  }
 
 }
