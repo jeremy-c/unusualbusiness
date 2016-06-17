@@ -1,18 +1,10 @@
 /* ==|====================
-   Module/Header
+   Module/Navbar
    ======================= */
 
 import Headroom from 'headroom.js';
 
-let HeaderMenus = () => {
-  let toggleEyebrows = function() {
-    let howToEyebrow = $(this).children().first();
-    let howToEye = howToEyebrow.siblings().first();
-
-    howToEyebrow.toggleClass('is-hidden');
-    howToEye.toggleClass('is-hidden');
-  };
-
+let Navbars = () => {
   let spinLogo = function() {
     $(this).toggleClass('is-spinned');
   };
@@ -142,4 +134,4 @@ let HeaderMenus = () => {
 };
 
 
-export default HeaderMenus;
+export default Navbars;

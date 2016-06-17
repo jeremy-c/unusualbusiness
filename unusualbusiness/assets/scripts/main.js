@@ -6,7 +6,7 @@
 'use strict';
 
 import Grid from './modules/grid';
-import MobileMenu from './modules/mobile-menu';
+import Navbars from './modules/navbar';
 import Article from './modules/article';
 import Agenda from './modules/agenda';
 import Sliders from './modules/slider';
@@ -30,7 +30,7 @@ import smoothScroll from 'smooth-scroll';
     console.log('Main: Document ready go!');
 
     let grid = Grid();
-    let mobileMenu = MobileMenu();
+    let navbars = Navbars();
     let article = Article();
     let agenda = Agenda();
     let slider = Sliders();
@@ -39,7 +39,7 @@ import smoothScroll from 'smooth-scroll';
     let howTo = HowTo();
 
     grid.init();
-    mobileMenu.init();
+    navbars.init();
     article.init();
     agenda.init();
     slider.init();
