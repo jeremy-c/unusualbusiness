@@ -17,6 +17,7 @@ let Grid = () => {
         itemSelector: '.l-grid-item',
         stamp: '.l-stamp',
         percentPosition: true,
+        layoutMode: 'packery',
         initLayout: false,
         packery: {
           gutter: '.l-grid-gutter-sizer'
@@ -26,6 +27,7 @@ let Grid = () => {
     let masonrySettings = {
         itemSelector: '.l-grid-item',
         initLayout: false,
+        layoutMode: 'masonry',
         masonry: {
             columnWidth: 459,
             fitWidth: true
@@ -36,9 +38,10 @@ let Grid = () => {
     $gridMasonry.isotope(masonrySettings);
 
     // reveal all items after init
-    let $items = $gridPackery.find('.l-grid-item');
-    $gridPackery.addClass('is-showing-items').isotope('revealItemElements', $items);
-    $gridMasonry.addClass('is-showing-items').isotope('revealItemElements', $items);
+    let $itemsPackery = $gridPackery.find('.l-grid-item');
+    let $itemsMasonry = $gridPackery.find('.l-grid-item');
+    $gridPackery.addClass('is-showing-items').isotope('revealItemElements', $itemsPackery);
+    $gridMasonry.addClass('is-showing-items').isotope('revealItemElements', $itemsMasonry);
 
     $gridPackery.imagesLoaded(function() {
         $gridPackery.isotope();
