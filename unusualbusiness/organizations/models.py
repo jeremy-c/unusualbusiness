@@ -1,19 +1,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.shortcuts import render
-from django.template.loader import get_template
-from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail_modeltranslation.models import TranslationMixin
-
-from unusualbusiness.tags.models import OrganizationPageTag
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat, RelatedHowToMixin
 
 
@@ -88,7 +80,6 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    tags = ClusterTaggableManager(through=OrganizationPageTag, blank=True)
 
     class Meta:
         verbose_name = _("Practitioner")
@@ -151,7 +142,6 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('facebook'),
         FieldPanel('twitter'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('tags'),
     ]
 
 
@@ -176,7 +166,7 @@ class OrganizationIndexPage(Page):
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
 
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['organizations.OrganizationPage']
 
     def get_context(self, request):

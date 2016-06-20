@@ -1,24 +1,115 @@
 from __future__ import unicode_literals
 
+from itertools import chain
+
 from django.db import models
-from django.db.models import CharField, URLField, TextField, SlugField
-from django.db.models import Model
+from django.db.models import TextField, SlugField, Model
+from django.shortcuts import render
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
-from wagtail.wagtailcore import blocks
-from django.utils.translation import ugettext as _
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from taggit.models import Tag
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
+from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
-from unusualbusiness.utils.models import FeaturedImageBlock, FeaturedAudioBlock, PullQuoteBlock, Heading2Block, \
-    Heading3Block, Heading4Block
-from unusualbusiness.utils.models import FeaturedVideoBlock
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page, Orderable
+from django.db.models import Model, CharField, URLField
+from django.utils.translation import ugettext as _
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+
+from unusualbusiness.utils.models import Heading2Block, Heading3Block, Heading4Block, \
+    PullQuoteBlock, FeaturedImageBlock, FeaturedVideoBlock, FeaturedAudioBlock
+
+from unusualbusiness.articles.models import TheoryArticlePage, NewsArticlePage, StoryArticlePage
+from unusualbusiness.events.models import EventPage
+from unusualbusiness.howtos.models import HowToPage
+from unusualbusiness.organizations.models import OrganizationPage
+
+
+class HomePage(Page):
+    subpage_types = [
+        'articles.StoryArticleIndexPage',
+        'articles.TheoryArticleIndexPage',
+        'articles.ActivityIndexPage',
+        'articles.AuthorIndexPage',
+        'definitions.DefinitionIndexPage',
+        'organizations.OrganizationIndexPage',
+        'howtos.HowToIndexPage',
+        'pages.GeneralPage',
+    ]
+
+    def serve(self, request):
+
+        return render(request, self.template, {
+            'page': self,
+            'articles': HomePage.pages(),
+            'featured_articles': HomePage.featured_articles(),
+            'upcoming_event': EventPage.upcoming_event(),
+            'how_tos': HowToPage.objects.all().live(),
+        })
+
+    content_panels = Page.content_panels + [
+        InlinePanel('static_content_placements', label="Static Content"),
+    ]
+
+    @staticmethod
+    def pages():
+        theory_article_page_list = TheoryArticlePage.objects.all().live()
+        story_article_page_list = StoryArticlePage.objects.all().live()
+        news_article_page_list = NewsArticlePage.objects.all().live()
+        event_page_list = EventPage.objects.all().live()
+        organization_page_list = OrganizationPage.objects.all().live()
+
+        return sorted(chain(
+                theory_article_page_list,
+                story_article_page_list,
+                news_article_page_list,
+                event_page_list,
+                organization_page_list
+            ),
+            key=lambda instance: instance.first_published_at,
+            reverse=True)
+
+    @staticmethod
+    def featured_articles():
+        theory_article_list = TheoryArticlePage.objects.live().filter(is_featured=True)
+        story_article_list = StoryArticlePage.objects.live().filter(is_featured=True)
+        news_article_list = NewsArticlePage.objects.live().filter(is_featured=True)
+        event_list = EventPage.objects.live().filter(is_featured=True)
+
+        return sorted(chain(
+            theory_article_list,
+            story_article_list,
+            news_article_list,
+            event_list
+        ),
+            key=lambda instance: instance.first_published_at,
+            reverse=True)
+
+        # dutch_content_panels = [
+    #     FieldPanel('title_nl', classname="full"),
+    #     FieldPanel('body_nl', classname="full"),
+    #     StreamFieldPanel('stream_nl'),
+    # ]
+    #
+    # promote_panels = Page.promote_panels + [
+    #     ImageChooserPanel('feed_image'),
+    #     FieldPanel('date'),
+    # ]
+    #
+    # edit_handler = TabbedInterface([
+    #     ObjectList(content_panels, heading='English'),
+    #     ObjectList(dutch_content_panels, heading='Nederlands'),
+    #     ObjectList(Page.promote_panels, heading='Promote'),
+    #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    # ])
+
+    # Parent page / subpage type rules
 
 
 class GeneralPage(Page):
@@ -72,13 +163,8 @@ class GeneralPage(Page):
                 return stream_child.value.source
         return None
 
-    def get_context(self, request):
-        context = super(GeneralPage, self).get_context(request)
-        return context
-
-    subpage_types = [
-        'pages.GeneralPage',
-    ]
+    parent_page_types = ['pages.HomePage']
+    subpage_types = ['pages.GeneralPage']
 
     search_fields = Page.search_fields + [
         index.SearchField('title_en'),
@@ -115,6 +201,22 @@ class GeneralPageStaticContentPlacement(Orderable, models.Model):
 
 
 # Snippets
+
+
+class HomePageStaticContentPlacement(Orderable, Model):
+    home_page = ParentalKey('pages.HomePage', related_name='static_content_placements')
+    static_content = models.ForeignKey('pages.StaticContent', related_name='+')
+
+    class Meta:
+        verbose_name = "Static content placement"
+        verbose_name_plural = "Static content placements"
+
+    panels = [
+        SnippetChooserPanel('static_content'),
+    ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.home_page.title + " -> " + self.static_content.body
 
 
 @register_snippet

@@ -9,75 +9,6 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
-# Blocks
-
-
-class Heading2Block(blocks.StructBlock):
-    chapter_name = \
-        blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading2.html'
-        icon = 'title'
-        label = _('Chapter (h2)')
-
-
-class Heading3Block(blocks.StructBlock):
-    section_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading3.html'
-        icon = 'title'
-        label = _('Section (h3)')
-
-
-class Heading4Block(blocks.StructBlock):
-    subsection_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading4.html'
-        icon = 'title'
-        label = _('Subsection (h4)')
-
-
-class PullQuoteBlock(blocks.StructBlock):
-    pull_quote = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/pullquote.html'
-        icon = 'openquote'
-        label = 'Pull Quote'
-
-
-class FeaturedImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=True)
-
-    class Meta:
-        icon='image'
-        label=_('Image')
-        template='articles/blocks/featured_image.html'
-        help_text=_('The featured image is shown in the list-view and detail-view')
-
-
-class FeaturedVideoBlock(blocks.StructBlock):
-    video = EmbedBlock(required=True)
-
-    class Meta:
-        icon='media'
-        label=_('Video')
-        template='articles/blocks/featured_video.html'
-        help_text=_('The featured video is only shown in the detail-view, make sure to also selecte a featured image')
-
-
-class FeaturedAudioBlock(blocks.StructBlock):
-    audio = EmbedBlock(required=True)
-
-    class Meta:
-        icon='media'
-        label=_('Audio')
-        template='articles/blocks/featured_audio.html'
-        help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
-
 
 class RenderInlineMixin(object):
     def __init__(self):
@@ -198,6 +129,77 @@ class RelatedHowToMixin(object):
             next_page = how_to_pages[next_article_idx]
 
         return (previous_page, next_page)
+
+
+
+# Blocks
+
+
+class Heading2Block(blocks.StructBlock):
+    chapter_name = \
+        blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading2.html'
+        icon = 'title'
+        label = _('Chapter (h2)')
+
+
+class Heading3Block(blocks.StructBlock):
+    section_name = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading3.html'
+        icon = 'title'
+        label = _('Section (h3)')
+
+
+class Heading4Block(blocks.StructBlock):
+    subsection_name = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/heading4.html'
+        icon = 'title'
+        label = _('Subsection (h4)')
+
+
+class PullQuoteBlock(blocks.StructBlock):
+    pull_quote = blocks.CharBlock(required=True)
+
+    class Meta:
+        template = 'articles/blocks/pullquote.html'
+        icon = 'openquote'
+        label = 'Pull Quote'
+
+
+class FeaturedImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
+
+    class Meta:
+        icon='image'
+        label=_('Image')
+        template='articles/blocks/featured_image.html'
+        help_text=_('The featured image is shown in the list-view and detail-view')
+
+
+class FeaturedVideoBlock(blocks.StructBlock):
+    video = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Video')
+        template='articles/blocks/featured_video.html'
+        help_text=_('The featured video is only shown in the detail-view, make sure to also selecte a featured image')
+
+
+class FeaturedAudioBlock(blocks.StructBlock):
+    audio = EmbedBlock(required=True)
+
+    class Meta:
+        icon='media'
+        label=_('Audio')
+        template='articles/blocks/featured_audio.html'
+        help_text=_('The featured audio is only shown in the detail-view, make sure to also selecte a featured image')
 
 
 class PageFormat:

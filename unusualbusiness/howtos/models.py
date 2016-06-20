@@ -1,24 +1,17 @@
 from __future__ import unicode_literals
-from itertools import chain
-
-import datetime
 from django.db import models
 from django.shortcuts import render
 from django.utils import timezone
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail_modeltranslation.models import TranslationMixin
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
-from unusualbusiness.tags.models import HowToPageTag
-from unusualbusiness.utils.models import PageFormat
 
 
 class HowToPage(Page):
@@ -34,7 +27,6 @@ class HowToPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    tags = ClusterTaggableManager(through=HowToPageTag, blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('title_en'),
@@ -67,7 +59,6 @@ class HowToPage(Page):
         InlinePanel('theory_article_pages', label=_("Theory Articles")),
         InlinePanel('news_article_pages', label=_("News Articles")),
         InlinePanel('event_pages', label=_("Events")),
-        FieldPanel('tags'),
     ]
 
     # Parent page / subpage type rules]
@@ -78,68 +69,50 @@ class HowToPage(Page):
         verbose_name = _("How to")
         verbose_name_plural = _("How to's")
 
-    def theory_page_list(self, tag=None):
+    def theory_page_list(self):
         theory_page_list = []
         theory_article_pages = self.theory_article_pages.all()
-
-        if tag:
-            theory_article_pages = theory_article_pages.filter(tags__name=tag)
 
         for theory_article_page in theory_article_pages:
             theory_page_list.append(theory_article_page.article)
 
         return theory_page_list
 
-    def story_page_list(self, tag=None):
+    def story_page_list(self):
         story_pages = []
         story_article_pages = self.story_article_pages.all()
-
-        if tag:
-            story_article_pages = story_article_pages.filter(tags__name=tag)
 
         for story_article_page in story_article_pages:
             story_pages.append(story_article_page.article)
 
         return story_pages
 
-    def news_page_list(self, tag=None):
+    def news_page_list(self):
         news_pages = []
         news_article_pages = self.news_article_pages.all()
-
-        if tag:
-            news_article_pages = news_article_pages.filter(tags__name=tag)
 
         for news_article_page in news_article_pages:
             news_pages.append(news_article_page.article)
 
         return news_pages
 
-    def organizations(self, tag=None):
+    def organizations(self):
         organization_pages = self.organization_pages.all()
-
-        if tag:
-            organization_pages = organization_pages.filter(tags__name=tag)
 
         return organization_pages
 
-    def organization_list(self, tag=None):
+    def organization_list(self):
         organization_pages = self.organization_pages.all()
         organization_list = []
-
-        if tag:
-            organization_pages = organization_pages.filter(tags__name=tag)
 
         for organization_page in organization_pages:
             organization_list.append(organization_page.organization)
 
         return organization_list
 
-    def event_page_list(self, tag=None):
+    def event_page_list(self):
         event_pages = []
         event_pages_qs = self.event_pages.all()
-
-        if tag:
-            event_pages_qs = event_pages_qs.filter(tags__name=tag)
 
         for event_page_qs in event_pages_qs.all():
             event_pages.append(event_page_qs.event)
@@ -165,35 +138,6 @@ class HowToPage(Page):
             circles += ' upcoming-event'
 
         return circles
-
-    # def page_formats(self):
-    #     story_article_pages = self.story_article_pages.all()
-    #
-    #     activity_text_count = 5
-    #     activity_video_count = 2
-    #     activity_images_count = 7
-    #     activity_audio_count = 8
-    #     story_text_count = 0
-    #     story_video_count = 2
-    #     story_images_count = 3
-    #     story_audio_count = 0
-    #     theory_count = 9
-    #     link_count = 0
-    #     organization_count = self.organizations().count()
-    #
-    #     return {
-    #         'activity_text_count': activity_text_count,
-    #         'activity_video_count': activity_video_count,
-    #         'activity_images_count': activity_images_count,
-    #         'activity_audio_count': activity_audio_count,
-    #         'story_text_count': story_text_count,
-    #         'story_video_count': story_video_count,
-    #         'story_images_count': story_images_count,
-    #         'story_audio_count': story_audio_count,
-    #         'theory_count': theory_count,
-    #         'link_count': link_count,
-    #         'organization_count': organization_count,
-    #     }
 
     def page_formats(self):
         news_text_count = 0
@@ -278,19 +222,11 @@ class HowToPage(Page):
         ]
 
     def serve(self, request):
-        tag = request.GET.get('tag')
-        if tag:
-            theory_pages = self.theory_page_list(tag)
-            story_pages = self.story_page_list(tag)
-            news_pages = self.news_page_list(tag)
-            organizations = self.organization_list(tag)
-            events = self.event_page_list(tag)
-        else:
-            theory_pages = self.theory_page_list()
-            story_pages = self.story_page_list()
-            news_pages = self.news_page_list()
-            organizations = self.organization_list()
-            events = self.event_page_list()
+        theory_pages = self.theory_page_list()
+        story_pages = self.story_page_list()
+        news_pages = self.news_page_list()
+        organizations = self.organization_list()
+        events = self.event_page_list()
 
         upcoming_related_event = None
         if len(self.upcoming_events()) > 0:
@@ -399,7 +335,7 @@ class HowToPageEventPage(Orderable, models.Model):
 
 
 class HowToIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['howtos.HowToPage']
 
     class Meta:

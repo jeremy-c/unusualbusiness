@@ -63,16 +63,14 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     # 'unusualbusiness.wagtailmarkdown',
-    'unusualbusiness.home',
     'unusualbusiness.pages',
     'unusualbusiness.organizations',
     'unusualbusiness.events',
     'unusualbusiness.articles',
     'unusualbusiness.definitions',
     'unusualbusiness.howtos',
-    'unusualbusiness.tags',
-    'unusualbusiness.search',
     'unusualbusiness.utils',
+    'unusualbusiness.search',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

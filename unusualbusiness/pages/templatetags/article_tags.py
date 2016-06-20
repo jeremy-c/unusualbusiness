@@ -24,6 +24,6 @@ def all_quotes(context):
 @register.inclusion_tag('pages/blocks/static_content.html', takes_context=True)
 def static_content(context):
     return {
-        'static_content': StaticContent.objects.first(),
+        'static_content': StaticContent.objects.select_related('page'),
         'request': context['request'],
     }

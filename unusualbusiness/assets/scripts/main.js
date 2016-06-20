@@ -14,6 +14,7 @@ import Navbar from './modules/navbar';
 import Organization from './modules/organization';
 import HowTo from './modules/how-to';
 import Icons from './modules/icons';
+import MobileMenu from './modules/mobile-menu';
 import smoothScroll from 'smooth-scroll';
 
 (function() {
@@ -37,6 +38,7 @@ import smoothScroll from 'smooth-scroll';
     let navbar = Navbar();
     let organization = Organization();
     let howTo = HowTo();
+    let mobileMenu = MobileMenu();
 
     grid.init();
     navbars.init();
@@ -46,6 +48,7 @@ import smoothScroll from 'smooth-scroll';
     navbar.init();
     organization.init();
     howTo.init();
+    mobileMenu.init();
   });
 
   $(window).ready(function() {

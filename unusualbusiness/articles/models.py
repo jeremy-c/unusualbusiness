@@ -1,13 +1,9 @@
 from __future__ import unicode_literals
 
-from itertools import chain
-
 from django.db import models
-from django.db.models import CharField, URLField
 from django.db.models import Model
 from django.utils import timezone
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
@@ -18,17 +14,15 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail.wagtailsnippets.models import register_snippet
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
-from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
 from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin, FeaturedImageBlock, \
     FeaturedVideoBlock, FeaturedAudioBlock, Heading2Block, Heading3Block, Heading4Block, PullQuoteBlock
 
 
 class TheoryArticleIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.TheoryArticlePage']
 
     def get_context(self, request):
@@ -40,7 +34,7 @@ class TheoryArticleIndexPage(Page):
 
 
 class StoryArticleIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.StoryArticlePage']
 
     def get_context(self, request):
@@ -51,7 +45,7 @@ class StoryArticleIndexPage(Page):
 
 
 class ActivityIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['events.EventPage', 'articles.NewsArticlePage', ]
 
     @staticmethod
@@ -110,7 +104,7 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         null=True,
     )
     body = StreamField([
-        ('introduction', blocks.RichTextBlock(icon="italic")),
+        ('introduction', blocks.TextBlock(icon="italic", rows=3)),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
@@ -155,8 +149,6 @@ class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
 
-    tags = ClusterTaggableManager(through=StoryArticlePageTag, blank=True)
-
     class Meta:
         verbose_name = _("Story")
         verbose_name_plural = _("Stories")
@@ -187,7 +179,6 @@ StoryArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
-        FieldPanel('tags'),
     ]
 
 StoryArticlePage.promote_panels = Page.promote_panels
@@ -234,8 +225,6 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
 
-    tags = ClusterTaggableManager(through=TheoryArticlePageTag, blank=True)
-
     class Meta:
         verbose_name = _("Theory")
         verbose_name_plural = _("Theories")
@@ -260,7 +249,6 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
-        FieldPanel('tags'),
     ]
 
 TheoryArticlePage.promote_panels = Page.promote_panels
@@ -289,7 +277,6 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='news_article_page'
     )
-    tags = ClusterTaggableManager(through=NewsArticlePageTag, blank=True)
 
     parent_page_types = ['events.EventPage', 'articles.ActivityIndexPage']
     subpage_types = []
@@ -319,7 +306,6 @@ NewsArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
-        FieldPanel('tags'),
     ]
 
 NewsArticlePage.promote_panels = Page.promote_panels
@@ -371,7 +357,7 @@ AuthorPage.promote_panels = Page.promote_panels
 
 
 class AuthorIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.AuthorPage']
 
     def get_context(self, request):

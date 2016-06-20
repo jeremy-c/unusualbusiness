@@ -1,0 +1,142 @@
+{% load i18n ub_tags %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+
+<header class="l-navbar navbar" >
+    <div class="ub-logo clearfix">
+        <a href="/{{ lang.code }}/" class="ub-logo-link" >
+            <svg class="ub-logo-icon" width="41.401px" height="33.63px" >
+                <title>Unusual Business logo</title>
+                <desc>Click to go home</desc>
+                <use xlink:href="#ub-logo" />
+            </svg>
+        </a>
+    </div>
+    <nav class="l-main-nav" >
+        <ul class="l-main-menu" >
+            <li class="main-menu-item main-menu-home">
+                <a href="/{{ lang.code }}/" class="main-menu-item-link main-menu-home-link" >
+                    <svg  width="30px" height="30px" class="menu-icon ub-logo-icon animated fadeIn" >
+                        <title>Unusual Business logo</title>
+                        <desc>Click to go home</desc>
+                        <use xlink:href="#ub-logo" />
+                    </svg>
+                    <span class="menu-item-text">Home</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-how-to">
+                <a href="{% slugurl 'activities' %}" class="main-menu-item-link how-to-link main-menu-item-link-activities start-animation-on-hover" >
+                    <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                      <use xlink:href="#circle" />
+                    </svg>
+                    <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                        <use xlink:href="#event-icon"></use>
+                    </svg>
+                    <span class="menu-item-text">Activity</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-how-to">
+                <a href="{% slugurl 'practitioners' %}" class="main-menu-item-link how-to-link main-menu-item-link-practitioners start-animation-on-hover" >
+                    <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                      <use xlink:href="#circle" />
+                    </svg>
+                    <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                        <use xlink:href="#organization-icon"></use>
+                    </svg>
+                    <span class="menu-item-text">Practitioners</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-how-to ">
+                <a href="{% slugurl 'stories' %}" class="main-menu-item-link how-to-link main-menu-item-link-stories start-animation-on-hover" >
+                    <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                      <use xlink:href="#circle" />
+                    </svg>
+                    <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                        <use xlink:href="#text-icon"></use>
+                    </svg>
+                    <span class="menu-item-text">Stories</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-how-to">
+                <a href="{% slugurl 'theory' %}" class="main-menu-item-link how-to-link main-menu-item-link-theory start-animation-on-hover" >
+                    <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                      <use xlink:href="#circle" />
+                    </svg>
+                    <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                        <use xlink:href="#theory-icon"></use>
+                    </svg>
+                    <span class="menu-item-text">Theory</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="l-right-menu">
+            <li class="main-menu-item main-menu-how-to-circles" >
+              <a href="{% slugurl 'research-overview' %}" class="main-menu-item-link how-to-circles-link start-animation-on-hover " >
+                <svg width="49px" height="49px" class="menu-icon how-to-circles-icon animated fadeIn activities stories practitioners theory "  >
+                  <use xlink:href="#how-to-circles" />
+                </svg>
+                <span class="menu-item-text">Research overview</span>
+              </a>
+            </li>
+            <li class="main-menu-item about-ub">
+                <a href="{% slugurl 'about' %}" class="main-menu-item-link about-ub-link" >
+                    <span class="menu-item-short-text">About</span>
+                    <span class="menu-item-text">Over (Un)usual Business</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-search" >
+                <a href="/search/" class="main-menu-item-link main-menu-search-link " >
+                    <svg class="search-icon gray-icon " width="23.334px" height="23.334px" >
+                        <title>Seach icon</title>
+                        <desc>Click to open search text field</desc>
+                      <use xlink:href="#search-icon" />
+                    </svg>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-language">
+
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ page.url_path_nl }}" class="main-menu-item-link language" >
+                    <span class="menu-item-short-text">NL</span>
+                    <span class="menu-item-text">Nederlands</span>
+                  </a>
+                {% elif LANGUAGE_CODE == 'nl' %}
+                  <a href="{{ page.url_path_en }}" class="main-menu-item-link language" >
+                    <span class="menu-item-short-text">EN</span>
+                    <span class="menu-item-text">English</span>
+                  </a>
+                {% else %}
+                    {# Add other languages here #}
+                {% endif %}
+            </li>
+            <li class="main-menu-item main-menu-footer">
+                <div class="main-menu-item-link main-menu-item-link-footer">
+                    <a href="#" class="main-menu-newsletter-link" >Nieuwsbrief</a>
+                    <span class="main-menu-divider">|</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button" class="main-menu-facebook-link" >Facebook</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!--/.main-nav-->
+    <div class="search-bar">
+        <label class="search-label is-hidden"  for="searchTextBox" aria="label">
+            <svg class="search-icon" width="23.334px" height="23.334px" >
+                <title>Seach icon</title>
+                <desc>Click to open search text field</desc>
+              <use xlink:href="#search-icon" />
+            </svg>
+        </label>
+        <input type="text" class="search-textbox" id="searchTextBox" placeholder="" disabled>
+    </div>
+    <div class="hamburger-menu">
+        <a id="hamburger-menu-button" href="#mobile-menu"
+           title="navigation menu"
+           aria-label="navigation menu"
+           role="button"
+           aria-controls="navigation"
+           aria-expanded="false" >
+            <span></span>
+        </a>
+    </div>
+</header>
+<!--/.l-header-->

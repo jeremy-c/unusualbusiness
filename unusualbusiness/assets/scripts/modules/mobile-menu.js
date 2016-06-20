@@ -4,8 +4,6 @@
 
 'use strict';
 
-import Grid from './grid';
-
 let MobileMenu = () => {
   let toggleHamburgerMenu = function() {
     let hamburgerMenuButtonLink = $('#hamburger-menu-button');
