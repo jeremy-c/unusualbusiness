@@ -183,6 +183,13 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
     def event_report(self):
         return self.news_article_page.first()
 
+    @property
+    def introduction(self):
+        for stream_child in self.description:
+            if stream_child.block_type == 'introduction':
+                return stream_child.value
+        return None
+
     # Static Methods
 
     @staticmethod

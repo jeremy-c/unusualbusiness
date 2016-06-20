@@ -141,7 +141,7 @@ class AbstractArticle(models.Model, RenderInlineMixin):
     def introduction(self):
         for stream_child in self.body:
             if stream_child.block_type == 'introduction':
-                return stream_child.value.source
+                return stream_child.value
         return None
 
 

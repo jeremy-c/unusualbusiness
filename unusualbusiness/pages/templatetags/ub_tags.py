@@ -63,6 +63,27 @@ def slugname(context, slug):
         return None
 
 
+@register.simple_tag(takes_context=True)
+def parenturl(context, slug):
+    """Returns the URL for the page that has the given slug."""
+    page = Page.objects.filter(slug=slug).first()
+
+    if page:
+        return page.specific.url_path
+    else:
+        return None
+
+
+@register.simple_tag(takes_context=True)
+def parentname(context, slug):
+        """Returns the URL for the page that has the given slug."""
+        page = Page.objects.filter(slug=slug).first()
+
+        if page:
+            return page.specific.title
+        else:
+            return None
+
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent

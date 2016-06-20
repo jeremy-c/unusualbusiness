@@ -52,7 +52,7 @@
 
 {% block article_body %}
 
-    <div class="l-boxed">
+    <section class="l-boxed">
 
         <section class="l-full-width event-meta">
 
@@ -67,13 +67,11 @@
 
         </section>
 
-        {% for block in page.description %}
-            {% if forloop.first and block.block_type == 'introduction' %}
-                <section class="l-pull-left article-introduction event-introduction">
-                    {{ block.value.source|ub_richtext }}
-                </section>
-            {% endif %}
-        {% endfor %}
+        {% if page.introduction %}
+            <section class="l-pull-left article-introduction event-introduction"  id="introduction">
+                {{ page.introduction }}
+            </section>
+        {% endif %}
 
         <section class="l-pull-right article-body event-description">
 
