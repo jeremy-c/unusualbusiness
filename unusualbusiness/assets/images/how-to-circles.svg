@@ -2,10 +2,10 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="overzichtsringen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
      y="0px" viewBox="0 0 262 262" width="262" height="262" style="enable-background:new 0 0 262 262;" xml:space="preserve">
-    <circle id="groenmiddel" class="theory" cx="131" cy="131" r="115.8"/>
-    <circle id="geelmiddel" class="stories" cx="131" cy="131" r="86.4"/>
-    <circle id="zwartmiddel" class="practitioners" cx="131" cy="131" r="54.7"/>
-    <circle id="blauwmiddel" class="activities" cx="131" cy="131" r="23.7"/>
+    <circle id="groenmiddel" class="circle theory animated fadeIn" cx="131" cy="131" r="115.8"/>
+    <circle id="geelmiddel" class="circle stories animated fadeIn" cx="131" cy="131" r="86.4"/>
+    <circle id="zwartmiddel" class="circle practitioners animated fadeIn" cx="131" cy="131" r="54.7"/>
+    <circle id="blauwmiddel" class="circle activities animated fadeIn" cx="131" cy="131" r="23.7"/>
     <g id="sterretje">
         <line id="sterretje1" x1="131" y1="115.3" x2="131" y2="123.9"/>
         <line id="sterretje2" x1="131" y1="138.1" x2="131" y2="146.7"/>

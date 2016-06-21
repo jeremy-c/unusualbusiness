@@ -37,7 +37,6 @@ import smoothScroll from 'smooth-scroll';
     let slider = Sliders();
     let navbar = Navbar();
     let organization = Organization();
-    let howTo = HowTo();
     let mobileMenu = MobileMenu();
 
     grid.init();
@@ -47,15 +46,16 @@ import smoothScroll from 'smooth-scroll';
     slider.init();
     navbar.init();
     organization.init();
-    howTo.init();
     mobileMenu.init();
   });
 
   $(window).ready(function() {
     console.log('Main: Window ready go!');
 
+    let howTo = HowTo();
     let icons = Icons();
     icons.init();
+    howTo.init();
 
     smoothScroll.init({
       selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
