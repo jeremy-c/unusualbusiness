@@ -221,7 +221,9 @@ class HowToPage(Page):
              },
         ]
 
-    def serve(self, request):
+    def get_context(self, request):
+        context = super(HowToPage, self).get_context(request)
+
         theory_pages = self.theory_page_list()
         story_pages = self.story_page_list()
         news_pages = self.news_page_list()
@@ -232,16 +234,15 @@ class HowToPage(Page):
         if len(self.upcoming_events()) > 0:
             upcoming_related_event = self.upcoming_events()[0]
 
-        return render(request, self.template, {
-            'self': self,
-            'theory_articles': theory_pages,
-            'story_articles': story_pages,
-            'news_articles': news_pages,
-            'organizations': organizations,
-            'event_pages': events,
-            'page_formats': self.page_formats(),
-            'upcoming_related_event': upcoming_related_event
-        })
+        context['theory_articles'] = theory_pages
+        context['story_articles'] = story_pages
+        context['news_articles'] = news_pages
+        context['organizations'] = organizations
+        context['event_pages'] = events
+        context['page_formats'] = self.page_formats()
+        context['upcoming_related_event'] = upcoming_related_event
+
+        return context
 
 
 class HowToPageOrganizationPage(Orderable, models.Model):
