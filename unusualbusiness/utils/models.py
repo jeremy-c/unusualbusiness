@@ -6,8 +6,8 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailcore import hooks
+from wagtail.wagtailcore.whitelist import attribute_rule, check_url, allow_without_attributes
 
 
 class RenderInlineMixin(object):
@@ -131,40 +131,20 @@ class RelatedHowToMixin(object):
         return (previous_page, next_page)
 
 
-
 # Blocks
 
 
-class Heading2Block(blocks.StructBlock):
-    chapter_name = \
-        blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading2.html'
-        icon = 'title'
-        label = _('Chapter (h2)')
-
-
-class Heading3Block(blocks.StructBlock):
-    section_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading3.html'
-        icon = 'title'
-        label = _('Section (h3)')
-
-
-class Heading4Block(blocks.StructBlock):
-    subsection_name = blocks.CharBlock(required=True)
-
-    class Meta:
-        template = 'articles/blocks/heading4.html'
-        icon = 'title'
-        label = _('Subsection (h4)')
-
-
 class PullQuoteBlock(blocks.StructBlock):
-    pull_quote = blocks.CharBlock(required=True)
+    pull_quote = blocks.TextBlock(verbose_name=_('Pull quote'),
+                                  required=True,
+                                  rows=2)
+    attribution = blocks.CharBlock(verbose_name=_('Quote attribution to'),
+                                   help_text=_('The name of the person or organization that '
+                                               'the quote can be attributed to quote'),
+                                   required=False)
+    link = blocks.URLBlock(verbose_name=_('Link'),
+                           help_text=_("Click quote to go to link."),
+                           required=False)
 
     class Meta:
         template = 'articles/blocks/pullquote.html'
@@ -203,26 +183,26 @@ class FeaturedAudioBlock(blocks.StructBlock):
 
 
 class PageFormat:
-    EVENT = 'event'
-    VIDEO = 'video'
-    TEXT = 'text'
-    IMAGES = 'images'
-    AUDIO = 'audio',
-    ORGANIZATION = 'organization'
-    THEORY = 'theory'
-    LINK = 'link'
-    DOCUMENT = 'document'
+    TEXT = ('text', _('Story'))
+    THEORY = ('theory', _('Theory'))
+    VIDEO = ('video', _('Video'))
+    AUDIO = ('audio', _('Audio'))
+    IMAGES = ('images', _('Slideshow'))
+    EVENT = ('event', _('Activity'))
+    ORGANIZATION = ('organization', _('Practitioner'))
+    LINK = ('link', _('Link'))
+    DOCUMENT = ('document', _('Document'))
 
     ALL = (
-        (TEXT, _('Normal Article')),
-        (THEORY, _('Theory Article')),
-        (VIDEO, _('Video embed')),
-        (AUDIO, _('Audio embed')),
-        (IMAGES, _('Image slideshow')),
-        (EVENT, _('Event')),
-        (ORGANIZATION, _('Organization')),
-        (LINK, _('External Link')),
-        (DOCUMENT, _('Document Download')),
+        TEXT,
+        THEORY,
+        VIDEO,
+        AUDIO,
+        IMAGES,
+        EVENT,
+        ORGANIZATION,
+        LINK,
+        DOCUMENT
     )
 
     def __init__(self):

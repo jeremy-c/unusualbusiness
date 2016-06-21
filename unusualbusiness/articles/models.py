@@ -18,7 +18,7 @@ from wagtail.wagtailsearch import index
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
 from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin, FeaturedImageBlock, \
-    FeaturedVideoBlock, FeaturedAudioBlock, Heading2Block, Heading3Block, Heading4Block, PullQuoteBlock
+    FeaturedVideoBlock, FeaturedAudioBlock, PullQuoteBlock
 
 
 class TheoryArticleIndexPage(Page):
@@ -77,12 +77,6 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         help_text=_("The subtitle of the page"),
         blank=True
     )
-    format = models.CharField(
-        verbose_name=_('page_format'),
-        max_length=32,
-        null=False,
-        default = PageFormat.TEXT,
-        choices=PageFormat.ALL)
     featured = StreamField([
         ('featured_image', FeaturedImageBlock()),
         ('featured_video', FeaturedVideoBlock()),
@@ -96,7 +90,7 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    publication_date = models.DateTimeField(
+    publication_date = models.DateField(
         verbose_name=_('publication_date'),
         help_text=_("The publication date of the article"),
         default=timezone.now,
@@ -109,10 +103,6 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
-        ('embed', EmbedBlock()),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
     ])
 
     class Meta:
@@ -148,6 +138,15 @@ class AbstractArticle(models.Model, RenderInlineMixin):
 class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='text',
+        choices=(PageFormat.TEXT,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO,
+                 PageFormat.IMAGES, ))
 
     class Meta:
         verbose_name = _("Story")
@@ -224,6 +223,14 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     ajax_template = 'articles/blocks/inline_theory_article.html'
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='theory',
+        choices=(PageFormat.THEORY,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO, ))
 
     class Meta:
         verbose_name = _("Theory")
@@ -277,7 +284,15 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='news_article_page'
     )
-
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='event',
+        choices=(PageFormat.EVENT,
+                 PageFormat.IMAGES,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO, ))
     parent_page_types = ['events.EventPage', 'articles.ActivityIndexPage']
     subpage_types = []
 

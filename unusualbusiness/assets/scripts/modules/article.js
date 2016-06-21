@@ -6,6 +6,7 @@
 
 import gumshoe from 'gumshoe';
 import Clipboard from 'clipboard';
+import tocbot from 'tocbot';
 
 let Article = () => {
   let initInlineArticleLinks = function() {
@@ -21,16 +22,40 @@ let Article = () => {
     });
   };
 
+  let initStickyTOC = function() {
+    $(".toc-wrapper ").sticky({
+      topSpacing:100,
+      bottomSpacing: 2500
+    });
+  };
+
   let initTOC = function() {
+    initTOCSlideIn();
+    addIdsToHeadings();
+    initGumshoe();
+    initStickyTOC();
+
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '#toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.l-boxed',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3',
+      listClass:  'toc-list',
+      extraListClasses: 'animated fadeInLeft',
+      linkClass: 'toc-link'
+    });
+  };
+
+  let initTOCSlideIn = function() {
     let $tocWrapper = $('.toc-wrapper');
     let $tocToggleLink = $('.toggle-toc-link');
     let $toc = $('.article-table-of-contents');
-    let $tocList = $('.toc-list');
     let $articleIntroduction = $('.article-introduction');
     let $blockImage = $('.block-image');
 
     $tocToggleLink.on('click', function() {
-      $tocList.toggleClass('is-hidden');
       $tocToggleLink.toggleClass('is-panel-open');
       $toc.toggleClass('is-closed');
       $articleIntroduction.toggleClass('l-pull-right');
@@ -38,8 +63,6 @@ let Article = () => {
 
       return false;
     });
-
-    gumshoe.init();
   };
 
   let initAuthorPane = function() {
@@ -136,16 +159,40 @@ let Article = () => {
     });
   };
 
+  let addIdsToHeadings = function() {
+    let $headings = $('.l-boxed h2,.l-boxed h3,.l-boxed h4');
+
+    $headings.each( function() {
+      let text = this.innerText;
+      let slug = slugify(text);
+      $(this).attr('id', slug);
+    })
+  };
+
+  let slugify = function(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  };
 
   let initCopyUrlToClipboard = function() {
     new Clipboard('.copy-url-link');
+  };
+
+  let initGumshoe = function() {
+    gumshoe.init();
   };
 
   let init = function() {
     console.log('Article go!');
     initArticleNotes();
     initInlineArticleLinks();
-    initTOC();
+    if( $('body').hasClass('theory-article')) {
+      initTOC();
+    }
     initAuthorPane();
     initExternalLinks();
     initSocialLinks();

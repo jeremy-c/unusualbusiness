@@ -15,8 +15,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from unusualbusiness.utils.models import PageFormat, Heading2Block, Heading3Block, Heading4Block, \
-    PullQuoteBlock
+from unusualbusiness.utils.models import PageFormat, PullQuoteBlock
 from unusualbusiness.utils.models import RenderInlineMixin, RelatedHowToMixin
 
 
@@ -26,8 +25,8 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.EVENT,
-        choices=PageFormat.ALL)
+        default='event',
+        choices=(PageFormat.EVENT, ))
     event_type = models.CharField(
         verbose_name = _("Type of event"),
         max_length=512,
@@ -77,10 +76,6 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
-        ('embed', EmbedBlock()),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
     ])
     featured_image = models.ForeignKey(

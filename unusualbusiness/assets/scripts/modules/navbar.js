@@ -86,7 +86,7 @@ let Navbars = () => {
           }
         }
     );
-
+    let arg;
       if(extraNavbarElement !== null) {
         // construct an instance of Headroom, passing the element
         headroomExtraNavbar = new Headroom(
@@ -104,17 +104,19 @@ let Navbars = () => {
               }
             }
         );
-        headroomExtraNavbar.init();
+        arg = headroomExtraNavbar.init();
       }
     // initialise
-    headroomHeader.init();
+    let arg2 = headroomHeader.init();
 
     $extraNavbarMenuButton.on('click', function() {
-        var sdf = headroomHeader;
+        // Main navbar Visible
         if($header.hasClass('slideInDown')) {
-            headroomExtraNavbar.unpin();
-            headroomHeader.pin();
+            console.log('Main navbar hidden');
+            arg2.pin();
+            arg.unpin();
         } else {
+            console.log('Main navbar shown');
             headroomHeader.unpin();
             $extraNavbar.removeClass('is-pined-under-navbar');
         }

@@ -142,6 +142,19 @@
 
   .theory-article & {
     color: $green;
+
+    @media(min-width: $tablet-horizontal) {
+      margin-left: 100px;
+      max-width: 700px;
+    }
+
+    @media(min-width: $boxed) {
+      max-width: $tablet;
+    }
+
+    @media(min-width: $boxed + 100px) {
+      margin-left: inherit;
+    }
   }
 
   .story-article & {
@@ -375,67 +388,6 @@
   font-family: $open-sans;
   font-size: 14px;
   line-height: 22px;
-}
-
-.block-pullquote {
-  @media(max-width: $tablet) {
-    margin: 0 calc(-1 * var(--gutter));
-  }
-}
-
-
-.pullquote {
-  display: block;
-  box-sizing: border-box;
-  border-left: solid 8px $yellow;
-  border-right: solid 8px $yellow;
-  margin: $gutter * 2 0;
-  padding: $gutter $gutter * 2;
-  width: 90%;
-
-  background-color: $white;
-
-  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
-
-  font-size: 34px;
-  line-height: 43px;
-  font-family: $merriweather;
-  font-weight: normal;
-  text-align: center;
-
-  @media(max-width: $boxed) {
-    width: 100%;
-  }
-
-  @media(max-width: $tablet) {
-    margin: $gutter;
-    border-left: none;
-    border-right: none;
-    border-top: solid 8px $yellow;
-    border-bottom: solid 8px $yellow;
-
-    padding: $gutter 0;
-    width: inherit;
-
-    font-size: 7vw;
-    line-height: 1.3em;
-  }
-
-  .news-article & {
-    color: $blue;
-  }
-
-  .theory-article & {
-    color: $green;
-  }
-
-  .story-article & {
-    color: $yellow;
-  }
-
-  .organization & {
-    color: $black;
-  }
 }
 
 .article-section-title {

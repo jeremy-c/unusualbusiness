@@ -1,3 +1,14 @@
 <blockquote class="l-body-article-pull-left pullquote">
+{% if value.link %}
+    <a href="{{ value.pull_quote }}" class="pullquote-link">
+{% endif %}
     {{ value.pull_quote }}
+    {% if value.attribution %}
+        <span class="article-inline-pullquote-attribution">
+            {{ value.attribution }}
+        </span>
+    {% endif %}
+{% if value.link %}
+    </a>
+{% endif %}
 </blockquote>

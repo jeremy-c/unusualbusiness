@@ -15,8 +15,8 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.ORGANIZATION,
-        choices=PageFormat.ALL)
+        default='organization',
+        choices=(PageFormat.ORGANIZATION, ))
     is_featured = models.BooleanField(
         verbose_name = _("Is Featured on home page"),
         default=False

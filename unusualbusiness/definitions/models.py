@@ -11,8 +11,9 @@ class DefinitionPage(Page, RenderInlineMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.THEORY,
-        choices=PageFormat.ALL)
+        default='theory',
+        choices=(PageFormat.THEORY, ))
+
     #TODO: add bold and italic to Wysiwyg
     definition = models.TextField(null=True, blank=True)
 

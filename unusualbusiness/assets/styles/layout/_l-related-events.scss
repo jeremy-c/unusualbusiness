@@ -37,6 +37,11 @@
 
 .l-related-events-title-wrapper {
   width: 80px;
+
+  @media(max-width: $mobile-mini) {
+    margin: 0 auto;
+    padding-left: 34px;
+  }
 }
 
 .l-home-related-events {

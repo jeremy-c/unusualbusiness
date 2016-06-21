@@ -111,6 +111,11 @@
   font-family: $open-sans;
   color: $black;
   text-transform: uppercase;
+
+  @media(max-width: $mobile-mini) {
+    margin: 9px 0 0;
+    transform: none;
+  }
 }
 
 .upcoming-events-title {

@@ -22,8 +22,8 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from unusualbusiness.utils.models import Heading2Block, Heading3Block, Heading4Block, \
-    PullQuoteBlock, FeaturedImageBlock, FeaturedVideoBlock, FeaturedAudioBlock
+from unusualbusiness.utils.models import PullQuoteBlock, FeaturedImageBlock, FeaturedVideoBlock, FeaturedAudioBlock, \
+    PageFormat
 
 from unusualbusiness.articles.models import TheoryArticlePage, NewsArticlePage, StoryArticlePage
 from unusualbusiness.events.models import EventPage
@@ -128,10 +128,6 @@ class GeneralPage(Page):
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
-        ('embed', EmbedBlock()),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
     ])
 
     class Meta:

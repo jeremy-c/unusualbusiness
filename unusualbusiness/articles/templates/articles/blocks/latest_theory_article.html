@@ -12,7 +12,7 @@
     <div class="latest-article-introduction">
         {% for block in page.body %}
             {% if block.block_type == 'introduction' and forloop.first %}
-                {{ block.value.source|ub_richtext|truncatewords:30 }}
+                {{ block.value|truncatewords:30 }}
             {% endif %}
         {% endfor %}
     </div>

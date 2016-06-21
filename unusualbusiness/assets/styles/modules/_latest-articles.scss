@@ -79,9 +79,12 @@
     padding-left: $gutter / 2;
   }
 
-  .latest-theory-article &,
   .latest-news-article & {
-    margin-top: $gutter / 2;
+    margin-top: 0;
+
+    @media(max-width: $tablet) {
+      margin-top: $gutter / 2;
+    }
   }
 }
 
@@ -191,6 +194,10 @@
     flex: 0 1 auto;
     padding-top: $gutter / 2;
     max-width: 100%;
+  }
+
+  .latest-theory-article & {
+    display: none;
   }
 }
 
@@ -477,7 +484,7 @@
   }
 
   .latest-news-article & {
-    margin-top: calc(var(--gutter + 14px)); // lower below date
+    margin-top: 18px; // lower below date
 
     @media(max-width: $tablet) {
       margin-top: 8px;

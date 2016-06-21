@@ -3,6 +3,10 @@
 
 {% block body_class %}theory-article {{ block.super }}{% endblock %}
 
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'bower_components/jquery-sticky/jquery.sticky.js' %}"></script>
+{% endblock %}
 
 {%  block tableofcontents %}
     <div class="toc-wrapper ">
@@ -13,37 +17,38 @@
                 <use xlink:href="#toc-icon" />
             </svg>
         </a>
-        <section class="article-table-of-contents is-closed" >
-            <ul class="toc-list is-hidden animated fadeInLeft" data-gumshoe >
-                    <li class="toc-list-item toc-introduction">
-                        <a class="toc-link" href="#introduction" data-scroll >
-                            {% trans 'Introduction' %}
-                        </a>
-                    </li>
-                {% for block in page.body %}
+        <section class="article-table-of-contents is-closed" id="toc" data-gumshoe >
 
-                    {% if block.block_type == 'chapter' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.chapter_name|ub_slugify_anchor }}" data-scroll >
-                                {{ block.value.chapter_name }}
-                            </a>
-                        </li>
-                    {% elif block.block_type == 'section' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.section_name|ub_slugify_anchor }}" data-scroll >
-                                {{ block.value.section_name }}
-                            </a>
-                        </li>
-                    {% elif block.block_type == 'subsection' %}
-                        <li class="toc-list-item toc-{{ block.block_type }}">
-                            <a class="toc-link" href="#{{ block.value.subsection_name|ub_slugify_anchor }}" data-scroll >
-                                {{ block.value.subsection_name }}
-                            </a>
-                        </li>
-                    {% endif %}
-
-                {% endfor %}
-            </ul>
+{#            <ul class="toc-list is-hidden animated fadeInLeft" data-gumshoe >#}
+{#                    <li class="toc-list-item toc-introduction">#}
+{#                        <a class="toc-link" href="#introduction" data-scroll >#}
+{#                            {% trans 'Introduction' %}#}
+{#                        </a>#}
+{#                    </li>#}
+{#                {% for block in page.body %}#}
+{##}
+{#                    {% if block.block_type == 'chapter' %}#}
+{#                        <li class="toc-list-item toc-{{ block.block_type }}">#}
+{#                            <a class="toc-link" href="#{{ block.value.chapter_name|ub_slugify_anchor }}" data-scroll >#}
+{#                                {{ block.value.chapter_name }}#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    {% elif block.block_type == 'section' %}#}
+{#                        <li class="toc-list-item toc-{{ block.block_type }}">#}
+{#                            <a class="toc-link" href="#{{ block.value.section_name|ub_slugify_anchor }}" data-scroll >#}
+{#                                {{ block.value.section_name }}#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    {% elif block.block_type == 'subsection' %}#}
+{#                        <li class="toc-list-item toc-{{ block.block_type }}">#}
+{#                            <a class="toc-link" href="#{{ block.value.subsection_name|ub_slugify_anchor }}" data-scroll >#}
+{#                                {{ block.value.subsection_name }}#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{##}
+{#                {% endfor %}#}
+{#            </ul>#}
         </section>
     </div>
 {% endblock %}
