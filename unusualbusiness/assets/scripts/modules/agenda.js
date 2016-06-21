@@ -6,7 +6,7 @@
 
 var Agenda = () => {
   let initMouseEvents = function() {
-    let agendaItemLink = $('.featured-agenda-item-link');
+    let agendaItemLink = $('.featured-agenda-item-link,.latest-agenda-item-link');
 
     agendaItemLink.on('mouseover', function() {
       let timeElement = $(this).parent().siblings().first();
