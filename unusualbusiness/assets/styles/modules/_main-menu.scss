@@ -10,12 +10,12 @@
   float: left;
 
   .ub-logo-icon {
-    padding: 23px 0 17px 0;
 
     @media(max-width: $tablet) {
-      padding: 5px 8px 0;
-      width: 30px;
-      height: 24.432px;
+      padding-left: 2px;
+      padding-top: 3px;
+      width: 46px;
+      height: 46px;
     }
   }
 
