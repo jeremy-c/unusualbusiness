@@ -26,6 +26,7 @@ let Slider = () => {
     let agendaCarouselSettings = {
       infinite: false,
       slidesToShow: 3,
+      slidesToScroll: 1,
       asNavFor: '#agenda-carousel-preview',
       focusOnSelect: true,
       accessibility: true,
