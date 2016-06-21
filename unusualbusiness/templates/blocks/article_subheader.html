@@ -5,7 +5,7 @@
     <a href="{{ parent.url_path }}" class="back-link">All {{ parent.title }}</a>
     <ul class="social-links-list">
         <li class="social-list-item ">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button"
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button"
                class="social-list-item-link facebook-link">
                 <svg class="social-icon facebook-icon" width="10.547px" height="22.579px">
                     <title>Facebook icon</title>
@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="social-list-item ">
-            <a href="https://twitter.com/intent/tweet?text={{ self.title }}&url={{ self.full_url|urlencode }}&via=unusual-business"
+            <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.full_url|urlencode }}&via=unusual-business"
                class="social-list-item-link twitter-link">
                 <svg class="social-icon twitter-icon" width="23.807px" height="19.871px">
                     <title>Twitter icon</title>
@@ -27,7 +27,7 @@
             </a>
         </li>
         <li class="social-list-item social-list-item-copy-url">
-            <a href="#" class="social-list-item-link copy-url-link black-icon" data-clipboard-text="{{ self.full_url }}">
+            <a href="#" class="social-list-item-link copy-url-link black-icon" data-clipboard-text="{{ page.full_url }}">
                 <svg class="social-icon copy-url-icon" width="28.543px" height="28.543px">
                     <title>Copy URL icon</title>
                     <desc>Click to copy page URL to clipboard</desc>
@@ -37,17 +37,17 @@
             </a>
         </li>
         <li class="social-list-item extra-list-item is-hidden ">
-            <a class="social-list-item-link " href="https://plus.google.com/share?url={{ self.full_url|urlencode }}">
+            <a class="social-list-item-link " href="https://plus.google.com/share?url={{ page.full_url|urlencode }}">
                 <span class="menu-item-text">Google+</span>
             </a>
         </li>
         <li class="social-list-item extra-list-item is-hidden ">
-            <a class="social-list-item-link " href="https://www.linkedin.com/shareArticle?mini=true&url={{ self.full_url|urlencode }}&title={{ self.title }}&summary={{ self.introduction|ub_richtext|striptags }}&source={{ self.full_url|urlencode }}">
+            <a class="social-list-item-link " href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url|urlencode }}&title={{ page.title }}&summary={{ page.introduction }}&source={{ page.full_url|urlencode }}">
                 <span class="menu-item-text">LinkedIn</span>
             </a>
         </li>
         <li class="social-list-item extra-list-item is-hidden ">
-            <a class="social-list-item-link " href="https://pinterest.com/pin/create/button/?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}&media={{ self.featured_image.value.image.url|urlencode }}">
+            <a class="social-list-item-link " href="https://pinterest.com/pin/create/button/?url={{ page.full_url|urlencode }}&description={{ page.introduction }}&media={{ page.featured_image.value.image.url|urlencode }}">
                 <span class="menu-item-text">Pinterest</span>
             </a>
         </li>
@@ -62,12 +62,12 @@
 {#            </a>#}
 {#        </li>#}
         <li class="social-list-item extra-list-item is-hidden ">
-            <a class="social-list-item-link " href="http://www.tumblr.com/share/link?url={{ self.full_url|urlencode }}&description={{ self.introduction|ub_richtext|striptags }}">
+            <a class="social-list-item-link " href="http://www.tumblr.com/share/link?url={{ page.full_url|urlencode }}&description={{ page.introduction }}">
                 <span class="menu-item-text">Tumblr</span>
             </a>
         </li>
         <li class="social-list-item extra-list-item is-hidden ">
-            <a class="social-list-item-link " href="http://www.reddit.com/submit?url={{ self.full_url|urlencode }}&title={{ self.title }}">
+            <a class="social-list-item-link " href="http://www.reddit.com/submit?url={{ page.full_url|urlencode }}&title={{ page.title }}">
                 <span class="menu-item-text">Reddit</span>
             </a>
         </li>

@@ -29,7 +29,7 @@ class TheoryArticleIndexPage(Page):
         context = super(TheoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['theory_articles'] = TheoryArticlePage.objects.all().live().order_by('-publication_date')
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
         return context
 
 
@@ -165,7 +165,7 @@ class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_story_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -244,7 +244,7 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_theory_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -308,7 +308,7 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_news_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -379,5 +379,6 @@ class AuthorIndexPage(Page):
         context = super(AuthorIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['authors'] = AuthorPage.objects.all().live()
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
+
         return context

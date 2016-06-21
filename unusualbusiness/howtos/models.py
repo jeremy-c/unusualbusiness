@@ -347,6 +347,6 @@ class HowToIndexPage(Page):
         context = super(HowToIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['how_tos'] = HowToPage.objects.child_of(self).live()
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific()
         context['upcoming_events'] = EventPage.upcoming_events()
         return context
