@@ -41,7 +41,7 @@
     @media(max-width: $tablet) {
       margin: 5px;
       font-size: 6vw;
-    }
+    } 
   }
 
   .quote-author {
@@ -54,7 +54,6 @@
     &:after {
       @include sprite(chevron-white-icon);
       content: '';
-      display: block;
       margin-left: 5px;
       width: 15px;
 
