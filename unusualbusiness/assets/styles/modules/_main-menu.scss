@@ -162,7 +162,7 @@
   &:hover,
   &:active {
     .circle {
-      fill: $green;
+      fill: $green !important;
       stroke: $green;
     }
 
@@ -188,7 +188,7 @@
   &:hover,
   &:active {
     .circle {
-      fill: $yellow;
+      fill: $yellow !important;
       stroke: $yellow;
     }
 
@@ -214,7 +214,7 @@
   &:hover,
   &:active {
     .circle {
-      fill: $black;
+      fill: $black !important;
       stroke: $black;
     }
 
@@ -240,7 +240,7 @@
   &:hover,
   &:active {
     .circle {
-      fill: $blue;
+      fill: $blue !important;
       stroke: $blue;
     }
 

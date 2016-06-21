@@ -13,7 +13,7 @@
 }
 
 .article-index-page-list {
-  margin: $gutter 80px;
+  margin: $gutter * 2 80px $gutter;
 
   @media(max-width: $tablet) {
     margin: 0;
