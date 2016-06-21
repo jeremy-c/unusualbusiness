@@ -13,19 +13,31 @@ let Icons = () => {
         });
     };
 
-    let arg = function(link) {
-        link.toggleClass("is-pausing");
-        link.toggleClass("is-running");
+    let addListenerMulti = function (el, s, fn) {
+      s.split().forEach(e => el.addEventListener(e, fn, false));
     };
 
     let stopAnimation = function(event){
+        event.srcElement.style.webkitAnimationPlayState = "paused";
+        // console.log(event.srcElement);
         // event.currentTarget.classList.remove("is-running");
-        // console.log(event.currentTarget.classList);
-        // console.log(event.target.nearestViewportElement.clientHeight);
     };
 
-    let addListenerMulti = function (el, s, fn) {
-      s.split().forEach(e => el.addEventListener(e, fn, false));
+    let startAnimation = function(){
+        let element = this;
+        let svgElements = element.querySelectorAll('svg *');
+
+        for (var j = 0; j < svgElements.length; j++) {
+            let svgElement = svgElements[j];
+            svgElement.style.webkitAnimationPlayState = "running";
+        }
+        // element.classList.add("is-running");
+
+        element.addEventListener('webkitAnimationEnd', stopAnimation);
+        element.addEventListener('mozAnimationEnd', stopAnimation);
+        element.addEventListener('oAnimationEnd', stopAnimation);
+        element.addEventListener('msAnimationEnd', stopAnimation);
+        element.addEventListener('animationEnd', stopAnimation);
     };
 
     let initStartSVGAnimationsOnHover = function() {
@@ -33,22 +45,7 @@ let Icons = () => {
 
         for (var i = 0; i < animationHolders.length; i++) {
             let element = animationHolders[i];
-            element.addEventListener("mouseover", function(e) {
-                element.classList.add("is-running");
-
-                element.addEventListener('webkitAnimationEnd', stopAnimation);
-                element.addEventListener('mozAnimationEnd', stopAnimation);
-                element.addEventListener('animationEnd', stopAnimation);
-
-                // addListenerMulti(
-                //     element,
-                //     "webkitAnimationEnd mozAnimationEnd animationEnd",
-                //     function(){
-                //         event.currentTarget.classList.remove("is-running");
-                //         console.log(event.currentTarget.offsetWidth);
-                //     });
-            }, false);
-
+            element.addEventListener("mouseenter", startAnimation, false);
         }
     };
 
