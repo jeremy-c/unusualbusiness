@@ -3,17 +3,20 @@
 
 {% block list_item_classes %}{{ list_item_classes }} latest-theory-article{% endblock %}
 
-{% block below_title %}
+{% block below_title %}Hello
     {% if page.author %}
         <div class="latest-article-author">
             {{ page.author }}
         </div>
     {% endif %}
     <div class="latest-article-introduction">
-        {% for block in page.body %}
-            {% if block.block_type == 'introduction' and forloop.first %}
-                {{ block.value|truncatewords:30 }}
-            {% endif %}
-        {% endfor %}
+        {% if page.introduction %}
+            {{ page.introduction.value|truncatewords:30 }}
+        {% endif %}
+        {% if page.introduction %}
+            <div class="article-introduction" id="introduction">
+                {{ page.introduction|truncatewords:30 }}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

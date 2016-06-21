@@ -22,12 +22,13 @@
   align-items: center;
   height: 64px;
 
+  transition: all 100ms ease-in;
+
   text-decoration: none;
 
   &:hover:after,
   &:active:after {
     @include sprite(chevron-white-icon);
-    transition: all 300ms ease-in;
     content: '';
     margin-left: $gutter;
     padding-right: 3px;
@@ -36,7 +37,7 @@
   @media(max-width: $tablet) {
     &:after {
       @include sprite(chevron-white-icon);
-      transition: all 300ms ease-in;
+      transition: all 100ms ease-in;
       content: '';
       margin-left: 10px;
       padding-right: 3px;

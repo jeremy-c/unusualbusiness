@@ -52,7 +52,7 @@
 
 {% block article_body %}
 
-    <section class="l-boxed">
+    <div class="l-boxed">
 
         <section class="l-full-width event-meta">
 
@@ -85,8 +85,6 @@
                         {{ block }}
                         <p class="image-description"> {{ block.value }}</p>
                     </section>
-                {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                    {{ block }}
                 {% else %}
                     <section class="block-{{ block.block_type }}" >
                         {{ block }}
@@ -177,6 +175,7 @@
                 &q={{ self.location }}" >
             </iframe>
         </section>
+
     </div>
 
 {% endblock %}

@@ -16,7 +16,7 @@
 
         {% if page.introduction %}
             <div class="article-introduction" id="introduction">
-                {{ page.introduction|ub_richtext }}
+                {{ page.introduction }}
             </div>
         {% endif %}
 
@@ -24,17 +24,14 @@
 
             {% for block in page.body %}
 
-                {% if block.block_type == 'introduction' %}
-                {% elif block.block_type == 'paragraph' %}
+                {% if block.block_type == 'paragraph' %}
                     {{ block.value.source|ub_richtext }}
                 {% elif block.block_type == 'image' %}
                     <section class="block-{{ block.block_type }}" >
                         {{ block }}
                         <p class="image-description"> {{ block.value }}</p>
                     </section>
-                {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                    {{ block }}
-                {% else %}
+               {% else %}
                     <section class="block-{{ block.block_type }}" >
                         {{ block }}
                     </section>

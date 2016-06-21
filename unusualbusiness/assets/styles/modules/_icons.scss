@@ -106,8 +106,12 @@
   }
 }
 
-.is-running * {
-  //animation-iteration-count: 1 !important;
+.is-running svg circle,
+.is-running svg path,
+.is-running svg g,
+.is-running svg line,
+.is-running svg polygon,
+.is-running svg rect {
   animation-play-state: running !important;
 }
 
