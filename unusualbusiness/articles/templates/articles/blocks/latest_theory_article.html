@@ -3,20 +3,15 @@
 
 {% block list_item_classes %}{{ list_item_classes }} latest-theory-article{% endblock %}
 
-{% block below_title %}Hello
+{% block below_title %}
     {% if page.author %}
         <div class="latest-article-author">
             {{ page.author }}
         </div>
     {% endif %}
-    <div class="latest-article-introduction">
-        {% if page.introduction %}
-            {{ page.introduction.value|truncatewords:30 }}
-        {% endif %}
-        {% if page.introduction %}
-            <div class="article-introduction" id="introduction">
-                {{ page.introduction|truncatewords:30 }}
-            </div>
-        {% endif %}
-    </div>
+    {% if page.introduction %}
+        <div class="latest-article-introduction">
+            {{ page.introduction|truncatewords:30 }}
+        </div>
+    {% endif %}
 {% endblock %}
