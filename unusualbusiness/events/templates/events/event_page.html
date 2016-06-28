@@ -30,7 +30,7 @@
 
         <div class="l-article-header-meta article-header-meta">
             <div class="l-article-header-meta-left-bottom">
-                <svg width="32px" height="32px" class="article-format-icon organization-icon white-icon" >
+                <svg width="24px" height="24px" class="article-format-icon organization-icon white-icon" >
                   <use xlink:href="#upcoming-event-white-icon" />
                 </svg>
             </div>
@@ -111,7 +111,7 @@
                     {% if page.end_date %}
                         - {{ page.end_date|time:"h:i" }}
                     {% endif %}
-                    {% trans ", inloop van" %}
+                    {% trans ", inloop vanaf" %}
                     {{ page.doors_open_from|time:"h:i" }}
                 </span>
             </div>

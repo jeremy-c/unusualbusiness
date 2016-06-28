@@ -24,7 +24,7 @@ let Article = () => {
 
   let initStickyTOC = function() {
     $(".toc-wrapper ").sticky({
-      topSpacing:100,
+      topSpacing: 100,
       bottomSpacing: 2500
     });
   };

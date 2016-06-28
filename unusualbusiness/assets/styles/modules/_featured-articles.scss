@@ -28,7 +28,8 @@
   width: 100%;
   height: 393px;
 
-  transition: all .1s ease-in;
+  transition: forwards .1s ease-in;
+  transition: backwards .5s ease-in;
 
   text-decoration: none;
 
@@ -137,7 +138,7 @@
 
 .l-featured-article-preview-title-wrapper {
   align-self: flex-start;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   padding: 0 23px;
   width: 100%;
 

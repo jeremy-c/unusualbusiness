@@ -33,10 +33,10 @@
 }
 
 .l-home {
-  margin: 0 80px;
+  margin: 0 80px 80px;
 
   @media(max-width: $tablet) {
-    margin: 0;
+    margin: 0 0 $gutter * 2;
   }
 }
 
@@ -97,8 +97,12 @@
   width: 100%;
   max-width: $tablet;
 
+  @media(max-width: $boxed) {
+    padding-left: 0;
+  }
+
   @media(max-width: $tablet-horizontal) {
-    padding-top: 0;
+    //padding-top: 0;
   }
 
   @media(max-width: $tablet) {

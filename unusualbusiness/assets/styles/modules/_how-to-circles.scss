@@ -53,6 +53,7 @@
   }
 }
 
+
 .how-to-satellite {
   display: block;
   width: 100%;
@@ -170,6 +171,10 @@
   stroke-width:6;
   stroke-miterlimit:10;
   stroke: $light-gray;
+
+  .main-menu-how-to-circles & {
+    stroke-width: 10px;
+  }
 }
 
 

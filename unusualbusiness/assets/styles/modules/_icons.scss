@@ -91,6 +91,13 @@
   }
 }
 
+.theory-icon {
+  padding-top: 15px !important;
+  width: 17.4px;
+  height: 17.6px;
+}
+
+
 .is-running svg * {
   animation-play-state: running !important;
 }
@@ -154,6 +161,10 @@
   animation-duration: 2s;
   animation-timing-function: linear;
   animation-fill-mode: both;
+}
+
+#handvat {
+  @extend .stroke-line-join;
 }
 
 #middenstreepje {
@@ -418,57 +429,54 @@
 }
 
 @-webkit-keyframes spreek-b {
-  0%, 17%, 78%, 100% {
+  10%, 17%, 78%, 92% {
     opacity: 0;
     transform: translate(0,0);
   }
 
-  20%, 25%, 45%, 75% {
+  0%, 7%, 20%, 25%, 45%, 75%, 100% {
     opacity: 1;
     transform: translate(0px,0);
   }
 
-  30%, 50% {
-    opacity: 1;
-    transform: translate(1px,-1px);
+    30%, 50%, 95% {
+      opacity: 1;
+      transform: translate(1px,-1px);
   }
-
 }
 
 @-webkit-keyframes spreek-m {
-  0%, 17%, 78%, 100% {
+  10%, 17%, 78%, 92% {
     opacity: 0;
     transform: translate(0,0);
   }
 
-  20%, 25%, 45%, 75% {
+  0%, 7%, 20%, 25%, 45%, 75%, 100% {
     opacity: 1;
     transform: translate(0px,0);
   }
 
-  30%, 50% {
+  30%, 50%, 95% {
     opacity: 1;
     transform: translate(1px,0px);
   }
-
 }
 
 @-webkit-keyframes spreek-o {
-  0%, 17%, 78%, 100% {
+  10%, 17%, 78%, 92% {
     opacity: 0;
     transform: translate(0,0);
   }
 
-  20%, 25%, 45%, 75% {
+  0%, 7%, 20%, 25%, 45%, 75%, 100% {
     opacity: 1;
     transform: translate(0px,0);
   }
 
-  30%, 50% {
+  30%, 50%, 95% {
     opacity: 1;
     transform: translate(1px,1px);
   }
-
 }
 
 @-webkit-keyframes wiggle {

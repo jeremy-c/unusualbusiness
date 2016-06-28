@@ -40,6 +40,12 @@
       margin: $gutter;
     }
   }
+
+  .article-image {
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
 }
 
 .featured-agenda-date {

@@ -13,6 +13,9 @@ let Slider = () => {
       centerPadding: '8px',
       dots: true,
       accessibility: true,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      speed: 700,
       responsive: [ {
 
           breakpoint: 768,
@@ -30,6 +33,7 @@ let Slider = () => {
       asNavFor: '#agenda-carousel-preview',
       focusOnSelect: true,
       accessibility: true,
+      adaptiveHeight: true,
       // the magic
       responsive: [ {
 

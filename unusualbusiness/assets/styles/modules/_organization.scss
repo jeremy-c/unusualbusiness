@@ -43,7 +43,7 @@
 }
 
 .organization-contact-info {
-  margin: 0 0 $gutter 0;
+  margin: $gutter 0;
   border-top: solid 8px $black;
   border-bottom: solid 8px $black;
   padding: $gutter;
@@ -103,6 +103,7 @@
 }
 
 .l-organization-map {
+  padding-top: $gutter;
   margin-bottom: $gutter;
 }
 

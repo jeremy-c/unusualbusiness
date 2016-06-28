@@ -129,7 +129,7 @@
 .article-introduction {
   margin-right: 150px;
 
-  padding: 0 $gutter;
+  padding: 0 $gutter $gutter 0;
 
   transition: all .5s ease-in-out;
 
@@ -154,6 +154,7 @@
 
     @media(min-width: $boxed + 100px) {
       margin-left: inherit;
+      padding: 0 $gutter $gutter 0;
     }
   }
 
@@ -168,21 +169,24 @@
   .is-open-toc-panel & {
     box-sizing: border-box;
     margin: 0 0 0 auto;
-    padding: 0 $gutter;
+    padding: 0 $gutter $gutter;
     width: 100%;
     max-width: $tablet;
+  }
+
+  @media(max-width: $boxed + 100px) {
+    padding: 0 $gutter $gutter $gutter * 2;
   }
 
   @media(max-width: $boxed) {
     box-sizing: border-box;
     margin: 0 0 0 auto;
-    padding: 0 $gutter;
     width: 100%;
     max-width: $tablet;
   }
 
   @media(max-width: $tablet) {
-    padding: 0;
+    padding: $gutter / 2 0;
     font-size: 4.5vw;
   }
 
@@ -305,62 +309,29 @@
   margin: $gutter 0;
 }
 
-.article-body li {
-  margin: $gutter 0;
-
-  font-size: 28px;
-  line-height: 1.5em;
-  font-family: $open-sans;
-
-  @media(max-width: $tablet) {
-    margin: $gutter / 2 0;
-    font-size: 5vw;
-  }
-}
-
+.article-body ol li,
 .article-body ul li {
-  margin-left: 100px;
+  margin-left: 40px;
+  padding-right: 10px;
 
-  &:before {
-    display: block;
-    margin: 0 0 $gutter -100px;
-    height: 8px;
-    width: 163px;
-    content: ' ';
-    background-color: $yellow;
+  .theory-article & {
+    color: $green;
   }
 
-  @media(max-width: $tablet) {
-    margin-left: $gutter;
+  .story-article & {
+    color: $yellow;
+  }
 
-    &:before {
-      margin: 0 0 $gutter / 2 calc(-1* var(--gutter));
-    }
+  .event-article &,
+  .news-article & {
+    color: $blue;
+  }
+
+  &:before {
+    content: '-';
   }
 }
 
-.article-body ol li {
-  margin-left: 60px;
-
-  &:before {
-    display: block;
-    margin: 0 0 -8px -100px;
-    padding-top: $gutter;
-    height: 8px;
-    width: 163px;
-    content: ' ';
-    border-top: solid $yellow 8px;
-  }
-
-  @media(max-width: $tablet) {
-    margin-left: 0;
-
-    &:before {
-      margin-left: 0;
-      padding-top: $gutter / 2;
-    }
-  }
-}
 
 .rich-text img {
   max-width: 100%;
@@ -377,7 +348,7 @@
   }
 
   @media(max-width: $tablet) {
-    margin: 0 calc(-1 * var(--gutter));
+    margin: $gutter / 2 calc(-1 * var(--gutter)) 0;
   }
 }
 
@@ -472,4 +443,8 @@
   .featured-agenda-item .p-name {
     padding-right: $gutter / 2;
   }
+}
+
+.richtext-image {
+  padding-top: $gutter;
 }

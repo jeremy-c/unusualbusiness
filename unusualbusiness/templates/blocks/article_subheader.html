@@ -1,8 +1,7 @@
 {% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
 
-
 <div class="article-subheader">
-    <a href="{{ parent.url_path }}" class="back-link">All {{ parent.title }}</a>
+    <a href="{{ parent.url_path }}" class="back-link">{% trans "All" %} {{ parent.title }}</a>
     <ul class="social-links-list">
         <li class="social-list-item ">
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button"

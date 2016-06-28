@@ -17,7 +17,8 @@ from unusualbusiness.organizations.models import OrganizationPage
 class HowToPage(Page):
     description = RichTextField(
         verbose_name = _("Description"),
-        null=True
+        null=True,
+        blank=True,
     )
     featured_image = models.ForeignKey(
         'wagtailimages.Image',

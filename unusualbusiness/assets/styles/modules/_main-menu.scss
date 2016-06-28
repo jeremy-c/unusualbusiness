@@ -299,9 +299,16 @@
     @media(max-width: $tablet) {
       text-align: center;
     }
+
+    circle {
+      stroke-width: 10px;
+    }
   }
 
   .how-to-circles-icon {
+    width: 51px;
+    height: 51px;
+
     @media(max-width: $tablet) {
       padding-left: 2px;
       height: 82%;
