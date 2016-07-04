@@ -5,6 +5,8 @@
 
 'use strict';
 
+// Imports
+import General from './modules/general';
 import Grid from './modules/grid';
 import Navbars from './modules/navbar';
 import Article from './modules/article';
@@ -15,17 +17,9 @@ import Organization from './modules/organization';
 import HowTo from './modules/how-to';
 import Icons from './modules/icons';
 import MobileMenu from './modules/mobile-menu';
-import smoothScroll from 'smooth-scroll';
 
 (function() {
   console.log('Main: go!');
-
-  $.expr[':'].external = function(obj){
-      return !obj.href.match(/^mailto\:/)
-             && (obj.hostname != location.hostname)
-             && !obj.href.match(/^javascript\:/)
-             && !obj.href.match(/^$/)
-  };
 
   $(document).ready(function() {
     console.log('Main: Document ready go!');
@@ -52,20 +46,12 @@ import smoothScroll from 'smooth-scroll';
   $(window).ready(function() {
     console.log('Main: Window ready go!');
 
+    let general = General();
     let howTo = HowTo();
     let icons = Icons();
+
+    general.init();
     icons.init();
     howTo.init();
-
-    smoothScroll.init({
-      selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
-      selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
-      speed: 500, // Integer. How fast to complete the scroll in milliseconds
-      easing: 'easeInOutCubic', // Easing pattern to use
-      offset: 28, // Integer. How far to offset the scrolling anchor location in pixels
-      updateURL: true, // Boolean. If true, update the URL hash on scroll
-      callback: function ( anchor, toggle ) {} // Function to run after scrolling
-    });
-
   });
 })();
