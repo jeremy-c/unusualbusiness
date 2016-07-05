@@ -69,7 +69,7 @@ let Slider = () => {
     if($featuredArticlesCarousel.length > 0) {
       $featuredArticlesCarousel.slick(featuredArticlesSlickCarouselSettings);
     }
-    
+
     let $agendaCarousel = $('#agenda-carousel');
     if($agendaCarousel.length > 0) {
       $agendaCarousel.slick(agendaCarouselSettings);

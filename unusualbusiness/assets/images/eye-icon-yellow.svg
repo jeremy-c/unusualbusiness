@@ -5,10 +5,10 @@
 	 width="28px" height="28px" viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
     <circle style="opacity:0.98;fill:#d6dff1;" cx="14" cy="14" r="14"/>
     <g>
-        <path style="fill:none;stroke-width:1.1662;stroke-miterlimit:10;" d="M20.684,12.552
+        <path style="fill:none;stroke:#ffa700;stroke-width:1.1662;stroke-miterlimit:10;" d="M20.684,12.552
             c-1.818-1.37-3.984-2.197-6.328-2.273c-2.344-0.076-4.559,0.608-6.462,1.857"/>
-        <path style="fill:none;stroke-width:1.1662;stroke-miterlimit:10;" d="M7.771,15.941
+        <path style="fill:none;stroke:#ffa700;stroke-width:1.1662;stroke-miterlimit:10;" d="M7.771,15.941
             c1.818,1.37,3.984,2.197,6.328,2.273c2.343,0.076,4.558-0.608,6.462-1.857"/>
-        <circle style="fill:none;stroke-width:1.1662;stroke-miterlimit:10;" cx="14.249" cy="13.505" r="2.923"/>
+        <circle style="fill:none;stroke:#ffa700;stroke-width:1.1662;stroke-miterlimit:10;" cx="14.249" cy="13.505" r="2.923"/>
     </g>
 </svg>

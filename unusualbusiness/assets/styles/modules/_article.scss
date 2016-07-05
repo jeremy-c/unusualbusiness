@@ -276,6 +276,24 @@
     vertical-align: top;
   }
 
+  &.article-inline-link-definition:after,
+  &.article-inline-link-theoryarticle:after {
+    @include sprite(eye-icon-green);
+  }
+
+  &.article-inline-link-storyarticle:after {
+    @include sprite(eye-icon-yellow);
+  }
+
+  &.article-inline-link-event:after,
+  &.article-inline-link-newsarticle:after {
+    @include sprite(eye-icon-blue);
+  }
+
+  &.article-inline-link-organization:after {
+    @include sprite(eye-icon-black);
+  }
+
   &.article-inline-link-event,
   &.article-inline-link-newsarticle {
     color: $blue;
@@ -293,6 +311,7 @@
   &.article-inline-link-storyarticle {
     color: $yellow;
   }
+
 }
 
 .article-footnote-link {
