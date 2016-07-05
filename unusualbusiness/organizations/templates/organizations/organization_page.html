@@ -1,5 +1,5 @@
 {% extends "article_base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
+{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags i18n %}
 
 {% block extra_js %}
 {% endblock %}
@@ -35,7 +35,7 @@
                 </svg>
             </div>
             <div class="l-article-header-meta-left-bottom-text">
-                Collective
+                {% trans "Practitioner" %}
             </div>
         </div>
     </header>
@@ -144,7 +144,7 @@
     {% if related_how_tos %}
     <section class="related-howtos">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >This practitioner has been featured in:</h3>
+            <h3 class="article-section-title" >{% trans "This practitioner has been featured in:" %}</h3>
             <ul class="l-columns">
                 {% for how_to in related_how_tos %}
                     {% include "howtos/blocks/related_howto.html" %}
@@ -157,7 +157,7 @@
     {% if related_story_articles %}
     <section class="related-articles">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Practitioner stories:</h3>
+            <h3 class="article-section-title" >{% trans "Practitioner stories:" %}</h3>
             <ul class="l-grid grid-packery">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
