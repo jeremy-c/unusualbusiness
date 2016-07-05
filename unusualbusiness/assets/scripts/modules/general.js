@@ -9,16 +9,24 @@ import smoothScroll from 'smooth-scroll';
 
 let General = () => {
 
-    let initExternalLinks = function () {    
-      $.expr[':'].external = function(obj){
-          return !obj.href.match(/^mailto\:/)
+    let initExternalLinks = function () {
+        $.expr[':'].external = function(obj){
+            return !obj.href.match(/^mailto\:/)
                  && (obj.hostname != location.hostname)
                  && !obj.href.match(/^javascript\:/)
                  && !obj.href.match(/^$/)
-      };        
+        };
+
+        $('a:external')
+            .attr('target', '_blank');
+
+        $('a:external')
+            .not('.facebook-link')
+            .not('.twitter-link')
+            .addClass('external-link');
     };
-    
-    let initSmoothScroll = function () {     
+
+    let initSmoothScroll = function () {
         smoothScroll.init({
           selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
           selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
@@ -29,16 +37,16 @@ let General = () => {
           callback: function ( anchor, toggle ) {} // Function to run after scrolling
         });
     };
-    
-  let init = function() {
-    console.log('General go!');
-    initSmoothScroll();
-    initExternalLinks();
-  };
 
-  return {
-    init: init
-  };
+    let init = function() {
+        console.log('General go!');
+        initSmoothScroll();
+        initExternalLinks();
+    };
+
+    return {
+        init: init
+    };
 };
 
 export default General;

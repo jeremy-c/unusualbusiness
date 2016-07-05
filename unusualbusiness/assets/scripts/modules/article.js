@@ -23,10 +23,14 @@ let Article = () => {
   };
 
   let initStickyTOC = function() {
-    $(".toc-wrapper ").sticky({
-      topSpacing: 100,
-      bottomSpacing: 2500
-    });
+    if($.fn.sticky !== undefined) {
+      $(".toc-wrapper ").sticky({
+        topSpacing: 100,
+        bottomSpacing: 2500
+      });
+    } else {
+      console.error('jQuery sticky not defined');
+    }
   };
 
   let initTOC = function() {
@@ -100,16 +104,6 @@ let Article = () => {
       articleFootnoteLink.after($(this).detach());
     });
   };
-
-  let initExternalLinks = function() {
-    $('a:external')
-        .attr('target', '_blank');
-    $('a:external')
-        .not('.facebook-link')
-        .not('.twitter-link')
-        .addClass('external-link');
-  };
-
   let initSocialLinks = function() {
     let $moreSocialLink = $('.more-social-link');
     let $socialListItem = $('.social-list-item');
@@ -188,13 +182,16 @@ let Article = () => {
 
   let init = function() {
     console.log('Article go!');
+
     initArticleNotes();
     initInlineArticleLinks();
+
+    // Only with theory article
     if( $('body').hasClass('theory-article')) {
       initTOC();
     }
+
     initAuthorPane();
-    initExternalLinks();
     initSocialLinks();
     initSocialLinksModal();
     initCopyUrlToClipboard();

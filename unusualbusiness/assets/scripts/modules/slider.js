@@ -4,6 +4,8 @@
 
 'use strict';
 
+import slick from 'slick-carousel';
+
 let Slider = () => {
 
   let initSlider = function() {
@@ -62,15 +64,25 @@ let Slider = () => {
       accessibility: false
     };
 
-    if($.fn.slick !== undefined) {
-      $('#featured-articles-carousel').slick(featuredArticlesSlickCarouselSettings);
-      $('#agenda-carousel').slick(agendaCarouselSettings);
-      $('#agenda-carousel-preview').slick(agendaPreviewCarouselSettings);
+
+    let $featuredArticlesCarousel = $('#featured-articles-carousel');
+    if($featuredArticlesCarousel.length > 0) {
+      $featuredArticlesCarousel.slick(featuredArticlesSlickCarouselSettings);
+    }
+    
+    let $agendaCarousel = $('#agenda-carousel');
+    if($agendaCarousel.length > 0) {
+      $agendaCarousel.slick(agendaCarouselSettings);
+    }
+
+    let $agendaCarouselPreview = $('#agenda-carousel-preview');
+    if($agendaCarouselPreview.length > 0) {
+      $agendaCarouselPreview.slick(agendaPreviewCarouselSettings);
     }
   };
 
   let init = function () {
-    console.log('Featured Articles go!');
+    console.log('Slider go!');
     initSlider();
   };
 

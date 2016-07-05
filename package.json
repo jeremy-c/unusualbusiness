@@ -61,6 +61,7 @@
     "imagesloaded": "^4.1.0",
     "isotope-layout": "^2.2.2",
     "jquery": "^2.2.3",
+    "slick-carousel": "^1.6.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "tocbot": "^2.1.2"
   },
