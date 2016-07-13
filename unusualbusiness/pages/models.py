@@ -43,15 +43,17 @@ class HomePage(Page):
         'pages.GeneralPage',
     ]
 
-    def serve(self, request):
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
 
-        return render(request, self.template, {
-            'page': self,
-            'articles': HomePage.pages(),
-            'featured_articles': HomePage.featured_articles(),
-            'upcoming_event': EventPage.upcoming_event(),
-            'how_tos': HowToPage.objects.all().live(),
-        })
+        context['page'] = self
+        context['self'] = self
+        context['articles'] = HomePage.pages()
+        context['featured_articles'] = HomePage.featured_articles()
+        context['upcoming_event'] = EventPage.upcoming_event()
+        context['how_tos'] = HowToPage.objects.all().live()
+
+        return context
 
     content_panels = Page.content_panels + [
         InlinePanel('static_content_placements', label="Static Content"),
@@ -133,6 +135,13 @@ class GeneralPage(Page):
     class Meta:
         verbose_name = _("Page")
         verbose_name_plural = _("Pages")
+
+    def get_context(self, request):
+        context = super(GeneralPage, self).get_context(request)
+        
+        context['self'] = self
+
+        return context
 
     def __featured_item(self, block_type='featured_image'):
         for stream_child in self.featured:

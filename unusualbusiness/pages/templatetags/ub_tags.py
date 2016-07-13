@@ -67,12 +67,11 @@ def footer_menu(context, parent, calling_page=None):
     #                        if calling_page else False)
     about_page = menuitems.filter(slug='about').first()
     return {
-        'calling_page': calling_page,
         'menuitems': menuitems,
         'about_page': about_page,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
-        'self': context['self'],
+        'self': calling_page,
     }
 
 # Retrieves the top menu items - the immediate children of the parent page
@@ -93,13 +92,12 @@ def navbar_menu(context, parent, calling_page=None):
     research_overview = menuitems.filter(slug='research-overview').first()
 
     return {
-        'calling_page': calling_page,
         'menuitems': menuitems,
         'about_page': about_page,
         'research_overview': research_overview,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
-        'self': context['self'],
+        'self': calling_page,
     }
 
 
