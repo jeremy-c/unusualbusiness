@@ -330,8 +330,7 @@
 
 .article-body ol li,
 .article-body ul li {
-  margin-left: 40px;
-  padding-right: 10px;
+  margin-left: 10px;
 
   .theory-article & {
     color: $green;
@@ -345,9 +344,26 @@
   .news-article & {
     color: $blue;
   }
+}
+
+.article-body ol {
+  padding-left: 30px;
+
+  li {
+    padding-left: 5px;
+  }
+}
+
+.article-body ul li {
+  padding-right: 10px;
+  padding-left: 10px;
 
   &:before {
-    content: '-';
+    content: '•';
+    padding-right: 10px;
+
+    font-size: 34px;
+    vertical-align: middle;
   }
 }
 
