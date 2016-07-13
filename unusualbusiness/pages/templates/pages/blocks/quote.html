@@ -1,4 +1,10 @@
 <div class="quote">
+{% if quote.link %}
+    <a href="{{ quote.link }}" class="pullquote-link">
+{% endif %}
     <blockquote class="quote-text">“{{ quote.quote }}”</blockquote>
     <cite class="quote-author">{{ quote.author }}</cite>
+{% if quote.link %}
+    </a>
+{% endif %}
 </div>
