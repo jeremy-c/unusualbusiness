@@ -19,4 +19,9 @@
 
 .l-featured-articles {
   width: 100%;
+  height: 423px;
+
+  @media (max-width: $tablet) {
+    height: 340px;
+  }
 }

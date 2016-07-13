@@ -26,27 +26,25 @@
 
   text-decoration: none;
 
-  &:hover:after,
-  &:active:after {
-    @include sprite(chevron-white-icon);
-    content: '';
-    margin-left: $gutter;
-    padding-right: 3px;
+  &:hover,
+  &:active {
+    .upcoming-related-event-chevron {
+      padding-right: 0;
+    }
   }
+}
+
+.upcoming-related-event-chevron {
+  box-sizing: border-box;
+  display: block;
+  margin-left: 24px;
+  padding-right: 3px;
+  width: 40px;
+  transition: all 100ms ease-in;
 
   @media(max-width: $tablet) {
-    &:after {
-      @include sprite(chevron-white-icon);
-      transition: all 100ms ease-in;
-      content: '';
-      margin-left: 10px;
-      padding-right: 3px;
-    }
-
-    &:hover:after,
-    &:active:after {
-      margin-left: 10px;
-    }
+    margin-left: 0;
+    width: 20px;
   }
 }
 

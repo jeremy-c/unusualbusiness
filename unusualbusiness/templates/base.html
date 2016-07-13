@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar ub_tags i18n %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -55,9 +55,11 @@
 
         {% wagtailuserbar %}
 
+        {% get_site_root as site_root %}
+
         {% include "blocks/svg_include.html" %}
 
-        {% include "blocks/navbar.html" %}
+        {% navbar_menu parent=site_root calling_page=self %}
 
         {% block extra_navbar %}
         {% endblock %}
@@ -71,7 +73,7 @@
             </section>
             <!--/#l-content-->
 
-            {% include "blocks/footer.html" %}
+        {% footer_menu parent=site_root calling_page=self %}
 
         </div>
         <!--/#l-wrapper-->

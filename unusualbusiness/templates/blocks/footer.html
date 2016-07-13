@@ -1,12 +1,12 @@
-
 {% load i18n ub_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 {% get_language_info for LANGUAGE_CODE as lang %}
 
-<footer class="l-footer footer">
+<footer class="l-footer footer" id="footer">
 
     <div class="l-footer-element ub-logo-footer">
         <p class="ub-logo-footer-text">
-            <a href="/{{ lang.code }}/" >
+            <a href="{{ parent.specific.url_path }}"  title="{{ parent.title }}" >
                 <svg width="172.645px" height="96.919px" class="ub-logo-large"  >
                     <title>Unusual Business logo</title>
                     <desc>Click to go home</desc>
@@ -18,34 +18,34 @@
 
     <div class="l-footer-element page-links">
         <ul>
-            <li><a href="{% slugurl 'research-overview' %}" class="">{% slugname 'research-overview' %}</a></li>
-            <li><a href="{% slugurl 'activity' %}" class="">{% slugname 'activity' %}</a></li>
-            <li><a href="{% slugurl 'practitioners' %}" class="">{% slugname 'practitioners' %}</a></li>
-            <li><a href="{% slugurl 'stories' %}" class="">{% slugname 'stories' %}</a></li>
-            <li><a href="{% slugurl 'theory' %}" class="">{% slugname 'theory' %}</a></li>
+        {% for menuitem in menuitems %}
+            {% if menuitem.specific.content_type.model != 'generalpage'  %}
+                <li><a href="{{ menuitem.specific.url_path }}">{{ menuitem.specific.title }}</a></li>
+            {% endif %}
+        {% endfor %}
         </ul>
     </div>
 
     <div class="l-footer-element about-links">
         <ul>
-            <li><a href="{% slugurl 'about' %}" class="">{% slugname 'about' %}</a></li>
-            <li><a href="{% slugurl 'about' %}#why" class="">{% trans "Why this website?" %}</a></li>
-            <li><a href="{% slugurl 'about' %}#how" class="">{% trans "How does this site work?" %}</a></li>
-            <li><a href="{% slugurl 'about' %}#who" class="">{% trans "Who are we?" %}</a></li>
-            <li><a href="{% slugurl 'about' %}#me" class="">{% trans "How can I get involved?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}">{{ about_page.specific.title }}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#why">{% trans "Why this website?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#how">{% trans "How does this site work?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#who">{% trans "Who are we?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#me">{% trans "How can I get involved?" %}</a></li>
         </ul>
     </div>
 
     <div class="l-footer-element contact-links">
         <ul>
             <li class="contact-links-search is-hidden">
-                <a href="/search/" class=" ">{% trans "Search" %}</a>
+                <a href="{% url 'wagtailsearch_search' %}" class=" ">{% trans "Search" %}</a>
             </li>
             <li class="contact-links-contact">
-                <a href="{% slugurl 'about' %}#contact" class=""></a>
+                <a href="{{ about_page.specific.url_path }}#contact" class="">{% trans "Contact us" %}</a>
             </li>
             <li class="contact-links-newsletter">
-                <a href="{% slugurl 'about' %}#newsletter" class="contact-links-newsletter-link">{% trans "Newsletter" %}</a>
+                <a href="{{ about_page.specific.url_path }}#newsletter" class="contact-links-newsletter-link">{% trans "Newsletter" %}</a>
             </li>
             <li class="contact-links-facebook">
                 <a href="https://www.facebook.com/unusualbusinessutrecht/" class="">{% trans "Facebook" %}</a>

@@ -52,6 +52,56 @@ def slugurl(context, slug):
         return None
 
 
+# Retrieves the top menu items - the immediate children of the parent page
+# The has_menu_children method is necessary because the bootstrap menu requires
+# a dropdown class to be applied to a parent
+@register.inclusion_tag('blocks/footer.html', takes_context=True)
+def footer_menu(context, parent, calling_page=None):
+    menuitems = parent.get_children().live().in_menu()
+    for menuitem in menuitems:
+        menuitem.show_dropdown = has_menu_children(menuitem)
+        # We don't directly check if calling_page is None since the template
+        # engine can pass an empty string to calling_page
+        # if the variable passed as calling_page does not exist.
+        menuitem.active = (calling_page.url.startswith(menuitem.url)
+                           if calling_page else False)
+    about_page = menuitems.filter(slug='about').first()
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
+        'about_page': about_page,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+# Retrieves the top menu items - the immediate children of the parent page
+# The has_menu_children method is necessary because the bootstrap menu requires
+# a dropdown class to be applied to a parent
+@register.inclusion_tag('blocks/navbar.html', takes_context=True)
+def navbar_menu(context, parent, calling_page=None):
+    menuitems = parent.get_children().live().in_menu()
+    for menuitem in menuitems:
+        menuitem.show_dropdown = has_menu_children(menuitem)
+        # We don't directly check if calling_page is None since the template
+        # engine can pass an empty string to calling_page
+        # if the variable passed as calling_page does not exist.
+        menuitem.active = (calling_page.url.startswith(menuitem.url)
+                           if calling_page else False)
+
+    about_page = menuitems.filter(slug='about').first()
+    research_overview = menuitems.filter(slug='research-overview').first()
+
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
+        'about_page': about_page,
+        'research_overview': research_overview,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
+
 @register.simple_tag(takes_context=True)
 def slugname(context, slug):
     """Returns the URL for the page that has the given slug."""
