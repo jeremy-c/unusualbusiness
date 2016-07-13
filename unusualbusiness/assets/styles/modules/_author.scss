@@ -5,20 +5,16 @@
 @import "../base/base";
 
 .author {
-  z-index: -1;
-  position: relative;
-  top: -272px;
-  height: auto;
-  overflow: hidden;
-
+  display: none;
   animation-duration: .3s;
   animation-delay: 0s;
+  transition: all 300ms ease-in-out;
 
   background-color: $verylight-gray;
-}
 
-.is-hidden-author {
-  display: none;
+  .fr-accordion--is-ready & {
+    display: inherit;
+  }
 }
 
 .l-author {

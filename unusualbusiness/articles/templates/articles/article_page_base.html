@@ -65,12 +65,12 @@
 {% block below_header %}
 
     {% if self.author %}
-        <a href="#" class="l-open-author-pane-button open-author-pane-button" >
+        <a href="#" class="l-open-author-pane-button open-author-pane-button fr-accordion__header js-fr-accordion__header" id="accordion-header-1">
             <label class="article-header-label">{% trans "by" %}</label>
             <span class="article-header-author-name">{{ self.author }}</span>
         </a>
-        <section class="author is-visuallyhidden animated">
-            <div class="l-boxed l-author">
+        <section id="accordion-panel-1" class="fr-accordion__panel js-fr-accordion__panel author" >
+            <div class="l-boxed l-author fr-accordion__inner">
                 <h3 class="is-hidden" >About</h3>
                 <div class="author-photo">
                     {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}

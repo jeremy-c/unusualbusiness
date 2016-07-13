@@ -7,6 +7,7 @@
 import gumshoe from 'gumshoe';
 import Clipboard from 'clipboard';
 import tocbot from 'tocbot';
+import Fraccordion from './../vendor/accordion';
 
 let Article = () => {
   let initInlineArticleLinks = function() {
@@ -69,10 +70,43 @@ let Article = () => {
     });
   };
 
-  let initAuthorPane = function() {
-    let articleInlineLinks = $('.open-author-pane-button');
+  let initFraccordion = function () {
+    var myAccordion = Fraccordion({
+      // String - Outer container selector, hook for JS init() method
+      selector: '.js-fr-accordion',
 
-    articleInlineLinks.on('click', function() {
+      // String - Accordion header elements converted to focusable, togglable elements
+      headerSelector: '.js-fr-accordion__header',
+
+      // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
+      headerIdPrefix: 'accordion-header',
+
+      // String - Accordion panel elements to expand/collapse
+      panelSelector: '.js-fr-accordion__panel',
+
+      // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
+      panelIdPrefix: 'accordion-panel',
+
+      // Boolean - If set to false, all accordion panels will be closed on init()
+      firstPanelsOpenByDefault: false,
+
+      // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
+      multiselectable: false,
+
+      // String - Class name that will be added to the selector when the component has been initialised
+      readyClass: 'fr-accordion--is-ready',
+
+      // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
+      transitionLength: 250
+    });
+
+  };
+
+
+  let initAuthorPane = function() {
+    let $articleInlineLinks = $('#open-author-pane-button');
+
+    $articleInlineLinks.on('click', function() {
       $(this).toggleClass('is-opened-button');
       let $authorElement = $('.author');
       let articleContentElement = $('.article-content');
@@ -191,7 +225,8 @@ let Article = () => {
       initTOC();
     }
 
-    initAuthorPane();
+    // initAuthorPane();
+    initFraccordion();
     initSocialLinks();
     initSocialLinksModal();
     initCopyUrlToClipboard();
