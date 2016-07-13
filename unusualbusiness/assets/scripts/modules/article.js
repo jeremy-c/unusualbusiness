@@ -7,7 +7,7 @@
 import gumshoe from 'gumshoe';
 import Clipboard from 'clipboard';
 import tocbot from 'tocbot';
-import Fraccordion from './../vendor/accordion';
+import Fraccordion from '../vendor/accordion';
 
 let Article = () => {
   let initInlineArticleLinks = function() {
@@ -100,33 +100,6 @@ let Article = () => {
       transitionLength: 250
     });
 
-  };
-
-
-  let initAuthorPane = function() {
-    let $articleInlineLinks = $('#open-author-pane-button');
-
-    $articleInlineLinks.on('click', function() {
-      $(this).toggleClass('is-opened-button');
-      let $authorElement = $('.author');
-      let articleContentElement = $('.article-content');
-
-      if( $authorElement.hasClass('is-visuallyhidden') ) {
-        $authorElement.removeClass('is-visuallyhidden');
-        $authorElement.toggleClass('slideInDown is-author-clicked');
-      } else {
-        $authorElement.removeClass('slideInDown');
-        $authorElement.addClass('slideOutUp').one(
-            'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function() {
-          $authorElement.removeClass('is-author-clicked');
-          $authorElement.removeClass('slideOutUp');
-          $authorElement.addClass('is-visuallyhidden');
-        });
-      }
-
-      return false;
-    });
   };
 
   let initArticleNotes = function() {
@@ -225,7 +198,6 @@ let Article = () => {
       initTOC();
     }
 
-    // initAuthorPane();
     initFraccordion();
     initSocialLinks();
     initSocialLinksModal();
