@@ -27,6 +27,10 @@
   }
 }
 
+.l-grid-gutter-extra-margin {
+  margin-bottom: $gutter;
+}
+
 .l-grid-gutter-sizer-empty {
   width: auto;
 }
@@ -103,6 +107,11 @@
 
 .l-grid-item-full-width {
   width: 100% !important;
+
+  .how-to &,
+  .story-articles-page & {
+    margin-bottom: $gutter;
+  }
 }
 
 .l-grid-item-half-width {
