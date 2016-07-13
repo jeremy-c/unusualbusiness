@@ -4,7 +4,7 @@
 
 <header class="l-navbar navbar" >
     <div class="ub-logo clearfix">
-        <a href="{{ parent.specific.url_path }}"  title="{{ parent.title }}" class="ub-logo-link start-animation-on-hover" >
+        <a href="/{{ lang.code }}/" title="Home" class="ub-logo-link start-animation-on-hover" >
             <svg class="ub-logo-icon" width="65px" height="65px" >
                 <title>Unusual Business logo</title>
                 <desc>Click to go home</desc>
@@ -15,7 +15,7 @@
     <nav class="l-main-nav" >
         <ul class="l-main-menu" >
             <li class="main-menu-item main-menu-home">
-                <a href="{{ parent.specific.url_path }}"  title="{{ parent.title }}" class="main-menu-item-link main-menu-home-link start-animation-on-hover" >
+                <a href="/{{ lang.code }}/" title="Home" class="main-menu-item-link main-menu-home-link start-animation-on-hover" >
                     <svg width="65px" height="65px" class="menu-icon ub-logo-icon animated fadeIn" >
                         <title>Unusual Business logo</title>
                         <desc>Click to go home</desc>
@@ -106,12 +106,12 @@
             <li class="main-menu-item main-menu-language">
 
                 {% if LANGUAGE_CODE == 'en' %}
-                  <a href="{{ page.url_path_nl }}" class="main-menu-item-link language" >
+                  <a href="{{ self.url_path_nl }}" class="main-menu-item-link language" >
                     <span class="menu-item-short-text">NL</span>
                     <span class="menu-item-text">{% trans "Nederlands" %}</span>
                   </a>
                 {% elif LANGUAGE_CODE == 'nl' %}
-                  <a href="{{ page.url_path_en }}" class="main-menu-item-link language" >
+                  <a href="{{ self.url_path_en }}" class="main-menu-item-link language" >
                     <span class="menu-item-short-text">EN</span>
                     <span class="menu-item-text">{% trans "English" %}</span>
                   </a>

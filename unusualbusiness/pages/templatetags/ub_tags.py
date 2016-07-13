@@ -58,13 +58,13 @@ def slugurl(context, slug):
 @register.inclusion_tag('blocks/footer.html', takes_context=True)
 def footer_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
-    for menuitem in menuitems:
-        menuitem.show_dropdown = has_menu_children(menuitem)
-        # We don't directly check if calling_page is None since the template
-        # engine can pass an empty string to calling_page
-        # if the variable passed as calling_page does not exist.
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
-                           if calling_page else False)
+    # for menuitem in menuitems:
+    #     menuitem.show_dropdown = has_menu_children(menuitem)
+    #     # We don't directly check if calling_page is None since the template
+    #     # engine can pass an empty string to calling_page
+    #     # if the variable passed as calling_page does not exist.
+    #     menuitem.active = (calling_page.url.startswith(menuitem.url)
+    #                        if calling_page else False)
     about_page = menuitems.filter(slug='about').first()
     return {
         'calling_page': calling_page,
@@ -72,6 +72,7 @@ def footer_menu(context, parent, calling_page=None):
         'about_page': about_page,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
+        'self': context['self'],
     }
 
 # Retrieves the top menu items - the immediate children of the parent page
@@ -80,13 +81,13 @@ def footer_menu(context, parent, calling_page=None):
 @register.inclusion_tag('blocks/navbar.html', takes_context=True)
 def navbar_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
-    for menuitem in menuitems:
-        menuitem.show_dropdown = has_menu_children(menuitem)
-        # We don't directly check if calling_page is None since the template
-        # engine can pass an empty string to calling_page
-        # if the variable passed as calling_page does not exist.
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
-                           if calling_page else False)
+    # for menuitem in menuitems:
+    #     menuitem.show_dropdown = has_menu_children(menuitem)
+    #     # We don't directly check if calling_page is None since the template
+    #     # engine can pass an empty string to calling_page
+    #     # if the variable passed as calling_page does not exist.
+    #     menuitem.active = (calling_page.url.startswith(menuitem.url)
+    #                        if calling_page else False)
 
     about_page = menuitems.filter(slug='about').first()
     research_overview = menuitems.filter(slug='research-overview').first()
@@ -98,6 +99,7 @@ def navbar_menu(context, parent, calling_page=None):
         'research_overview': research_overview,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
+        'self': context['self'],
     }
 
 
