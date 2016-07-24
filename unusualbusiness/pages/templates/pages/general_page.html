@@ -8,39 +8,182 @@
 {% block extra_css %}
 {% endblock %}
 
-{% block body_class %}about{% endblock %}
+{% block body_class %}about-page {{ block.super }}{% endblock %}
 
 {% block article_body %}
 
-    <div class="l-boxed">
+    <section class="l-about-page-body">
 
-        {% if page.introduction %}
-            <div class="article-introduction" id="introduction">
-                {{ page.introduction }}
-            </div>
-        {% endif %}
+        <hr>
+        <ul class="l-about-menu">
+            <li class="about-menu-item about-menu-item-green">
+                <a href="#why">Waarom deze website?</a>
+            </li>
+            <li class="about-menu-item about-menu-item-yellow">
+                <a href="#how">Hoe werkt deze website?</a>
+            </li>
+            <li class="about-menu-item about-menu-item-black">
+                <a href="#why">Wie zijn wij?</a>
+            </li>
+            <li class="about-menu-item about-menu-item-blue">
+                <a href="#me">Hoe kan ik betrokken raken?</a>
+            </li>
+        </ul>
 
-        <section class="l-pull-right article-body">
+        <hr>
+        <div class="l-boxed">
+            <h2 id="why" class="about-page-subtitle about-page-subtitle-green">
+                Waarom deze website?
+            </h2>
 
-            {% for block in page.body %}
+            <section class="l-pull-right article-body">
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor. Morbi odio eros,
+                    volutpat ut pharetra vitae, lobortis sed nibh. Tu quoque, Brute, fili mi,
+                    nihil timor populi, nihil! Qui ipsorum lingua Celtae,
+                    nostra Galli appellantur.
+                </p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh.
+                    Tu quoque, Brute, fili mi, nihil timor populi, nihil! Qui ipsorum
+                    lingua Celtae, nostra Galli appellantur.</p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis
+                    sed nibh. Tu quoque, Brute, fili mi, nihil timor populi,
+                    nihil! Qui ipsorum lingua Celtae, nostra Galli appellantur.
+                </p>
+            </section>
+        </div>
 
-                {% if block.block_type == 'paragraph' %}
-                    {{ block.value.source|ub_richtext }}
-                {% elif block.block_type == 'image' %}
-                    <section class="block-{{ block.block_type }}" >
-                        {{ block }}
-                        <p class="image-description"> {{ block.value }}</p>
-                    </section>
-               {% else %}
-                    <section class="block-{{ block.block_type }}" >
-                        {{ block }}
-                    </section>
-                {% endif %}
+        <hr>
 
-            {% endfor %}
+        <div class="l-boxed">
+            <h2 id="how" class="about-page-subtitle about-page-subtitle-yellow">
+                Hoe werkt deze website?
+            </h2>
 
-        </section>
+            <section class="l-pull-right article-body">
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor. Morbi odio eros,
+                    volutpat ut pharetra vitae, lobortis sed nibh. Tu quoque, Brute, fili mi,
+                    nihil timor populi, nihil! Qui ipsorum lingua Celtae,
+                    nostra Galli appellantur.
+                </p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh.
+                    Tu quoque, Brute, fili mi, nihil timor populi, nihil! Qui ipsorum
+                    lingua Celtae, nostra Galli appellantur.</p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis
+                    sed nibh. Tu quoque, Brute, fili mi, nihil timor populi,
+                    nihil! Qui ipsorum lingua Celtae, nostra Galli appellantur.
+                </p>
+            </section>
+        </div>
 
-    </div>
+        <hr>
+
+        <div class="l-boxed">
+            <h2 id="who" class="about-page-subtitle about-page-subtitle-zwart">
+                Wie zijn wij?
+            </h2>
+
+            <section class="l-pull-right article-body">
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor. Morbi odio eros,
+                    volutpat ut pharetra vitae, lobortis sed nibh. Tu quoque, Brute, fili mi,
+                    nihil timor populi, nihil! Qui ipsorum lingua Celtae,
+                    nostra Galli appellantur.
+                </p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh.
+                    Tu quoque, Brute, fili mi, nihil timor populi, nihil! Qui ipsorum
+                    lingua Celtae, nostra Galli appellantur.</p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis
+                    sed nibh. Tu quoque, Brute, fili mi, nihil timor populi,
+                    nihil! Qui ipsorum lingua Celtae, nostra Galli appellantur.
+                </p>
+            </section>
+        </div>
+
+        <hr>
+
+        <div class="l-boxed">
+            <h2 id="me" class="about-page-subtitle about-page-subtitle-event">
+                Hoe kan ik betrokken raken?
+            </h2>
+
+            <section class="l-pull-right article-body">
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor. Morbi odio eros,
+                    volutpat ut pharetra vitae, lobortis sed nibh. Tu quoque, Brute, fili mi,
+                    nihil timor populi, nihil! Qui ipsorum lingua Celtae,
+                    nostra Galli appellantur.
+                </p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh.
+                    Tu quoque, Brute, fili mi, nihil timor populi, nihil! Qui ipsorum
+                    lingua Celtae, nostra Galli appellantur.</p>
+                <p>
+                    Cum sociis natoque penatibus et magnis dis parturient.
+                    Tityre, tu patulae recubans sub tegmine fagi  dolor.
+                    Morbi odio eros, volutpat ut pharetra vitae, lobortis
+                    sed nibh. Tu quoque, Brute, fili mi, nihil timor populi,
+                    nihil! Qui ipsorum lingua Celtae, nostra Galli appellantur.
+                </p>
+            </section>
+        </div>
+
+    </section>
+
+{#    <div class="l-boxed">#}
+{##}
+{#        {% if page.introduction %}#}
+{#            <div class="article-introduction" id="introduction">#}
+{#                {{ page.introduction }}#}
+{#            </div>#}
+{#        {% endif %}#}
+{##}
+{#        <section class="l-pull-right article-body">#}
+{##}
+{#            {% for block in page.body %}#}
+{##}
+{#                {% if block.block_type == 'paragraph' %}#}
+{#                    {{ block.value.source|ub_richtext }}#}
+{#                {% elif block.block_type == 'image' %}#}
+{#                    <section class="block-{{ block.block_type }}" >#}
+{#                        {{ block }}#}
+{#                        <p class="image-description"> {{ block.value }}</p>#}
+{#                    </section>#}
+{#               {% else %}#}
+{#                    <section class="block-{{ block.block_type }}" >#}
+{#                        {{ block }}#}
+{#                    </section>#}
+{#                {% endif %}#}
+{##}
+{#            {% endfor %}#}
+{##}
+{#        </section>#}
+{##}
+{#    </div>#}
 
 {% endblock %}

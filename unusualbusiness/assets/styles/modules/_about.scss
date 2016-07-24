@@ -1,0 +1,73 @@
+/* ==|====================
+   Modules/About
+   ======================= */
+
+@import "../base/base";
+
+.about-page {
+  .article-header {
+    color: $black;
+  }
+
+  .l-about-menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .about-menu-item {
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    &.about-menu-item-green {
+      color: $green;
+    }
+
+    &.about-menu-item-yellow {
+      color: $yellow;
+    }
+
+    &.about-menu-item-black {
+      color: $black;
+    }
+
+    &.about-menu-item-blue {
+      color: $blue;
+    }
+  }
+
+  .l-about-page-body {
+    padding: 0 $gutter;
+
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+  }
+
+  .about-page-subtitle {
+
+    font-size: 34px;
+  }
+
+  .about-page-subtitle-yellow {
+    color: $yellow;
+  }
+
+  .about-page-subtitle-green {
+    color: $green;
+  }
+
+  .about-page-subtitle-blue {
+    color: $blue;
+  }
+
+  .about-page-subtitle-black {
+    color: $black;
+  }
+
+
+
+}

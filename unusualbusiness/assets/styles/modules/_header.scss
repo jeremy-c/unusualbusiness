@@ -35,14 +35,12 @@
     background-color: $black;
   }
 
+  .about-page &,
+  .how-tos-page &,
   .activities-page &,
   .theory-articles-page &,
   .story-articles-page &,
   .organizations-page & {
-    min-height: 170px;
-  }
-
-  .how-tos-page & {
     min-height: 170px;
   }
 }
