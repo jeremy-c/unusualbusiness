@@ -118,11 +118,13 @@ let Navbars = () => {
 
         // Main navbar Visible
         if($navbar.hasClass('slideInDown')) {
+            // console.log('Main navbar hidden');
             headroomHeaderElement.pin();
-            headroomExtraNavbarElement.unpin();
+            $extraNavbar.addClass('is-pined-under-navbar');
         } else {
+            // console.log('Main navbar shown');
             headroomHeader.unpin();
-            $extraNavbar.toggleClass('is-pined-under-navbar');
+            $extraNavbar.removeClass('is-pined-under-navbar');
         }
     });
   };
