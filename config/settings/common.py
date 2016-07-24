@@ -144,7 +144,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'Europe/Amsterdam'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'nl'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -264,12 +264,12 @@ WAGTAIL_SITE_NAME = '(Un)usual Business'
 # WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
 LANGUAGES = (
-    ('en', u'English'),
     ('nl', u'Nederlands'),
+    ('en', u'English'),
 )
 
-MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'nl')
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('nl', 'en')
 
-MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'nl'
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
 
 DOORS_OPEN_MINUTES_BEFORE_START_EVENT = 15
