@@ -132,6 +132,7 @@
                     {{ block }}
                     <p class="image-description"> {{ block.value }}</p>
                 </section>
+            {% elif block.block_type == 'introduction' %}
             {% else %}
                 <section class="block-{{ block.block_type }}" >
                     {{ block }}
