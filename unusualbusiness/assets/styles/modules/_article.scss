@@ -136,9 +136,6 @@
   font-size: 26px;
   line-height: 1.6em;
 
-  @media(max-width: $boxed + 100px) {
-    padding: 0 $gutter $gutter $gutter * 2;
-  }
 
   @media(max-width: $boxed) {
     box-sizing: border-box;
@@ -174,6 +171,10 @@
 
     @media(min-width: $boxed) {
       max-width: $tablet;
+    }
+
+    @media(max-width: $boxed + 100px) {
+      padding: 0 $gutter $gutter $gutter * 2;
     }
 
     @media(min-width: $boxed + 100px) {

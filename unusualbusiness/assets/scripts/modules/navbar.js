@@ -3,6 +3,7 @@
    ======================= */
 
 import Headroom from 'headroom.js';
+import debounce from 'debounce';
 
 let Navbars = () => {
   let spinLogo = function() {
@@ -15,11 +16,11 @@ let Navbars = () => {
   };
 
   let initNavbar = function() {
-    let ubLogoLink = $('.ub-logo-link');
+    let $ubLogoLink = $('.ub-logo-link');
     let $searchLink = $('.main-menu-search-link');
 
-    ubLogoLink.on('mouseenter', spinLogo);
-    ubLogoLink.on('mouseleave', spinLogo);
+    $ubLogoLink.on('mouseenter', debounce(spinLogo));
+    $ubLogoLink.on('mouseleave', debounce(spinLogo));
 
     $searchLink.on('click', shakeIcon);
   };
@@ -39,13 +40,13 @@ let Navbars = () => {
 
   let initHeadroomJS = function() {
     let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
-    let $header = $('.navbar');
+    let $navbar = $('.navbar');
     let $extraNavbar = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
 
     let articleHeaderHeight = $('.article-header').height();
     let articleSubHeaderHeight = $('.article-subheader').height();
-    let headerHeight = $header.height();
+    let headerHeight = $navbar.height();
     let gutter = 34;
 
     let upcomingEventsHeight = 0;
@@ -65,7 +66,7 @@ let Navbars = () => {
 
     // construct an instance of Headroom, passing the element
     let headroomExtraNavbar;
-    let headroomHeader  = new Headroom(
+    let headroomHeader = new Headroom(
         navbarElement,
         {
           offset : headroomOffset,
@@ -77,17 +78,19 @@ let Navbars = () => {
             "initial": "animated",
             "pinned": "slideInDown",
             "unpinned": "slideOutUp"
-          },
-          onPin : function() {
-              $extraNavbar.addClass('is-pined-under-navbar');
-          },
-          onUnpin : function() {
-              $extraNavbar.removeClass('is-pined-under-navbar');
           }
+          //   ,
+          // onPin : function() {
+          //     $extraNavbar.addClass('is-pined-under-navbar');
+          // },
+          // onUnpin : function() {
+          //     $extraNavbar.removeClass('is-pined-under-navbar');
+          // }
         }
     );
-    let arg;
-      if(extraNavbarElement !== null) {
+
+    let headroomExtraNavbarElement;
+    if(extraNavbarElement !== null) {
         // construct an instance of Headroom, passing the element
         headroomExtraNavbar = new Headroom(
             extraNavbarElement,
@@ -104,21 +107,22 @@ let Navbars = () => {
               }
             }
         );
-        arg = headroomExtraNavbar.init();
-      }
-    // initialise
-    let arg2 = headroomHeader.init();
+        headroomExtraNavbarElement = headroomExtraNavbar.init();
+    }
 
-    $extraNavbarMenuButton.on('click', function() {
+    // initialise
+    let headroomHeaderElement = headroomHeader.init();
+
+    $extraNavbarMenuButton.on('click', function(e) {
+        e.preventDefault();
+
         // Main navbar Visible
-        if($header.hasClass('slideInDown')) {
-            console.log('Main navbar hidden');
-            arg2.pin();
-            arg.unpin();
+        if($navbar.hasClass('slideInDown')) {
+            headroomHeaderElement.pin();
+            headroomExtraNavbarElement.unpin();
         } else {
-            console.log('Main navbar shown');
             headroomHeader.unpin();
-            $extraNavbar.removeClass('is-pined-under-navbar');
+            $extraNavbar.toggleClass('is-pined-under-navbar');
         }
     });
   };

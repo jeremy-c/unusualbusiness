@@ -3,6 +3,7 @@
    ======================= */
 
 'use strict';
+
 import debounce from 'debounce';
 
 
@@ -44,7 +45,6 @@ let Icons = () => {
     };
 
     let initStartSVGAnimationsOnHover = function() {
-
         $(".start-animation-on-hover").on('mouseover', debounce(iterateAnimation));
     };
 
@@ -104,7 +104,6 @@ let Icons = () => {
     };
 
     let endAnimation = function(event) {
-        console.log('ended');
         $(this).removeClass("is-running");
     };
 
