@@ -136,6 +136,26 @@
   font-size: 26px;
   line-height: 1.6em;
 
+  @media(max-width: $boxed + 100px) {
+    padding: 0 $gutter $gutter $gutter * 2;
+  }
+
+  @media(max-width: $boxed) {
+    box-sizing: border-box;
+    margin: 0 0 0 auto;
+    width: 100%;
+    max-width: $tablet;
+  }
+
+  @media(max-width: $tablet) {
+    padding: $gutter / 2 0;
+    font-size: 4.5vw;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 22px;
+  }
+
   .news-article & {
     color: $blue;
   }
@@ -146,6 +166,10 @@
     @media(min-width: $tablet-horizontal) {
       margin-left: 100px;
       max-width: 700px;
+    }
+
+    @media (min-width: $tablet-horizontal) {
+      padding: 0 $gutter $gutter 0;
     }
 
     @media(min-width: $boxed) {
@@ -172,26 +196,6 @@
     padding: 0 $gutter $gutter;
     width: 100%;
     max-width: $tablet;
-  }
-
-  @media(max-width: $boxed + 100px) {
-    padding: 0 $gutter $gutter $gutter * 2;
-  }
-
-  @media(max-width: $boxed) {
-    box-sizing: border-box;
-    margin: 0 0 0 auto;
-    width: 100%;
-    max-width: $tablet;
-  }
-
-  @media(max-width: $tablet) {
-    padding: $gutter / 2 0;
-    font-size: 4.5vw;
-  }
-
-  @media(max-width: $mobile) {
-    font-size: 22px;
   }
 }
 

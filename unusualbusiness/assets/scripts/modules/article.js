@@ -59,12 +59,18 @@ let Article = () => {
     let $toc = $('.article-table-of-contents');
     let $articleIntroduction = $('.article-introduction');
     let $blockImage = $('.block-image');
+    let $blockPullquote = $('.block-pullquote');
+    let $articleInline = $('.article-inline');
 
-    $tocToggleLink.on('click', function() {
+    $tocToggleLink.on('click', function(e) {
+      e.preventDefault();
+
       $tocToggleLink.toggleClass('is-panel-open');
       $toc.toggleClass('is-closed');
       $articleIntroduction.toggleClass('l-pull-right');
       $blockImage.toggleClass('l-pull-right');
+      $blockPullquote.find('blockquote:first-child').toggleClass('l-body-article-pull-left');
+      $articleInline.toggleClass('l-body-article-pull-left');
 
       return false;
     });

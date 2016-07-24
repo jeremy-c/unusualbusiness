@@ -54,7 +54,6 @@
 
 .l-body-article-pull-left {
   position: relative;
-  margin: $gutter 0;
   left: -333px;
 
   @media(max-width: $boxed) {
@@ -110,6 +109,7 @@
   }
 
   .theory-article & {
+    padding: $gutter $gutter $gutter 0;
 
     @media(min-width: $tablet-horizontal) {
       max-width: 700px;
@@ -118,9 +118,14 @@
     @media(min-width: $boxed) {
       max-width: $tablet;
     }
+
+    .article-introduction {
+      @media (max-width: 1200px) {
+        padding: $gutter $gutter $gutter 68px;
+      }
+    }
   }
 }
-
 
 .l-pull-left {
   box-sizing: border-box;
