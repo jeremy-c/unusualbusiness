@@ -56,6 +56,7 @@
   },
   "dependencies": {
     "clipboard": "^1.5.10",
+    "debounce": "^1.0.0",
     "gumshoe": "github:cferdinandi/gumshoe",
     "headroom.js": "^0.9.3",
     "imagesloaded": "^4.1.0",

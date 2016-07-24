@@ -53,7 +53,6 @@
   }
 }
 
-
 .icon-wrapper-large {
   flex: 0 0 80px;
   width: 80px;
@@ -108,12 +107,48 @@
   animation-play-state: running !important;
 }
 
+.is-iteration-1 svg * {
+  animation-iteration-count: 1 !important;
+}
+
+.is-iteration-2 svg * {
+  animation-iteration-count: 2 !important;
+}
+
+.is-iteration-3 svg * {
+  animation-iteration-count: 3 !important;
+}
+
+.is-iteration-4 svg * {
+  animation-iteration-count: 4 !important;
+}
+
+.is-iteration-5 svg * {
+  animation-iteration-count: 5 !important;
+}
+
+.is-iteration-6 svg * {
+  animation-iteration-count: 6 !important;
+}
+
+.is-iteration-7 svg * {
+  animation-iteration-count: 7 !important;
+}
+
+.is-iteration-8 svg * {
+  animation-iteration-count: 8 !important;
+}
+
+.is-iteration-9 svg * {
+  animation-iteration-count: 9 !important;
+}
+
+
 .animation-base {
   animation-iteration-count: 1;
   animation-play-state: paused;
 }
 
-#menustip,
 #haakjes {
   @extend .animation-base;
 	transform-origin: 51% 50%;
