@@ -39,7 +39,8 @@ CACHES = {
 
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="sqlite:///ub.sqlite3"),
+    'default': env.db('DATABASE_URL', default='postgres:///unusualbusiness'),
+    # 'default': env.db("DATABASE_URL", default="sqlite:///ub.sqlite3"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
