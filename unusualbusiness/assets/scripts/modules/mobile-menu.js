@@ -23,7 +23,7 @@ let MobileMenu = () => {
       source: '.l-main-nav',
       body: '.l-wrapper',
       renaming: false,
-      dispace: false,
+      displace: false,
       onOpen: toggleHamburgerMenu,
       onClose: toggleHamburgerMenu
     });
@@ -34,7 +34,7 @@ let MobileMenu = () => {
       source: '.l-main-nav',
       body: '.l-wrapper',
       renaming: false,
-      dispace: false,
+      displace: false,
       onOpen: toggleHamburgerMenu,
       onClose: toggleHamburgerMenu
     });

@@ -30,7 +30,8 @@ let Navbars = () => {
     let $extraNavbar = $('.extra-navbar');
     let $navbar = $('.navbar');
 
-    $extraNavbarMenuButton.on('click', function() {
+    $extraNavbarMenuButton.on('click', function(e) {
+        e.preventDefault();
         $extraNavbar.addClass('is-pined-under-navbar');
         $navbar.toggleClass('slideOutUp');
         $navbar.toggleClass('slideInDown');
@@ -78,14 +79,14 @@ let Navbars = () => {
             "initial": "animated",
             "pinned": "slideInDown",
             "unpinned": "slideOutUp"
-          }
+          },
           //   ,
           // onPin : function() {
           //     $extraNavbar.addClass('is-pined-under-navbar');
           // },
-          // onUnpin : function() {
-          //     $extraNavbar.removeClass('is-pined-under-navbar');
-          // }
+          onUnpin : function() {
+              $extraNavbar.removeClass('is-pined-under-navbar');
+          }
         }
     );
 
