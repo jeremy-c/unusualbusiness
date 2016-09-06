@@ -10,21 +10,25 @@ import tocbot from 'tocbot';
 import Fraccordion from '../vendor/accordion';
 
 let Article = () => {
-  let initInlineArticleLinks = function() {
+  let initInlineArticleLinks = function () {
+    console.log('Article: initInlineArticleLinks');
+
     let articleInlineLinks = $('.article-inline-link');
 
-    articleInlineLinks.on('click', function() {
+    articleInlineLinks.on('click', function () {
       let inlineElement = $(this).data('id');
 
       $(this).toggleClass('is-expanded');
-      $('#' + inlineElement).each( function () {
+      $('#' + inlineElement).each(function () {
         $(this).toggleClass('is-visuallyhidden animated fadeIn');
       });
     });
   };
 
-  let initStickyTOC = function() {
-    if($.fn.sticky !== undefined) {
+  let initStickyTOC = function () {
+    console.log('Article: initStickyTOC');
+
+    if ($.fn.sticky !== undefined) {
       $(".toc-wrapper ").sticky({
         topSpacing: 100,
         bottomSpacing: 2500
@@ -34,7 +38,9 @@ let Article = () => {
     }
   };
 
-  let initTOC = function() {
+  let initTOC = function () {
+    console.log('Article: initTOC');
+
     initTOCSlideIn();
     addIdsToHeadings();
     initGumshoe();
@@ -47,13 +53,15 @@ let Article = () => {
       contentSelector: '.l-boxed',
       // Which headings to grab inside of the contentSelector element.
       headingSelector: 'h1, h2, h3',
-      listClass:  'toc-list',
+      listClass: 'toc-list',
       extraListClasses: 'animated fadeInLeft',
       linkClass: 'toc-link'
     });
   };
 
-  let initTOCSlideIn = function() {
+  let initTOCSlideIn = function () {
+    console.log('Article: initTOCSlideIn');
+
     let $tocWrapper = $('.toc-wrapper');
     let $tocToggleLink = $('.toggle-toc-link');
     let $toc = $('.article-table-of-contents');
@@ -62,7 +70,7 @@ let Article = () => {
     let $blockPullquote = $('.block-pullquote');
     let $articleInline = $('.article-inline');
 
-    $tocToggleLink.on('click', function(e) {
+    $tocToggleLink.on('click', function (e) {
       e.preventDefault();
 
       $tocToggleLink.toggleClass('is-panel-open');
@@ -77,38 +85,45 @@ let Article = () => {
   };
 
   let initFraccordion = function () {
-    var myAccordion = Fraccordion({
-      // String - Outer container selector, hook for JS init() method
-      selector: '.js-fr-accordion',
+    console.log('Article: initFraccordion');
 
-      // String - Accordion header elements converted to focusable, togglable elements
-      headerSelector: '.js-fr-accordion__header',
+    let $frAccordionHeaderSelector = $('.js-fr-accordion__header');
 
-      // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
-      headerIdPrefix: 'accordion-header',
+    if ($frAccordionHeaderSelector.length > 0) {
+      var myAccordion = Fraccordion({
+        // String - Outer container selector, hook for JS init() method
+        selector: '.js-fr-accordion',
 
-      // String - Accordion panel elements to expand/collapse
-      panelSelector: '.js-fr-accordion__panel',
+        // String - Accordion header elements converted to focusable, togglable elements
+        headerSelector: '.js-fr-accordion__header',
 
-      // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
-      panelIdPrefix: 'accordion-panel',
+        // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
+        headerIdPrefix: 'accordion-header',
 
-      // Boolean - If set to false, all accordion panels will be closed on init()
-      firstPanelsOpenByDefault: false,
+        // String - Accordion panel elements to expand/collapse
+        panelSelector: '.js-fr-accordion__panel',
 
-      // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
-      multiselectable: false,
+        // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
+        panelIdPrefix: 'accordion-panel',
 
-      // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: 'fr-accordion--is-ready',
+        // Boolean - If set to false, all accordion panels will be closed on init()
+        firstPanelsOpenByDefault: false,
 
-      // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
-      transitionLength: 250
-    });
+        // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
+        multiselectable: false,
 
+        // String - Class name that will be added to the selector when the component has been initialised
+        readyClass: 'fr-accordion--is-ready',
+
+        // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
+        transitionLength: 250
+      });
+    }
   };
 
   let initArticleNotes = function() {
+    console.log('Article: initArticleNotes');
+
     let articleFootnotes = $('.article-inline-footnote');
 
     articleFootnotes.each(function() {
@@ -117,7 +132,10 @@ let Article = () => {
       articleFootnoteLink.after($(this).detach());
     });
   };
+
   let initSocialLinks = function() {
+    console.log('Article: initSocialLinks');
+
     let $moreSocialLink = $('.more-social-link');
     let $socialListItem = $('.social-list-item');
 
@@ -129,6 +147,8 @@ let Article = () => {
   };
 
   let initSocialLinksModal = function() {
+    console.log('Article: initSocialLinksModal');
+
     let $articleHeader = $('.article-header');
     let $articleSubheader = $('.article-subheader');
     let $openSocialModal = $('.open-social-modal');
@@ -167,6 +187,8 @@ let Article = () => {
   };
 
   let addIdsToHeadings = function() {
+    console.log('Article: addIdsToHeadings');
+
     let $headings = $('.l-boxed h2,.l-boxed h3,.l-boxed h4');
 
     $headings.each( function() {
