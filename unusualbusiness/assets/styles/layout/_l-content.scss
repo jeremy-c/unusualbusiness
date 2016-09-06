@@ -111,6 +111,10 @@
   .theory-article & {
     padding: $gutter $gutter $gutter 0;
 
+    @media(max-width: $tablet) {
+      padding: $gutter 0 $gutter 0;
+    }
+
     @media(min-width: $tablet-horizontal) {
       max-width: 700px;
     }
@@ -118,6 +122,7 @@
     @media(min-width: $boxed) {
       max-width: $tablet;
     }
+
 
     .article-introduction {
       @media (max-width: 1200px) {
