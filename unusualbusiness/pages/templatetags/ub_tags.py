@@ -89,12 +89,12 @@ def navbar_menu(context, parent, calling_page=None):
     #                        if calling_page else False)
 
     about_page = menuitems.filter(slug='about').first()
-    research_overview = menuitems.filter(slug='research-overview').first()
+    knowledge_pool = menuitems.filter(slug='knowledge-pool').first()
 
     return {
         'menuitems': menuitems,
         'about_page': about_page,
-        'research_overview': research_overview,
+        'knowledge_pool': knowledge_pool,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
         'self': calling_page,
