@@ -80,6 +80,7 @@ def footer_menu(context, parent, calling_page=None):
 @register.inclusion_tag('blocks/navbar.html', takes_context=True)
 def navbar_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
+
     # for menuitem in menuitems:
     #     menuitem.show_dropdown = has_menu_children(menuitem)
     #     # We don't directly check if calling_page is None since the template
@@ -99,7 +100,6 @@ def navbar_menu(context, parent, calling_page=None):
         'request': context['request'],
         'self': calling_page,
     }
-
 
 
 @register.simple_tag(takes_context=True)

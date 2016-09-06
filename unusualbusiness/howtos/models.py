@@ -67,15 +67,16 @@ class HowToPage(Page):
     subpage_types = []
 
     class Meta:
-        verbose_name = _("How to")
-        verbose_name_plural = _("How to's")
+        verbose_name = _("Knowledge pool")
+        verbose_name_plural = _("Knowledge pools")
 
     def theory_page_list(self):
         theory_page_list = []
         theory_article_pages = self.theory_article_pages.all()
 
         for theory_article_page in theory_article_pages:
-            theory_page_list.append(theory_article_page.article)
+            if theory_article_page.article:
+                theory_page_list.append(theory_article_page.article)
 
         return theory_page_list
 
@@ -84,7 +85,8 @@ class HowToPage(Page):
         story_article_pages = self.story_article_pages.all()
 
         for story_article_page in story_article_pages:
-            story_pages.append(story_article_page.article)
+            if story_article_page.article:
+                story_pages.append(story_article_page.article)
 
         return story_pages
 
@@ -93,7 +95,8 @@ class HowToPage(Page):
         news_article_pages = self.news_article_pages.all()
 
         for news_article_page in news_article_pages:
-            news_pages.append(news_article_page.article)
+            if news_article_page.article:
+                news_pages.append(news_article_page.article)
 
         return news_pages
 
@@ -107,7 +110,8 @@ class HowToPage(Page):
         organization_list = []
 
         for organization_page in organization_pages:
-            organization_list.append(organization_page.organization)
+            if organization_page.organization:
+                organization_list.append(organization_page.organization)
 
         return organization_list
 
@@ -116,13 +120,18 @@ class HowToPage(Page):
         event_pages_qs = self.event_pages.all()
 
         for event_page_qs in event_pages_qs.all():
-            event_pages.append(event_page_qs.event)
+            if event_page_qs.event:
+                event_pages.append(event_page_qs.event)
 
         return event_pages
 
     def upcoming_events(self):
         now = timezone.now().date()
-        return [event_page.event for event_page in self.event_pages.all() if event_page.event.start_date.date() >= now]
+        return [event_page.event
+                for event_page
+                in self.event_pages.all()
+                if event_page.event is not None
+                and event_page.event.start_date.date() >= now]
 
     def circles(self):
         circles = ''
@@ -155,25 +164,27 @@ class HowToPage(Page):
 
         story_article_pages = self.story_article_pages.all()
         for story_article_page in story_article_pages:
-            if story_article_page.article.format == 'text':
-                story_text_count += 1
-            elif story_article_page.article.format == 'video':
-                story_video_count += 1
-            elif story_article_page.article.format == 'images':
-                story_images_count += 1
-            elif story_article_page.article.format == 'audio':
-                story_audio_count += 1
+            if story_article_page.article is not None:
+                if story_article_page.article.format == 'text':
+                    story_text_count += 1
+                elif story_article_page.article.format == 'video':
+                    story_video_count += 1
+                elif story_article_page.article.format == 'images':
+                    story_images_count += 1
+                elif story_article_page.article.format == 'audio':
+                    story_audio_count += 1
 
         news_article_pages = self.news_article_pages.all()
         for news_article_page in news_article_pages:
-            if news_article_page.article.format == 'text':
-                news_text_count += 1
-            elif news_article_page.article.format == 'video':
-                news_video_count += 1
-            elif news_article_page.article.format == 'images':
-                news_images_count += 1
-            elif news_article_page.article.format == 'audio':
-                news_audio_count += 1
+            if news_article_page.article is not None:
+                if news_article_page.article.format == 'text':
+                    news_text_count += 1
+                elif news_article_page.article.format == 'video':
+                    news_video_count += 1
+                elif news_article_page.article.format == 'images':
+                    news_images_count += 1
+                elif news_article_page.article.format == 'audio':
+                    news_audio_count += 1
 
         return [{
                 'page_type': 'theory',
