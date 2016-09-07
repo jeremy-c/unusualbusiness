@@ -30,9 +30,8 @@ let Slider = () => {
 
     let agendaCarouselSettings = {
       infinite: false,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
-      asNavFor: '#agenda-carousel-preview',
       focusOnSelect: true,
       accessibility: true,
       adaptiveHeight: true,
@@ -41,29 +40,25 @@ let Slider = () => {
 
           breakpoint: 1800,
           settings: {
+            slidesToShow: 3
+          }
+
+        }, {
+
+          breakpoint: 1440,
+          settings: {
             slidesToShow: 2
           }
 
         }, {
 
-          breakpoint: 1024,
+          breakpoint: 768,
           settings: {
             slidesToShow: 1
           }
 
         }]
     };
-
-    let agendaPreviewCarouselSettings = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      asNavFor: '#agenda-carousel',
-      infinite: false,
-      accessibility: false
-    };
-
 
     let $featuredArticlesCarousel = $('#featured-articles-carousel');
     if($featuredArticlesCarousel.length > 0) {
@@ -75,10 +70,6 @@ let Slider = () => {
       $agendaCarousel.slick(agendaCarouselSettings);
     }
 
-    let $agendaCarouselPreview = $('#agenda-carousel-preview');
-    if($agendaCarouselPreview.length > 0) {
-      $agendaCarouselPreview.slick(agendaPreviewCarouselSettings);
-    }
   };
 
   let init = function () {

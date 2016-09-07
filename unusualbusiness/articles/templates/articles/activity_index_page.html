@@ -15,15 +15,6 @@
 {% block article_body %}
 
     {% if events %}
-        <section class="l-upcoming-events">
-            <h3 class="upcoming-events-title">Events:</h3>
-            <div class="featured-articles-list" id="agenda-carousel-preview" >
-                {% for event in events %}
-                    {% include "events/blocks/featured_event.html" with article_class="featured-event-article" featured_event=event  %}
-                {% endfor %}
-            </div>
-        </section>
-
         <section class="l-all-events">
             <div class="l-home-related-events">
                 <div class="related-events-list" id="agenda-carousel" >

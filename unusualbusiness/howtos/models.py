@@ -132,7 +132,7 @@ class HowToPage(Page):
             circles += ' stories'
         if len(self.theory_page_list()) > 0:
             circles += ' theory'
-        if len(self.event_page_list()) > 0 or len(self.news_page_list()) > 0:
+        if len(self.news_page_list()) > 0:
             circles += ' activities'
         if len(self.upcoming_events()) > 0:
             circles += ' upcoming-event'

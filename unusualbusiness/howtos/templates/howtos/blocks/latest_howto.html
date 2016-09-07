@@ -14,16 +14,16 @@
     <div class="how-to-meta">
         <ul>
             <li class="how-to-meta-list-item event-count">
-                <div class="number count-{{ how_to.event_page_list|length }}">
-                    {{ how_to.event_page_list|length }}
+                <div class="number count-{{ how_to.news_page_list|length }}">
+                    {{ how_to.news_page_list|length }}
                 </div>
-                <span class="article-type">Activities</span>
+                <span class="article-type">{% trans "Activity" %}</span>
             </li>
             <li class="how-to-meta-list-item story-count">
                 <div class="number count-{{ how_to.story_page_list|length }}">
                     {{ how_to.story_page_list|length }}
                 </div>
-                <span class="article-type">Stories</span>
+                <span class="article-type">{% trans "Stories" %}</span>
             </li>
             <li class="how-to-meta-list-item organization-count">
                 <div class="number count-{{ how_to.organizations|length }}">
@@ -33,13 +33,13 @@
                         {{ how_to.organizations.count }}
                     {% endifequal %}
                 </div>
-                <span class="article-type">Practitioners</span>
+                <span class="article-type">{% trans "Practitioners" %}</span>
             </li>
             <li class="how-to-meta-list-item theory-count">
                 <div class="number count-{{ how_to.theory_page_list|length }}">
                     {{ how_to.theory_page_list|length }}
                 </div>
-                <span class="article-type">Theory</span>
+                <span class="article-type">{% trans "Theory" %}</span>
             </li>
         </ul>
     </div>

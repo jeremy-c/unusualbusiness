@@ -110,7 +110,7 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         index.FilterField('venue_name'),
         index.FilterField('venue_city'),
         index.FilterField('venue_country'),
-        index.RelatedFields('event_article_page', [
+        index.RelatedFields('news_article_page', [
             index.SearchField('title'),
         ]),
         index.RelatedFields('how_to_page', [

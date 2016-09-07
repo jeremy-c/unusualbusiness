@@ -47,7 +47,9 @@
 {% endblock %}
 
 {% block featured %}
-    {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
+    <div class="article-featured article-featured-image">
+        {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
+    </div>
 {% endblock %}
 
 {% block article_body %}
@@ -134,6 +136,11 @@
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwN3OewMWFunrZb6C5RC_T3VjEcEZ9hVo
                 &q={{ self.location }}" >
             </iframe>
+            <div class="gmaps-disclaimer">
+                Hi there commoner, we're working on a new version with the great
+                <a href="http://www.openstreetmap.org/" >Open Street Maps</a>,
+                for now you'll have to deal with gmaps.
+            </div>
         </section>
 
     </div>

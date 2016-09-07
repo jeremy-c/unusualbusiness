@@ -47,7 +47,9 @@
 {% endblock %}
 
 {% block featured %}
-    {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
+    <div class="article-featured article-featured-image">
+        {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
+    </div>
 {% endblock %}
 
 {% block article_body %}
@@ -107,9 +109,9 @@
             <div class="event-info-time">
                 <label class="meta-label">{% trans "Time:" %}</label>
                 <span class="meta-item">
-                    {{ page.start_date|time:"h:i" }}
+                    {{ page.start_date|time:"H:i" }}
                     {% if page.end_date %}
-                        - {{ page.end_date|time:"h:i" }}
+                        - {{ page.end_date|time:"H:i" }}
                     {% endif %}
                 </span>
             </div>
@@ -183,7 +185,7 @@
     {% if self.event_report %}
     <section class="event-report">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Read the review</h3>
+            <h3 class="article-section-title" >{% trans "Read the review" %}</h3>
             <ul class="event-report-list">
                 {% include "articles/blocks/latest_news_article.html" with page=event_report  %}
             </ul>

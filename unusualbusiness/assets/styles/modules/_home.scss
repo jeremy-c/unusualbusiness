@@ -7,5 +7,9 @@
 .home {
   .static-content .quote {
     margin: 0 80px;
+
+    @media(max-width: $tablet) {
+      margin: 0;
+    }
   }
 }

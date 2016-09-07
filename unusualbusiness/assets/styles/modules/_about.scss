@@ -5,6 +5,52 @@
 @import "../base/base";
 
 .about-page {
+  .about-page-subtitle {
+    margin-bottom: 40px;
+    font-family: $merriweather;
+    font-size: 26px;
+    font-weight: normal;
+  }
+
+  .about-page-subsubtitle {
+    font-family: $open-sans;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 40px;
+    color: $blue;
+  }
+
+  .quote {
+    margin-bottom: $gutter * 2;
+
+    @media(max-width: $tablet) {
+      margin-bottom: $gutter;
+    }
+  }
+
+  .about-svg {
+    margin-bottom: $gutter * 2;
+    text-align: center;
+
+    @media(max-width: $tablet) {
+      margin-bottom: $gutter;
+    }
+
+    svg {
+      max-width: 100%;
+    }
+
+    #arrows-up-and-down {
+      width: 50%;
+
+      @media(max-width: $tablet) {
+        width: inherit;
+      }
+    }
+
+  }
+
   .article-header {
     color: $black;
   }
@@ -13,6 +59,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+
+      @media(max-width: $tablet) {
+        display: none;
+      }
   }
 
   .about-menu-item {
@@ -22,25 +72,37 @@
       font-weight: bold;
     }
 
-    &.about-menu-item-green {
-      color: $green;
+    &.about-menu-item-green a {
+      &:hover,
+      &:active {
+        color: $green;
+      }
     }
 
-    &.about-menu-item-yellow {
-      color: $yellow;
+    &.about-menu-item-yellow a {
+      &:hover,
+      &:active {
+        color: $yellow;
+      }
     }
 
-    &.about-menu-item-black {
-      color: $black;
+    &.about-menu-item-black a {
+      &:hover,
+      &:active {
+        color: $black;
+      }
     }
 
-    &.about-menu-item-blue {
-      color: $blue;
+    &.about-menu-item-blue a {
+      &:hover,
+      &:active {
+        color: $black;
+      }
     }
   }
 
   .l-about-page-body {
-    padding: 0 $gutter;
+    padding: 0 $gutter $gutter * 2;
 
     @media(max-width: $tablet) {
       padding: 0;

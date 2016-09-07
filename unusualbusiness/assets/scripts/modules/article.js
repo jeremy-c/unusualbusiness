@@ -223,7 +223,7 @@ let Article = () => {
 
     // Only with theory article
     if( $('body').hasClass('theory-article')) {
-      initTOC();
+      // initTOC();
     }
 
     initFraccordion();
