@@ -91,6 +91,10 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         blank=True
     )
 
+    @property
+    def publication_date(self):
+        return self.start_date.date()
+
     class Meta:
         verbose_name = _("Event")
         verbose_name_plural = _("Events")
@@ -100,7 +104,8 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
-        index.SearchField('event_type'),
+        index.SearchField('event_type_en'),
+        index.SearchField('event_type_nl'),
         index.FilterField('start_date'),
         index.FilterField('venue_name'),
         index.FilterField('venue_city'),
@@ -119,7 +124,8 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('is_featured'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
-        FieldPanel('event_type'),
+        FieldPanel('event_type_en'),
+        FieldPanel('event_type_nl'),
         StreamFieldPanel('description_en'),
         StreamFieldPanel('description_nl'),
         ImageChooserPanel('featured_image'),

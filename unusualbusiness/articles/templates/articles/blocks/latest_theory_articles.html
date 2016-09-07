@@ -10,6 +10,11 @@
                      {% latest_quote  %}
                 </li>
             {% endif %}
+            {% if forloop.counter == 9 %}
+                <li class="l-grid-item l-grid-item-full-width">
+                     {% second_quote  %}
+                </li>
+            {% endif %}
             {% if article %}
                 {% include "articles/blocks/latest_theory_article.html" with page=article list_item_classes='l-grid-item-one-third' %}
             {% endif %}

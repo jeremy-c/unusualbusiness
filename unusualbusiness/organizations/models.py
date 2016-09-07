@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.models import Page
@@ -80,6 +81,13 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    publication_date = models.DateField(
+        verbose_name=_('publication_date'),
+        help_text=_("The publication date of the article"),
+        default=timezone.now,
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = _("Practitioner")
@@ -129,6 +137,7 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
+        FieldPanel('publication_date'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
         FieldPanel('address'),

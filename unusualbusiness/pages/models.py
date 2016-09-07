@@ -64,17 +64,15 @@ class HomePage(Page):
         theory_article_page_list = TheoryArticlePage.objects.all().live()
         story_article_page_list = StoryArticlePage.objects.all().live()
         news_article_page_list = NewsArticlePage.objects.all().live()
-        event_page_list = EventPage.objects.all().live()
         organization_page_list = OrganizationPage.objects.all().live()
 
         return sorted(chain(
                 theory_article_page_list,
                 story_article_page_list,
                 news_article_page_list,
-                event_page_list,
                 organization_page_list
             ),
-            key=lambda instance: instance.first_published_at,
+            key=lambda instance: instance.publication_date,
             reverse=True)
 
     @staticmethod
@@ -90,7 +88,7 @@ class HomePage(Page):
             news_article_list,
             event_list
         ),
-            key=lambda instance: instance.first_published_at,
+            key=lambda instance: instance.publication_date,
             reverse=True)
 
         # dutch_content_panels = [
@@ -138,7 +136,7 @@ class GeneralPage(Page):
 
     def get_context(self, request):
         context = super(GeneralPage, self).get_context(request)
-        
+
         context['self'] = self
 
         return context

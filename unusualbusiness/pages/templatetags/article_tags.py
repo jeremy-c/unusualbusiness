@@ -13,6 +13,18 @@ def latest_quote(context):
     }
 
 
+@register.inclusion_tag('pages/blocks/quote.html', takes_context=True)
+def second_quote(context):
+    quotes = Quote.objects.all()
+    quote = None
+    if quotes.count() > 1:
+        quote = quotes[1]
+    return {
+        'quote': quote,
+        'request': context['request'],
+    }
+
+
 @register.inclusion_tag('pages/blocks/quotes.html', takes_context=True)
 def all_quotes(context):
     return {

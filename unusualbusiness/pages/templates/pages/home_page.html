@@ -26,7 +26,7 @@
         {% include 'events/blocks/upcoming_events.html'  %}
 
         <section class="l-home latest-articles" id="latest-articles">
-            <h2 class="hidden-title">Latest Articles</h2>
+            <h2 class="hidden-title">{% trans "Latest Articles" %}</h2>
             <ul class="l-grid grid-packery">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>
@@ -42,7 +42,7 @@
                         {% include "articles/blocks/latest_theory_article.html" with page=article %}
                     {% endif %}
                     {% empty %}
-                        <li>Sorry, no pages found.</li>
+                        <li>{% trans "Sorry, no pages found." %}</li>
                 {% endfor %}
 
             </ul>

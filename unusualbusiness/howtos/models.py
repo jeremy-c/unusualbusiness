@@ -20,15 +20,6 @@ class HowToPage(Page):
         null=True,
         blank=True,
     )
-    featured_image = models.ForeignKey(
-        'wagtailimages.Image',
-        verbose_name = _("Featured image"),
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
     search_fields = Page.search_fields + [
         index.SearchField('title_en'),
         index.SearchField('title_nl'),
@@ -54,7 +45,6 @@ class HowToPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
-        ImageChooserPanel('featured_image'),
         InlinePanel('organization_pages', label=_("Organizations")),
         InlinePanel('story_article_pages', label=_("Story Articles")),
         InlinePanel('theory_article_pages', label=_("Theory Articles")),

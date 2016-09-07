@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block featured %}
-    {% include "blocks/responsive_image_cropped.html" with image=self.featured_image image_class="article-image"  %}
+    {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
 {% endblock %}
 
 {% block article_body %}
@@ -111,8 +111,6 @@
                     {% if page.end_date %}
                         - {{ page.end_date|time:"h:i" }}
                     {% endif %}
-                    {% trans ", inloop vanaf" %}
-                    {{ page.doors_open_from|time:"h:i" }}
                 </span>
             </div>
 

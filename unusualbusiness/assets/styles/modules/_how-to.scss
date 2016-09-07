@@ -52,6 +52,10 @@
   font-family: $merriweather;
   font-weight: normal;
   line-height: 1.3em;
+
+  .how-to & {
+    padding: $gutter 0;
+  }
 }
 
 .how-to-circles {

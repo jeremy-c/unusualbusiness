@@ -187,7 +187,7 @@ class PageFormat:
     THEORY = ('theory', _('Theory'))
     VIDEO = ('video', _('Video'))
     AUDIO = ('audio', _('Audio'))
-    IMAGES = ('images', _('Slideshow'))
+    IMAGES = ('images', _('Photo report'))
     EVENT = ('event', _('Activity'))
     ORGANIZATION = ('organization', _('Practitioner'))
     LINK = ('link', _('Link'))
