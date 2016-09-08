@@ -59,10 +59,12 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    border-top: 1px solid $light-gray;
+    padding-top: 34px;
 
-      @media(max-width: $tablet) {
-        display: none;
-      }
+    @media(max-width: $tablet) {
+      display: none;
+    }
   }
 
   .about-menu-item {

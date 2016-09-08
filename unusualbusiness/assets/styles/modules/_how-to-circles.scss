@@ -155,6 +155,15 @@
   }
 }
 
+.circle-hover {
+  #blauwmiddel,
+  #geelmiddel,
+  #groenmiddel,
+  #zwartmiddel {
+    stroke-width: 8px;
+  }
+}
+
 .green-text {
   color: $green;
 }

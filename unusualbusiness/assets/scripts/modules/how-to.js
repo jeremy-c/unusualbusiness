@@ -20,7 +20,12 @@ let HowTo = () => {
 
   let goToColor = function (event) {
      var color = this.classList[1];
-     smoothScroll.animateScroll( "#" + color);
+    window.location.href = "#" + color;
+    // if ($.fn.smoothScroll !== undefined) {
+    //   $("#" + color).smoothScroll();
+    // } else {
+    //   console.log('$.fn.smoothScroll === undefined');
+    // }
   };
 
   let howToCirclesEvents = function (event) {
@@ -44,10 +49,22 @@ let HowTo = () => {
     $practitionersCircle.on('click', goToColor);
   };
 
+  let howToLinkHover = function () {
+    let howToLink = $('.how-to-link');
+    howToLink.on('mouseover', function(){
+      $(this).find('svg').toggleClass('circle-hover');
+    });
+    howToLink.on('mouseout', function(){
+      $(this).find('svg').toggleClass('circle-hover');
+    });
+  };
+
+
   let init = function() {
     console.log('Howto go!');
     repaceZero();
     howToCirclesEvents();
+    howToLinkHover();
   };
 
   return {

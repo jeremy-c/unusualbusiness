@@ -60,6 +60,7 @@ class ActivityIndexPage(Page):
         context = super(ActivityIndexPage, self).get_context(request)
 
         context['events'] = EventPage.objects.live().order_by('start_date')
+        context['initial_slide'] = EventPage.objects.live().count() - 1
         context['news_articles'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
 
         return context

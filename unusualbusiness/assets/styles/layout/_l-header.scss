@@ -16,6 +16,7 @@
   min-height: 380px;
 
   @media(max-width: $tablet) {
+    padding: $gutter $gutter / 2 $gutter / 2;
     height: auto;
     min-height: inherit;
   }

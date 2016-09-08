@@ -164,20 +164,10 @@
 {% block below_article %}
 
     {% if related_how_tos %}
-{#    <section class="related-howtos">#}
-{#        <div class="l-boxed l-related-section">#}
-{#            <h3 class="article-section-title" >This story is part of:</h3>#}
-{#            <ul class="l-columns">#}
-{#                {% for how_to in related_how_tos %}#}
-{#                    {% include "howtos/blocks/related_howto.html" %}#}
-{#                {% endfor %}#}
-{#            </ul>#}
-{#        </div>#}
-{#    </section>#}
 
     <section class="related-howtos">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >{% trans "This story is part of:" %}</h3>
+            <h3 class="article-section-title" >{% trans "This article is part of:" %}</h3>
             <ul class="l-grid grid-packery">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>

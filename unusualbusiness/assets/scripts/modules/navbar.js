@@ -31,6 +31,12 @@ let Navbars = () => {
 
     let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
     let $navbar = $('.navbar');
+    // TODO: exclude
+    // .home &,
+    // .disclaimer-page &,
+    // .about-page &,
+    // .how-tos-page &,
+    // .how-to &
     let $extraNavbar = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
 

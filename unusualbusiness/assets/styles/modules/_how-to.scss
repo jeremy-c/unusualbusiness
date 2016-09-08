@@ -75,6 +75,7 @@
 
 .how-to-description {
   margin: 20px auto;
+  padding: 0 $gutter / 2;
   max-width: 700px;
   text-align: center;
   font-size: 20px;
@@ -130,3 +131,27 @@
   }
 }
 
+.how-to-index-title {
+  margin-left: 80px;
+
+  font-family: $merriweather;
+  font-size: 34px;
+  font-weight: 400;
+
+  @media(max-width: $tablet) {
+    margin-left: 0;
+  }
+
+  &.how-to-index-title-green {
+    color: $green;
+  }
+  &.how-to-index-title-blue {
+    color: $blue;
+  }
+  &.how-to-index-title-black {
+    color: $black;
+  }
+  &.how-to-index-title-yellow {
+    color: $yellow;
+  }
+}
