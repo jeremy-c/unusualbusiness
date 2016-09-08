@@ -94,15 +94,6 @@
                     <span class="menu-item-text">{{ about_page.specific.title }}</span>
                 </a>
             </li>
-            <li class="main-menu-item main-menu-search" >
-                <a href="{% url 'wagtailsearch_search' %}" class="main-menu-item-link main-menu-search-link " >
-                    <svg class="search-icon gray-icon " width="23.334px" height="23.334px" >
-                        <title>{% trans "Search" %}</title>
-                        <desc>Click to open search text field</desc>
-                      <use xlink:href="#search-icon" />
-                    </svg>
-                </a>
-            </li>
             <li class="main-menu-item main-menu-language">
 
                 {% if LANGUAGE_CODE == 'en' %}

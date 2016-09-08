@@ -79,22 +79,24 @@
         <!--/#l-wrapper-->
 
         {% compress js %}
-
-            <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-            <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-            <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
-            <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
-            <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
-            <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
-
-            <!-- Polyfills -->
-            <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
-            <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
-            <script src="{% static 'bower_components/svg4everybody/dist/svg4everybody.js' %}"></script>
-
-            <script type="text/javascript" src="{% static 'scripts/bundle.js' %}"></script>
-
         {% endcompress %}
+
+        <!-- Polyfills -->
+        <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
+        <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
+        <script src="{% static 'bower_components/svg4everybody/dist/svg4everybody.js' %}"></script>
+
+        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+        <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
+        <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
+        <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
+        <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+
+        <script src="{% static 'bower_components/headroom.js/dist/headroom.js' %}"></script>
+        <script src="{% static 'bower_components/headroom.js/dist/jQuery.headroom.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'scripts/bundle.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

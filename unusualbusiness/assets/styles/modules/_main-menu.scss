@@ -116,7 +116,9 @@
 
   .ub-logo-icon {
     @media(max-width: $tablet) {
-      padding-left: 0;
+      padding-left: 4px;
+      height: 45px;
+      width: 45px;
     }
   }
 
@@ -272,7 +274,7 @@
 
 .menu-icon {
   @media(max-width: $tablet) {
-    padding-left: 10px;
+    margin-left: 10px;
     height: 66%;
   }
 }
@@ -318,8 +320,9 @@
     height: 51px;
 
     @media(max-width: $tablet) {
-      padding-left: 2px;
-      height: 82%;
+      margin-left: 3px;
+      height: 45px;
+      width: 45px;
     }
   }
 
@@ -328,19 +331,11 @@
 
     @media(max-width: $tablet) {
       display: block;
-      padding-right: 13px;
+      margin-right: 6px;
     }
   }
 }
 
-// MenuItem: search
-.main-menu-search {
-  padding-right: 29px;
-
-  @media(max-width: $tablet) {
-    display: none;
-  }
-}
 
 // MenuItem: over ub
 .main-menu-about-ub {
@@ -356,7 +351,7 @@
 
     @media(max-width: $tablet) {
       display: block;
-      padding-left: 37px;
+      margin-left: 37px;
     }
   }
 }
@@ -376,21 +371,21 @@
   .menu-item-text {
 
     @media(max-width: $tablet) {
-      padding-left: 37px;
+      margin-left: 37px;
     }
   }
 }
 
-.main-menu-footer {
+.l-right-menu .main-menu-footer {
   display: none;
 
   @media(max-width: $tablet) {
     display: inline-block;
 
-    margin-left: -$gutter;
-    margin-right: -$gutter;
+    margin:0;
+    padding: 5px 0;
     border-color: $black;
-    width: calc(100% + var(--gutter) * 2);
+    width: 100%;
 
     background-color: $black;
 

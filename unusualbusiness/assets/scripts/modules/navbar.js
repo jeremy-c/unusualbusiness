@@ -16,6 +16,7 @@ let Navbars = () => {
   };
 
   let initNavbar = function() {
+    console.log('Navbar: initNavbar');
     let $ubLogoLink = $('.ub-logo-link');
     let $searchLink = $('.main-menu-search-link');
 
@@ -25,21 +26,9 @@ let Navbars = () => {
     $searchLink.on('click', shakeIcon);
   };
 
-  let initExtraNavbar = function() {
-    let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
-    let $extraNavbar = $('.extra-navbar');
-    let $navbar = $('.navbar');
-
-    $extraNavbarMenuButton.on('click', function(e) {
-        e.preventDefault();
-        $extraNavbar.addClass('is-pined-under-navbar');
-        $navbar.toggleClass('slideOutUp');
-        $navbar.toggleClass('slideInDown');
-        $extraNavbar.toggleClass('slideInDown');
-    });
-  };
-
   let initHeadroomJS = function() {
+    // console.log('Navbar: initHeadroomJS');
+
     let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
     let $navbar = $('.navbar');
     let $extraNavbar = $('.extra-navbar');
@@ -61,79 +50,63 @@ let Navbars = () => {
         articleSubHeaderHeight -
         gutter;
 
-    // grab an element
-    var navbarElement = document.querySelector(".navbar");
-    var extraNavbarElement = document.querySelector(".extra-navbar");
+    // console.log('Navbar: initHeadroomJS - querySelector');
 
-    // construct an instance of Headroom, passing the element
-    let headroomExtraNavbar;
-    let headroomHeader = new Headroom(
-        navbarElement,
-        {
+    $navbar.headroom({
+      offset : headroomOffset,
+      tolerance : {
+        down : 10,
+        up : 1000
+      },
+      "classes": {
+        "initial": "animated",
+        "pinned": "slideInDown",
+        "unpinned": "slideOutUp"
+      },
+      onPin : function() {
+          $extraNavbar.addClass('is-pined-under-navbar');
+      },
+      onUnpin : function() {
+          $extraNavbar.removeClass('is-pined-under-navbar');
+      }
+    });
+    if($extraNavbar.length > 0) {
+        $extraNavbar.headroom({
           offset : headroomOffset,
           tolerance : {
-            down : 10,
-            up : 1000
+            down : 0,
+            up : 5000
           },
           "classes": {
             "initial": "animated",
-            "pinned": "slideInDown",
-            "unpinned": "slideOutUp"
-          },
-          //   ,
-          // onPin : function() {
-          //     $extraNavbar.addClass('is-pined-under-navbar');
-          // },
-          onUnpin : function() {
-              $extraNavbar.removeClass('is-pined-under-navbar');
+            "pinned": "slideOutUp",
+            "unpinned": "slideInDown"
           }
-        }
-    );
-
-    let headroomExtraNavbarElement;
-    if(extraNavbarElement !== null) {
-        // construct an instance of Headroom, passing the element
-        headroomExtraNavbar = new Headroom(
-            extraNavbarElement,
-            {
-              offset : headroomOffset,
-              tolerance : {
-                down : 0,
-                up : 5000
-              },
-              "classes": {
-                "initial": "animated",
-                "pinned": "slideOutUp",
-                "unpinned": "slideInDown"
-              }
-            }
-        );
-        headroomExtraNavbarElement = headroomExtraNavbar.init();
+        });
     }
-
-    // initialise
-    let headroomHeaderElement = headroomHeader.init();
+    // console.log('Navbar: initHeadroomJS - headroomHeader = new Headroom');
 
     $extraNavbarMenuButton.on('click', function(e) {
         e.preventDefault();
 
-        // Main navbar Visible
+        $extraNavbar.toggleClass('is-pined-under-navbar');
+        $extraNavbar.toggleClass('slideInDown');
+        $navbar.toggleClass('slideOutUp');
+        $navbar.toggleClass('slideInDown');
+
         if($navbar.hasClass('slideInDown')) {
-            // console.log('Main navbar hidden');
-            headroomHeaderElement.pin();
-            $extraNavbar.addClass('is-pined-under-navbar');
+            $navbar.pin();
         } else {
-            // console.log('Main navbar shown');
-            headroomHeader.unpin();
-            $extraNavbar.removeClass('is-pined-under-navbar');
+            $extraNavbar.unpin();
         }
     });
+
+    // console.log('Navbar: initHeadroomJS - END');
   };
 
   let init = function () {
     console.log('Navbar go!');
     initNavbar();
-    initExtraNavbar();
     initHeadroomJS();
   };
 

@@ -1,24 +1,3 @@
 {% extends "articles/article_page_base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
 
 {% block body_class %}theory-article {{ block.super }}{% endblock %}
-
-{% block extra_js %}
-    {{ block.super }}
-    <script src="{% static 'bower_components/jquery-sticky/jquery.sticky.js' %}"></script>
-{% endblock %}
-
-{%  block tableofcontents %}
-    <div class="toc-wrapper ">
-        <a href="" class="toggle-toc-link icon-wrapper-large animated fadeInLeft">
-            <svg width="25.178px" height="20.185px"  class="toc-icon" >
-                <title>Table of Contents icon</title>
-                <desc>Click to open Table of Contents</desc>
-                <use xlink:href="#toc-icon" />
-            </svg>
-        </a>
-        <section class="article-table-of-contents is-closed" id="toc" data-gumshoe >
-        </section>
-    </div>
-{% endblock %}
-

@@ -18,7 +18,8 @@
     "imagesloaded": "^4.1.0",
     "slick-carousel": "^1.6.0",
     "font-awesome": "^4.6.3",
-    "jquery-sticky": "^1.0.3"
+    "jquery-sticky": "^1.0.3",
+    "headroom.js": "https://unpkg.com/headroom.js/bower.zip"
   },
   "ignore": [
     "**/.*",

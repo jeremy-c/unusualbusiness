@@ -5,7 +5,10 @@
 'use strict';
 
 let MobileMenu = () => {
-  let toggleHamburgerMenu = function() {
+  let toggleMenu = function() {
+    let $body = $('body');
+    $body.toggleClass('is-menu-open');
+
     let hamburgerMenuButtonLink = $('#hamburger-menu-button');
 
     let isExpanded = hamburgerMenuButtonLink.attr('aria-expanded') === 'true';
@@ -24,8 +27,8 @@ let MobileMenu = () => {
       body: '.l-wrapper',
       renaming: false,
       displace: false,
-      onOpen: toggleHamburgerMenu,
-      onClose: toggleHamburgerMenu
+      onOpen: toggleMenu,
+      onClose: toggleMenu
     });
 
     $('.extra-navbar-hamburger-menu-button').sidr({
@@ -35,8 +38,8 @@ let MobileMenu = () => {
       body: '.l-wrapper',
       renaming: false,
       displace: false,
-      onOpen: toggleHamburgerMenu,
-      onClose: toggleHamburgerMenu
+      onOpen: toggleMenu,
+      onClose: toggleMenu
     });
   };
 
