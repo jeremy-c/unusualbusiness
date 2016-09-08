@@ -72,9 +72,18 @@ let Slider = () => {
 
   };
 
+  let initSlideSwipteEvents = function() {
+    // On swipe event
+    $('#featured-articles-carousel .slider-holder').on('swipe', function (event, slick, direction) {
+      console.log(direction);
+      // left
+    });
+  };
+
   let init = function () {
     console.log('Slider go!');
     initSlider();
+    initSlideSwipteEvents();
   };
 
   return {

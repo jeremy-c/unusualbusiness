@@ -37,6 +37,7 @@
     @media(max-width: $tablet) {
       box-sizing: border-box;
       width: 33%;
+      flex: 33%;
       padding: $gutter / 2 0 0;
     }
   }
