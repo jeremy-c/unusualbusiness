@@ -59,7 +59,7 @@ class ActivityIndexPage(Page):
     def get_context(self, request):
         context = super(ActivityIndexPage, self).get_context(request)
 
-        context['events'] = EventPage.objects.live().order_by('-start_date')
+        context['events'] = EventPage.objects.live().order_by('start_date')
         context['news_articles'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
 
         return context

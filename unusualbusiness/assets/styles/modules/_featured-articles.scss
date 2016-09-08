@@ -49,6 +49,10 @@
       &:hover,
       &:active {
         background: $yellow;
+
+        @media(max-width: $tablet-horizontal) {
+          background: inherit;
+        }
       }
     }
   }
@@ -66,6 +70,10 @@
       &:hover,
       &:active {
         background: $black;
+
+        @media(max-width: $tablet-horizontal) {
+          background: inherit;
+        }
       }
     }
   }
@@ -84,6 +92,10 @@
       &:hover,
       &:active {
         background: $blue;
+
+        @media(max-width: $tablet-horizontal) {
+          background: inherit;
+        }
       }
     }
   }
@@ -101,6 +113,10 @@
       &:hover,
       &:active {
         background: $green;
+
+        @media(max-width: $tablet-horizontal) {
+          background: inherit;
+        }
       }
     }
   }

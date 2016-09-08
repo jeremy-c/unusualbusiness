@@ -1,4 +1,4 @@
-{% load static wagtailuserbar ub_tags i18n %}
+{% load static wagtailuserbar compress ub_tags i18n %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -78,22 +78,26 @@
         </div>
         <!--/#l-wrapper-->
 
-        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-        <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
-        <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
-        <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
-        <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+        {% compress js %}
 
-        <!-- Polyfills -->
-        <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
-        <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
-        <script src="{% static 'bower_components/svg4everybody/dist/svg4everybody.js' %}"></script>
+            <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+            <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+            <script src="{% static 'bower_components/sidr/dist/jquery.sidr.js' %}"></script>
+            <script src="{% static 'bower_components/isotope/dist/isotope.pkgd.js' %}"></script>
+            <script src="{% static 'bower_components/isotope-packery/packery-mode.pkgd.js' %}"></script>
+            <script src="{% static 'bower_components/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+
+            <!-- Polyfills -->
+            <script src="{% static 'bower_components/flexibility/dist/flexibility.js' %}"></script>
+            <script src="{% static 'bower_components/picturefill/dist/picturefill.js' %}"></script>
+            <script src="{% static 'bower_components/svg4everybody/dist/svg4everybody.js' %}"></script>
+
+            <script type="text/javascript" src="{% static 'scripts/bundle.js' %}"></script>
+
+        {% endcompress %}
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-
-        <script type="text/javascript" src="{% static 'scripts/bundle.js' %}"></script>
     </body>
 </html>

@@ -14,7 +14,7 @@
                 <h4 class="p-name">{{ event.title }}</h4>
             </a>
             <div class="p-category">
-                {{ event.event_type }}
+                {% if event.is_upcoming  %}Upcoming{% endif %} {{ event.event_type }}
             </div>
         </div>
         {% if event.featured_image %}
