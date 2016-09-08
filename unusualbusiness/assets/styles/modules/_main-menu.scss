@@ -295,6 +295,7 @@
 }
 
 // MenuItem: How to circles
+
 .main-menu-how-to-circles {
   margin: 0 7px 0 0;
   padding-right: 30px;
@@ -312,6 +313,12 @@
 
     circle {
       stroke-width: 10px;
+    }
+
+    .how-to-circle-hover {
+      circle {
+          stroke-width: 12px!important;
+      }
     }
   }
 
@@ -335,7 +342,6 @@
     }
   }
 }
-
 
 // MenuItem: over ub
 .main-menu-about-ub {

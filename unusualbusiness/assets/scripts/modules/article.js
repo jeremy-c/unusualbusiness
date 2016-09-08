@@ -11,7 +11,7 @@ import Fraccordion from '../vendor/accordion';
 
 let Article = () => {
   let initInlineArticleLinks = function () {
-    console.log('Article: initInlineArticleLinks');
+    // console.log('Article: initInlineArticleLinks');
 
     let articleInlineLinks = $('.article-inline-link');
 
@@ -26,7 +26,7 @@ let Article = () => {
   };
 
   let initStickyTOC = function () {
-    console.log('Article: initStickyTOC');
+    // console.log('Article: initStickyTOC');
 
     if ($.fn.sticky !== undefined) {
       $(".toc-wrapper ").sticky({
@@ -60,7 +60,7 @@ let Article = () => {
   };
 
   let initTOCSlideIn = function () {
-    console.log('Article: initTOCSlideIn');
+    // console.log('Article: initTOCSlideIn');
 
     let $tocWrapper = $('.toc-wrapper');
     let $tocToggleLink = $('.toggle-toc-link');
@@ -85,7 +85,7 @@ let Article = () => {
   };
 
   let initFraccordion = function () {
-    console.log('Article: initFraccordion');
+    // console.log('Article: initFraccordion');
 
     let $frAccordionHeaderSelector = $('.js-fr-accordion__header');
 
@@ -122,7 +122,7 @@ let Article = () => {
   };
 
   let initArticleNotes = function() {
-    console.log('Article: initArticleNotes');
+    // console.log('Article: initArticleNotes');
 
     let articleFootnotes = $('.article-inline-footnote');
 
@@ -147,7 +147,7 @@ let Article = () => {
   };
 
   let initSocialLinksModal = function() {
-    console.log('Article: initSocialLinksModal');
+    // console.log('Article: initSocialLinksModal');
 
     let $articleHeader = $('.article-header');
     let $articleSubheader = $('.article-subheader');
@@ -172,7 +172,7 @@ let Article = () => {
         $(this).attr('data-closed', 'false');
 
       } else { // Closing
-        console.log('Closing');
+        // console.log('Closing');
 
         $openSocialModal.parent().toggleClass('is-open-social');
 
@@ -187,7 +187,7 @@ let Article = () => {
   };
 
   let addIdsToHeadings = function() {
-    console.log('Article: addIdsToHeadings');
+    // console.log('Article: addIdsToHeadings');
 
     let $headings = $('.l-boxed h2,.l-boxed h3,.l-boxed h4');
 

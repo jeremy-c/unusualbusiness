@@ -101,6 +101,18 @@ let Navbars = () => {
         }
     });
 
+  };
+
+  let initHowToCircleHover = function() {
+    let $howToCirclesLink = $('.how-to-circles-link');
+    $howToCirclesLink.on('mouseover', function() {
+      "use strict";
+      $(this).find('svg').addClass('how-to-circle-hover');
+    });
+    $howToCirclesLink.on('mouseout', function() {
+      "use strict";
+      $(this).find('svg').removeClass('how-to-circle-hover');
+    });
     // console.log('Navbar: initHeadroomJS - END');
   };
 
@@ -108,6 +120,7 @@ let Navbars = () => {
     console.log('Navbar go!');
     initNavbar();
     initHeadroomJS();
+    initHowToCircleHover()
   };
 
   return {

@@ -110,7 +110,7 @@ let Icons = () => {
   let init = function() {
     console.log('Animate Icons go!');
     initSvg4Everybody();
-    initStartSVGAnimationsOnHover();
+    // initStartSVGAnimationsOnHover();
   };
 
   return {
