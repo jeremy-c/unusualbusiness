@@ -22,9 +22,15 @@
   }
 
   .quote-text {
+    margin-top: $gutter / 2;
     margin-bottom: $gutter / 2;
     font-size: 32px;
     font-weight: normal;
+
+    @media(max-width: $tablet) {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   .quote-author {

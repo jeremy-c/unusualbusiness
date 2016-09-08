@@ -115,13 +115,21 @@
   }
 
   .ub-logo-icon {
+    @media(max-width: $tablet) {
+      padding-left: 0;
+    }
   }
 
   .menu-item-text {
     display: block;
-  }
 
+    @media(max-width: $tablet) {
+      padding-right: 22px;
+    }
+
+  }
 }
+
 
 // MenuItem: How to
 .main-menu-how-to {
@@ -320,6 +328,7 @@
 
     @media(max-width: $tablet) {
       display: block;
+      padding-right: 13px;
     }
   }
 }
@@ -334,7 +343,7 @@
 }
 
 // MenuItem: over ub
-.about-ub {
+.main-menu-about-ub {
   padding-right: 29px;
   text-align: center;
 
@@ -347,9 +356,11 @@
 
     @media(max-width: $tablet) {
       display: block;
+      padding-left: 37px;
     }
   }
 }
+
 
 // MenuItem: language
 .main-menu-language {
@@ -360,6 +371,13 @@
 
   @media(max-width: $tablet) {
     padding: 0 15px;
+  }
+
+  .menu-item-text {
+
+    @media(max-width: $tablet) {
+      padding-left: 37px;
+    }
   }
 }
 
