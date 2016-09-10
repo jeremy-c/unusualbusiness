@@ -30,7 +30,7 @@ let Navbars = () => {
     // console.log('Navbar: initHeadroomJS');
 
     let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
-    let $navbar = $('.navbar');
+    let $navbar = $('.navbar:not(.navbar-fixed .navbar)'); // Only on detail pages.
     // TODO: exclude
     // .home &,
     // .disclaimer-page &,

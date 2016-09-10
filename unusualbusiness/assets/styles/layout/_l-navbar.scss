@@ -28,11 +28,7 @@
     border-bottom: none;
   }
 
-  .home &,
-  .disclaimer-page &,
-  .about-page &,
-  .how-tos-page &,
-  .how-to & {
+  .navbar-fixed & {
     border-bottom: solid 1px $light-gray;
   }
 }
