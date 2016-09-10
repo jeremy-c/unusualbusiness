@@ -57,7 +57,9 @@
     color: $white;
     padding: 5px 10px;
 
-
+    @media(max-width: $mobile) {
+      display: none;
+    }
   }
 }
 
