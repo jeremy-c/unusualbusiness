@@ -47,9 +47,11 @@
 {% endblock %}
 
 {% block featured %}
-    <div class="article-featured article-featured-image">
-        {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
-    </div>
+    {% if self.featured_image %}
+        <div class="article-featured article-featured-image">
+            {% include "blocks/responsive_image.html" with image=self.featured_image image_class="article-image"  %}
+        </div>
+    {%  endif %}
 {% endblock %}
 
 {% block article_body %}

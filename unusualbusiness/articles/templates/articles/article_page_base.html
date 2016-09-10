@@ -7,6 +7,17 @@
 {% block extra_css %}
 {% endblock %}
 
+{% block open_graph %}
+    <meta property="og:url"           content="{{ self.full_url }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+    <meta property="og:description"   content="{% if page.introduction %}{{ page.introduction }}{% endif %}" />
+    <meta property="og:image"         content="{% if self.featured_image %}{{ self.featured_image }}{% else %}{% static 'images/ub-logo.svg' %}{%  endif %}" />
+    {% if self.author %}
+    <meta property="og:author"        content="{{ author }}" />
+    {% endif %}
+{% endblock %}
+
 {% block body_class %}{{ block.super }}{% endblock %}
 
 {% block extra_navbar %}

@@ -56,7 +56,13 @@
     background-color: $blue;
     color: $white;
     padding: 5px 10px;
+
+
   }
+}
+
+.home .latest-agenda-item .upcoming-event-block {
+  display: none;
 }
 
 .featured-agenda-date {

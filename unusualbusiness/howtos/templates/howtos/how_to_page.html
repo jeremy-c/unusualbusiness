@@ -60,24 +60,25 @@
 
     {% if theory_articles %}
         <hr>
+        <h2 class="how-to-index-title how-to-index-title-green">{% trans "Theory" %}</h2>
         {% include 'articles/blocks/latest_theory_articles.html' %}
     {% endif %}
 
     {% if story_articles %}
         <hr>
-        <h2 class="how-to-index-title how-to-index-title-yellow">Stories</h2>
+        <h2 class="how-to-index-title how-to-index-title-yellow">{% trans "Stories" %}</h2>
         {% include 'articles/blocks/latest_story_articles.html' %}
     {% endif %}
 
     {% if organizations %}
         <hr>
-        <h2 class="how-to-index-title how-to-index-title-black">Practitioners</h2>
+        <h2 class="how-to-index-title how-to-index-title-black">{% trans "Practitioners" %}</h2>
         {% include 'organizations/blocks/latest_organizations.html' %}
     {% endif %}
 
     {% if news_articles %}
         <hr>
-        <h2 class="how-to-index-title how-to-index-title-blue">News</h2>
+        <h2 class="how-to-index-title how-to-index-title-blue">{% trans "Activity" %}</h2>
         {% include 'articles/blocks/latest_news_articles.html' %}
     {% endif %}
 

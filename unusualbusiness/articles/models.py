@@ -230,7 +230,9 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         default='theory',
         choices=(PageFormat.THEORY,
                  PageFormat.AUDIO,
-                 PageFormat.VIDEO, ))
+                 PageFormat.VIDEO,
+                 PageFormat.LINK,
+                 PageFormat.DOCUMENT, ))
 
     class Meta:
         verbose_name = _("Theory")

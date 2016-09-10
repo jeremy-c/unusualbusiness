@@ -45,7 +45,8 @@ let Icons = () => {
     };
 
     let initStartSVGAnimationsOnHover = function() {
-        $(".start-animation-on-hover").on('mouseover', debounce(iterateAnimation));
+        $(".start-logo-animation-on-hover").on('mouseover', debounce(iterateAnimation));
+        // $(".start-animation-on-hover").on('mouseover', debounce(iterateAnimation));
     };
 
     let iterateAnimation = function() {
@@ -110,7 +111,7 @@ let Icons = () => {
   let init = function() {
     console.log('Animate Icons go!');
     initSvg4Everybody();
-    // initStartSVGAnimationsOnHover();
+    initStartSVGAnimationsOnHover();
   };
 
   return {
