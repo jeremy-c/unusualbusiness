@@ -12,9 +12,10 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
     <meta property="og:description"   content="{% if page.introduction %}{{ page.introduction }}{% endif %}" />
-    <meta property="og:image"         content="{% if self.featured_image %}{{ self.featured_image }}{% else %}{% static 'images/ub-logo.svg' %}{%  endif %}" />
+    {% image self.featured_image.value.image fill-1536x620-c100 as featured_image %}
+    <meta property="og:image"         content="{% if self.featured_image %}{{ featured_image.url }}{% else %}{% static 'images/ub-logo.svg' %}{%  endif %}" />
     {% if self.author %}
-    <meta property="og:author"        content="{{ author }}" />
+    <meta property="og:author"        content="{{ self.author }}" />
     {% endif %}
 {% endblock %}
 
