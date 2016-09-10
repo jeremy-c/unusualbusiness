@@ -9,6 +9,7 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
@@ -352,3 +353,23 @@ class HowToIndexPage(Page):
         context['parent'] = self.get_parent().specific
         context['upcoming_events'] = EventPage.upcoming_events()
         return context
+
+    content_panels = Page.content_panels + [
+        InlinePanel('static_content_placements', label="Static Content"),
+    ]
+
+
+class HowToIndexPageStaticContentPlacement(Orderable, models.Model):
+    howto_index_page = ParentalKey('howtos.HowToIndexPage', related_name='static_content_placements')
+    static_content = models.ForeignKey('pages.StaticContent', related_name='+')
+
+    class Meta:
+        verbose_name = "Static content placement"
+        verbose_name_plural = "Static content placements"
+
+    panels = [
+        SnippetChooserPanel('static_content'),
+    ]
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.howto_index_page.title + " -> " + self.static_content.body

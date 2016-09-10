@@ -1,5 +1,5 @@
 {% extends "article_index_base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
+{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags article_tags i18n %}
 
 {% block extra_js %}
 {% endblock %}
@@ -16,12 +16,7 @@
                 {{ self.title }}
             {% endif %}
         </h1>
-        <p class="article-header-text">
-            Hier komt een introducerende tekst op onze “thema-pagina’s”.
-            Iets over dat wij onderwerpen selecteren en redactie voeren over de bestaande content,
-            om zo beter te kunnen informeren en verkennen. Dat dit ook een manier is om het onderzoek
-            en wat er werkelijk speelt –daarmee onze praktijk ofzo– op elkaar aan te sluiten.
-        </p>
+        {% include 'pages/blocks/static_contents.html'  %}
     </header>
 
 {% endblock %}

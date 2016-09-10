@@ -20,7 +20,7 @@
     <meta property="og:locale"                  content="{{ LANGUAGE_CODE }}" />
     <meta property="og:locale:alternate"        content="{% if LANGUAGE_CODE == 'en' %}nl{% else %}en{% endif %}" />
     {% image self.featured_image fill-1536x620-c100 as featured_image %}
-    <meta property="og:image"                   content="{% if featured_image %}{{ featured_image.url }}{% else %}{% static 'images/unusual-business-sharing.jpg' %}{%  endif %}" />
+    <meta property="og:image"                   content="{% if featured_image %}{{ featured_image.url }}{% else %}{{ request.site.root_url }}{% static 'images/unusual-business-sharing.jpg' %}{%  endif %}" />
     {% if self.featured_video %}
     <meta property="og:video"                   content="{{ self.featured_video.value.video.url }}" />
     {%  endif %}

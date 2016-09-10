@@ -16,7 +16,7 @@
             <meta property="og:type"          content="website" />
             <meta property="og:title"         content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
             <meta property="og:description"   content="Research collective on social relations based on self-organization, care, solidarity and sustainability." />
-            <meta property="og:image"         content="{% static 'images/unusual-business-sharing.jpg' %}" />
+            <meta property="og:image"         content="{{ request.site.root_url }}{% static 'images/unusual-business-sharing.jpg' %}" />
         {% endblock %}
         <script type="text/javascript">
             WebFontConfig = {
