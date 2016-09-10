@@ -1,11 +1,12 @@
+{% load i18n ub_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 
-{% load i18n %}
-
-<footer class="l-footer footer">
+<footer class="l-footer footer" id="footer">
 
     <div class="l-footer-element ub-logo-footer">
         <p class="ub-logo-footer-text">
-            <a href="#" >
+            <a href="/{{ lang.code }}/" title="Home"  >
                 <svg width="172.645px" height="96.919px" class="ub-logo-large"  >
                     <title>Unusual Business logo</title>
                     <desc>Click to go home</desc>
@@ -17,34 +18,34 @@
 
     <div class="l-footer-element page-links">
         <ul>
-            <li><a href="/how-to/" class="">{% trans "Research overview" %}</a></li>
-            <li><a href="/activities/" class="">{% trans "Activities" %}</a></li>
-            <li><a href="/practitioners/" class="">{% trans "Practitioners" %}</a></li>
-            <li><a href="/stories/" class="">{% trans "Stories" %}</a></li>
-            <li><a href="/theory/" class="">{% trans "Theory" %}</a></li>
+        {% for menuitem in menuitems %}
+            {% if menuitem.specific.content_type.model != 'generalpage'  %}
+                <li><a href="{{ menuitem.specific.url_path }}">{{ menuitem.specific.title }}</a></li>
+            {% endif %}
+        {% endfor %}
         </ul>
     </div>
 
     <div class="l-footer-element about-links">
         <ul>
-            <li><a href="/about/" class="">{% trans "About (Un)usual Business" %}</a></li>
-            <li><a href="/about/#why" class="">{% trans "Why this website?" %}</a></li>
-            <li><a href="/about/#how" class="">{% trans "How does this site work?" %}</a></li>
-            <li><a href="/about/#who" class="">{% trans "Who are we?" %}</a></li>
-            <li><a href="/about/#me" class="">{% trans "How can I get involved?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}">{{ about_page.specific.title }}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#why">{% trans "Why this website?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#how">{% trans "How does this site work?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#who">{% trans "Who are we?" %}</a></li>
+            <li><a href="{{ about_page.specific.url_path }}#me">{% trans "How can I get involved?" %}</a></li>
         </ul>
     </div>
 
     <div class="l-footer-element contact-links">
         <ul>
             <li class="contact-links-search is-hidden">
-                <a href="#" class=" ">{% trans "Search" %}</a>
+                <a href="{% url 'wagtailsearch_search' %}" class=" ">{% trans "Search" %}</a>
             </li>
             <li class="contact-links-contact">
-                <a href="/about/#contact" class=""></a>
+                <a href="{{ about_page.specific.url_path }}#contact" class="">{% trans "Contact us" %}</a>
             </li>
             <li class="contact-links-newsletter">
-                <a href="/about/#newsletter" class="contact-links-newsletter-link">{% trans "Newsletter" %}</a>
+                <a href="{{ about_page.specific.url_path }}#newsletter" class="contact-links-newsletter-link">{% trans "Newsletter" %}</a>
             </li>
             <li class="contact-links-facebook">
                 <a href="https://www.facebook.com/unusualbusinessutrecht/" class="">{% trans "Facebook" %}</a>
@@ -54,7 +55,7 @@
 
     <div class="l-footer-element casco-ksu-logos">
         <p class="casco-ksu-logos-text">
-            <a href="#" >
+            <a href="http://www.cascoprojects.org" >
                 <svg width="85.227px" height="28.101px" class="casco-logo"  >
                     <title>Casco logo</title>
                     <desc>Click to go to the Casco website</desc>
@@ -62,7 +63,7 @@
                 </svg>
             </a>
             <br>
-            <a href="#" >
+            <a href="http://www.kritischestudenten.nl" >
                 <svg width="81.591px" height="45.104px" class="ksu-logo"  >
                     <title>Kritische Studenten Utrecht (KSU) logo</title>
                     <desc>Click to go to the KSU website</desc>

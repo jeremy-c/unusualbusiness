@@ -1,19 +1,12 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.shortcuts import render
-from django.template.loader import get_template
-from django.template.response import TemplateResponse
+from django.utils import timezone
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail_modeltranslation.models import TranslationMixin
-
-from unusualbusiness.tags.models import OrganizationPageTag
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat, RelatedHowToMixin
 
 
@@ -23,8 +16,8 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.ORGANIZATION,
-        choices=PageFormat.ALL)
+        default='organization',
+        choices=(PageFormat.ORGANIZATION, ))
     is_featured = models.BooleanField(
         verbose_name = _("Is Featured on home page"),
         default=False
@@ -88,7 +81,13 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    tags = ClusterTaggableManager(through=OrganizationPageTag, blank=True)
+    publication_date = models.DateField(
+        verbose_name=_('publication_date'),
+        help_text=_("The publication date of the article"),
+        default=timezone.now,
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = _("Practitioner")
@@ -114,7 +113,7 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_story_articles'] = self.related_story_articles()
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -138,6 +137,7 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel('is_featured'),
+        FieldPanel('publication_date'),
         FieldPanel('description_en', classname="full"),
         FieldPanel('description_nl', classname="full"),
         FieldPanel('address'),
@@ -151,7 +151,6 @@ class OrganizationPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('facebook'),
         FieldPanel('twitter'),
         ImageChooserPanel('featured_image'),
-        FieldPanel('tags'),
     ]
 
 
@@ -176,7 +175,7 @@ class OrganizationIndexPage(Page):
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
 
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['organizations.OrganizationPage']
 
     def get_context(self, request):

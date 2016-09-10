@@ -1,10 +1,29 @@
 {% extends "article_base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
+{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 
 {% block extra_js %}
 {% endblock %}
 
 {% block extra_css %}
+{% endblock %}
+
+{% block open_graph %}
+    <meta property="og:title"                   content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+    <meta property="og:description"             content="{% if page.introduction %}{{ page.introduction|striptags|truncatewords:50 }}{% endif %}" />
+    <meta name="description"                    content="{% if page.introduction %}{{ page.introduction|striptags|truncatewords:50 }}{% endif %}" />
+    <meta property="og:article:published_time"  content="{{ self.publication_date|date:"d-m-Y" }}" />
+    <meta property="og:article:author"          content="{% if self.author %}{{ self.author }}{% else %}(Un)usual Business{%  endif %}" />
+    <meta property="og:type"                    content="article" />
+    <meta property="og:site_name"               content="(Un)usual Business" />
+    <meta property="og:locale"                  content="{{ LANGUAGE_CODE }}" />
+    <meta property="og:locale:alternate"        content="{% if LANGUAGE_CODE == 'en' %}nl{% else %}en{% endif %}" />
+    {% image self.featured_image.value.image fill-1536x620-c100 as featured_image %}
+    <meta property="og:image"                   content="{% if self.featured_image %}{{ featured_image.url }}{% else %}{{ request.site.root_url }}{% static 'images/unusual-business-sharing.jpg' %}{%  endif %}" />
+    {% if self.featured_video %}
+    <meta property="og:video"                   content="{{ self.featured_video.value.video.url }}" />
+    {%  endif %}
 {% endblock %}
 
 {% block body_class %}{{ block.super }}{% endblock %}
@@ -65,12 +84,12 @@
 {% block below_header %}
 
     {% if self.author %}
-        <a href="#" class="l-open-author-pane-button open-author-pane-button" >
+        <a href="javascript: void(0);" class="l-open-author-pane-button open-author-pane-button fr-accordion__header js-fr-accordion__header" id="accordion-header-1">
             <label class="article-header-label">{% trans "by" %}</label>
             <span class="article-header-author-name">{{ self.author }}</span>
         </a>
-        <section class="author is-visuallyhidden animated">
-            <div class="l-boxed l-author">
+        <section id="accordion-panel-1" class="fr-accordion__panel js-fr-accordion__panel author" >
+            <div class="l-boxed l-author fr-accordion__inner">
                 <h3 class="is-hidden" >About</h3>
                 <div class="author-photo">
                     {% include "blocks/bio_pic.html" with image=self.author.photo image_class="bio-pic" %}
@@ -117,7 +136,7 @@
 
         {% if page.introduction %}
             <div class="article-introduction" id="introduction">
-                {{ page.introduction|ub_richtext }}
+                {{ page.introduction }}
             </div>
         {% endif %}
 
@@ -125,16 +144,14 @@
 
         {% for block in page.body %}
 
-            {% if block.block_type == 'introduction' %}
-            {% elif block.block_type == 'paragraph' %}
+            {% if block.block_type == 'paragraph' %}
                 {{ block.value.source|ub_richtext }}
             {% elif block.block_type == 'image' %}
                 <section class="block-{{ block.block_type }}" >
                     {{ block }}
                     <p class="image-description"> {{ block.value }}</p>
                 </section>
-            {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                {{ block }}
+            {% elif block.block_type == 'introduction' %}
             {% else %}
                 <section class="block-{{ block.block_type }}" >
                     {{ block }}
@@ -166,10 +183,13 @@
 {% block below_article %}
 
     {% if related_how_tos %}
+
     <section class="related-howtos">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >This story is part of:</h3>
-            <ul class="l-columns">
+            <h3 class="article-section-title" >{% trans "This article is part of:" %}</h3>
+            <ul class="l-grid grid-packery">
+                <li class="l-grid-sizer"></li>
+                <li class="l-grid-gutter-sizer"></li>
                 {% for how_to in related_how_tos %}
                     {% include "howtos/blocks/related_howto.html" %}
                 {% endfor %}
@@ -181,7 +201,7 @@
     {% if related_how_tos_with_articles %}
     <section class="related-articles">
         <div class="l-boxed l-related-section">
-            <h3 class="article-section-title" >Read next:</h3>
+            <h3 class="article-section-title" >{% trans "Read next:" %}</h3>
             <ul class="l-grid grid-packery">
                 <li class="l-grid-sizer"></li>
                 <li class="l-grid-gutter-sizer"></li>

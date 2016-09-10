@@ -73,9 +73,11 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('webpack', function() {
-    return gulp.src( './unusualbusiness/assets/scripts/main.js')
-        .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest('unusualbusiness/static/scripts'));
+    return gulp.src( [
+        './unusualbusiness/assets/scripts/main.js']
+    )
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('unusualbusiness/static/scripts'));
 });
 
 // Optimize images

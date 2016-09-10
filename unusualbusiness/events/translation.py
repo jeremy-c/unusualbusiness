@@ -9,4 +9,5 @@ class EventPageTR(TranslationOptions):
         'title',
         'slug',
         'description',
+        'event_type',
     )

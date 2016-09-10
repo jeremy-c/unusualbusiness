@@ -18,8 +18,8 @@
   align-items: center;
 
   margin: 0;
-  padding: 0 $gutter;
-  width: calc(100% - (var(--gutter) * 2));
+  padding: 0 $gutter 0 14px;
+  width: calc(100% - (var(--gutter) + 14px));
 
   @media(max-width: $tablet) {
     margin: 0;
@@ -28,10 +28,7 @@
     border-bottom: none;
   }
 
-  .home &,
-  .about &,
-  .how-tos-page &,
-  .how-to & {
+  .navbar-fixed & {
     border-bottom: solid 1px $light-gray;
   }
 }

@@ -1,33 +1,23 @@
 {% extends "article_index_base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags url_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
 
-{% block body_class %}activities-page {{ block.super }}{% endblock %}
+{% block body_class %}activities-page navbar-fixed {{ block.super }}{% endblock %}
 
 {% block extra_js %}
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 {% endblock %}
 
 {% block extra_vendor_css %}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+    <link rel="stylesheet" href="{% static 'bower_components/slick-carousel/slick/slick.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/slick-carousel/slick/slick-theme.css' %}" />
 {% endblock %}
 
 {% block article_body %}
 
     {% if events %}
-        <section class="l-upcoming-events">
-            <h3 class="upcoming-events-title">Events:</h3>
-            <div class="featured-articles-list" id="agenda-carousel-preview" >
-                {% for event in events %}
-                    {% include "events/blocks/featured_event.html" with article_class="featured-event-article" featured_event=event  %}
-                {% endfor %}
-            </div>
-        </section>
-
         <section class="l-all-events">
             <div class="l-home-related-events">
-                <div class="related-events-list" id="agenda-carousel" >
+                <div class="related-events-list" id="agenda-carousel" data-initialslide="{{ initial_slide }}">
                     {% for event in events %}
                         {% include "events/blocks/latest_event.html" with list_item_classes='' %}
                     {% endfor %}
@@ -38,8 +28,7 @@
 
 
     {% if news_articles %}
-        <hr>
-        <h3 class="news-header">News:</h3>
+        <h3 class="news-header">{% trans "News:" %}</h3>
         {% include 'articles/blocks/latest_news_articles.html' %}
     {% endif %}
 {% endblock %}

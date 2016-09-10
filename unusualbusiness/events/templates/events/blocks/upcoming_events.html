@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags i18n article_tags %}
+{% load static wagtailcore_tags i18n article_tags ub_tags %}
 
 <section class="l-related-events">
     {% if upcoming_event %}
@@ -12,7 +12,7 @@
         </div>
     {% endif %}
     <div class="l-home-get-updated">
-        <a href="/activities/" class="home-get-updated-link start-animation-on-hover" >
+        <a href="{% slugurl 'activity' %}" class="home-get-updated-link start-animation-on-hover" >
             <div class="icon-wrapper">
                 <svg width="40px" height="40px" class="white-icon" >
                   <use xlink:href="#event-icon" />

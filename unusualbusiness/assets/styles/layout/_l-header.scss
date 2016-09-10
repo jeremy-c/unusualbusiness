@@ -16,6 +16,7 @@
   min-height: 380px;
 
   @media(max-width: $tablet) {
+    padding: $gutter $gutter / 2 $gutter / 2;
     height: auto;
     min-height: inherit;
   }
@@ -27,20 +28,28 @@
   width: 100%;
 
   @media(max-width: $tablet) {
-    padding-top: 5px;
+    padding-top: $gutter / 2;
   }
 }
 
 .l-article-header-meta-left-bottom {
   position: absolute;
   left: 0;
-  bottom: -10px;
+  bottom: 0;
 }
 
 .l-article-header-meta-left-bottom-text {
   position: absolute;
   left: 50px;
-  bottom: 0;
+  bottom: 5px;
+
+  .theory-article & {
+    bottom: 0;
+  }
+
+  .event & {
+    bottom: 2px;
+  }
 }
 
 .l-article-header-meta-right-bottom {
@@ -50,8 +59,8 @@
   @media(max-width: $tablet) {
     display: inherit;
     position: absolute;
-    right: 34px;
-    bottom: 27px;
+    right: $gutter / 2;
+    bottom: $gutter / 2;
   }
 
   &.is-open-social {
@@ -78,14 +87,14 @@
   box-sizing: border-box;
 
   margin: -80px auto 0;
-  padding-top: 22px;
+  padding-top: $gutter / 2;
   height: 80px;
   width: 100%;
   transition: all 200ms ease-in-out;
 
   @media(max-width: $tablet) {
     margin-top: 0;
-    margin-bottom: $gutter;
+    padding-top: 22px;
     border-bottom: solid 1px $light-gray;
     padding-bottom: $gutter;
   }
@@ -93,6 +102,10 @@
   &:after {
     margin-left: 10px;
     padding-bottom: 2px;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 

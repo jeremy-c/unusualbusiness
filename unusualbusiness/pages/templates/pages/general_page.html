@@ -1,5 +1,5 @@
 {% extends "article_base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags ub_core_tags ub_wagtailcore_tags ub_template_utils i18n %}
+{% load static wagtailimages_tags wagtailcore_tags  ub_wagtailcore_tags  i18n %}
 
 
 {% block extra_js %}
@@ -8,42 +8,10 @@
 {% block extra_css %}
 {% endblock %}
 
-{% block body_class %}about{% endblock %}
+{% block body_class %}about-page navbar-fixed {{ block.super }}{% endblock %}
 
 {% block article_body %}
 
-    <div class="l-boxed">
-
-        {% if page.introduction %}
-            <div class="article-introduction" id="introduction">
-                {{ page.introduction|ub_richtext }}
-            </div>
-        {% endif %}
-
-        <section class="l-pull-right article-body">
-
-            {% for block in page.body %}
-
-                {% if block.block_type == 'introduction' %}
-                {% elif block.block_type == 'paragraph' %}
-                    {{ block.value.source|ub_richtext }}
-                {% elif block.block_type == 'image' %}
-                    <section class="block-{{ block.block_type }}" >
-                        {{ block }}
-                        <p class="image-description"> {{ block.value }}</p>
-                    </section>
-                {% elif block.block_type == 'chapter' or block.block_type == 'section'  or block.block_type == 'subsection' %}
-                    {{ block }}
-                {% else %}
-                    <section class="block-{{ block.block_type }}" >
-                        {{ block }}
-                    </section>
-                {% endif %}
-
-            {% endfor %}
-
-        </section>
-
-    </div>
+    {% include 'pages/blocks/static_contents.html'  %}
 
 {% endblock %}

@@ -1,4 +1,11 @@
 .*
 !.coveragerc
-!.env
+!.env*
 !.pylintrc
+unusualbusiness/media
+unusualbusiness/assets
+staticfiles
+node_modules
+
+*.sqlite3*
+server-settings.md

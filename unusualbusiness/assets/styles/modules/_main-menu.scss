@@ -10,12 +10,12 @@
   float: left;
 
   .ub-logo-icon {
-    padding: 23px 0 17px 0;
 
     @media(max-width: $tablet) {
-      padding: 5px 8px 0;
-      width: 30px;
-      height: 24.432px;
+      padding-left: 2px;
+      padding-top: 3px;
+      width: 46px;
+      height: 46px;
     }
   }
 
@@ -115,13 +115,23 @@
   }
 
   .ub-logo-icon {
+    @media(max-width: $tablet) {
+      padding-left: 4px;
+      height: 45px;
+      width: 45px;
+    }
   }
 
   .menu-item-text {
     display: block;
-  }
 
+    @media(max-width: $tablet) {
+      padding-right: 22px;
+    }
+
+  }
 }
+
 
 // MenuItem: How to
 .main-menu-how-to {
@@ -156,18 +166,26 @@
   left: 13px;
 
   animation-duration: 0.3s;
+
+  .touch & {
+    display: none!important;
+  }
 }
 
 .main-menu-item-link-theory {
   &:hover,
   &:active {
     .circle {
-      fill: $green;
+      fill: $green !important;
       stroke: $green;
     }
 
     .main-menu-item-hover-icon {
       display: inherit;
+
+      @media(max-width: $tablet) {
+        display: none;
+      }
     }
   }
 
@@ -188,12 +206,16 @@
   &:hover,
   &:active {
     .circle {
-      fill: $yellow;
+      fill: $yellow !important;
       stroke: $yellow;
     }
 
     .main-menu-item-hover-icon {
       display: inherit;
+
+      @media(max-width: $tablet) {
+        display: none;
+      }
     }
   }
 
@@ -214,12 +236,16 @@
   &:hover,
   &:active {
     .circle {
-      fill: $black;
+      fill: $black !important;
       stroke: $black;
     }
 
     .main-menu-item-hover-icon {
       display: inherit;
+
+      @media(max-width: $tablet) {
+        display: none;
+      }
     }
   }
 
@@ -240,12 +266,16 @@
   &:hover,
   &:active {
     .circle {
-      fill: $blue;
+      fill: $blue !important;
       stroke: $blue;
     }
 
     .main-menu-item-hover-icon {
       display: inherit;
+
+      @media(max-width: $tablet) {
+        display: none;
+      }
     }
   }
 
@@ -264,7 +294,7 @@
 
 .menu-icon {
   @media(max-width: $tablet) {
-    padding-left: 10px;
+    margin-left: 10px;
     height: 66%;
   }
 }
@@ -285,6 +315,7 @@
 }
 
 // MenuItem: How to circles
+
 .main-menu-how-to-circles {
   margin: 0 7px 0 0;
   padding-right: 30px;
@@ -299,12 +330,26 @@
     @media(max-width: $tablet) {
       text-align: center;
     }
+
+    circle {
+      stroke-width: 10px;
+    }
+
+    .how-to-circle-hover {
+      circle {
+          stroke-width: 12px!important;
+      }
+    }
   }
 
   .how-to-circles-icon {
+    width: 51px;
+    height: 51px;
+
     @media(max-width: $tablet) {
-      padding-left: 2px;
-      height: 82%;
+      margin-left: 3px;
+      height: 45px;
+      width: 45px;
     }
   }
 
@@ -313,21 +358,13 @@
 
     @media(max-width: $tablet) {
       display: block;
+      margin-right: 6px;
     }
   }
 }
 
-// MenuItem: search
-.main-menu-search {
-  padding-right: 29px;
-
-  @media(max-width: $tablet) {
-    display: none;
-  }
-}
-
 // MenuItem: over ub
-.about-ub {
+.main-menu-about-ub {
   padding-right: 29px;
   text-align: center;
 
@@ -340,9 +377,11 @@
 
     @media(max-width: $tablet) {
       display: block;
+      margin-left: 37px;
     }
   }
 }
+
 
 // MenuItem: language
 .main-menu-language {
@@ -354,18 +393,25 @@
   @media(max-width: $tablet) {
     padding: 0 15px;
   }
+
+  .menu-item-text {
+
+    @media(max-width: $tablet) {
+      margin-left: 37px;
+    }
+  }
 }
 
-.main-menu-footer {
+.l-right-menu .main-menu-footer {
   display: none;
 
   @media(max-width: $tablet) {
     display: inline-block;
 
-    margin-left: -$gutter;
-    margin-right: -$gutter;
+    margin:0;
+    padding: 5px 0;
     border-color: $black;
-    width: calc(100% + var(--gutter) * 2);
+    width: 100%;
 
     background-color: $black;
 

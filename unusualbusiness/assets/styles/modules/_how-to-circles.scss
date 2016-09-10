@@ -10,6 +10,7 @@
 .how-to-circles-containter {
   position: relative;
   margin: 0 auto;
+  width: 580px;
   height: 520px;
 
   @media(max-width: $tablet) {
@@ -53,6 +54,7 @@
   }
 }
 
+
 .how-to-satellite {
   display: block;
   width: 100%;
@@ -81,7 +83,7 @@
   }
 
   .article-format {
-    padding-top: 20px;
+    margin-top: 20px;
   }
 }
 
@@ -148,6 +150,19 @@
       fill: $blue !important;
     }
   }
+
+  #sterretje {
+    display: none;
+  }
+}
+
+.circle-hover {
+  #blauwmiddel,
+  #geelmiddel,
+  #groenmiddel,
+  #zwartmiddel {
+    stroke-width: 7.5px;
+  }
 }
 
 .green-text {
@@ -166,6 +181,10 @@
   stroke-width:6;
   stroke-miterlimit:10;
   stroke: $light-gray;
+
+  .main-menu-how-to-circles & {
+    stroke-width: 10px;
+  }
 }
 
 

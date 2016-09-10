@@ -1,5 +1,5 @@
 {% extends "articles/blocks/latest_article.html" %}
-{% load static wagtailcore_tags wagtailimages_tags ub_wagtailcore_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags ub_wagtailcore_tags  i18n %}
 
 {% block list_item_classes %}{{ list_item_classes }} latest-theory-article{% endblock %}
 
@@ -9,11 +9,9 @@
             {{ page.author }}
         </div>
     {% endif %}
-    <div class="latest-article-introduction">
-        {% for block in page.body %}
-            {% if block.block_type == 'introduction' and forloop.first %}
-                {{ block.value.source|ub_richtext|truncatewords:30 }}
-            {% endif %}
-        {% endfor %}
-    </div>
+    {% if page.introduction %}
+        <div class="latest-article-introduction">
+            {{ page.introduction|truncatewords:30 }}
+        </div>
+    {% endif %}
 {% endblock %}

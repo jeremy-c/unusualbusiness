@@ -35,14 +35,12 @@
     background-color: $black;
   }
 
+  .about-page &,
+  .how-tos-page &,
   .activities-page &,
   .theory-articles-page &,
   .story-articles-page &,
   .organizations-page & {
-    min-height: 170px;
-  }
-
-  .how-tos-page & {
     min-height: 170px;
   }
 }
@@ -71,6 +69,7 @@
   }
 }
 
+#knowlegde-pool-introduction,
 .article-header-text {
   margin: $gutter auto $gutter / 2;
   max-width: 700px;
@@ -96,6 +95,18 @@
   font-family: $open-sans;
   font-weight: 400;
   font-size: 16px;
+}
+
+.article-header {
+  .audio-icon,
+  .video-icon,
+  .organization-icon,
+  .event-icon,
+  .images-icon,
+  .text-icon,
+  .theory-icon {
+    display: block;
+  }
 }
 
 .open-author-pane-button {
@@ -171,8 +182,8 @@
 
   .close-social-modal {
     position: absolute;
-    right: 34px;
-    bottom: 27px;
+    right: $gutter / 2;
+    bottom: $gutter / 2;
     display: inherit;
     color: $white;
     text-decoration: none;

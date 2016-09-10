@@ -37,10 +37,20 @@
 
 .l-related-events-title-wrapper {
   width: 80px;
+
+  @media(max-width: $mobile-mini) {
+    margin: 0 auto;
+    //padding-left: 34px;
+    flex: 20%;
+  }
 }
 
 .l-home-related-events {
   flex: 1;
+
+  @media(max-width: $mobile-mini) {
+    flex: 80%;
+  }
 }
 
 .l-home-get-updated {

@@ -1,13 +1,9 @@
 from __future__ import unicode_literals
 
-from itertools import chain
-
 from django.db import models
-from django.db.models import CharField, URLField
 from django.db.models import Model
 from django.utils import timezone
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase, CommonGenericTaggedItemBase, GenericUUIDTaggedItemBase, Tag
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
@@ -18,29 +14,27 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail.wagtailsnippets.models import register_snippet
 
 from unusualbusiness.events.models import EventPage
 from unusualbusiness.organizations.models import OrganizationPage
-from unusualbusiness.tags.models import TheoryArticlePageTag, StoryArticlePageTag, NewsArticlePageTag
 from unusualbusiness.utils.models import PageFormat, RenderInlineMixin, RelatedHowToMixin, FeaturedImageBlock, \
-    FeaturedVideoBlock, FeaturedAudioBlock, Heading2Block, Heading3Block, Heading4Block, PullQuoteBlock
+    FeaturedVideoBlock, FeaturedAudioBlock, PullQuoteBlock
 
 
 class TheoryArticleIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.TheoryArticlePage']
 
     def get_context(self, request):
         context = super(TheoryArticleIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['theory_articles'] = TheoryArticlePage.objects.all().live().order_by('-publication_date')
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
         return context
 
 
 class StoryArticleIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.StoryArticlePage']
 
     def get_context(self, request):
@@ -51,7 +45,7 @@ class StoryArticleIndexPage(Page):
 
 
 class ActivityIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['events.EventPage', 'articles.NewsArticlePage', ]
 
     @staticmethod
@@ -64,10 +58,10 @@ class ActivityIndexPage(Page):
 
     def get_context(self, request):
         context = super(ActivityIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
+
         context['events'] = EventPage.objects.live().order_by('start_date')
+        context['initial_slide'] = EventPage.objects.live().count() - 1
         context['news_articles'] = NewsArticlePage.objects.child_of(self).live().order_by('-publication_date')
-        context['featured_articles'] = self.featured_articles()
 
         return context
 
@@ -83,12 +77,6 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         help_text=_("The subtitle of the page"),
         blank=True
     )
-    format = models.CharField(
-        verbose_name=_('page_format'),
-        max_length=32,
-        null=False,
-        default = PageFormat.TEXT,
-        choices=PageFormat.ALL)
     featured = StreamField([
         ('featured_image', FeaturedImageBlock()),
         ('featured_video', FeaturedVideoBlock()),
@@ -102,7 +90,7 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    publication_date = models.DateTimeField(
+    publication_date = models.DateField(
         verbose_name=_('publication_date'),
         help_text=_("The publication date of the article"),
         default=timezone.now,
@@ -110,15 +98,11 @@ class AbstractArticle(models.Model, RenderInlineMixin):
         null=True,
     )
     body = StreamField([
-        ('introduction', blocks.RichTextBlock(icon="italic")),
+        ('introduction', blocks.TextBlock(icon="italic", rows=3)),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
-        ('embed', EmbedBlock()),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
     ])
 
     class Meta:
@@ -147,15 +131,22 @@ class AbstractArticle(models.Model, RenderInlineMixin):
     def introduction(self):
         for stream_child in self.body:
             if stream_child.block_type == 'introduction':
-                return stream_child.value.source
+                return stream_child.value
         return None
 
 
 class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     parent_page_types = ['articles.StoryArticleIndexPage']
     subpage_types = []
-
-    tags = ClusterTaggableManager(through=StoryArticlePageTag, blank=True)
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='text',
+        choices=(PageFormat.TEXT,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO,
+                 PageFormat.IMAGES, ))
 
     class Meta:
         verbose_name = _("Story")
@@ -174,7 +165,7 @@ class StoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_story_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -187,7 +178,6 @@ StoryArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         StreamFieldPanel('body'),
         InlinePanel('organizations', label=_("Organizations")),
-        FieldPanel('tags'),
     ]
 
 StoryArticlePage.promote_panels = Page.promote_panels
@@ -233,8 +223,16 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
     ajax_template = 'articles/blocks/inline_theory_article.html'
     parent_page_types = ['articles.TheoryArticleIndexPage']
     subpage_types = []
-
-    tags = ClusterTaggableManager(through=TheoryArticlePageTag, blank=True)
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='theory',
+        choices=(PageFormat.THEORY,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO,
+                 PageFormat.LINK,
+                 PageFormat.DOCUMENT, ))
 
     class Meta:
         verbose_name = _("Theory")
@@ -248,7 +246,7 @@ class TheoryArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_theory_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -260,7 +258,6 @@ TheoryArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
-        FieldPanel('tags'),
     ]
 
 TheoryArticlePage.promote_panels = Page.promote_panels
@@ -289,8 +286,15 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         on_delete=models.SET_NULL,
         related_name='news_article_page'
     )
-    tags = ClusterTaggableManager(through=NewsArticlePageTag, blank=True)
-
+    format = models.CharField(
+        verbose_name=_('page_format'),
+        max_length=32,
+        null=False,
+        default='event',
+        choices=(PageFormat.EVENT,
+                 PageFormat.IMAGES,
+                 PageFormat.AUDIO,
+                 PageFormat.VIDEO, ))
     parent_page_types = ['events.EventPage', 'articles.ActivityIndexPage']
     subpage_types = []
 
@@ -306,7 +310,7 @@ class NewsArticlePage(Page, AbstractArticle, RelatedHowToMixin):
         context['related_how_tos'] = related_how_tos
         context['upcoming_related_event'] = self.upcoming_related_event(related_how_tos)
         context['related_how_tos_with_articles'] = self.related_how_to_news_articles(related_how_tos, self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context
 
@@ -319,7 +323,6 @@ NewsArticlePage.content_panels = Page.content_panels + [
         StreamFieldPanel('featured'),
         FieldPanel('publication_date'),
         StreamFieldPanel('body'),
-        FieldPanel('tags'),
     ]
 
 NewsArticlePage.promote_panels = Page.promote_panels
@@ -371,12 +374,13 @@ AuthorPage.promote_panels = Page.promote_panels
 
 
 class AuthorIndexPage(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['articles.AuthorPage']
 
     def get_context(self, request):
         context = super(AuthorIndexPage, self).get_context(request)
         # Add extra variables and return the updated context
         context['authors'] = AuthorPage.objects.all().live()
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
+
         return context

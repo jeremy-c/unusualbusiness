@@ -5,20 +5,16 @@
 @import "../base/base";
 
 .author {
-  z-index: 5;
-  position: relative;
-  top: -272px;
-  height: auto;
-  overflow: hidden;
-
+  display: none;
   animation-duration: .3s;
   animation-delay: 0s;
+  transition: all 300ms ease-in-out;
 
   background-color: $verylight-gray;
-}
 
-.is-hidden-author {
-  display: none;
+  .fr-accordion--is-ready & {
+    display: inherit;
+  }
 }
 
 .l-author {
@@ -36,6 +32,7 @@
 
 .author-photo {
   align-self: flex-start;
+  flex: 1 140px 0; // iPad Hack.
   padding: 0 $gutter * 2 $gutter;
   width: 140px;
   text-align: center;
@@ -64,7 +61,11 @@
   columns: 200px 2;
   column-gap: $gutter * 2;
 
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.8em;
   font-weight: 300;
+
+  @media(max-width: $boxed) {
+    columns: 1;
+  }
 }

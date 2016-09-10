@@ -3,29 +3,58 @@
    ======================= */
 
 @import "../base/base";
+@import "../base/sprite-mixins";
+
 
 // Arrows
 
 .slick-prev,
 .slick-next {
+  z-index: 10;
+  height: 100%;
+  width: 72px;
+  cursor: pointer;
+  transition: all .1s ease-in;
+
   &:before {
-    color: $blue;
+    @include sprite(chevron-icon);
+    content: '';
+    display: block;
   }
 }
 
 .slick-prev {
-  left: 33px;
+  left: 8px;
+  padding-left: 25px;
+
+  &:hover {
+    padding-left: 22px;
+  }
+
+  &:before {
+    transform: rotate(180deg);
+  }
 
   .related-events-list & {
-    left: -20px;
+    left: -45px;
   }
 }
 
 .slick-next {
-  right: 33px;
+  right: 8px;
+  padding-left: 35px;
+
+  &:hover {
+    padding-left: 38px;
+  }
 
   .related-events-list & {
-    right: -20px;
+    right: -45px;
+    padding-left: 30px;
+
+    &:hover {
+      padding-left: 33px;
+    }
   }
 }
 

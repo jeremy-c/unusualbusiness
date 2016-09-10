@@ -3,6 +3,7 @@
    ======================= */
 
 import Headroom from 'headroom.js';
+import debounce from 'debounce';
 
 let Navbars = () => {
   let spinLogo = function() {
@@ -15,37 +16,33 @@ let Navbars = () => {
   };
 
   let initNavbar = function() {
-    let ubLogoLink = $('.ub-logo-link');
+    console.log('Navbar: initNavbar');
+    let $ubLogoLink = $('.ub-logo-link');
     let $searchLink = $('.main-menu-search-link');
 
-    ubLogoLink.on('mouseenter', spinLogo);
-    ubLogoLink.on('mouseleave', spinLogo);
+    $ubLogoLink.on('mouseenter', debounce(spinLogo));
+    $ubLogoLink.on('mouseleave', debounce(spinLogo));
 
     $searchLink.on('click', shakeIcon);
   };
 
-  let initExtraNavbar = function() {
-    let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
-    let $extraNavbar = $('.extra-navbar');
-    let $navbar = $('.navbar');
-
-    $extraNavbarMenuButton.on('click', function() {
-        $extraNavbar.addClass('is-pined-under-navbar');
-        $navbar.toggleClass('slideOutUp');
-        $navbar.toggleClass('slideInDown');
-        $extraNavbar.toggleClass('slideInDown');
-    });
-  };
-
   let initHeadroomJS = function() {
+    // console.log('Navbar: initHeadroomJS');
+
     let $extraNavbarMenuButton = $('.extra-navbar-hamburger-button');
-    let $header = $('.navbar');
+    let $navbar = $('.navbar:not(.navbar-fixed .navbar)'); // Only on detail pages.
+    // TODO: exclude
+    // .home &,
+    // .disclaimer-page &,
+    // .about-page &,
+    // .how-tos-page &,
+    // .how-to &
     let $extraNavbar = $('.extra-navbar');
     let $upcomingEventsElement = $('.upcoming-related-events');
 
     let articleHeaderHeight = $('.article-header').height();
     let articleSubHeaderHeight = $('.article-subheader').height();
-    let headerHeight = $header.height();
+    let headerHeight = $navbar.height();
     let gutter = 34;
 
     let upcomingEventsHeight = 0;
@@ -59,73 +56,77 @@ let Navbars = () => {
         articleSubHeaderHeight -
         gutter;
 
-    // grab an element
-    var navbarElement = document.querySelector(".navbar");
-    var extraNavbarElement = document.querySelector(".extra-navbar");
+    // console.log('Navbar: initHeadroomJS - querySelector');
 
-    // construct an instance of Headroom, passing the element
-    let headroomExtraNavbar;
-    let headroomHeader  = new Headroom(
-        navbarElement,
-        {
+    $navbar.headroom({
+      offset : headroomOffset,
+      tolerance : {
+        down : 10,
+        up : 1000
+      },
+      "classes": {
+        "initial": "animated",
+        "pinned": "slideInDown",
+        "unpinned": "slideOutUp"
+      },
+      onPin : function() {
+          $extraNavbar.addClass('is-pined-under-navbar');
+      },
+      onUnpin : function() {
+          $extraNavbar.removeClass('is-pined-under-navbar');
+      }
+    });
+    if($extraNavbar.length > 0) {
+        $extraNavbar.headroom({
           offset : headroomOffset,
           tolerance : {
-            down : 10,
-            up : 1000
+            down : 0,
+            up : 5000
           },
           "classes": {
             "initial": "animated",
-            "pinned": "slideInDown",
-            "unpinned": "slideOutUp"
-          },
-          onPin : function() {
-              $extraNavbar.addClass('is-pined-under-navbar');
-          },
-          onUnpin : function() {
-              $extraNavbar.removeClass('is-pined-under-navbar');
+            "pinned": "slideOutUp",
+            "unpinned": "slideInDown"
           }
-        }
-    );
+        });
+    }
+    // console.log('Navbar: initHeadroomJS - headroomHeader = new Headroom');
 
-      if(extraNavbarElement !== null) {
-        // construct an instance of Headroom, passing the element
-        headroomExtraNavbar = new Headroom(
-            extraNavbarElement,
-            {
-              offset : headroomOffset,
-              tolerance : {
-                down : 0,
-                up : 5000
-              },
-              "classes": {
-                "initial": "animated",
-                "pinned": "slideOutUp",
-                "unpinned": "slideInDown"
-              }
-            }
-        );
-        headroomExtraNavbar.init();
-      }
-    // initialise
-    headroomHeader.init();
+    $extraNavbarMenuButton.on('click', function(e) {
+        e.preventDefault();
 
-    $extraNavbarMenuButton.on('click', function() {
-        var sdf = headroomHeader;
-        if($header.hasClass('slideInDown')) {
-            headroomExtraNavbar.unpin();
-            headroomHeader.pin();
+        $extraNavbar.toggleClass('is-pined-under-navbar');
+        $extraNavbar.toggleClass('slideInDown');
+        $navbar.toggleClass('slideOutUp');
+        $navbar.toggleClass('slideInDown');
+
+        if($navbar.hasClass('slideInDown')) {
+            $navbar.pin();
         } else {
-            headroomHeader.unpin();
-            $extraNavbar.removeClass('is-pined-under-navbar');
+            $extraNavbar.unpin();
         }
     });
+
+  };
+
+  let initHowToCircleHover = function() {
+    let $howToCirclesLink = $('.how-to-circles-link');
+    $howToCirclesLink.on('mouseover', function() {
+      "use strict";
+      $(this).find('svg').addClass('how-to-circle-hover');
+    });
+    $howToCirclesLink.on('mouseout', function() {
+      "use strict";
+      $(this).find('svg').removeClass('how-to-circle-hover');
+    });
+    // console.log('Navbar: initHeadroomJS - END');
   };
 
   let init = function () {
     console.log('Navbar go!');
     initNavbar();
-    initExtraNavbar();
     initHeadroomJS();
+    initHowToCircleHover()
   };
 
   return {

@@ -1,8 +1,7 @@
 {% extends "articles/blocks/latest_article.html" %}
-{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags  i18n %}
 
 {% block list_item_classes %}{{ list_item_classes }} latest-story-article{% endblock %}
-
 
 {% block above_latest_article %}
     <div class="l-above-latest-article latest-article-publication-date">
@@ -24,18 +23,18 @@
     {% include "blocks/responsive_image_w428.html" with image=page.featured_image.value.image image_class="latest-article-image"  %}
 {% endblock %}
 
-{% block below_latest_article %}
-
-    {% if how_to %}
-        <div class="l-below-latest-article latest-article-how-to">
-            <a href="{{ how_to.url }}">{{ how_to.title }}</a>
-        </div>
-    {% else %}
-        <div class="l-below-latest-article latest-article-how-to">
-            {% for how_to in page.related_how_tos %}
-                <a href="{{ how_to.url }}">{{ how_to.title }}</a>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-{% endblock %}
+{#{% block below_latest_article %}#}
+{##}
+{#    {% if how_to %}#}
+{#        <div class="l-below-latest-article latest-article-how-to">#}
+{#            <a href="{{ how_to.url }}">{{ how_to.title }}</a>#}
+{#        </div>#}
+{#    {% else %}#}
+{#        <div class="l-below-latest-article latest-article-how-to">#}
+{#            {% for how_to in page.related_how_tos %}#}
+{#                <a href="{{ how_to.url }}">{{ how_to.title }}</a>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{##}
+{#{% endblock %}#}

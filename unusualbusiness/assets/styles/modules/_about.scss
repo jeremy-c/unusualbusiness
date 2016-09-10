@@ -1,0 +1,141 @@
+/* ==|====================
+   Modules/About
+   ======================= */
+
+@import "../base/base";
+
+.about-page {
+  .about-page-subtitle {
+    margin-bottom: 40px;
+    font-family: $merriweather;
+    font-size: 26px;
+    font-weight: normal;
+  }
+
+  .about-page-subsubtitle {
+    font-family: $open-sans;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 40px;
+    color: $blue;
+  }
+
+  .quote {
+    margin-bottom: $gutter * 2;
+
+    @media(max-width: $tablet) {
+      margin-bottom: $gutter;
+    }
+  }
+
+  .about-svg {
+    margin-bottom: $gutter * 2;
+    text-align: center;
+
+    @media(max-width: $tablet) {
+      margin-bottom: $gutter;
+    }
+
+    svg {
+      max-width: 100%;
+    }
+
+    #arrows-up-and-down {
+      width: 30%;
+
+      @media(max-width: $tablet) {
+        width: inherit;
+      }
+    }
+
+  }
+
+  .article-header {
+    color: $black;
+  }
+
+  .l-about-menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-top: 1px solid $light-gray;
+    padding-top: 34px;
+
+    @media(max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .about-menu-item {
+
+    a {
+      text-decoration: none;
+      font-weight: normal;
+    }
+
+    &.about-menu-item-green a {
+      &:hover,
+      &:active {
+        color: $green;
+        font-weight: bold;
+      }
+    }
+
+    &.about-menu-item-yellow a {
+      &:hover,
+      &:active {
+        color: $yellow;
+        font-weight: bold;
+      }
+    }
+
+    &.about-menu-item-black a {
+      &:hover,
+      &:active {
+        color: $black;
+        font-weight: bold;
+      }
+    }
+
+    &.about-menu-item-blue a {
+      &:hover,
+      &:active {
+        color: $blue;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .l-about-page-body {
+    padding: 0 $gutter $gutter * 2;
+
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+  }
+
+  .about-page-subtitle {
+
+    font-size: 34px;
+  }
+
+  .about-page-subtitle-yellow {
+    color: $yellow;
+  }
+
+  .about-page-subtitle-green {
+    color: $green;
+  }
+
+  .about-page-subtitle-blue {
+    color: $blue;
+  }
+
+  .about-page-subtitle-black {
+    color: $black;
+  }
+
+
+
+}

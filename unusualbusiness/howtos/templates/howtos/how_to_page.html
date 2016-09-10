@@ -1,5 +1,5 @@
 {% extends "article_index_base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags url_tags ub_core_tags i18n article_tags %}
+{% load static wagtailcore_tags wagtailimages_tags i18n article_tags %}
 
 {% block extra_js %}
 {% endblock %}
@@ -40,11 +40,10 @@
 
             </ul>
 
-            <svg class="how-to-planet animated slideInDown {{ self.circles }}" x="0px" y="0px" width="420px" height="420px" viewBox="0 0 420 420" style="enable-background:new 0 0 420 420;" xml:space="preserve">
-                <circle class="circle theory animated fadeIn" style="stroke:#d6dff1;stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="203.168"/>
-                <circle class="circle stories animated fadeIn" style="stroke:#d6dff1;stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="151.724"/>
-                <circle class="circle practitioners animated fadeIn" style="stroke:#d6dff1;stroke-width:9;stroke-miterlimit:10;" cx="210.233" cy="210.404" r="95.949"/>
-                <circle class="circle activities animated fadeIn" style="stroke:#d6dff1;stroke-width:9;stroke-miterlimit:10;" cx="210.232" cy="210.404" r="41.641"/>
+            <svg class="how-to-planet animated fadeInDown {{ self.circles }}"  width="420px" height="420px" >
+                <title>How to</title>
+                <desc>Click to go to the How to page</desc>
+                <use xlink:href="#how-to-circles" />
             </svg>
 
         </div>
@@ -59,24 +58,28 @@
 
 {% block article_body %}
 
-{% if theory_articles %}
-    <hr>
-    {% include 'articles/blocks/latest_theory_articles.html' %}
-{% endif %}
+    {% if theory_articles %}
+        <hr>
+        <h2 class="how-to-index-title how-to-index-title-green">{% trans "Theory" %}</h2>
+        {% include 'articles/blocks/latest_theory_articles.html' %}
+    {% endif %}
 
-{% if story_articles %}
-    <hr>
-    {% include 'articles/blocks/latest_story_articles.html' %}
-{% endif %}
+    {% if story_articles %}
+        <hr>
+        <h2 class="how-to-index-title how-to-index-title-yellow">{% trans "Stories" %}</h2>
+        {% include 'articles/blocks/latest_story_articles.html' %}
+    {% endif %}
 
-{% if news_articles %}
-    <hr>
-    {% include 'articles/blocks/latest_news_articles.html' %}
-{% endif %}
+    {% if organizations %}
+        <hr>
+        <h2 class="how-to-index-title how-to-index-title-black">{% trans "Practitioners" %}</h2>
+        {% include 'organizations/blocks/latest_organizations.html' %}
+    {% endif %}
 
-{% if organizations %}
-    <hr>
-    {% include 'organizations/blocks/latest_organizations.html' %}
-{% endif %}
+    {% if news_articles %}
+        <hr>
+        <h2 class="how-to-index-title how-to-index-title-blue">{% trans "Activity" %}</h2>
+        {% include 'articles/blocks/latest_news_articles.html' %}
+    {% endif %}
 
 {% endblock %}

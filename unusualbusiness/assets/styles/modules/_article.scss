@@ -122,6 +122,7 @@
 
 .facebook-link,
 .twitter-link {
+  float: left;
   padding-left: 10px;
   text-decoration: none;
 }
@@ -129,12 +130,29 @@
 .article-introduction {
   margin-right: 150px;
 
-  padding: 0 $gutter;
+  padding: 0 $gutter $gutter 0;
 
   transition: all .5s ease-in-out;
 
   font-size: 26px;
   line-height: 1.6em;
+
+
+  @media(max-width: $boxed) {
+    box-sizing: border-box;
+    margin: 0 0 0 auto;
+    width: 100%;
+    max-width: $tablet;
+  }
+
+  @media(max-width: $tablet) {
+    padding: $gutter / 2 0;
+    font-size: 4.5vw;
+  }
+
+  @media(max-width: $mobile) {
+    font-size: 22px;
+  }
 
   .news-article & {
     color: $blue;
@@ -142,6 +160,32 @@
 
   .theory-article & {
     color: $green;
+
+    @media(min-width: $tablet-horizontal) {
+      margin-left: 100px;
+      max-width: 700px;
+    }
+
+    @media (min-width: $tablet-horizontal) {
+      padding: 0 $gutter $gutter 0;
+    }
+
+    @media(min-width: $boxed) {
+      max-width: $tablet;
+    }
+
+    @media(max-width: $boxed + 100px) {
+      padding: 0 $gutter $gutter $gutter * 2;
+    }
+
+    @media(max-width: $tablet) {
+      padding: 0;
+    }
+
+    @media(min-width: $boxed + 100px) {
+      margin-left: inherit;
+      padding: 0 $gutter $gutter 0;
+    }
   }
 
   .story-article & {
@@ -155,26 +199,9 @@
   .is-open-toc-panel & {
     box-sizing: border-box;
     margin: 0 0 0 auto;
-    padding: 0 $gutter;
+    padding: 0 $gutter $gutter;
     width: 100%;
     max-width: $tablet;
-  }
-
-  @media(max-width: $boxed) {
-    box-sizing: border-box;
-    margin: 0 0 0 auto;
-    padding: 0 $gutter;
-    width: 100%;
-    max-width: $tablet;
-  }
-
-  @media(max-width: $tablet) {
-    padding: 0;
-    font-size: 4.5vw;
-  }
-
-  @media(max-width: $mobile) {
-    font-size: 22px;
   }
 }
 
@@ -243,7 +270,8 @@
   &:after {
     @include sprite(external-link-icon);
     content: '';
-    margin-left: 6px;
+    margin-left: 4px;
+    margin-bottom: -1px;
   }
 }
 
@@ -257,6 +285,24 @@
     content: '';
     margin-left: 7px;
     vertical-align: top;
+  }
+
+  &.article-inline-link-definition:after,
+  &.article-inline-link-theoryarticle:after {
+    @include sprite(eye-icon-green);
+  }
+
+  &.article-inline-link-storyarticle:after {
+    @include sprite(eye-icon-yellow);
+  }
+
+  &.article-inline-link-event:after,
+  &.article-inline-link-newsarticle:after {
+    @include sprite(eye-icon-blue);
+  }
+
+  &.article-inline-link-organization:after {
+    @include sprite(eye-icon-black);
   }
 
   &.article-inline-link-event,
@@ -276,11 +322,14 @@
   &.article-inline-link-storyarticle {
     color: $yellow;
   }
+
 }
 
-.article-footnote-link {
+.article-inline-footnote-link {
+  color: $green;
+
   &:after {
-    @include sprite(eye-icon);
+    @include sprite(eye-icon-green);
     content: '';
     margin-left: 7px;
     vertical-align: top;
@@ -292,62 +341,45 @@
   margin: $gutter 0;
 }
 
-.article-body li {
-  margin: $gutter 0;
+.article-body ol li,
+.article-body ul li {
+  margin-left: 10px;
 
-  font-size: 28px;
-  line-height: 1.5em;
-  font-family: $open-sans;
+  .theory-article & {
+    color: $green;
+  }
 
-  @media(max-width: $tablet) {
-    margin: $gutter / 2 0;
-    font-size: 5vw;
+  .story-article & {
+    color: $yellow;
+  }
+
+  .event-article &,
+  .news-article & {
+    color: $blue;
+  }
+}
+
+.article-body ol {
+  padding-left: 30px;
+
+  li {
+    padding-left: 5px;
   }
 }
 
 .article-body ul li {
-  margin-left: 100px;
+  padding-right: 10px;
+  padding-left: 10px;
 
   &:before {
-    display: block;
-    margin: 0 0 $gutter -100px;
-    height: 8px;
-    width: 163px;
-    content: ' ';
-    background-color: $yellow;
-  }
+    content: '•';
+    padding-right: 10px;
 
-  @media(max-width: $tablet) {
-    margin-left: $gutter;
-
-    &:before {
-      margin: 0 0 $gutter / 2 calc(-1* var(--gutter));
-    }
+    font-size: 34px;
+    vertical-align: middle;
   }
 }
 
-.article-body ol li {
-  margin-left: 60px;
-
-  &:before {
-    display: block;
-    margin: 0 0 -8px -100px;
-    padding-top: $gutter;
-    height: 8px;
-    width: 163px;
-    content: ' ';
-    border-top: solid $yellow 8px;
-  }
-
-  @media(max-width: $tablet) {
-    margin-left: 0;
-
-    &:before {
-      margin-left: 0;
-      padding-top: $gutter / 2;
-    }
-  }
-}
 
 .rich-text img {
   max-width: 100%;
@@ -364,7 +396,7 @@
   }
 
   @media(max-width: $tablet) {
-    margin: 0 calc(-1 * var(--gutter));
+    margin: $gutter / 2 calc(-1 * var(--gutter)) 0;
   }
 }
 
@@ -375,67 +407,6 @@
   font-family: $open-sans;
   font-size: 14px;
   line-height: 22px;
-}
-
-.block-pullquote {
-  @media(max-width: $tablet) {
-    margin: 0 calc(-1 * var(--gutter));
-  }
-}
-
-
-.pullquote {
-  display: block;
-  box-sizing: border-box;
-  border-left: solid 8px $yellow;
-  border-right: solid 8px $yellow;
-  margin: $gutter * 2 0;
-  padding: $gutter $gutter * 2;
-  width: 90%;
-
-  background-color: $white;
-
-  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
-
-  font-size: 34px;
-  line-height: 43px;
-  font-family: $merriweather;
-  font-weight: normal;
-  text-align: center;
-
-  @media(max-width: $boxed) {
-    width: 100%;
-  }
-
-  @media(max-width: $tablet) {
-    margin: $gutter;
-    border-left: none;
-    border-right: none;
-    border-top: solid 8px $yellow;
-    border-bottom: solid 8px $yellow;
-
-    padding: $gutter 0;
-    width: inherit;
-
-    font-size: 7vw;
-    line-height: 1.3em;
-  }
-
-  .news-article & {
-    color: $blue;
-  }
-
-  .theory-article & {
-    color: $green;
-  }
-
-  .story-article & {
-    color: $yellow;
-  }
-
-  .organization & {
-    color: $black;
-  }
 }
 
 .article-section-title {
@@ -520,4 +491,8 @@
   .featured-agenda-item .p-name {
     padding-right: $gutter / 2;
   }
+}
+
+.richtext-image {
+  padding-top: $gutter;
 }

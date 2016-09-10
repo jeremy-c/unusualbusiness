@@ -37,6 +37,7 @@
     @media(max-width: $tablet) {
       box-sizing: border-box;
       width: 33%;
+      flex: 33%;
       padding: $gutter / 2 0 0;
     }
   }
@@ -89,7 +90,9 @@
 }
 
 .event-introduction {
-  padding-bottom: $gutter;
+  padding-top: $gutter;
+  padding-bottom: 0;
+  padding-left: 0;
   color: $blue;
 
   @media(max-width: $tablet) {
@@ -98,7 +101,6 @@
 }
 
 .event-description {
-  padding: 0 0 $gutter;
 }
 
 .event-info {
@@ -144,6 +146,7 @@
 }
 
 .event-location-map {
+  margin-top: $gutter;
   margin-bottom: $gutter;
   height: 360px;
   width: 100%;
@@ -226,7 +229,7 @@
   }
 
   .article-index-page-list {
-    margin: $gutter 80px;
+    margin: $gutter 80px 80px;
 
     @media(max-width: $tablet) {
       margin: 0;

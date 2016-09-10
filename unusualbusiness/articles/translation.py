@@ -43,10 +43,12 @@ class TheoryArticleIndexPageTR(TranslationOptions):
  fields = (
  )
 
+
 @register(ActivityIndexPage)
 class ActivityIndexPageTR(TranslationOptions):
     fields = (
     )
+
 
 @register(AuthorPage)
 class AuthorPageTR(TranslationOptions):

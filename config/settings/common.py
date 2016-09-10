@@ -63,16 +63,14 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     # 'unusualbusiness.wagtailmarkdown',
-    'unusualbusiness.home',
     'unusualbusiness.pages',
     'unusualbusiness.organizations',
     'unusualbusiness.events',
     'unusualbusiness.articles',
     'unusualbusiness.definitions',
     'unusualbusiness.howtos',
-    'unusualbusiness.tags',
-    'unusualbusiness.search',
     'unusualbusiness.utils',
+    'unusualbusiness.search',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -121,7 +119,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ("""(Un)usual Business""", 'info@unusualbusiness.nl'),
+    ("""(Un)usual Business""", 'info@linksmith.nl'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -146,7 +144,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'Europe/Amsterdam'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'nl'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -264,14 +262,15 @@ ADMIN_URL = r'^admin/'
 
 WAGTAIL_SITE_NAME = '(Un)usual Business'
 # WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # i.e. 10MB
 
 LANGUAGES = (
-    ('en', u'English'),
     ('nl', u'Nederlands'),
+    ('en', u'English'),
 )
 
-MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'nl')
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('nl', 'en')
 
-MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'nl'
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
 
 DOORS_OPEN_MINUTES_BEFORE_START_EVENT = 15

@@ -5,27 +5,23 @@
     {% image image fill-360x310-c100 as ri_small_cropped %}
     {% image image fill-768x310-c100 as ri_cropped %}
     {% image image fill-1536x620-c100 as ri_cropped_2x %}
-    {% image image height-393 as ri_h393 %}
-    {% image image height-786 as ri_h393_2x %}
+    {% image image fill-3072x1240-c100 as ri_cropped_4x %}
     <picture class="picture">
         <source media="(max-width: 361px)"
             srcset=" {{ ri_cropped.url }} 2x,{{ ri_small_cropped.url }} 1x"
             sizes="100vw" />
-        <source media="(max-width: 768px)"
+        <source media="(max-width: 1440px)"
             srcset="{{ ri_cropped_2x.url }} 2x,{{ ri_cropped.url }} 1x"
             sizes="100vw" />
-        <source media="(min-width: 768px)"
-            srcset="{{ ri_h393_2x.url }} 2x,{{ ri_h393.url }} 1x"
-            sizes="100%" />
-        <source media="(min-width: 1440px)"
-            srcset="{{ ri_h393_2x.url }} 2x,{{ ri_h393.url }} 1x"
+        <source media="(min-width: 1441px)"
+            srcset="{{ ri_cropped_4x.url }} 2x,{{ ri_cropped_2x.url }} 1x"
             sizes="100%" />
         <img
-            srcset="{{ ri_h393_2x.url }} 2x,{{ ri_h393.url }} 1x"
-            src="{{ ri_h393.url }}"
-            width="{{ ri_h393.width }}"
-            height="{{ ri_h393.height }}"
-            alt="{{ ri_h393.alt }}" class="{{ image_class }}"  />
+            srcset="{{ ri_cropped_4x.url }} 2x,{{ ri_cropped_2x.url }} 1x"
+            src="{{ ri_cropped_2x.url }}"
+            width="{{ ri_cropped_2x.width }}"
+            height="{{ ri_cropped_2x.height }}"
+            alt="{{ ri_cropped_2x.alt }}" class="{{ image_class }}"  />
     </picture>
 
 {% endif %}

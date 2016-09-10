@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags ub_core_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags  i18n %}
 
 <div class="{{ list_item_classes }}">
     <div class="latest-agenda-item h-event">
@@ -11,12 +11,19 @@
         </time>
         <div class="description">
             <a href="{{ event.url }}" class="latest-agenda-item-link" >
-                <h4 class="p-name">{{ event.title }}</h4>
+                <h4 class="p-name">{{ event.title|truncatechars:45 }}</h4>
             </a>
-            <div class="p-category">
-                {{ event.event_type }}
+            <div class="p-category"> {{ event.event_type }}
             </div>
         </div>
+        {% if event.is_upcoming  %}
+        <div class="upcoming-event-block">
+            <svg width="20px" height="20px" class="upcoming-event-icon white-icon" >
+              <use xlink:href="#upcoming-event-white-icon" />
+            </svg>
+            {% trans "Upcoming" %}
+        </div>
+        {% endif %}
         {% if event.featured_image %}
             {% include "blocks/responsive_image.html" with image=event.featured_image image_class="article-image"  %}
         {% endif %}

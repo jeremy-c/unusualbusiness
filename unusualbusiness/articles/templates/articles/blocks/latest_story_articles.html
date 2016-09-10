@@ -1,8 +1,9 @@
 
+
 <section class="latest-articles article-index-page-list" id="stories">
     <h2 class="hidden-title">Latest Articles</h2>
     <ul class="l-grid grid-packery">
-        <li class="l-grid-gutter-sizer"></li>
+        <li class="l-grid-gutter-sizer l-grid-gutter-extra-margin"></li>
         {% for article in story_articles %}
             {% if article %}
                 {% include "articles/blocks/latest_story_article.html" with page=article list_item_classes='l-grid-item-full-width' %}

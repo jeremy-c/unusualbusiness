@@ -1,26 +1,22 @@
 from __future__ import unicode_literals
 
 from datetime import date, timedelta
-
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext as _
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase, GenericUUIDTaggedItemBase, Tag, CommonGenericTaggedItemBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from wagtail.wagtailcore import blocks
 
-from unusualbusiness.tags.models import EventPageTag
-from unusualbusiness.utils.models import RenderInlineMixin, PageFormat, Heading2Block, Heading3Block, Heading4Block, \
-    PullQuoteBlock, RelatedHowToMixin
+from unusualbusiness.utils.models import PageFormat, PullQuoteBlock
+from unusualbusiness.utils.models import RenderInlineMixin, RelatedHowToMixin
 
 
 class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
@@ -29,8 +25,8 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.EVENT,
-        choices=PageFormat.ALL)
+        default='event',
+        choices=(PageFormat.EVENT, ))
     event_type = models.CharField(
         verbose_name = _("Type of event"),
         max_length=512,
@@ -76,14 +72,10 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         blank=True
     )
     description = StreamField([
-        ('introduction', blocks.RichTextBlock(icon="italic")),
+        ('introduction', blocks.TextBlock(icon="italic", rows=3)),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         ('image', ImageChooserBlock(icon="image")),
         ('pullquote', PullQuoteBlock()),
-        ('embed', EmbedBlock()),
-        ('chapter', Heading2Block()),
-        ('section', Heading3Block()),
-        ('subsection', Heading4Block()),
         # ('markdown_paragraph', MarkdownBlock(icon="code")),
     ])
     featured_image = models.ForeignKey(
@@ -98,7 +90,10 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         verbose_name = _("Facebook event"),
         blank=True
     )
-    tags = ClusterTaggableManager(through=EventPageTag, blank=True)
+
+    @property
+    def publication_date(self):
+        return self.start_date.date()
 
     class Meta:
         verbose_name = _("Event")
@@ -109,12 +104,13 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         index.SearchField('title_nl'),
         index.SearchField('description_en'),
         index.SearchField('description_nl'),
-        index.SearchField('event_type'),
+        index.SearchField('event_type_en'),
+        index.SearchField('event_type_nl'),
         index.FilterField('start_date'),
         index.FilterField('venue_name'),
         index.FilterField('venue_city'),
         index.FilterField('venue_country'),
-        index.RelatedFields('event_article_page', [
+        index.RelatedFields('news_article_page', [
             index.SearchField('title'),
         ]),
         index.RelatedFields('how_to_page', [
@@ -128,7 +124,8 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('is_featured'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
-        FieldPanel('event_type'),
+        FieldPanel('event_type_en'),
+        FieldPanel('event_type_nl'),
         StreamFieldPanel('description_en'),
         StreamFieldPanel('description_nl'),
         ImageChooserPanel('featured_image'),
@@ -138,7 +135,6 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
         FieldPanel('venue_city'),
         FieldPanel('venue_country'),
         FieldPanel('facebook_event'),
-        FieldPanel('tags'),
     ]
 
     #
@@ -188,6 +184,13 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
     def event_report(self):
         return self.news_article_page.first()
 
+    @property
+    def introduction(self):
+        for stream_child in self.description:
+            if stream_child.block_type == 'introduction':
+                return stream_child.value
+        return None
+
     # Static Methods
 
     @staticmethod
@@ -205,6 +208,6 @@ class EventPage(Page, RenderInlineMixin, RelatedHowToMixin):
 
         context['event_report'] = self.event_report
         context['related_events'] = self.related_how_to_events(self_idx=self.id)
-        context['parent'] = self.get_parent()
+        context['parent'] = self.get_parent().specific
 
         return context

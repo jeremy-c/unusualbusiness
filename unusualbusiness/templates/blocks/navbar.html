@@ -1,0 +1,144 @@
+{% load i18n ub_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+
+<header class="l-navbar navbar" >
+    <div class="ub-logo clearfix">
+        <a href="/{{ lang.code }}/" title="Home" class="ub-logo-link start-logo-animation-on-hover start-animation-on-hover" >
+            <svg class="ub-logo-icon" width="65px" height="65px" >
+                <title>Unusual Business logo</title>
+                <desc>Click to go home</desc>
+                <use xlink:href="#ub-logo" />
+            </svg>
+        </a>
+    </div>
+    <nav class="l-main-nav" >
+        <ul class="l-main-menu" >
+            <li class="main-menu-item main-menu-home">
+                <a href="/{{ lang.code }}/" title="Home" class="main-menu-item-link main-menu-home-link start-animation-on-hover" >
+                    <svg width="65px" height="65px" class="menu-icon ub-logo-icon animated fadeIn" >
+                        <title>Unusual Business logo</title>
+                        <desc>Click to go home</desc>
+                        <use xlink:href="#ub-logo" />
+                    </svg>
+                    <span class="menu-item-text">Home</span>
+                </a>
+            </li>
+
+            {% for menuitem in menuitems %}
+                {% if menuitem.slug == 'activity'  %}
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="{{ menuitem.specific.url_path }}" class="main-menu-item-link how-to-link main-menu-item-link-activities start-animation-on-hover" >
+                            <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                                <use xlink:href="#event-icon"></use>
+                            </svg>
+                            <span class="menu-item-text">{{ menuitem.specific.title }}</span>
+                        </a>
+                    </li>
+                {% elif menuitem.slug == 'practitioners'  %}
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="{{ menuitem.specific.url_path }}" class="main-menu-item-link how-to-link main-menu-item-link-practitioners start-animation-on-hover" >
+                            <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                                <use xlink:href="#organization-icon"></use>
+                            </svg>
+                            <span class="menu-item-text">{{ menuitem.specific.title }}</span>
+                        </a>
+                    </li>
+                {% elif menuitem.slug == 'stories'  %}
+                    <li class="main-menu-item main-menu-how-to ">
+                        <a href="{{ menuitem.specific.url_path }}" class="main-menu-item-link how-to-link main-menu-item-link-stories start-animation-on-hover" >
+                            <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <svg width="22px" height="22px" class="main-menu-item-hover-icon white-icon animated fadeIn">
+                                <use xlink:href="#text-icon"></use>
+                            </svg>
+                            <span class="menu-item-text">{{ menuitem.specific.title }}</span>
+                        </a>
+                    </li>
+                {% elif menuitem.slug == 'theory'  %}
+                    <li class="main-menu-item main-menu-how-to">
+                        <a href="{{ menuitem.specific.url_path }}" class="main-menu-item-link how-to-link main-menu-item-link-theory start-animation-on-hover" >
+                            <svg width="49px" height="49px" class="menu-icon circle animated fadeIn" >
+                              <use xlink:href="#circle" />
+                            </svg>
+                            <svg width="17.4px" height="17.6px" class="main-menu-item-hover-icon white-icon main-menu-item-theory-icon animated fadeIn">
+                                <use xlink:href="#theory-icon"></use>
+                            </svg>
+                            <span class="menu-item-text">{{ menuitem.specific.title }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+
+        </ul>
+        <ul class="l-right-menu">
+            <li class="main-menu-item main-menu-how-to-circles" >
+              <a href="{{ knowledge_pool.specific.url_path }}" class="main-menu-item-link how-to-circles-link start-animation-on-hover " >
+                <svg width="49px" height="49px" class="menu-icon how-to-circles-icon animated fadeIn activities stories practitioners theory "  >
+                  <use xlink:href="#how-to-circles" />
+                </svg>
+                <span class="menu-item-text">{{ knowledge_pool.specific.title }}</span>
+              </a>
+            </li>
+            <li class="main-menu-item main-menu-about-ub">
+                <a href="{{ about_page.specific.url_path }}" class="main-menu-item-link about-ub-link" >
+                    <span class="menu-item-short-text">{% trans "About" %}</span>
+                    <span class="menu-item-text">{{ about_page.specific.title }}</span>
+                </a>
+            </li>
+            <li class="main-menu-item main-menu-language">
+
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ self.url_path_nl }}" class="main-menu-item-link language" >
+                    <span class="menu-item-short-text">NL</span>
+                    <span class="menu-item-text">{% trans "Nederlands" %}</span>
+                  </a>
+                {% elif LANGUAGE_CODE == 'nl' %}
+                  <a href="{{ self.url_path_en }}" class="main-menu-item-link language" >
+                    <span class="menu-item-short-text">EN</span>
+                    <span class="menu-item-text">{% trans "English" %}</span>
+                  </a>
+                {% else %}
+                    {# Add other languages here #}
+                {% endif %}
+            </li>
+            <li class="main-menu-item main-menu-footer">
+                <div class="main-menu-item-link main-menu-item-link-footer">
+                    <a href="{{ about_page.specific.url_path }}#newsletter" class="main-menu-newsletter-link" >{% trans "Newsletter" %}</a>
+                    <span class="main-menu-divider">|</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ self.full_url|urlencode }}&display=popup&ref=plugin&ampsrc=share_button" class="main-menu-facebook-link" >Facebook</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!--/.main-nav-->
+    <div class="search-bar">
+        <label class="search-label is-hidden"  for="searchTextBox" aria="label">
+            <svg class="search-icon" width="23.334px" height="23.334px" >
+                <title>Seach icon</title>
+                <desc>Click to open search text field</desc>
+              <use xlink:href="#search-icon" />
+            </svg>
+        </label>
+        <input type="text" class="search-textbox" id="searchTextBox" placeholder="" disabled>
+    </div>
+    <div class="hamburger-menu">
+        <a id="hamburger-menu-button" href=""
+           title="navigation menu"
+           aria-label="navigation menu"
+           role="button"
+           aria-controls="navigation"
+           aria-expanded="false" >
+            <span></span>
+        </a>
+    </div>
+</header>
+<!--/.l-header-->

@@ -6,69 +6,124 @@
 
 import gumshoe from 'gumshoe';
 import Clipboard from 'clipboard';
+import tocbot from 'tocbot';
+import Fraccordion from '../vendor/accordion';
 
 let Article = () => {
-  let initInlineArticleLinks = function() {
+  let initInlineArticleLinks = function () {
+    // console.log('Article: initInlineArticleLinks');
+
     let articleInlineLinks = $('.article-inline-link');
 
-    articleInlineLinks.on('click', function() {
+    articleInlineLinks.on('click', function () {
       let inlineElement = $(this).data('id');
 
       $(this).toggleClass('is-expanded');
-      $('#' + inlineElement).each( function () {
+      $('#' + inlineElement).each(function () {
         $(this).toggleClass('is-visuallyhidden animated fadeIn');
       });
     });
   };
 
-  let initTOC = function() {
+  let initStickyTOC = function () {
+    // console.log('Article: initStickyTOC');
+
+    if ($.fn.sticky !== undefined) {
+      $(".toc-wrapper ").sticky({
+        topSpacing: 100,
+        bottomSpacing: 2500
+      });
+    } else {
+      console.error('jQuery sticky not defined');
+    }
+  };
+
+  let initTOC = function () {
+    console.log('Article: initTOC');
+
+    initTOCSlideIn();
+    addIdsToHeadings();
+    initGumshoe();
+    initStickyTOC();
+
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '#toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.l-boxed',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3',
+      listClass: 'toc-list',
+      extraListClasses: 'animated fadeInLeft',
+      linkClass: 'toc-link'
+    });
+  };
+
+  let initTOCSlideIn = function () {
+    // console.log('Article: initTOCSlideIn');
+
     let $tocWrapper = $('.toc-wrapper');
     let $tocToggleLink = $('.toggle-toc-link');
     let $toc = $('.article-table-of-contents');
-    let $tocList = $('.toc-list');
     let $articleIntroduction = $('.article-introduction');
     let $blockImage = $('.block-image');
+    let $blockPullquote = $('.block-pullquote');
+    let $articleInline = $('.article-inline');
 
-    $tocToggleLink.on('click', function() {
-      $tocList.toggleClass('is-hidden');
+    $tocToggleLink.on('click', function (e) {
+      e.preventDefault();
+
       $tocToggleLink.toggleClass('is-panel-open');
       $toc.toggleClass('is-closed');
       $articleIntroduction.toggleClass('l-pull-right');
       $blockImage.toggleClass('l-pull-right');
+      $blockPullquote.find('blockquote:first-child').toggleClass('l-body-article-pull-left');
+      $articleInline.toggleClass('l-body-article-pull-left');
 
       return false;
     });
-
-    gumshoe.init();
   };
 
-  let initAuthorPane = function() {
-    let articleInlineLinks = $('.open-author-pane-button');
+  let initFraccordion = function () {
+    // console.log('Article: initFraccordion');
 
-    articleInlineLinks.on('click', function() {
-      $(this).toggleClass('is-opened-button');
-      let $authorElement = $('.author');
-      let articleContentElement = $('.article-content');
+    let $frAccordionHeaderSelector = $('.js-fr-accordion__header');
 
-      if( $authorElement.hasClass('is-visuallyhidden') ) {
-        $authorElement.removeClass('is-visuallyhidden');
-        $authorElement.toggleClass('slideInDown is-author-clicked');
-      } else {
-        $authorElement.removeClass('slideInDown');
-        $authorElement.addClass('slideOutUp').one(
-            'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            function() {
-          $authorElement.removeClass('is-author-clicked');
-          $authorElement.removeClass('slideOutUp');
-          $authorElement.addClass('is-visuallyhidden');
-        });
-      }
+    if ($frAccordionHeaderSelector.length > 0) {
+      var myAccordion = Fraccordion({
+        // String - Outer container selector, hook for JS init() method
+        selector: '.js-fr-accordion',
 
-      return false;
-    });
+        // String - Accordion header elements converted to focusable, togglable elements
+        headerSelector: '.js-fr-accordion__header',
+
+        // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
+        headerIdPrefix: 'accordion-header',
+
+        // String - Accordion panel elements to expand/collapse
+        panelSelector: '.js-fr-accordion__panel',
+
+        // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
+        panelIdPrefix: 'accordion-panel',
+
+        // Boolean - If set to false, all accordion panels will be closed on init()
+        firstPanelsOpenByDefault: false,
+
+        // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
+        multiselectable: false,
+
+        // String - Class name that will be added to the selector when the component has been initialised
+        readyClass: 'fr-accordion--is-ready',
+
+        // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
+        transitionLength: 250
+      });
+    }
   };
 
   let initArticleNotes = function() {
+    // console.log('Article: initArticleNotes');
+
     let articleFootnotes = $('.article-inline-footnote');
 
     articleFootnotes.each(function() {
@@ -78,16 +133,9 @@ let Article = () => {
     });
   };
 
-  let initExternalLinks = function() {
-    $('a:external')
-        .attr('target', '_blank');
-    $('a:external')
-        .not('.facebook-link')
-        .not('.twitter-link')
-        .addClass('external-link');
-  };
-
   let initSocialLinks = function() {
+    console.log('Article: initSocialLinks');
+
     let $moreSocialLink = $('.more-social-link');
     let $socialListItem = $('.social-list-item');
 
@@ -99,6 +147,8 @@ let Article = () => {
   };
 
   let initSocialLinksModal = function() {
+    // console.log('Article: initSocialLinksModal');
+
     let $articleHeader = $('.article-header');
     let $articleSubheader = $('.article-subheader');
     let $openSocialModal = $('.open-social-modal');
@@ -122,7 +172,7 @@ let Article = () => {
         $(this).attr('data-closed', 'false');
 
       } else { // Closing
-        console.log('Closing');
+        // console.log('Closing');
 
         $openSocialModal.parent().toggleClass('is-open-social');
 
@@ -136,18 +186,47 @@ let Article = () => {
     });
   };
 
+  let addIdsToHeadings = function() {
+    // console.log('Article: addIdsToHeadings');
+
+    let $headings = $('.l-boxed h2,.l-boxed h3,.l-boxed h4');
+
+    $headings.each( function() {
+      let text = this.innerText;
+      let slug = slugify(text);
+      $(this).attr('id', slug);
+    })
+  };
+
+  let slugify = function(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  };
 
   let initCopyUrlToClipboard = function() {
     new Clipboard('.copy-url-link');
   };
 
+  let initGumshoe = function() {
+    gumshoe.init();
+  };
+
   let init = function() {
     console.log('Article go!');
+
     initArticleNotes();
     initInlineArticleLinks();
-    initTOC();
-    initAuthorPane();
-    initExternalLinks();
+
+    // Only with theory article
+    if( $('body').hasClass('theory-article')) {
+      // initTOC();
+    }
+
+    initFraccordion();
     initSocialLinks();
     initSocialLinksModal();
     initCopyUrlToClipboard();

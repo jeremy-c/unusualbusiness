@@ -4,10 +4,11 @@
 
 'use strict';
 
-import Grid from './grid';
-
 let MobileMenu = () => {
-  let toggleHamburgerMenu = function() {
+  let toggleMenu = function() {
+    let $body = $('body');
+    $body.toggleClass('is-menu-open');
+
     let hamburgerMenuButtonLink = $('#hamburger-menu-button');
 
     let isExpanded = hamburgerMenuButtonLink.attr('aria-expanded') === 'true';
@@ -25,9 +26,9 @@ let MobileMenu = () => {
       source: '.l-main-nav',
       body: '.l-wrapper',
       renaming: false,
-      dispace: false,
-      onOpen: toggleHamburgerMenu,
-      onClose: toggleHamburgerMenu
+      displace: false,
+      onOpen: toggleMenu,
+      onClose: toggleMenu
     });
 
     $('.extra-navbar-hamburger-menu-button').sidr({
@@ -36,9 +37,9 @@ let MobileMenu = () => {
       source: '.l-main-nav',
       body: '.l-wrapper',
       renaming: false,
-      dispace: false,
-      onOpen: toggleHamburgerMenu,
-      onClose: toggleHamburgerMenu
+      displace: false,
+      onOpen: toggleMenu,
+      onClose: toggleMenu
     });
   };
 

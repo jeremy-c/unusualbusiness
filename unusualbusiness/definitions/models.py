@@ -1,8 +1,6 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
-    StreamFieldPanel
-from wagtail_modeltranslation.models import TranslationMixin
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from unusualbusiness.utils.models import RenderInlineMixin, PageFormat
 from django.utils.translation import ugettext as _
 
@@ -13,8 +11,9 @@ class DefinitionPage(Page, RenderInlineMixin):
         verbose_name=_('page_format'),
         max_length=32,
         null=False,
-        default=PageFormat.THEORY,
-        choices=PageFormat.ALL)
+        default='theory',
+        choices=(PageFormat.THEORY, ))
+
     #TODO: add bold and italic to Wysiwyg
     definition = models.TextField(null=True, blank=True)
 
@@ -31,7 +30,7 @@ DefinitionPage.promote_panels = Page.promote_panels
 
 class DefinitionIndexPage(Page):
 
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['pages.HomePage']
     subpage_types = ['definitions.DefinitionPage']
 
     def get_context(self, request):

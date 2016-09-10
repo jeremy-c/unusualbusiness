@@ -8,6 +8,7 @@
 .article-inline {
   display: block;
   box-sizing: border-box;
+  margin: $gutter 0;
   padding: 10px $gutter 0;
   width: 90%;
 
@@ -206,4 +207,88 @@
 
 .article-inline-event-text {
 
+}
+
+
+.block-pullquote {
+  @media(max-width: $tablet) {
+    margin: 0 calc(-1 * var(--gutter));
+  }
+}
+
+
+.pullquote {
+  display: block;
+  box-sizing: border-box;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 8px;
+  border-right-width: 8px;
+  margin: $gutter * 2 0;
+  padding: $gutter $gutter * 2;
+  width: 90%;
+
+  background-color: $white;
+
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  font-size: 34px;
+  line-height: 43px;
+  font-family: $merriweather;
+  font-weight: normal;
+  text-align: center;
+
+  @media(max-width: $boxed) {
+    width: 100%;
+  }
+
+  @media(max-width: $tablet) {
+    margin: $gutter;
+    border-left: none;
+    border-right: none;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-bottom-width: 8px;
+    border-top-width: 8px;
+
+    padding: $gutter 0;
+    width: inherit;
+
+    font-size: 7vw;
+    line-height: 1.3em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .news-article & {
+    //color: $blue;
+    border-color: $blue;
+  }
+
+  .theory-article & {
+    //color: $green;
+    border-color: $green;
+  }
+
+  .story-article & {
+    //color: $yellow;
+    border-color: $yellow;
+  }
+
+  .organization & {
+    //color: $black;
+    border-color: $black;
+  }
+}
+
+.article-inline-pullquote-attribution  {
+  display: block;
+  margin-top: $gutter / 2;
+  text-decoration: none;
+  font-family: $open-sans;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: $light-grayish;
 }

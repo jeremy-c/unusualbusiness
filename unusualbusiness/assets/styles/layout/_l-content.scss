@@ -33,10 +33,10 @@
 }
 
 .l-home {
-  margin: 0 80px;
+  margin: 0 80px 80px;
 
   @media(max-width: $tablet) {
-    margin: 0;
+    margin: 0 0 $gutter * 2;
   }
 }
 
@@ -54,7 +54,6 @@
 
 .l-body-article-pull-left {
   position: relative;
-  margin: $gutter 0;
   left: -333px;
 
   @media(max-width: $boxed) {
@@ -97,12 +96,39 @@
   width: 100%;
   max-width: $tablet;
 
+  @media(max-width: $boxed) {
+    padding-left: 0;
+  }
+
   @media(max-width: $tablet-horizontal) {
-    padding-top: 0;
+    //padding-top: 0;
   }
 
   @media(max-width: $tablet) {
     padding: 0;
+  }
+
+  .theory-article & {
+    padding: $gutter $gutter $gutter 0;
+
+    @media(max-width: $tablet) {
+      padding: $gutter 0 $gutter 0;
+    }
+
+    @media(min-width: $tablet-horizontal) {
+      max-width: 700px;
+    }
+
+    @media(min-width: $boxed) {
+      max-width: $tablet;
+    }
+
+
+    .article-introduction {
+      @media (max-width: 1200px) {
+        padding: $gutter $gutter $gutter 68px;
+      }
+    }
   }
 }
 

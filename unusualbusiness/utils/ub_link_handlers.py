@@ -309,8 +309,8 @@ FIND_A_TAG = re.compile(r'<a(\b[^>]*)>')
 FIND_ENTIRE_A_TAG = re.compile(r'<a\b[^>]*>([\S\s]*?)<\/a>')
 FIND_EMBED_TAG = re.compile(r'<embed(\b[^>]*)/>')
 FIND_ATTRS = re.compile(r'([\w-]+)\="([^"]*)"')
-FIND_MARKDOWN_NOTE = re.compile(r'\[\^([0-9a-zA-Z]+)\][:](.*?)<\/p>')
 FIND_MARKDOWN_NOTE_REF = re.compile(r'\[\^([0-9a-zA-Z])+\]')
+FIND_MARKDOWN_NOTE = re.compile(r'\[\^([0-9a-zA-Z]+)\][:](.*?)<\/p>')
 FIND_MARKDOWN_URL = re.compile(r'\[([^]]+)]\(\s*(http[s]?://[^)]+)\s*\)')
 
 
@@ -403,7 +403,10 @@ def expand_inline_html(html, for_editor=False):
         return handler.expand_db_attributes(attrs, for_editor)
 
     def replace_markdown_note_ref(m, for_editor=False):
-        footnote_link_id = m.group(1)
+        footnote_link_id = m.group(0)
+        footnote_link_id = footnote_link_id.lstrip('[^')
+        footnote_link_id = footnote_link_id.rstrip(']')
+
         handler = UBMarkdownHandler()
         return handler.expand_article_footnote_link_id(footnote_link_id, for_editor)
 
