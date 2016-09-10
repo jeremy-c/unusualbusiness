@@ -42,6 +42,14 @@
   position: absolute;
   left: 50px;
   bottom: 5px;
+
+  .theory-article & {
+    bottom: 0;
+  }
+
+  .event & {
+    bottom: 2px;
+  }
 }
 
 .l-article-header-meta-right-bottom {

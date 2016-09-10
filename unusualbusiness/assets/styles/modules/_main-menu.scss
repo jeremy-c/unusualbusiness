@@ -166,6 +166,10 @@
   left: 13px;
 
   animation-duration: 0.3s;
+
+  .touch & {
+    display: none!important;
+  }
 }
 
 .main-menu-item-link-theory {

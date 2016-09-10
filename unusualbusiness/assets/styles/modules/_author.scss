@@ -32,6 +32,7 @@
 
 .author-photo {
   align-self: flex-start;
+  flex: 1 140px 0; // iPad Hack.
   padding: 0 $gutter * 2 $gutter;
   width: 140px;
   text-align: center;
