@@ -28,7 +28,7 @@
   width: 100%;
 
   @media(max-width: $tablet) {
-    padding-top: 5px;
+    padding-top: $gutter / 2;
   }
 }
 
@@ -41,7 +41,7 @@
 .l-article-header-meta-left-bottom-text {
   position: absolute;
   left: 50px;
-  bottom: 0;
+  bottom: 5px;
 }
 
 .l-article-header-meta-right-bottom {
@@ -79,13 +79,14 @@
   box-sizing: border-box;
 
   margin: -80px auto 0;
-  padding-top: 22px;
+  padding-top: $gutter / 2;
   height: 80px;
   width: 100%;
   transition: all 200ms ease-in-out;
 
   @media(max-width: $tablet) {
     margin-top: 0;
+    padding-top: 22px;
     border-bottom: solid 1px $light-gray;
     padding-bottom: $gutter;
   }
