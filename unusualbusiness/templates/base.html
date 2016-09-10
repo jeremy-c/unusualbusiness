@@ -9,14 +9,14 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {% block open_graph %}
+            <meta name="description"          content="Research collective on social relations based on self-organization, care, solidarity and sustainability." />
             <meta property="og:url"           content="{{ page.full_url }}" />
             <meta property="og:type"          content="website" />
             <meta property="og:title"         content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
-            <meta property="og:description"   content="(Un)usual Business aims to take democratic control over the common means of our lives and change the way we relate to each other. We envision a world in which economic and social relations are based on self-organization, care, solidarity and sustainability." />
-            <meta property="og:image"         content="{% static 'images/ub-logo.svg' %}" />
+            <meta property="og:description"   content="Research collective on social relations based on self-organization, care, solidarity and sustainability." />
+            <meta property="og:image"         content="{% static 'images/unusual-business-sharing.jpg' %}" />
         {% endblock %}
         <script type="text/javascript">
             WebFontConfig = {

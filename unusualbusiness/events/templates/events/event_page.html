@@ -9,6 +9,23 @@
 
 {% block body_class %}event {{ block.super }}{% endblock %}
 
+{% block open_graph %}
+    <meta property="og:title"                   content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+    <meta property="og:description"             content="{{ self.introduction|striptags|truncatewords:50 }}" />
+    <meta name="description"                    content="{{ self.introduction|striptags|truncatewords:50 }}" />
+    <meta property="og:article:published_time"  content="{{ self.publication_date|date:"d-m-Y" }}" />
+    <meta property="og:article:author"          content="{% if self.author %}{{ self.author }}{% else %}(Un)usual Business{%  endif %}" />
+    <meta property="og:type"                    content="article" />
+    <meta property="og:site_name"               content="(Un)usual Business" />
+    <meta property="og:locale"                  content="{{ LANGUAGE_CODE }}" />
+    <meta property="og:locale:alternate"        content="{% if LANGUAGE_CODE == 'en' %}nl{% else %}en{% endif %}" />
+    {% image self.featured_image fill-1536x620-c100 as featured_image %}
+    <meta property="og:image"                   content="{% if featured_image %}{{ featured_image.url }}{% else %}{% static 'images/unusual-business-sharing.jpg' %}{%  endif %}" />
+    {% if self.featured_video %}
+    <meta property="og:video"                   content="{{ self.featured_video.value.video.url }}" />
+    {%  endif %}
+{% endblock %}
+
 {% block extra_navbar %}
     {% include "blocks/extra-navbar.html" %}
 {% endblock %}
