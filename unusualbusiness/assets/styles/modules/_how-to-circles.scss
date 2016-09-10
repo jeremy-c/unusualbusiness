@@ -10,6 +10,7 @@
 .how-to-circles-containter {
   position: relative;
   margin: 0 auto;
+  width: 580px;
   height: 520px;
 
   @media(max-width: $tablet) {
@@ -82,7 +83,7 @@
   }
 
   .article-format {
-    padding-top: 20px;
+    margin-top: 20px;
   }
 }
 
