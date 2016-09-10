@@ -181,8 +181,8 @@
 
   .close-social-modal {
     position: absolute;
-    right: 34px;
-    bottom: 27px;
+    right: $gutter / 2;
+    bottom: $gutter / 2;
     display: inherit;
     color: $white;
     text-decoration: none;

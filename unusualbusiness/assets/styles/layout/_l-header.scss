@@ -51,8 +51,8 @@
   @media(max-width: $tablet) {
     display: inherit;
     position: absolute;
-    right: 34px;
-    bottom: 27px;
+    right: $gutter / 2;
+    bottom: $gutter / 2;
   }
 
   &.is-open-social {
@@ -86,7 +86,6 @@
 
   @media(max-width: $tablet) {
     margin-top: 0;
-    margin-bottom: $gutter;
     border-bottom: solid 1px $light-gray;
     padding-bottom: $gutter;
   }
